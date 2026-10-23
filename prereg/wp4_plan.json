@@ -1,0 +1,168 @@
+{
+  "bootstrap_resamples": 10000,
+  "budget": {
+    "core_http_calls": 600,
+    "core_http_ceiling_usd": "2.5286400",
+    "core_total_ceiling_usd": "5.3312832",
+    "example_routing_calls": 24,
+    "example_routing_ceiling_usd": "0.1334592",
+    "global_cap_usd": "20",
+    "headroom_for_retries_supplements_extras_usd": "0.9687168",
+    "http_one_call_usd": {
+      "gpt-4.1-2025-04-14": "0.007024",
+      "gpt-4.1-mini-2025-04-14": "0.0014048"
+    },
+    "optional_one_source_question_block_calls": 24,
+    "optional_one_source_question_block_ceiling_usd": "0.1334592",
+    "primary_routing_calls": 480,
+    "primary_routing_ceiling_usd": "2.6691840",
+    "repeat_calls": 144,
+    "repeat_ceiling_usd": "0.8007552",
+    "routing_one_call_usd": {
+      "gpt-4.1-2025-04-14": {
+        "B0": "0.003768",
+        "B1": "0.014768"
+      },
+      "gpt-4.1-mini-2025-04-14": {
+        "B0": "0.0007536",
+        "B1": "0.0029536"
+      }
+    },
+    "share_usd": "7",
+    "stop_usd": "6.3",
+    "supplemental_two_model_http_pair_ceiling_usd": "0.0084288"
+  },
+  "core_http_attempts_per_model_per_source": 15,
+  "http_input_limit": 3000,
+  "http_output_limit": 128,
+  "local_token_sizing": {
+    "interpretation": "Deterministic local sizing, not LLM trials. Repeated sizing runs are not independent samples.",
+    "provider_counts": false,
+    "raw_directory": "results/raw/wp4_token_preflight_local_20261015T131718",
+    "summary": {
+      "B0": {
+        "maximum": 604,
+        "minimum": 506,
+        "over3000": 0,
+        "over4000": 0,
+        "requests": 72
+      },
+      "B1": {
+        "maximum": 5269,
+        "minimum": 1679,
+        "over3000": 36,
+        "over4000": 36,
+        "requests": 72
+      },
+      "HTTP_constrained": {
+        "maximum": 985,
+        "minimum": 689,
+        "over3000": 0,
+        "over4000": 0,
+        "requests": 36
+      },
+      "HTTP_fallback": {
+        "maximum": 1147,
+        "minimum": 850,
+        "over3000": 0,
+        "over4000": 0,
+        "requests": 36
+      }
+    }
+  },
+  "max_supplemental_pairs_per_source": 10,
+  "min_valid_http_generations_per_model": 300,
+  "models": [
+    "gpt-4.1-mini-2025-04-14",
+    "gpt-4.1-2025-04-14"
+  ],
+  "question_plan": {
+    "code_paths": [
+      "experiments/routing_baselines.py",
+      "experiments/lib/wp4_common.py"
+    ],
+    "code_sha256": {
+      "experiments/lib/wp4_common.py": "d269ab8fd47b580bd1c36b578f4050b3147a0daef18f7470b21acee3021ac1e8",
+      "experiments/routing_baselines.py": "57189cad13ab6c1a733860dc7bb2d066374ee0b6548d8f0bf1e525b975083892"
+    },
+    "experiment_id": "WP4.questions",
+    "failure": "One generation attempt per object, gateway at most five HTTP retries. API/input-limit/format failures retained; no regenerated question. Freeze questions.json SHA256 before any routing/HTTP evaluation; never replace missing questions with fabricated natural questions.",
+    "input": "Object name/id/type, full source specification, four deterministic KB.search excerpts with no content truncation.",
+    "input_limit": 6000,
+    "max_calls": 378,
+    "max_objects_per_room": 18,
+    "max_source_rooms_including_example": 21,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "output_limit": 256,
+    "per_call_ceiling_usd": "0.0028096",
+    "prompt_path": "experiments/prompts/wp4/questions.txt",
+    "prompt_sha256": "342a2c29466cc41bd1b4ed4ed4acebd00e8fb5af02cfb1c3757944a8bf914b01",
+    "questions_per_object": 2,
+    "selection": "Union of primary object, fifteen admitted pair objects, primary mismatch object, and turn mismatch object; at most eighteen distinct objects. Same frozen questions reused across every model and condition.",
+    "share": "judges",
+    "temperature": 0.3,
+    "total_ceiling_usd": "1.0620288",
+    "validity_checks": "Both nonempty string fields must differ and each must contain the supplied object name or source identifier, case-insensitively; failures are retained without repair.",
+    "version": 1
+  },
+  "router_input_limits": {
+    "B0": 1500,
+    "B1": 7000
+  },
+  "router_output_limit": 96,
+  "routing_cells_per_model_per_source": 12,
+  "runtime_limits": [
+    "One generation maximum per grounded turn; exact token count via gateway before paid generation.",
+    "Keep complete profiles/ownership/graph context. Never selectively truncate oversized B1 inputs.",
+    "All calls use shared ledger; unknown outcomes/retries count and may reduce the planned completed blocks.",
+    "No source selection, prompt changes, or answer repairs based on evaluation outcomes."
+  ],
+  "seed": 20261015,
+  "source_sha256": {
+    "app/backend_root/agent_backend/backend/roomcontract_v2_runtime.py": "014d19dff4a4482eca3d3f594ebd52e8c42dbb005e39629771db535f103f5bb1",
+    "app/backend_root/agent_backend/backend/guard_config.py": "660fe7b808bedd8ab01b9ce997f6664fc64d486083616b7867f72bc49b168206",
+    "app/backend_root/agent_backend/backend/kb.py": "5898faa9935da357f3801ea570f43bb4c5534e8b3a35afea98f56992c3f23d57",
+    "app/backend_root/agent_backend/backend/openai_client.py": "e36fa651a081f05391f355da4940f8021c4176e1798436473648bf2f5195c6b6",
+    "app/backend_root/agent_backend/backend/publication.py": "c09d3f1cebc790d3b5787f2eded3ca7ac46a91b1382d422cb4cf5a1b9423f47f",
+    "app/backend_root/agent_backend/backend/runtime_trace.py": "d377c5a8b4aa969568c539f491a1cc62d7870d8a8c10dc0e83d3fa6751ac76d0",
+    "app/backend_root/agent_backend/backend/schemas.py": "2bb547ed2b601a91b18cd9785ac60dcd6f24f6ff593c03c6d4d6f9d6dd8ffb81",
+    "app/backend_root/agent_backend/backend/server.py": "25770fac8c61bcc0710b15f88d66a098ff09e3611d22da29e5dc68de3e0403ba",
+    "app/backend_root/agent_backend/backend/state.py": "3a1bb5fe35352a25f531cb468bc2924d0c3a953d500d2773f58260f0caeb2e34",
+    "docs/SPEC.md": "1fae274f214fd60d74acfce5fea24e49161e4ac82b5af2ced9360d065e47f307",
+    "experiments/analyze_wp4.py": "4bbd0a8198351e9b2da9f33f2bf82320b0f2bfd3a64c0b5e3557bc1670449a48",
+    "experiments/guarded_llm_turns.py": "f70f790d29446bfa86f16b0fd7873ac186793e36fd17937316045ae3926024b0",
+    "experiments/lib/wp4_common.py": "d269ab8fd47b580bd1c36b578f4050b3147a0daef18f7470b21acee3021ac1e8",
+    "experiments/preregister_wp4.py": "4bb1801805946ba562c7c58fa5e99535b6340bebdfd9d337fed93f1b88481f6a",
+    "experiments/prompts/wp4/abstain.txt": "0a870fb403fb46e3ae1e09d527d94740de28a054107aa2db26d41d90fd51d963",
+    "experiments/prompts/wp4/answer_style.txt": "7570951f68bfc77bdf85070b22b1f0da59135ce67721570de7e8457bf165a1e9",
+    "experiments/prompts/wp4/fallback.txt": "c45d4552622e1dc2e8c6c68f597ed30fd845d829a25d764840b6709e430a564b",
+    "experiments/prompts/wp4/forced_choice.txt": "98b46e8c5ad18d4bc9024ee980c4e76d37bcb0fe503eb950eb8cb2e018029a95",
+    "experiments/prompts/wp4/questions.txt": "342a2c29466cc41bd1b4ed4ed4acebd00e8fb5af02cfb1c3757944a8bf914b01",
+    "experiments/prompts/wp4/router_1.txt": "1666638d32571361a12951340addfbfea217653632286165accad7faf6f2298a",
+    "experiments/prompts/wp4/router_2.txt": "5c8d3c04043e181d5ba9de12906d118328fb20cd8c4e5a513c73b0347af22087",
+    "experiments/prompts/wp4/router_3.txt": "0f9ea651712efc93176c89d9997a1e835161804488708e40bf2ab139d47bd6a4",
+    "experiments/routing_baselines.py": "57189cad13ab6c1a733860dc7bb2d066374ee0b6548d8f0bf1e525b975083892",
+    "experiments/wp4_token_preflight.py": "b3147f9b75888fad27de1051f8f057cc3bcb20bb44927ed28c57816527a5c6a7",
+    "prereg/wp5_plan.json": "57a96d281a1ea05b86beb0f800caa485f72e2053d6b736a1dfcffb1cdff29d8e",
+    "repro/budget.py": "25344aa4014f524f42a83fe2335dbff451ce030f320c818a72ed06bde0038f7f",
+    "repro/llm.py": "2cf1de2e2cda47a25f7bf37827a97efb86c713e35884e2fdfb9740b8c2274597",
+    "repro/prices.json": "1c834e863696573b4edbf0d9d512ab6ae797ab5b7fe2421bf9f254d40fa5558d",
+    "results/raw/wp4_token_preflight_local_20261015T131718/metadata.json": "e3e86b6e9b143c68f0f9c734f59eb0a23616c237bc3fd1a35e81975b39c61b48",
+    "results/raw/wp4_token_preflight_local_20261015T131718/rows.json": "0d2a4581fa065186ca1d03f88d84eb45df01e1083a94e8d96166577bbe67175c",
+    "results/raw/wp4_token_preflight_local_20261015T131718/summary.json": "881d0f872c58fdd2bab605449a554d6685c4475217b3f1717ba2f83eec27bf63",
+    "tests/test_wp4.py": "f68140eb98b2a6b87980128c6f858ed32fc875e9c8f9f40bf6fe7c51e7cdf827"
+  },
+  "stability_temperature": 0,
+  "stages": [
+    "Freeze corpus from completed WP5 outputs; I1/I2/native labels and all disagreement records",
+    "Generate and freeze two natural questions per selected object under separately frozen judges-share plan",
+    "Primary neutral routing for twenty source rooms, then authored example; full twelve cells per model per source",
+    "Core HTTP: fifteen admitted attempts per source per model, with channel/policy/mismatch conditions",
+    "If needed, constrained neutral supplemental HTTP pairs in fixed source-round-robin order, up to ten additional pairs/source/model; stop once both models have at least three hundred valid real generations",
+    "Two-source three-additional-call stability block across all twelve cells and both models",
+    "Optional mismatch, natural_1, natural_2 source blocks in that order; each block keeps all twelve cells and both models; stop before first unaffordable block"
+  ],
+  "target_evaluation_sources": 20,
+  "temperature": 0.3,
+  "version": 1
+}

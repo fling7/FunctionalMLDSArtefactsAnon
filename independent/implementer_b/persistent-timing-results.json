@@ -1,0 +1,2594 @@
+[
+  {
+    "model": "small",
+    "pair": 0,
+    "request_label": "normal",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "backend": 0.01764819999516476,
+      "persistent": 0.21076699999684934
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 1,
+    "request_label": "handoff",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "b",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "persistent": 0.24909170001046732,
+      "backend": 0.05667739998898469
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 2,
+    "request_label": "stale",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.07574590000149328,
+      "persistent": 0.23484920000191778
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 3,
+    "request_label": "selection",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "none",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.20865499999490567,
+      "backend": 0.012209299995447509
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 4,
+    "request_label": "schema",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "backend": 0.059058300001197495,
+      "persistent": 0.17496319999918342
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 5,
+    "request_label": "identity",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "unknown",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.3042420999991009,
+      "backend": 0.03946819998964202
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 6,
+    "request_label": "normal",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "backend": 0.014997499994933605,
+      "persistent": 0.24637839999923017
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 7,
+    "request_label": "handoff",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "b",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "persistent": 0.26862719999917317,
+      "backend": 0.014295899993157946
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 8,
+    "request_label": "stale",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.04729030000453349,
+      "persistent": 0.25796400000399444
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 9,
+    "request_label": "selection",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "none",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.12076859999797307,
+      "backend": 0.06008619999920484
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 10,
+    "request_label": "schema",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "backend": 0.015921099999104626,
+      "persistent": 0.27918480000516865
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 11,
+    "request_label": "identity",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "unknown",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.3363532000075793,
+      "backend": 0.01712970000517089
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 12,
+    "request_label": "normal",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "backend": 0.07163700000091922,
+      "persistent": 0.251403999995091
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 13,
+    "request_label": "handoff",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "b",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "persistent": 0.2706897000025492,
+      "backend": 0.04909879999468103
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 14,
+    "request_label": "stale",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.02033329999540001,
+      "persistent": 0.497502500002156
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 15,
+    "request_label": "selection",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "none",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.42107799999939743,
+      "backend": 0.032305700005963445
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 16,
+    "request_label": "schema",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "backend": 0.015275199999450706,
+      "persistent": 0.18758189999789465
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 17,
+    "request_label": "identity",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "unknown",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.13736970000900328,
+      "backend": 0.01607759999751579
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 18,
+    "request_label": "normal",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "backend": 0.031814300004043616,
+      "persistent": 0.22353339999972377
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 19,
+    "request_label": "handoff",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "b",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "persistent": 0.09928339999169111,
+      "backend": 0.05275420000543818
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 20,
+    "request_label": "stale",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.02381809998769313,
+      "persistent": 0.4549188000091817
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 21,
+    "request_label": "selection",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "none",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.3692031000100542,
+      "backend": 0.06406370000331663
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 22,
+    "request_label": "schema",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    },
+    "seconds": {
+      "backend": 0.16930609999690205,
+      "persistent": 0.30601309999474324
+    },
+    "equal": true
+  },
+  {
+    "model": "small",
+    "pair": 23,
+    "request_label": "identity",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "unknown",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.41068990000349004,
+      "backend": 0.020856300005107187
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 0,
+    "request_label": "normal",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "seconds": {
+      "backend": 0.29586130000825506,
+      "persistent": 0.3339622999919811
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 1,
+    "request_label": "handoff",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "reading_area_guide",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "backend": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "persistent": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "seconds": {
+      "persistent": 0.4047926999919582,
+      "backend": 0.2540846000047168
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 2,
+    "request_label": "stale",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.4130548999964958,
+      "persistent": 0.2759707000077469
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 3,
+    "request_label": "selection",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "none",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.228626100011752,
+      "backend": 0.36084110000228975
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 4,
+    "request_label": "schema",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.48593709999113344,
+      "persistent": 0.26920970001083333
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 5,
+    "request_label": "identity",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "unknown",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.4122749000089243,
+      "backend": 0.24991559999762103
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 6,
+    "request_label": "normal",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "seconds": {
+      "backend": 0.35686149999673944,
+      "persistent": 0.27696570000262
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 7,
+    "request_label": "handoff",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "reading_area_guide",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "backend": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "persistent": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "seconds": {
+      "persistent": 0.24276839999947697,
+      "backend": 0.3575325999991037
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 8,
+    "request_label": "stale",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.4402434999938123,
+      "persistent": 0.27759579999838024
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 9,
+    "request_label": "selection",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "none",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.3591502000053879,
+      "backend": 0.13539680000394583
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 10,
+    "request_label": "schema",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.282536099999561,
+      "persistent": 0.5098017999989679
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 11,
+    "request_label": "identity",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "unknown",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.22160939998866525,
+      "backend": 0.17714020000130404
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 12,
+    "request_label": "normal",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "seconds": {
+      "backend": 0.5789927000005264,
+      "persistent": 0.27594420000968967
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 13,
+    "request_label": "handoff",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "reading_area_guide",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "backend": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "persistent": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "seconds": {
+      "persistent": 0.4059634000004735,
+      "backend": 0.4160165000066627
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 14,
+    "request_label": "stale",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.29253060001065023,
+      "persistent": 0.6630383000010625
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 15,
+    "request_label": "selection",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "none",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.24959259999741334,
+      "backend": 0.47887079999782145
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 16,
+    "request_label": "schema",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.4593447999941418,
+      "persistent": 0.24285609999787994
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 17,
+    "request_label": "identity",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "unknown",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.36057489999802783,
+      "backend": 0.7201405000087107
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 18,
+    "request_label": "normal",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "backend": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "persistent": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "seconds": {
+      "backend": 0.3238924000033876,
+      "persistent": 0.34432200000446755
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 19,
+    "request_label": "handoff",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "reading_area_guide",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "backend": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "persistent": {
+      "decision": "ANSWER_AFTER_HANDOFF",
+      "reason": null,
+      "provider": "teacher_agent",
+      "action": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+    },
+    "seconds": {
+      "persistent": 0.26549039999372326,
+      "backend": 0.6126108000025852
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 20,
+    "request_label": "stale",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_STALE_DIGEST",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.4380289999971865,
+      "persistent": 0.5334240999945905
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 21,
+    "request_label": "selection",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "none",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SELECTION_STATE",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.38920439999492373,
+      "backend": 0.4657310000038706
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 22,
+    "request_label": "schema",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "ENT-ASSET-CHALKBOARD",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "backend",
+      "persistent"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_SCHEMA",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "backend": 0.4858743999939179,
+      "persistent": 0.3907054000010248
+    },
+    "equal": true
+  },
+  {
+    "model": "full",
+    "pair": 23,
+    "request_label": "identity",
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "teacher_agent",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8",
+        "entity_id": "unknown",
+        "source_object_id": "chalkboard",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "170745B7FDA0326BD13CDF0F7A055DA7C3CFF47A1EFCB83A3E2DEB0A2FAC65B8"
+    },
+    "order": [
+      "persistent",
+      "backend"
+    ],
+    "expected_original": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "backend": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "persistent": {
+      "decision": "REJECT",
+      "reason": "E_UNKNOWN_ENTITY",
+      "provider": null,
+      "action": null
+    },
+    "seconds": {
+      "persistent": 0.4485164000070654,
+      "backend": 0.1992476000013994
+    },
+    "equal": true
+  }
+]

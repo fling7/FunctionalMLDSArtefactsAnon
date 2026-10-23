@@ -1,0 +1,124 @@
+{
+  "agents": [
+    {
+      "id": "agent_compass_buoy",
+      "display_name": "Compass and Buoy Specialist",
+      "persona": "Friendly and knowledgeable maritime tools expert eager to explain compass cases and buoy models to visitors.",
+      "expertise": [
+        "maritime navigation tools",
+        "buoy functions",
+        "compass cases",
+        "maritime safety equipment"
+      ],
+      "knowledge_tags": [
+        "compass_cases",
+        "buoy_models",
+        "maritime_navigation_tools",
+        "maritime_safety_equipment"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022"
+      ],
+      "handoff_targets": [],
+      "voice": "sage",
+      "voice_gender": "weiblich",
+      "voice_style": "informativ",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "agent_ship_anchor",
+      "display_name": "Ship and Anchor Specialist",
+      "persona": "Enthusiastic maritime historian focused on ship models and anchoring technology, sharing stories of vessel evolution.",
+      "expertise": [
+        "ship design",
+        "anchoring technology",
+        "maritime history",
+        "vessel types"
+      ],
+      "knowledge_tags": [
+        "ship_models",
+        "anchor_displays",
+        "ship_design",
+        "anchoring_mechanisms"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023"
+      ],
+      "handoff_targets": [],
+      "voice": "coral",
+      "voice_gender": "maennlich",
+      "voice_style": "engagiert",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "agent_navigation_sailing",
+      "display_name": "Navigation and Sailing Expert",
+      "persona": "Patient and clear expert guiding visitors through navigation charts and sailing techniques with practical explanations.",
+      "expertise": [
+        "maritime navigation",
+        "chart reading",
+        "sailing techniques",
+        "navigation charts",
+        "sail diagrams"
+      ],
+      "knowledge_tags": [
+        "navigation_charts",
+        "sail_diagrams",
+        "maritime_navigation_methods",
+        "sailing_technology"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024"
+      ],
+      "handoff_targets": [],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "ruhig",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "agent_compass_buoy",
+      "target_agent_id": "agent_ship_anchor",
+      "condition": "visitor asks about ship design or anchoring after learning about compass or buoy",
+      "reason": "Visitor interested in vessel types and anchoring mechanisms after maritime navigation tools"
+    },
+    {
+      "source_agent_id": "agent_ship_anchor",
+      "target_agent_id": "agent_navigation_sailing",
+      "condition": "visitor asks about navigation charts or sailing techniques after ship and anchor explanations",
+      "reason": "Visitor wants to deepen understanding of maritime navigation methods following ship and anchor info"
+    }
+  ]
+}

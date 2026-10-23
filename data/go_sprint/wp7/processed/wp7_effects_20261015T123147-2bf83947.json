@@ -1,0 +1,39 @@
+{
+  "cells": 4,
+  "limits": "No remote effect or transactional outbox; repeated delivery deliberately demonstrates duplication.",
+  "raw_directory": "results/raw/wp7_effects/20261015T123147-2bf83947",
+  "rows": [
+    {
+      "increments": 1,
+      "mode": "before_commit_abort",
+      "outcome": "E_CONTRACT_DRIFT",
+      "records": 1,
+      "sink_semantics": "append-only non-idempotent local increment record",
+      "snapshot_restored": true
+    },
+    {
+      "increments": 0,
+      "mode": "after_commit_abort",
+      "outcome": "E_CONTRACT_DRIFT",
+      "records": 0,
+      "sink_semantics": "append-only non-idempotent local increment record",
+      "snapshot_restored": true
+    },
+    {
+      "increments": 1,
+      "mode": "after_commit_success",
+      "outcome": "committed",
+      "records": 1,
+      "sink_semantics": "append-only non-idempotent local increment record",
+      "snapshot_restored": false
+    },
+    {
+      "increments": 2,
+      "mode": "after_commit_duplicate_delivery",
+      "outcome": "committed",
+      "records": 2,
+      "sink_semantics": "append-only non-idempotent local increment record",
+      "snapshot_restored": false
+    }
+  ]
+}

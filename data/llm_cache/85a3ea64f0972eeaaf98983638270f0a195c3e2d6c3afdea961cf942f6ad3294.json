@@ -1,0 +1,618 @@
+{
+  "cache_key": "85a3ea64f0972eeaaf98983638270f0a195c3e2d6c3afdea961cf942f6ad3294",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_10_robotics_showroom.scene_semantics.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# scene_semantics_v1\n\nDu analysierst eine normalisierte RDL- oder RoomPlan-Szene fuer eine wissenschaftliche\nCase Study. Die Analyse muss raeumlich geerdet sein: Objekt-IDs duerfen nur aus der\nbereitgestellten Liste stammen.\n\nZiel der Ausgabe:\n- Erkenne die Domaene und den Zweck des Raums.\n- Leite typische Besucherziele ab.\n- Bilde kompakte semantische Zonen aus Objektgruppen und wichtigen Einzelobjekten.\n- Markiere Objekte, die fuer Interaktion, Erklaerung oder Navigation wichtig sind.\n- Schlage Agentenrollen vor, die spaeter in Interactive Agents umgesetzt werden koennen.\n\nRegeln:\n- Keine neuen Objekt-IDs erfinden.\n- Keine Runtime-Endpunkte, Requirements oder RoomContract-Elemente erzeugen; diese Stufen folgen spaeter.\n- Zonen muessen fachlich erklaerbar sein und mindestens ein vorhandenes Objekt referenzieren.\n- Agentenrollenkandidaten muessen aus Raumfunktion, Besucherzielen und Zonen abgeleitet sein.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Analyze this normalized scene and produce scene semantics.\",\"scene\":{\"schema_kind\":\"rdl_scene\",\"scene_name\":\"extension_drift_10_robotics_showroom\",\"environment_type\":\"indoor\",\"room_bounds\":{\"min_x\":-8.4,\"max_x\":8.4,\"min_z\":-8.4,\"max_z\":8.4},\"dimensions\":{\"width\":16.8,\"height\":4.0,\"depth\":16.8},\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"gripper_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_002\",\"object_type\":\"assembly_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_003\",\"object_type\":\"joint_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_004\",\"object_type\":\"sensor_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: sensor station. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_005\",\"object_type\":\"mobile_robot_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: mobile robot model. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clea...\"},{\"object_id\":\"object_006\",\"object_type\":\"control_console\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: control console. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_007\",\"object_type\":\"gripper_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_008\",\"object_type\":\"assembly_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_009\",\"object_type\":\"joint_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_010\",\"object_type\":\"sensor_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: sensor station. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_011\",\"object_type\":\"mobile_robot_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: mobile robot model. Display 11 explains a distinct example in collection 2. A freestanding educational display with a cle...\"},{\"object_id\":\"object_012\",\"object_type\":\"control_console\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: control console. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_013\",\"object_type\":\"gripper_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_014\",\"object_type\":\"assembly_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clear...\"},{\"object_id\":\"object_015\",\"object_type\":\"joint_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"gripper_display\":3,\"sensor_station\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"example_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"gripper_display\",\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 1 explains a distinct example in collection 1. A freesta...\"},{\"object_id\":\"object_004\",\"object_type\":\"sensor_station\",\"specification_excerpt\":\"Synthetic robotics showroom object: sensor station. Display 4 explains a distinct example in collection 1. A freestan...\"},{\"object_id\":\"object_007\",\"object_type\":\"gripper_display\",\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 7 explains a distinct example in collection 1. A freesta...\"}]},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"assembly_display\":3,\"mobile_robot_model\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"example_objects\":[{\"object_id\":\"object_002\",\"object_type\":\"assembly_display\",\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 2 explains a distinct example in collection 2. A freest...\"},{\"object_id\":\"object_005\",\"object_type\":\"mobile_robot_model\",\"specification_excerpt\":\"Synthetic robotics showroom object: mobile robot model. Display 5 explains a distinct example in collection 2. A free...\"},{\"object_id\":\"object_008\",\"object_type\":\"assembly_display\",\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 8 explains a distinct example in collection 2. A freest...\"}]},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"joint_model\":3,\"control_console\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"example_objects\":[{\"object_id\":\"object_003\",\"object_type\":\"joint_model\",\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 3 explains a distinct example in collection 3. A freestandin...\"},{\"object_id\":\"object_006\",\"object_type\":\"control_console\",\"specification_excerpt\":\"Synthetic robotics showroom object: control console. Display 6 explains a distinct example in collection 3. A freesta...\"},{\"object_id\":\"object_009\",\"object_type\":\"joint_model\",\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 9 explains a distinct example in collection 3. A freestandin...\"}]}]}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 1800,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "scene_semantics",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agent_role_candidates": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "mission": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "role_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "role_id",
+                    "display_name",
+                    "mission",
+                    "expertise",
+                    "responsible_zone_ids",
+                    "grounded_object_ids"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "domain": {
+                "type": "string"
+              },
+              "important_objects": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "object_id": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "object_id",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "interaction_topics": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "related_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "topic_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "topic_id",
+                    "title",
+                    "description",
+                    "related_object_ids"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "room_purpose": {
+                "type": "string"
+              },
+              "semantic_zones": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "centroid_xz": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "x": {
+                          "type": "number"
+                        },
+                        "z": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "z"
+                      ],
+                      "type": "object"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "visitor_goals_supported": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "zone_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "zone_id",
+                    "name",
+                    "purpose",
+                    "object_ids",
+                    "centroid_xz",
+                    "visitor_goals_supported"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "visitor_goals": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "domain",
+              "room_purpose",
+              "visitor_goals",
+              "semantic_zones",
+              "important_objects",
+              "interaction_topics",
+              "agent_role_candidates"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "1.full",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792092445,
+    "created_at": 1792092433,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0c980491ca4927db016ad1291128c887d18c672bb8b20f443b",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 1800,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"agent_role_candidates\": [\n    {\n      \"display_name\": \"Showroom Guide\",\n      \"expertise\": [\n        \"Robotics basics\",\n        \"Exhibit explanations\",\n        \"Visitor navigation\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_002\",\n        \"object_003\",\n        \"object_004\",\n        \"object_005\",\n        \"object_006\",\n        \"object_007\",\n        \"object_008\",\n        \"object_009\",\n        \"object_010\",\n        \"object_011\",\n        \"object_012\",\n        \"object_013\",\n        \"object_014\",\n        \"object_015\"\n      ],\n      \"mission\": \"Begrüßt Besucher, gibt einen Überblick über die Ausstellung und hilft bei der Orientierung im Robotics Showroom.\",\n      \"responsible_zone_ids\": [\n        \"zone_1\",\n        \"zone_2\",\n        \"zone_3\"\n      ],\n      \"role_id\": \"showroom_guide\"\n    },\n    {\n      \"display_name\": \"Technik-Experte\",\n      \"expertise\": [\n        \"Funktionsweise von Greifern, Sensoren, Robotermodellen\",\n        \"Vertiefte technische Erklärungen\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_004\",\n        \"object_007\",\n        \"object_010\",\n        \"object_013\"\n      ],\n      \"mission\": \"Erklärt die technischen Details und Funktionsweisen einzelner Exponate, insbesondere aus Collection 1.\",\n      \"responsible_zone_ids\": [\n        \"zone_1\"\n      ],\n      \"role_id\": \"technical_expert\"\n    },\n    {\n      \"display_name\": \"Interaktions-Coach\",\n      \"expertise\": [\n        \"Bedienung von Kontrollkonsolen\",\n        \"Interaktive Demonstrationen\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_006\",\n        \"object_012\"\n      ],\n      \"mission\": \"Unterstützt Besucher bei interaktiven Exponaten und Demonstrationen, insbesondere an den Kontrollkonsolen.\",\n      \"responsible_zone_ids\": [\n        \"zone_3\"\n      ],\n      \"role_id\": \"interaction_coach\"\n    }\n  ],\n  \"domain\": \"Robotik-Ausstellung / Showroom\",\n  \"important_objects\": [\n    {\n      \"object_id\": \"object_001\",\n      \"reason\": \"Typischer Greifer-Display, wichtig für die Erklärung von Greiftechnologien.\"\n    },\n    {\n      \"object_id\": \"object_002\",\n      \"reason\": \"Assembly-Display, repräsentiert Montageprozesse in der Robotik.\"\n    },\n    {\n      \"object_id\": \"object_006\",\n      \"reason\": \"Control Console, ermöglicht Interaktion und Demonstration.\"\n    },\n    {\n      \"object_id\": \"object_011\",\n      \"reason\": \"Mobiler Robotermodel, anschauliches Beispiel für autonome Systeme.\"\n    },\n    {\n      \"object_id\": \"object_012\",\n      \"reason\": \"Control Console, zweiter Interaktionspunkt.\"\n    }\n  ],\n  \"interaction_topics\": [\n    {\n      \"description\": \"Wie funktionieren Greifer in der Robotik? Erklärung anhand der Gripper Displays.\",\n      \"related_object_ids\": [\n        \"object_001\",\n        \"object_007\",\n        \"object_013\"\n      ],\n      \"title\": \"Greifertechnologien\",\n      \"topic_id\": \"topic_gripper\"\n    },\n    {\n      \"description\": \"Demonstration und Erklärung von Kontrollkonsolen zur Steuerung von Robotern.\",\n      \"related_object_ids\": [\n        \"object_006\",\n        \"object_012\"\n      ],\n      \"title\": \"Robotik-Steuerung\",\n      \"topic_id\": \"topic_control\"\n    },\n    {\n      \"description\": \"Sensorik in der Robotik, dargestellt durch die Sensor Stations.\",\n      \"related_object_ids\": [\n        \"object_004\",\n        \"object_010\"\n      ],\n      \"title\": \"Sensorik\",\n      \"topic_id\": \"topic_sensors\"\n    },\n    {\n      \"description\": \"Mobile Robotermodelle und deren Anwendung in der Praxis.\",\n      \"related_object_ids\": [\n        \"object_005\",\n        \"object_011\"\n      ],\n      \"title\": \"Mobile Robotik\",\n      \"topic_id\": \"topic_mobile\"\n    }\n  ],\n  \"room_purpose\": \"Präsentation und Vermittlung von Wissen über verschiedene Aspekte der Robotik anhand von Exponaten und interaktiven Stationen.\",\n  \"semantic_zones\": [\n    {\n      \"centroid_xz\": {\n        \"x\": -0.84,\n        \"z\": -0.84\n      },\n      \"name\": \"Zone Collection 1: Greifer & Sensorik\",\n      \"object_ids\": [\n        \"object_001\",\n        \"object_004\",\n        \"object_007\",\n        \"object_010\",\n        \"object_013\"\n      ],\n      \"purpose\": \"Fokus auf Greifertechnologien und Sensorik in der Robotik.\",\n      \"visitor_goals_supported\": [\n        \"Verstehen von Greifmechanismen\",\n        \"Erkundung von Sensorsystemen\"\n      ],\n      \"zone_id\": \"zone_1\"\n    },\n    {\n      \"centroid_xz\": {\n        \"x\": -0.28,\n        \"z\": -0.28\n      },\n      \"name\": \"Zone Collection 2: Montage & Mobile Robotik\",\n      \"object_ids\": [\n        \"object_002\",\n        \"object_005\",\n        \"object_008\",\n        \"object_011\",\n        \"object_014\"\n      ],\n      \"purpose\": \"Montageprozesse und mobile Robotermodelle werden vorgestellt.\",\n      \"visitor_goals_supported\": [\n        \"Verstehen von Montageprozessen\",\n        \"Erleben mobiler Robotik\"\n      ],\n      \"zone_id\": \"zone_2\"\n    },\n    {\n      \"centroid_xz\": {\n        \"x\": 0.28,\n        \"z\": 0.28\n      },\n      \"name\": \"Zone Collection 3: Gelenke & Steuerung\",\n      \"object_ids\": [\n        \"object_003\",\n        \"object_006\",\n        \"object_009\",\n        \"object_012\",\n        \"object_015\"\n      ],\n      \"purpose\": \"Gelenkmodelle und Kontrollkonsolen zur Demonstration von Bewegungsabläufen und Steuerung.\",\n      \"visitor_goals_supported\": [\n        \"Verstehen von Gelenkmechanik\",\n        \"Interaktive Steuerung ausprobieren\"\n      ],\n      \"zone_id\": \"zone_3\"\n    }\n  ],\n  \"visitor_goals\": [\n    \"Grundlagen der Robotik kennenlernen\",\n    \"Technische Details einzelner Exponate verstehen\",\n    \"Interaktive Demonstrationen erleben\",\n    \"Unterschiedliche Robotik-Anwendungen erkunden\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0c980491ca4927db016ad129119c7c87d1831192dc549db47f",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "scene_semantics",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agent_role_candidates": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "mission": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "role_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "role_id",
+                  "display_name",
+                  "mission",
+                  "expertise",
+                  "responsible_zone_ids",
+                  "grounded_object_ids"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "domain": {
+              "type": "string"
+            },
+            "important_objects": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "object_id": {
+                    "enum": [
+                      "object_001",
+                      "object_002",
+                      "object_003",
+                      "object_004",
+                      "object_005",
+                      "object_006",
+                      "object_007",
+                      "object_008",
+                      "object_009",
+                      "object_010",
+                      "object_011",
+                      "object_012",
+                      "object_013",
+                      "object_014",
+                      "object_015"
+                    ],
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "object_id",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "interaction_topics": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "related_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "topic_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "topic_id",
+                  "title",
+                  "description",
+                  "related_object_ids"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "room_purpose": {
+              "type": "string"
+            },
+            "semantic_zones": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "centroid_xz": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "x": {
+                        "type": "number"
+                      },
+                      "z": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "z"
+                    ],
+                    "type": "object"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "purpose": {
+                    "type": "string"
+                  },
+                  "visitor_goals_supported": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "zone_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "zone_id",
+                  "name",
+                  "purpose",
+                  "object_ids",
+                  "centroid_xz",
+                  "visitor_goals_supported"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "visitor_goals": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "domain",
+            "room_purpose",
+            "visitor_goals",
+            "semantic_zones",
+            "important_objects",
+            "interaction_topics",
+            "agent_role_candidates"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2622,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1458,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4080
+    },
+    "user": null
+  },
+  "response_sha256": "c65fddbfc51385f493b50b06d6cea9a2b21a1bd3e64445ff5e1d2dcb86255568",
+  "saved_at": "2026-10-15T19:27:25.839874+00:00",
+  "status": "SUCCESS"
+}

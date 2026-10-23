@@ -1,0 +1,192 @@
+{
+  "cache_key": "a67472fa5d79f40f1f528ddea3b7a1567b459d424aaa660689c2c3aee738aeaf",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "scene_043_transport_center.B0.abstain.p2.neutral.full.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "You assign a grounded visitor question to one agent. Route for selected_object, while treating visitor_question as context rather than a replacement selection. Compare the available agents. If explicit responsibility data is present, check object owners first, then group owners only if no object owner exists, then zone owners only if neither earlier level has an owner. More than one owner at the deciding level is ambiguous. A valid recipient is the unique owner and is either already active or one declared edge away. Produce the JSON decision.\nYou may reject: if no valid unique recipient can be determined from the supplied information, set abstain=true and answering_agent_id=null. Otherwise set abstain=false and answering_agent_id to exactly one listed agent id.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Exhibit Educator\",\"expertise\":[\"educational content\",\"exhibit explanation\",\"transport technology\"],\"id\":\"role_educator\",\"persona\":\"Knowledgeable educator providing detailed explanations about bridge models and signal stations to visitors.\"},{\"display_name\":\"Transport Center Guide\",\"expertise\":[\"visitor assistance\",\"transport information\",\"navigation help\"],\"id\":\"role_guide\",\"persona\":\"Friendly and helpful guide assisting visitors in understanding transport routes and navigating the center.\"},{\"display_name\":\"Transport Technology Specialist\",\"expertise\":[\"transport technology\",\"rail systems\",\"bicycle transport\"],\"id\":\"role_tech_specialist\",\"persona\":\"Expert in transport technology explaining rail models and bicycle displays with focus on innovations.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-OBJECT_050\",\"source_id\":\"object_050\",\"name\":\"route_map\",\"type\":\"route_map\",\"group_label\":\"collection_2\",\"zone_names\":[\"Route Map Zone\"]},\"active_agent_id\":\"role_guide\",\"visitor_question\":\"What can you tell me about this selected object?\"}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false,
+                  true
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "role_educator",
+                  "role_guide",
+                  "role_tech_specialist",
+                  null
+                ],
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1792106310,
+    "created_at": 1792106310,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0cfd66af7a244bb4016ad15f464e6087d1a52f16f0bf4bd8cf",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\": false, \"answering_agent_id\": \"role_guide\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0cfd66af7a244bb4016ad15f468ec487d18be55324032dd0ce",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false,
+                true
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "role_educator",
+                "role_guide",
+                "role_tech_specialist",
+                null
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 428,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 19,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 447
+    },
+    "user": null
+  },
+  "response_sha256": "61401117d98dc137517fb487a8897897d1dc0cd46fecba9f5ff7e17700b8e020",
+  "saved_at": "2026-10-15T23:18:31.977310+00:00",
+  "status": "SUCCESS"
+}

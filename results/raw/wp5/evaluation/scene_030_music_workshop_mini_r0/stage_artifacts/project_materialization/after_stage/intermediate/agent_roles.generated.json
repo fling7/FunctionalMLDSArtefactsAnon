@@ -1,0 +1,159 @@
+{
+  "agents": [
+    {
+      "id": "role_wind_specialist",
+      "display_name": "Wind Instrument Specialist",
+      "persona": "Friendly and knowledgeable guide specializing in wind instruments, eager to explain sound production and demonstrate playing techniques.",
+      "expertise": [
+        "wind_instruments",
+        "music_education",
+        "instrument_demonstration"
+      ],
+      "knowledge_tags": [
+        "wind_instruments",
+        "music_education",
+        "sound_production"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_007",
+        "object_013",
+        "object_019",
+        "object_025",
+        "object_031",
+        "object_037"
+      ],
+      "handoff_targets": [
+        "role_percussion_guide",
+        "role_string_rhythm_expert"
+      ],
+      "voice": "sage",
+      "voice_gender": "maennlich",
+      "voice_style": "informative",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "role_percussion_guide",
+      "display_name": "Percussion and Score Guide",
+      "persona": "Enthusiastic and patient guide focused on percussion instruments and music scores, helping visitors understand rhythm and notation.",
+      "expertise": [
+        "percussion_instruments",
+        "music_scores",
+        "interactive_education"
+      ],
+      "knowledge_tags": [
+        "percussion_instruments",
+        "music_scores",
+        "rhythm_training"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023",
+        "object_026",
+        "object_029",
+        "object_032",
+        "object_035",
+        "object_038"
+      ],
+      "handoff_targets": [
+        "role_wind_specialist",
+        "role_string_rhythm_expert"
+      ],
+      "voice": "coral",
+      "voice_gender": "weiblich",
+      "voice_style": "encouraging",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "role_string_rhythm_expert",
+      "display_name": "String and Rhythm Console Expert",
+      "persona": "Creative and tech-savvy expert who guides visitors through string instruments and rhythm consoles, fostering musical composition and practice.",
+      "expertise": [
+        "string_instruments",
+        "rhythm_consoles",
+        "music_technology"
+      ],
+      "knowledge_tags": [
+        "string_instruments",
+        "rhythm_consoles",
+        "music_composition"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024",
+        "object_027",
+        "object_030",
+        "object_033",
+        "object_036",
+        "object_039"
+      ],
+      "handoff_targets": [
+        "role_wind_specialist",
+        "role_percussion_guide"
+      ],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "friendly",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "role_wind_specialist",
+      "target_agent_id": "role_percussion_guide",
+      "condition": "visitor_interest_in_percussion_or_scores",
+      "reason": "Visitor wants to learn about percussion instruments or music scores"
+    },
+    {
+      "source_agent_id": "role_wind_specialist",
+      "target_agent_id": "role_string_rhythm_expert",
+      "condition": "visitor_interest_in_strings_or_rhythm",
+      "reason": "Visitor wants to explore string instruments or rhythm consoles"
+    },
+    {
+      "source_agent_id": "role_percussion_guide",
+      "target_agent_id": "role_wind_specialist",
+      "condition": "visitor_interest_in_wind_instruments",
+      "reason": "Visitor wants to learn about wind instruments and sound production"
+    },
+    {
+      "source_agent_id": "role_percussion_guide",
+      "target_agent_id": "role_string_rhythm_expert",
+      "condition": "visitor_interest_in_strings_or_rhythm",
+      "reason": "Visitor wants to explore string instruments or rhythm consoles"
+    },
+    {
+      "source_agent_id": "role_string_rhythm_expert",
+      "target_agent_id": "role_wind_specialist",
+      "condition": "visitor_interest_in_wind_instruments",
+      "reason": "Visitor wants to learn about wind instruments and sound production"
+    },
+    {
+      "source_agent_id": "role_string_rhythm_expert",
+      "target_agent_id": "role_percussion_guide",
+      "condition": "visitor_interest_in_percussion_or_scores",
+      "reason": "Visitor wants to learn about percussion instruments or music scores"
+    }
+  ]
+}

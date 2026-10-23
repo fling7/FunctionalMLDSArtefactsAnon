@@ -1,0 +1,15 @@
+# API budget and ordered reductions
+
+The configured hard cap is read from the local credential environment by repro/env.py and recorded without credentials in the gateway preflight. The current configured cap is USD 20. Shares: WP4 35%, WP5 30%, WP7 real-model runs 10%, judges/question generation 10%, reserve 15%. Each share stops at 90%; the global cap includes in-flight reservations and unresolved outcomes. Unit tests do not incur API costs.
+
+Exact token counting may be used before generation to reserve the registered model input cost plus the maximum output cap. Otherwise use conservative full-context reservations. Unknown-priced models fail before generation. No reduction changes the preregistered outcome definitions.
+
+Ordered reduction: preserve at least two models and the room-level comparison before increasing probes or repetitions. Use all eligible evaluation rooms (minimum target 20), start with at most two stratified agent/object pairs per room per baseline cell and the neutral question, then expand by a precomputed seeded order only if the remaining share can cover the full next balanced block. Keep all three prompt phrasings and both abstention variants. Question-generated variants and repeated calls are distinct cache items; never substitute a cached call for a requested independent repetition.
+
+For authoring, generate source geometry deterministically before API calls. Target at least 45 source scenes across 12 domains plus 8 LLM-authored scenes. Process initial scene/model combinations in a fixed alternating-model order, prioritizing distinct rooms before repeats. Target at least 30 successful generated rooms; failure remains data. Regeneration is secondary to initial corpus completion, in complete balanced scene/model repeat blocks. If the budget cannot achieve the minimum, record the unmet minimum and fail the corresponding go/no-go item.
+
+End-to-end targets remain 300 admitted requests per model. Estimate a complete balanced block before starting it; if the remaining WP4 share is insufficient, stop at the last full block and report reduced sample and checklist failure. Real-model WP7 runs are lower priority than the offline race/fault matrix. Optional B3, judges, mismatch monitoring and larger timing/scaling follow P0 within their assigned shares.
+
+A per-experiment numeric estimate based on frozen request sizes and official prices must be appended before that experiment starts. This initial document sets allocation rules; it is not evidence that every requested minimum is affordable.
+
+2026-10-15 WP5 frozen estimate: 30 distinct evaluation sources in alternating-model first pass; first20 paired in second pass; 50evaluation runs (25/model), plus3development. First-attempt ceiling USD4.69744, remaining USD0.70256 to the WP5stopUSD5.40. Exact stage input ceilings/output caps, model snapshots and all source/prompt hashes: prereg/wp5_plan.json (SHA256d24bf986df27f96925a50528e2aef5a1b89f538d2c7d6c824599241f9b44ca96). One repair maximum per stage; unknown outcomes and HTTP retries charged by shared ledger. No paid evaluation beyond the registered sequence; unmet minima remain FAIL.

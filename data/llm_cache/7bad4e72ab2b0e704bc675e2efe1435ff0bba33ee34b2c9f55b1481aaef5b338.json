@@ -1,0 +1,426 @@
+{
+  "cache_key": "7bad4e72ab2b0e704bc675e2efe1435ff0bba33ee34b2c9f55b1481aaef5b338",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.completion_v1",
+    "item_id": "scene_008_materials_lab.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"scene_008_materials_lab\",\"domain\":\"Materialwissenschaftliches Labor / Ausstellung\",\"room_purpose\":\"Didaktische Ausstellung und experimentelles Labor zur Vermittlung von Wissen über synthetische Materialien.\",\"visitor_goals\":[\"Eigenschaften synthetischer Materialien kennenlernen\",\"Materialproben vergleichen\",\"Praktische Materialprüfungen durchführen\",\"Anwendungsbeispiele für verschiedene Werkstoffe entdecken\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"name\":\"Zone Fasern & Keramiken\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"purpose\":\"Präsentation und Erklärung von Faser- und Keramikmaterialien.\",\"visitor_goals_supported\":[\"Materialeigenschaften kennenlernen\",\"Vergleich verschiedener Werkstoffe\"],\"zone_id\":\"zone_1\"},{\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"name\":\"Zone Metalle & Kristalle\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"purpose\":\"Veranschaulichung von Metall- und Kristallstrukturen und deren Eigenschaften.\",\"visitor_goals_supported\":[\"Struktur und Funktion von Metallen und Kristallen verstehen\",\"Anwendungsbeispiele entdecken\"],\"zone_id\":\"zone_2\"},{\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"name\":\"Zone Polymere & Materialprüfung\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"purpose\":\"Interaktive Experimente und Demonstrationen zu Polymeren und Materialfestigkeit.\",\"visitor_goals_supported\":[\"Materialprüfung erleben\",\"Eigenschaften von Polymeren erforschen\"],\"zone_id\":\"zone_3\"}],\"interaction_topics\":[{\"description\":\"Eigenschaften und Anwendungen von Fasern und Keramiken, Unterschiede und Einsatzgebiete.\",\"related_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"title\":\"Fasern & Keramiken\",\"topic_id\":\"topic_1\"},{\"description\":\"Metalle und Kristalle: Aufbau, Eigenschaften, industrielle Bedeutung.\",\"related_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"title\":\"Metalle & Kristalle\",\"topic_id\":\"topic_2\"},{\"description\":\"Polymere und Materialprüfung: Interaktive Stationen zur Festigkeit und Elastizität.\",\"related_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"title\":\"Polymere & Materialprüfung\",\"topic_id\":\"topic_3\"}],\"agent_role_candidates\":[{\"display_name\":\"Materialien-Guide\",\"expertise\":[\"Materialwissenschaft\",\"Didaktik\",\"Interaktive Erklärungen\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"mission\":\"Erklärt die Eigenschaften und Anwendungen von Fasern und Keramiken anhand der Exponate der Kollektion 1.\",\"responsible_zone_ids\":[\"zone_1\"],\"role_id\":\"guide_materials\"},{\"display_name\":\"Metall- und Kristall-Experte\",\"expertise\":[\"Metallurgie\",\"Kristallstrukturen\",\"Materialanalyse\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"mission\":\"Vermittelt Wissen zu Metallen und Kristallen, erläutert Unterschiede und Besonderheiten der Kollektion 2.\",\"responsible_zone_ids\":[\"zone_2\"],\"role_id\":\"expert_metals_crystals\"},{\"display_name\":\"Interaktiver Laborassistent\",\"expertise\":[\"Experimentelle Materialprüfung\",\"Polymerwissenschaft\",\"Besucherinteraktion\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"mission\":\"Leitet Besucher an den Kraftmess-Stationen und Polymer-Displays an, unterstützt praktische Experimente.\",\"responsible_zone_ids\":[\"zone_3\"],\"role_id\":\"lab_assistant_interactive\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"fiber_display\":3,\"ceramic_case\":2},\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"metal_sample\":3,\"crystal_model\":2},\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"strength_station\":3,\"polymer_sample\":2},\"centroid_xz\":{\"x\":0.28,\"z\":0.28}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"fiber_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic materials lab object: fiber display. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_002\",\"object_type\":\"metal_sample\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic materials lab object: metal sample. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_003\",\"object_type\":\"strength_station\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic materials lab object: strength station. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_004\",\"object_type\":\"ceramic_case\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic materials lab object: ceramic case. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_005\",\"object_type\":\"crystal_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic materials lab object: crystal model. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_006\",\"object_type\":\"polymer_sample\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic materials lab object: polymer sample. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_007\",\"object_type\":\"fiber_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic materials lab object: fiber display. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_008\",\"object_type\":\"metal_sample\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic materials lab object: metal sample. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_009\",\"object_type\":\"strength_station\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic materials lab object: strength station. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_010\",\"object_type\":\"ceramic_case\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic materials lab object: ceramic case. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_011\",\"object_type\":\"crystal_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic materials lab object: crystal model. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_012\",\"object_type\":\"polymer_sample\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic materials lab object: polymer sample. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_013\",\"object_type\":\"fiber_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic materials lab object: fiber display. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_014\",\"object_type\":\"metal_sample\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic materials lab object: metal sample. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_015\",\"object_type\":\"strength_station\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic materials lab object: strength station. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly v...\"}],\"allowed_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_1",
+                          "zone_2",
+                          "zone_3"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0.full",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792395423,
+    "created_at": 1792395416,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_04d02ca6e278a7db016ad5c898214887d1b93185467db420a2",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"agents\": [\n    {\n      \"display_name\": \"Fasern- und Keramiken-Guide\",\n      \"expertise\": [\n        \"Materialwissenschaft\",\n        \"Fasern\",\n        \"Keramiken\",\n        \"Didaktik\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_004\",\n        \"object_007\",\n        \"object_010\",\n        \"object_013\"\n      ],\n      \"handoff_targets\": [\n        \"metall_kristall_experte\",\n        \"laborassistent_interaktiv\"\n      ],\n      \"id\": \"fasern_keramiken_guide\",\n      \"knowledge_tags\": [\n        \"fasern\",\n        \"keramiken\",\n        \"materialeigenschaften\",\n        \"anwendungsbeispiele\"\n      ],\n      \"persona\": \"Geduldig, anschaulich und motivierend. Vermittelt verständlich die Besonderheiten von Fasern und Keramiken anhand der ausgestellten Exponate.\",\n      \"responsible_zone_ids\": [\n        \"zone_1\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"sage\",\n      \"voice_gender\": \"weiblich\",\n      \"voice_style\": \"freundlich, erklärend\"\n    },\n    {\n      \"display_name\": \"Metall- und Kristall-Experte\",\n      \"expertise\": [\n        \"Metallurgie\",\n        \"Kristallstrukturen\",\n        \"Materialanalyse\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_002\",\n        \"object_005\",\n        \"object_008\",\n        \"object_011\",\n        \"object_014\"\n      ],\n      \"handoff_targets\": [\n        \"fasern_keramiken_guide\",\n        \"laborassistent_interaktiv\"\n      ],\n      \"id\": \"metall_kristall_experte\",\n      \"knowledge_tags\": [\n        \"metalle\",\n        \"kristalle\",\n        \"struktur\",\n        \"industrielle_anwendungen\"\n      ],\n      \"persona\": \"Analytisch, präzise und begeisterungsfähig. Erklärt verständlich die Welt der Metalle und Kristalle und deren Bedeutung für Technik und Alltag.\",\n      \"responsible_zone_ids\": [\n        \"zone_2\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"onyx\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"sachlich, inspirierend\"\n    },\n    {\n      \"display_name\": \"Interaktiver Laborassistent\",\n      \"expertise\": [\n        \"Experimentelle Materialprüfung\",\n        \"Polymerwissenschaft\",\n        \"Besucherinteraktion\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_003\",\n        \"object_006\",\n        \"object_009\",\n        \"object_012\",\n        \"object_015\"\n      ],\n      \"handoff_targets\": [\n        \"fasern_keramiken_guide\",\n        \"metall_kristall_experte\"\n      ],\n      \"id\": \"laborassistent_interaktiv\",\n      \"knowledge_tags\": [\n        \"polymere\",\n        \"materialpruefung\",\n        \"festigkeit\",\n        \"elastizitaet\"\n      ],\n      \"persona\": \"Hilfsbereit, praktisch orientiert und motivierend. Unterstützt Besucher bei Experimenten und erklärt anschaulich die Eigenschaften von Polymeren und Materialfestigkeit.\",\n      \"responsible_zone_ids\": [\n        \"zone_3\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"coral\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"aktiv, praxisnah\"\n    }\n  ],\n  \"handoffs\": [\n    {\n      \"condition\": \"Fragen zu Metallen oder Kristallen außerhalb des eigenen Fachgebiets\",\n      \"reason\": \"Fachliche Weiterleitung zu Metall- und Kristallthemen\",\n      \"source_agent_id\": \"fasern_keramiken_guide\",\n      \"target_agent_id\": \"metall_kristall_experte\"\n    },\n    {\n      \"condition\": \"Fragen zu Fasern oder Keramiken außerhalb des eigenen Fachgebiets\",\n      \"reason\": \"Fachliche Weiterleitung zu Faser- und Keramikthemen\",\n      \"source_agent_id\": \"metall_kristall_experte\",\n      \"target_agent_id\": \"fasern_keramiken_guide\"\n    },\n    {\n      \"condition\": \"Fragen zu praktischen Experimenten, Polymerverhalten oder Materialprüfung\",\n      \"reason\": \"Fachliche Weiterleitung zu interaktiven Experimenten und Polymerkunde\",\n      \"source_agent_id\": \"fasern_keramiken_guide\",\n      \"target_agent_id\": \"laborassistent_interaktiv\"\n    },\n    {\n      \"condition\": \"Fragen zu praktischen Experimenten, Polymerverhalten oder Materialprüfung\",\n      \"reason\": \"Fachliche Weiterleitung zu interaktiven Experimenten und Polymerkunde\",\n      \"source_agent_id\": \"metall_kristall_experte\",\n      \"target_agent_id\": \"laborassistent_interaktiv\"\n    },\n    {\n      \"condition\": \"Fragen zu Fasern, Keramiken, Metallen oder Kristallen außerhalb des eigenen Fachgebiets\",\n      \"reason\": \"Fachliche Weiterleitung zu den jeweiligen Materialexperten\",\n      \"source_agent_id\": \"laborassistent_interaktiv\",\n      \"target_agent_id\": \"fasern_keramiken_guide\"\n    },\n    {\n      \"condition\": \"Fragen zu Metallen oder Kristallen außerhalb des eigenen Fachgebiets\",\n      \"reason\": \"Fachliche Weiterleitung zu Metall- und Kristallthemen\",\n      \"source_agent_id\": \"laborassistent_interaktiv\",\n      \"target_agent_id\": \"metall_kristall_experte\"\n    }\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_04d02ca6e278a7db016ad5c89898c887d1b1d6f456dbcb2943",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_1",
+                        "zone_2",
+                        "zone_3"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2870,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1246,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4116
+    },
+    "user": null
+  },
+  "response_sha256": "61218611dd4a0670edb71a9b98406f02fbb7ed5d17dba4851ba661fe7fae1e7f",
+  "saved_at": "2026-10-19T07:37:03.628387+00:00",
+  "status": "SUCCESS"
+}

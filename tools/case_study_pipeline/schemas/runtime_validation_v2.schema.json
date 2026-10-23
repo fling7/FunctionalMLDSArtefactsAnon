@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://roomcontract.local/schema/runtime_validation_v2.schema.json",
+  "title": "Dynamic Functional RDL V2 Runtime Validation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "model_version",
+    "model_sha256",
+    "case_id",
+    "validation_case_ids",
+    "runtime_validation_target_ids",
+    "runtimeValidationLog",
+    "runtimeActualOutcome"
+  ],
+  "properties": {
+    "schema": {
+      "const": "dynamic_functional_rdl_v2_runtime_validation"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "model_version": {
+      "const": "2.0.0-model"
+    },
+    "model_sha256": {
+      "type": "string",
+      "pattern": "^[A-F0-9]{64}$"
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "validation_case_ids": {
+      "$ref": "#/$defs/idArray"
+    },
+    "runtime_validation_target_ids": {
+      "$ref": "#/$defs/idArray"
+    },
+    "runtimeValidationLog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "actualOutcome"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "const": "RuntimeValidationLog"
+        },
+        "actualOutcome": {
+          "$ref": "#/$defs/nonEmptyIdArray"
+        }
+      }
+    },
+    "runtimeActualOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "result"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "const": "RuntimeActualOutcome"
+        },
+        "result": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/assertionResult"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "idArray": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "nonEmptyIdArray": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/idArray"
+        },
+        {
+          "minItems": 1
+        }
+      ]
+    },
+    "assertionResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "assertion",
+        "verdict",
+        "observedValue",
+        "evidenceRef",
+        "timestamp"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "const": "AssertionResult"
+        },
+        "assertion": {
+          "$ref": "#/$defs/nonEmptyIdArray"
+        },
+        "verdict": {
+          "enum": [
+            "pass",
+            "fail",
+            "inconclusive",
+            "error"
+          ]
+        },
+        "observedValue": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "mixedStringContent"
+              ],
+              "properties": {
+                "type": {
+                  "const": "EAExpression"
+                },
+                "mixedStringContent": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "value"
+              ],
+              "properties": {
+                "type": {
+                  "const": "EANumericalValue"
+                },
+                "value": {
+                  "type": "number"
+                }
+              }
+            }
+          ]
+        },
+        "evidenceRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

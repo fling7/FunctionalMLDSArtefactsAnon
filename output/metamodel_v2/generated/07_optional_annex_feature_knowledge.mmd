@@ -1,0 +1,136 @@
+classDiagram
+  direction TB
+  %% SVG/PNG define the presentation-authoritative orthogonal layout.
+  %% RCM V2 – optional Annex C, Feature and Knowledge modules
+  class RCM_V2_Core_ScenarioStep {
+    <<DF::Core>>
+    +/stepNumber : Integer [1]
+    +kind : ScenarioStepKind [1]
+  }
+  class RCM_V2_Core_StepRelation {
+    <<DF::Core>>
+    +kind : StepRelationKind [1]
+  }
+  class RCM_V2_Core_ScenarioEvent {
+    <<DF::Core>>
+    +kind : ScenarioEventKind [1]
+    +expressionText : String [1]
+  }
+  class RCM_V2_Core_StateAssertion {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_Capability {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_Agent {
+    <<DF::Core>>
+    +sourceAgentId : String [0..1]
+    +displayName : String [0..1]
+    +persona : String [0..1]
+    +expertise : String [*] {ordered}
+    +knowledgeTag : String [*] {ordered}
+    +voice : String [0..1]
+    +voiceGender : String [0..1]
+    +voiceStyle : String [0..1]
+    +ttsModel : String [0..1]
+  }
+  class RCM_V2_Core_Entity {
+    <<DF::Core>>
+    +kind : EntityKind [0..1]
+    +sourceId : String [0..1]
+    +entityRole : String [0..1]
+    +sourceObjectId : String [*] {ordered}
+    +purpose : String [0..1]
+    +sourceGroup : String [0..1]
+    +objectType : String [0..1]
+  }
+  class RCM_V2_AnnexCBridge_ScenarioAnnexMapping {
+    <<optional>>
+  }
+  class EAST_ADL_AnnexC_BehaviorDescription_BehaviorConstraintTargetBinding {
+    <<optional>>
+  }
+  class EAST_ADL_AnnexC_BehaviorDescription_BehaviorConstraintType {
+    <<optional>>
+  }
+  class RCM_V2_FeatureBridge_CapabilityFeatureMapping {
+    <<optional>>
+  }
+  class RCM_V2_AgentKnowledge_AgentKnowledgeBinding {
+    <<optional>>
+    +permissions : KnowledgePermission [1..*]
+    +provenanceKind : KnowledgeProvenanceKind [1]
+  }
+  class EAST_ADL_AnnexC_ComputationConstraint_LogicalTransformation {
+    <<optional>>
+    +isClientServerInterface : Boolean [1]
+  }
+  class EAST_ADL_AnnexC_ComputationConstraint_TransformationOccurrence {
+    <<optional>>
+  }
+  class EAST_ADL_AnnexC_ComputationConstraint_LogicalPath {
+    <<optional>>
+  }
+  class EAST_ADL_AnnexC_AttributeQuantificationConstraint_Quantification {
+    <<optional>>
+  }
+  class EAST_ADL_AnnexC_TemporalConstraint_LogicalTimeCondition {
+    <<optional>>
+    +isLogicalTimeSuspended : Boolean [1]
+  }
+  class EAST_ADL_AnnexC_TemporalConstraint_State {
+    <<optional>>
+    +isErrorState : Boolean [1]
+    +isHazard : Boolean [1]
+    +isInitState : Boolean [1]
+    +isMode : Boolean [1]
+  }
+  class EAST_ADL_AnnexC_TemporalConstraint_TransitionEvent {
+    <<optional>>
+  }
+  class EAST_ADL_Timing_Event {
+    <<abstract>>
+  }
+  class EAST_ADL_Behavior_FunctionTrigger {
+    <<EA::Behavior>>
+    +triggerPolicy : TriggerPolicyKind [1]
+  }
+  class EAST_ADL_Behavior_FunctionBehavior {
+    <<EA::Behavior>>
+    +path : String [1]
+    +representation : FunctionBehaviorKind [1]
+  }
+  class EAST_ADL_FunctionModeling_FunctionType {
+    <<abstract>>
+    +isElementary : Boolean [1]
+  }
+  class EAST_ADL_FeatureModeling_Feature {
+    <<optional>>
+    +cardinality : String [1]
+  }
+  class EAST_ADL_VehicleFeatureModeling_VehicleFeature {
+    <<optional>>
+    +isCustomerVisible : Boolean [1]
+    +isDesignVariabilityRationale : Boolean [1]
+    +isRemoved : Boolean [1]
+  }
+  class RCM_V2_AgentKnowledge_KnowledgeItem {
+    <<optional>>
+  }
+  class RCM_V2_AgentKnowledge_KnowledgeSource {
+    <<optional>>
+    +uri : String [0..1]
+  }
+  EAST-ADL_Timing_Event <|-- RCM_V2_Core_ScenarioEvent
+  RCM_V2_Core_Entity <|-- RCM_V2_Core_Agent
+  EAST-ADL_FeatureModeling_Feature <|-- EAST-ADL_VehicleFeatureModeling_VehicleFeature
+  EAST-ADL_AnnexC_BehaviorDescription_BehaviorConstraintTargetBinding "*" --> "1" EAST-ADL_AnnexC_BehaviorDescription_BehaviorConstraintType : behaviorConstraintType [1]
+  EAST-ADL_AnnexC_BehaviorDescription_BehaviorConstraintTargetBinding "*" --> "*" EAST-ADL_FunctionModeling_FunctionType : targetedFunctionType [*]
+  EAST-ADL_AnnexC_ComputationConstraint_LogicalPath "1" *-- "0..1" EAST-ADL_AnnexC_ComputationConstraint_TransformationOccurrence : transformationOccurrence [0..1]
+  EAST-ADL_AnnexC_ComputationConstraint_TransformationOccurrence "*" --> "1" EAST-ADL_AnnexC_ComputationConstraint_LogicalTransformation : invokedLogicalTransformation [1]
+  EAST-ADL_AnnexC_TemporalConstraint_TransitionEvent "*" --> "*" EAST-ADL_Timing_Event : occurredExecutionEvent [*]
+  RCM_V2_AnnexCBridge_ScenarioAnnexMapping "*" --> "0..1" RCM_V2_Core_ScenarioStep : scenarioStep [0..1]
+  RCM_V2_FeatureBridge_CapabilityFeatureMapping "*" --> "1" RCM_V2_Core_Capability : capability [1]
+  RCM_V2_FeatureBridge_CapabilityFeatureMapping "*" --> "1" EAST-ADL_FeatureModeling_Feature : feature [1]
+  RCM_V2_AgentKnowledge_AgentKnowledgeBinding "*" --> "1" RCM_V2_Core_Agent : agent [1]
+  RCM_V2_AgentKnowledge_AgentKnowledgeBinding "*" --> "1" RCM_V2_AgentKnowledge_KnowledgeItem : knowledgeItem [1]

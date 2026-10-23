@@ -1,0 +1,1 @@
+C1 not completed. See DELTA2.md for exact authoritative deadline, zero-generation evidence, raw-handler-label correction, and undefined new-model/B1s intervals. C2 and optional D not run. No substitution.

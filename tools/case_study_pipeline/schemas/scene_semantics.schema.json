@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SceneSemantics",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "domain",
+    "room_purpose",
+    "visitor_goals",
+    "semantic_zones",
+    "important_objects",
+    "interaction_topics",
+    "agent_role_candidates"
+  ],
+  "properties": {
+    "domain": {
+      "type": "string"
+    },
+    "room_purpose": {
+      "type": "string"
+    },
+    "visitor_goals": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "semantic_zones": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "zone_id",
+          "name",
+          "purpose",
+          "object_ids",
+          "centroid_xz",
+          "visitor_goals_supported"
+        ],
+        "properties": {
+          "zone_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "object_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "centroid_xz": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "x",
+              "z"
+            ],
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "z": {
+                "type": "number"
+              }
+            }
+          },
+          "visitor_goals_supported": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "important_objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "object_id",
+          "reason"
+        ],
+        "properties": {
+          "object_id": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "interaction_topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "topic_id",
+          "title",
+          "description",
+          "related_object_ids"
+        ],
+        "properties": {
+          "topic_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "related_object_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "agent_role_candidates": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role_id",
+          "display_name",
+          "mission",
+          "expertise",
+          "responsible_zone_ids",
+          "grounded_object_ids"
+        ],
+        "properties": {
+          "role_id": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "mission": {
+            "type": "string"
+          },
+          "expertise": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "responsible_zone_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "grounded_object_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "placement_schema": "roomcontract_agent_placements",
+  "placement_schema_version": "2.0",
+  "placement_algorithm_version": "2.0.0",
+  "placement_origin": "deterministic",
+  "placement_artifact_sha256": "02930eb9137d47a92702a02f4c1ebe0d00d5fe5c19143d8b3b250492b0f7c50d",
+  "placement_projection_sha256": "ea5c7f4d86ac862c0bcee01a53d2b673ca5d94867945e34b15ff01aef99091ac",
+  "agents": [
+    {
+      "id": "route_guide",
+      "display_name": "Route Guide",
+      "persona": "Friendly and clear communicator who helps visitors find their way and understand transport routes and bicycle options.",
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "visitor assistance",
+        "general information",
+        "navigation help",
+        "sustainable transport"
+      ],
+      "knowledge_tags": [
+        "route_maps",
+        "bicycle_transport",
+        "sustainable_transport"
+      ],
+      "responsible_zone_ids": [
+        "zone_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013"
+      ],
+      "handoff_targets": [
+        "technical_explainer",
+        "model_specialist"
+      ],
+      "preferred_zone_ids": [
+        "zone_1"
+      ],
+      "position": {
+        "x": 0.516,
+        "y": 0.0,
+        "z": -0.516
+      },
+      "forward": {
+        "x": 0.7071067811865476,
+        "y": 0.0,
+        "z": -0.7071067811865476
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-ROUTE_GUIDE",
+      "roomcontract_entity_ref": "ENT-AGENT-ROUTE_GUIDE",
+      "provided_capability_ids": [
+        "CAP-SCENE_007_TRANSPORT_CENTER_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_007_TRANSPORT_CENTER_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    },
+    {
+      "id": "technical_explainer",
+      "display_name": "Technical Explainer",
+      "persona": "Detail-oriented expert who explains the technical and engineering aspects of signal stations and wheel mechanisms.",
+      "voice": "ash",
+      "voice_gender": "maennlich",
+      "voice_style": "informativ",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "technical knowledge",
+        "transport systems",
+        "signal stations",
+        "wheel mechanisms",
+        "engineering"
+      ],
+      "knowledge_tags": [
+        "signal_stations",
+        "wheel_design",
+        "transport_technology",
+        "engineering"
+      ],
+      "responsible_zone_ids": [
+        "zone_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014"
+      ],
+      "handoff_targets": [
+        "model_specialist",
+        "route_guide"
+      ],
+      "preferred_zone_ids": [
+        "zone_2"
+      ],
+      "position": {
+        "x": 0.516,
+        "y": 0.0,
+        "z": 0.516
+      },
+      "forward": {
+        "x": 0.7071067811865476,
+        "y": 0.0,
+        "z": 0.7071067811865476
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-TECHNICAL_EXPLAINER",
+      "roomcontract_entity_ref": "ENT-AGENT-TECHNICAL_EXPLAINER",
+      "provided_capability_ids": [
+        "CAP-SCENE_007_TRANSPORT_CENTER_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_007_TRANSPORT_CENTER_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    },
+    {
+      "id": "model_specialist",
+      "display_name": "Model Specialist",
+      "persona": "Engaging and knowledgeable guide who provides detailed insights and demonstrations of rail and bridge models.",
+      "voice": "nova",
+      "voice_gender": "weiblich",
+      "voice_style": "lehrreich",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "model interpretation",
+        "rail infrastructure",
+        "bridge engineering",
+        "interactive demonstration"
+      ],
+      "knowledge_tags": [
+        "rail_models",
+        "bridge_models",
+        "infrastructure_engineering"
+      ],
+      "responsible_zone_ids": [
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015"
+      ],
+      "handoff_targets": [
+        "route_guide",
+        "technical_explainer"
+      ],
+      "preferred_zone_ids": [
+        "zone_3"
+      ],
+      "position": {
+        "x": -0.516,
+        "y": 0.0,
+        "z": -0.516
+      },
+      "forward": {
+        "x": -0.7071067811865476,
+        "y": 0.0,
+        "z": -0.7071067811865476
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-MODEL_SPECIALIST",
+      "roomcontract_entity_ref": "ENT-AGENT-MODEL_SPECIALIST",
+      "provided_capability_ids": [
+        "CAP-SCENE_007_TRANSPORT_CENTER_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_007_TRANSPORT_CENTER_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    }
+  ]
+}

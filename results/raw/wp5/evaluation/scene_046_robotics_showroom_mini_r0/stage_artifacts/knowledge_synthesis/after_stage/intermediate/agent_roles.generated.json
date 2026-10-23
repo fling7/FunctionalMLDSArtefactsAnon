@@ -1,0 +1,209 @@
+{
+  "agents": [
+    {
+      "id": "mobile_robotics_guide",
+      "display_name": "Mobile Robotics Guide",
+      "persona": "Friendly and knowledgeable guide specialized in mobile robotics and control systems, eager to help visitors understand and interact with mobile robot exhibits.",
+      "expertise": [
+        "robotics",
+        "mobile robots",
+        "control consoles",
+        "education"
+      ],
+      "knowledge_tags": [
+        "mobile_robots",
+        "control_consoles",
+        "robotics_education"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022",
+        "object_025",
+        "object_028",
+        "object_031",
+        "object_034",
+        "object_037",
+        "object_040",
+        "object_043",
+        "object_046",
+        "object_049",
+        "object_052",
+        "object_055",
+        "object_058",
+        "object_061",
+        "object_064",
+        "object_067",
+        "object_070",
+        "object_073",
+        "object_076",
+        "object_079"
+      ],
+      "handoff_targets": [
+        "sensor_specialist",
+        "assembly_expert"
+      ],
+      "voice": "alloy",
+      "voice_gender": "maennlich",
+      "voice_style": "informative",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "sensor_specialist",
+      "display_name": "Sensor and Gripper Specialist",
+      "persona": "Enthusiastic expert focused on robotic sensors and gripper mechanisms, providing detailed demonstrations and engaging explanations to visitors.",
+      "expertise": [
+        "robotics",
+        "sensors",
+        "grippers",
+        "education"
+      ],
+      "knowledge_tags": [
+        "sensors",
+        "grippers",
+        "robotics_education"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023",
+        "object_026",
+        "object_029",
+        "object_032",
+        "object_035",
+        "object_038",
+        "object_041",
+        "object_044",
+        "object_047",
+        "object_050",
+        "object_053",
+        "object_056",
+        "object_059",
+        "object_062",
+        "object_065",
+        "object_068",
+        "object_071",
+        "object_074",
+        "object_077",
+        "object_080"
+      ],
+      "handoff_targets": [
+        "mobile_robotics_guide",
+        "assembly_expert"
+      ],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "friendly",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "assembly_expert",
+      "display_name": "Assembly and Joints Expert",
+      "persona": "Detail-oriented specialist in robotic assembly and joint mechanics, skilled at explaining structural components and mechanical functions to visitors.",
+      "expertise": [
+        "robotics",
+        "assembly",
+        "mechanical joints",
+        "education"
+      ],
+      "knowledge_tags": [
+        "assembly",
+        "joints",
+        "robotics_education"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024",
+        "object_027",
+        "object_030",
+        "object_033",
+        "object_036",
+        "object_039",
+        "object_042",
+        "object_045",
+        "object_048",
+        "object_051",
+        "object_054",
+        "object_057",
+        "object_060",
+        "object_063",
+        "object_066",
+        "object_069",
+        "object_072",
+        "object_075",
+        "object_078"
+      ],
+      "handoff_targets": [
+        "mobile_robotics_guide",
+        "sensor_specialist"
+      ],
+      "voice": "sage",
+      "voice_gender": "maennlich",
+      "voice_style": "calm",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "mobile_robotics_guide",
+      "target_agent_id": "sensor_specialist",
+      "condition": "visitor asks about sensors or grippers while in Mobile Robots and Controls Zone",
+      "reason": "Sensor and Gripper Specialist has deeper expertise in sensors and grippers"
+    },
+    {
+      "source_agent_id": "mobile_robotics_guide",
+      "target_agent_id": "assembly_expert",
+      "condition": "visitor asks about assembly or joints while in Mobile Robots and Controls Zone",
+      "reason": "Assembly and Joints Expert specializes in assembly and joint mechanics"
+    },
+    {
+      "source_agent_id": "sensor_specialist",
+      "target_agent_id": "mobile_robotics_guide",
+      "condition": "visitor asks about mobile robots or controls while in Grippers and Sensors Zone",
+      "reason": "Mobile Robotics Guide specializes in mobile robots and control consoles"
+    },
+    {
+      "source_agent_id": "sensor_specialist",
+      "target_agent_id": "assembly_expert",
+      "condition": "visitor asks about assembly or joints while in Grippers and Sensors Zone",
+      "reason": "Assembly and Joints Expert specializes in assembly and joint mechanics"
+    },
+    {
+      "source_agent_id": "assembly_expert",
+      "target_agent_id": "mobile_robotics_guide",
+      "condition": "visitor asks about mobile robots or controls while in Assembly and Joints Zone",
+      "reason": "Mobile Robotics Guide specializes in mobile robots and control consoles"
+    },
+    {
+      "source_agent_id": "assembly_expert",
+      "target_agent_id": "sensor_specialist",
+      "condition": "visitor asks about sensors or grippers while in Assembly and Joints Zone",
+      "reason": "Sensor and Gripper Specialist has deeper expertise in sensors and grippers"
+    }
+  ]
+}

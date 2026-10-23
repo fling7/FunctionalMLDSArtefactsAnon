@@ -1,0 +1,39 @@
+# WP6 complete project scope and terminal intake
+
+Status: frozen for the root-reviewed scope on 2026-10-15T15:52:16.581494+00:00. Historical input: prereg/wp6_amendments/008_complete_corpus_scope.DRAFT.md (SHA256 0fb963d704a84e36412baeea98af16da385d1d6fed05ebdf40323f42070bd07a). Only heading/status/path metadata changed from that reviewed rule. Existing references to proposal preparation remain historical; execution requires the frozen lock and the explicit reviewed cutover/intake scope.
+
+
+The original WP6 plan applies its 17 operators and 136 unordered core pairs to the classroom and every eligible produced WP5 project. Amendment001 explicitly retains every eligible generated project. There is no first20 limit: that source-selection rule belongs to WP4. This amendment makes intake and missing coverage explicit; it does not select projects based on any WP6 detection outcome.
+
+## Already frozen and partial coverage
+
+Only the classroom and the first generated batch of priorities1,7,9,11 have execution-source freezes. The first generated batch has four projects, not the complete generated corpus. Subsequent queue snapshots were availability snapshots, not freezes or completion evidence. Their earliest-success-per-source projection omitted two successful original cross-model counterpart projects from the operational queue; the complete intake retains them. Existing raw results and source selections remain unchanged.
+
+## Complete selection rule
+
+Retain every registered WP5 run row, including failures and unexecuted slots. Each produced project is an intake candidate irrespective of Gate0, schema/domain, routing-oracle or mutation-detection outcome. Canonical/schema flags are descriptive evidence, never outcome-based filters. Missing required native/trace/project documents, malformed JSON, hash mismatches and later materialization/setup refusals remain explicit unavailable/preparation-refused cells with their errors. A present, parseable native project proceeds to the same frozen mutation planner, even when a validator rejects it. No failed generation is substituted or silently dropped.
+
+Order original runs by (source_priority, run_ordinal, case_id), preserving every model counterpart and repetition. The original terminal inventory contains50 attempts,20 produced native projects and18 distinct source rooms; all20 projects belong to WP6. Count projects/model snapshots separately from distinct source rooms. Mutants are never new rooms. No identical source or identical model hash by itself removes a run; duplicate project/run identities or aliased physical paths require explicit adjudication rather than silent duplication.
+
+Apply the same rule to every terminal initial-extension run, then all eligible produced repair, conditional cap-recovery, regeneration/drift, and author-controlled edit projects in their registered block/run order. Their inventories, source pins and statuses must be supplied and frozen before that intake batch is evaluated. The earliest-success-per-source combined primary manifest is insufficient for this purpose: use a complete all-project/all-run manifest and preserve its failures. The current extension/evolution inventory is pending; no terminal count is invented.
+
+Natural before/after pairs are a separate registry, requiring actual before_project, after_project and pair_id plus source/run provenance. Preserve every registered failed/unavailable pair. For each available real pair, execute the original natural_diff_plan: observed after model plus natural-diff followed by each of17 core operators. These do not replace the ordinary core mutation enumeration on each produced project and are not new rooms or independent generations. Cross-model counterparts alone are not regeneration pairs. No synthetic evolution pair is manufactured to fill missing coverage.
+
+## Freeze, batching and missingness
+
+Freeze this rule, exact intake helper/test hashes, and the terminal original50 inventory before queue expansion. Freeze each terminal extension/evolution intake as a versioned manifest before its first WP6 evaluation. Root review is required for the isolated performance replacement; no source scope changes enter through a performance amendment. Batching controls storage/CPU only and follows the frozen order; it never prunes operators, pair combinations, validators, requests, variants or setup-refused outcomes. Original copied outcomes count once in the versioned recovery rows.
+
+At every checkpoint report planned/produced/available/intaken/evaluated projects and distinct source rooms by original, initial-extension, repair, drift and edit strata, plus natural-pair coverage. A terminal source manifest does not imply completed mutation evaluation. Deadline/storage shortfalls remain pending or unavailable rows, never a claim that the four-project batch is exhaustive or that untested rooms passed. Preserve every raw outcome and failed attempt under the existing verified archive policy.
+
+Offline intake uses experiments/prepare_wp6_corpus_scope.py. It reads WP5 provenance and source/project bytes only; it neither imports evaluators nor reads mutation outcomes. The first inventory is results/raw/wp6_corpus_original_terminal_v3.json (v1/v2 retained as superseded intake drafts). Later manifest-format adapters must preserve these rules and receive their own exact-source review.
+
+WP5 owner confirms its planned terminal all-project extension export includes initial/repair/recovery/drift/edit identities and failures. Its reviewed drift design has96 adjacent pairs (12 sources x2 models x4 adjacencies), with no bridging missing native models. Those are planned pairs, not observed inputs or a completed WP6 inventory; bind the future exact pair/source/run/model hashes before measurement.
+
+The extension output contract is drafts/wp5_extension/all_projects_contract.DRAFT.json (still a draft). It enumerates initial24, ownership-repair3, all conditional recovery rows, drift120, source-edit3 and zone-rename1, alongside original50. The future pair registry additionally preserves initial-to-add, add-to-remove, initial-to-move and initial-to-zone-rename identities. These counts describe registered slots, not successful projects; complete future intake remains mandatory.
+
+
+## Registered artifact chain and intake tests
+
+The immutable original terminal WP5 manifest pins each run_result file. Verify that exact run-result hash before trusting its artifact_sha256 map. Resolve every registered artifact path under the produced project and compare it with the complete current set of files that frozen materialize copies. Match the original copytree ignore patterns at each directory level (runtime*.jsonl, *.log, __pycache__). Every copied input must have a matching registered raw hash; every registered copied input must still exist. This includes native model, both trace files/legacy copies, project.json, agents.json, room_plan.json and all KB files. Required Bundle inputs must exist and parse as JSON objects. Source hashes and the terminal manifest's LF native digest are checked separately. Unregistered, missing or changed inputs and changed run-result pins become explicit artifact_or_preparation_refused rows, retaining per-file expected/actual hash evidence.
+
+The strengthened intake has14 passing tests. Tests alter trace, project, agents, room plan and KB while retaining identical native model bytes; every altered project is refused. Added/removed inputs, wrong run-result pins and wrong LF digest are refused. Frozen materializer-excluded logs/cache files stay outside its consumed-input set. All20 original native projects pass the complete registered input chain. The earlier five-test/v2 intake was insufficient to prove trace/project pin freshness and is retained as a superseded draft, not the final freeze.

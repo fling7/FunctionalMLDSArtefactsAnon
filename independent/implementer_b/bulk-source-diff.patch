@@ -1,0 +1,47 @@
+--- compiled_policy.py
++++ compiled_policy_bulk.py
+@@ -1,4 +1,4 @@
+-"""Optional immutable-model compilation for the unchanged independent ASP policy.
++"""Experimental bulk fact loading for the unchanged independent ASP policy.
+ 
+ compile_model(instance, trace).evaluate(request, session) returns the same four
+ verdict fields as policy_adapter.evaluate. evaluate_many accepts (request, session)
+@@ -170,7 +170,7 @@
+ 
+     This is partial grounding reuse: immutable native semantics are solved once
+     in ASP. Each request is solved in a fresh clingo.Control using their boundary
+-    facts and the mechanically unchanged request-dependent rules. No live solver
++    facts and the mechanically unchanged request-dependent rules. Immutable facts are bulk-parsed in clingo. No live solver
+     or request-dependent atom survives a call. Calls on one object are serialized
+     so its cached JSON Schema validators are never used concurrently.
+     """
+@@ -218,6 +218,9 @@
+                           if (atom.name, len(atom.arguments)) in partition.boundary]
+         self._base_atoms = tuple(boundary_atoms) + tuple(
+             clingo.parse_term(line[:-1]) for line in immutable_dynamic_facts)
++        # clingo.Symbol's own rendering performs literal escaping. This is an
++        # immutable fact program, not concatenation of unescaped caller strings.
++        self._base_fact_program = '\n'.join(str(atom) + '.' for atom in self._base_atoms)
+         self._request_source = partition.request_source
+         self._validators = []
+         objects = self._instance.get('objects') if isinstance(self._instance, dict) else None
+@@ -271,14 +274,11 @@
+                     # absence of schema_pass has exactly the original effect.
+                     pass
+             control = clingo.Control(['--warn=none', '--models=2'])
+-            control.add('base', [], self._request_source + '\n' + '\n'.join(dynamic_facts))
+-            # Backend symbols become grounder domains, as ordinary ground facts
+-            # would. Reuse immutable clingo.Symbol objects instead of reparsing
+-            # thousands of static fact strings for every request.
+-            with control.backend() as backend:
+-                for symbol in self._base_atoms:
+-                    atom = backend.add_atom(symbol)
+-                    backend.add_rule([atom])
++            # Parse the immutable fact program in clingo's native parser in one
++            # call, replacing per-atom Python backend operations. Each request
++            # still gets its own control, current facts, schemas, and solve.
++            control.add('base', [], self._request_source + '\n' + self._base_fact_program
++                        + '\n' + '\n'.join(dynamic_facts))
+             control.ground([('base', [])])
+             return _verdict(control)
+ 

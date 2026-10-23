@@ -1,0 +1,175 @@
+{
+  "placement_schema": "roomcontract_agent_placements",
+  "placement_schema_version": "2.0",
+  "placement_algorithm_version": "2.0.0",
+  "placement_origin": "deterministic",
+  "placement_artifact_sha256": "1fd54adf25490b0c2fce199dc2eaec211070de3fda68bde6c362a58e42066023",
+  "placement_projection_sha256": "b5597d51c24be64eb1bddabb08083a45426658287a77e314cc628bc538da8289",
+  "agents": [
+    {
+      "id": "role_gripper_sensor_specialist",
+      "display_name": "Gripper and Sensor Specialist",
+      "persona": "Friendly and knowledgeable expert focused on explaining robotic gripping mechanisms and sensor integration to visitors.",
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "freundlich und klar",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "robotic grippers",
+        "sensor technology",
+        "robotics education"
+      ],
+      "knowledge_tags": [
+        "grippers",
+        "sensors",
+        "robotics_basics"
+      ],
+      "responsible_zone_ids": [
+        "zone_001"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013"
+      ],
+      "handoff_targets": [
+        "role_demo_operator",
+        "role_tech_support"
+      ],
+      "preferred_zone_ids": [
+        "zone_001"
+      ],
+      "position": {
+        "x": 0.516,
+        "y": 0.0,
+        "z": -0.516
+      },
+      "forward": {
+        "x": 0.7071067811865476,
+        "y": 0.0,
+        "z": -0.7071067811865476
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-ROLE_GRIPPER_SENSOR_SPECIALIST",
+      "roomcontract_entity_ref": "ENT-AGENT-ROLE_GRIPPER_SENSOR_SPECIALIST",
+      "provided_capability_ids": [
+        "CAP-EXTENSION_DRIFT_10_ROBOTICS_SHOWROOM_DRIFT_MINI_R1-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-EXTENSION_DRIFT_10_ROBOTICS_SHOWROOM_DRIFT_MINI_R1-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    },
+    {
+      "id": "role_demo_operator",
+      "display_name": "Assembly and Mobile Robot Guide",
+      "persona": "Energetic and engaging guide who operates mobile robot models and explains assembly processes interactively.",
+      "voice": "ash",
+      "voice_gender": "maennlich",
+      "voice_style": "lebhaft und motivierend",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "robotic assembly",
+        "mobile robots",
+        "interactive demonstrations"
+      ],
+      "knowledge_tags": [
+        "assembly",
+        "mobile_robots",
+        "interactive_learning"
+      ],
+      "responsible_zone_ids": [
+        "zone_002"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014"
+      ],
+      "handoff_targets": [
+        "role_tech_support",
+        "role_gripper_sensor_specialist"
+      ],
+      "preferred_zone_ids": [
+        "zone_002"
+      ],
+      "position": {
+        "x": 0.516,
+        "y": 0.0,
+        "z": 0.516
+      },
+      "forward": {
+        "x": 0.7071067811865476,
+        "y": 0.0,
+        "z": 0.7071067811865476
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-ROLE_DEMO_OPERATOR",
+      "roomcontract_entity_ref": "ENT-AGENT-ROLE_DEMO_OPERATOR",
+      "provided_capability_ids": [
+        "CAP-EXTENSION_DRIFT_10_ROBOTICS_SHOWROOM_DRIFT_MINI_R1-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-EXTENSION_DRIFT_10_ROBOTICS_SHOWROOM_DRIFT_MINI_R1-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    },
+    {
+      "id": "role_tech_support",
+      "display_name": "Joint and Control Systems Technician",
+      "persona": "Calm and precise technician responsible for maintaining control consoles and explaining joint mechanics.",
+      "voice": "coral",
+      "voice_gender": "maennlich",
+      "voice_style": "ruhig und sachlich",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "robotic joints",
+        "control consoles",
+        "technical support"
+      ],
+      "knowledge_tags": [
+        "joints",
+        "control_systems",
+        "technical_maintenance"
+      ],
+      "responsible_zone_ids": [
+        "zone_003"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015"
+      ],
+      "handoff_targets": [
+        "role_gripper_sensor_specialist",
+        "role_demo_operator"
+      ],
+      "preferred_zone_ids": [
+        "zone_003"
+      ],
+      "position": {
+        "x": -0.516,
+        "y": 0.0,
+        "z": -0.516
+      },
+      "forward": {
+        "x": -0.7071067811865476,
+        "y": 0.0,
+        "z": -0.7071067811865476
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-ROLE_TECH_SUPPORT",
+      "roomcontract_entity_ref": "ENT-AGENT-ROLE_TECH_SUPPORT",
+      "provided_capability_ids": [
+        "CAP-EXTENSION_DRIFT_10_ROBOTICS_SHOWROOM_DRIFT_MINI_R1-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-EXTENSION_DRIFT_10_ROBOTICS_SHOWROOM_DRIFT_MINI_R1-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "cache_key": "04ff25688298d49d453bdfadab09e39bf2289a84bb45a9726b15c15c8b29c4dc",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_07_transport_center.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"extension_drift_07_transport_center\",\"domain\":\"educational transport center\",\"room_purpose\":\"Educational transport center designed to inform visitors about various transport technologies and infrastructure through interactive displays.\",\"visitor_goals\":[\"Understand different transport technologies\",\"Learn about transport infrastructure\",\"Interact with educational displays\",\"Navigate the transport center effectively\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-2.85,\"z\":-2.85},\"name\":\"Collection 1 Zone\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"purpose\":\"Zone dedicated to wheel displays and signal stations illustrating transport technology and signaling.\",\"visitor_goals_supported\":[\"Learn about wheel technology\",\"Understand transport signaling systems\",\"Interact with transport displays\"],\"zone_id\":\"zone_collection_1\"},{\"centroid_xz\":{\"x\":-1.8,\"z\":-1.8},\"name\":\"Collection 2 Zone\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"purpose\":\"Zone focused on bicycle displays and rail models showcasing transport evolution and rail mechanisms.\",\"visitor_goals_supported\":[\"Explore bicycle transport history\",\"Understand rail transport models\",\"Engage with transport exhibits\"],\"zone_id\":\"zone_collection_2\"},{\"centroid_xz\":{\"x\":2.85,\"z\":2.85},\"name\":\"Collection 3 Zone\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"purpose\":\"Zone featuring bridge models and route maps to educate about infrastructure and navigation in transport.\",\"visitor_goals_supported\":[\"Learn about bridge infrastructure\",\"Understand transport routes\",\"Use route maps for navigation\"],\"zone_id\":\"zone_collection_3\"}],\"interaction_topics\":[{\"description\":\"Explanation of wheel technology and its role in transport evolution.\",\"related_object_ids\":[\"object_001\",\"object_007\",\"object_013\"],\"title\":\"Wheel Technology\",\"topic_id\":\"topic_wheel_tech\"},{\"description\":\"Insights into bicycle transport and its historical significance.\",\"related_object_ids\":[\"object_002\",\"object_008\",\"object_014\"],\"title\":\"Bicycle Transport\",\"topic_id\":\"topic_bicycle_transport\"},{\"description\":\"Understanding bridge structures and their importance in transport networks.\",\"related_object_ids\":[\"object_003\",\"object_009\",\"object_015\"],\"title\":\"Bridge Infrastructure\",\"topic_id\":\"topic_bridge_infra\"},{\"description\":\"Rail transport models and their operational principles.\",\"related_object_ids\":[\"object_005\",\"object_011\"],\"title\":\"Rail Transport\",\"topic_id\":\"topic_rail_transport\"},{\"description\":\"Signal stations and their role in managing transport safety and flow.\",\"related_object_ids\":[\"object_004\",\"object_010\"],\"title\":\"Signal Stations\",\"topic_id\":\"topic_signal_stations\"},{\"description\":\"Route maps illustrating transport routes and navigation aids.\",\"related_object_ids\":[\"object_006\",\"object_012\"],\"title\":\"Route Maps\",\"topic_id\":\"topic_route_maps\"}],\"agent_role_candidates\":[{\"display_name\":\"Transport Center Guide\",\"expertise\":[\"visitor assistance\",\"transportation knowledge\",\"navigation help\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"mission\":\"Assist visitors in understanding the transport exhibits and navigating the center.\",\"responsible_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"role_id\":\"role_guide\"},{\"display_name\":\"Collection 1 Specialist\",\"expertise\":[\"wheel displays\",\"signal stations\",\"transport technology education\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"mission\":\"Provide detailed explanations about wheel displays and signal stations in Collection 1.\",\"responsible_zone_ids\":[\"zone_collection_1\"],\"role_id\":\"role_collection1_specialist\"},{\"display_name\":\"Collection 2 Specialist\",\"expertise\":[\"bicycle displays\",\"rail models\",\"transport history\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"mission\":\"Educate visitors on bicycle displays and rail models in Collection 2.\",\"responsible_zone_ids\":[\"zone_collection_2\"],\"role_id\":\"role_collection2_specialist\"},{\"display_name\":\"Collection 3 Specialist\",\"expertise\":[\"bridge models\",\"route maps\",\"infrastructure education\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"mission\":\"Explain bridge models and route maps in Collection 3 to visitors.\",\"responsible_zone_ids\":[\"zone_collection_3\"],\"role_id\":\"role_collection3_specialist\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"wheel_display\":3,\"signal_station\":2},\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"bicycle_display\":3,\"rail_model\":2},\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"bridge_model\":3,\"route_map\":2},\"centroid_xz\":{\"x\":0.28,\"z\":0.28}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"wheel_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic transport center object: wheel display. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_002\",\"object_type\":\"bicycle_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic transport center object: bicycle display. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_003\",\"object_type\":\"bridge_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic transport center object: bridge model. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_004\",\"object_type\":\"signal_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic transport center object: signal station. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_005\",\"object_type\":\"rail_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic transport center object: rail model. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_006\",\"object_type\":\"route_map\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic transport center object: route map. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_007\",\"object_type\":\"wheel_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic transport center object: wheel display. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_008\",\"object_type\":\"bicycle_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic transport center object: bicycle display. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_009\",\"object_type\":\"bridge_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic transport center object: bridge model. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_010\",\"object_type\":\"signal_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic transport center object: signal station. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_011\",\"object_type\":\"rail_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic transport center object: rail model. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_012\",\"object_type\":\"route_map\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic transport center object: route map. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_013\",\"object_type\":\"wheel_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic transport center object: wheel display. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_014\",\"object_type\":\"bicycle_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic transport center object: bicycle display. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_015\",\"object_type\":\"bridge_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic transport center object: bridge model. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"}],\"allowed_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_collection_1",
+                          "zone_collection_2",
+                          "zone_collection_3"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "5.mini",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792105952,
+    "created_at": 1792105945,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0c5fa5e73905d516016ad15dd9dd3487d19a6acea29fbc6ed8",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"agents\":[{\"display_name\":\"Collection 1 Specialist\",\"expertise\":[\"wheel displays\",\"signal stations\",\"transport technology education\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"handoff_targets\":[\"role_collection2_specialist\",\"role_collection3_specialist\",\"role_guide\"],\"id\":\"role_collection1_specialist\",\"knowledge_tags\":[\"wheel_technology\",\"signal_stations\",\"transport_technology\"],\"persona\":\"Enthusiastic expert on wheel technology and signaling systems, eager to share detailed knowledge and answer technical questions.\",\"responsible_zone_ids\":[\"zone_collection_1\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"fable\",\"voice_gender\":\"weiblich\",\"voice_style\":\"freundlich\"},{\"display_name\":\"Collection 2 Specialist\",\"expertise\":[\"bicycle displays\",\"rail models\",\"transport history\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"handoff_targets\":[\"role_collection1_specialist\",\"role_collection3_specialist\",\"role_guide\"],\"id\":\"role_collection2_specialist\",\"knowledge_tags\":[\"bicycle_transport\",\"rail_transport\",\"transport_history\"],\"persona\":\"Passionate historian of bicycles and rail transport, providing engaging stories and explanations about transport evolution.\",\"responsible_zone_ids\":[\"zone_collection_2\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"sage\",\"voice_gender\":\"maennlich\",\"voice_style\":\"informativ\"},{\"display_name\":\"Collection 3 Specialist\",\"expertise\":[\"bridge models\",\"route maps\",\"infrastructure education\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"handoff_targets\":[\"role_collection1_specialist\",\"role_collection2_specialist\",\"role_guide\"],\"id\":\"role_collection3_specialist\",\"knowledge_tags\":[\"bridge_infrastructure\",\"route_maps\",\"transport_infrastructure\"],\"persona\":\"Knowledgeable guide on bridges and navigation, helping visitors understand infrastructure and route planning.\",\"responsible_zone_ids\":[\"zone_collection_3\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"coral\",\"voice_gender\":\"weiblich\",\"voice_style\":\"ruhig\"},{\"display_name\":\"Transport Center Guide\",\"expertise\":[\"visitor assistance\",\"transportation knowledge\",\"navigation help\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"handoff_targets\":[\"role_collection1_specialist\",\"role_collection2_specialist\",\"role_collection3_specialist\"],\"id\":\"role_guide\",\"knowledge_tags\":[\"visitor_assistance\",\"navigation\",\"general_transport_knowledge\"],\"persona\":\"Friendly and helpful guide assisting visitors with general questions and directing them to specialists for detailed topics.\",\"responsible_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"nova\",\"voice_gender\":\"maennlich\",\"voice_style\":\"freundlich\"}],\"handoffs\":[{\"condition\":\"visitor asks for detailed wheel technology or signaling information\",\"reason\":\"Specialized knowledge required on wheel displays and signal stations\",\"source_agent_id\":\"role_guide\",\"target_agent_id\":\"role_collection1_specialist\"},{\"condition\":\"visitor in Collection 1 zone requests in-depth explanations\",\"reason\":\"Expertise in Collection 1 exhibits needed\",\"source_agent_id\":\"role_guide\",\"target_agent_id\":\"role_collection1_specialist\"},{\"condition\":\"visitor asks about bicycle history or rail transport models\",\"reason\":\"Specialized knowledge required on bicycle and rail exhibits\",\"source_agent_id\":\"role_guide\",\"target_agent_id\":\"role_collection2_specialist\"},{\"condition\":\"visitor in Collection 2 zone requests detailed information\",\"reason\":\"Expertise in Collection 2 exhibits needed\",\"source_agent_id\":\"role_guide\",\"target_agent_id\":\"role_collection2_specialist\"},{\"condition\":\"visitor in Collection 3 zone seeks detailed info on bridges or route maps\",\"reason\":\"Expertise in Collection 3 exhibits needed\",\"source_agent_id\":\"role_guide\",\"target_agent_id\":\"role_collection3_specialist\"},{\"condition\":\"visitor asks for infrastructure or navigation details\",\"reason\":\"Specialized knowledge required on bridge infrastructure and route maps\",\"source_agent_id\":\"role_guide\",\"target_agent_id\":\"role_collection3_specialist\"},{\"condition\":\"visitor asks a specialist about general navigation or needs broader assistance\",\"reason\":\"General visitor assistance better handled by guide\",\"source_agent_id\":\"role_collection1_specialist\",\"target_agent_id\":\"role_guide\"},{\"condition\":\"visitor asks a specialist about general navigation or needs broader assistance\",\"reason\":\"General visitor assistance better handled by guide\",\"source_agent_id\":\"role_collection2_specialist\",\"target_agent_id\":\"role_guide\"},{\"condition\":\"visitor asks a specialist about general navigation or needs broader assistance\",\"reason\":\"General visitor assistance better handled by guide\",\"source_agent_id\":\"role_collection3_specialist\",\"target_agent_id\":\"role_guide\"}]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0c5fa5e73905d516016ad15dda34f887d1adab09fb14c873af",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_collection_1",
+                        "zone_collection_2",
+                        "zone_collection_3"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2995,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1053,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4048
+    },
+    "user": null
+  },
+  "response_sha256": "a725c842ae7eb3e143bbc74a8911b2914289420f5b89b8c7ec236d686691a6b0",
+  "saved_at": "2026-10-15T23:12:35.131523+00:00",
+  "status": "SUCCESS"
+}

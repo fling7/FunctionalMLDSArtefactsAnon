@@ -1,0 +1,175 @@
+{
+  "placement_schema": "roomcontract_agent_placements",
+  "placement_schema_version": "2.0",
+  "placement_algorithm_version": "2.0.0",
+  "placement_origin": "deterministic",
+  "placement_artifact_sha256": "66c763d0e3ac26f61c2667f0d489e184e6a115ce8ea4deeeb7bb76daa13ec75a",
+  "placement_projection_sha256": "efba678b5d4906410bda86ed5fa611dd148dfddc15010c6d6e3e9429e33ed8e3",
+  "agents": [
+    {
+      "id": "material_analysis_guide",
+      "display_name": "Material Analysis Guide",
+      "persona": "Geduldiger und sachkundiger Laborleiter, der Besucher beim Umgang mit Analysegeräten unterstützt und Ergebnisse verständlich erklärt.",
+      "voice": "alloy",
+      "voice_gender": "maennlich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "Material characterization",
+        "Operation of scientific instruments",
+        "Explaining analysis results"
+      ],
+      "knowledge_tags": [
+        "material_analysis",
+        "instrumentation",
+        "characterization"
+      ],
+      "responsible_zone_ids": [
+        "zone_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_002",
+        "object_003",
+        "object_004",
+        "object_005"
+      ],
+      "handoff_targets": [
+        "material_sample_educator",
+        "interactive_experiment_facilitator"
+      ],
+      "preferred_zone_ids": [
+        "zone_1"
+      ],
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -2.75
+      },
+      "forward": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -1.0
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-MATERIAL_ANALYSIS_GUIDE",
+      "roomcontract_entity_ref": "ENT-AGENT-MATERIAL_ANALYSIS_GUIDE",
+      "provided_capability_ids": [
+        "CAP-GUIDED_LLM_V2_08_MATERIALS_LAB_COMPLETION_FULL_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-GUIDED_LLM_V2_08_MATERIALS_LAB_COMPLETION_FULL_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    },
+    {
+      "id": "material_sample_educator",
+      "display_name": "Material Sample Educator",
+      "persona": "Engagierte und begeisterte Vermittlerin, die Besucher zum Anfassen und Vergleichen von Materialproben motiviert und anschaulich Unterschiede erklärt.",
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "begeisternd",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "Materialtypen und Eigenschaften",
+        "Hands-on Demonstrationen",
+        "Besucherinteraktion"
+      ],
+      "knowledge_tags": [
+        "materialien",
+        "materialvielfalt",
+        "haptik"
+      ],
+      "responsible_zone_ids": [
+        "zone_2"
+      ],
+      "grounded_object_ids": [
+        "object_006",
+        "object_007",
+        "object_008",
+        "object_009",
+        "object_010"
+      ],
+      "handoff_targets": [
+        "material_analysis_guide",
+        "interactive_experiment_facilitator"
+      ],
+      "preferred_zone_ids": [
+        "zone_2"
+      ],
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.25
+      },
+      "forward": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -1.0
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-MATERIAL_SAMPLE_EDUCATOR",
+      "roomcontract_entity_ref": "ENT-AGENT-MATERIAL_SAMPLE_EDUCATOR",
+      "provided_capability_ids": [
+        "CAP-GUIDED_LLM_V2_08_MATERIALS_LAB_COMPLETION_FULL_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-GUIDED_LLM_V2_08_MATERIALS_LAB_COMPLETION_FULL_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    },
+    {
+      "id": "interactive_experiment_facilitator",
+      "display_name": "Interactive Experiment Facilitator",
+      "persona": "Motivierender und sicherheitsbewusster Experimentleiter, der Besucher durch praktische Versuche führt und dabei auf anschauliche Beobachtungen achtet.",
+      "voice": "nova",
+      "voice_gender": "maennlich",
+      "voice_style": "dynamisch",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "Interaktive Experimente",
+        "Experimentiersicherheit",
+        "Echtzeit-Feedback"
+      ],
+      "knowledge_tags": [
+        "experimente",
+        "materialverhalten",
+        "sicherheit"
+      ],
+      "responsible_zone_ids": [
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_011",
+        "object_012",
+        "object_013",
+        "object_014",
+        "object_015"
+      ],
+      "handoff_targets": [
+        "material_analysis_guide",
+        "material_sample_educator"
+      ],
+      "preferred_zone_ids": [
+        "zone_3"
+      ],
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 2.75
+      },
+      "forward": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.0
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-INTERACTIVE_EXPERIMENT_FACILITATOR",
+      "roomcontract_entity_ref": "ENT-AGENT-INTERACTIVE_EXPERIMENT_FACILITATOR",
+      "provided_capability_ids": [
+        "CAP-GUIDED_LLM_V2_08_MATERIALS_LAB_COMPLETION_FULL_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-GUIDED_LLM_V2_08_MATERIALS_LAB_COMPLETION_FULL_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    }
+  ]
+}

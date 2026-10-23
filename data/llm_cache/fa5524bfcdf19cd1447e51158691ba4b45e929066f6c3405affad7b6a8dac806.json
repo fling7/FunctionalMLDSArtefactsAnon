@@ -1,0 +1,192 @@
+{
+  "cache_key": "fa5524bfcdf19cd1447e51158691ba4b45e929066f6c3405affad7b6a8dac806",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "scene_007_transport_center.B1.abstain.p1.neutral.mini.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "Choose the agent that should answer the visitor about the selected object. The selected object is the routing target even if the question mentions something else. Use the supplied agent information. When an ownership table is supplied, explicit object responsibility takes precedence over group responsibility, which takes precedence over zone responsibility; the first nonempty level must identify exactly one agent. That agent must be the active agent or a directly permitted handoff target. Do not treat a multi-hop path as direct permission. Return only the requested JSON.\nYou may reject: if no valid unique recipient can be determined from the supplied information, set abstain=true and answering_agent_id=null. Otherwise set abstain=false and answering_agent_id to exactly one listed agent id.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Model Specialist\",\"expertise\":[\"model interpretation\",\"rail infrastructure\",\"bridge engineering\",\"interactive demonstration\"],\"id\":\"model_specialist\",\"persona\":\"Engaging and knowledgeable guide who provides detailed insights and demonstrations of rail and bridge models.\"},{\"display_name\":\"Route Guide\",\"expertise\":[\"visitor assistance\",\"general information\",\"navigation help\",\"sustainable transport\"],\"id\":\"route_guide\",\"persona\":\"Friendly and clear communicator who helps visitors find their way and understand transport routes and bicycle options.\"},{\"display_name\":\"Technical Explainer\",\"expertise\":[\"technical knowledge\",\"transport systems\",\"signal stations\",\"wheel mechanisms\",\"engineering\"],\"id\":\"technical_explainer\",\"persona\":\"Detail-oriented expert who explains the technical and engineering aspects of signal stations and wheel mechanisms.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-OBJECT_004\",\"source_id\":\"object_004\",\"name\":\"bicycle_display\",\"type\":\"bicycle_display\",\"group_label\":\"collection_1\",\"zone_names\":[\"Route Map Zone\"]},\"active_agent_id\":\"route_guide\",\"visitor_question\":\"What can you tell me about this selected object?\",\"ownership_and_handoffs\":{\"agents\":[{\"id\":\"model_specialist\",\"objects\":[\"ENT-ASSET-OBJECT_003\",\"ENT-ASSET-OBJECT_006\",\"ENT-ASSET-OBJECT_009\",\"ENT-ASSET-OBJECT_012\",\"ENT-ASSET-OBJECT_015\"],\"groups\":[\"ENT-GROUP-COLLECTION_3\"],\"zones\":[\"ENT-ZONE-ZONE_3\"],\"handoff_targets\":[\"route_guide\",\"technical_explainer\"]},{\"id\":\"route_guide\",\"objects\":[\"ENT-ASSET-OBJECT_001\",\"ENT-ASSET-OBJECT_004\",\"ENT-ASSET-OBJECT_007\",\"ENT-ASSET-OBJECT_010\",\"ENT-ASSET-OBJECT_013\"],\"groups\":[\"ENT-GROUP-COLLECTION_1\"],\"zones\":[\"ENT-ZONE-ZONE_1\"],\"handoff_targets\":[\"model_specialist\",\"technical_explainer\"]},{\"id\":\"technical_explainer\",\"objects\":[\"ENT-ASSET-OBJECT_002\",\"ENT-ASSET-OBJECT_005\",\"ENT-ASSET-OBJECT_008\",\"ENT-ASSET-OBJECT_011\",\"ENT-ASSET-OBJECT_014\"],\"groups\":[\"ENT-GROUP-COLLECTION_2\"],\"zones\":[\"ENT-ZONE-ZONE_2\"],\"handoff_targets\":[\"model_specialist\",\"route_guide\"]}],\"objects\":[{\"id\":\"ENT-ASSET-OBJECT_001\",\"source_id\":\"object_001\",\"name\":\"route_map\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_002\",\"source_id\":\"object_002\",\"name\":\"signal_station\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_003\",\"source_id\":\"object_003\",\"name\":\"rail_model\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_004\",\"source_id\":\"object_004\",\"name\":\"bicycle_display\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_005\",\"source_id\":\"object_005\",\"name\":\"wheel_display\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_006\",\"source_id\":\"object_006\",\"name\":\"bridge_model\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_007\",\"source_id\":\"object_007\",\"name\":\"route_map\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_008\",\"source_id\":\"object_008\",\"name\":\"signal_station\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_009\",\"source_id\":\"object_009\",\"name\":\"rail_model\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_010\",\"source_id\":\"object_010\",\"name\":\"bicycle_display\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_011\",\"source_id\":\"object_011\",\"name\":\"wheel_display\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_012\",\"source_id\":\"object_012\",\"name\":\"bridge_model\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_013\",\"source_id\":\"object_013\",\"name\":\"route_map\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_014\",\"source_id\":\"object_014\",\"name\":\"signal_station\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_015\",\"source_id\":\"object_015\",\"name\":\"rail_model\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]}],\"groups\":[{\"id\":\"ENT-GROUP-COLLECTION_1\",\"name\":\"Object group: collection_1\",\"members\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"]},{\"id\":\"ENT-GROUP-COLLECTION_2\",\"name\":\"Object group: collection_2\",\"members\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"]},{\"id\":\"ENT-GROUP-COLLECTION_3\",\"name\":\"Object group: collection_3\",\"members\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"]}],\"zones\":[{\"id\":\"ENT-ZONE-ZONE_1\",\"name\":\"Route Map Zone\",\"members\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"]},{\"id\":\"ENT-ZONE-ZONE_2\",\"name\":\"Signal and Wheel Display Zone\",\"members\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"]},{\"id\":\"ENT-ZONE-ZONE_3\",\"name\":\"Rail and Bridge Model Zone\",\"members\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"]}]}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false,
+                  true
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "model_specialist",
+                  "route_guide",
+                  "technical_explainer",
+                  null
+                ],
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792106699,
+    "created_at": 1792106699,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_02e0f480f11f6fa7016ad160cb2bb087d1b569ffd36f87fc65",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\":false,\"answering_agent_id\":\"route_guide\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_02e0f480f11f6fa7016ad160cb847c87d180bfd4ffdcf06b8a",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false,
+                true
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "model_specialist",
+                "route_guide",
+                "technical_explainer",
+                null
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 1481,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 17,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1498
+    },
+    "user": null
+  },
+  "response_sha256": "4e4815aad2ac5f561765471ddaed0fa8eb852423eed57b20563b33f8e99981b3",
+  "saved_at": "2026-10-15T23:25:01.406875+00:00",
+  "status": "SUCCESS"
+}

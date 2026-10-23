@@ -1,0 +1,192 @@
+{
+  "cache_key": "c3d4b795b7b2d845a1dd8f796a4d7f9a1e8e4f60db24f118aba598c5ddf4ce18",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "scene_046_robotics_showroom.B0.abstain.p2.neutral.mini.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "You assign a grounded visitor question to one agent. Route for selected_object, while treating visitor_question as context rather than a replacement selection. Compare the available agents. If explicit responsibility data is present, check object owners first, then group owners only if no object owner exists, then zone owners only if neither earlier level has an owner. More than one owner at the deciding level is ambiguous. A valid recipient is the unique owner and is either already active or one declared edge away. Produce the JSON decision.\nYou may reject: if no valid unique recipient can be determined from the supplied information, set abstain=true and answering_agent_id=null. Otherwise set abstain=false and answering_agent_id to exactly one listed agent id.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Assembly and Joints Expert\",\"expertise\":[\"robotics\",\"assembly\",\"mechanical joints\",\"education\"],\"id\":\"assembly_expert\",\"persona\":\"Detail-oriented specialist in robotic assembly and joint mechanics, skilled at explaining structural components and mechanical functions to visitors.\"},{\"display_name\":\"Mobile Robotics Guide\",\"expertise\":[\"robotics\",\"mobile robots\",\"control consoles\",\"education\"],\"id\":\"mobile_robotics_guide\",\"persona\":\"Friendly and knowledgeable guide specialized in mobile robotics and control systems, eager to help visitors understand and interact with mobile robot exhibits.\"},{\"display_name\":\"Sensor and Gripper Specialist\",\"expertise\":[\"robotics\",\"sensors\",\"grippers\",\"education\"],\"id\":\"sensor_specialist\",\"persona\":\"Enthusiastic expert focused on robotic sensors and gripper mechanisms, providing detailed demonstrations and engaging explanations to visitors.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-OBJECT_004\",\"source_id\":\"object_004\",\"name\":\"control_console\",\"type\":\"control_console\",\"group_label\":\"collection_1\",\"zone_names\":[\"Mobile Robots and Controls Zone\"]},\"active_agent_id\":\"mobile_robotics_guide\",\"visitor_question\":\"What can you tell me about this selected object?\"}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false,
+                  true
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "assembly_expert",
+                  "mobile_robotics_guide",
+                  "sensor_specialist",
+                  null
+                ],
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792107114,
+    "created_at": 1792107114,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0b475447f27beded016ad1626a4ffc87d1a6ee1a3034b0d3d9",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\":false,\"answering_agent_id\":\"mobile_robotics_guide\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0b475447f27beded016ad1626aa60087d1ad6e9ecc02bf9851",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false,
+                true
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "assembly_expert",
+                "mobile_robotics_guide",
+                "sensor_specialist",
+                null
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 459,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 19,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 478
+    },
+    "user": null
+  },
+  "response_sha256": "51fa650b247a1656ed585d79172f916b2ac4a82fe063b887fc87b9e8d5ea523d",
+  "saved_at": "2026-10-15T23:31:56.590574+00:00",
+  "status": "SUCCESS"
+}

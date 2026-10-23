@@ -1,0 +1,8 @@
+Write a complete synthetic source scene JSON for the domain {domain}, named exactly {scene_id}. This is explicitly geometry-guided LLM authoring: use the complete fixed geometry scaffold below verbatim for every object's objectId, group, position, rotation, dimensions and children. You must emit the entire scene JSON, including every geometric value; no later program will insert, repair or replace any geometry.
+
+Create15 distinct, recognizable domain-appropriate objects, with your own objectType and specification text. Make each specification describe the visible object, its topic and a plausible visitor interaction; avoid filler duplicates. The three rows form three coherent topical collections, five objects each. Use exactly collection_1, collection_2 and collection_3, with three distinct six-digit hex colors. Choose appropriate environment type, lighting and background.
+
+The room dimensions are exactly width20, height4, depth20 metres. Positions are object centres, so every object's height1.0 requires y0.5: bottom y-height/2 must equal0. The fixed width/depth0.8 footprints have at least2.2 metres separation and stay inside the required x/z [-9,9] footprint margins. Preserve the zero rotations and empty children. There must be exactly15 objects and exactly these IDs. Output the full schema-conforming JSON, no markdown or omitted fields.
+
+Fixed geometry scaffold:
+{scaffold}

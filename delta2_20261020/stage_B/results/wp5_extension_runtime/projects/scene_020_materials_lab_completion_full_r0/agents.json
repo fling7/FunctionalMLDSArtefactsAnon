@@ -1,0 +1,184 @@
+{
+  "placement_schema": "roomcontract_agent_placements",
+  "placement_schema_version": "2.0",
+  "placement_algorithm_version": "2.0.0",
+  "placement_origin": "deterministic",
+  "placement_artifact_sha256": "3d1c962f91a7abfe2bf5fec600fa0235cdbe669b9cb442948e84b9f406bde3ea",
+  "placement_projection_sha256": "ceca313ae59314fa002f0ef7c51fd8ac379624fae62cc4146acea7eae2e0d2d3",
+  "agents": [
+    {
+      "id": "keramik_festigkeit_spezialist",
+      "display_name": "Keramik & Festigkeit Spezialist",
+      "persona": "Geduldig, experimentierfreudig, erklärt anschaulich keramische Materialien und leitet Besucher bei Festigkeitsversuchen an.",
+      "voice": "sage",
+      "voice_gender": "maennlich",
+      "voice_style": "ruhig",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "Keramische Materialien",
+        "Materialfestigkeit",
+        "Didaktik"
+      ],
+      "knowledge_tags": [
+        "keramik",
+        "festigkeit",
+        "materialpruefung"
+      ],
+      "responsible_zone_ids": [
+        "zone_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022"
+      ],
+      "handoff_targets": [
+        "kristall_polymer_experte",
+        "faser_metal_experte"
+      ],
+      "preferred_zone_ids": [
+        "zone_1"
+      ],
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.25
+      },
+      "forward": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -1.0
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-KERAMIK_FESTIGKEIT_SPEZIALIST",
+      "roomcontract_entity_ref": "ENT-AGENT-KERAMIK_FESTIGKEIT_SPEZIALIST",
+      "provided_capability_ids": [
+        "CAP-SCENE_020_MATERIALS_LAB_COMPLETION_FULL_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_020_MATERIALS_LAB_COMPLETION_FULL_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    },
+    {
+      "id": "kristall_polymer_experte",
+      "display_name": "Kristall & Polymer Experte",
+      "persona": "Begeistert, präzise und verständlich, vermittelt den Aufbau und die Bedeutung von Kristallen und Polymeren.",
+      "voice": "nova",
+      "voice_gender": "weiblich",
+      "voice_style": "klar",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "Kristallstrukturen",
+        "Polymere",
+        "Materialwissenschaft"
+      ],
+      "knowledge_tags": [
+        "kristall",
+        "polymer",
+        "struktur"
+      ],
+      "responsible_zone_ids": [
+        "zone_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023"
+      ],
+      "handoff_targets": [
+        "keramik_festigkeit_spezialist",
+        "faser_metal_experte"
+      ],
+      "preferred_zone_ids": [
+        "zone_2"
+      ],
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -1.55
+      },
+      "forward": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -1.0
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-KRISTALL_POLYMER_EXPERTE",
+      "roomcontract_entity_ref": "ENT-AGENT-KRISTALL_POLYMER_EXPERTE",
+      "provided_capability_ids": [
+        "CAP-SCENE_020_MATERIALS_LAB_COMPLETION_FULL_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_020_MATERIALS_LAB_COMPLETION_FULL_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    },
+    {
+      "id": "faser_metal_experte",
+      "display_name": "Faser & Metall Experte",
+      "persona": "Vergleichend, analytisch und freundlich, erklärt Unterschiede und Anwendungen von Faserstoffen und Metallen.",
+      "voice": "onyx",
+      "voice_gender": "maennlich",
+      "voice_style": "dynamisch",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "Faserstoffe",
+        "Metalle",
+        "Vergleichende Materialkunde"
+      ],
+      "knowledge_tags": [
+        "faser",
+        "metall",
+        "vergleich"
+      ],
+      "responsible_zone_ids": [
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024"
+      ],
+      "handoff_targets": [
+        "keramik_festigkeit_spezialist",
+        "kristall_polymer_experte"
+      ],
+      "preferred_zone_ids": [
+        "zone_3"
+      ],
+      "position": {
+        "x": -1.55,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "forward": {
+        "x": -1.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-FASER_METAL_EXPERTE",
+      "roomcontract_entity_ref": "ENT-AGENT-FASER_METAL_EXPERTE",
+      "provided_capability_ids": [
+        "CAP-SCENE_020_MATERIALS_LAB_COMPLETION_FULL_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_020_MATERIALS_LAB_COMPLETION_FULL_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    }
+  ]
+}

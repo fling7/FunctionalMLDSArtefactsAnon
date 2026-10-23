@@ -1,0 +1,141 @@
+classDiagram
+  direction TB
+  %% SVG/PNG define the presentation-authoritative orthogonal layout.
+  %% RCM V2 – conservative scenario and control-flow core
+  class EAST_ADL_Elements_Context {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_TraceableSpecification {
+    <<abstract>>
+    +text : String [0..1]
+  }
+  class EAST_ADL_Elements_Relationship {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_Identifiable {
+    <<abstract>>
+    +category : Identifier [0..1]
+    +uuid : String [0..1]
+  }
+  class EAST_ADL_Timing_Event {
+    <<abstract>>
+  }
+  class EAST_ADL_Values_EAExpression {
+    <<EA::Values>>
+  }
+  class RCM_V2_Core_DynamicFunctionalModel {
+    <<DF::Core>>
+  }
+  class EAST_ADL_UseCases_Actor {
+    <<EA::UseCases>>
+  }
+  class RCM_V2_Core_ActorParticipation {
+    <<DF::Core>>
+  }
+  class EAST_ADL_UseCases_UseCase {
+    <<EA::UseCases>>
+  }
+  class RCM_V2_Core_UseCaseScenarioSpecification {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_ConditionalExtend {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_Scenario {
+    <<DF::Core>>
+    +kind : ScenarioKind [1]
+  }
+  class RCM_V2_Core_ScenarioStep {
+    <<DF::Core>>
+    +/stepNumber : Integer [1]
+    +kind : ScenarioStepKind [1]
+  }
+  class RCM_V2_Core_StepRelation {
+    <<DF::Core>>
+    +kind : StepRelationKind [1]
+  }
+  class RCM_V2_Core_ParallelGroup {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_Entity {
+    <<DF::Core>>
+    +kind : EntityKind [0..1]
+    +sourceId : String [0..1]
+    +entityRole : String [0..1]
+    +sourceObjectId : String [*] {ordered}
+    +purpose : String [0..1]
+    +sourceGroup : String [0..1]
+    +objectType : String [0..1]
+  }
+  class EAST_ADL_Events_ExternalEvent {
+    <<EA::Events>>
+  }
+  class RCM_V2_Core_ScenarioEvent {
+    <<DF::Core>>
+    +kind : ScenarioEventKind [1]
+    +expressionText : String [1]
+  }
+  class RCM_V2_Core_ScenarioExternalEvent {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_ScenarioCondition {
+    <<DF::Core>>
+    +kind : ConditionKind [1]
+    +expressionText : String [1]
+  }
+  class RCM_V2_Core_ProbabilityValue {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_Probability {
+    <<datatype>>
+  }
+  class RCM_V2_Core_Assertion {
+    <<abstract>>
+    +/expressionText : String [1]
+    +severity : AssertionSeverity [0..1]
+  }
+  class RCM_V2_Core_StateAssertion {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_EventAssertion {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_OutputAssertion {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_GroundingAssertion {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_RelationAssertion {
+    <<DF::Core>>
+  }
+  EAST-ADL_Elements_Context <|-- RCM_V2_Core_DynamicFunctionalModel
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_UseCases_Actor
+  EAST-ADL_Elements_Relationship <|-- RCM_V2_Core_ActorParticipation
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_UseCases_UseCase
+  EAST-ADL_Elements_Relationship <|-- RCM_V2_Core_UseCaseScenarioSpecification
+  EAST-ADL_Elements_TraceableSpecification <|-- RCM_V2_Core_Scenario
+  EAST-ADL_Elements_TraceableSpecification <|-- RCM_V2_Core_ScenarioStep
+  EAST-ADL_Elements_Relationship <|-- RCM_V2_Core_StepRelation
+  EAST-ADL_Elements_TraceableSpecification <|-- RCM_V2_Core_Entity
+  EAST-ADL_Timing_Event <|-- EAST-ADL_Events_ExternalEvent
+  EAST-ADL_Timing_Event <|-- RCM_V2_Core_ScenarioEvent
+  EAST-ADL_Values_EAExpression <|-- RCM_V2_Core_ScenarioEvent
+  RCM_V2_Core_ScenarioEvent <|-- RCM_V2_Core_ScenarioExternalEvent
+  EAST-ADL_Events_ExternalEvent <|-- RCM_V2_Core_ScenarioExternalEvent
+  EAST-ADL_Values_EAExpression <|-- RCM_V2_Core_ScenarioCondition
+  EAST-ADL_Elements_TraceableSpecification <|-- RCM_V2_Core_Assertion
+  RCM_V2_Core_Assertion <|-- RCM_V2_Core_StateAssertion
+  RCM_V2_Core_Assertion <|-- RCM_V2_Core_EventAssertion
+  RCM_V2_Core_Assertion <|-- RCM_V2_Core_OutputAssertion
+  RCM_V2_Core_Assertion <|-- RCM_V2_Core_GroundingAssertion
+  RCM_V2_Core_Assertion <|-- RCM_V2_Core_RelationAssertion
+  RCM_V2_Core_UseCaseScenarioSpecification "*" --> "1" EAST-ADL_UseCases_UseCase : useCase [1]
+  RCM_V2_Core_UseCaseScenarioSpecification "*" --> "1" RCM_V2_Core_Scenario : scenario [1]
+  RCM_V2_Core_ActorParticipation "*" --> "1" EAST-ADL_UseCases_Actor : actor [1]
+  RCM_V2_Core_Scenario "1" *-- "1..*" RCM_V2_Core_ScenarioStep : step [1..*]
+  RCM_V2_Core_Scenario "1" *-- "*" RCM_V2_Core_StepRelation : stepRelation [*]
+  RCM_V2_Core_Scenario "1" *-- "*" RCM_V2_Core_ParallelGroup : parallelGroup [*]
+  RCM_V2_Core_StepRelation "*" --> "1" RCM_V2_Core_ScenarioStep : sourceStep [1]
+  RCM_V2_Core_StepRelation "*" --> "1" RCM_V2_Core_ScenarioStep : targetStep [1]
+  RCM_V2_Core_StepRelation "1" *-- "0..1" RCM_V2_Core_ProbabilityValue : probability [0..1]

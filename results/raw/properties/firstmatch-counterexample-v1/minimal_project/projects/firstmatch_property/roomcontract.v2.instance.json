@@ -1,0 +1,3548 @@
+{
+  "caseId": "firstmatch_property",
+  "fixture_profile": "executable",
+  "id": "DFM-FIRSTMATCH_PROPERTY",
+  "metamodelVersion": "2.0.0-model",
+  "objects": [
+    {
+      "actor": [
+        "ACT-CASE-STUDY-ENGINEER",
+        "ACT-VISITOR",
+        "ACT-ROOM-GUIDE"
+      ],
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID",
+        "SA-FIRSTMATCH_PROPERTY-SCENE-SEMANTICS-VALID",
+        "SA-FIRSTMATCH_PROPERTY-AGENT-ROLES-VALID",
+        "SA-FIRSTMATCH_PROPERTY-KNOWLEDGE-VALID",
+        "SA-FIRSTMATCH_PROPERTY-PLACEMENT-VALID",
+        "SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID",
+        "SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED",
+        "SA-FIRSTMATCH_PROPERTY-SETUP-VALID",
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID",
+        "AST-FIRSTMATCH_PROPERTY-DERIVED-EVENT",
+        "AST-FIRSTMATCH_PROPERTY-DERIVED-OUTPUT",
+        "AST-FIRSTMATCH_PROPERTY-DERIVED-GROUNDING",
+        "AST-FIRSTMATCH_PROPERTY-DERIVED-RELATION"
+      ],
+      "capability": [
+        "CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE",
+        "CAP-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES",
+        "CAP-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE",
+        "CAP-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE",
+        "CAP-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL",
+        "CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+        "CAP-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION",
+        "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "entity": [
+        "ENT-ZONE-ZONE_A",
+        "ENT-GROUP-GROUP_A",
+        "ENT-ASSET-O0",
+        "ENT-ASSET-O1",
+        "ENT-AGENT-A0",
+        "ENT-AGENT-A1",
+        "ENT-STATE-FIRSTMATCH_PROPERTY",
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "id": "DFM-FIRSTMATCH_PROPERTY",
+      "ownedRelationship": [
+        "UC-FIRSTMATCH_PROPERTY-01-ACTOR-1",
+        "UC-FIRSTMATCH_PROPERTY-01-ACTOR-2",
+        "UC-FIRSTMATCH_PROPERTY-01-SPEC-SC-FIRSTMATCH_PROPERTY-MAIN",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0-ACTOR-1",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0-ACTOR-2",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0-SPEC-SC-FIRSTMATCH_PROPERTY-INTERACT-O0-MAIN",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1-ACTOR-1",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1-ACTOR-2",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1-SPEC-SC-FIRSTMATCH_PROPERTY-INTERACT-O1-MAIN",
+        "SAT-REQ-FIRSTMATCH_PROPERTY-001",
+        "SAT-REQ-FIRSTMATCH_PROPERTY-002",
+        "SAT-REQ-FIRSTMATCH_PROPERTY-003",
+        "SAT-REQ-FIRSTMATCH_PROPERTY-004",
+        "SAT-REQ-FIRSTMATCH_PROPERTY-005",
+        "SAT-REQ-FIRSTMATCH_PROPERTY-006",
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-USECASE-1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-USECASE-1",
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-USECASE-1",
+        "VC-FIRSTMATCH_PROPERTY-SETUP-USECASE-1",
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-USECASE-1",
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-USECASE-1",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-USECASE-1"
+      ],
+      "requirementsModel": [
+        "RM-FIRSTMATCH_PROPERTY"
+      ],
+      "runtimeBinding": [
+        "RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE",
+        "RB-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES",
+        "RB-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE",
+        "RB-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE",
+        "RB-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL",
+        "RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+        "RB-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION",
+        "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "scenario": [
+        "SC-FIRSTMATCH_PROPERTY-MAIN",
+        "SC-FIRSTMATCH_PROPERTY-INTERACT-O0-MAIN",
+        "SC-FIRSTMATCH_PROPERTY-INTERACT-O1-MAIN"
+      ],
+      "scenarioCondition": [
+        "COND-FIRSTMATCH_PROPERTY-VALID-INPUT",
+        "COND-FIRSTMATCH_PROPERTY-AGENTS-AVAILABLE",
+        "COND-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-AVAILABLE"
+      ],
+      "scenarioEvent": [
+        "EV-FIRSTMATCH_PROPERTY-RDL-PROVIDED",
+        "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION",
+        "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+      ],
+      "type": "DynamicFunctionalModel",
+      "verificationValidation": [
+        "VV-FIRSTMATCH_PROPERTY"
+      ]
+    },
+    {
+      "id": "REQ-FIRSTMATCH_PROPERTY-001",
+      "text": "The pipeline shall ingest an RDL scene and preserve stable object identities.",
+      "type": "Requirement"
+    },
+    {
+      "id": "REQ-FIRSTMATCH_PROPERTY-002",
+      "text": "The pipeline shall derive room semantics grounded in existing RDL objects.",
+      "type": "Requirement"
+    },
+    {
+      "id": "REQ-FIRSTMATCH_PROPERTY-003",
+      "text": "The pipeline shall synthesize backend-compatible spatial agent roles.",
+      "type": "Requirement"
+    },
+    {
+      "id": "REQ-FIRSTMATCH_PROPERTY-004",
+      "text": "Every generated agent knowledge tag shall be covered by materialized knowledge.",
+      "type": "Requirement"
+    },
+    {
+      "id": "REQ-FIRSTMATCH_PROPERTY-005",
+      "text": "Every generated agent shall be placed inside the room without obstacle overlap.",
+      "type": "Requirement"
+    },
+    {
+      "id": "REQ-FIRSTMATCH_PROPERTY-006",
+      "text": "The generated behavior shall be traceable from requirements to runtime actions and validation cases.",
+      "type": "Requirement"
+    },
+    {
+      "extend": [],
+      "extensionPoint": [],
+      "id": "UC-FIRSTMATCH_PROPERTY-01",
+      "include": [],
+      "name": "Generate spatially grounded multi-agent guide",
+      "type": "UseCase"
+    },
+    {
+      "extend": [],
+      "extensionPoint": [],
+      "id": "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+      "include": [],
+      "name": "Describe grounded scene object o0",
+      "type": "UseCase"
+    },
+    {
+      "extend": [],
+      "extensionPoint": [],
+      "id": "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+      "include": [],
+      "name": "Describe grounded scene object o1",
+      "type": "UseCase"
+    },
+    {
+      "id": "RM-FIRSTMATCH_PROPERTY",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-001",
+        "REQ-FIRSTMATCH_PROPERTY-002",
+        "REQ-FIRSTMATCH_PROPERTY-003",
+        "REQ-FIRSTMATCH_PROPERTY-004",
+        "REQ-FIRSTMATCH_PROPERTY-005",
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "type": "RequirementsModel",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ]
+    },
+    {
+      "id": "ACT-CASE-STUDY-ENGINEER",
+      "name": "Case Study Engineer",
+      "text": "Provides RDL input and runs the validation pipeline.",
+      "type": "Actor"
+    },
+    {
+      "id": "ACT-VISITOR",
+      "name": "Visitor",
+      "text": "Asks room-related questions in the generated immersive environment.",
+      "type": "Actor"
+    },
+    {
+      "id": "ACT-ROOM-GUIDE",
+      "name": "Room Guide",
+      "text": "Role played by generated interactive agents.",
+      "type": "Actor"
+    },
+    {
+      "entityRole": "semanticZone",
+      "id": "ENT-ZONE-ZONE_A",
+      "kind": "zone",
+      "name": "zone_a",
+      "purpose": "Synthetic zone.",
+      "sourceId": "zone_a",
+      "sourceObjectId": [
+        "o0",
+        "o1"
+      ],
+      "type": "Entity"
+    },
+    {
+      "entityRole": "objectGroup",
+      "id": "ENT-GROUP-GROUP_A",
+      "kind": "asset",
+      "name": "Object group: group_a",
+      "sourceGroup": "group_a",
+      "sourceId": "group:group_a",
+      "sourceObjectId": [
+        "o0",
+        "o1"
+      ],
+      "type": "Entity"
+    },
+    {
+      "entityRole": "sceneObject",
+      "id": "ENT-ASSET-O0",
+      "kind": "asset",
+      "name": "educational_display",
+      "objectGroup": [
+        "ENT-GROUP-GROUP_A"
+      ],
+      "objectType": "educational_display",
+      "sourceGroup": "group_a",
+      "sourceId": "o0",
+      "type": "Entity"
+    },
+    {
+      "entityRole": "sceneObject",
+      "id": "ENT-ASSET-O1",
+      "kind": "asset",
+      "name": "educational_display",
+      "objectGroup": [
+        "ENT-GROUP-GROUP_A"
+      ],
+      "objectType": "educational_display",
+      "sourceGroup": "group_a",
+      "sourceId": "o1",
+      "type": "Entity"
+    },
+    {
+      "displayName": "a0",
+      "entityRole": "interactiveAgent",
+      "expertise": [
+        "synthetic room"
+      ],
+      "groundedAsset": [
+        "ENT-ASSET-O0"
+      ],
+      "handoffTarget": [
+        "ENT-AGENT-A1"
+      ],
+      "id": "ENT-AGENT-A0",
+      "kind": "agent",
+      "knowledgeTag": [
+        "room"
+      ],
+      "name": "a0",
+      "persona": "Synthetic educational guide.",
+      "playsActor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "providedCapability": [
+        "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "sourceAgentId": "a0",
+      "sourceId": "a0",
+      "ttsModel": "gpt-4o-mini-tts",
+      "type": "Agent",
+      "voice": "alloy",
+      "voiceGender": "neutral",
+      "voiceStyle": "neutral"
+    },
+    {
+      "displayName": "a1",
+      "entityRole": "interactiveAgent",
+      "expertise": [
+        "synthetic room"
+      ],
+      "groundedAsset": [
+        "ENT-ASSET-O0",
+        "ENT-ASSET-O1"
+      ],
+      "handoffTarget": [
+        "ENT-AGENT-A0"
+      ],
+      "id": "ENT-AGENT-A1",
+      "kind": "agent",
+      "knowledgeTag": [
+        "room"
+      ],
+      "name": "a1",
+      "persona": "Synthetic educational guide.",
+      "playsActor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "providedCapability": [
+        "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "sourceAgentId": "a1",
+      "sourceId": "a1",
+      "ttsModel": "gpt-4o-mini-tts",
+      "type": "Agent",
+      "voice": "alloy",
+      "voiceGender": "neutral",
+      "voiceStyle": "neutral"
+    },
+    {
+      "id": "ENT-STATE-FIRSTMATCH_PROPERTY",
+      "kind": "stateObject",
+      "name": "Case study validation state",
+      "sourceId": "validation_state",
+      "type": "Entity"
+    },
+    {
+      "entityRole": "runtimeOrchestrator",
+      "id": "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR",
+      "name": "Runtime Orchestrator",
+      "providedCapability": [
+        "CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE",
+        "CAP-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES",
+        "CAP-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE",
+        "CAP-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE",
+        "CAP-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL",
+        "CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+        "CAP-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION"
+      ],
+      "purpose": "Executable provider for pipeline and runtime-infrastructure capability uses.",
+      "sourceId": "runtime-orchestrator",
+      "type": "Entity"
+    },
+    {
+      "expressionText": "source_rdl.json available",
+      "id": "EV-FIRSTMATCH_PROPERTY-RDL-PROVIDED",
+      "kind": "environment",
+      "mixedStringContent": "source_rdl.json available",
+      "type": "ScenarioExternalEvent"
+    },
+    {
+      "expressionText": "visitor asks a room-related question",
+      "id": "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION",
+      "kind": "user",
+      "mixedStringContent": "visitor asks a room-related question",
+      "type": "ScenarioExternalEvent"
+    },
+    {
+      "expressionText": "visitor question belongs to another agent expertise",
+      "id": "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED",
+      "kind": "user",
+      "mixedStringContent": "visitor question belongs to another agent expertise",
+      "type": "ScenarioExternalEvent"
+    },
+    {
+      "datatype": "EABoolean",
+      "expressionText": "RDL input parses successfully",
+      "id": "COND-FIRSTMATCH_PROPERTY-VALID-INPUT",
+      "kind": "precondition",
+      "mixedStringContent": "RDL input parses successfully",
+      "type": "ScenarioCondition"
+    },
+    {
+      "datatype": "EABoolean",
+      "expressionText": "at least two valid agents exist",
+      "id": "COND-FIRSTMATCH_PROPERTY-AGENTS-AVAILABLE",
+      "kind": "guard",
+      "mixedStringContent": "at least two valid agents exist",
+      "type": "ScenarioCondition"
+    },
+    {
+      "datatype": "EABoolean",
+      "expressionText": "handoff target exists and is not the source agent",
+      "id": "COND-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-AVAILABLE",
+      "kind": "guard",
+      "mixedStringContent": "handoff target exists and is not the source agent",
+      "type": "ScenarioCondition"
+    },
+    {
+      "id": "EXPR-SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID",
+      "mixedStringContent": "Normalized RDL scene is valid and object IDs are unique.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID"
+      ],
+      "expressionText": "Normalized RDL scene is valid and object IDs are unique.",
+      "id": "SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID",
+      "severity": "error",
+      "subject": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "StateAssertion"
+    },
+    {
+      "id": "EXPR-SA-FIRSTMATCH_PROPERTY-SCENE-SEMANTICS-VALID",
+      "mixedStringContent": "Scene semantics are grounded in existing object IDs.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-SA-FIRSTMATCH_PROPERTY-SCENE-SEMANTICS-VALID"
+      ],
+      "expressionText": "Scene semantics are grounded in existing object IDs.",
+      "id": "SA-FIRSTMATCH_PROPERTY-SCENE-SEMANTICS-VALID",
+      "severity": "error",
+      "subject": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "StateAssertion"
+    },
+    {
+      "id": "EXPR-SA-FIRSTMATCH_PROPERTY-AGENT-ROLES-VALID",
+      "mixedStringContent": "Generated agents have valid zones, objects, knowledge tags and handoff targets.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-SA-FIRSTMATCH_PROPERTY-AGENT-ROLES-VALID"
+      ],
+      "expressionText": "Generated agents have valid zones, objects, knowledge tags and handoff targets.",
+      "id": "SA-FIRSTMATCH_PROPERTY-AGENT-ROLES-VALID",
+      "severity": "error",
+      "subject": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "StateAssertion"
+    },
+    {
+      "id": "EXPR-SA-FIRSTMATCH_PROPERTY-KNOWLEDGE-VALID",
+      "mixedStringContent": "Every agent knowledge tag has at least one materialized knowledge entry.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-SA-FIRSTMATCH_PROPERTY-KNOWLEDGE-VALID"
+      ],
+      "expressionText": "Every agent knowledge tag has at least one materialized knowledge entry.",
+      "id": "SA-FIRSTMATCH_PROPERTY-KNOWLEDGE-VALID",
+      "severity": "error",
+      "subject": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "StateAssertion"
+    },
+    {
+      "id": "EXPR-SA-FIRSTMATCH_PROPERTY-PLACEMENT-VALID",
+      "mixedStringContent": "Every generated agent has a valid room position and forward vector.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-SA-FIRSTMATCH_PROPERTY-PLACEMENT-VALID"
+      ],
+      "expressionText": "Every generated agent has a valid room position and forward vector.",
+      "id": "SA-FIRSTMATCH_PROPERTY-PLACEMENT-VALID",
+      "severity": "error",
+      "subject": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "StateAssertion"
+    },
+    {
+      "id": "EXPR-SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID",
+      "mixedStringContent": "RoomContract instance satisfies all core invariants.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID"
+      ],
+      "expressionText": "RoomContract instance satisfies all core invariants.",
+      "id": "SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID",
+      "severity": "error",
+      "subject": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "StateAssertion"
+    },
+    {
+      "id": "EXPR-SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED",
+      "mixedStringContent": "Interactive Agents project files are present and backend-readable.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED"
+      ],
+      "expressionText": "Interactive Agents project files are present and backend-readable.",
+      "id": "SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED",
+      "severity": "error",
+      "subject": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "StateAssertion"
+    },
+    {
+      "id": "EXPR-SA-FIRSTMATCH_PROPERTY-SETUP-VALID",
+      "mixedStringContent": "Interactive Agents backend setup returns a valid session with all agents.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-SA-FIRSTMATCH_PROPERTY-SETUP-VALID"
+      ],
+      "expressionText": "Interactive Agents backend setup returns a valid session with all agents.",
+      "id": "SA-FIRSTMATCH_PROPERTY-SETUP-VALID",
+      "severity": "error",
+      "subject": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "StateAssertion"
+    },
+    {
+      "id": "EXPR-SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+      "mixedStringContent": "A visitor question is answered using room-grounded agent knowledge.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+      ],
+      "expressionText": "A visitor question is answered using room-grounded agent knowledge.",
+      "id": "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+      "severity": "error",
+      "subject": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "StateAssertion"
+    },
+    {
+      "id": "EXPR-SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID",
+      "mixedStringContent": "A specialist handoff targets an existing responsible agent when needed.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "expressionText": "A specialist handoff targets an existing responsible agent when needed.",
+      "id": "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID",
+      "severity": "error",
+      "subject": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "StateAssertion"
+    },
+    {
+      "id": "EFF-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE-01",
+      "specifiedBy": [
+        "SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID"
+      ],
+      "text": "Effect of ANALYZE-RDL-SCENE: normalized scene valid.",
+      "type": "Effect"
+    },
+    {
+      "id": "EFF-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE-02",
+      "specifiedBy": [
+        "SA-FIRSTMATCH_PROPERTY-SCENE-SEMANTICS-VALID"
+      ],
+      "text": "Effect of ANALYZE-RDL-SCENE: scene semantics valid.",
+      "type": "Effect"
+    },
+    {
+      "effect": [
+        "EFF-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE-01",
+        "EFF-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE-02"
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE",
+      "name": "Analyze Rdl Scene",
+      "precondition": [],
+      "text": "Analyze RDL scene structure and normalize room objects.",
+      "type": "Capability"
+    },
+    {
+      "id": "EFF-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES-01",
+      "specifiedBy": [
+        "SA-FIRSTMATCH_PROPERTY-AGENT-ROLES-VALID"
+      ],
+      "text": "Effect of DERIVE-SPATIAL-AGENT-ROLES: agent roles valid.",
+      "type": "Effect"
+    },
+    {
+      "effect": [
+        "EFF-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES-01"
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES",
+      "name": "Derive Spatial Agent Roles",
+      "precondition": [],
+      "text": "Derive agent roles grounded in semantic zones and objects.",
+      "type": "Capability"
+    },
+    {
+      "id": "EFF-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE-01",
+      "specifiedBy": [
+        "SA-FIRSTMATCH_PROPERTY-KNOWLEDGE-VALID"
+      ],
+      "text": "Effect of GENERATE-ROOM-KNOWLEDGE: knowledge valid.",
+      "type": "Effect"
+    },
+    {
+      "effect": [
+        "EFF-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE-01"
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE",
+      "name": "Generate Room Knowledge",
+      "precondition": [],
+      "text": "Generate local knowledge entries for all agent knowledge tags.",
+      "type": "Capability"
+    },
+    {
+      "id": "EFF-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE-01",
+      "specifiedBy": [
+        "SA-FIRSTMATCH_PROPERTY-PLACEMENT-VALID"
+      ],
+      "text": "Effect of PLACE-AGENTS-IN-SCENE: placement valid.",
+      "type": "Effect"
+    },
+    {
+      "effect": [
+        "EFF-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE-01"
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE",
+      "name": "Place Agents In Scene",
+      "precondition": [],
+      "text": "Place agents in valid positions near their responsible zones.",
+      "type": "Capability"
+    },
+    {
+      "id": "EFF-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL-01",
+      "specifiedBy": [
+        "SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID"
+      ],
+      "text": "Effect of ASSEMBLE-FUNCTIONAL-RDL: roomcontract valid.",
+      "type": "Effect"
+    },
+    {
+      "effect": [
+        "EFF-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL-01"
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL",
+      "name": "Assemble Functional Rdl",
+      "precondition": [],
+      "text": "Assemble a valid RoomContract instance for the case study.",
+      "type": "Capability"
+    },
+    {
+      "id": "EFF-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT-01",
+      "specifiedBy": [
+        "SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED"
+      ],
+      "text": "Effect of MATERIALIZE-INTERACTIVE-AGENTS-PROJECT: project materialized.",
+      "type": "Effect"
+    },
+    {
+      "effect": [
+        "EFF-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT-01"
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "name": "Materialize Interactive Agents Project",
+      "precondition": [],
+      "text": "Write backend-compatible Interactive Agents project files.",
+      "type": "Capability"
+    },
+    {
+      "id": "EFF-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION-01",
+      "specifiedBy": [
+        "SA-FIRSTMATCH_PROPERTY-SETUP-VALID"
+      ],
+      "text": "Effect of SETUP-INTERACTIVE-SESSION: setup valid.",
+      "type": "Effect"
+    },
+    {
+      "effect": [
+        "EFF-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION-01"
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION",
+      "name": "Setup Interactive Session",
+      "precondition": [],
+      "text": "Initialize the runtime session for the generated project.",
+      "type": "Capability"
+    },
+    {
+      "id": "EFF-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION-01",
+      "specifiedBy": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+      ],
+      "text": "Effect of ANSWER-ROOM-GROUNDED-QUESTION: answer grounded.",
+      "type": "Effect"
+    },
+    {
+      "effect": [
+        "EFF-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION-01"
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+      "name": "Answer Room Grounded Question",
+      "precondition": [],
+      "text": "Answer visitor questions using room-grounded agent knowledge.",
+      "type": "Capability"
+    },
+    {
+      "id": "EFF-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT-01",
+      "specifiedBy": [
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "text": "Effect of HANDOFF-TO-RESPONSIBLE-AGENT: handoff valid.",
+      "type": "Effect"
+    },
+    {
+      "effect": [
+        "EFF-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT-01"
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "name": "Handoff To Responsible Agent",
+      "precondition": [],
+      "text": "Forward a question to an existing responsible specialist agent.",
+      "type": "Capability"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION",
+      "kind": "tool",
+      "type": "RuntimeActionLocator",
+      "value": "tools.case_study_pipeline.rdl_ingestion.run_ingestion_for_case"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE\",\"CU-FIRSTMATCH_PROPERTY-S03-ANALYZE-RDL-SCENE\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"},\"title\":\"Interactive Agents runtime request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE\",\"CU-FIRSTMATCH_PROPERTY-S03-ANALYZE-RDL-SCENE\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"},\"title\":\"Interactive Agents runtime response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS",
+      "kind": "tool",
+      "type": "RuntimeActionLocator",
+      "value": "tools.case_study_pipeline.scene_semantics.run_scene_semantics_for_case"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE\",\"CU-FIRSTMATCH_PROPERTY-S03-ANALYZE-RDL-SCENE\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"},\"title\":\"Interactive Agents runtime request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE\",\"CU-FIRSTMATCH_PROPERTY-S03-ANALYZE-RDL-SCENE\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"},\"title\":\"Interactive Agents runtime response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE",
+      "kind": "endpoint",
+      "type": "RuntimeActionLocator",
+      "value": "POST /projects/arrow/analyze"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE\",\"CU-FIRSTMATCH_PROPERTY-S03-ANALYZE-RDL-SCENE\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"},\"title\":\"Interactive Agents runtime request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE\",\"CU-FIRSTMATCH_PROPERTY-S03-ANALYZE-RDL-SCENE\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE\"},\"title\":\"Interactive Agents runtime response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "capability": [
+        "CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE"
+      ],
+      "id": "RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE",
+      "runtimeAction": [
+        "RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION",
+        "RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS",
+        "RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE"
+      ],
+      "targetPlatform": "CaseStudyPipeline",
+      "type": "RuntimeBinding"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES",
+      "kind": "tool",
+      "type": "RuntimeActionLocator",
+      "value": "tools.case_study_pipeline.agent_roles.run_agent_roles_for_case"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S04-DERIVE-SPATIAL-AGENT-ROLES\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES\"},\"title\":\"Interactive Agents runtime request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S04-DERIVE-SPATIAL-AGENT-ROLES\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES\"},\"title\":\"Interactive Agents runtime response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "capability": [
+        "CAP-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES"
+      ],
+      "id": "RB-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES",
+      "runtimeAction": [
+        "RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES"
+      ],
+      "targetPlatform": "CaseStudyPipeline",
+      "type": "RuntimeBinding"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS",
+      "kind": "tool",
+      "type": "RuntimeActionLocator",
+      "value": "tools.case_study_pipeline.knowledge_synthesis.run_knowledge_synthesis_for_case"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S05-GENERATE-ROOM-KNOWLEDGE\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE\"},\"title\":\"Interactive Agents runtime request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S05-GENERATE-ROOM-KNOWLEDGE\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE\"},\"title\":\"Interactive Agents runtime response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "capability": [
+        "CAP-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE"
+      ],
+      "id": "RB-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE",
+      "runtimeAction": [
+        "RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS"
+      ],
+      "targetPlatform": "CaseStudyPipeline",
+      "type": "RuntimeBinding"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT",
+      "kind": "tool",
+      "type": "RuntimeActionLocator",
+      "value": "tools.case_study_pipeline.agent_placement.run_agent_placement_for_case"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S06-PLACE-AGENTS-IN-SCENE\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE\"},\"title\":\"Interactive Agents runtime request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S06-PLACE-AGENTS-IN-SCENE\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE\"},\"title\":\"Interactive Agents runtime response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "capability": [
+        "CAP-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE"
+      ],
+      "id": "RB-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE",
+      "runtimeAction": [
+        "RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT"
+      ],
+      "targetPlatform": "CaseStudyPipeline",
+      "type": "RuntimeBinding"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER",
+      "kind": "tool",
+      "type": "RuntimeActionLocator",
+      "value": "tools.case_study_pipeline.roomcontract_assembler.run_roomcontract_assembly_for_case"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S07-ASSEMBLE-FUNCTIONAL-RDL\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL\"},\"title\":\"Interactive Agents runtime request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S07-ASSEMBLE-FUNCTIONAL-RDL\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL\"},\"title\":\"Interactive Agents runtime response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "capability": [
+        "CAP-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL"
+      ],
+      "id": "RB-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL",
+      "runtimeAction": [
+        "RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER"
+      ],
+      "targetPlatform": "CaseStudyPipeline",
+      "type": "RuntimeBinding"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT",
+      "kind": "endpoint",
+      "type": "RuntimeActionLocator",
+      "value": "POST /projects/arrow/commit"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"},\"title\":\"Interactive Agents runtime request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"},\"title\":\"Interactive Agents runtime response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES",
+      "kind": "tool",
+      "type": "RuntimeActionLocator",
+      "value": "tools.case_study_pipeline.project_materializer.run_project_materializer_for_case"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"},\"title\":\"Interactive Agents runtime request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:runtime:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"runtime\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT\"},\"title\":\"Interactive Agents runtime response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "capability": [
+        "CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+      ],
+      "id": "RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "runtimeAction": [
+        "RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT",
+        "RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES"
+      ],
+      "targetPlatform": "agent_backendBackend",
+      "type": "RuntimeBinding"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP",
+      "kind": "endpoint",
+      "type": "RuntimeActionLocator",
+      "value": "POST /setup"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:setup:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"setup\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S09-SETUP-INTERACTIVE-SESSION\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION\"},\"title\":\"Interactive Agents setup request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:setup:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"applicationActionKind\":\"setup\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-S09-SETUP-INTERACTIVE-SESSION\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION\"},\"title\":\"Interactive Agents setup response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "capability": [
+        "CAP-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION"
+      ],
+      "id": "RB-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION",
+      "runtimeAction": [
+        "RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP"
+      ],
+      "targetPlatform": "agent_backendBackend",
+      "type": "RuntimeBinding"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT",
+      "kind": "endpoint",
+      "type": "RuntimeActionLocator",
+      "value": "POST /chat"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:chat:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"allOf\":[{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"required\":[\"spatial_context\"]}},{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"non_deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"not\":{\"required\":[\"spatial_context\"]}}}],\"applicationActionKind\":\"chat\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-A0-S11-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-FIRSTMATCH_PROPERTY-A1-S11-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER-ROOM-GROUNDED-QUESTION\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION\"},\"properties\":{\"active_agent_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"interaction_mode\":{\"enum\":[\"deictic\",\"non_deictic\"],\"type\":\"string\"},\"session_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"spatial_context\":{\"additionalProperties\":false,\"anyOf\":[{\"required\":[\"entity_id\"]},{\"required\":[\"source_object_id\"]},{\"required\":[\"source_id\"]}],\"properties\":{\"ambiguity\":{\"oneOf\":[{\"type\":\"boolean\"},{\"additionalProperties\":true,\"maxProperties\":8,\"type\":\"object\"}]},\"ambiguity_reason\":{\"maxLength\":512,\"type\":\"string\"},\"ambiguous\":{\"type\":\"boolean\"},\"candidate_entity_ids\":{\"items\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"maxItems\":16,\"type\":\"array\",\"uniqueItems\":true},\"distance_m\":{\"maximum\":1000000,\"minimum\":0,\"type\":\"number\"},\"entity_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"hit_position\":{\"additionalProperties\":false,\"properties\":{\"x\":{\"maximum\":1000000,\"minimum\":-1000000,\"type\":\"number\"},\"y\":{\"maximum\":1000000,\"minimum\":-1000000,\"type\":\"number\"},\"z\":{\"maximum\":1000000,\"minimum\":-1000000,\"type\":\"number\"}},\"required\":[\"x\",\"y\",\"z\"],\"type\":\"object\"},\"modality\":{\"enum\":[\"desktop_ray\",\"mouse_ray\",\"keyboard_mouse\",\"xr_controller_ray\",\"controller_ray\",\"gaze\",\"touch\",\"direct\",\"programmatic\"],\"type\":\"string\"},\"model_sha256\":{\"pattern\":\"^[0-9A-Fa-f]{64}$\",\"type\":\"string\"},\"object_group_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"selection_modality\":{\"enum\":[\"desktop_ray\",\"mouse_ray\",\"keyboard_mouse\",\"xr_controller_ray\",\"controller_ray\",\"gaze\",\"touch\",\"direct\",\"programmatic\"],\"type\":\"string\"},\"source_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"source_object_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"state\":{\"const\":\"resolved\"},\"zone_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"model_sha256\",\"state\",\"hit_position\",\"distance_m\",\"selection_modality\"],\"type\":\"object\"},\"user_text\":{\"maxLength\":32768,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"session_id\",\"active_agent_id\",\"user_text\",\"interaction_mode\"],\"title\":\"Interactive Agents chat request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:chat:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"allOf\":[{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"required\":[\"grounded_entity_ids\",\"grounding_evidence\",\"routing_reason\",\"grounding\",\"routing\"]}},{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"non_deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"not\":{\"anyOf\":[{\"required\":[\"grounded_entity_ids\"]},{\"required\":[\"grounding_evidence\"]},{\"required\":[\"routing_reason\"]},{\"required\":[\"grounding\"]},{\"required\":[\"routing\"]}]}}}],\"applicationActionKind\":\"chat\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-A0-S11-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-FIRSTMATCH_PROPERTY-A1-S11-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER-ROOM-GROUNDED-QUESTION\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION\"},\"properties\":{\"active_agent_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"events\":{\"type\":\"array\"},\"grounded_entity_ids\":{\"items\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"maxItems\":64,\"minItems\":1,\"type\":\"array\",\"uniqueItems\":true},\"grounding\":{\"type\":\"object\"},\"grounding_evidence\":{\"items\":{\"type\":\"object\"},\"maxItems\":128,\"minItems\":1,\"type\":\"array\"},\"handoff\":{\"type\":[\"object\",\"null\"]},\"interaction_mode\":{\"enum\":[\"deictic\",\"non_deictic\"],\"type\":\"string\"},\"memory_mode\":{\"type\":\"string\"},\"model_binding\":{\"additionalProperties\":false,\"properties\":{\"capability_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"capability_use_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"runtime_action_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"runtime_binding_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"runtime_binding_id\",\"runtime_action_id\",\"capability_id\",\"capability_use_id\"],\"type\":\"object\"},\"routing\":{\"type\":\"object\"},\"routing_reason\":{\"maxLength\":2048,\"minLength\":1,\"type\":\"string\"},\"session_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"session_id\",\"active_agent_id\",\"memory_mode\",\"handoff\",\"events\",\"interaction_mode\",\"model_binding\"],\"title\":\"Interactive Agents chat response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "capability": [
+        "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "id": "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+      "runtimeAction": [
+        "RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT"
+      ],
+      "targetPlatform": "agent_backendBackend",
+      "type": "RuntimeBinding"
+    },
+    {
+      "id": "LOC-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF",
+      "kind": "endpoint",
+      "type": "RuntimeActionLocator",
+      "value": "POST /chat"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF-INPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:handoff:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"allOf\":[{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"required\":[\"spatial_context\"]}},{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"non_deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"not\":{\"required\":[\"spatial_context\"]}}}],\"applicationActionKind\":\"handoff\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-A0-S12-HANDOFF-TO-RESPONSIBLE-AGENT\",\"CU-FIRSTMATCH_PROPERTY-A1-S12-HANDOFF-TO-RESPONSIBLE-AGENT\",\"CU-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF-TO-RESPONSIBLE-AGENT\",\"CU-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF-TO-RESPONSIBLE-AGENT\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT\"},\"properties\":{\"active_agent_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"interaction_mode\":{\"enum\":[\"deictic\",\"non_deictic\"],\"type\":\"string\"},\"session_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"spatial_context\":{\"additionalProperties\":false,\"anyOf\":[{\"required\":[\"entity_id\"]},{\"required\":[\"source_object_id\"]},{\"required\":[\"source_id\"]}],\"properties\":{\"ambiguity\":{\"oneOf\":[{\"type\":\"boolean\"},{\"additionalProperties\":true,\"maxProperties\":8,\"type\":\"object\"}]},\"ambiguity_reason\":{\"maxLength\":512,\"type\":\"string\"},\"ambiguous\":{\"type\":\"boolean\"},\"candidate_entity_ids\":{\"items\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"maxItems\":16,\"type\":\"array\",\"uniqueItems\":true},\"distance_m\":{\"maximum\":1000000,\"minimum\":0,\"type\":\"number\"},\"entity_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"hit_position\":{\"additionalProperties\":false,\"properties\":{\"x\":{\"maximum\":1000000,\"minimum\":-1000000,\"type\":\"number\"},\"y\":{\"maximum\":1000000,\"minimum\":-1000000,\"type\":\"number\"},\"z\":{\"maximum\":1000000,\"minimum\":-1000000,\"type\":\"number\"}},\"required\":[\"x\",\"y\",\"z\"],\"type\":\"object\"},\"modality\":{\"enum\":[\"desktop_ray\",\"mouse_ray\",\"keyboard_mouse\",\"xr_controller_ray\",\"controller_ray\",\"gaze\",\"touch\",\"direct\",\"programmatic\"],\"type\":\"string\"},\"model_sha256\":{\"pattern\":\"^[0-9A-Fa-f]{64}$\",\"type\":\"string\"},\"object_group_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"selection_modality\":{\"enum\":[\"desktop_ray\",\"mouse_ray\",\"keyboard_mouse\",\"xr_controller_ray\",\"controller_ray\",\"gaze\",\"touch\",\"direct\",\"programmatic\"],\"type\":\"string\"},\"source_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"source_object_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"state\":{\"const\":\"resolved\"},\"zone_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"model_sha256\",\"state\",\"hit_position\",\"distance_m\",\"selection_modality\"],\"type\":\"object\"},\"user_text\":{\"maxLength\":32768,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"session_id\",\"active_agent_id\",\"user_text\",\"interaction_mode\"],\"title\":\"Interactive Agents handoff request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF-OUTPUT",
+      "text": "{\"$id\":\"urn:roomcontract:wire:handoff:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"allOf\":[{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"required\":[\"grounded_entity_ids\",\"grounding_evidence\",\"routing_reason\",\"grounding\",\"routing\"]}},{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"non_deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"not\":{\"anyOf\":[{\"required\":[\"grounded_entity_ids\"]},{\"required\":[\"grounding_evidence\"]},{\"required\":[\"routing_reason\"]},{\"required\":[\"grounding\"]},{\"required\":[\"routing\"]}]}}}],\"applicationActionKind\":\"handoff\",\"modelBinding\":{\"capabilityIds\":[\"CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT\"],\"capabilityUseIds\":[\"CU-FIRSTMATCH_PROPERTY-A0-S12-HANDOFF-TO-RESPONSIBLE-AGENT\",\"CU-FIRSTMATCH_PROPERTY-A1-S12-HANDOFF-TO-RESPONSIBLE-AGENT\",\"CU-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF-TO-RESPONSIBLE-AGENT\",\"CU-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF-TO-RESPONSIBLE-AGENT\"],\"runtimeActionId\":\"RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF\",\"runtimeBindingId\":\"RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT\"},\"properties\":{\"active_agent_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"events\":{\"type\":\"array\"},\"grounded_entity_ids\":{\"items\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"maxItems\":64,\"minItems\":1,\"type\":\"array\",\"uniqueItems\":true},\"grounding\":{\"type\":\"object\"},\"grounding_evidence\":{\"items\":{\"type\":\"object\"},\"maxItems\":128,\"minItems\":1,\"type\":\"array\"},\"handoff\":{\"type\":[\"object\",\"null\"]},\"interaction_mode\":{\"enum\":[\"deictic\",\"non_deictic\"],\"type\":\"string\"},\"memory_mode\":{\"type\":\"string\"},\"model_binding\":{\"additionalProperties\":false,\"properties\":{\"capability_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"capability_use_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"runtime_action_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"runtime_binding_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"runtime_binding_id\",\"runtime_action_id\",\"capability_id\",\"capability_use_id\"],\"type\":\"object\"},\"routing\":{\"type\":\"object\"},\"routing_reason\":{\"maxLength\":2048,\"minLength\":1,\"type\":\"string\"},\"session_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"session_id\",\"active_agent_id\",\"memory_mode\",\"handoff\",\"events\",\"interaction_mode\",\"model_binding\"],\"title\":\"Interactive Agents handoff response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+      "type": "SchemaReference",
+      "uri": "json"
+    },
+    {
+      "id": "RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF",
+      "inputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF-INPUT"
+      ],
+      "locator": [
+        "LOC-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF"
+      ],
+      "outputSchema": [
+        "SCHEMA-RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF-OUTPUT"
+      ],
+      "runtimeParameter": [],
+      "type": "RuntimeAction"
+    },
+    {
+      "capability": [
+        "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "id": "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "runtimeAction": [
+        "RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF"
+      ],
+      "targetPlatform": "agent_backendBackend",
+      "type": "RuntimeBinding"
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S01-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [
+        "ACT-CASE-STUDY-ENGINEER"
+      ],
+      "capabilityUse": [],
+      "guard": [
+        "COND-FIRSTMATCH_PROPERTY-VALID-INPUT"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S01",
+      "kind": "actorIntent",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S01-OCCURRENCE"
+      ],
+      "performedBy": [],
+      "resultingAssertion": [],
+      "text": "Provide an RDL file as case-study input.",
+      "triggeredBy": [
+        "EV-FIRSTMATCH_PROPERTY-RDL-PROVIDED"
+      ],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE",
+      "parameter": [],
+      "provider": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "target": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S02-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S02",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S02-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID"
+      ],
+      "text": "Load and normalize the RDL scene.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-S03-ANALYZE-RDL-SCENE",
+      "parameter": [],
+      "provider": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "target": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S03-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-S03-ANALYZE-RDL-SCENE"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S03",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S03-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-SCENE-SEMANTICS-VALID"
+      ],
+      "text": "Derive semantic zones, visitor goals and interaction topics.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-S04-DERIVE-SPATIAL-AGENT-ROLES",
+      "parameter": [],
+      "provider": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "target": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S04-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-S04-DERIVE-SPATIAL-AGENT-ROLES"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S04",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S04-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-AGENT-ROLES-VALID"
+      ],
+      "text": "Generate spatially grounded agent roles and handoff rules.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-S05-GENERATE-ROOM-KNOWLEDGE",
+      "parameter": [],
+      "provider": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "target": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S05-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-S05-GENERATE-ROOM-KNOWLEDGE"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S05",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S05-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-KNOWLEDGE-VALID"
+      ],
+      "text": "Generate materialized knowledge entries for all agent knowledge tags.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-S06-PLACE-AGENTS-IN-SCENE",
+      "parameter": [],
+      "provider": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "target": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S06-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-S06-PLACE-AGENTS-IN-SCENE"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S06",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S06-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-PLACEMENT-VALID"
+      ],
+      "text": "Place generated agents inside the room near their responsibilities.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-S07-ASSEMBLE-FUNCTIONAL-RDL",
+      "parameter": [],
+      "provider": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "target": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S07-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-S07-ASSEMBLE-FUNCTIONAL-RDL"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S07",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S07-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID"
+      ],
+      "text": "Assemble and validate the RoomContract trace instance.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "parameter": [],
+      "provider": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "target": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S08-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S08",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S08-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED"
+      ],
+      "text": "Materialize the Interactive Agents project files.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-S09-SETUP-INTERACTIVE-SESSION",
+      "parameter": [],
+      "provider": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "target": [
+        "ENT-STATE-FIRSTMATCH_PROPERTY"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S09-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-S09-SETUP-INTERACTIVE-SESSION"
+      ],
+      "guard": [
+        "COND-FIRSTMATCH_PROPERTY-AGENTS-AVAILABLE"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S09",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S09-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-FIRSTMATCH_PROPERTY-RUNTIME-ORCHESTRATOR"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-SETUP-VALID"
+      ],
+      "text": "Set up an Interactive Agents runtime session.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S10-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [
+        "ACT-VISITOR"
+      ],
+      "capabilityUse": [],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S10",
+      "kind": "actorIntent",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S10-OCCURRENCE"
+      ],
+      "performedBy": [],
+      "resultingAssertion": [],
+      "text": "Ask a general room-related question to an agent.",
+      "triggeredBy": [
+        "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION"
+      ],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-A0-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameter": [],
+      "provider": [
+        "ENT-AGENT-A0"
+      ],
+      "target": [],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ]
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-A1-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameter": [],
+      "provider": [
+        "ENT-AGENT-A1"
+      ],
+      "target": [],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S11-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-A0-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CU-FIRSTMATCH_PROPERTY-A1-S11-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S11",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S11-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-AGENT-A0",
+        "ENT-AGENT-A1"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+      ],
+      "text": "Answer a general visitor question without a selected scene object.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-A0-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameter": [],
+      "provider": [
+        "ENT-AGENT-A0"
+      ],
+      "target": [],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ]
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-A1-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameter": [],
+      "provider": [
+        "ENT-AGENT-A1"
+      ],
+      "target": [],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-S12-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-A0-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+        "CU-FIRSTMATCH_PROPERTY-A1-S12-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "guard": [
+        "COND-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-AVAILABLE"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-S12",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-S12-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-AGENT-A0",
+        "ENT-AGENT-A1"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "text": "Optionally hand off a general question to a responsible specialist agent.",
+      "triggeredBy": [
+        "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+      ],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-01-02",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S01"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S01"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S02"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S02"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-02-03",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S02"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S02"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S03"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S03"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-03-04",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S03"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S03"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S04"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S04"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-04-05",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S04"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S04"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S05"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S05"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-05-06",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S05"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S05"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S06"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S06"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-06-07",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S06"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S06"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S07"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S07"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-07-08",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S07"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S07"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S08"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S08"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-08-09",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S08"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S08"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S09"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S09"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-09-10",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S09"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S09"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S10"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S10"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-10-11",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S10"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S10"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S11"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S11"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-11-12",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-S11"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S11"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-S12"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-S12"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "SC-FIRSTMATCH_PROPERTY-MAIN",
+      "kind": "main",
+      "parallelGroup": [],
+      "postcondition": [
+        "SA-FIRSTMATCH_PROPERTY-SETUP-VALID"
+      ],
+      "precondition": [
+        "COND-FIRSTMATCH_PROPERTY-VALID-INPUT"
+      ],
+      "step": [
+        "STEP-FIRSTMATCH_PROPERTY-S01",
+        "STEP-FIRSTMATCH_PROPERTY-S02",
+        "STEP-FIRSTMATCH_PROPERTY-S03",
+        "STEP-FIRSTMATCH_PROPERTY-S04",
+        "STEP-FIRSTMATCH_PROPERTY-S05",
+        "STEP-FIRSTMATCH_PROPERTY-S06",
+        "STEP-FIRSTMATCH_PROPERTY-S07",
+        "STEP-FIRSTMATCH_PROPERTY-S08",
+        "STEP-FIRSTMATCH_PROPERTY-S09",
+        "STEP-FIRSTMATCH_PROPERTY-S10",
+        "STEP-FIRSTMATCH_PROPERTY-S11",
+        "STEP-FIRSTMATCH_PROPERTY-S12"
+      ],
+      "stepRelation": [
+        "REL-FIRSTMATCH_PROPERTY-01-02",
+        "REL-FIRSTMATCH_PROPERTY-02-03",
+        "REL-FIRSTMATCH_PROPERTY-03-04",
+        "REL-FIRSTMATCH_PROPERTY-04-05",
+        "REL-FIRSTMATCH_PROPERTY-05-06",
+        "REL-FIRSTMATCH_PROPERTY-06-07",
+        "REL-FIRSTMATCH_PROPERTY-07-08",
+        "REL-FIRSTMATCH_PROPERTY-08-09",
+        "REL-FIRSTMATCH_PROPERTY-09-10",
+        "REL-FIRSTMATCH_PROPERTY-10-11",
+        "REL-FIRSTMATCH_PROPERTY-11-12"
+      ],
+      "text": "Authoring pipeline for generating and validating a spatially grounded multi-agent room guide.",
+      "type": "Scenario"
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ASK-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [
+        "ACT-VISITOR"
+      ],
+      "capabilityUse": [],
+      "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ASK",
+      "kind": "actorIntent",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ASK-OCCURRENCE"
+      ],
+      "performedBy": [],
+      "resultingAssertion": [],
+      "text": "Select educational_display (o0) and ask for a description.",
+      "triggeredBy": [
+        "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION"
+      ],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "PARAM-CU-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER-ROOM-GROUNDED-QUESTION-MODEL-GROUNDED-TARGET",
+      "key": "modelGroundedTarget",
+      "type": "KeyValueParameter"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameter": [
+        "PARAM-CU-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER-ROOM-GROUNDED-QUESTION-MODEL-GROUNDED-TARGET"
+      ],
+      "provider": [
+        "ENT-AGENT-A0"
+      ],
+      "target": [
+        "ENT-ASSET-O0",
+        "ENT-GROUP-GROUP_A",
+        "ENT-ZONE-ZONE_A"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-AGENT-A0"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+      ],
+      "text": "a0 describes educational_display using knowledge grounded in source object o0.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "PARAM-CU-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF-TO-RESPONSIBLE-AGENT-MODEL-GROUNDED-TARGET",
+      "key": "modelGroundedTarget",
+      "type": "KeyValueParameter"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameter": [
+        "PARAM-CU-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF-TO-RESPONSIBLE-AGENT-MODEL-GROUNDED-TARGET"
+      ],
+      "provider": [
+        "ENT-AGENT-A0"
+      ],
+      "target": [
+        "ENT-ASSET-O0",
+        "ENT-GROUP-GROUP_A",
+        "ENT-ZONE-ZONE_A"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "guard": [
+        "COND-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-AVAILABLE"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-AGENT-A0"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "text": "Constrain any follow-up handoff about educational_display to the modeled responsibility of a0.",
+      "triggeredBy": [
+        "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+      ],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-INTERACT-O0-01",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ASK"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ASK"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-INTERACT-O0-02",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "SC-FIRSTMATCH_PROPERTY-INTERACT-O0-MAIN",
+      "kind": "main",
+      "parallelGroup": [],
+      "postcondition": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "precondition": [
+        "COND-FIRSTMATCH_PROPERTY-AGENTS-AVAILABLE"
+      ],
+      "step": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ASK",
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER",
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF"
+      ],
+      "stepRelation": [
+        "REL-FIRSTMATCH_PROPERTY-INTERACT-O0-01",
+        "REL-FIRSTMATCH_PROPERTY-INTERACT-O0-02"
+      ],
+      "text": "Visitor asks about source object o0; the model binds the interaction to a0 and its asset, group, and zone context.",
+      "type": "Scenario"
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ASK-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [
+        "ACT-VISITOR"
+      ],
+      "capabilityUse": [],
+      "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ASK",
+      "kind": "actorIntent",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ASK-OCCURRENCE"
+      ],
+      "performedBy": [],
+      "resultingAssertion": [],
+      "text": "Select educational_display (o1) and ask for a description.",
+      "triggeredBy": [
+        "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION"
+      ],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "PARAM-CU-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER-ROOM-GROUNDED-QUESTION-MODEL-GROUNDED-TARGET",
+      "key": "modelGroundedTarget",
+      "type": "KeyValueParameter"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameter": [
+        "PARAM-CU-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER-ROOM-GROUNDED-QUESTION-MODEL-GROUNDED-TARGET"
+      ],
+      "provider": [
+        "ENT-AGENT-A1"
+      ],
+      "target": [
+        "ENT-ASSET-O1",
+        "ENT-GROUP-GROUP_A",
+        "ENT-ZONE-ZONE_A"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-AGENT-A1"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+      ],
+      "text": "a1 describes educational_display using knowledge grounded in source object o1.",
+      "triggeredBy": [],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "PARAM-CU-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF-TO-RESPONSIBLE-AGENT-MODEL-GROUNDED-TARGET",
+      "key": "modelGroundedTarget",
+      "type": "KeyValueParameter"
+    },
+    {
+      "id": "CU-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameter": [
+        "PARAM-CU-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF-TO-RESPONSIBLE-AGENT-MODEL-GROUNDED-TARGET"
+      ],
+      "provider": [
+        "ENT-AGENT-A1"
+      ],
+      "target": [
+        "ENT-ASSET-O1",
+        "ENT-GROUP-GROUP_A",
+        "ENT-ZONE-ZONE_A"
+      ],
+      "type": "CapabilityUse",
+      "typeRef": [
+        "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ]
+    },
+    {
+      "id": "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF-OCCURRENCE",
+      "type": "ProbabilityValue",
+      "value": 1.0
+    },
+    {
+      "actorRole": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "capabilityUse": [
+        "CU-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "guard": [
+        "COND-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-AVAILABLE"
+      ],
+      "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF",
+      "kind": "systemResponse",
+      "occurrenceProbability": [
+        "PV-STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF-OCCURRENCE"
+      ],
+      "performedBy": [
+        "ENT-AGENT-A1"
+      ],
+      "resultingAssertion": [
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "text": "Constrain any follow-up handoff about educational_display to the modeled responsibility of a1.",
+      "triggeredBy": [
+        "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+      ],
+      "type": "ScenarioStep"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-INTERACT-O1-01",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ASK"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ASK"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "REL-FIRSTMATCH_PROPERTY-INTERACT-O1-02",
+      "kind": "sequence",
+      "source": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER"
+      ],
+      "sourceStep": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER"
+      ],
+      "target": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF"
+      ],
+      "targetStep": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF"
+      ],
+      "type": "StepRelation"
+    },
+    {
+      "id": "SC-FIRSTMATCH_PROPERTY-INTERACT-O1-MAIN",
+      "kind": "main",
+      "parallelGroup": [],
+      "postcondition": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "precondition": [
+        "COND-FIRSTMATCH_PROPERTY-AGENTS-AVAILABLE"
+      ],
+      "step": [
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ASK",
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER",
+        "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF"
+      ],
+      "stepRelation": [
+        "REL-FIRSTMATCH_PROPERTY-INTERACT-O1-01",
+        "REL-FIRSTMATCH_PROPERTY-INTERACT-O1-02"
+      ],
+      "text": "Visitor asks about source object o1; the model binds the interaction to a1 and its asset, group, and zone context.",
+      "type": "Scenario"
+    },
+    {
+      "id": "EXPR-AST-FIRSTMATCH_PROPERTY-DERIVED-EVENT",
+      "mixedStringContent": "The projected runtime trigger is observable.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-AST-FIRSTMATCH_PROPERTY-DERIVED-EVENT"
+      ],
+      "expressionText": "The projected runtime trigger is observable.",
+      "id": "AST-FIRSTMATCH_PROPERTY-DERIVED-EVENT",
+      "severity": "warning",
+      "subject": [
+        "EV-FIRSTMATCH_PROPERTY-RDL-PROVIDED"
+      ],
+      "type": "EventAssertion"
+    },
+    {
+      "id": "EXPR-AST-FIRSTMATCH_PROPERTY-DERIVED-OUTPUT",
+      "mixedStringContent": "The bound runtime action produces an observable output.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-AST-FIRSTMATCH_PROPERTY-DERIVED-OUTPUT"
+      ],
+      "expressionText": "The bound runtime action produces an observable output.",
+      "id": "AST-FIRSTMATCH_PROPERTY-DERIVED-OUTPUT",
+      "severity": "error",
+      "subject": [
+        "RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION"
+      ],
+      "type": "OutputAssertion"
+    },
+    {
+      "id": "EXPR-AST-FIRSTMATCH_PROPERTY-DERIVED-GROUNDING",
+      "mixedStringContent": "The runtime participant remains grounded in an identifiable model entity.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-AST-FIRSTMATCH_PROPERTY-DERIVED-GROUNDING"
+      ],
+      "expressionText": "The runtime participant remains grounded in an identifiable model entity.",
+      "id": "AST-FIRSTMATCH_PROPERTY-DERIVED-GROUNDING",
+      "severity": "warning",
+      "subject": [
+        "ENT-ZONE-ZONE_A"
+      ],
+      "type": "GroundingAssertion"
+    },
+    {
+      "id": "EXPR-AST-FIRSTMATCH_PROPERTY-DERIVED-RELATION",
+      "mixedStringContent": "The capability occurrence is linked to its explicit provider and targets.",
+      "type": "EAExpression"
+    },
+    {
+      "expression": [
+        "EXPR-AST-FIRSTMATCH_PROPERTY-DERIVED-RELATION"
+      ],
+      "expressionText": "The capability occurrence is linked to its explicit provider and targets.",
+      "id": "AST-FIRSTMATCH_PROPERTY-DERIVED-RELATION",
+      "severity": "critical",
+      "subject": [
+        "CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE"
+      ],
+      "type": "RelationAssertion"
+    },
+    {
+      "actor": [
+        "ACT-CASE-STUDY-ENGINEER"
+      ],
+      "id": "UC-FIRSTMATCH_PROPERTY-01-ACTOR-1",
+      "type": "ActorParticipation",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ]
+    },
+    {
+      "actor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "id": "UC-FIRSTMATCH_PROPERTY-01-ACTOR-2",
+      "type": "ActorParticipation",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ]
+    },
+    {
+      "id": "UC-FIRSTMATCH_PROPERTY-01-SPEC-SC-FIRSTMATCH_PROPERTY-MAIN",
+      "scenario": [
+        "SC-FIRSTMATCH_PROPERTY-MAIN"
+      ],
+      "type": "UseCaseScenarioSpecification",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ]
+    },
+    {
+      "actor": [
+        "ACT-VISITOR"
+      ],
+      "id": "UC-FIRSTMATCH_PROPERTY-INTERACT-O0-ACTOR-1",
+      "type": "ActorParticipation",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0"
+      ]
+    },
+    {
+      "actor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "id": "UC-FIRSTMATCH_PROPERTY-INTERACT-O0-ACTOR-2",
+      "type": "ActorParticipation",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0"
+      ]
+    },
+    {
+      "id": "UC-FIRSTMATCH_PROPERTY-INTERACT-O0-SPEC-SC-FIRSTMATCH_PROPERTY-INTERACT-O0-MAIN",
+      "scenario": [
+        "SC-FIRSTMATCH_PROPERTY-INTERACT-O0-MAIN"
+      ],
+      "type": "UseCaseScenarioSpecification",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0"
+      ]
+    },
+    {
+      "actor": [
+        "ACT-VISITOR"
+      ],
+      "id": "UC-FIRSTMATCH_PROPERTY-INTERACT-O1-ACTOR-1",
+      "type": "ActorParticipation",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ]
+    },
+    {
+      "actor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "id": "UC-FIRSTMATCH_PROPERTY-INTERACT-O1-ACTOR-2",
+      "type": "ActorParticipation",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ]
+    },
+    {
+      "id": "UC-FIRSTMATCH_PROPERTY-INTERACT-O1-SPEC-SC-FIRSTMATCH_PROPERTY-INTERACT-O1-MAIN",
+      "scenario": [
+        "SC-FIRSTMATCH_PROPERTY-INTERACT-O1-MAIN"
+      ],
+      "type": "UseCaseScenarioSpecification",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ]
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-001",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-001"
+      ],
+      "satisfiedUseCase": [],
+      "type": "Satisfy"
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-002",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-002"
+      ],
+      "satisfiedUseCase": [],
+      "type": "Satisfy"
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-003",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-003"
+      ],
+      "satisfiedUseCase": [],
+      "type": "Satisfy"
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-004",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-004"
+      ],
+      "satisfiedUseCase": [],
+      "type": "Satisfy"
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-005",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-005"
+      ],
+      "satisfiedUseCase": [],
+      "type": "Satisfy"
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-006",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "satisfiedUseCase": [],
+      "type": "Satisfy"
+    },
+    {
+      "element": [
+        "RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE"
+      ],
+      "environmentRef": "case:firstmatch_property",
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-TARGET-1",
+      "platform": "CaseStudyPipeline",
+      "runtimeBinding": [
+        "RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE"
+      ],
+      "type": "RuntimeValidationTarget"
+    },
+    {
+      "element": [
+        "RB-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL"
+      ],
+      "environmentRef": "case:firstmatch_property",
+      "id": "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-TARGET-1",
+      "platform": "CaseStudyPipeline",
+      "runtimeBinding": [
+        "RB-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL"
+      ],
+      "type": "RuntimeValidationTarget"
+    },
+    {
+      "element": [
+        "RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+      ],
+      "environmentRef": "case:firstmatch_property",
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-TARGET-1",
+      "platform": "agent_backendBackend",
+      "runtimeBinding": [
+        "RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+      ],
+      "type": "RuntimeValidationTarget"
+    },
+    {
+      "element": [
+        "RB-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION"
+      ],
+      "environmentRef": "case:firstmatch_property",
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP-TARGET-1",
+      "platform": "agent_backendBackend",
+      "runtimeBinding": [
+        "RB-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION"
+      ],
+      "type": "RuntimeValidationTarget"
+    },
+    {
+      "element": [
+        "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "environmentRef": "case:firstmatch_property",
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-TARGET-1",
+      "platform": "agent_backendBackend",
+      "runtimeBinding": [
+        "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "type": "RuntimeValidationTarget"
+    },
+    {
+      "element": [
+        "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "environmentRef": "case:firstmatch_property",
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-1",
+      "platform": "agent_backendBackend",
+      "runtimeBinding": [
+        "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "type": "RuntimeValidationTarget"
+    },
+    {
+      "element": [
+        "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "environmentRef": "case:firstmatch_property",
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-TARGET-1",
+      "platform": "agent_backendBackend",
+      "runtimeBinding": [
+        "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "type": "RuntimeValidationTarget"
+    },
+    {
+      "element": [
+        "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "environmentRef": "case:firstmatch_property",
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-TARGET-2",
+      "platform": "agent_backendBackend",
+      "runtimeBinding": [
+        "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "type": "RuntimeValidationTarget"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-STIMULUS-1",
+      "scenarioEvent": [
+        "EV-FIRSTMATCH_PROPERTY-RDL-PROVIDED"
+      ],
+      "type": "RuntimeStimulus"
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-OUTCOME-1",
+      "type": "StateAssertionOutcome"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE",
+      "type": "RuntimeValidationProcedure",
+      "vvIntendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-OUTCOME-1"
+      ],
+      "vvStimuli": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-STIMULUS-1"
+      ]
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID"
+      ],
+      "evidenceRef": "pending://firstmatch_property/VC-FIRSTMATCH_PROPERTY-RDL-INGESTION/SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID",
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1",
+      "type": "AssertionResult",
+      "verdict": "inconclusive"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE-LOG-PENDING-ACTUAL-1",
+      "intendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-OUTCOME-1"
+      ],
+      "result": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1"
+      ],
+      "type": "RuntimeActualOutcome"
+    },
+    {
+      "actualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ],
+      "date": "1970-01-01T00:00:00Z",
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE-LOG-PENDING",
+      "performedVVProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE"
+      ],
+      "type": "RuntimeValidationLog",
+      "vvActualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION",
+      "type": "ValidationCase",
+      "vvLog": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE-LOG-PENDING"
+      ],
+      "vvProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE"
+      ],
+      "vvSubject": [
+        "RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE"
+      ],
+      "vvTarget": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-TARGET-1"
+      ]
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-OUTCOME-1",
+      "type": "StateAssertionOutcome"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE",
+      "type": "RuntimeValidationProcedure",
+      "vvIntendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-OUTCOME-1"
+      ],
+      "vvStimuli": []
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID"
+      ],
+      "evidenceRef": "pending://firstmatch_property/VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS/SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID",
+      "id": "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1",
+      "type": "AssertionResult",
+      "verdict": "inconclusive"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE-LOG-PENDING-ACTUAL-1",
+      "intendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-OUTCOME-1"
+      ],
+      "result": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1"
+      ],
+      "type": "RuntimeActualOutcome"
+    },
+    {
+      "actualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ],
+      "date": "1970-01-01T00:00:00Z",
+      "id": "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE-LOG-PENDING",
+      "performedVVProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE"
+      ],
+      "type": "RuntimeValidationLog",
+      "vvActualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS",
+      "type": "ValidationCase",
+      "vvLog": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE-LOG-PENDING"
+      ],
+      "vvProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE"
+      ],
+      "vvSubject": [
+        "RB-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL"
+      ],
+      "vvTarget": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-TARGET-1"
+      ]
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-OUTCOME-1",
+      "type": "StateAssertionOutcome"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE",
+      "type": "RuntimeValidationProcedure",
+      "vvIntendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-OUTCOME-1"
+      ],
+      "vvStimuli": []
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED"
+      ],
+      "evidenceRef": "pending://firstmatch_property/VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION/SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED",
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1",
+      "type": "AssertionResult",
+      "verdict": "inconclusive"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE-LOG-PENDING-ACTUAL-1",
+      "intendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-OUTCOME-1"
+      ],
+      "result": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1"
+      ],
+      "type": "RuntimeActualOutcome"
+    },
+    {
+      "actualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ],
+      "date": "1970-01-01T00:00:00Z",
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE-LOG-PENDING",
+      "performedVVProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE"
+      ],
+      "type": "RuntimeValidationLog",
+      "vvActualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION",
+      "type": "ValidationCase",
+      "vvLog": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE-LOG-PENDING"
+      ],
+      "vvProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE"
+      ],
+      "vvSubject": [
+        "RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+      ],
+      "vvTarget": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-TARGET-1"
+      ]
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-SETUP-VALID"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP-OUTCOME-1",
+      "type": "StateAssertionOutcome"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE",
+      "type": "RuntimeValidationProcedure",
+      "vvIntendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-OUTCOME-1"
+      ],
+      "vvStimuli": []
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-SETUP-VALID"
+      ],
+      "evidenceRef": "pending://firstmatch_property/VC-FIRSTMATCH_PROPERTY-SETUP/SA-FIRSTMATCH_PROPERTY-SETUP-VALID",
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1",
+      "type": "AssertionResult",
+      "verdict": "inconclusive"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE-LOG-PENDING-ACTUAL-1",
+      "intendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-OUTCOME-1"
+      ],
+      "result": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1"
+      ],
+      "type": "RuntimeActualOutcome"
+    },
+    {
+      "actualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ],
+      "date": "1970-01-01T00:00:00Z",
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE-LOG-PENDING",
+      "performedVVProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE"
+      ],
+      "type": "RuntimeValidationLog",
+      "vvActualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP",
+      "type": "ValidationCase",
+      "vvLog": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE-LOG-PENDING"
+      ],
+      "vvProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE"
+      ],
+      "vvSubject": [
+        "RB-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION"
+      ],
+      "vvTarget": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-TARGET-1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-STIMULUS-1",
+      "scenarioEvent": [
+        "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION"
+      ],
+      "type": "RuntimeStimulus"
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-OUTCOME-1",
+      "type": "StateAssertionOutcome"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE",
+      "type": "RuntimeValidationProcedure",
+      "vvIntendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-OUTCOME-1"
+      ],
+      "vvStimuli": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-STIMULUS-1"
+      ]
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+      ],
+      "evidenceRef": "pending://firstmatch_property/VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING/SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1",
+      "type": "AssertionResult",
+      "verdict": "inconclusive"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE-LOG-PENDING-ACTUAL-1",
+      "intendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-OUTCOME-1"
+      ],
+      "result": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1"
+      ],
+      "type": "RuntimeActualOutcome"
+    },
+    {
+      "actualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ],
+      "date": "1970-01-01T00:00:00Z",
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE-LOG-PENDING",
+      "performedVVProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE"
+      ],
+      "type": "RuntimeValidationLog",
+      "vvActualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING",
+      "type": "ValidationCase",
+      "vvLog": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE-LOG-PENDING"
+      ],
+      "vvProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE"
+      ],
+      "vvSubject": [
+        "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "vvTarget": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-TARGET-1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF-STIMULUS-1",
+      "scenarioEvent": [
+        "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+      ],
+      "type": "RuntimeStimulus"
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF-OUTCOME-1",
+      "type": "StateAssertionOutcome"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE",
+      "type": "RuntimeValidationProcedure",
+      "vvIntendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-OUTCOME-1"
+      ],
+      "vvStimuli": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-STIMULUS-1"
+      ]
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "evidenceRef": "pending://firstmatch_property/VC-FIRSTMATCH_PROPERTY-HANDOFF/SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID",
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1",
+      "type": "AssertionResult",
+      "verdict": "inconclusive"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE-LOG-PENDING-ACTUAL-1",
+      "intendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-OUTCOME-1"
+      ],
+      "result": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1"
+      ],
+      "type": "RuntimeActualOutcome"
+    },
+    {
+      "actualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ],
+      "date": "1970-01-01T00:00:00Z",
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE-LOG-PENDING",
+      "performedVVProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE"
+      ],
+      "type": "RuntimeValidationLog",
+      "vvActualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE-LOG-PENDING-ACTUAL-1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF",
+      "type": "ValidationCase",
+      "vvLog": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE-LOG-PENDING"
+      ],
+      "vvProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE"
+      ],
+      "vvSubject": [
+        "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "vvTarget": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-STIMULUS-1",
+      "scenarioEvent": [
+        "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION"
+      ],
+      "type": "RuntimeStimulus"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-STIMULUS-2",
+      "scenarioEvent": [
+        "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+      ],
+      "type": "RuntimeStimulus"
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-OUTCOME-1",
+      "type": "StateAssertionOutcome"
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-OUTCOME-2",
+      "type": "StateAssertionOutcome"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE",
+      "type": "RuntimeValidationProcedure",
+      "vvIntendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-OUTCOME-1",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-OUTCOME-2"
+      ],
+      "vvStimuli": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-STIMULUS-1",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-STIMULUS-2"
+      ]
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+      ],
+      "evidenceRef": "pending://firstmatch_property/VC-FIRSTMATCH_PROPERTY-INTERACT-O1/SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1",
+      "type": "AssertionResult",
+      "verdict": "inconclusive"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING-ACTUAL-1",
+      "intendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-OUTCOME-1"
+      ],
+      "result": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING-ACTUAL-1-RESULT-1"
+      ],
+      "type": "RuntimeActualOutcome"
+    },
+    {
+      "assertion": [
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "evidenceRef": "pending://firstmatch_property/VC-FIRSTMATCH_PROPERTY-INTERACT-O1/SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID",
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING-ACTUAL-2-RESULT-1",
+      "type": "AssertionResult",
+      "verdict": "inconclusive"
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING-ACTUAL-2",
+      "intendedOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-OUTCOME-2"
+      ],
+      "result": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING-ACTUAL-2-RESULT-1"
+      ],
+      "type": "RuntimeActualOutcome"
+    },
+    {
+      "actualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING-ACTUAL-1",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING-ACTUAL-2"
+      ],
+      "date": "1970-01-01T00:00:00Z",
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING",
+      "performedVVProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE"
+      ],
+      "type": "RuntimeValidationLog",
+      "vvActualOutcome": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING-ACTUAL-1",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING-ACTUAL-2"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+      "type": "ValidationCase",
+      "vvLog": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE-LOG-PENDING"
+      ],
+      "vvProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE"
+      ],
+      "vvSubject": [
+        "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "vvTarget": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-TARGET-1",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-TARGET-2"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-VERIFY-1",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-001"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-001"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-VERIFY-1",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-VERIFY-1",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-004"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-004"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-VERIFY-2",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-005"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-005"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP-VERIFY-1",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-003"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-003"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP-VERIFY-2",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-005"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-005"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-VERIFY-1",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-002"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-002"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-VERIFY-2",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-004"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-004"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-VERIFY-3",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF-VERIFY-1",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-003"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-003"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF-VERIFY-2",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-VERIFY-1",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-002"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-002"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-VERIFY-2",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-003"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-003"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-VERIFY-3",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-004"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-004"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-VERIFY-4",
+      "requirement": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "type": "Verify",
+      "verifiedByCase": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ],
+      "verifiedByProcedure": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-PROCEDURE"
+      ],
+      "verifiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-USECASE-1",
+      "type": "ValidationCaseUseCaseBinding",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ],
+      "validationCase": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-USECASE-1",
+      "type": "ValidationCaseUseCaseBinding",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ],
+      "validationCase": [
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-USECASE-1",
+      "type": "ValidationCaseUseCaseBinding",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ],
+      "validationCase": [
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP-USECASE-1",
+      "type": "ValidationCaseUseCaseBinding",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ],
+      "validationCase": [
+        "VC-FIRSTMATCH_PROPERTY-SETUP"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-USECASE-1",
+      "type": "ValidationCaseUseCaseBinding",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0"
+      ],
+      "validationCase": [
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF-USECASE-1",
+      "type": "ValidationCaseUseCaseBinding",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0"
+      ],
+      "validationCase": [
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF"
+      ]
+    },
+    {
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-USECASE-1",
+      "type": "ValidationCaseUseCaseBinding",
+      "useCase": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ],
+      "validationCase": [
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ]
+    },
+    {
+      "id": "VV-FIRSTMATCH_PROPERTY",
+      "type": "VerificationValidation",
+      "verify": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-VERIFY-1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-VERIFY-1",
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-VERIFY-1",
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-VERIFY-2",
+        "VC-FIRSTMATCH_PROPERTY-SETUP-VERIFY-1",
+        "VC-FIRSTMATCH_PROPERTY-SETUP-VERIFY-2",
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-VERIFY-1",
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-VERIFY-2",
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-VERIFY-3",
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-VERIFY-1",
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-VERIFY-2",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-VERIFY-1",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-VERIFY-2",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-VERIFY-3",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-VERIFY-4"
+      ],
+      "vvCase": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS",
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION",
+        "VC-FIRSTMATCH_PROPERTY-SETUP",
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING",
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ],
+      "vvTarget": [
+        "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION-TARGET-1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS-TARGET-1",
+        "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION-TARGET-1",
+        "VC-FIRSTMATCH_PROPERTY-SETUP-TARGET-1",
+        "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING-TARGET-1",
+        "VC-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-1",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-TARGET-1",
+        "VC-FIRSTMATCH_PROPERTY-INTERACT-O1-TARGET-2"
+      ]
+    }
+  ],
+  "profile": "executable",
+  "schema": "dynamic_functional_rdl_v2_instance",
+  "serializationVersion": "1.0",
+  "sourceContract": {
+    "metamodelVersion": "v0.5",
+    "schema": "roomcontract_case_study",
+    "semanticProjectionSha256": "83d39cdbf46b6a92f2568abab4251f79c9dd7b332fc8a57ff9e66d267a3776db"
+  }
+}

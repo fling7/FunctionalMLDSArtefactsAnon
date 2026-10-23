@@ -1,0 +1,176 @@
+{
+  "owners": [
+    "a0",
+    "a1"
+  ],
+  "spec": {
+    "case_id": "firstmatch_property",
+    "agents": [
+      "a0",
+      "a1"
+    ],
+    "objects": [
+      {
+        "id": "o0"
+      },
+      {
+        "id": "o1"
+      }
+    ],
+    "owners": {
+      "asset": {
+        "o0": [
+          "a0",
+          "a1"
+        ],
+        "o1": [
+          "a1"
+        ]
+      },
+      "group": {},
+      "zone": {}
+    },
+    "handoffs": [
+      [
+        "a0",
+        "a1"
+      ],
+      [
+        "a1",
+        "a0"
+      ]
+    ],
+    "actions": [
+      {
+        "target": "o0",
+        "provider": "a0",
+        "count": 1
+      },
+      {
+        "target": "o1",
+        "provider": "a1",
+        "count": 1
+      }
+    ]
+  },
+  "firstmatch": {
+    "decision": "ANSWER_LOCAL",
+    "reason": null,
+    "provider": "a0",
+    "action": "RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT",
+    "model_calls": 1,
+    "unchanged_before_restore": false
+  },
+  "property_caught": "('G2', {'ENT-AGENT-A0', 'ENT-AGENT-A1'}, {'decision': 'ANSWER_LOCAL', 'reason': None, 'provider': 'a0', 'action': 'RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT', 'model_calls': 1, 'unchanged_before_restore': False})",
+  "structural_validator": {
+    "subject": "First-match property counterexample",
+    "ok": true,
+    "generated_at": "2026-10-15T13:02:07.285139+00:00",
+    "error_count": 0,
+    "warning_count": 0,
+    "checks": [
+      {
+        "check_id": "I-REF",
+        "title": "instance identity and reference closure",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-OWN",
+        "title": "single instance composition owner",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-ROOT",
+        "title": "exact root requirements and V&V containers",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-CAP",
+        "title": "capability-use performer and targets",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-AST",
+        "title": "assertions and structured assertion results",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-VAL",
+        "title": "Boolean conditions and probabilities",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-RUN",
+        "title": "runtime locator and ordered actions",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-SCN",
+        "title": "main, variants, control-flow and fork/join",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-ENT",
+        "title": "EntityKind agent equivalence",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-REQ",
+        "title": "Satisfy XOR and exclusions",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-VV",
+        "title": "V&V ownership, logging and separation",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-FUN",
+        "title": "FunctionBehavior required values",
+        "status": "pass",
+        "issue_count": 0
+      },
+      {
+        "check_id": "I-COV",
+        "title": "full-surface fixture construction coverage",
+        "status": "pass",
+        "issue_count": 0
+      }
+    ],
+    "evidence": {},
+    "issues": []
+  },
+  "packet": {
+    "decision": "REJECT",
+    "reason": "E_AMBIGUOUS_OWNER",
+    "provider": null,
+    "action": null,
+    "exception_type": "RoomContractContractError",
+    "message": "Das gepinnte V2-Modell weist dem Szeneobjekt 'ENT-ASSET-O0' auf 'asset'-Ebene mehrere verantwortliche Agenten zu: ['a0', 'a1'].",
+    "model_calls": 0,
+    "unchanged_before_restore": true
+  },
+  "I1": {
+    "decision": "REJECT",
+    "reason": "E_AMBIGUOUS_OWNER",
+    "provider": null,
+    "action": null
+  },
+  "I2": {
+    "decision": "REJECT",
+    "reason": "E_AMBIGUOUS_OWNER",
+    "provider": null,
+    "action": null
+  }
+}

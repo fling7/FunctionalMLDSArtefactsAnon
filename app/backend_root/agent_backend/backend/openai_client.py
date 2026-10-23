@@ -1,0 +1,268 @@
+from __future__ import annotations
+
+import json
+import os
+import sys
+from pathlib import Path
+import uuid
+import urllib.error
+import urllib.request
+from dataclasses import dataclass
+from typing import Any, Dict, List, Optional, Tuple
+
+
+class OpenAIHTTPError(RuntimeError):
+    def __init__(self, status: int, message: str, details: Optional[Dict[str, Any]] = None):
+        super().__init__(message)
+        self.status = status
+        self.details = details or {}
+
+
+def _extract_output_text(resp: Dict[str, Any]) -> str:
+    parts: List[str] = []
+    for item in resp.get("output", []) or []:
+        if item.get("type") != "message":
+            continue
+        for c in item.get("content", []) or []:
+            if c.get("type") == "output_text":
+                parts.append(str(c.get("text", "")))
+    return "\n".join([p for p in parts if p]).strip()
+
+
+@dataclass
+class OpenAIResponsesClient:
+    api_key: str
+    base_url: str = "https://api.openai.com/v1/responses"
+    timeout_seconds: int = 60
+
+    def create(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        if os.environ.get("ROOMCONTRACT_LLM_GATEWAY") == "1":
+            workspace = Path(__file__).resolve().parents[4]
+            if str(workspace) not in sys.path:
+                sys.path.insert(0, str(workspace))
+            from repro.llm import production_response, GatewayError
+            from repro.budget import BudgetError
+            try:
+                return production_response(payload, api_key=self.api_key, timeout=self.timeout_seconds, source="backend")
+            except (GatewayError, BudgetError) as exc:
+                raise OpenAIHTTPError(0, "Budgeted gateway stopped request.", details={"code": getattr(exc, "code", "BUDGET_STOP")}) from None
+        body = json.dumps(payload).encode("utf-8")
+
+        req = urllib.request.Request(
+            self.base_url,
+            data=body,
+            method="POST",
+            headers={
+                "Authorization": f"Bearer\x20{self.api_key}",
+                "Content-Type": "application/json",
+            },
+        )
+
+        try:
+            with urllib.request.urlopen(req, timeout=self.timeout_seconds) as resp:
+                raw = resp.read().decode("utf-8", errors="replace")
+                return json.loads(raw)
+        except urllib.error.HTTPError as e:
+            raw = e.read().decode("utf-8", errors="replace")
+            try:
+                details = json.loads(raw)
+            except Exception:
+                details = {"raw": raw}
+            raise OpenAIHTTPError(e.code, f"OpenAI HTTP {e.code}", details=details) from e
+        except urllib.error.URLError as e:
+            raise OpenAIHTTPError(0, f"OpenAI connection error: {e}") from e
+
+    def create_structured_json(
+        self,
+        *,
+        model: str,
+        input_messages: List[Dict[str, Any]],
+        schema: Dict[str, Any],
+        schema_name: str,
+        temperature: float = 0.3,
+        max_output_tokens: Optional[int] = None,
+        reasoning: Optional[Dict[str, Any]] = None,
+    ) -> Tuple[Dict[str, Any], Dict[str, Any], str]:
+        payload: Dict[str, Any] = {
+            "model": model,
+            "input": input_messages,
+            "temperature": temperature,
+            "text": {
+                "format": {
+                    "type": "json_schema",
+                    "name": schema_name,
+                    "schema": schema,
+                    "strict": True,
+                }
+            },
+        }
+        if max_output_tokens is not None:
+            payload["max_output_tokens"] = int(max_output_tokens)
+        if reasoning is not None:
+            payload["reasoning"] = reasoning
+
+        resp = self.create(payload)
+        out_text = _extract_output_text(resp)
+        try:
+            parsed = json.loads(out_text) if out_text else {}
+        except json.JSONDecodeError:
+            parsed = {"_parse_error": True, "_raw_text": out_text}
+        return parsed, resp, out_text
+
+
+    def create_json_object(
+        self,
+        *,
+        model: str,
+        input_messages: List[Dict[str, Any]],
+        temperature: float = 0.3,
+        max_output_tokens: Optional[int] = None,
+        reasoning: Optional[Dict[str, Any]] = None,
+    ) -> Tuple[Dict[str, Any], Dict[str, Any], str]:
+        """
+        Older JSON mode: ensures the output is valid JSON, but not schema-validated.
+        Useful as a fallback if json_schema is not supported by the chosen model.
+        """
+        payload: Dict[str, Any] = {
+            "model": model,
+            "input": input_messages,
+            "temperature": temperature,
+            "text": {"format": {"type": "json_object"}},
+        }
+        if max_output_tokens is not None:
+            payload["max_output_tokens"] = int(max_output_tokens)
+        if reasoning is not None:
+            payload["reasoning"] = reasoning
+
+        resp = self.create(payload)
+        out_text = _extract_output_text(resp)
+        try:
+            parsed = json.loads(out_text) if out_text else {}
+        except json.JSONDecodeError:
+            parsed = {"_parse_error": True, "_raw_text": out_text}
+        return parsed, resp, out_text
+
+
+def create_tts_audio(
+    *,
+    api_key: str,
+    text: str,
+    voice: str,
+    model: str,
+    response_format: str = "mp3",
+    timeout_seconds: int = 60,
+) -> Tuple[bytes, str]:
+    if os.environ.get("ROOMCONTRACT_LLM_GATEWAY") == "1":
+        raise OpenAIHTTPError(0, "Audio requests are excluded from the verified experiment budget.")
+    payload = {
+        "model": model,
+        "voice": voice,
+        "input": text,
+        "response_format": response_format,
+    }
+    body = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        "https://api.openai.com/v1/audio/speech",
+        data=body,
+        method="POST",
+        headers={
+            "Authorization": f"Bearer\x20{api_key}",
+            "Content-Type": "application/json",
+        },
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
+            audio = resp.read()
+            content_type = resp.headers.get("Content-Type", "audio/mpeg")
+            return audio, content_type
+    except urllib.error.HTTPError as e:
+        raw = e.read().decode("utf-8", errors="replace")
+        try:
+            details = json.loads(raw)
+        except Exception:
+            details = {"raw": raw}
+        raise OpenAIHTTPError(e.code, f"OpenAI HTTP {e.code}", details=details) from e
+    except urllib.error.URLError as e:
+        raise OpenAIHTTPError(0, f"OpenAI connection error: {e}") from e
+
+
+def _build_multipart_form_data(
+    fields: Dict[str, str],
+    files: Dict[str, Tuple[str, str, bytes]],
+) -> Tuple[bytes, str]:
+    boundary = f"----OpenAIUnityBoundary{uuid.uuid4().hex}"
+    chunks: List[bytes] = []
+
+    for name, value in fields.items():
+        if value is None or str(value) == "":
+            continue
+        chunks.append(f"--{boundary}\r\n".encode("utf-8"))
+        chunks.append(f'Content-Disposition: form-data; name="{name}"\r\n\r\n'.encode("utf-8"))
+        chunks.append(str(value).encode("utf-8"))
+        chunks.append(b"\r\n")
+
+    for name, (filename, content_type, data) in files.items():
+        chunks.append(f"--{boundary}\r\n".encode("utf-8"))
+        chunks.append(
+            (
+                f'Content-Disposition: form-data; name="{name}"; filename="{filename}"\r\n'
+                f"Content-Type: {content_type or 'application/octet-stream'}\r\n\r\n"
+            ).encode("utf-8")
+        )
+        chunks.append(data)
+        chunks.append(b"\r\n")
+
+    chunks.append(f"--{boundary}--\r\n".encode("utf-8"))
+    return b"".join(chunks), boundary
+
+
+def create_transcription(
+    *,
+    api_key: str,
+    audio: bytes,
+    filename: str,
+    content_type: str,
+    model: str,
+    language: Optional[str] = None,
+    prompt: Optional[str] = None,
+    timeout_seconds: int = 60,
+) -> Dict[str, Any]:
+    if os.environ.get("ROOMCONTRACT_LLM_GATEWAY") == "1":
+        raise OpenAIHTTPError(0, "Audio requests are excluded from the verified experiment budget.")
+    fields = {
+        "model": model,
+        "response_format": "json",
+    }
+    if language:
+        fields["language"] = language
+    if prompt:
+        fields["prompt"] = prompt
+
+    body, boundary = _build_multipart_form_data(
+        fields=fields,
+        files={"file": (filename or "speech.wav", content_type or "audio/wav", audio)},
+    )
+    req = urllib.request.Request(
+        "https://api.openai.com/v1/audio/transcriptions",
+        data=body,
+        method="POST",
+        headers={
+            "Authorization": f"Bearer\x20{api_key}",
+            "Content-Type": f"multipart/form-data; boundary={boundary}",
+        },
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
+            raw = resp.read().decode("utf-8", errors="replace")
+            return json.loads(raw)
+    except urllib.error.HTTPError as e:
+        raw = e.read().decode("utf-8", errors="replace")
+        try:
+            details = json.loads(raw)
+        except Exception:
+            details = {"raw": raw}
+        raise OpenAIHTTPError(e.code, f"OpenAI HTTP {e.code}", details=details) from e
+    except urllib.error.URLError as e:
+        raise OpenAIHTTPError(0, f"OpenAI connection error: {e}") from e

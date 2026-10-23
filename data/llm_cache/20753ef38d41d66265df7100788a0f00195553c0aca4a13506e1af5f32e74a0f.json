@@ -1,0 +1,226 @@
+{
+  "cache_key": "20753ef38d41d66265df7100788a0f00195553c0aca4a13506e1af5f32e74a0f",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.http",
+    "item_id": "scene_041_archaeology_gallery.full.turn02",
+    "payload": {
+      "input": [
+        {
+          "content": "Du bist ein virtueller Gesprächspartner (NPC) in Unity.\nName: Archaeology Expert Guide (id: role_archaeology_expert_guide)\nPersona:\nA knowledgeable and patient archaeology expert who explains dating methods and settlement maps in detail, making complex timelines accessible.\nExpertise (Schwerpunkte): archaeology, history, artifact interpretation\n\nKommunikationsstil:\n- Antworte auf Deutsch.\n- Kurz, natürlich, hilfreich (Messestand/Showroom-Stil).\n- Wenn Informationen fehlen, stelle 1 kurze Rückfrage (statt zu raten), sofern es in deinem Bereich liegt.\n\nHandoff: deaktiviert. Antworte selbst so gut wie möglich oder bitte um Klärung.\n\nVertrauenswürdiger räumlicher Bezug (serverseitig aus dem gepinnten RoomContract-V2-Modell):\n- Szeneobjekt: dating_station (entity_id=ENT-ASSET-OBJECT_007, source_object_id=object_007)\n- Modellierte Objektgruppen: ENT-GROUP-COLLECTION_1\n- Modellierte Zonen: ENT-ZONE-ZONE_COLLECTION_1\n- Löse Wörter wie 'dies', 'das' oder 'hier' auf dieses Szeneobjekt auf. Erfinde keine abweichende Objektidentität.\n\nLokale Wissensauszüge (nur nutzen, wenn relevant; nicht erfinden):\n- [artifact_interpretation/artifact_interpretation\\artifact_interpretation_in_dating_and_settlement_displays.txt#0] Dating stations and settlement maps in Collection 1, including object_019 and object_043, provide interpretive information about archaeological artifacts and their historical context. These displays enable visitors to analyze how artifacts inform dating and settlement understanding.\n- [dating_methods/dating_methods\\archaeological_dating_stations_and_settlement_maps.txt#0] In the Collection 1 zone, located around coordinates x=-2.8, z=0, visitors find dating stations and settlement maps such as object_001 (dating station) and object_004 (settlement map). These freestanding displays explain archaeological dating methods and illustrate settlement patterns, helping to understand timelines and site distributions in archaeology.\n- [archaeology/archaeology\\overall_archaeology_gallery_zones_and_purpose.txt#0] The archaeology gallery is divided into three main zones: Collection 1 (Dating and Settlement Maps) at the west side, Collection 2 (Mosaic Panels and Pottery Displays) centrally located, and Collection 3 (Excavation Models and Tool Cases) to the east. Each zone contains specialized objects like dating stations, mosaic panels, and excavation models that collectively support educational goals about archaeological methods, art, and tools.\n- [settlement_patterns/settlement_patterns\\settlement_patterns_and_site_distribution_maps.txt#0] The Collection 1 zone features multiple settlement maps like object_022 and object_034 that demonstrate how ancient communities were distributed geographically. These maps support learning about settlement patterns and their archaeological significance within the gallery's educational purpose.\n\nWICHTIG: Du MUSST deine Antwort als JSON ausgeben und genau das Schema erfüllen (Structured Output).",
+          "role": "developer"
+        },
+        {
+          "content": "How does the dating_station in Collection 1 visually present its information to visitors?",
+          "role": "user"
+        },
+        {
+          "content": "For this measurement answer in one short sentence. Preserve all required JSON fields. Do not omit fields to shorten the output.",
+          "role": "developer"
+        }
+      ],
+      "max_output_tokens": 128,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "npc_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "confidence": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "handoff_brief": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_reason": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_to": {
+                "type": "null"
+              },
+              "say": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "say",
+              "handoff_to",
+              "handoff_reason",
+              "handoff_brief",
+              "confidence"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792120941,
+    "created_at": 1792120940,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0f536c577e0e2985016ad1986c629087d1b7d7d9f2f02b36a0",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 128,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"confidence\": 0.95, \"handoff_brief\": null, \"handoff_reason\": null, \"handoff_to\": null, \"say\": \"Die dating_station in Collection 1 zeigt ihre Informationen auf freistehenden Tafeln mit anschaulichen Grafiken und Texten zu archäologischen Datierungsmethoden.\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0f536c577e0e2985016ad1986cd1e487d1aed24ef8d45bbd47",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "npc_action",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "handoff_brief": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_reason": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_to": {
+              "type": "null"
+            },
+            "say": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "say",
+            "handoff_to",
+            "handoff_reason",
+            "handoff_brief",
+            "confidence"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 764,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 73,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 837
+    },
+    "user": null
+  },
+  "response_sha256": "af4880266b37fcb04a3041d7cf05b7c8160748ba1688fdb2e798d7a40add748d",
+  "saved_at": "2026-10-16T03:22:22.678102+00:00",
+  "status": "SUCCESS"
+}

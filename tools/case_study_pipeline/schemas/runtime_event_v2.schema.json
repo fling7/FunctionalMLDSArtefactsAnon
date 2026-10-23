@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://roomcontract.local/schema/runtime_event_v2.schema.json",
+  "title": "Dynamic Functional RDL V2 Runtime Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "event_id",
+    "timestamp",
+    "case_id",
+    "event_type",
+    "model_version",
+    "model_sha256",
+    "scenario_step_id",
+    "capability_use_id",
+    "capability_id",
+    "provider_entity_id",
+    "target_ids",
+    "runtime_binding_id",
+    "runtime_action_id",
+    "assertion_ids",
+    "validation_case_ids",
+    "runtime_validation_target_ids",
+    "input_summary",
+    "output_summary",
+    "status",
+    "metadata"
+  ],
+  "properties": {
+    "schema": {
+      "const": "roomcontract_runtime_event"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "event_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "agent_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model_version": {
+      "const": "2.0.0-model"
+    },
+    "model_sha256": {
+      "type": "string",
+      "pattern": "^[A-F0-9]{64}$"
+    },
+    "scenario_step_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability_use_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provider_entity_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_ids": {
+      "$ref": "#/$defs/idArray"
+    },
+    "runtime_binding_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runtime_action_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assertion_ids": {
+      "$ref": "#/$defs/nonEmptyIdArray"
+    },
+    "validation_case_ids": {
+      "$ref": "#/$defs/idArray"
+    },
+    "runtime_validation_target_ids": {
+      "$ref": "#/$defs/idArray"
+    },
+    "input_summary": {
+      "type": "string"
+    },
+    "output_summary": {
+      "type": "string"
+    },
+    "duration_ms": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "status": {
+      "enum": [
+        "success",
+        "failed",
+        "error",
+        "inconclusive"
+      ]
+    },
+    "error_summary": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "idArray": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "nonEmptyIdArray": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/idArray"
+        },
+        {
+          "minItems": 1
+        }
+      ]
+    }
+  }
+}

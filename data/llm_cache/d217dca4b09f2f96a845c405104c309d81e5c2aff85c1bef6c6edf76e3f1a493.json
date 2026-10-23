@@ -1,0 +1,184 @@
+{
+  "cache_key": "d217dca4b09f2f96a845c405104c309d81e5c2aff85c1bef6c6edf76e3f1a493",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "authored_example.B0.forced.p3.neutral.full.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "Act as the routing component for a room of specialist agents. Your task is to name the answering agent for the selected scene object. A different object named by the visitor does not change that selected target. Use profiles to assess responsibility; use the explicit ownership and handoff data when provided. Resolve ownership with priority object > group > zone, stopping at the first nonempty level. Require one owner at that level and at most one directed handoff from the active agent. Output the specified JSON object without an explanation.\nYou must choose exactly one listed agent id, including when the evidence is uncertain or no valid unique recipient is apparent. Set abstain=false. A null recipient and rejection are not available in this condition.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Decorative Zone Ambassador\",\"expertise\":[\"art appreciation\",\"environment aesthetics\",\"visitor engagement\"],\"id\":\"decorative_zone_ambassador\",\"persona\":\"A calm and appreciative guide who enhances visitor experience by sharing insights about the room's decorative art and plants.\"},{\"display_name\":\"Exhibit Interpreter\",\"expertise\":[\"museum education\",\"paleontology basics\",\"visitor engagement\"],\"id\":\"exhibit_interpreter\",\"persona\":\"An enthusiastic and informative expert passionate about educating visitors on the dinosaur skeleton exhibit and paleontology basics.\"},{\"display_name\":\"Reading Area Guide\",\"expertise\":[\"reading facilitation\",\"visitor assistance\",\"environment management\"],\"id\":\"reading_area_guide\",\"persona\":\"A friendly and supportive guide who helps visitors enjoy and utilize the reading area for study and relaxation.\"},{\"display_name\":\"Teacher Agent\",\"expertise\":[\"instruction\",\"classroom management\",\"student engagement\"],\"id\":\"teacher_agent\",\"persona\":\"A knowledgeable and patient classroom instructor dedicated to facilitating learning and managing classroom activities effectively.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-PLANT2\",\"source_id\":\"plant2\",\"name\":\"plant\",\"type\":\"plant\",\"group_label\":\"plants\",\"zone_names\":[\"Decorative Zone\"]},\"active_agent_id\":\"decorative_zone_ambassador\",\"visitor_question\":\"What can you tell me about this selected object?\"}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "decorative_zone_ambassador",
+                  "exhibit_interpreter",
+                  "reading_area_guide",
+                  "teacher_agent"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1792107358,
+    "created_at": 1792107358,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0bca6feca36dbe70016ad1635e44f887d193dd5ff00ac59109",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\":false,\"answering_agent_id\":\"decorative_zone_ambassador\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0bca6feca36dbe70016ad1635e96b487d18fd1684fd8767045",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "decorative_zone_ambassador",
+                "exhibit_interpreter",
+                "reading_area_guide",
+                "teacher_agent"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 484,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 20,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 504
+    },
+    "user": null
+  },
+  "response_sha256": "0826de7f63697a334fa37d6f388b27f5cbb640b89cb5511f4f60cdbdb7e58cd8",
+  "saved_at": "2026-10-15T23:36:00.504554+00:00",
+  "status": "SUCCESS"
+}

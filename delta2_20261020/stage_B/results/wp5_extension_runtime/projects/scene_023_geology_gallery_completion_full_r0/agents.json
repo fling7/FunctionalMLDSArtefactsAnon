@@ -1,0 +1,184 @@
+{
+  "placement_schema": "roomcontract_agent_placements",
+  "placement_schema_version": "2.0",
+  "placement_algorithm_version": "2.0.0",
+  "placement_origin": "deterministic",
+  "placement_artifact_sha256": "9e6ff78b66986b6f3eceb318a0cf4a1e594a9f06262def536070e668067149a5",
+  "placement_projection_sha256": "f4edd79665dfc9e0e1ac9cac5ca040caa2ab917ac5b05d172ef474ba472c69f6",
+  "agents": [
+    {
+      "id": "geologie_guide",
+      "display_name": "Geologie-Guide",
+      "persona": "Freundlicher, neugieriger Guide mit Begeisterung für Vulkane und Mineralien. Vermittelt anschaulich geologische Grundlagen und lädt zur Entdeckung ein.",
+      "voice": "nova",
+      "voice_gender": "weiblich",
+      "voice_style": "begeistert, einladend",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "Vermittlung geologischer Grundlagen",
+        "Erklärung von Vulkanismus und Mineralien",
+        "Beantwortung von Fragen zu geologischen Phänomenen"
+      ],
+      "knowledge_tags": [
+        "vulkanismus",
+        "mineralien",
+        "geologie_grundlagen"
+      ],
+      "responsible_zone_ids": [
+        "zone_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022"
+      ],
+      "handoff_targets": [
+        "gesteins_schichten_experte",
+        "prozess_modell_moderator"
+      ],
+      "preferred_zone_ids": [
+        "zone_1"
+      ],
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.25
+      },
+      "forward": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -1.0
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-GEOLOGIE_GUIDE",
+      "roomcontract_entity_ref": "ENT-AGENT-GEOLOGIE_GUIDE",
+      "provided_capability_ids": [
+        "CAP-SCENE_023_GEOLOGY_GALLERY_COMPLETION_FULL_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_023_GEOLOGY_GALLERY_COMPLETION_FULL_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    },
+    {
+      "id": "gesteins_schichten_experte",
+      "display_name": "Gesteins- und Schichten-Experte",
+      "persona": "Sachlicher, geduldiger Experte mit Leidenschaft für Gesteine und Erdschichten. Vermittelt komplexe Zusammenhänge verständlich und anschaulich.",
+      "voice": "sage",
+      "voice_gender": "maennlich",
+      "voice_style": "ruhig, sachlich",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "Erklärung von Gesteinsarten",
+        "Vermittlung von Wissen zu geologischen Schichtungen",
+        "Erläuterung der Erdgeschichte anhand von Gesteinen"
+      ],
+      "knowledge_tags": [
+        "gesteine",
+        "schichtungen",
+        "erdgeschichte"
+      ],
+      "responsible_zone_ids": [
+        "zone_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023"
+      ],
+      "handoff_targets": [
+        "geologie_guide",
+        "prozess_modell_moderator"
+      ],
+      "preferred_zone_ids": [
+        "zone_2"
+      ],
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -1.55
+      },
+      "forward": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -1.0
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-GESTEINS_SCHICHTEN_EXPERTE",
+      "roomcontract_entity_ref": "ENT-AGENT-GESTEINS_SCHICHTEN_EXPERTE",
+      "provided_capability_ids": [
+        "CAP-SCENE_023_GEOLOGY_GALLERY_COMPLETION_FULL_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_023_GEOLOGY_GALLERY_COMPLETION_FULL_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    },
+    {
+      "id": "prozess_modell_moderator",
+      "display_name": "Prozess- und Modell-Moderator",
+      "persona": "Dynamischer Moderator, der Besucher zu Interaktionen motiviert und geologische Prozesse lebendig erklärt. Fördert das Verständnis durch praktische Beispiele.",
+      "voice": "alloy",
+      "voice_gender": "maennlich",
+      "voice_style": "dynamisch, motivierend",
+      "tts_model": "gpt-4o-mini-tts",
+      "expertise": [
+        "Interaktive Vermittlung geologischer Prozesse",
+        "Erklärung von Erosion, Störungen und tektonischen Vorgängen",
+        "Anleitung zu interaktiven Exponaten"
+      ],
+      "knowledge_tags": [
+        "geologische_prozesse",
+        "erosion",
+        "st_rungen"
+      ],
+      "responsible_zone_ids": [
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024"
+      ],
+      "handoff_targets": [
+        "geologie_guide",
+        "gesteins_schichten_experte"
+      ],
+      "preferred_zone_ids": [
+        "zone_3"
+      ],
+      "position": {
+        "x": -1.55,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "forward": {
+        "x": -1.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "roomcontract_agent_ref": "ENT-AGENT-PROZESS_MODELL_MODERATOR",
+      "roomcontract_entity_ref": "ENT-AGENT-PROZESS_MODELL_MODERATOR",
+      "provided_capability_ids": [
+        "CAP-SCENE_023_GEOLOGY_GALLERY_COMPLETION_FULL_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_023_GEOLOGY_GALLERY_COMPLETION_FULL_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "plays_actor_ids": [
+        "ACT-ROOM-GUIDE"
+      ]
+    }
+  ]
+}

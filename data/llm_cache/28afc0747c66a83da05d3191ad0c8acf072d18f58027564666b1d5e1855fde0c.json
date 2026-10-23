@@ -1,0 +1,618 @@
+{
+  "cache_key": "28afc0747c66a83da05d3191ad0c8acf072d18f58027564666b1d5e1855fde0c",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.evaluation",
+    "item_id": "scene_012_food_science_center.scene_semantics.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# scene_semantics_v1\n\nDu analysierst eine normalisierte RDL- oder RoomPlan-Szene fuer eine wissenschaftliche\nCase Study. Die Analyse muss raeumlich geerdet sein: Objekt-IDs duerfen nur aus der\nbereitgestellten Liste stammen.\n\nZiel der Ausgabe:\n- Erkenne die Domaene und den Zweck des Raums.\n- Leite typische Besucherziele ab.\n- Bilde kompakte semantische Zonen aus Objektgruppen und wichtigen Einzelobjekten.\n- Markiere Objekte, die fuer Interaktion, Erklaerung oder Navigation wichtig sind.\n- Schlage Agentenrollen vor, die spaeter in Interactive Agents umgesetzt werden koennen.\n\nRegeln:\n- Keine neuen Objekt-IDs erfinden.\n- Keine Runtime-Endpunkte, Requirements oder RoomContract-Elemente erzeugen; diese Stufen folgen spaeter.\n- Zonen muessen fachlich erklaerbar sein und mindestens ein vorhandenes Objekt referenzieren.\n- Agentenrollenkandidaten muessen aus Raumfunktion, Besucherzielen und Zonen abgeleitet sein.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Analyze this normalized scene and produce scene semantics.\",\"scene\":{\"schema_kind\":\"rdl_scene\",\"scene_name\":\"scene_012_food_science_center\",\"environment_type\":\"indoor\",\"room_bounds\":{\"min_x\":-8.4,\"max_x\":8.4,\"min_z\":-8.4,\"max_z\":8.4},\"dimensions\":{\"width\":16.8,\"height\":4.0,\"depth\":16.8},\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"preservation_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic food science center object: preservation station. Display 1 explains a distinct example in collection 1. A freestanding educational display with a...\"},{\"object_id\":\"object_002\",\"object_type\":\"nutrition_panel\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic food science center object: nutrition panel. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clear...\"},{\"object_id\":\"object_003\",\"object_type\":\"fermentation_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic food science center object: fermentation model. Display 3 explains a distinct example in collection 3. A freestanding educational display with a cl...\"},{\"object_id\":\"object_004\",\"object_type\":\"milling_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic food science center object: milling model. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_005\",\"object_type\":\"grain_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic food science center object: grain display. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_006\",\"object_type\":\"supply_map\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic food science center object: supply map. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_007\",\"object_type\":\"preservation_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic food science center object: preservation station. Display 7 explains a distinct example in collection 1. A freestanding educational display with a...\"},{\"object_id\":\"object_008\",\"object_type\":\"nutrition_panel\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic food science center object: nutrition panel. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clear...\"},{\"object_id\":\"object_009\",\"object_type\":\"fermentation_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic food science center object: fermentation model. Display 9 explains a distinct example in collection 3. A freestanding educational display with a cl...\"},{\"object_id\":\"object_010\",\"object_type\":\"milling_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic food science center object: milling model. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_011\",\"object_type\":\"grain_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic food science center object: grain display. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_012\",\"object_type\":\"supply_map\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic food science center object: supply map. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_013\",\"object_type\":\"preservation_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic food science center object: preservation station. Display 13 explains a distinct example in collection 1. A freestanding educational display with a...\"},{\"object_id\":\"object_014\",\"object_type\":\"nutrition_panel\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic food science center object: nutrition panel. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clea...\"},{\"object_id\":\"object_015\",\"object_type\":\"fermentation_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic food science center object: fermentation model. Display 15 explains a distinct example in collection 3. A freestanding educational display with a c...\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"preservation_station\":3,\"milling_model\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"example_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"preservation_station\",\"specification_excerpt\":\"Synthetic food science center object: preservation station. Display 1 explains a distinct example in collection 1. A...\"},{\"object_id\":\"object_004\",\"object_type\":\"milling_model\",\"specification_excerpt\":\"Synthetic food science center object: milling model. Display 4 explains a distinct example in collection 1. A freesta...\"},{\"object_id\":\"object_007\",\"object_type\":\"preservation_station\",\"specification_excerpt\":\"Synthetic food science center object: preservation station. Display 7 explains a distinct example in collection 1. A...\"}]},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"nutrition_panel\":3,\"grain_display\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"example_objects\":[{\"object_id\":\"object_002\",\"object_type\":\"nutrition_panel\",\"specification_excerpt\":\"Synthetic food science center object: nutrition panel. Display 2 explains a distinct example in collection 2. A frees...\"},{\"object_id\":\"object_005\",\"object_type\":\"grain_display\",\"specification_excerpt\":\"Synthetic food science center object: grain display. Display 5 explains a distinct example in collection 2. A freesta...\"},{\"object_id\":\"object_008\",\"object_type\":\"nutrition_panel\",\"specification_excerpt\":\"Synthetic food science center object: nutrition panel. Display 8 explains a distinct example in collection 2. A frees...\"}]},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"fermentation_model\":3,\"supply_map\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"example_objects\":[{\"object_id\":\"object_003\",\"object_type\":\"fermentation_model\",\"specification_excerpt\":\"Synthetic food science center object: fermentation model. Display 3 explains a distinct example in collection 3. A fr...\"},{\"object_id\":\"object_006\",\"object_type\":\"supply_map\",\"specification_excerpt\":\"Synthetic food science center object: supply map. Display 6 explains a distinct example in collection 3. A freestandi...\"},{\"object_id\":\"object_009\",\"object_type\":\"fermentation_model\",\"specification_excerpt\":\"Synthetic food science center object: fermentation model. Display 9 explains a distinct example in collection 3. A fr...\"}]}]}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 1800,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "scene_semantics",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agent_role_candidates": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "mission": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "role_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "role_id",
+                    "display_name",
+                    "mission",
+                    "expertise",
+                    "responsible_zone_ids",
+                    "grounded_object_ids"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "domain": {
+                "type": "string"
+              },
+              "important_objects": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "object_id": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "object_id",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "interaction_topics": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "related_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "topic_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "topic_id",
+                    "title",
+                    "description",
+                    "related_object_ids"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "room_purpose": {
+                "type": "string"
+              },
+              "semantic_zones": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "centroid_xz": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "x": {
+                          "type": "number"
+                        },
+                        "z": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "z"
+                      ],
+                      "type": "object"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "visitor_goals_supported": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "zone_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "zone_id",
+                    "name",
+                    "purpose",
+                    "object_ids",
+                    "centroid_xz",
+                    "visitor_goals_supported"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "visitor_goals": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "domain",
+              "room_purpose",
+              "visitor_goals",
+              "semantic_zones",
+              "important_objects",
+              "interaction_topics",
+              "agent_role_candidates"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0.full",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792070915,
+    "created_at": 1792070908,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0f9569e982e2935d016ad0d4fcbe9c87d1bd190b6dbd4296c2",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 1800,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"agent_role_candidates\": [\n    {\n      \"display_name\": \"Food Science Guide\",\n      \"expertise\": [\"Lebensmitteltechnologie\", \"Ernährungswissenschaft\", \"Besucherführung\"],\n      \"grounded_object_ids\": [\n        \"object_001\", \"object_002\", \"object_003\", \"object_004\", \"object_005\",\n        \"object_006\", \"object_007\", \"object_008\", \"object_009\", \"object_010\",\n        \"object_011\", \"object_012\", \"object_013\", \"object_014\", \"object_015\"\n      ],\n      \"mission\": \"Führt Besucher durch die thematischen Stationen, erklärt die Exponate und unterstützt bei der Orientierung im Food Science Center.\",\n      \"responsible_zone_ids\": [\"zone_1\", \"zone_2\", \"zone_3\"],\n      \"role_id\": \"agent_guide\"\n    },\n    {\n      \"display_name\": \"Ernährungs-Experte\",\n      \"expertise\": [\"Ernährungsberatung\", \"Nährstoffanalyse\"],\n      \"grounded_object_ids\": [\"object_002\", \"object_008\", \"object_014\", \"object_005\", \"object_011\"],\n      \"mission\": \"Gibt vertiefte Informationen zu Ernährungspanels und Getreidedisplays, beantwortet Fragen zu Nährstoffen und gesunder Ernährung.\",\n      \"responsible_zone_ids\": [\"zone_2\"],\n      \"role_id\": \"agent_nutrition\"\n    },\n    {\n      \"display_name\": \"Technikvermittler Fermentation & Versorgung\",\n      \"expertise\": [\"Fermentation\", \"Lebensmittelversorgung\", \"Modellvermittlung\"],\n      \"grounded_object_ids\": [\"object_003\", \"object_006\", \"object_009\", \"object_012\", \"object_015\"],\n      \"mission\": \"Erklärt die Funktionsweise und Bedeutung von Fermentationsmodellen und Versorgungsübersichten.\",\n      \"responsible_zone_ids\": [\"zone_3\"],\n      \"role_id\": \"agent_fermentation\"\n    }\n  ],\n  \"domain\": \"Lebensmittelwissenschaft, Ernährung, Lebensmitteltechnologie\",\n  \"important_objects\": [\n    {\n      \"object_id\": \"object_001\",\n      \"reason\": \"Startpunkt der Sammlung 1, anschauliche Vermittlung von Konservierungstechnologien.\"\n    },\n    {\n      \"object_id\": \"object_002\",\n      \"reason\": \"Zentrale Informationsquelle zu Nährwerten und Ernährung.\"\n    },\n    {\n      \"object_id\": \"object_003\",\n      \"reason\": \"Veranschaulicht Fermentationsprozesse, wichtig für Interaktion und Erklärung.\"\n    },\n    {\n      \"object_id\": \"object_006\",\n      \"reason\": \"Versorgungsübersicht, unterstützt das Verständnis globaler Lebensmittelketten.\"\n    },\n    {\n      \"object_id\": \"object_011\",\n      \"reason\": \"Getreidedisplay, verbindet Ernährung und Rohstoffkunde.\"\n    }\n  ],\n  \"interaction_topics\": [\n    {\n      \"description\": \"Funktionsweise und Bedeutung von Konservierungsstationen in der Lebensmitteltechnologie.\",\n      \"related_object_ids\": [\"object_001\", \"object_007\", \"object_013\"],\n      \"title\": \"Konservierungstechnologien\",\n      \"topic_id\": \"topic_preservation\"\n    },\n    {\n      \"description\": \"Erklärung von Nährwerten und deren Bedeutung für eine gesunde Ernährung.\",\n      \"related_object_ids\": [\"object_002\", \"object_008\", \"object_014\"],\n      \"title\": \"Nährwertanalyse\",\n      \"topic_id\": \"topic_nutrition\"\n    },\n    {\n      \"description\": \"Darstellung und Erklärung von Fermentationsprozessen und deren Rolle in der Lebensmittelproduktion.\",\n      \"related_object_ids\": [\"object_003\", \"object_009\", \"object_015\"],\n      \"title\": \"Fermentation\",\n      \"topic_id\": \"topic_fermentation\"\n    },\n    {\n      \"description\": \"Globale und regionale Versorgungsketten im Lebensmittelbereich anhand von Kartenmodellen.\",\n      \"related_object_ids\": [\"object_006\", \"object_012\"],\n      \"title\": \"Lebensmittelversorgung\",\n      \"topic_id\": \"topic_supply\"\n    },\n    {\n      \"description\": \"Verarbeitung von Getreide und deren Bedeutung für die Ernährung.\",\n      \"related_object_ids\": [\"object_004\", \"object_010\"],\n      \"title\": \"Getreideverarbeitung\",\n      \"topic_id\": \"topic_milling\"\n    }\n  ],\n  \"room_purpose\": \"Wissenschaftliche Vermittlung von Lebensmittelerzeugung, -verarbeitung und Ernährung im Rahmen eines Food Science Centers.\",\n  \"semantic_zones\": [\n    {\n      \"centroid_xz\": {\"x\": -0.84, \"z\": -0.84},\n      \"name\": \"Zone Sammlung 1: Konservierung & Verarbeitung\",\n      \"object_ids\": [\"object_001\", \"object_004\", \"object_007\", \"object_010\", \"object_013\"],\n      \"purpose\": \"Vermittlung von Konservierungs- und Verarbeitungstechnologien.\",\n      \"visitor_goals_supported\": [\"Verstehen von Konservierung\", \"Erkunden von Verarbeitungstechnologien\"],\n      \"zone_id\": \"zone_1\"\n    },\n    {\n      \"centroid_xz\": {\"x\": -0.28, \"z\": -0.28},\n      \"name\": \"Zone Sammlung 2: Ernährung & Getreide\",\n      \"object_ids\": [\"object_002\", \"object_005\", \"object_008\", \"object_011\", \"object_014\"],\n      \"purpose\": \"Informationen zu Nährwerten und Getreide als Grundnahrungsmittel.\",\n      \"visitor_goals_supported\": [\"Erlernen von Nährwerten\", \"Verstehen von Getreidearten\"],\n      \"zone_id\": \"zone_2\"\n    },\n    {\n      \"centroid_xz\": {\"x\": 0.28, \"z\": 0.28},\n      \"name\": \"Zone Sammlung 3: Fermentation & Versorgung\",\n      \"object_ids\": [\"object_003\", \"object_006\", \"object_009\", \"object_012\", \"object_015\"],\n      \"purpose\": \"Darstellung von Fermentationsprozessen und Versorgungsketten.\",\n      \"visitor_goals_supported\": [\"Verstehen von Fermentation\", \"Erkunden globaler Lebensmittelversorgung\"],\n      \"zone_id\": \"zone_3\"\n    }\n  ],\n  \"visitor_goals\": [\n    \"Verstehen von Konservierungs- und Verarbeitungstechnologien\",\n    \"Erlernen von Nährwerten und gesunder Ernährung\",\n    \"Erkunden von Getreidearten und deren Bedeutung\",\n    \"Verstehen von Fermentationsprozessen\",\n    \"Überblick über globale Lebensmittelversorgung gewinnen\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0f9569e982e2935d016ad0d4fd121c87d1823ea9765098a8e1",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "scene_semantics",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agent_role_candidates": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "mission": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "role_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "role_id",
+                  "display_name",
+                  "mission",
+                  "expertise",
+                  "responsible_zone_ids",
+                  "grounded_object_ids"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "domain": {
+              "type": "string"
+            },
+            "important_objects": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "object_id": {
+                    "enum": [
+                      "object_001",
+                      "object_002",
+                      "object_003",
+                      "object_004",
+                      "object_005",
+                      "object_006",
+                      "object_007",
+                      "object_008",
+                      "object_009",
+                      "object_010",
+                      "object_011",
+                      "object_012",
+                      "object_013",
+                      "object_014",
+                      "object_015"
+                    ],
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "object_id",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "interaction_topics": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "related_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "topic_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "topic_id",
+                  "title",
+                  "description",
+                  "related_object_ids"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "room_purpose": {
+              "type": "string"
+            },
+            "semantic_zones": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "centroid_xz": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "x": {
+                        "type": "number"
+                      },
+                      "z": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "z"
+                    ],
+                    "type": "object"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "purpose": {
+                    "type": "string"
+                  },
+                  "visitor_goals_supported": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "zone_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "zone_id",
+                  "name",
+                  "purpose",
+                  "object_ids",
+                  "centroid_xz",
+                  "visitor_goals_supported"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "visitor_goals": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "domain",
+            "room_purpose",
+            "visitor_goals",
+            "semantic_zones",
+            "important_objects",
+            "interaction_topics",
+            "agent_role_candidates"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2632,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1459,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4091
+    },
+    "user": null
+  },
+  "response_sha256": "144bc3b58cae6399f55330356ef068b0ef17a354d6c0c5b28c2817f7359c0e89",
+  "saved_at": "2026-10-15T13:28:35.859763+00:00",
+  "status": "SUCCESS"
+}

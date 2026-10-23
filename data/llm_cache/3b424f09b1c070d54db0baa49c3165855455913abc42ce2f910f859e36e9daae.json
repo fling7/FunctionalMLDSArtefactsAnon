@@ -1,0 +1,166 @@
+{
+  "cache_key": "3b424f09b1c070d54db0baa49c3165855455913abc42ce2f910f859e36e9daae",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.questions",
+    "item_id": "extension_drift_01_astronomy_gallery.ENT-ASSET-OBJECT_001",
+    "payload": {
+      "input": [
+        {
+          "content": "Write two different natural visitor questions about this selected synthetic room object, using its description and the supplied knowledge excerpts. Use English. Each question must explicitly include the object's supplied name or source id, must be at most one sentence, and must not name an agent or ask for a handoff. The first should ask about the object or its purpose; the second should ask about a detail or use that is supported by the supplied information. Do not invent facts. Return JSON with question_1 and question_2.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"object\": {\"id\": \"ENT-ASSET-OBJECT_001\", \"source_id\": \"object_001\", \"name\": \"orbit_simulator\", \"type\": \"orbit_simulator\", \"group_label\": \"collection_1\", \"zone_names\": [\"Orbital Mechanics Zone\"]}, \"description\": \"Synthetic astronomy gallery object: orbit simulator. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly visible label; no real person or institution.\", \"knowledge_excerpts\": [{\"tag\": \"orbital_mechanics\", \"file\": \"orbital_mechanics\\\\orbital_mechanics_and_meteorite_displays_in_orbital_mechanics_zone.txt\", \"chunk_index\": 0, \"score\": 1.125, \"text\": \"The Orbital Mechanics Zone, centered near coordinates (-0.84, -0.84), features interactive orbit simulators (e.g., object_001, object_007, object_013) and meteorite displays (object_004, object_010). These freestanding educational exhibits illustrate orbital dynamics and meteorite characteristics, enabling visitors to learn about celestial mechanics and meteorite properties through hands-on interaction.\"}]}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 256,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "visitor_questions",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "question_1": {
+                "type": "string"
+              },
+              "question_2": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question_1",
+              "question_2"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "judges",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792103803,
+    "created_at": 1792103803,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0d89cc92ad64e87c016ad1557b1d6087d1ab50bdd9b27d25f8",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 256,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"question_1\":\"What is the purpose of the orbit_simulator (object_001) in the Orbital Mechanics Zone?\",\"question_2\":\"How does the orbit_simulator (object_001) help visitors understand orbital dynamics through interaction?\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0d89cc92ad64e87c016ad1557b99d887d19896b67008a7262a",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "visitor_questions",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "question_1": {
+              "type": "string"
+            },
+            "question_2": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "question_1",
+            "question_2"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 393,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 52,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 445
+    },
+    "user": null
+  },
+  "response_sha256": "be3354f8040fc3c3780f922324b11ec31f0206015f432ec52e60a8975fb137e6",
+  "saved_at": "2026-10-15T22:36:45.275636+00:00",
+  "status": "SUCCESS"
+}

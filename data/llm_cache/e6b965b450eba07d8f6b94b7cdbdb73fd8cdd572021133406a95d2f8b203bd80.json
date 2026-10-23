@@ -1,0 +1,192 @@
+{
+  "cache_key": "e6b965b450eba07d8f6b94b7cdbdb73fd8cdd572021133406a95d2f8b203bd80",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "scene_014_botanical_center.B0.abstain.p1.neutral.full.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "Choose the agent that should answer the visitor about the selected object. The selected object is the routing target even if the question mentions something else. Use the supplied agent information. When an ownership table is supplied, explicit object responsibility takes precedence over group responsibility, which takes precedence over zone responsibility; the first nonempty level must identify exactly one agent. That agent must be the active agent or a directly permitted handoff target. Do not treat a multi-hop path as direct permission. Return only the requested JSON.\nYou may reject: if no valid unique recipient can be determined from the supplied information, set abstain=true and answering_agent_id=null. Otherwise set abstain=false and answering_agent_id to exactly one listed agent id.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Bestäubung & Pflanzen Experte\",\"expertise\":[\"Bestäubungsmechanismen\",\"Pflanzenarten\",\"Fortpflanzung von Pflanzen\"],\"id\":\"bestaeubung_pflanzen_experte\",\"persona\":\"Begeistert und lebendig vermittelt der Experte die Vielfalt der Pflanzen und erklärt anschaulich die Prozesse der Bestäubung.\"},{\"display_name\":\"Blatt & Wurzel Spezialist\",\"expertise\":[\"Blattformen\",\"Wurzelstrukturen\",\"Botanische Grundlagen\"],\"id\":\"blatt_wurzel_spezialist\",\"persona\":\"Geduldig und anschaulich erklärt der Spezialist die Unterschiede und Funktionen von Blättern und Wurzeln und geht auf botanische Details ein.\"},{\"display_name\":\"Samen & Boden Erklärer\",\"expertise\":[\"Samenverbreitung\",\"Bodenarten\",\"Pflanzenwachstum\"],\"id\":\"samen_boden_erklaerer\",\"persona\":\"Ruhig und verständlich erklärt der Erklärer, wie Samen verbreitet werden und welche Rolle der Boden für das Pflanzenleben spielt.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-OBJECT_004\",\"source_id\":\"object_004\",\"name\":\"root_diagram\",\"type\":\"root_diagram\",\"group_label\":\"collection_1\",\"zone_names\":[\"Zone Blatt & Wurzel\"]},\"active_agent_id\":\"blatt_wurzel_spezialist\",\"visitor_question\":\"What can you tell me about this selected object?\"}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false,
+                  true
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "bestaeubung_pflanzen_experte",
+                  "blatt_wurzel_spezialist",
+                  "samen_boden_erklaerer",
+                  null
+                ],
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1792105871,
+    "created_at": 1792105870,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0552580f1d35b2c7016ad15d8eccac87d1bfd582eddd0a65b3",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\":false,\"answering_agent_id\":\"blatt_wurzel_spezialist\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0552580f1d35b2c7016ad15d8f15ec87d1be3c41ba1e93bf9c",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false,
+                true
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "bestaeubung_pflanzen_experte",
+                "blatt_wurzel_spezialist",
+                "samen_boden_erklaerer",
+                null
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 533,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 21,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 554
+    },
+    "user": null
+  },
+  "response_sha256": "be66441d8950aca7b590694c96296c7d3589a3fea0919d78c8f8c95ee738bc33",
+  "saved_at": "2026-10-15T23:11:12.526882+00:00",
+  "status": "SUCCESS"
+}

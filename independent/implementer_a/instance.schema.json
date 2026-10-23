@@ -1,0 +1,1414 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://roomcontract.local/schema/dynamic_functional_rdl_v2_instance.schema.json",
+  "title": "Dynamic Functional RDL V2 native executable instance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "metamodelVersion",
+    "serializationVersion",
+    "caseId",
+    "profile",
+    "fixture_profile",
+    "sourceContract",
+    "objects"
+  ],
+  "properties": {
+    "schema": {
+      "const": "dynamic_functional_rdl_v2_instance"
+    },
+    "id": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "metamodelVersion": {
+      "const": "2.0.0-model"
+    },
+    "serializationVersion": {
+      "const": "1.0"
+    },
+    "caseId": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "profile": {
+      "const": "executable"
+    },
+    "fixture_profile": {
+      "const": "executable"
+    },
+    "sourceContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "metamodelVersion",
+        "semanticProjectionSha256"
+      ],
+      "properties": {
+        "schema": {
+          "const": "roomcontract_case_study"
+        },
+        "metamodelVersion": {
+          "const": "v0.5"
+        },
+        "semanticProjectionSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sourcePath": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "objects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nativeObject"
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "oneRef": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "optionalOneRef": {
+      "type": "array",
+      "maxItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "nonEmptyRefs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "nativeObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "type": {
+          "enum": [
+            "Actor",
+            "ActorParticipation",
+            "Agent",
+            "AssertionResult",
+            "Capability",
+            "CapabilityUse",
+            "DynamicFunctionalModel",
+            "EAExpression",
+            "Effect",
+            "Entity",
+            "EventAssertion",
+            "GroundingAssertion",
+            "KeyValueParameter",
+            "OutputAssertion",
+            "ParallelGroup",
+            "ProbabilityValue",
+            "RelationAssertion",
+            "Requirement",
+            "RequirementsModel",
+            "RuntimeAction",
+            "RuntimeActionLocator",
+            "RuntimeActualOutcome",
+            "RuntimeBinding",
+            "RuntimeParameter",
+            "RuntimeStimulus",
+            "RuntimeValidationLog",
+            "RuntimeValidationProcedure",
+            "RuntimeValidationTarget",
+            "Satisfy",
+            "Scenario",
+            "ScenarioCondition",
+            "ScenarioEvent",
+            "ScenarioExternalEvent",
+            "ScenarioStep",
+            "SchemaReference",
+            "StateAssertion",
+            "StateAssertionOutcome",
+            "StepRelation",
+            "UseCase",
+            "UseCaseScenarioSpecification",
+            "ValidationCase",
+            "ValidationCaseUseCaseBinding",
+            "VerificationValidation",
+            "Verify"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "sourceId": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "entityRole": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "sourceGroup": {
+          "type": "string"
+        },
+        "objectType": {
+          "type": "string"
+        },
+        "sourceAgentId": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "persona": {
+          "type": "string"
+        },
+        "voice": {
+          "type": "string"
+        },
+        "voiceGender": {
+          "type": "string"
+        },
+        "voiceStyle": {
+          "type": "string"
+        },
+        "ttsModel": {
+          "type": "string"
+        },
+        "expressionText": {
+          "type": "string"
+        },
+        "mixedStringContent": {
+          "type": "string"
+        },
+        "datatype": {
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "error",
+            "critical"
+          ]
+        },
+        "targetPlatform": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "dialect": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "input",
+            "output",
+            "inout"
+          ]
+        },
+        "platform": {
+          "type": "string"
+        },
+        "environmentRef": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "verdict": {
+          "enum": [
+            "pass",
+            "fail",
+            "inconclusive",
+            "error"
+          ]
+        },
+        "evidenceRef": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "stepNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/refs"
+            }
+          ]
+        },
+        "requirementsModel": {
+          "$ref": "#/$defs/refs"
+        },
+        "verificationValidation": {
+          "$ref": "#/$defs/refs"
+        },
+        "actor": {
+          "$ref": "#/$defs/refs"
+        },
+        "scenario": {
+          "$ref": "#/$defs/refs"
+        },
+        "scenarioEvent": {
+          "$ref": "#/$defs/refs"
+        },
+        "scenarioCondition": {
+          "$ref": "#/$defs/refs"
+        },
+        "assertion": {
+          "$ref": "#/$defs/refs"
+        },
+        "entity": {
+          "$ref": "#/$defs/refs"
+        },
+        "capability": {
+          "$ref": "#/$defs/refs"
+        },
+        "runtimeBinding": {
+          "$ref": "#/$defs/refs"
+        },
+        "ownedRelationship": {
+          "$ref": "#/$defs/refs"
+        },
+        "requirement": {
+          "$ref": "#/$defs/refs"
+        },
+        "useCase": {
+          "$ref": "#/$defs/refs"
+        },
+        "extensionPoint": {
+          "$ref": "#/$defs/refs"
+        },
+        "include": {
+          "$ref": "#/$defs/refs"
+        },
+        "extend": {
+          "$ref": "#/$defs/refs"
+        },
+        "sourceObjectId": {
+          "$ref": "#/$defs/refs"
+        },
+        "expertise": {
+          "$ref": "#/$defs/refs"
+        },
+        "knowledgeTag": {
+          "$ref": "#/$defs/refs"
+        },
+        "playsActor": {
+          "$ref": "#/$defs/refs"
+        },
+        "providedCapability": {
+          "$ref": "#/$defs/refs"
+        },
+        "objectGroup": {
+          "$ref": "#/$defs/optionalOneRef"
+        },
+        "handoffTarget": {
+          "$ref": "#/$defs/refs"
+        },
+        "responsibleZone": {
+          "$ref": "#/$defs/refs"
+        },
+        "groundedAsset": {
+          "$ref": "#/$defs/refs"
+        },
+        "groundedObjectGroup": {
+          "$ref": "#/$defs/refs"
+        },
+        "subject": {
+          "$ref": "#/$defs/refs"
+        },
+        "expression": {
+          "$ref": "#/$defs/refs"
+        },
+        "precondition": {
+          "$ref": "#/$defs/refs"
+        },
+        "effect": {
+          "$ref": "#/$defs/refs"
+        },
+        "specifiedBy": {
+          "$ref": "#/$defs/refs"
+        },
+        "observableBy": {
+          "$ref": "#/$defs/refs"
+        },
+        "typeRef": {
+          "$ref": "#/$defs/refs"
+        },
+        "provider": {
+          "$ref": "#/$defs/refs"
+        },
+        "target": {
+          "$ref": "#/$defs/refs"
+        },
+        "parameter": {
+          "$ref": "#/$defs/refs"
+        },
+        "locator": {
+          "$ref": "#/$defs/refs"
+        },
+        "inputSchema": {
+          "$ref": "#/$defs/refs"
+        },
+        "outputSchema": {
+          "$ref": "#/$defs/refs"
+        },
+        "runtimeParameter": {
+          "$ref": "#/$defs/refs"
+        },
+        "actorRole": {
+          "$ref": "#/$defs/refs"
+        },
+        "performedBy": {
+          "$ref": "#/$defs/refs"
+        },
+        "triggeredBy": {
+          "$ref": "#/$defs/refs"
+        },
+        "resultingAssertion": {
+          "$ref": "#/$defs/refs"
+        },
+        "capabilityUse": {
+          "$ref": "#/$defs/refs"
+        },
+        "guard": {
+          "$ref": "#/$defs/refs"
+        },
+        "occurrenceProbability": {
+          "$ref": "#/$defs/refs"
+        },
+        "sourceStep": {
+          "$ref": "#/$defs/refs"
+        },
+        "targetStep": {
+          "$ref": "#/$defs/refs"
+        },
+        "source": {
+          "$ref": "#/$defs/refs"
+        },
+        "probability": {
+          "$ref": "#/$defs/refs"
+        },
+        "memberStep": {
+          "$ref": "#/$defs/refs"
+        },
+        "postcondition": {
+          "$ref": "#/$defs/refs"
+        },
+        "step": {
+          "$ref": "#/$defs/refs"
+        },
+        "stepRelation": {
+          "$ref": "#/$defs/refs"
+        },
+        "parallelGroup": {
+          "$ref": "#/$defs/refs"
+        },
+        "variantOf": {
+          "$ref": "#/$defs/refs"
+        },
+        "satisfiedRequirement": {
+          "$ref": "#/$defs/refs"
+        },
+        "satisfiedUseCase": {
+          "$ref": "#/$defs/refs"
+        },
+        "satisfiedBy": {
+          "$ref": "#/$defs/refs"
+        },
+        "vvTarget": {
+          "$ref": "#/$defs/refs"
+        },
+        "vvCase": {
+          "$ref": "#/$defs/refs"
+        },
+        "verify": {
+          "$ref": "#/$defs/refs"
+        },
+        "element": {
+          "$ref": "#/$defs/refs"
+        },
+        "vvSubject": {
+          "$ref": "#/$defs/refs"
+        },
+        "vvProcedure": {
+          "$ref": "#/$defs/refs"
+        },
+        "vvLog": {
+          "$ref": "#/$defs/refs"
+        },
+        "vvStimuli": {
+          "$ref": "#/$defs/refs"
+        },
+        "vvIntendedOutcome": {
+          "$ref": "#/$defs/refs"
+        },
+        "runtimeAction": {
+          "$ref": "#/$defs/refs"
+        },
+        "intendedOutcome": {
+          "$ref": "#/$defs/refs"
+        },
+        "result": {
+          "$ref": "#/$defs/refs"
+        },
+        "performedVVProcedure": {
+          "$ref": "#/$defs/refs"
+        },
+        "vvActualOutcome": {
+          "$ref": "#/$defs/refs"
+        },
+        "actualOutcome": {
+          "$ref": "#/$defs/refs"
+        },
+        "observedValue": {
+          "$ref": "#/$defs/refs"
+        },
+        "verifiedRequirement": {
+          "$ref": "#/$defs/refs"
+        },
+        "verifiedByCase": {
+          "$ref": "#/$defs/refs"
+        },
+        "verifiedByProcedure": {
+          "$ref": "#/$defs/refs"
+        },
+        "validationCase": {
+          "$ref": "#/$defs/refs"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "DynamicFunctionalModel"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "requirementsModel",
+              "verificationValidation",
+              "actor",
+              "scenario",
+              "scenarioEvent",
+              "scenarioCondition",
+              "assertion",
+              "entity",
+              "capability",
+              "runtimeBinding",
+              "ownedRelationship"
+            ],
+            "properties": {
+              "requirementsModel": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "verificationValidation": {
+                "$ref": "#/$defs/oneRef"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RequirementsModel"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "requirement",
+              "useCase"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "UseCase"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "extensionPoint",
+              "include",
+              "extend"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "StateAssertion",
+                  "EventAssertion",
+                  "OutputAssertion",
+                  "GroundingAssertion",
+                  "RelationAssertion"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "subject",
+              "expression",
+              "expressionText",
+              "severity"
+            ],
+            "properties": {
+              "subject": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "expression": {
+                "$ref": "#/$defs/oneRef"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ScenarioCondition"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "kind",
+              "datatype",
+              "expressionText",
+              "mixedStringContent"
+            ],
+            "properties": {
+              "datatype": {
+                "const": "EABoolean"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "ScenarioEvent",
+                  "ScenarioExternalEvent"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "kind",
+              "expressionText",
+              "mixedStringContent"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "temporal",
+                  "spatial",
+                  "signal",
+                  "user",
+                  "environment"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ProbabilityValue"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "value"
+            ],
+            "properties": {
+              "value": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Agent"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "kind",
+              "sourceId",
+              "sourceAgentId",
+              "handoffTarget"
+            ],
+            "properties": {
+              "kind": {
+                "const": "agent"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Entity"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sourceId"
+            ],
+            "properties": {
+              "kind": {
+                "not": {
+                  "const": "agent"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Entity"
+              },
+              "entityRole": {
+                "const": "objectGroup"
+              }
+            },
+            "required": [
+              "type",
+              "entityRole"
+            ]
+          },
+          "then": {
+            "required": [
+              "kind",
+              "sourceGroup"
+            ],
+            "properties": {
+              "kind": {
+                "const": "asset"
+              },
+              "objectGroup": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Entity"
+              },
+              "entityRole": {
+                "const": "sceneObject"
+              }
+            },
+            "required": [
+              "type",
+              "entityRole"
+            ]
+          },
+          "then": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "asset"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Capability"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "precondition",
+              "effect"
+            ],
+            "properties": {
+              "effect": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Effect"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "specifiedBy"
+            ],
+            "properties": {
+              "specifiedBy": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "CapabilityUse"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "typeRef",
+              "provider",
+              "target",
+              "parameter"
+            ],
+            "properties": {
+              "typeRef": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "provider": {
+                "$ref": "#/$defs/oneRef"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RuntimeActionLocator"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "kind",
+              "value"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "endpoint",
+                  "tool",
+                  "topic"
+                ]
+              },
+              "value": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "SchemaReference"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "uri"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RuntimeAction"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "locator",
+              "inputSchema",
+              "runtimeParameter"
+            ],
+            "properties": {
+              "locator": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "inputSchema": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "outputSchema": {
+                "$ref": "#/$defs/oneRef"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RuntimeBinding"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "targetPlatform",
+              "capability",
+              "runtimeAction"
+            ],
+            "properties": {
+              "capability": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "runtimeAction": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ScenarioStep"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "kind",
+              "actorRole",
+              "performedBy",
+              "triggeredBy",
+              "resultingAssertion",
+              "capabilityUse"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "StepRelation"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "kind",
+              "sourceStep",
+              "targetStep",
+              "source",
+              "target"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "sequence",
+                  "alternative",
+                  "exception",
+                  "fork",
+                  "join",
+                  "loop"
+                ]
+              },
+              "sourceStep": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "targetStep": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "source": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "target": {
+                "$ref": "#/$defs/oneRef"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "StepRelation"
+              },
+              "kind": {
+                "const": "sequence"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "not": {
+              "required": [
+                "probability"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ParallelGroup"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "memberStep"
+            ],
+            "properties": {
+              "memberStep": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                },
+                "uniqueItems": true
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Scenario"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "kind",
+              "precondition",
+              "postcondition",
+              "step",
+              "stepRelation",
+              "parallelGroup"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "main",
+                  "alternative",
+                  "exception"
+                ]
+              },
+              "step": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ActorParticipation"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "actor",
+              "useCase"
+            ],
+            "properties": {
+              "actor": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "useCase": {
+                "$ref": "#/$defs/oneRef"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "UseCaseScenarioSpecification"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "useCase",
+              "scenario"
+            ],
+            "properties": {
+              "useCase": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "scenario": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Satisfy"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "satisfiedRequirement",
+              "satisfiedUseCase",
+              "satisfiedBy"
+            ],
+            "properties": {
+              "satisfiedBy": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RuntimeValidationTarget"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "platform",
+              "element",
+              "runtimeBinding"
+            ],
+            "properties": {
+              "element": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RuntimeStimulus"
+              }
+            }
+          },
+          "then": {
+            "oneOf": [
+              {
+                "required": [
+                  "scenarioEvent"
+                ],
+                "not": {
+                  "required": [
+                    "runtimeAction"
+                  ]
+                },
+                "properties": {
+                  "scenarioEvent": {
+                    "$ref": "#/$defs/oneRef"
+                  }
+                }
+              },
+              {
+                "required": [
+                  "runtimeAction"
+                ],
+                "not": {
+                  "required": [
+                    "scenarioEvent"
+                  ]
+                },
+                "properties": {
+                  "runtimeAction": {
+                    "$ref": "#/$defs/oneRef"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "StateAssertionOutcome"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "assertion"
+            ],
+            "properties": {
+              "assertion": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RuntimeValidationProcedure"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "vvStimuli",
+              "vvIntendedOutcome"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "AssertionResult"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "assertion",
+              "verdict"
+            ],
+            "properties": {
+              "assertion": {
+                "$ref": "#/$defs/oneRef"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RuntimeActualOutcome"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "intendedOutcome",
+              "result"
+            ],
+            "properties": {
+              "intendedOutcome": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "result": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RuntimeValidationLog"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "date",
+              "performedVVProcedure",
+              "vvActualOutcome",
+              "actualOutcome"
+            ],
+            "properties": {
+              "performedVVProcedure": {
+                "$ref": "#/$defs/oneRef"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ValidationCase"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "vvSubject",
+              "vvTarget",
+              "vvProcedure",
+              "vvLog"
+            ],
+            "properties": {
+              "vvSubject": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              },
+              "vvTarget": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Verify"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "verifiedRequirement",
+              "verifiedByCase",
+              "verifiedByProcedure",
+              "requirement",
+              "vvCase"
+            ],
+            "properties": {
+              "verifiedRequirement": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              },
+              "verifiedByCase": {
+                "$ref": "#/$defs/nonEmptyRefs"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ValidationCaseUseCaseBinding"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "validationCase",
+              "useCase"
+            ],
+            "properties": {
+              "validationCase": {
+                "$ref": "#/$defs/oneRef"
+              },
+              "useCase": {
+                "$ref": "#/$defs/oneRef"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "VerificationValidation"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "vvTarget",
+              "vvCase",
+              "verify"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

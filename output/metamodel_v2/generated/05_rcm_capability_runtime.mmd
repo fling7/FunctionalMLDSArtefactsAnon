@@ -1,0 +1,141 @@
+classDiagram
+  direction TB
+  %% SVG/PNG define the presentation-authoritative orthogonal layout.
+  %% RCM V2 – Capability, Function and Runtime bridge
+  class EAST_ADL_Elements_Identifiable {
+    <<abstract>>
+    +category : Identifier [0..1]
+    +uuid : String [0..1]
+  }
+  class EAST_ADL_Elements_EAType {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_EAPrototype {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_EAElement {
+    <<abstract>>
+    +name : String [0..1]
+  }
+  class EAST_ADL_Elements_TraceableSpecification {
+    <<abstract>>
+    +text : String [0..1]
+  }
+  class EAST_ADL_Elements_Relationship {
+    <<abstract>>
+  }
+  class RCM_V2_Core_Entity {
+    <<DF::Core>>
+    +kind : EntityKind [0..1]
+    +sourceId : String [0..1]
+    +entityRole : String [0..1]
+    +sourceObjectId : String [*] {ordered}
+    +purpose : String [0..1]
+    +sourceGroup : String [0..1]
+    +objectType : String [0..1]
+  }
+  class RCM_V2_Core_Agent {
+    <<DF::Core>>
+    +sourceAgentId : String [0..1]
+    +displayName : String [0..1]
+    +persona : String [0..1]
+    +expertise : String [*] {ordered}
+    +knowledgeTag : String [*] {ordered}
+    +voice : String [0..1]
+    +voiceGender : String [0..1]
+    +voiceStyle : String [0..1]
+    +ttsModel : String [0..1]
+  }
+  class RCM_V2_Core_CapabilityUse {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_Capability {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_Effect {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_Assertion {
+    <<abstract>>
+    +/expressionText : String [1]
+    +severity : AssertionSeverity [0..1]
+  }
+  class RCM_V2_Core_KeyValueParameter {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_ParameterBinding {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_RuntimeBinding {
+    <<DF::Core>>
+    +targetPlatform : String [1]
+  }
+  class RCM_V2_Core_RuntimeAction {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_RuntimeActionLocator {
+    <<DF::Core>>
+    +kind : RuntimeLocatorKind [1]
+    +value : String [1]
+  }
+  class RCM_V2_Core_SchemaReference {
+    <<DF::Core>>
+    +uri : String [0..1]
+    +dialect : String [0..1]
+  }
+  class RCM_V2_Core_RuntimeParameter {
+    <<DF::Core>>
+    +direction : RuntimeParameterDirection [1]
+  }
+  class RCM_V2_Core_CapabilityFunctionMapping {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_CapabilityBehaviorBinding {
+    <<DF::Core>>
+    +requiresRunToCompletion : Boolean [1]
+  }
+  class EAST_ADL_Behavior_FunctionBehavior {
+    <<EA::Behavior>>
+    +path : String [1]
+    +representation : FunctionBehaviorKind [1]
+  }
+  class EAST_ADL_FunctionModeling_AnalysisFunctionType {
+    <<EA::FunctionModeling>>
+  }
+  class EAST_ADL_FunctionModeling_AnalysisFunctionPrototype {
+    <<EA::FunctionModeling>>
+  }
+  class EAST_ADL_FunctionModeling_DesignFunctionType {
+    <<EA::FunctionModeling>>
+  }
+  class EAST_ADL_FunctionModeling_DesignFunctionPrototype {
+    <<EA::FunctionModeling>>
+  }
+  EAST-ADL_Elements_Identifiable <|-- EAST-ADL_Elements_EAElement
+  EAST-ADL_Elements_EAElement <|-- EAST-ADL_Elements_Relationship
+  EAST-ADL_Elements_TraceableSpecification <|-- RCM_V2_Core_Entity
+  RCM_V2_Core_Entity <|-- RCM_V2_Core_Agent
+  EAST-ADL_Elements_EAPrototype <|-- RCM_V2_Core_CapabilityUse
+  EAST-ADL_Elements_EAElement <|-- RCM_V2_Core_CapabilityUse
+  EAST-ADL_Elements_EAType <|-- RCM_V2_Core_Capability
+  EAST-ADL_Elements_TraceableSpecification <|-- RCM_V2_Core_Capability
+  EAST-ADL_Elements_TraceableSpecification <|-- RCM_V2_Core_Effect
+  EAST-ADL_Elements_TraceableSpecification <|-- RCM_V2_Core_Assertion
+  EAST-ADL_Elements_Relationship <|-- RCM_V2_Core_ParameterBinding
+  EAST-ADL_Elements_Relationship <|-- RCM_V2_Core_RuntimeBinding
+  EAST-ADL_Elements_EAElement <|-- RCM_V2_Core_RuntimeAction
+  EAST-ADL_Elements_EAElement <|-- RCM_V2_Core_RuntimeActionLocator
+  EAST-ADL_Elements_TraceableSpecification <|-- RCM_V2_Core_SchemaReference
+  EAST-ADL_Elements_Relationship <|-- RCM_V2_Core_CapabilityFunctionMapping
+  EAST-ADL_Elements_Relationship <|-- RCM_V2_Core_CapabilityBehaviorBinding
+  RCM_V2_Core_CapabilityUse "*" --> "1" RCM_V2_Core_Capability : type [1]
+  RCM_V2_Core_CapabilityUse "*" --> "0..1" RCM_V2_Core_Entity : provider [0..1]
+  RCM_V2_Core_CapabilityUse "*" ..> "*" EAST-ADL_Elements_Identifiable : target [*]
+  RCM_V2_Core_Capability "1" *-- "1..*" RCM_V2_Core_Effect : effect [1..*]
+  RCM_V2_Core_Effect "*" --> "1..*" RCM_V2_Core_Assertion : specifiedBy [1..*]
+  RCM_V2_Core_RuntimeBinding "*" --> "1" RCM_V2_Core_Capability : capability [1]
+  RCM_V2_Core_RuntimeBinding "1" *-- "1..*" RCM_V2_Core_RuntimeAction : runtimeAction [1..*] {ordered}
+  RCM_V2_Core_RuntimeAction "1" *-- "1" RCM_V2_Core_RuntimeActionLocator : locator [1]
+  RCM_V2_Core_CapabilityFunctionMapping "*" --> "0..1" EAST-ADL_FunctionModeling_AnalysisFunctionType : analysisFunctionType [0..1]
+  RCM_V2_Core_CapabilityFunctionMapping "*" --> "0..1" EAST-ADL_FunctionModeling_DesignFunctionType : designFunctionType [0..1]
+  RCM_V2_Core_CapabilityBehaviorBinding "*" --> "1" EAST-ADL_Behavior_FunctionBehavior : functionBehavior [1]

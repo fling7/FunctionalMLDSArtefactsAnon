@@ -1,0 +1,230 @@
+{
+  "cache_key": "e8ba7a6f80fd40e1d791b7ef8cef83886ac17e1c19e52602525bfa610f5f056c",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.http",
+    "item_id": "scene_041_archaeology_gallery.full.turn03",
+    "payload": {
+      "input": [
+        {
+          "content": "Du bist ein virtueller Gesprächspartner (NPC) in Unity.\nName: Art and Pottery Specialist (id: role_art_pottery_specialist)\nPersona:\nAn enthusiastic art historian specializing in mosaics and pottery, passionate about sharing artistic techniques and cultural stories.\nExpertise (Schwerpunkte): archaeology, art history, ceramics\n\nKommunikationsstil:\n- Antworte auf Deutsch.\n- Kurz, natürlich, hilfreich (Messestand/Showroom-Stil).\n- Wenn Informationen fehlen, stelle 1 kurze Rückfrage (statt zu raten), sofern es in deinem Bereich liegt.\n\nHandoff: deaktiviert. Antworte selbst so gut wie möglich oder bitte um Klärung.\n\nVertrauenswürdiger räumlicher Bezug (serverseitig aus dem gepinnten RoomContract-V2-Modell):\n- Szeneobjekt: pottery_display (entity_id=ENT-ASSET-OBJECT_017, source_object_id=object_017)\n- Modellierte Objektgruppen: ENT-GROUP-COLLECTION_2\n- Modellierte Zonen: ENT-ZONE-ZONE_COLLECTION_2\n- Löse Wörter wie 'dies', 'das' oder 'hier' auf dieses Szeneobjekt auf. Erfinde keine abweichende Objektidentität.\n\nLokale Wissensauszüge (nur nutzen, wenn relevant; nicht erfinden):\n- [archaeology/archaeology\\overall_archaeology_gallery_zones_and_purpose.txt#0] The archaeology gallery is divided into three main zones: Collection 1 (Dating and Settlement Maps) at the west side, Collection 2 (Mosaic Panels and Pottery Displays) centrally located, and Collection 3 (Excavation Models and Tool Cases) to the east. Each zone contains specialized objects like dating stations, mosaic panels, and excavation models that collectively support educational goals about archaeological methods, art, and tools.\n- [pottery_techniques/pottery_techniques\\pottery_displays_and_techniques.txt#0] Pottery displays in Collection 2, including object_005 and object_017, illustrate various pottery techniques used in ancient cultures. These freestanding exhibits educate visitors on ceramic craftsmanship and its evolution over time.\n\nWICHTIG: Du MUSST deine Antwort als JSON ausgeben und genau das Schema erfüllen (Structured Output).",
+          "role": "developer"
+        },
+        {
+          "content": "Du wurdest gerade von Excavation and Tools Specialist (id: role_excavation_tools_specialist) an den Nutzer weitergeleitet. Grund: Spatial routing (asset priority): role_art_pottery_specialist is the first modeled handoff target of role_excavation_tools_specialist whose groundedAsset covers ENT-ASSET-OBJECT_017. Uebergabekontext: Räumlich ausgewähltes Objekt: object_017 Antworte direkt auf die Nutzerfrage.",
+          "role": "developer"
+        },
+        {
+          "content": "What can you tell me about this selected object?",
+          "role": "user"
+        },
+        {
+          "content": "For this measurement answer in one short sentence. Preserve all required JSON fields. Do not omit fields to shorten the output.",
+          "role": "developer"
+        }
+      ],
+      "max_output_tokens": 128,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "npc_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "confidence": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "handoff_brief": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_reason": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_to": {
+                "type": "null"
+              },
+              "say": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "say",
+              "handoff_to",
+              "handoff_reason",
+              "handoff_brief",
+              "confidence"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792120974,
+    "created_at": 1792120973,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0b9be024887dfa5d016ad1988df6fc87d19a6335ba5a035ab1",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 128,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"confidence\":0.98,\"handoff_brief\":null,\"handoff_reason\":null,\"handoff_to\":null,\"say\":\"Das ausgewählte Objekt ist ein Keramik-Exponat in der zentralen Zone, das verschiedene antike Töpfertechniken und deren Entwicklung anschaulich zeigt.\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0b9be024887dfa5d016ad1988e61a887d1826577fa5487b560",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "npc_action",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "handoff_brief": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_reason": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_to": {
+              "type": "null"
+            },
+            "say": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "say",
+            "handoff_to",
+            "handoff_reason",
+            "handoff_brief",
+            "confidence"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 694,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 65,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 759
+    },
+    "user": null
+  },
+  "response_sha256": "71cd57798bb2c70fd6fbb1c38a81ee0b74522e38330f65a317aa69ac9f46145d",
+  "saved_at": "2026-10-16T03:22:56.207250+00:00",
+  "status": "SUCCESS"
+}

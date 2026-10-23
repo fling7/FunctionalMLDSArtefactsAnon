@@ -1,0 +1,182 @@
+{
+  "cache_key": "5678ac464f02a3aab902f6fafa23dec247e66fbfbbf24c069b97bad953529351",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "extension_drift_02_botanical_center.B0.forced.p2.neutral.mini.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "You assign a grounded visitor question to one agent. Route for selected_object, while treating visitor_question as context rather than a replacement selection. Compare the available agents. If explicit responsibility data is present, check object owners first, then group owners only if no object owner exists, then zone owners only if neither earlier level has an owner. More than one owner at the deciding level is ambiguous. A valid recipient is the unique owner and is either already active or one declared edge away. Produce the JSON decision.\nYou must choose exactly one listed agent id, including when the evidence is uncertain or no valid unique recipient is apparent. Set abstain=false. A null recipient and rejection are not available in this condition.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Botanical Guide\",\"expertise\":[\"botany\",\"plant biology\",\"visitor assistance\"],\"id\":\"agent_001\",\"persona\":\"Friendly and knowledgeable botanical expert eager to explain plant structures and pollination processes to visitors.\"},{\"display_name\":\"Root and Plant Specialist\",\"expertise\":[\"plant anatomy\",\"root systems\",\"educational guidance\"],\"id\":\"agent_002\",\"persona\":\"Detail-oriented specialist passionate about explaining root systems and plant cases to deepen visitor understanding.\"},{\"display_name\":\"Seed and Soil Expert\",\"expertise\":[\"seed biology\",\"soil science\",\"interactive education\"],\"id\":\"agent_003\",\"persona\":\"Engaging educator focused on seed diversity and soil properties, helping visitors connect these topics to plant health.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-OBJECT_012\",\"source_id\":\"object_012\",\"name\":\"soil_station\",\"type\":\"soil_station\",\"group_label\":\"collection_3\",\"zone_names\":[\"Seed and Soil Zone\"]},\"active_agent_id\":\"agent_003\",\"visitor_question\":\"What can you tell me about this selected object?\"}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "agent_001",
+                  "agent_002",
+                  "agent_003"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792107266,
+    "created_at": 1792107266,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_07cc94a81043b064016ad163026b8c87d1a5030b58b86265e3",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\":false,\"answering_agent_id\":\"agent_003\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_07cc94a81043b064016ad16302cb0c87d1bf494e73cf8db16c",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "agent_001",
+                "agent_002",
+                "agent_003"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 422,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 17,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 439
+    },
+    "user": null
+  },
+  "response_sha256": "7724bbea620e40131b44233f552ce2bcae56eb7dee60a876946c3d3032384060",
+  "saved_at": "2026-10-15T23:34:27.961619+00:00",
+  "status": "SUCCESS"
+}

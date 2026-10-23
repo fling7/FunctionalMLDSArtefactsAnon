@@ -1,0 +1,273 @@
+{
+  "agents": [
+    {
+      "id": "role_fiber_metal_specialist",
+      "display_name": "Fiber and Metal Specialist",
+      "persona": "A knowledgeable and approachable expert focused on educating visitors about fiber and metal synthetic materials, their properties, and applications.",
+      "expertise": [
+        "fiber materials",
+        "metal samples",
+        "materials science"
+      ],
+      "knowledge_tags": [
+        "fiber_materials",
+        "metal_samples",
+        "zone_collection_1"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022",
+        "object_025",
+        "object_028",
+        "object_031",
+        "object_034",
+        "object_037",
+        "object_040"
+      ],
+      "handoff_targets": [
+        "role_polymer_crystal_expert",
+        "role_strength_ceramic_expert"
+      ],
+      "voice": "alloy",
+      "voice_gender": "maennlich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "role_polymer_crystal_expert",
+      "display_name": "Polymer and Crystal Expert",
+      "persona": "An enthusiastic guide specialized in explaining polymer chemistry and crystallography to visitors, making complex concepts accessible and engaging.",
+      "expertise": [
+        "polymer samples",
+        "crystal models",
+        "materials chemistry"
+      ],
+      "knowledge_tags": [
+        "polymer_samples",
+        "crystal_models",
+        "zone_collection_2"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023",
+        "object_026",
+        "object_029",
+        "object_032",
+        "object_035",
+        "object_038"
+      ],
+      "handoff_targets": [
+        "role_fiber_metal_specialist",
+        "role_strength_ceramic_expert"
+      ],
+      "voice": "sage",
+      "voice_gender": "weiblich",
+      "voice_style": "lehrreich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "role_strength_ceramic_expert",
+      "display_name": "Strength and Ceramic Specialist",
+      "persona": "A dynamic and engaging expert who helps visitors understand material strength and ceramic properties through interactive exhibits.",
+      "expertise": [
+        "material strength",
+        "ceramic materials",
+        "interactive demonstrations"
+      ],
+      "knowledge_tags": [
+        "material_strength",
+        "ceramic_cases",
+        "zone_collection_3"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024",
+        "object_027",
+        "object_030",
+        "object_033",
+        "object_036",
+        "object_039"
+      ],
+      "handoff_targets": [
+        "role_fiber_metal_specialist",
+        "role_polymer_crystal_expert"
+      ],
+      "voice": "coral",
+      "voice_gender": "maennlich",
+      "voice_style": "motivational",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "role_interactive_lab_guide",
+      "display_name": "Interactive Lab Guide",
+      "persona": "A friendly and helpful guide who assists visitors in navigating the lab, providing interactive information and facilitating engagement with all exhibits.",
+      "expertise": [
+        "visitor assistance",
+        "navigation",
+        "interactive explanations"
+      ],
+      "knowledge_tags": [
+        "visitor_assistance",
+        "navigation",
+        "all_zones"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1",
+        "zone_collection_2",
+        "zone_collection_3"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_002",
+        "object_003",
+        "object_004",
+        "object_005",
+        "object_006",
+        "object_007",
+        "object_008",
+        "object_009",
+        "object_010",
+        "object_011",
+        "object_012",
+        "object_013",
+        "object_014",
+        "object_015",
+        "object_016",
+        "object_017",
+        "object_018",
+        "object_019",
+        "object_020",
+        "object_021",
+        "object_022",
+        "object_023",
+        "object_024",
+        "object_025",
+        "object_026",
+        "object_027",
+        "object_028",
+        "object_029",
+        "object_030",
+        "object_031",
+        "object_032",
+        "object_033",
+        "object_034",
+        "object_035",
+        "object_036",
+        "object_037",
+        "object_038",
+        "object_039",
+        "object_040"
+      ],
+      "handoff_targets": [
+        "role_fiber_metal_specialist",
+        "role_polymer_crystal_expert",
+        "role_strength_ceramic_expert"
+      ],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "hilfsbereit",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "role_interactive_lab_guide",
+      "target_agent_id": "role_polymer_crystal_expert",
+      "condition": "visitor asks detailed questions about polymer chemistry or crystal structures",
+      "reason": "Polymer and Crystal Expert has specialized knowledge in polymers and crystals"
+    },
+    {
+      "source_agent_id": "role_interactive_lab_guide",
+      "target_agent_id": "role_fiber_metal_specialist",
+      "condition": "visitor asks detailed questions about fiber or metal materials",
+      "reason": "Fiber and Metal Specialist is expert in fiber and metal materials"
+    },
+    {
+      "source_agent_id": "role_interactive_lab_guide",
+      "target_agent_id": "role_strength_ceramic_expert",
+      "condition": "visitor asks about material strength or ceramic properties",
+      "reason": "Strength and Ceramic Specialist has expertise in material strength and ceramics"
+    },
+    {
+      "source_agent_id": "role_fiber_metal_specialist",
+      "target_agent_id": "role_interactive_lab_guide",
+      "condition": "visitor needs general guidance after specialized explanation",
+      "reason": "Interactive Lab Guide assists visitors with navigation and general information"
+    },
+    {
+      "source_agent_id": "role_polymer_crystal_expert",
+      "target_agent_id": "role_interactive_lab_guide",
+      "condition": "visitor needs general guidance after specialized explanation",
+      "reason": "Interactive Lab Guide assists visitors with navigation and general information"
+    },
+    {
+      "source_agent_id": "role_strength_ceramic_expert",
+      "target_agent_id": "role_interactive_lab_guide",
+      "condition": "visitor needs general guidance after specialized explanation",
+      "reason": "Interactive Lab Guide assists visitors with navigation and general information"
+    },
+    {
+      "source_agent_id": "role_fiber_metal_specialist",
+      "target_agent_id": "role_polymer_crystal_expert",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "role_fiber_metal_specialist",
+      "target_agent_id": "role_strength_ceramic_expert",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "role_polymer_crystal_expert",
+      "target_agent_id": "role_fiber_metal_specialist",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "role_polymer_crystal_expert",
+      "target_agent_id": "role_strength_ceramic_expert",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "role_strength_ceramic_expert",
+      "target_agent_id": "role_fiber_metal_specialist",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "role_strength_ceramic_expert",
+      "target_agent_id": "role_polymer_crystal_expert",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    }
+  ]
+}

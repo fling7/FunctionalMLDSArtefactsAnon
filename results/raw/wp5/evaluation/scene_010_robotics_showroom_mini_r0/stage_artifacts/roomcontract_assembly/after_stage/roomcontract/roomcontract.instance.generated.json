@@ -1,0 +1,3697 @@
+{
+  "schema": "roomcontract_case_study",
+  "metamodelVersion": "v0.5",
+  "caseId": "scene_010_robotics_showroom_mini_r0",
+  "requirementsModel": {
+    "id": "RM-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+    "requirements": [
+      {
+        "id": "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-001",
+        "text": "The pipeline shall ingest an RDL scene and preserve stable object identities."
+      },
+      {
+        "id": "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "text": "The pipeline shall derive room semantics grounded in existing RDL objects."
+      },
+      {
+        "id": "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "text": "The pipeline shall synthesize backend-compatible spatial agent roles."
+      },
+      {
+        "id": "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "text": "Every generated agent knowledge tag shall be covered by materialized knowledge."
+      },
+      {
+        "id": "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-005",
+        "text": "Every generated agent shall be placed inside the room without obstacle overlap."
+      },
+      {
+        "id": "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006",
+        "text": "The generated behavior shall be traceable from requirements to runtime actions and validation cases."
+      }
+    ],
+    "useCases": [
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01",
+        "name": "Generate spatially grounded multi-agent guide",
+        "actor_ids": [
+          "ACT-CASE-STUDY-ENGINEER",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MAIN",
+            "kind": "main",
+            "description": "Authoring pipeline for generating and validating a spatially grounded multi-agent room guide.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VALID-INPUT"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S01",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-CASE-STUDY-ENGINEER",
+                "text": "Provide an RDL file as case-study input.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-RDL-PROVIDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VALID-INPUT",
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S02",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": null,
+                "text": "Load and normalize the RDL scene.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-NORMALIZED-SCENE-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S02-ANALYZE-RDL-SCENE"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S03",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": null,
+                "text": "Derive semantic zones, visitor goals and interaction topics.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SCENE-SEMANTICS-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S03-ANALYZE-RDL-SCENE"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S04",
+                "stepNumber": 4,
+                "kind": "systemResponse",
+                "performedBy": null,
+                "text": "Generate spatially grounded agent roles and handoff rules.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENT-ROLES-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S04-DERIVE-SPATIAL-AGENT-ROLES"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S05",
+                "stepNumber": 5,
+                "kind": "systemResponse",
+                "performedBy": null,
+                "text": "Generate materialized knowledge entries for all agent knowledge tags.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-KNOWLEDGE-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S05-GENERATE-ROOM-KNOWLEDGE"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S06",
+                "stepNumber": 6,
+                "kind": "systemResponse",
+                "performedBy": null,
+                "text": "Place generated agents inside the room near their responsibilities.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PLACEMENT-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S06-PLACE-AGENTS-IN-SCENE"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S07",
+                "stepNumber": 7,
+                "kind": "systemResponse",
+                "performedBy": null,
+                "text": "Assemble and validate the RoomContract trace instance.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ROOMCONTRACT-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S07-ASSEMBLE-FUNCTIONAL-RDL"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S08",
+                "stepNumber": 8,
+                "kind": "systemResponse",
+                "performedBy": null,
+                "text": "Materialize the Interactive Agents project files.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PROJECT-MATERIALIZED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S09",
+                "stepNumber": 9,
+                "kind": "systemResponse",
+                "performedBy": null,
+                "text": "Set up an Interactive Agents runtime session.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S09-SETUP-INTERACTIVE-SESSION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S10",
+                "stepNumber": 10,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Ask a general room-related question to an agent.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S11",
+                "stepNumber": 11,
+                "kind": "systemResponse",
+                "performedBy": null,
+                "text": "Answer a general visitor question without a selected scene object.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ROBOTICS_GUIDE-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-CONTROL_SYSTEMS_EXPERT-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MECHANICAL_ASSEMBLY_SPECIALIST-S11-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S12",
+                "stepNumber": 12,
+                "kind": "systemResponse",
+                "performedBy": null,
+                "text": "Optionally hand off a general question to a responsible specialist agent.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ROBOTICS_GUIDE-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-CONTROL_SYSTEMS_EXPERT-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MECHANICAL_ASSEMBLY_SPECIALIST-S12-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S01",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S02",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-02-03",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S02",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S03",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-03-04",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S03",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S04",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-04-05",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S04",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S05",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-05-06",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S05",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S06",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-06-07",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S06",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S07",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-07-08",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S07",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S08",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-08-09",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S08",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S09",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-09-10",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S09",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S10",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-10-11",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S10",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S11",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-11-12",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S11",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S12",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001",
+        "name": "Describe grounded scene object object_001",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_001; the model binds the interaction to Robotics Guide and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select gripper_display (object_001) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Robotics Guide describes gripper_display using knowledge grounded in source object object_001.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about gripper_display to the modeled responsibility of Robotics Guide.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002",
+        "name": "Describe grounded scene object object_002",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_002; the model binds the interaction to Control Systems Expert and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select control_console (object_002) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Control Systems Expert describes control_console using knowledge grounded in source object object_002.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about control_console to the modeled responsibility of Control Systems Expert.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003",
+        "name": "Describe grounded scene object object_003",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_003; the model binds the interaction to Mechanical Assembly Specialist and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select joint_model (object_003) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Mechanical Assembly Specialist describes joint_model using knowledge grounded in source object object_003.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about joint_model to the modeled responsibility of Mechanical Assembly Specialist.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004",
+        "name": "Describe grounded scene object object_004",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_004; the model binds the interaction to Robotics Guide and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select mobile_robot_model (object_004) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Robotics Guide describes mobile_robot_model using knowledge grounded in source object object_004.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about mobile_robot_model to the modeled responsibility of Robotics Guide.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005",
+        "name": "Describe grounded scene object object_005",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_005; the model binds the interaction to Control Systems Expert and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select sensor_station (object_005) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Control Systems Expert describes sensor_station using knowledge grounded in source object object_005.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about sensor_station to the modeled responsibility of Control Systems Expert.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006",
+        "name": "Describe grounded scene object object_006",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_006; the model binds the interaction to Mechanical Assembly Specialist and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select assembly_display (object_006) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Mechanical Assembly Specialist describes assembly_display using knowledge grounded in source object object_006.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about assembly_display to the modeled responsibility of Mechanical Assembly Specialist.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007",
+        "name": "Describe grounded scene object object_007",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_007; the model binds the interaction to Robotics Guide and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select gripper_display (object_007) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Robotics Guide describes gripper_display using knowledge grounded in source object object_007.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about gripper_display to the modeled responsibility of Robotics Guide.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008",
+        "name": "Describe grounded scene object object_008",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_008; the model binds the interaction to Control Systems Expert and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select control_console (object_008) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Control Systems Expert describes control_console using knowledge grounded in source object object_008.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about control_console to the modeled responsibility of Control Systems Expert.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009",
+        "name": "Describe grounded scene object object_009",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_009; the model binds the interaction to Mechanical Assembly Specialist and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select joint_model (object_009) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Mechanical Assembly Specialist describes joint_model using knowledge grounded in source object object_009.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about joint_model to the modeled responsibility of Mechanical Assembly Specialist.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010",
+        "name": "Describe grounded scene object object_010",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_010; the model binds the interaction to Robotics Guide and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select mobile_robot_model (object_010) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Robotics Guide describes mobile_robot_model using knowledge grounded in source object object_010.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about mobile_robot_model to the modeled responsibility of Robotics Guide.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011",
+        "name": "Describe grounded scene object object_011",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_011; the model binds the interaction to Control Systems Expert and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select sensor_station (object_011) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Control Systems Expert describes sensor_station using knowledge grounded in source object object_011.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about sensor_station to the modeled responsibility of Control Systems Expert.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012",
+        "name": "Describe grounded scene object object_012",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_012; the model binds the interaction to Mechanical Assembly Specialist and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select assembly_display (object_012) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Mechanical Assembly Specialist describes assembly_display using knowledge grounded in source object object_012.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about assembly_display to the modeled responsibility of Mechanical Assembly Specialist.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013",
+        "name": "Describe grounded scene object object_013",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_013; the model binds the interaction to Robotics Guide and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select gripper_display (object_013) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Robotics Guide describes gripper_display using knowledge grounded in source object object_013.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about gripper_display to the modeled responsibility of Robotics Guide.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014",
+        "name": "Describe grounded scene object object_014",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_014; the model binds the interaction to Control Systems Expert and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select control_console (object_014) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Control Systems Expert describes control_console using knowledge grounded in source object object_014.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about control_console to the modeled responsibility of Control Systems Expert.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      },
+      {
+        "id": "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015",
+        "name": "Describe grounded scene object object_015",
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extensionPoints": [],
+        "includes": [],
+        "extends": [],
+        "scenarios": [
+          {
+            "id": "SC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-MAIN",
+            "kind": "main",
+            "description": "Visitor asks about source object object_015; the model binds the interaction to Mechanical Assembly Specialist and its asset, group, and zone context.",
+            "precondition_ids": [
+              "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE"
+            ],
+            "postcondition_ids": [
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+              "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+            ],
+            "steps": [
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-ASK",
+                "stepNumber": 1,
+                "kind": "actorIntent",
+                "performedBy": "ACT-VISITOR",
+                "text": "Select joint_model (object_015) and ask for a description.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+                ],
+                "guard": null,
+                "resultingState": [],
+                "capabilityUseIds": []
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-ANSWER",
+                "stepNumber": 2,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Mechanical Assembly Specialist describes joint_model using knowledge grounded in source object object_015.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [],
+                "guard": null,
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-ANSWER-ROOM-GROUNDED-QUESTION"
+                ]
+              },
+              {
+                "id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-HANDOFF",
+                "stepNumber": 3,
+                "kind": "systemResponse",
+                "performedBy": "ACT-ROOM-GUIDE",
+                "text": "Constrain any follow-up handoff about joint_model to the modeled responsibility of Mechanical Assembly Specialist.",
+                "occurrenceProbability": 1.0,
+                "triggeredBy": [
+                  "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+                ],
+                "guard": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+                "resultingState": [
+                  "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+                ],
+                "capabilityUseIds": [
+                  "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ]
+              }
+            ],
+            "stepRelations": [
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-01",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-ASK",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-ANSWER",
+                "guard": null,
+                "probability": 1.0
+              },
+              {
+                "id": "REL-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-02",
+                "kind": "sequence",
+                "source_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-ANSWER",
+                "target_step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-HANDOFF",
+                "guard": null,
+                "probability": 1.0
+              }
+            ],
+            "parallelGroups": []
+          }
+        ]
+      }
+    ]
+  },
+  "actors": [
+    {
+      "id": "ACT-CASE-STUDY-ENGINEER",
+      "name": "Case Study Engineer",
+      "description": "Provides RDL input and runs the validation pipeline."
+    },
+    {
+      "id": "ACT-VISITOR",
+      "name": "Visitor",
+      "description": "Asks room-related questions in the generated immersive environment."
+    },
+    {
+      "id": "ACT-ROOM-GUIDE",
+      "name": "Room Guide",
+      "description": "Role played by generated interactive agents."
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-ZONE-ZONE_001",
+      "name": "Manipulation and Mobility Zone",
+      "kind": "zone",
+      "source_id": "zone_001",
+      "entityRole": "semanticZone",
+      "source_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013"
+      ],
+      "purpose": "Showcase robotic grippers and mobile robot models to illustrate manipulation and mobility technologies."
+    },
+    {
+      "id": "ENT-ZONE-ZONE_002",
+      "name": "Control and Sensor Zone",
+      "kind": "zone",
+      "source_id": "zone_002",
+      "entityRole": "semanticZone",
+      "source_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014"
+      ],
+      "purpose": "Demonstrate control consoles and sensor stations to explain control systems and sensing in robotics."
+    },
+    {
+      "id": "ENT-ZONE-ZONE_003",
+      "name": "Mechanical Assembly Zone",
+      "kind": "zone",
+      "source_id": "zone_003",
+      "entityRole": "semanticZone",
+      "source_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015"
+      ],
+      "purpose": "Present joint models and assembly displays to educate visitors on mechanical aspects of robotics."
+    },
+    {
+      "id": "ENT-GROUP-COLLECTION_1",
+      "name": "Object group: collection_1",
+      "kind": "asset",
+      "source_id": "group:collection_1",
+      "entityRole": "objectGroup",
+      "source_group": "collection_1",
+      "source_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013"
+      ]
+    },
+    {
+      "id": "ENT-GROUP-COLLECTION_2",
+      "name": "Object group: collection_2",
+      "kind": "asset",
+      "source_id": "group:collection_2",
+      "entityRole": "objectGroup",
+      "source_group": "collection_2",
+      "source_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014"
+      ]
+    },
+    {
+      "id": "ENT-GROUP-COLLECTION_3",
+      "name": "Object group: collection_3",
+      "kind": "asset",
+      "source_id": "group:collection_3",
+      "entityRole": "objectGroup",
+      "source_group": "collection_3",
+      "source_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015"
+      ]
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_001",
+      "name": "gripper_display",
+      "kind": "asset",
+      "source_id": "object_001",
+      "entityRole": "sceneObject",
+      "source_group": "collection_1",
+      "object_type": "gripper_display",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_1"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_002",
+      "name": "control_console",
+      "kind": "asset",
+      "source_id": "object_002",
+      "entityRole": "sceneObject",
+      "source_group": "collection_2",
+      "object_type": "control_console",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_2"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_003",
+      "name": "joint_model",
+      "kind": "asset",
+      "source_id": "object_003",
+      "entityRole": "sceneObject",
+      "source_group": "collection_3",
+      "object_type": "joint_model",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_3"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_004",
+      "name": "mobile_robot_model",
+      "kind": "asset",
+      "source_id": "object_004",
+      "entityRole": "sceneObject",
+      "source_group": "collection_1",
+      "object_type": "mobile_robot_model",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_1"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_005",
+      "name": "sensor_station",
+      "kind": "asset",
+      "source_id": "object_005",
+      "entityRole": "sceneObject",
+      "source_group": "collection_2",
+      "object_type": "sensor_station",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_2"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_006",
+      "name": "assembly_display",
+      "kind": "asset",
+      "source_id": "object_006",
+      "entityRole": "sceneObject",
+      "source_group": "collection_3",
+      "object_type": "assembly_display",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_3"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_007",
+      "name": "gripper_display",
+      "kind": "asset",
+      "source_id": "object_007",
+      "entityRole": "sceneObject",
+      "source_group": "collection_1",
+      "object_type": "gripper_display",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_1"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_008",
+      "name": "control_console",
+      "kind": "asset",
+      "source_id": "object_008",
+      "entityRole": "sceneObject",
+      "source_group": "collection_2",
+      "object_type": "control_console",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_2"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_009",
+      "name": "joint_model",
+      "kind": "asset",
+      "source_id": "object_009",
+      "entityRole": "sceneObject",
+      "source_group": "collection_3",
+      "object_type": "joint_model",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_3"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_010",
+      "name": "mobile_robot_model",
+      "kind": "asset",
+      "source_id": "object_010",
+      "entityRole": "sceneObject",
+      "source_group": "collection_1",
+      "object_type": "mobile_robot_model",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_1"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_011",
+      "name": "sensor_station",
+      "kind": "asset",
+      "source_id": "object_011",
+      "entityRole": "sceneObject",
+      "source_group": "collection_2",
+      "object_type": "sensor_station",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_2"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_012",
+      "name": "assembly_display",
+      "kind": "asset",
+      "source_id": "object_012",
+      "entityRole": "sceneObject",
+      "source_group": "collection_3",
+      "object_type": "assembly_display",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_3"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_013",
+      "name": "gripper_display",
+      "kind": "asset",
+      "source_id": "object_013",
+      "entityRole": "sceneObject",
+      "source_group": "collection_1",
+      "object_type": "gripper_display",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_1"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_014",
+      "name": "control_console",
+      "kind": "asset",
+      "source_id": "object_014",
+      "entityRole": "sceneObject",
+      "source_group": "collection_2",
+      "object_type": "control_console",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_2"
+    },
+    {
+      "id": "ENT-ASSET-OBJECT_015",
+      "name": "joint_model",
+      "kind": "asset",
+      "source_id": "object_015",
+      "entityRole": "sceneObject",
+      "source_group": "collection_3",
+      "object_type": "joint_model",
+      "object_group_entity_id": "ENT-GROUP-COLLECTION_3"
+    },
+    {
+      "id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "name": "Robotics Guide",
+      "kind": "agent",
+      "source_id": "robotics_guide",
+      "entityRole": "interactiveAgent"
+    },
+    {
+      "id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "name": "Control Systems Expert",
+      "kind": "agent",
+      "source_id": "control_systems_expert",
+      "entityRole": "interactiveAgent"
+    },
+    {
+      "id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "name": "Mechanical Assembly Specialist",
+      "kind": "agent",
+      "source_id": "mechanical_assembly_specialist",
+      "entityRole": "interactiveAgent"
+    },
+    {
+      "id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "name": "Case study validation state",
+      "kind": "stateObject",
+      "source_id": "validation_state"
+    }
+  ],
+  "agents": [
+    {
+      "id": "AG-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ROBOTICS_GUIDE",
+      "source_agent_id": "robotics_guide",
+      "entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "playsActor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "providedCapabilityIds": [
+        "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "handoff_targets": [
+        "control_systems_expert"
+      ],
+      "handoffTargetAgentIds": [
+        "AG-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-CONTROL_SYSTEMS_EXPERT"
+      ],
+      "display_name": "Robotics Guide",
+      "persona": "Friendly and knowledgeable guide specializing in robotic manipulation and mobility technologies, eager to help visitors understand and interact with exhibits.",
+      "expertise": [
+        "robotics",
+        "education",
+        "visitor assistance"
+      ],
+      "knowledge_tags": [
+        "robotics",
+        "manipulation",
+        "mobility",
+        "grippers",
+        "mobile_robots"
+      ],
+      "voice": "alloy",
+      "voice_gender": "maennlich",
+      "voice_style": "informative",
+      "tts_model": "gpt-4o-mini-tts",
+      "responsible_zone_ids": [
+        "zone_001"
+      ],
+      "responsibleZoneEntityIds": [
+        "ENT-ZONE-ZONE_001"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013"
+      ],
+      "groundedAssetEntityIds": [
+        "ENT-ASSET-OBJECT_001",
+        "ENT-ASSET-OBJECT_004",
+        "ENT-ASSET-OBJECT_007",
+        "ENT-ASSET-OBJECT_010",
+        "ENT-ASSET-OBJECT_013"
+      ],
+      "grounded_object_groups": [
+        "collection_1"
+      ],
+      "groundedObjectGroupEntityIds": [
+        "ENT-GROUP-COLLECTION_1"
+      ]
+    },
+    {
+      "id": "AG-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-CONTROL_SYSTEMS_EXPERT",
+      "source_agent_id": "control_systems_expert",
+      "entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "playsActor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "providedCapabilityIds": [
+        "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "handoff_targets": [
+        "mechanical_assembly_specialist"
+      ],
+      "handoffTargetAgentIds": [
+        "AG-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MECHANICAL_ASSEMBLY_SPECIALIST"
+      ],
+      "display_name": "Control Systems Expert",
+      "persona": "Technical expert with deep knowledge of robotic control consoles and sensor stations, providing detailed explanations and demonstrations.",
+      "expertise": [
+        "robotics",
+        "control systems",
+        "sensor technology"
+      ],
+      "knowledge_tags": [
+        "robotics",
+        "control_systems",
+        "sensors",
+        "robotic_control",
+        "sensor_technology"
+      ],
+      "voice": "sage",
+      "voice_gender": "weiblich",
+      "voice_style": "technical",
+      "tts_model": "gpt-4o-mini-tts",
+      "responsible_zone_ids": [
+        "zone_002"
+      ],
+      "responsibleZoneEntityIds": [
+        "ENT-ZONE-ZONE_002"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014"
+      ],
+      "groundedAssetEntityIds": [
+        "ENT-ASSET-OBJECT_002",
+        "ENT-ASSET-OBJECT_005",
+        "ENT-ASSET-OBJECT_008",
+        "ENT-ASSET-OBJECT_011",
+        "ENT-ASSET-OBJECT_014"
+      ],
+      "grounded_object_groups": [
+        "collection_2"
+      ],
+      "groundedObjectGroupEntityIds": [
+        "ENT-GROUP-COLLECTION_2"
+      ]
+    },
+    {
+      "id": "AG-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "source_agent_id": "mechanical_assembly_specialist",
+      "entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "playsActor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "providedCapabilityIds": [
+        "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "handoff_targets": [
+        "robotics_guide"
+      ],
+      "handoffTargetAgentIds": [
+        "AG-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ROBOTICS_GUIDE"
+      ],
+      "display_name": "Mechanical Assembly Specialist",
+      "persona": "Experienced mechanical engineer passionate about explaining robotic joints and assembly processes in an engaging and clear manner.",
+      "expertise": [
+        "robotics",
+        "mechanical engineering",
+        "assembly"
+      ],
+      "knowledge_tags": [
+        "robotics",
+        "mechanical_assembly",
+        "joints",
+        "robotic_joints",
+        "assembly_processes"
+      ],
+      "voice": "coral",
+      "voice_gender": "maennlich",
+      "voice_style": "engaging",
+      "tts_model": "gpt-4o-mini-tts",
+      "responsible_zone_ids": [
+        "zone_003"
+      ],
+      "responsibleZoneEntityIds": [
+        "ENT-ZONE-ZONE_003"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015"
+      ],
+      "groundedAssetEntityIds": [
+        "ENT-ASSET-OBJECT_003",
+        "ENT-ASSET-OBJECT_006",
+        "ENT-ASSET-OBJECT_009",
+        "ENT-ASSET-OBJECT_012",
+        "ENT-ASSET-OBJECT_015"
+      ],
+      "grounded_object_groups": [
+        "collection_3"
+      ],
+      "groundedObjectGroupEntityIds": [
+        "ENT-GROUP-COLLECTION_3"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-RDL-PROVIDED",
+      "kind": "environment",
+      "expression": "source_rdl.json available"
+    },
+    {
+      "id": "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+      "kind": "user",
+      "expression": "visitor asks a room-related question"
+    },
+    {
+      "id": "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED",
+      "kind": "user",
+      "expression": "visitor question belongs to another agent expertise"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VALID-INPUT",
+      "kind": "precondition",
+      "expression": "RDL input parses successfully"
+    },
+    {
+      "id": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENTS-AVAILABLE",
+      "kind": "guard",
+      "expression": "at least two valid agents exist"
+    },
+    {
+      "id": "COND-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TARGET-AVAILABLE",
+      "kind": "guard",
+      "expression": "handoff target exists and is not the source agent"
+    }
+  ],
+  "stateAssertions": [
+    {
+      "id": "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-NORMALIZED-SCENE-VALID",
+      "subject_id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "expression": "Normalized RDL scene is valid and object IDs are unique."
+    },
+    {
+      "id": "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SCENE-SEMANTICS-VALID",
+      "subject_id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "expression": "Scene semantics are grounded in existing object IDs."
+    },
+    {
+      "id": "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENT-ROLES-VALID",
+      "subject_id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "expression": "Generated agents have valid zones, objects, knowledge tags and handoff targets."
+    },
+    {
+      "id": "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-KNOWLEDGE-VALID",
+      "subject_id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "expression": "Every agent knowledge tag has at least one materialized knowledge entry."
+    },
+    {
+      "id": "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PLACEMENT-VALID",
+      "subject_id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "expression": "Every generated agent has a valid room position and forward vector."
+    },
+    {
+      "id": "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ROOMCONTRACT-VALID",
+      "subject_id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "expression": "RoomContract instance satisfies all core invariants."
+    },
+    {
+      "id": "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PROJECT-MATERIALIZED",
+      "subject_id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "expression": "Interactive Agents project files are present and backend-readable."
+    },
+    {
+      "id": "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-VALID",
+      "subject_id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "expression": "Interactive Agents backend setup returns a valid session with all agents."
+    },
+    {
+      "id": "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+      "subject_id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "expression": "A visitor question is answered using room-grounded agent knowledge."
+    },
+    {
+      "id": "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID",
+      "subject_id": "ENT-STATE-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0",
+      "expression": "A specialist handoff targets an existing responsible agent when needed."
+    }
+  ],
+  "capabilityUses": [
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S02-ANALYZE-RDL-SCENE",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S02",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANALYZE-RDL-SCENE",
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S03-ANALYZE-RDL-SCENE",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S03",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANALYZE-RDL-SCENE",
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S04-DERIVE-SPATIAL-AGENT-ROLES",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S04",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-DERIVE-SPATIAL-AGENT-ROLES",
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S05-GENERATE-ROOM-KNOWLEDGE",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S05",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-GENERATE-ROOM-KNOWLEDGE",
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S06-PLACE-AGENTS-IN-SCENE",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S06",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PLACE-AGENTS-IN-SCENE",
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S07-ASSEMBLE-FUNCTIONAL-RDL",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S07",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ASSEMBLE-FUNCTIONAL-RDL",
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S08",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S09-SETUP-INTERACTIVE-SESSION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S09",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-INTERACTIVE-SESSION",
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ROBOTICS_GUIDE-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S11",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE"
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-CONTROL_SYSTEMS_EXPERT-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S11",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT"
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MECHANICAL_ASSEMBLY_SPECIALIST-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S11",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST"
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ROBOTICS_GUIDE-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S12",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE"
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-CONTROL_SYSTEMS_EXPERT-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S12",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT"
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MECHANICAL_ASSEMBLY_SPECIALIST-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-S12",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST"
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_001",
+        "ENT-GROUP-COLLECTION_1",
+        "ENT-ZONE-ZONE_001"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_001",
+        "ENT-GROUP-COLLECTION_1",
+        "ENT-ZONE-ZONE_001"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_002",
+        "ENT-GROUP-COLLECTION_2",
+        "ENT-ZONE-ZONE_002"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_002",
+        "ENT-GROUP-COLLECTION_2",
+        "ENT-ZONE-ZONE_002"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_003",
+        "ENT-GROUP-COLLECTION_3",
+        "ENT-ZONE-ZONE_003"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_003",
+        "ENT-GROUP-COLLECTION_3",
+        "ENT-ZONE-ZONE_003"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_004",
+        "ENT-GROUP-COLLECTION_1",
+        "ENT-ZONE-ZONE_001"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_004",
+        "ENT-GROUP-COLLECTION_1",
+        "ENT-ZONE-ZONE_001"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_005",
+        "ENT-GROUP-COLLECTION_2",
+        "ENT-ZONE-ZONE_002"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_005",
+        "ENT-GROUP-COLLECTION_2",
+        "ENT-ZONE-ZONE_002"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_006",
+        "ENT-GROUP-COLLECTION_3",
+        "ENT-ZONE-ZONE_003"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_006",
+        "ENT-GROUP-COLLECTION_3",
+        "ENT-ZONE-ZONE_003"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_007",
+        "ENT-GROUP-COLLECTION_1",
+        "ENT-ZONE-ZONE_001"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_007",
+        "ENT-GROUP-COLLECTION_1",
+        "ENT-ZONE-ZONE_001"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_008",
+        "ENT-GROUP-COLLECTION_2",
+        "ENT-ZONE-ZONE_002"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_008",
+        "ENT-GROUP-COLLECTION_2",
+        "ENT-ZONE-ZONE_002"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_009",
+        "ENT-GROUP-COLLECTION_3",
+        "ENT-ZONE-ZONE_003"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_009",
+        "ENT-GROUP-COLLECTION_3",
+        "ENT-ZONE-ZONE_003"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_010",
+        "ENT-GROUP-COLLECTION_1",
+        "ENT-ZONE-ZONE_001"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_010",
+        "ENT-GROUP-COLLECTION_1",
+        "ENT-ZONE-ZONE_001"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_011",
+        "ENT-GROUP-COLLECTION_2",
+        "ENT-ZONE-ZONE_002"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_011",
+        "ENT-GROUP-COLLECTION_2",
+        "ENT-ZONE-ZONE_002"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_012",
+        "ENT-GROUP-COLLECTION_3",
+        "ENT-ZONE-ZONE_003"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_012",
+        "ENT-GROUP-COLLECTION_3",
+        "ENT-ZONE-ZONE_003"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_013",
+        "ENT-GROUP-COLLECTION_1",
+        "ENT-ZONE-ZONE_001"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-ROBOTICS_GUIDE",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_013",
+        "ENT-GROUP-COLLECTION_1",
+        "ENT-ZONE-ZONE_001"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_014",
+        "ENT-GROUP-COLLECTION_2",
+        "ENT-ZONE-ZONE_002"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-CONTROL_SYSTEMS_EXPERT",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_014",
+        "ENT-GROUP-COLLECTION_2",
+        "ENT-ZONE-ZONE_002"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-ANSWER-ROOM-GROUNDED-QUESTION",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-ANSWER",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_015",
+        "ENT-GROUP-COLLECTION_3",
+        "ENT-ZONE-ZONE_003"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "CU-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "step_id": "STEP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015-HANDOFF",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "preferred_provider_entity_id": "ENT-AGENT-MECHANICAL_ASSEMBLY_SPECIALIST",
+      "target_entity_ids": [
+        "ENT-ASSET-OBJECT_015",
+        "ENT-GROUP-COLLECTION_3",
+        "ENT-ZONE-ZONE_003"
+      ],
+      "parameters": []
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANALYZE-RDL-SCENE",
+      "name": "Analyze Rdl Scene",
+      "text": "Analyze RDL scene structure and normalize room objects.",
+      "precondition_ids": [],
+      "effects": [
+        {
+          "id": "EFF-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANALYZE-RDL-SCENE-01",
+          "text": "Effect of ANALYZE-RDL-SCENE: normalized scene valid.",
+          "evidencedBy": [
+            "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-NORMALIZED-SCENE-VALID"
+          ]
+        },
+        {
+          "id": "EFF-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANALYZE-RDL-SCENE-02",
+          "text": "Effect of ANALYZE-RDL-SCENE: scene semantics valid.",
+          "evidencedBy": [
+            "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SCENE-SEMANTICS-VALID"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-DERIVE-SPATIAL-AGENT-ROLES",
+      "name": "Derive Spatial Agent Roles",
+      "text": "Derive agent roles grounded in semantic zones and objects.",
+      "precondition_ids": [],
+      "effects": [
+        {
+          "id": "EFF-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-DERIVE-SPATIAL-AGENT-ROLES-01",
+          "text": "Effect of DERIVE-SPATIAL-AGENT-ROLES: agent roles valid.",
+          "evidencedBy": [
+            "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-AGENT-ROLES-VALID"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-GENERATE-ROOM-KNOWLEDGE",
+      "name": "Generate Room Knowledge",
+      "text": "Generate local knowledge entries for all agent knowledge tags.",
+      "precondition_ids": [],
+      "effects": [
+        {
+          "id": "EFF-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-GENERATE-ROOM-KNOWLEDGE-01",
+          "text": "Effect of GENERATE-ROOM-KNOWLEDGE: knowledge valid.",
+          "evidencedBy": [
+            "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-KNOWLEDGE-VALID"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PLACE-AGENTS-IN-SCENE",
+      "name": "Place Agents In Scene",
+      "text": "Place agents in valid positions near their responsible zones.",
+      "precondition_ids": [],
+      "effects": [
+        {
+          "id": "EFF-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PLACE-AGENTS-IN-SCENE-01",
+          "text": "Effect of PLACE-AGENTS-IN-SCENE: placement valid.",
+          "evidencedBy": [
+            "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PLACEMENT-VALID"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ASSEMBLE-FUNCTIONAL-RDL",
+      "name": "Assemble Functional Rdl",
+      "text": "Assemble a valid RoomContract instance for the case study.",
+      "precondition_ids": [],
+      "effects": [
+        {
+          "id": "EFF-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ASSEMBLE-FUNCTIONAL-RDL-01",
+          "text": "Effect of ASSEMBLE-FUNCTIONAL-RDL: roomcontract valid.",
+          "evidencedBy": [
+            "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ROOMCONTRACT-VALID"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "name": "Materialize Interactive Agents Project",
+      "text": "Write backend-compatible Interactive Agents project files.",
+      "precondition_ids": [],
+      "effects": [
+        {
+          "id": "EFF-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT-01",
+          "text": "Effect of MATERIALIZE-INTERACTIVE-AGENTS-PROJECT: project materialized.",
+          "evidencedBy": [
+            "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PROJECT-MATERIALIZED"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-INTERACTIVE-SESSION",
+      "name": "Setup Interactive Session",
+      "text": "Initialize the runtime session for the generated project.",
+      "precondition_ids": [],
+      "effects": [
+        {
+          "id": "EFF-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-INTERACTIVE-SESSION-01",
+          "text": "Effect of SETUP-INTERACTIVE-SESSION: setup valid.",
+          "evidencedBy": [
+            "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-VALID"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "name": "Answer Room Grounded Question",
+      "text": "Answer visitor questions using room-grounded agent knowledge.",
+      "precondition_ids": [],
+      "effects": [
+        {
+          "id": "EFF-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION-01",
+          "text": "Effect of ANSWER-ROOM-GROUNDED-QUESTION: answer grounded.",
+          "evidencedBy": [
+            "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "name": "Handoff To Responsible Agent",
+      "text": "Forward a question to an existing responsible specialist agent.",
+      "precondition_ids": [],
+      "effects": [
+        {
+          "id": "EFF-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT-01",
+          "text": "Effect of HANDOFF-TO-RESPONSIBLE-AGENT: handoff valid.",
+          "evidencedBy": [
+            "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+          ]
+        }
+      ]
+    }
+  ],
+  "runtimeBindings": [
+    {
+      "id": "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANALYZE-RDL-SCENE",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANALYZE-RDL-SCENE",
+      "targetPlatform": "CaseStudyPipeline",
+      "runtimeActions": [
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-RUN-RDL-INGESTION",
+          "endpoint": null,
+          "tool": "tools.case_study_pipeline.rdl_ingestion.run_ingestion_for_case",
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        },
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-RUN-SCENE-SEMANTICS",
+          "endpoint": null,
+          "tool": "tools.case_study_pipeline.scene_semantics.run_scene_semantics_for_case",
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        },
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ARROW-ANALYZE",
+          "endpoint": "POST /projects/arrow/analyze",
+          "tool": null,
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        }
+      ]
+    },
+    {
+      "id": "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-DERIVE-SPATIAL-AGENT-ROLES",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-DERIVE-SPATIAL-AGENT-ROLES",
+      "targetPlatform": "CaseStudyPipeline",
+      "runtimeActions": [
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-RUN-AGENT-ROLES",
+          "endpoint": null,
+          "tool": "tools.case_study_pipeline.agent_roles.run_agent_roles_for_case",
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        }
+      ]
+    },
+    {
+      "id": "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-GENERATE-ROOM-KNOWLEDGE",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-GENERATE-ROOM-KNOWLEDGE",
+      "targetPlatform": "CaseStudyPipeline",
+      "runtimeActions": [
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-RUN-KNOWLEDGE-SYNTHESIS",
+          "endpoint": null,
+          "tool": "tools.case_study_pipeline.knowledge_synthesis.run_knowledge_synthesis_for_case",
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        }
+      ]
+    },
+    {
+      "id": "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PLACE-AGENTS-IN-SCENE",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PLACE-AGENTS-IN-SCENE",
+      "targetPlatform": "CaseStudyPipeline",
+      "runtimeActions": [
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-RUN-AGENT-PLACEMENT",
+          "endpoint": null,
+          "tool": "tools.case_study_pipeline.agent_placement.run_agent_placement_for_case",
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        }
+      ]
+    },
+    {
+      "id": "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ASSEMBLE-FUNCTIONAL-RDL",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ASSEMBLE-FUNCTIONAL-RDL",
+      "targetPlatform": "CaseStudyPipeline",
+      "runtimeActions": [
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-RUN-ROOMCONTRACT-ASSEMBLER",
+          "endpoint": null,
+          "tool": "tools.case_study_pipeline.roomcontract_assembler.run_roomcontract_assembly_for_case",
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        }
+      ]
+    },
+    {
+      "id": "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "targetPlatform": "agent_backendBackend",
+      "runtimeActions": [
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ARROW-COMMIT",
+          "endpoint": "POST /projects/arrow/commit",
+          "tool": null,
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        },
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-WRITE-PROJECT-FILES",
+          "endpoint": null,
+          "tool": "tools.case_study_pipeline.project_materializer.run_project_materializer_for_case",
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        }
+      ]
+    },
+    {
+      "id": "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-INTERACTIVE-SESSION",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-INTERACTIVE-SESSION",
+      "targetPlatform": "agent_backendBackend",
+      "runtimeActions": [
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-BACKEND-SETUP",
+          "endpoint": "POST /setup",
+          "tool": null,
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        }
+      ]
+    },
+    {
+      "id": "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "targetPlatform": "agent_backendBackend",
+      "runtimeActions": [
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-BACKEND-CHAT",
+          "endpoint": "POST /chat",
+          "tool": null,
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        }
+      ]
+    },
+    {
+      "id": "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "capability_id": "CAP-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "targetPlatform": "agent_backendBackend",
+      "runtimeActions": [
+        {
+          "id": "RA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-BACKEND-CHAT-HANDOFF",
+          "endpoint": "POST /chat",
+          "tool": null,
+          "topic": null,
+          "inputSchema": "json",
+          "outputSchema": "json"
+        }
+      ]
+    }
+  ],
+  "validationCases": [
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-RDL-INGESTION",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-001"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-RDL-PROVIDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANALYZE-RDL-SCENE"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-NORMALIZED-SCENE-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MODEL-INVARIANTS",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ASSEMBLE-FUNCTIONAL-RDL"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ROOMCONTRACT-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PROJECT-MATERIALIZATION",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-005"
+      ],
+      "stimulus_ids": [],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-PROJECT-MATERIALIZED"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-005"
+      ],
+      "stimulus_ids": [],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-INTERACTIVE-SESSION"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-SETUP-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-CHAT-GROUNDING",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    },
+    {
+      "id": "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015",
+      "level": "concrete",
+      "validates_use_case_ids": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "stimulus_ids": [
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-VISITOR-QUESTION",
+        "EV-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-NEEDED"
+      ],
+      "runtime_binding_ids": [
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expectedOutcome": [
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-ANSWER-GROUNDED",
+        "SA-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-HANDOFF-VALID"
+      ]
+    }
+  ],
+  "satisfyRelationships": [
+    {
+      "id": "SAT-REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-001",
+      "satisfiedRequirement": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-001"
+      ],
+      "satisfiedUseCase": [],
+      "satisfiedBy": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015",
+        "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MODEL-INVARIANTS"
+      ]
+    },
+    {
+      "id": "SAT-REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002",
+      "satisfiedRequirement": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-002"
+      ],
+      "satisfiedUseCase": [],
+      "satisfiedBy": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015",
+        "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MODEL-INVARIANTS"
+      ]
+    },
+    {
+      "id": "SAT-REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003",
+      "satisfiedRequirement": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-003"
+      ],
+      "satisfiedUseCase": [],
+      "satisfiedBy": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015",
+        "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MODEL-INVARIANTS"
+      ]
+    },
+    {
+      "id": "SAT-REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004",
+      "satisfiedRequirement": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-004"
+      ],
+      "satisfiedUseCase": [],
+      "satisfiedBy": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015",
+        "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MODEL-INVARIANTS"
+      ]
+    },
+    {
+      "id": "SAT-REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-005",
+      "satisfiedRequirement": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-005"
+      ],
+      "satisfiedUseCase": [],
+      "satisfiedBy": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015",
+        "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MODEL-INVARIANTS"
+      ]
+    },
+    {
+      "id": "SAT-REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006",
+      "satisfiedRequirement": [
+        "REQ-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-006"
+      ],
+      "satisfiedUseCase": [],
+      "satisfiedBy": [
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-01",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_001",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_002",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_003",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_004",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_005",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_006",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_007",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_008",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_009",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_010",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_011",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_012",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_013",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_014",
+        "UC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-INTERACT-OBJECT_015",
+        "VC-SCENE_010_ROBOTICS_SHOWROOM_MINI_R0-MODEL-INVARIANTS"
+      ]
+    }
+  ]
+}

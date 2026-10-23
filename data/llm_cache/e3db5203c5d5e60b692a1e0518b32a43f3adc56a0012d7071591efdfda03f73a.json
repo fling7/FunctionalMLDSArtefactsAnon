@@ -1,0 +1,426 @@
+{
+  "cache_key": "e3db5203c5d5e60b692a1e0518b32a43f3adc56a0012d7071591efdfda03f73a",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.guided_initial",
+    "item_id": "guided_llm_v2_02_botanical_center.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"guided_llm_v2_02_botanical_center\",\"domain\":\"Botanical Education and Conservation\",\"room_purpose\":\"Indoor botanical education center focused on plant biology, ecology, and conservation with interactive and sensory exhibits.\",\"visitor_goals\":[\"Learn about diverse plant species and their adaptations\",\"Engage with interactive and tactile exhibits\",\"Understand ecological roles and conservation\",\"Taste and identify edible and medicinal plants\",\"Observe pollinator and carnivorous plant behaviors\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":0.0,\"z\":-4.0},\"name\":\"Tropical Plant Collection Zone\",\"object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"purpose\":\"Showcase tropical and carnivorous plants with tactile and observational learning opportunities.\",\"visitor_goals_supported\":[\"Learn about tropical plant species\",\"Observe carnivorous plant behavior\",\"Engage with tactile exhibits\"],\"zone_id\":\"zone_001\"},{\"centroid_xz\":{\"x\":0.0,\"z\":0.0},\"name\":\"Medicinal and Edible Plants Zone\",\"object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"purpose\":\"Educate visitors on medicinal herbs, succulents, perennials, edible plants, and aquatic plants with sensory and tasting experiences.\",\"visitor_goals_supported\":[\"Identify medicinal plants\",\"Learn about drought adaptations\",\"Sample edible plants\"],\"zone_id\":\"zone_002\"},{\"centroid_xz\":{\"x\":0.0,\"z\":4.0},\"name\":\"Desert and Pollinator Habitat Zone\",\"object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"purpose\":\"Display desert plants, tropical fruit trees, climbing vines, seed dispersal models, and pollinator habitats with interactive and observational learning.\",\"visitor_goals_supported\":[\"Understand desert plant survival\",\"Learn cultivation techniques\",\"Interact with seed dispersal models\",\"Observe pollinator behavior\"],\"zone_id\":\"zone_003\"}],\"interaction_topics\":[{\"description\":\"Mechanisms of pollination and plant reproduction observed in orchids and pollinator habitats.\",\"related_object_ids\":[\"object_002\",\"object_015\"],\"title\":\"Pollination and Plant Reproduction\",\"topic_id\":\"topic_001\"},{\"description\":\"Adaptations of desert and tropical plants to their environments including water storage and survival strategies.\",\"related_object_ids\":[\"object_004\",\"object_007\",\"object_011\"],\"title\":\"Plant Adaptations to Environment\",\"topic_id\":\"topic_002\"},{\"description\":\"Seed dispersal methods demonstrated through interactive models simulating wind and animal dispersal.\",\"related_object_ids\":[\"object_014\"],\"title\":\"Seed Dispersal Mechanisms\",\"topic_id\":\"topic_003\"},{\"description\":\"Uses and identification of medicinal and edible plants with sensory engagement like smelling and tasting.\",\"related_object_ids\":[\"object_006\",\"object_009\"],\"title\":\"Medicinal and Edible Plants\",\"topic_id\":\"topic_004\"},{\"description\":\"Growth patterns and pruning techniques of climbing vines and tropical fruit trees.\",\"related_object_ids\":[\"object_012\",\"object_013\"],\"title\":\"Cultivation and Maintenance of Plants\",\"topic_id\":\"topic_005\"}],\"agent_role_candidates\":[{\"display_name\":\"Botanical Guide\",\"expertise\":[\"Botany\",\"Plant Biology\",\"Visitor Engagement\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"mission\":\"Provide detailed explanations about plant species, their adaptations, and ecological roles to visitors.\",\"responsible_zone_ids\":[\"zone_001\",\"zone_002\",\"zone_003\"],\"role_id\":\"botanical_guide\"},{\"display_name\":\"Interactive Exhibit Facilitator\",\"expertise\":[\"Interactive Learning\",\"Visitor Interaction\",\"Educational Technology\"],\"grounded_object_ids\":[\"object_014\",\"object_009\",\"object_015\"],\"mission\":\"Assist visitors in engaging with interactive exhibits and demonstrations to enhance learning experiences.\",\"responsible_zone_ids\":[\"zone_003\",\"zone_002\"],\"role_id\":\"interactive_exhibit_facilitator\"},{\"display_name\":\"Conservation Educator\",\"expertise\":[\"Conservation Biology\",\"Environmental Education\",\"Sustainability\"],\"grounded_object_ids\":[\"object_003\",\"object_007\",\"object_011\",\"object_015\"],\"mission\":\"Educate visitors on plant conservation, ecological importance, and sustainable practices.\",\"responsible_zone_ids\":[\"zone_001\",\"zone_002\",\"zone_003\"],\"role_id\":\"conservation_educator\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"Tropical Fern\":1,\"Orchid Display\":1,\"Carnivorous Plant\":1,\"Bromeliad Arrangement\":1,\"Palm Seedlings\":1},\"centroid_xz\":{\"x\":0.0,\"z\":-4.0}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"Medicinal Herb Display\":1,\"Succulent Garden\":1,\"Herbaceous Perennials\":1,\"Edible Plant Exhibit\":1,\"Aquatic Plants\":1},\"centroid_xz\":{\"x\":0.0,\"z\":0.0}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"Desert Cacti\":1,\"Tropical Fruit Trees\":1,\"Climbing Vines\":1,\"Seed Dispersal Models\":1,\"Pollinator Habitat\":1},\"centroid_xz\":{\"x\":0.0,\"z\":4.0}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"Tropical Fern\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-6.0,\"z\":-4.0},\"specification_excerpt\":\"A lush tropical fern with delicate fronds. Visitors can learn about fern reproduction and touch the soft leaves.\"},{\"object_id\":\"object_002\",\"object_type\":\"Orchid Display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-3.0,\"z\":-4.0},\"specification_excerpt\":\"A vibrant collection of orchids showcasing various colors and shapes. Visitors can observe pollination mechanisms.\"},{\"object_id\":\"object_003\",\"object_type\":\"Carnivorous Plant\",\"group\":\"collection_1\",\"position_xz\":{\"x\":0.0,\"z\":-4.0},\"specification_excerpt\":\"A Venus flytrap specimen demonstrating insect trapping. Visitors can watch feeding demonstrations.\"},{\"object_id\":\"object_004\",\"object_type\":\"Bromeliad Arrangement\",\"group\":\"collection_1\",\"position_xz\":{\"x\":3.0,\"z\":-4.0},\"specification_excerpt\":\"Colorful bromeliads arranged to show water storage adaptations. Visitors can touch the leaves and learn about epiphytes.\"},{\"object_id\":\"object_005\",\"object_type\":\"Palm Seedlings\",\"group\":\"collection_1\",\"position_xz\":{\"x\":6.0,\"z\":-4.0},\"specification_excerpt\":\"Young palm seedlings in soil trays. Visitors can plant a seedling in a take-home pot.\"},{\"object_id\":\"object_006\",\"object_type\":\"Medicinal Herb Display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-6.0,\"z\":0.0},\"specification_excerpt\":\"Various medicinal herbs with labels describing traditional uses. Visitors can smell and identify leaves.\"},{\"object_id\":\"object_007\",\"object_type\":\"Succulent Garden\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-3.0,\"z\":0.0},\"specification_excerpt\":\"A diverse array of succulents demonstrating water conservation. Visitors can touch and learn about drought adaptations.\"},{\"object_id\":\"object_008\",\"object_type\":\"Herbaceous Perennials\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":0.0},\"specification_excerpt\":\"Flowering perennials with seasonal blooms. Visitors can identify species and learn about pollinator relationships.\"},{\"object_id\":\"object_009\",\"object_type\":\"Edible Plant Exhibit\",\"group\":\"collection_2\",\"position_xz\":{\"x\":3.0,\"z\":0.0},\"specification_excerpt\":\"Plants grown for food including herbs and vegetables. Visitors can sample herbs and learn cooking tips.\"},{\"object_id\":\"object_010\",\"object_type\":\"Aquatic Plants\",\"group\":\"collection_2\",\"position_xz\":{\"x\":6.0,\"z\":0.0},\"specification_excerpt\":\"Water lilies and lotus plants in shallow pools. Visitors can observe root structures and water filtration.\"},{\"object_id\":\"object_011\",\"object_type\":\"Desert Cacti\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-6.0,\"z\":4.0},\"specification_excerpt\":\"Various cacti species illustrating desert survival. Visitors can learn about spines and water storage.\"},{\"object_id\":\"object_012\",\"object_type\":\"Tropical Fruit Trees\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-3.0,\"z\":4.0},\"specification_excerpt\":\"Miniature tropical fruit trees bearing small fruits. Visitors can taste samples and learn cultivation tips.\"},{\"object_id\":\"object_013\",\"object_type\":\"Climbing Vines\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":4.0},\"specification_excerpt\":\"Display of flowering climbing vines on trellises. Visitors can trace growth patterns and learn pruning techniques.\"},{\"object_id\":\"object_014\",\"object_type\":\"Seed Dispersal Models\",\"group\":\"collection_3\",\"position_xz\":{\"x\":3.0,\"z\":4.0},\"specification_excerpt\":\"Interactive models showing seed dispersal methods. Visitors can operate mechanisms to simulate wind and animal dispersal.\"},{\"object_id\":\"object_015\",\"object_type\":\"Pollinator Habitat\",\"group\":\"collection_3\",\"position_xz\":{\"x\":6.0,\"z\":4.0},\"specification_excerpt\":\"Plants attracting bees and butterflies with informational panels. Visitors can observe pollinator behavior and plant relationships.\"}],\"allowed_zone_ids\":[\"zone_001\",\"zone_002\",\"zone_003\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_001",
+                          "zone_002",
+                          "zone_003"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0.mini",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792116315,
+    "created_at": 1792116305,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_094c9acbf357a756016ad186513db087d180cdcd61674a4fed",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"agents\":[{\"display_name\":\"Tropical Plant Specialist\",\"expertise\":[\"Botany\",\"Tropical Plants\",\"Carnivorous Plants\",\"Visitor Engagement\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"handoff_targets\":[\"medicinal_plant_expert\",\"desert_pollinator_guide\"],\"id\":\"tropical_plant_specialist\",\"knowledge_tags\":[\"tropical_plants\",\"carnivorous_plants\",\"plant_reproduction\",\"plant_adaptations\"],\"persona\":\"Friendly and knowledgeable guide specializing in tropical and carnivorous plants, passionate about engaging visitors with tactile and observational learning.\",\"responsible_zone_ids\":[\"zone_001\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"coral\",\"voice_gender\":\"weiblich\",\"voice_style\":\"freundlich\"} ,{\"display_name\":\"Medicinal Plant Expert\",\"expertise\":[\"Medicinal Plants\",\"Edible Plants\",\"Sensory Education\",\"Plant Biology\"],\"grounded_object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"handoff_targets\":[\"desert_pollinator_guide\",\"tropical_plant_specialist\"],\"id\":\"medicinal_plant_expert\",\"knowledge_tags\":[\"medicinal_plants\",\"edible_plants\",\"drought_adaptations\",\"plant_tasting\"],\"persona\":\"Calm and insightful educator focused on medicinal and edible plants, guiding visitors through sensory and tasting experiences with detailed botanical knowledge.\",\"responsible_zone_ids\":[\"zone_002\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"sage\",\"voice_gender\":\"weiblich\",\"voice_style\":\"ruhig\"} ,{\"display_name\":\"Desert and Pollinator Guide\",\"expertise\":[\"Desert Plants\",\"Pollination\",\"Seed Dispersal\",\"Plant Cultivation\"],\"grounded_object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"handoff_targets\":[\"tropical_plant_specialist\",\"medicinal_plant_expert\"],\"id\":\"desert_pollinator_guide\",\"knowledge_tags\":[\"desert_plants\",\"pollination\",\"seed_dispersal\",\"plant_cultivation\"],\"persona\":\"Energetic and engaging guide specializing in desert plants and pollinator habitats, encouraging interactive learning and observation of ecological relationships.\",\"responsible_zone_ids\":[\"zone_003\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"fable\",\"voice_gender\":\"maennlich\",\"voice_style\":\"lebhaft\"} ,{\"display_name\":\"Interactive Exhibit Facilitator\",\"expertise\":[\"Interactive Learning\",\"Visitor Interaction\",\"Educational Technology\"],\"grounded_object_ids\":[\"object_009\",\"object_014\",\"object_015\"],\"handoff_targets\":[\"tropical_plant_specialist\",\"medicinal_plant_expert\",\"desert_pollinator_guide\"],\"id\":\"interactive_exhibit_facilitator\",\"knowledge_tags\":[\"interactive_exhibits\",\"visitor_engagement\",\"educational_technology\"],\"persona\":\"Helpful and enthusiastic facilitator assisting visitors with interactive exhibits to enhance engagement and learning experiences across zones.\",\"responsible_zone_ids\":[\"zone_002\",\"zone_003\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"echo\",\"voice_gender\":\"maennlich\",\"voice_style\":\"freundlich\"}],\"handoffs\":[{\"condition\":\"visitor_in_zone_002_requests_medicinal_plant_details\",\"reason\":\"Medicinal Plant Expert has specialized knowledge on medicinal and edible plants.\",\"source_agent_id\":\"interactive_exhibit_facilitator\",\"target_agent_id\":\"medicinal_plant_expert\"},{\"condition\":\"visitor_in_zone_003_requests_pollinator_or_seed_dispersal_info\",\"reason\":\"Desert and Pollinator Guide specializes in pollination and seed dispersal topics.\",\"source_agent_id\":\"interactive_exhibit_facilitator\",\"target_agent_id\":\"desert_pollinator_guide\"},{\"condition\":\"visitor_in_zone_001_requests_tropical_plant_adaptations\",\"reason\":\"Tropical Plant Specialist provides detailed explanations about tropical and carnivorous plants.\",\"source_agent_id\":\"interactive_exhibit_facilitator\",\"target_agent_id\":\"tropical_plant_specialist\"},{\"condition\":\"visitor_needs_in_depth_tropical_plant_info\",\"reason\":\"Tropical Plant Specialist covers all tropical zone plant biology and ecology.\",\"source_agent_id\":\"medicinal_plant_expert\",\"target_agent_id\":\"tropical_plant_specialist\"},{\"condition\":\"visitor_needs_medicinal_or_edible_plant_info\",\"reason\":\"Medicinal Plant Expert is expert in medicinal and edible plants zone.\",\"source_agent_id\":\"tropical_plant_specialist\",\"target_agent_id\":\"medicinal_plant_expert\"},{\"condition\":\"visitor_needs_desert_or_pollinator_habitat_info\",\"reason\":\"Desert and Pollinator Guide specializes in desert plants and pollinator habitats.\",\"source_agent_id\":\"tropical_plant_specialist\",\"target_agent_id\":\"desert_pollinator_guide\"},{\"condition\":\"visitor_needs_interactive_exhibit_assistance\",\"reason\":\"Interactive Exhibit Facilitator supports visitor engagement with interactive exhibits.\",\"source_agent_id\":\"tropical_plant_specialist\",\"target_agent_id\":\"interactive_exhibit_facilitator\"},{\"condition\":\"visitor_needs_interactive_exhibit_assistance\",\"reason\":\"Interactive Exhibit Facilitator supports visitor engagement with interactive exhibits.\",\"source_agent_id\":\"medicinal_plant_expert\",\"target_agent_id\":\"interactive_exhibit_facilitator\"},{\"condition\":\"visitor_needs_interactive_exhibit_assistance\",\"reason\":\"Interactive Exhibit Facilitator supports visitor engagement with interactive exhibits.\",\"source_agent_id\":\"desert_pollinator_guide\",\"target_agent_id\":\"interactive_exhibit_facilitator\"}]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_094c9acbf357a756016ad18651aab487d1a93cbd92c31f5082",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_001",
+                        "zone_002",
+                        "zone_003"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2875,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1155,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4030
+    },
+    "user": null
+  },
+  "response_sha256": "61676e2fb96e0cf56d3d8ff5606ae22e665b3b0ac53adeb5e3c78db4ea4c2365",
+  "saved_at": "2026-10-16T02:05:17.165420+00:00",
+  "status": "SUCCESS"
+}

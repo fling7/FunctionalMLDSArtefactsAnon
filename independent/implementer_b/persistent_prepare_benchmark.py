@@ -1,0 +1,11 @@
+from pathlib import Path
+p=Path('.')
+s=(p/'bulk_benchmark.py').read_text()
+s=s.replace('bulk fact parsing','persistent control reuse').replace('compiled_policy_bulk as bulk','persistent_policy as persistent')
+s=s.replace('bulk.compile_model','persistent.compile_model').replace('bulk-protected-inputs.json','persistent-protected-inputs.json')
+s=s.replace("'bulk'", "'persistent'").replace("'bulk_", "'persistent_").replace('backend_over_bulk','backend_over_persistent')
+s=s.replace("'bulk_fact_program_utf8_bytes':len(candidate._base_fact_program.encode('utf-8'))", "'persistent_diagnostics':candidate.diagnostics()")
+s=s.replace("'persistent_fact_program_utf8_bytes':len(candidate._base_fact_program.encode('utf-8'))", "'persistent_diagnostics':candidate.diagnostics()")
+s=s.replace('compiled_policy_bulk.py','persistent_policy.py').replace('bulk_benchmark.py','persistent_benchmark.py')
+s=s.replace('bulk-timing-','persistent-timing-').replace('bulk must improve','persistent must improve')
+(p/'persistent_benchmark.py').write_text(s,encoding='utf-8')

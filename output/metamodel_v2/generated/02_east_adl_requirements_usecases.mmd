@@ -1,0 +1,74 @@
+classDiagram
+  direction TB
+  %% SVG/PNG define the presentation-authoritative orthogonal layout.
+  %% EAST-ADL Requirements/UseCases – selected slice
+  class EAST_ADL_Elements_Context {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_TraceableSpecification {
+    <<abstract>>
+    +text : String [0..1]
+  }
+  class EAST_ADL_Elements_EAElement {
+    <<abstract>>
+    +name : String [0..1]
+  }
+  class EAST_ADL_Requirements_RequirementsModel {
+    <<EA::Requirements>>
+  }
+  class EAST_ADL_Requirements_Requirement {
+    <<EA::Requirements>>
+    +formalism : String [0..1]
+    +url : String [0..1]
+  }
+  class EAST_ADL_UseCases_Actor {
+    <<EA::UseCases>>
+  }
+  class EAST_ADL_UseCases_UseCase {
+    <<EA::UseCases>>
+  }
+  class EAST_ADL_Elements_Relationship {
+    <<abstract>>
+  }
+  class EAST_ADL_UseCases_RedefinableElement {
+    <<abstract>>
+  }
+  class EAST_ADL_Requirements_RequirementsRelationship {
+    <<abstract>>
+  }
+  class EAST_ADL_UseCases_Include {
+    <<EA::UseCases>>
+  }
+  class EAST_ADL_UseCases_Extend {
+    <<EA::UseCases>>
+  }
+  class EAST_ADL_UseCases_ExtensionPoint {
+    <<EA::UseCases>>
+  }
+  class EAST_ADL_Requirements_Satisfy {
+    <<EA::Requirements>>
+  }
+  class EAST_ADL_Requirements_Refine {
+    <<EA::Requirements>>
+  }
+  class EAST_ADL_VerificationValidation_Verify {
+    <<EA::VerificationValidation>>
+  }
+  EAST-ADL_Elements_Context <|-- EAST-ADL_Requirements_RequirementsModel
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_Requirements_Requirement
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_UseCases_Actor
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_UseCases_UseCase
+  EAST-ADL_Elements_EAElement <|-- EAST-ADL_Elements_Relationship
+  EAST-ADL_Elements_EAElement <|-- EAST-ADL_UseCases_RedefinableElement
+  EAST-ADL_Elements_Relationship <|-- EAST-ADL_Requirements_RequirementsRelationship
+  EAST-ADL_Elements_Relationship <|-- EAST-ADL_UseCases_Include
+  EAST-ADL_Elements_Relationship <|-- EAST-ADL_UseCases_Extend
+  EAST-ADL_UseCases_RedefinableElement <|-- EAST-ADL_UseCases_ExtensionPoint
+  EAST-ADL_Requirements_RequirementsRelationship <|-- EAST-ADL_Requirements_Satisfy
+  EAST-ADL_Requirements_RequirementsRelationship <|-- EAST-ADL_Requirements_Refine
+  EAST-ADL_Requirements_RequirementsRelationship <|-- EAST-ADL_VerificationValidation_Verify
+  EAST-ADL_Requirements_RequirementsModel "1" *-- "*" EAST-ADL_Requirements_Requirement : requirement [*]
+  EAST-ADL_Requirements_Satisfy "*" --> "*" EAST-ADL_Requirements_Requirement : satisfiedRequirement [*]
+  EAST-ADL_UseCases_UseCase "1" *-- "*" EAST-ADL_UseCases_Include : include [*]
+  EAST-ADL_UseCases_UseCase "1" *-- "*" EAST-ADL_UseCases_Extend : extend [*]
+  EAST-ADL_UseCases_Extend "*" --> "1..*" EAST-ADL_UseCases_ExtensionPoint : extensionLocation [1..*]

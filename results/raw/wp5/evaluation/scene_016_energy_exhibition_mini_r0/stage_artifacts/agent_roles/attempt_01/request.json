@@ -1,0 +1,177 @@
+{
+  "input": [
+    {
+      "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+      "role": "system"
+    },
+    {
+      "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"scene_016_energy_exhibition\",\"domain\":\"energy education\",\"room_purpose\":\"Energy education exhibition room\",\"visitor_goals\":[\"Learn about energy conservation and insulation\",\"Understand energy storage with batteries\",\"Explore renewable energy sources like turbines and solar panels\",\"Comprehend energy distribution via grids and generators\",\"Engage with interactive educational exhibits\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-0.7,\"z\":-0.7},\"name\":\"Insulation and Battery Zone\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\"],\"purpose\":\"Showcase insulation samples and battery cases to educate about energy conservation and storage.\",\"visitor_goals_supported\":[\"Learn about energy conservation\",\"Understand energy storage technologies\"],\"zone_id\":\"zone_collection_1\"},{\"centroid_xz\":{\"x\":0.35,\"z\":-0.35},\"name\":\"Renewable Energy Models Zone\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\",\"object_017\",\"object_020\",\"object_023\"],\"purpose\":\"Display turbine and solar panel models to explain renewable energy generation.\",\"visitor_goals_supported\":[\"Explore renewable energy technologies\",\"Understand turbine and solar panel functions\"],\"zone_id\":\"zone_collection_2\"},{\"centroid_xz\":{\"x\":-0.35,\"z\":0.35},\"name\":\"Energy Grids and Generators Zone\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"],\"purpose\":\"Present grid diagrams and generator displays to illustrate energy distribution and generation concepts.\",\"visitor_goals_supported\":[\"Understand energy distribution\",\"Learn about generators and grids\"],\"zone_id\":\"zone_collection_3\"}],\"interaction_topics\":[{\"description\":\"Explanation of insulation materials and their role in energy conservation.\",\"related_object_ids\":[\"object_001\",\"object_007\",\"object_013\",\"object_019\",\"object_004\",\"object_010\",\"object_016\",\"object_022\"],\"title\":\"Insulation and Battery Technologies\",\"topic_id\":\"topic_insulation_battery\"},{\"description\":\"Demonstration of turbine and solar panel models for renewable energy production.\",\"related_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\",\"object_017\",\"object_020\",\"object_023\"],\"title\":\"Renewable Energy Models\",\"topic_id\":\"topic_renewable_models\"},{\"description\":\"Understanding energy grids and generator displays for energy distribution and generation.\",\"related_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"],\"title\":\"Energy Grids and Generators\",\"topic_id\":\"topic_grids_generators\"}],\"agent_role_candidates\":[{\"display_name\":\"Energy Exhibition Guide\",\"expertise\":[\"energy systems\",\"visitor engagement\",\"educational content\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\",\"object_016\",\"object_017\",\"object_018\",\"object_019\",\"object_020\",\"object_021\",\"object_022\",\"object_023\",\"object_024\"],\"mission\":\"Assist visitors by explaining exhibits about energy technologies and answer questions.\",\"responsible_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"role_id\":\"role_guide\"},{\"display_name\":\"Energy Technology Expert\",\"expertise\":[\"insulation\",\"battery technology\",\"turbines\",\"solar panels\",\"generators\",\"energy grids\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\",\"object_017\",\"object_020\",\"object_023\",\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"],\"mission\":\"Provide detailed technical explanations and demonstrations of energy technologies.\",\"responsible_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"role_id\":\"role_tech_expert\"},{\"display_name\":\"Visitor Navigator\",\"expertise\":[\"navigation\",\"visitor assistance\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\",\"object_016\",\"object_017\",\"object_018\",\"object_019\",\"object_020\",\"object_021\",\"object_022\",\"object_023\",\"object_024\"],\"mission\":\"Help visitors find exhibits and guide them through the exhibition zones.\",\"responsible_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"role_id\":\"role_navigator\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":8,\"object_types\":{\"insulation_sample\":4,\"battery_case\":4},\"centroid_xz\":{\"x\":-0.7,\"z\":-0.7}},{\"group\":\"collection_2\",\"object_count\":8,\"object_types\":{\"turbine_model\":4,\"solar_panel_model\":4},\"centroid_xz\":{\"x\":0.35,\"z\":-0.35}},{\"group\":\"collection_3\",\"object_count\":8,\"object_types\":{\"grid_diagram\":4,\"generator_display\":4},\"centroid_xz\":{\"x\":-0.35,\"z\":0.35}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"insulation_sample\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-5.6,\"z\":-5.6},\"specification_excerpt\":\"Synthetic energy exhibition object: insulation sample. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clear...\"},{\"object_id\":\"object_002\",\"object_type\":\"turbine_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-2.8,\"z\":-5.6},\"specification_excerpt\":\"Synthetic energy exhibition object: turbine model. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_003\",\"object_type\":\"grid_diagram\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":-5.6},\"specification_excerpt\":\"Synthetic energy exhibition object: grid diagram. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_004\",\"object_type\":\"battery_case\",\"group\":\"collection_1\",\"position_xz\":{\"x\":2.8,\"z\":-5.6},\"specification_excerpt\":\"Synthetic energy exhibition object: battery case. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_005\",\"object_type\":\"solar_panel_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":5.6,\"z\":-5.6},\"specification_excerpt\":\"Synthetic energy exhibition object: solar panel model. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clear...\"},{\"object_id\":\"object_006\",\"object_type\":\"generator_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-5.6,\"z\":-2.8},\"specification_excerpt\":\"Synthetic energy exhibition object: generator display. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clear...\"},{\"object_id\":\"object_007\",\"object_type\":\"insulation_sample\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-2.8,\"z\":-2.8},\"specification_excerpt\":\"Synthetic energy exhibition object: insulation sample. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clear...\"},{\"object_id\":\"object_008\",\"object_type\":\"turbine_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":-2.8},\"specification_excerpt\":\"Synthetic energy exhibition object: turbine model. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_009\",\"object_type\":\"grid_diagram\",\"group\":\"collection_3\",\"position_xz\":{\"x\":2.8,\"z\":-2.8},\"specification_excerpt\":\"Synthetic energy exhibition object: grid diagram. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_010\",\"object_type\":\"battery_case\",\"group\":\"collection_1\",\"position_xz\":{\"x\":5.6,\"z\":-2.8},\"specification_excerpt\":\"Synthetic energy exhibition object: battery case. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_011\",\"object_type\":\"solar_panel_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-5.6,\"z\":0.0},\"specification_excerpt\":\"Synthetic energy exhibition object: solar panel model. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clea...\"},{\"object_id\":\"object_012\",\"object_type\":\"generator_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-2.8,\"z\":0.0},\"specification_excerpt\":\"Synthetic energy exhibition object: generator display. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clea...\"},{\"object_id\":\"object_013\",\"object_type\":\"insulation_sample\",\"group\":\"collection_1\",\"position_xz\":{\"x\":0.0,\"z\":0.0},\"specification_excerpt\":\"Synthetic energy exhibition object: insulation sample. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clea...\"},{\"object_id\":\"object_014\",\"object_type\":\"turbine_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":2.8,\"z\":0.0},\"specification_excerpt\":\"Synthetic energy exhibition object: turbine model. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_015\",\"object_type\":\"grid_diagram\",\"group\":\"collection_3\",\"position_xz\":{\"x\":5.6,\"z\":0.0},\"specification_excerpt\":\"Synthetic energy exhibition object: grid diagram. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_016\",\"object_type\":\"battery_case\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-5.6,\"z\":2.8},\"specification_excerpt\":\"Synthetic energy exhibition object: battery case. Display 16 explains a distinct example in collection 1. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_017\",\"object_type\":\"solar_panel_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-2.8,\"z\":2.8},\"specification_excerpt\":\"Synthetic energy exhibition object: solar panel model. Display 17 explains a distinct example in collection 2. A freestanding educational display with a clea...\"},{\"object_id\":\"object_018\",\"object_type\":\"generator_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":2.8},\"specification_excerpt\":\"Synthetic energy exhibition object: generator display. Display 18 explains a distinct example in collection 3. A freestanding educational display with a clea...\"},{\"object_id\":\"object_019\",\"object_type\":\"insulation_sample\",\"group\":\"collection_1\",\"position_xz\":{\"x\":2.8,\"z\":2.8},\"specification_excerpt\":\"Synthetic energy exhibition object: insulation sample. Display 19 explains a distinct example in collection 1. A freestanding educational display with a clea...\"},{\"object_id\":\"object_020\",\"object_type\":\"turbine_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":5.6,\"z\":2.8},\"specification_excerpt\":\"Synthetic energy exhibition object: turbine model. Display 20 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_021\",\"object_type\":\"grid_diagram\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-5.6,\"z\":5.6},\"specification_excerpt\":\"Synthetic energy exhibition object: grid diagram. Display 21 explains a distinct example in collection 3. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_022\",\"object_type\":\"battery_case\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-2.8,\"z\":5.6},\"specification_excerpt\":\"Synthetic energy exhibition object: battery case. Display 22 explains a distinct example in collection 1. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_023\",\"object_type\":\"solar_panel_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":5.6},\"specification_excerpt\":\"Synthetic energy exhibition object: solar panel model. Display 23 explains a distinct example in collection 2. A freestanding educational display with a clea...\"},{\"object_id\":\"object_024\",\"object_type\":\"generator_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":2.8,\"z\":5.6},\"specification_excerpt\":\"Synthetic energy exhibition object: generator display. Display 24 explains a distinct example in collection 3. A freestanding educational display with a clea...\"}],\"allowed_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\",\"object_016\",\"object_017\",\"object_018\",\"object_019\",\"object_020\",\"object_021\",\"object_022\",\"object_023\",\"object_024\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+      "role": "user"
+    }
+  ],
+  "max_output_tokens": 2200,
+  "model": "gpt-4.1-mini-2025-04-14",
+  "temperature": 0.3,
+  "text": {
+    "format": {
+      "name": "agent_roles",
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "agents": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "display_name": {
+                  "type": "string"
+                },
+                "expertise": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "grounded_object_ids": {
+                  "items": {
+                    "enum": [
+                      "object_001",
+                      "object_002",
+                      "object_003",
+                      "object_004",
+                      "object_005",
+                      "object_006",
+                      "object_007",
+                      "object_008",
+                      "object_009",
+                      "object_010",
+                      "object_011",
+                      "object_012",
+                      "object_013",
+                      "object_014",
+                      "object_015",
+                      "object_016",
+                      "object_017",
+                      "object_018",
+                      "object_019",
+                      "object_020",
+                      "object_021",
+                      "object_022",
+                      "object_023",
+                      "object_024"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "handoff_targets": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "knowledge_tags": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "persona": {
+                  "type": "string"
+                },
+                "responsible_zone_ids": {
+                  "items": {
+                    "enum": [
+                      "zone_collection_1",
+                      "zone_collection_2",
+                      "zone_collection_3"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "tts_model": {
+                  "type": "string"
+                },
+                "voice": {
+                  "enum": [
+                    "alloy",
+                    "ash",
+                    "ballad",
+                    "coral",
+                    "echo",
+                    "fable",
+                    "nova",
+                    "onyx",
+                    "sage",
+                    "shimmer",
+                    "verse"
+                  ],
+                  "type": "string"
+                },
+                "voice_gender": {
+                  "type": "string"
+                },
+                "voice_style": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "display_name",
+                "persona",
+                "expertise",
+                "knowledge_tags",
+                "responsible_zone_ids",
+                "grounded_object_ids",
+                "handoff_targets",
+                "voice",
+                "voice_gender",
+                "voice_style",
+                "tts_model"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "handoffs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "condition": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "source_agent_id": {
+                  "type": "string"
+                },
+                "target_agent_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source_agent_id",
+                "target_agent_id",
+                "condition",
+                "reason"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "agents",
+          "handoffs"
+        ],
+        "type": "object"
+      },
+      "strict": true,
+      "type": "json_schema"
+    }
+  }
+}

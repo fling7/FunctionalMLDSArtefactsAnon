@@ -1,0 +1,64 @@
+{
+  "authoritative_ledger": "logs/api_budget.sqlite3",
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20261015,
+  "context_sha256": "51f266932c8a04f6e748dfabb7f0a3ece5525ce89a7f6fff2fe4f70a60388c95",
+  "distinct_items": 45,
+  "experiment": "WP4.delta2.C1",
+  "fixed_ledger_cap_usd": "20",
+  "frozen_utc": "2026-10-20T11:08:06.302010+00:00",
+  "generation_attempts_per_payload": 1,
+  "initial_accounted_usd": "9.7938336",
+  "input_ceiling": 10000,
+  "ledger_policy_sha256": "71bcb5cd39dfe00abcb461a51b28a046e8964886591f7fa231d3b9119409d734",
+  "models": [
+    "gpt-4.1-mini-2025-04-14",
+    "gpt-4.1-2025-04-14",
+    "gpt-6-luna",
+    "gpt-6-astra"
+  ],
+  "new_flagship_model": "gpt-6-astra",
+  "new_model_output_caps": {
+    "B1s": 2048,
+    "original_arms": 2048
+  },
+  "new_small_model": "gpt-6-luna",
+  "order": {
+    "new_model_order": [
+      "gpt-6-luna",
+      "gpt-6-astra"
+    ],
+    "original_B1s_model_order": [
+      "gpt-4.1-mini-2025-04-14",
+      "gpt-4.1-2025-04-14"
+    ],
+    "within_new_model": "item-major B0,B1,B1r,B1s"
+  },
+  "partial_rule": "Stop at budget without replacing experiment; every planned unexecuted item NOT_DONE; partial C1 cannot unlock C2",
+  "planned_requests": 450,
+  "prices_sha256": "70af466af46f1b243133a69f6dba3c1dc43893d46bf8e9cad84bec7f28c5f438",
+  "provider_exact_input_count": true,
+  "requests_sha256": "b4cfb25e6edf2895902216d31f4049191de4c4c4d1700353049a2bc7cafffd1e",
+  "runner_sha256": "42ef0ba2f56b752494bdb21b6b628d66d1eaa1663fcca8eae18351439bcb63ea",
+  "scope": "C1 only; C2 separately registered after complete successful C1 and remaining budget; D not substituted",
+  "share": "WP4",
+  "source_pins": {
+    "prereg\\go_sprint_20261019\\w3\\requests.json": "a7da2b848582e43194bce3b0cd8316d86628f97c04d2c4b997549e0cf17520da",
+    "results\\raw\\delta2\\stage_C\\draft_preparation_v1\\b1s_existing_models_candidates.json": "8f2a4576022dddf4594e23ab094f1e2885ac55dbad47448c29209ddf3e64a09b",
+    "results\\raw\\delta2\\stage_C\\new_models_prices.json": "4d761d17557bff54e171d2397ecfd910cb535360c597c6d33c419156477b94a5",
+    "results\\raw\\delta2\\stage_C\\preflight\\stage_context.json": "acc155ad192bb542440520313dfa221ec28a157e42d6a3637189f91b695cc682"
+  },
+  "stage_extra_cap_usd": "15",
+  "starting_event_id": 6828,
+  "status": "FROZEN",
+  "temperature_policy": {
+    "default_models": [
+      "gpt-6-luna",
+      "gpt-6-astra"
+    ],
+    "fallback": "Only cached explicit unsupported temperature parameter HTTP error permits once-only frozen fallback payload; retain both attempts. No fallback for unknown/network outcome.",
+    "otherwise": 0.3
+  },
+  "export_status": "ANONYMIZED_DERIVATIVE_NOT_NEW_PREREGISTRATION",
+  "original_preregistration_source": "Original immutable raw plan; source hashes retained in source_pins and export proof."
+}

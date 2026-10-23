@@ -1,0 +1,36 @@
+{
+  "schema": "wp5-report-statistics-correction-overlay-v3",
+  "status": "FROZEN_REPORT_ONLY",
+  "utc": "2026-10-15T18:39:52.167909+00:00",
+  "prior_overlay": {
+    "path": "prereg/wp5_extension_v1/report_source_portability_overlay_v2.json",
+    "sha256": "f9075b30b83f85e0813970802705f5cd0c354995f1f0de34b6e06551f4268841"
+  },
+  "reason": "Mission brief6.7 requires at least10000 cluster-bootstrap resamples. Reporting correction after outcomes is disclosed; no significance tuning or label changes.",
+  "old_repetitions": 2000,
+  "new_repetitions": 10000,
+  "seed": 20261015,
+  "prior_estimator_implementation_preserved": true,
+  "report_source": {
+    "path": "experiments/report_wp5.py",
+    "old_sha256": "72058f8b35b4664ae95aeca56b8c18281602e993a84427badf333da5efe98a99",
+    "new_sha256": "ffce5697bea89bcb8a10b63a7b544d5f820f6c28a68b1ff73de66c86bbe799ad"
+  },
+  "unchanged_execution_sources": {
+    "experiments/natural_faults.py": "a2db513bd029d7347ad8c24755571718538893f605ca02d5bdad0e04aa4a4915",
+    "experiments/lib/wp5_reporting.py": "af7bf9edb614619e9141e9a75503925e9513b788ba08f9b58d621c64463e3f5e"
+  },
+  "adoption_proof": {
+    "path": "results/raw/wp5_bootstrap_reporting_adoption_v1.json",
+    "sha256": "82fd0b56479f1bcb49228ceefa34fd26fb15560990dc9678050b511a401e4f1b"
+  },
+  "original_summary_numeric_change": [
+    {
+      "path": "$.generation_and_reachability_denominators[0].high",
+      "old": 0.84,
+      "new": 0.8
+    }
+  ],
+  "visual_only_change": "Move run counts above upper confidence caps; preserved first corrected renders show prior overlap.",
+  "scope": "Reporting only; no extension/evolution execution-source change, no final statistical completeness or release claim."
+}

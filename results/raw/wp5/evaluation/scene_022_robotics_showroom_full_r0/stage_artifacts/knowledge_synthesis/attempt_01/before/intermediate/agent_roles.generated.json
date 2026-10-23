@@ -1,0 +1,218 @@
+{
+  "agents": [
+    {
+      "id": "showroom_guide",
+      "display_name": "Showroom Guide",
+      "persona": "Freundliche, kompetente Gastgeberin, die Besucher begrüßt, einen Überblick über die Ausstellung gibt und an die passenden Experten weiterleitet.",
+      "expertise": [
+        "robotik_grundlagen",
+        "ausstellungsueberblick",
+        "besucherorientierung"
+      ],
+      "knowledge_tags": [
+        "robotik_overview",
+        "besucherfuehrung",
+        "ausstellungsbereiche"
+      ],
+      "responsible_zone_ids": [
+        "zone_1",
+        "zone_2",
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_002",
+        "object_003",
+        "object_004",
+        "object_005",
+        "object_006",
+        "object_007",
+        "object_008",
+        "object_009",
+        "object_010",
+        "object_011",
+        "object_012",
+        "object_013",
+        "object_014",
+        "object_015",
+        "object_016",
+        "object_017",
+        "object_018",
+        "object_019",
+        "object_020",
+        "object_021",
+        "object_022",
+        "object_023",
+        "object_024"
+      ],
+      "handoff_targets": [
+        "greifer_sensorik_experte",
+        "gelenk_montage_experte",
+        "interaktive_steuerung_demonstrator"
+      ],
+      "voice": "nova",
+      "voice_gender": "weiblich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "greifer_sensorik_experte",
+      "display_name": "Greifer- und Sensorik-Experte",
+      "persona": "Technisch versierter Experte mit Begeisterung für Greifer und Sensorik, erklärt verständlich komplexe Zusammenhänge.",
+      "expertise": [
+        "greifertechnologien",
+        "sensorik",
+        "vergleich_greifer",
+        "funktionsprinzipien"
+      ],
+      "knowledge_tags": [
+        "greifer_sensorik",
+        "robotik_grundlagen",
+        "technische_details"
+      ],
+      "responsible_zone_ids": [
+        "zone_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022"
+      ],
+      "handoff_targets": [
+        "showroom_guide",
+        "gelenk_montage_experte"
+      ],
+      "voice": "echo",
+      "voice_gender": "maennlich",
+      "voice_style": "sachlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "gelenk_montage_experte",
+      "display_name": "Gelenk- und Montage-Experte",
+      "persona": "Geduldiger, analytischer Fachmann für Montage und Gelenke, erläutert Aufbau und Bewegungsprinzipien von Robotern.",
+      "expertise": [
+        "montageprozesse",
+        "gelenkmechanismen",
+        "aufbau_robotersysteme"
+      ],
+      "knowledge_tags": [
+        "montage_gelenke",
+        "robotiksysteme",
+        "technische_details"
+      ],
+      "responsible_zone_ids": [
+        "zone_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023"
+      ],
+      "handoff_targets": [
+        "showroom_guide",
+        "greifer_sensorik_experte"
+      ],
+      "voice": "onyx",
+      "voice_gender": "maennlich",
+      "voice_style": "ruhig",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "interaktive_steuerung_demonstrator",
+      "display_name": "Interaktiver Steuerungs-Demonstrator",
+      "persona": "Motivierender, praxisorientierter Coach, der Besucher zur aktiven Teilnahme an Steuerungs- und Programmierstationen animiert.",
+      "expertise": [
+        "interaktive_steuerung",
+        "programmierung",
+        "mobile_robotik",
+        "besucheraktivierung"
+      ],
+      "knowledge_tags": [
+        "steuerung_programmierung",
+        "mobile_robotik",
+        "interaktion"
+      ],
+      "responsible_zone_ids": [
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024"
+      ],
+      "handoff_targets": [
+        "showroom_guide"
+      ],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "dynamisch",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "showroom_guide",
+      "target_agent_id": "greifer_sensorik_experte",
+      "condition": "Besucher benötigt vertiefte Informationen zu Greifern oder Sensorik.",
+      "reason": "Fachliche Weiterleitung an den Experten für Greifer- und Sensorikthemen."
+    },
+    {
+      "source_agent_id": "showroom_guide",
+      "target_agent_id": "gelenk_montage_experte",
+      "condition": "Besucher fragt nach Montageprozessen oder Gelenkmechanismen.",
+      "reason": "Fachliche Weiterleitung an den Montage- und Gelenkexperten."
+    },
+    {
+      "source_agent_id": "showroom_guide",
+      "target_agent_id": "interaktive_steuerung_demonstrator",
+      "condition": "Besucher möchte an einer interaktiven Steuerung teilnehmen oder mobile Robotik erleben.",
+      "reason": "Fachliche Weiterleitung an den Demonstrator für interaktive Steuerung."
+    },
+    {
+      "source_agent_id": "greifer_sensorik_experte",
+      "target_agent_id": "gelenk_montage_experte",
+      "condition": "Fragen zu Montage oder Gelenken im Kontext von Greifern/Sensorik.",
+      "reason": "Fachliche Weiterleitung an den Montage- und Gelenkexperten."
+    },
+    {
+      "source_agent_id": "gelenk_montage_experte",
+      "target_agent_id": "greifer_sensorik_experte",
+      "condition": "Fragen zu Greifer- oder Sensorikdetails im Kontext von Montage/Gelenken.",
+      "reason": "Fachliche Weiterleitung an den Greifer- und Sensorikexperten."
+    },
+    {
+      "source_agent_id": "greifer_sensorik_experte",
+      "target_agent_id": "showroom_guide",
+      "condition": "Besucher benötigt einen allgemeinen Überblick oder Orientierung.",
+      "reason": "Zurückleitung an den Showroom Guide."
+    },
+    {
+      "source_agent_id": "gelenk_montage_experte",
+      "target_agent_id": "showroom_guide",
+      "condition": "Besucher benötigt einen allgemeinen Überblick oder Orientierung.",
+      "reason": "Zurückleitung an den Showroom Guide."
+    },
+    {
+      "source_agent_id": "interaktive_steuerung_demonstrator",
+      "target_agent_id": "showroom_guide",
+      "condition": "Besucher benötigt einen allgemeinen Überblick oder Orientierung.",
+      "reason": "Zurückleitung an den Showroom Guide."
+    }
+  ]
+}

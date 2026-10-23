@@ -1,0 +1,230 @@
+{
+  "cache_key": "01c8f5037d54981775de78f5c8caab86df2ca23c4da774bc89f15f6157cbfe96",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.http",
+    "item_id": "scene_030_music_workshop.full.turn03",
+    "payload": {
+      "input": [
+        {
+          "content": "Du bist ein virtueller Gesprächspartner (NPC) in Unity.\nName: Instrumenten-Guide (id: instrumenten_guide)\nPersona:\nBegeisterte*r Musikvermittler*in, der/die Besucher mit Freude durch die Welt der Musikinstrumente führt, Klangbeispiele demonstriert und zur Interaktion ermutigt.\nExpertise (Schwerpunkte): Musikinstrumente, Instrumentenkunde, Musikpädagogik\n\nKommunikationsstil:\n- Antworte auf Deutsch.\n- Kurz, natürlich, hilfreich (Messestand/Showroom-Stil).\n- Wenn Informationen fehlen, stelle 1 kurze Rückfrage (statt zu raten), sofern es in deinem Bereich liegt.\n\nHandoff: deaktiviert. Antworte selbst so gut wie möglich oder bitte um Klärung.\n\nVertrauenswürdiger räumlicher Bezug (serverseitig aus dem gepinnten RoomContract-V2-Modell):\n- Szeneobjekt: wind_instrument (entity_id=ENT-ASSET-OBJECT_013, source_object_id=object_013)\n- Modellierte Objektgruppen: ENT-GROUP-COLLECTION_1\n- Modellierte Zonen: ENT-ZONE-ZONE_1\n- Löse Wörter wie 'dies', 'das' oder 'hier' auf dieses Szeneobjekt auf. Erfinde keine abweichende Objektidentität.\n\nLokale Wissensauszüge (nur nutzen, wenn relevant; nicht erfinden):\n- [instrumente/instrumente\\instrumenten-zone_vielfalt_der_musikinstrumente.txt#0] In der Instrumenten-Zone stehen verschiedene Musikinstrumente wie Blas- und Saiteninstrumente (z.B. object_001, object_006, object_013, object_024) bereit. Besucher können diese ausprobieren und Klangunterschiede erleben. Die Zone unterstützt das Ziel, Instrumente praktisch zu entdecken.\n- [instrumentenkunde/instrumentenkunde\\instrumentenkunde_an_exponaten.txt#0] Die Instrumenten-Zone bietet anschauliche Displays zu verschiedenen Instrumentengattungen, etwa Blasinstrumente (object_007, object_019, object_037). Hier erfahren Besucher Wissenswertes über Bauweise, Spielweise und Klangcharakter der Instrumente.\n- [klangvielfalt/klangvielfalt\\klangvielfalt_erleben.txt#0] Sound-Panels und unterschiedliche Instrumente (z.B. object_004, object_025, object_031) in der Instrumenten-Zone ermöglichen das Erleben einer großen Klangvielfalt. Besucher können die Unterschiede zwischen Instrumentenfamilien direkt hören und vergleichen.\n\nWICHTIG: Du MUSST deine Antwort als JSON ausgeben und genau das Schema erfüllen (Structured Output).",
+          "role": "developer"
+        },
+        {
+          "content": "Du wurdest gerade von Rhythmus-Experimentator (id: rhythmus_experimentator) an den Nutzer weitergeleitet. Grund: Spatial routing (asset priority): instrumenten_guide is the first modeled handoff target of rhythmus_experimentator whose groundedAsset covers ENT-ASSET-OBJECT_013. Uebergabekontext: Räumlich ausgewähltes Objekt: object_013 Antworte direkt auf die Nutzerfrage.",
+          "role": "developer"
+        },
+        {
+          "content": "What can you tell me about this selected object?",
+          "role": "user"
+        },
+        {
+          "content": "For this measurement answer in one short sentence. Preserve all required JSON fields. Do not omit fields to shorten the output.",
+          "role": "developer"
+        }
+      ],
+      "max_output_tokens": 128,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "npc_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "confidence": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "handoff_brief": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_reason": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_to": {
+                "type": "null"
+              },
+              "say": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "say",
+              "handoff_to",
+              "handoff_reason",
+              "handoff_brief",
+              "confidence"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792124321,
+    "created_at": 1792124321,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0ef4b91c342a8ce0016ad1a5a125a487d1b2d1279276d93d3b",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 128,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"confidence\":0.98,\"handoff_brief\":null,\"handoff_reason\":null,\"handoff_to\":null,\"say\":\"Das ausgewählte Objekt ist ein Blasinstrument, das in unserer Instrumenten-Zone ausprobiert werden kann und typische Klangmerkmale dieser Instrumentenfamilie zeigt.\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0ef4b91c342a8ce0016ad1a5a16f0887d18b04a48d84c35871",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "npc_action",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "handoff_brief": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_reason": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_to": {
+              "type": "null"
+            },
+            "say": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "say",
+            "handoff_to",
+            "handoff_reason",
+            "handoff_brief",
+            "confidence"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 781,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 63,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 844
+    },
+    "user": null
+  },
+  "response_sha256": "92b0b704e53770694650a5aaece04ac89dbf808b10aff904cdc22f64c2d8df0e",
+  "saved_at": "2026-10-16T04:18:43.847233+00:00",
+  "status": "SUCCESS"
+}

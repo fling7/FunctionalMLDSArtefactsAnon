@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RoomContractRuntimeEvent",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "timestamp",
+    "case_id",
+    "session_id",
+    "event_type",
+    "agent_id",
+    "scenario_step_id",
+    "capability_id",
+    "runtime_binding_id",
+    "runtime_action_id",
+    "input_summary",
+    "output_summary"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "roomcontract_runtime_event"
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "pipeline_stage_started",
+        "pipeline_stage_completed",
+        "backend_setup_started",
+        "backend_setup_completed",
+        "backend_chat_started",
+        "backend_chat_completed",
+        "backend_handoff_completed",
+        "unity_setup_completed",
+        "unity_agent_selected",
+        "unity_chat_sent",
+        "unity_chat_received",
+        "unity_handoff_arrived",
+        "validation_observation",
+        "error"
+      ]
+    },
+    "agent_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scenario_step_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "capability_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "runtime_binding_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "runtime_action_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "input_summary": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "output_summary": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "duration_ms": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "status": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "success",
+        "failure",
+        "skipped",
+        "needs_manual_review",
+        null
+      ]
+    },
+    "error_summary": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 2000
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number",
+          "integer",
+          "boolean",
+          "null"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "status": "SIX_COMPLETED_SHARDS_TARGET_UNMET",
+  "primary_unit": "distinct generated native model hash across the six completed shards",
+  "observation_unit": "generated model/request configuration; repeated model hashes count once in the primary denominator",
+  "completed_shards": 6,
+  "observation_rows": 7000,
+  "distinct_model_hashes": 4750,
+  "distinct_configuration_hashes": 5578,
+  "minimum_distinct_models": 5000,
+  "target_reached": false,
+  "row_status_counts": {
+    "pass": 7000
+  },
+  "request_decision_counts": {
+    "ANSWER_LOCAL": 2192,
+    "REJECT": 7717,
+    "ANSWER_AFTER_HANDOFF": 255
+  },
+  "g4_commit_pairs": 2447,
+  "source_pins_identical_across_shards": true,
+  "shards": [
+    {
+      "shard": "model-properties-v2-shard0",
+      "seed": 20261020,
+      "terminal_status": "pass",
+      "observations": 1500,
+      "within_shard_distinct_models": 1101,
+      "within_shard_distinct_configurations": 1251
+    },
+    {
+      "shard": "model-properties-v2-shard1",
+      "seed": 20261021,
+      "terminal_status": "pass",
+      "observations": 1500,
+      "within_shard_distinct_models": 1070,
+      "within_shard_distinct_configurations": 1229
+    },
+    {
+      "shard": "model-properties-v2-shard2",
+      "seed": 20261022,
+      "terminal_status": "pass",
+      "observations": 1500,
+      "within_shard_distinct_models": 1063,
+      "within_shard_distinct_configurations": 1219
+    },
+    {
+      "shard": "model-properties-v2-shard3",
+      "seed": 20261023,
+      "terminal_status": "pass",
+      "observations": 1500,
+      "within_shard_distinct_models": 1070,
+      "within_shard_distinct_configurations": 1243
+    },
+    {
+      "shard": "model-properties-v2-shard4",
+      "seed": 20261024,
+      "terminal_status": "pass",
+      "observations": 500,
+      "within_shard_distinct_models": 382,
+      "within_shard_distinct_configurations": 424
+    },
+    {
+      "shard": "model-properties-v2-shard5",
+      "seed": 20261025,
+      "terminal_status": "pass",
+      "observations": 500,
+      "within_shard_distinct_models": 357,
+      "within_shard_distinct_configurations": 410
+    }
+  ],
+  "limits": [
+    "Generated models are not independently sampled natural rooms.",
+    "Scripted model responses only; no real LLM evaluation.",
+    "An individual shard status pass does not meet the global 5000-model target.",
+    "Interrupted shard6 is excluded from every completed denominator."
+  ]
+}

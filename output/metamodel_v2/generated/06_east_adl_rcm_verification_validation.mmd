@@ -1,0 +1,137 @@
+classDiagram
+  direction TB
+  %% SVG/PNG define the presentation-authoritative orthogonal layout.
+  %% EAST-ADL / RCM V2 – Verification & Validation
+  class EAST_ADL_Elements_Context {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_TraceableSpecification {
+    <<abstract>>
+    +text : String [0..1]
+  }
+  class EAST_ADL_Elements_Identifiable {
+    <<abstract>>
+    +category : Identifier [0..1]
+    +uuid : String [0..1]
+  }
+  class EAST_ADL_Requirements_RequirementsRelationship {
+    <<abstract>>
+  }
+  class EAST_ADL_Requirements_Requirement {
+    <<EA::Requirements>>
+    +formalism : String [0..1]
+    +url : String [0..1]
+  }
+  class EAST_ADL_VerificationValidation_Verify {
+    <<EA::VerificationValidation>>
+  }
+  class EAST_ADL_VerificationValidation_VerificationValidation {
+    <<EA::VerificationValidation>>
+  }
+  class EAST_ADL_VerificationValidation_VVTarget {
+    <<EA::VerificationValidation>>
+  }
+  class EAST_ADL_VerificationValidation_VVCase {
+    <<EA::VerificationValidation>>
+  }
+  class EAST_ADL_VerificationValidation_VVProcedure {
+    <<EA::VerificationValidation>>
+  }
+  class EAST_ADL_VerificationValidation_VVStimuli {
+    <<EA::VerificationValidation>>
+  }
+  class EAST_ADL_VerificationValidation_VVIntendedOutcome {
+    <<EA::VerificationValidation>>
+  }
+  class EAST_ADL_VerificationValidation_VVLog {
+    <<EA::VerificationValidation>>
+    +date : String [1]
+  }
+  class EAST_ADL_VerificationValidation_VVActualOutcome {
+    <<EA::VerificationValidation>>
+  }
+  class RCM_V2_Core_RuntimeValidationTarget {
+    <<DF::Core>>
+    +platform : String [1]
+    +environmentRef : String [0..1]
+  }
+  class RCM_V2_Core_ValidationCase {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_RuntimeValidationProcedure {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_RuntimeStimulus {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_AssertionOutcome {
+    <<abstract>>
+  }
+  class RCM_V2_Core_StateAssertionOutcome {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_RuntimeValidationLog {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_RuntimeActualOutcome {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_RuntimeBinding {
+    <<DF::Core>>
+    +targetPlatform : String [1]
+  }
+  class RCM_V2_Core_ValidationCaseUseCaseBinding {
+    <<DF::Core>>
+  }
+  class EAST_ADL_UseCases_UseCase {
+    <<EA::UseCases>>
+  }
+  class RCM_V2_Core_StateAssertion {
+    <<DF::Core>>
+  }
+  class RCM_V2_Core_Assertion {
+    <<abstract>>
+    +/expressionText : String [1]
+    +severity : AssertionSeverity [0..1]
+  }
+  class EAST_ADL_Values_EAValue {
+    <<abstract>>
+  }
+  class RCM_V2_Core_AssertionResult {
+    <<DF::Core>>
+    +verdict : AssertionVerdict [1]
+    +evidenceRef : String [0..1]
+    +timestamp : String [0..1]
+  }
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_Requirements_Requirement
+  EAST-ADL_Requirements_RequirementsRelationship <|-- EAST-ADL_VerificationValidation_Verify
+  EAST-ADL_Elements_Context <|-- EAST-ADL_VerificationValidation_VerificationValidation
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_VerificationValidation_VVTarget
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_VerificationValidation_VVCase
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_VerificationValidation_VVProcedure
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_VerificationValidation_VVStimuli
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_VerificationValidation_VVIntendedOutcome
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_VerificationValidation_VVLog
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_VerificationValidation_VVActualOutcome
+  EAST-ADL_VerificationValidation_VVTarget <|-- RCM_V2_Core_RuntimeValidationTarget
+  EAST-ADL_VerificationValidation_VVCase <|-- RCM_V2_Core_ValidationCase
+  EAST-ADL_VerificationValidation_VVProcedure <|-- RCM_V2_Core_RuntimeValidationProcedure
+  EAST-ADL_VerificationValidation_VVStimuli <|-- RCM_V2_Core_RuntimeStimulus
+  EAST-ADL_VerificationValidation_VVIntendedOutcome <|-- RCM_V2_Core_AssertionOutcome
+  RCM_V2_Core_AssertionOutcome <|-- RCM_V2_Core_StateAssertionOutcome
+  EAST-ADL_VerificationValidation_VVLog <|-- RCM_V2_Core_RuntimeValidationLog
+  EAST-ADL_VerificationValidation_VVActualOutcome <|-- RCM_V2_Core_RuntimeActualOutcome
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_UseCases_UseCase
+  RCM_V2_Core_Assertion <|-- RCM_V2_Core_StateAssertion
+  EAST-ADL_Elements_TraceableSpecification <|-- RCM_V2_Core_Assertion
+  EAST-ADL_VerificationValidation_VerificationValidation "1" *-- "*" EAST-ADL_VerificationValidation_VVCase : vvCase [*]
+  EAST-ADL_VerificationValidation_VVCase "*" --> "*" EAST-ADL_VerificationValidation_VVTarget : vvTarget [*]
+  EAST-ADL_VerificationValidation_VVLog "1" *-- "*" EAST-ADL_VerificationValidation_VVActualOutcome : vvActualOutcome [*]
+  EAST-ADL_VerificationValidation_VVProcedure "1" *-- "*" EAST-ADL_VerificationValidation_VVStimuli : vvStimuli [*]
+  EAST-ADL_VerificationValidation_VVProcedure "1" *-- "*" EAST-ADL_VerificationValidation_VVIntendedOutcome : vvIntendedOutcome [*]
+  RCM_V2_Core_AssertionOutcome "*" --> "1..*" RCM_V2_Core_Assertion : assertion [1..*]
+  RCM_V2_Core_AssertionResult "*" --> "1" RCM_V2_Core_Assertion : assertion [1]
+  RCM_V2_Core_AssertionResult "1" *-- "0..1" EAST-ADL_Values_EAValue : observedValue [0..1]
+  RCM_V2_Core_RuntimeActualOutcome "1" *-- "1..*" RCM_V2_Core_AssertionResult : result [1..*]
+  RCM_V2_Core_RuntimeValidationTarget "*" ..> "*" RCM_V2_Core_RuntimeBinding : runtimeBinding [*]
+  RCM_V2_Core_ValidationCaseUseCaseBinding "*" --> "1" EAST-ADL_UseCases_UseCase : useCase [1]

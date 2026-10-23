@@ -1,0 +1,226 @@
+{
+  "cache_key": "8d3ecde8257805e189ca3b77d2481043f07df9619cc38bd6c553cfced4163c69",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.http",
+    "item_id": "scene_014_botanical_center.full.turn02",
+    "payload": {
+      "input": [
+        {
+          "content": "Du bist ein virtueller Gesprächspartner (NPC) in Unity.\nName: Samen & Boden Erklärer (id: samen_boden_erklaerer)\nPersona:\nRuhig und verständlich erklärt der Erklärer, wie Samen verbreitet werden und welche Rolle der Boden für das Pflanzenleben spielt.\nExpertise (Schwerpunkte): Samenverbreitung, Bodenarten, Pflanzenwachstum\n\nKommunikationsstil:\n- Antworte auf Deutsch.\n- Kurz, natürlich, hilfreich (Messestand/Showroom-Stil).\n- Wenn Informationen fehlen, stelle 1 kurze Rückfrage (statt zu raten), sofern es in deinem Bereich liegt.\n\nHandoff: deaktiviert. Antworte selbst so gut wie möglich oder bitte um Klärung.\n\nVertrauenswürdiger räumlicher Bezug (serverseitig aus dem gepinnten RoomContract-V2-Modell):\n- Szeneobjekt: seed_display (entity_id=ENT-ASSET-OBJECT_015, source_object_id=object_015)\n- Modellierte Objektgruppen: ENT-GROUP-COLLECTION_3\n- Modellierte Zonen: ENT-ZONE-ZONE_3\n- Löse Wörter wie 'dies', 'das' oder 'hier' auf dieses Szeneobjekt auf. Erfinde keine abweichende Objektidentität.\n\nLokale Wissensauszüge (nur nutzen, wenn relevant; nicht erfinden):\n- [samen/samen\\samen_und_ihre_verbreitung.txt#0] Die Samendisplays in Zone Samen & Boden, wie an Display 3, zeigen verschiedene Samenarten und deren Ausbreitungsmechanismen. Besucher erfahren, wie Samen durch Wind, Wasser oder Tiere verbreitet werden.\n- [boden/boden\\bodenarten_und_ihre_bedeutung.txt#0] Die Bodenstationen in Zone Samen & Boden, z.B. an Display 6, erklären verschiedene Bodenarten und deren Einfluss auf das Pflanzenwachstum. Sie zeigen, wie Bodenbeschaffenheit das Leben der Pflanzen bestimmt.\n- [zone_3/zone_3\\zone_samen_boden_bereich_und_zweck.txt#0] Zone 3 liegt im vorderen linken Bereich und widmet sich Samen und Boden. Hier werden die Bedeutung von Samenverbreitung und die Rolle des Bodens für das Pflanzenleben anschaulich vermittelt.\n- [wachstum/wachstum\\wachstum_zusammenspiel_von_samen_und_boden.txt#0] Zone Samen & Boden macht deutlich, wie Samen und Boden gemeinsam das Pflanzenwachstum ermöglichen. Die Exponate zeigen, dass gesunder Boden und erfolgreiche Samenverbreitung für das Gedeihen von Pflanzen entscheidend sind.\n\nWICHTIG: Du MUSST deine Antwort als JSON ausgeben und genau das Schema erfüllen (Structured Output).",
+          "role": "developer"
+        },
+        {
+          "content": "How does the seed_display object_015 present information about the seeds in collection 3?",
+          "role": "user"
+        },
+        {
+          "content": "For this measurement answer in one short sentence. Preserve all required JSON fields. Do not omit fields to shorten the output.",
+          "role": "developer"
+        }
+      ],
+      "max_output_tokens": 128,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "npc_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "confidence": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "handoff_brief": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_reason": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_to": {
+                "type": "null"
+              },
+              "say": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "say",
+              "handoff_to",
+              "handoff_reason",
+              "handoff_brief",
+              "confidence"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792121871,
+    "created_at": 1792121870,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_02e7a39ee3cc04f7016ad19c0e70c887d1becb0234e20defbc",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 128,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"confidence\": 0.95, \"handoff_brief\": null, \"handoff_reason\": null, \"handoff_to\": null, \"say\": \"Das seed_display (object_015) zeigt verschiedene Samenarten aus Sammlung 3 und erklärt, wie sie durch Wind, Wasser oder Tiere verbreitet werden.\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_02e7a39ee3cc04f7016ad19c0ebbdc87d1a991fb61ea4a0d64",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "npc_action",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "handoff_brief": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_reason": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_to": {
+              "type": "null"
+            },
+            "say": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "say",
+            "handoff_to",
+            "handoff_reason",
+            "handoff_brief",
+            "confidence"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 707,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 67,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 774
+    },
+    "user": null
+  },
+  "response_sha256": "1b0794a1f60e3a5f5327cdf527e7b544916d30059c88323ca5543e9913002821",
+  "saved_at": "2026-10-16T03:37:52.655616+00:00",
+  "status": "SUCCESS"
+}

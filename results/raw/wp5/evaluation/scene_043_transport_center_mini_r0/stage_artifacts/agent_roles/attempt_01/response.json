@@ -1,0 +1,307 @@
+{
+  "access_programs": null,
+  "background": false,
+  "billing": {
+    "payer": "openai"
+  },
+  "completed_at": 1792071901,
+  "created_at": 1792071894,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_0caf99c15121992c016ad0d8d6f32887d1b738245ac84b5b82",
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 2200,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-4.1-mini-2025-04-14",
+  "moderation": null,
+  "object": "response",
+  "output": [
+    {
+      "content": [
+        {
+          "annotations": [],
+          "logprobs": [],
+          "text": "{\"agents\":[{\"display_name\":\"Transport Center Guide\",\"expertise\":[\"visitor assistance\",\"transport information\",\"navigation help\"],\"grounded_object_ids\":[\"object_002\",\"object_008\",\"object_014\",\"object_020\",\"object_026\",\"object_032\",\"object_038\",\"object_044\",\"object_050\",\"object_056\",\"object_062\",\"object_068\",\"object_074\",\"object_080\"],\"handoff_targets\":[\"role_educator\",\"role_tech_specialist\"],\"id\":\"role_guide\",\"knowledge_tags\":[\"transport_center_guide\",\"route_maps\",\"navigation_help\"],\"persona\":\"Friendly and helpful guide assisting visitors in understanding transport routes and navigating the center.\",\"responsible_zone_ids\":[\"zone_route_maps\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"fable\",\"voice_gender\":\"weiblich\",\"voice_style\":\"klar und freundlich\"},{\"display_name\":\"Exhibit Educator\",\"expertise\":[\"educational content\",\"exhibit explanation\",\"transport technology\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\",\"object_025\",\"object_028\",\"object_031\",\"object_034\",\"object_037\",\"object_040\",\"object_043\",\"object_046\",\"object_049\",\"object_052\",\"object_055\",\"object_058\",\"object_061\",\"object_064\",\"object_067\",\"object_070\",\"object_073\",\"object_076\",\"object_079\"],\"handoff_targets\":[\"role_guide\",\"role_tech_specialist\"],\"id\":\"role_educator\",\"knowledge_tags\":[\"exhibit_educator\",\"bridge_models\",\"signal_stations\",\"transport_infrastructure\"],\"persona\":\"Knowledgeable educator providing detailed explanations about bridge models and signal stations to visitors.\",\"responsible_zone_ids\":[\"zone_bridge_signal\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"coral\",\"voice_gender\":\"maennlich\",\"voice_style\":\"informativ und geduldig\"},{\"display_name\":\"Transport Technology Specialist\",\"expertise\":[\"transport technology\",\"rail systems\",\"bicycle transport\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\",\"object_027\",\"object_030\",\"object_033\",\"object_036\",\"object_039\",\"object_042\",\"object_045\",\"object_048\",\"object_051\",\"object_054\",\"object_057\",\"object_060\",\"object_063\",\"object_066\",\"object_069\",\"object_072\",\"object_075\",\"object_078\"],\"handoff_targets\":[\"role_educator\",\"role_guide\"],\"id\":\"role_tech_specialist\",\"knowledge_tags\":[\"transport_technology_specialist\",\"rail_models\",\"bicycle_displays\",\"transport_innovations\"],\"persona\":\"Expert in transport technology explaining rail models and bicycle displays with focus on innovations.\",\"responsible_zone_ids\":[\"zone_bicycle_rail\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"ash\",\"voice_gender\":\"weiblich\",\"voice_style\":\"fachlich und engagiert\"}],\"handoffs\":[{\"condition\":\"visitor asks for detailed infrastructure explanations\",\"reason\":\"Guide redirects to Educator for in-depth bridge and signal info\",\"source_agent_id\":\"role_guide\",\"target_agent_id\":\"role_educator\"},{\"condition\":\"visitor requests technical details on rail or bicycle models\",\"reason\":\"Guide redirects to Technology Specialist for specialized transport technology info\",\"source_agent_id\":\"role_guide\",\"target_agent_id\":\"role_tech_specialist\"},{\"condition\":\"visitor seeks general navigation help after technical explanation\",\"reason\":\"Educator redirects to Guide for navigation assistance\",\"source_agent_id\":\"role_educator\",\"target_agent_id\":\"role_guide\"},{\"condition\":\"visitor wants to understand infrastructure context after tech details\",\"reason\":\"Technology Specialist redirects to Educator for infrastructure explanations\",\"source_agent_id\":\"role_tech_specialist\",\"target_agent_id\":\"role_educator\"},{\"condition\":\"visitor needs route or navigation help after infrastructure explanation\",\"reason\":\"Educator redirects to Guide for route maps and navigation support\",\"source_agent_id\":\"role_educator\",\"target_agent_id\":\"role_guide\"},{\"condition\":\"visitor interested in general transport center info after tech talk\",\"reason\":\"Technology Specialist redirects to Guide for visitor assistance and navigation\",\"source_agent_id\":\"role_tech_specialist\",\"target_agent_id\":\"role_guide\"}]}",
+          "type": "output_text"
+        }
+      ],
+      "id": "msg_0caf99c15121992c016ad0d8d798ac87d18bf522ccb24f1e2c",
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 0.3,
+  "text": {
+    "format": {
+      "description": null,
+      "name": "agent_roles",
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "agents": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "display_name": {
+                  "type": "string"
+                },
+                "expertise": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "grounded_object_ids": {
+                  "items": {
+                    "enum": [
+                      "object_001",
+                      "object_002",
+                      "object_003",
+                      "object_004",
+                      "object_005",
+                      "object_006",
+                      "object_007",
+                      "object_008",
+                      "object_009",
+                      "object_010",
+                      "object_011",
+                      "object_012",
+                      "object_013",
+                      "object_014",
+                      "object_015",
+                      "object_016",
+                      "object_017",
+                      "object_018",
+                      "object_019",
+                      "object_020",
+                      "object_021",
+                      "object_022",
+                      "object_023",
+                      "object_024",
+                      "object_025",
+                      "object_026",
+                      "object_027",
+                      "object_028",
+                      "object_029",
+                      "object_030",
+                      "object_031",
+                      "object_032",
+                      "object_033",
+                      "object_034",
+                      "object_035",
+                      "object_036",
+                      "object_037",
+                      "object_038",
+                      "object_039",
+                      "object_040",
+                      "object_041",
+                      "object_042",
+                      "object_043",
+                      "object_044",
+                      "object_045",
+                      "object_046",
+                      "object_047",
+                      "object_048",
+                      "object_049",
+                      "object_050",
+                      "object_051",
+                      "object_052",
+                      "object_053",
+                      "object_054",
+                      "object_055",
+                      "object_056",
+                      "object_057",
+                      "object_058",
+                      "object_059",
+                      "object_060",
+                      "object_061",
+                      "object_062",
+                      "object_063",
+                      "object_064",
+                      "object_065",
+                      "object_066",
+                      "object_067",
+                      "object_068",
+                      "object_069",
+                      "object_070",
+                      "object_071",
+                      "object_072",
+                      "object_073",
+                      "object_074",
+                      "object_075",
+                      "object_076",
+                      "object_077",
+                      "object_078",
+                      "object_079",
+                      "object_080"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "handoff_targets": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "knowledge_tags": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "persona": {
+                  "type": "string"
+                },
+                "responsible_zone_ids": {
+                  "items": {
+                    "enum": [
+                      "zone_bridge_signal",
+                      "zone_route_maps",
+                      "zone_bicycle_rail"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "tts_model": {
+                  "type": "string"
+                },
+                "voice": {
+                  "enum": [
+                    "alloy",
+                    "ash",
+                    "ballad",
+                    "coral",
+                    "echo",
+                    "fable",
+                    "nova",
+                    "onyx",
+                    "sage",
+                    "shimmer",
+                    "verse"
+                  ],
+                  "type": "string"
+                },
+                "voice_gender": {
+                  "type": "string"
+                },
+                "voice_style": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "display_name",
+                "persona",
+                "expertise",
+                "knowledge_tags",
+                "responsible_zone_ids",
+                "grounded_object_ids",
+                "handoff_targets",
+                "voice",
+                "voice_gender",
+                "voice_style",
+                "tts_model"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "handoffs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "condition": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "source_agent_id": {
+                  "type": "string"
+                },
+                "target_agent_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source_agent_id",
+                "target_agent_id",
+                "condition",
+                "reason"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "agents",
+          "handoffs"
+        ],
+        "type": "object"
+      },
+      "strict": true,
+      "type": "json_schema"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 8362,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 918,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 9280
+  },
+  "user": null
+}

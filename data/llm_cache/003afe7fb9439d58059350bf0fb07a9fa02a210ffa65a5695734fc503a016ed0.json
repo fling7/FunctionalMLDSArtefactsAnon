@@ -1,0 +1,166 @@
+{
+  "cache_key": "003afe7fb9439d58059350bf0fb07a9fa02a210ffa65a5695734fc503a016ed0",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.questions",
+    "item_id": "scene_018_music_workshop.ENT-ASSET-OBJECT_020",
+    "payload": {
+      "input": [
+        {
+          "content": "Write two different natural visitor questions about this selected synthetic room object, using its description and the supplied knowledge excerpts. Use English. Each question must explicitly include the object's supplied name or source id, must be at most one sentence, and must not name an agent or ask for a handoff. The first should ask about the object or its purpose; the second should ask about a detail or use that is supported by the supplied information. Do not invent facts. Return JSON with question_1 and question_2.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"object\": {\"id\": \"ENT-ASSET-OBJECT_020\", \"source_id\": \"object_020\", \"name\": \"rhythm_console\", \"type\": \"rhythm_console\", \"group_label\": \"collection_2\", \"zone_names\": [\"Rhythm and Percussion Zone\"]}, \"description\": \"Synthetic music workshop object: rhythm console. Display 20 explains a distinct example in collection 2. A freestanding educational display with a clearly visible label; no real person or institution.\", \"knowledge_excerpts\": [{\"tag\": \"interactive_learning\", \"file\": \"interactive_learning\\\\interactive_learning_with_rhythm_and_percussion_instruments.txt\", \"chunk_index\": 0, \"score\": 1.125, \"text\": \"This zone's interactive rhythm consoles and percussion stations are designed for active visitor participation. Objects like object_023 (percussion station) and object_020 (rhythm console) facilitate experiential learning, making rhythm and percussion accessible and engaging.\"}]}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 256,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "visitor_questions",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "question_1": {
+                "type": "string"
+              },
+              "question_2": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question_1",
+              "question_2"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "judges",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792103391,
+    "created_at": 1792103391,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0b0168bc9c9ee225016ad153df144887d181969afce9ff6ecd",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 256,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"question_1\":\"What is the purpose of the rhythm_console (object_020) in the Rhythm and Percussion Zone?\",\"question_2\":\"How does the rhythm_console (object_020) facilitate experiential learning for visitors in the music workshop?\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0b0168bc9c9ee225016ad153df5fd487d1a8974c87e70ec577",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "visitor_questions",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "question_1": {
+              "type": "string"
+            },
+            "question_2": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "question_1",
+            "question_2"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 349,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 53,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 402
+    },
+    "user": null
+  },
+  "response_sha256": "0f433fc23e6574a0dfe16fa8f66700b1fede44772026c067583b19c5e0752f97",
+  "saved_at": "2026-10-15T22:29:52.677426+00:00",
+  "status": "SUCCESS"
+}

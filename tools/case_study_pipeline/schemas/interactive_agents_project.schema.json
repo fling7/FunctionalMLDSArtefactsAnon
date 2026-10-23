@@ -1,0 +1,558 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "agent_backendProjectFiles",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project",
+    "agents",
+    "room_plan",
+    "trace_map"
+  ],
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "display_name",
+        "description",
+        "created_ms",
+        "updated_ms"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "created_ms": {
+          "type": "integer"
+        },
+        "updated_ms": {
+          "type": "integer"
+        },
+        "generation_mode": {
+          "type": "string"
+        },
+        "roomcontract_trace_path": {
+          "type": "string"
+        },
+        "roomcontract_case_dir": {
+          "type": "string"
+        },
+        "source_rdl_path": {
+          "type": "string"
+        },
+        "metamodelVersion": {
+          "type": "string"
+        },
+        "roomcontract_model_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "roomcontract_legacy_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "roomcontract_trace_map_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "roomcontract_legacy_trace_map_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "roomcontract_model_sha256": {
+          "type": "string",
+          "pattern": "^[A-F0-9]{64}$"
+        },
+        "roomcontract_model_version": {
+          "type": "string",
+          "const": "2.0.0-model"
+        },
+        "roomcontract_model_schema": {
+          "type": "string",
+          "const": "dynamic_functional_rdl_v2_instance"
+        },
+        "roomcontract_profile": {
+          "type": "string",
+          "const": "executable"
+        },
+        "roomcontract_trace_schema_version": {
+          "type": "string",
+          "const": "2.0"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "roomcontract_model_version"
+            ],
+            "properties": {
+              "roomcontract_model_version": {
+                "const": "2.0.0-model"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "generation_mode",
+              "roomcontract_model_path",
+              "roomcontract_legacy_path",
+              "roomcontract_trace_map_path",
+              "roomcontract_legacy_trace_map_path",
+              "roomcontract_model_sha256",
+              "roomcontract_model_version",
+              "roomcontract_model_schema",
+              "roomcontract_profile",
+              "metamodelVersion",
+              "roomcontract_trace_schema_version"
+            ],
+            "properties": {
+              "generation_mode": {
+                "const": "roomcontract"
+              },
+              "metamodelVersion": {
+                "const": "2.0.0-model"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "agents": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "agents"
+      ],
+      "properties": {
+        "agents": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "id",
+              "display_name",
+              "persona",
+              "expertise",
+              "knowledge_tags",
+              "position",
+              "forward"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "display_name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "persona": {
+                "type": "string"
+              },
+              "expertise": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "knowledge_tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "responsible_zone_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "grounded_object_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "handoff_targets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "preferred_zone_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "position": {
+                "$ref": "#/$defs/vector3"
+              },
+              "forward": {
+                "$ref": "#/$defs/vector3"
+              },
+              "voice": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "voice_gender": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "voice_style": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "tts_model": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "roomcontract_agent_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "roomcontract_entity_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "provided_capability_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "plays_actor_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "room_plan": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "scene"
+      ],
+      "properties": {
+        "scene": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "trace_map": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/traceMapV05"
+        },
+        {
+          "$ref": "#/$defs/traceMapV2"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "trace_map": {
+            "required": [
+              "schema"
+            ],
+            "properties": {
+              "schema": {
+                "const": "roomcontract_trace_map_v2"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "project": {
+            "required": [
+              "roomcontract_model_path",
+              "roomcontract_legacy_path",
+              "roomcontract_trace_map_path",
+              "roomcontract_legacy_trace_map_path",
+              "roomcontract_model_sha256",
+              "roomcontract_model_version",
+              "roomcontract_model_schema",
+              "roomcontract_profile",
+              "metamodelVersion",
+              "roomcontract_trace_schema_version"
+            ],
+            "properties": {
+              "metamodelVersion": {
+                "const": "2.0.0-model"
+              },
+              "roomcontract_model_schema": {
+                "const": "dynamic_functional_rdl_v2_instance"
+              },
+              "roomcontract_profile": {
+                "const": "executable"
+              }
+            }
+          },
+          "agents": {
+            "properties": {
+              "agents": {
+                "items": {
+                  "required": [
+                    "roomcontract_agent_ref",
+                    "roomcontract_entity_ref",
+                    "provided_capability_ids",
+                    "plays_actor_ids"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "project": {
+            "required": [
+              "roomcontract_model_version"
+            ],
+            "properties": {
+              "roomcontract_model_version": {
+                "const": "2.0.0-model"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "trace_map": {
+            "required": [
+              "schema"
+            ],
+            "properties": {
+              "schema": {
+                "const": "roomcontract_trace_map_v2"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "vector3": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        }
+      }
+    },
+    "traceMapV05": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schema",
+        "case_id",
+        "roomcontract_path",
+        "project_files",
+        "scenario_steps",
+        "capabilities",
+        "runtime_actions",
+        "validation_cases",
+        "agents"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "roomcontract_trace_map"
+        },
+        "case_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "roomcontract_path": {
+          "type": "string"
+        },
+        "project_files": {
+          "type": "object"
+        },
+        "scenario_steps": {
+          "type": "array",
+          "minItems": 1
+        },
+        "capabilities": {
+          "type": "array",
+          "minItems": 1
+        },
+        "runtime_actions": {
+          "type": "array",
+          "minItems": 1
+        },
+        "validation_cases": {
+          "type": "array",
+          "minItems": 1
+        },
+        "agents": {
+          "type": "array",
+          "minItems": 1
+        }
+      }
+    },
+    "traceMapV2": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schema",
+        "schema_version",
+        "model_version",
+        "model_sha256",
+        "profile",
+        "case_id",
+        "roomcontract_path",
+        "roomcontract_v2_path",
+        "project_files",
+        "use_case_id",
+        "main_scenario_id",
+        "scenario_steps",
+        "step_relations",
+        "parallel_groups",
+        "guards",
+        "capabilities",
+        "assertions",
+        "runtime_actions",
+        "validation_cases",
+        "runtime_validation_targets",
+        "agents"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "roomcontract_trace_map_v2"
+        },
+        "schema_version": {
+          "type": "string",
+          "const": "2.0"
+        },
+        "model_version": {
+          "type": "string",
+          "const": "2.0.0-model"
+        },
+        "model_sha256": {
+          "type": "string",
+          "pattern": "^[A-F0-9]{64}$"
+        },
+        "profile": {
+          "type": "string",
+          "const": "executable"
+        },
+        "case_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "roomcontract_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "roomcontract_v2_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project_files": {
+          "type": "object"
+        },
+        "use_case_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "main_scenario_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scenario_steps": {
+          "type": "array",
+          "minItems": 1
+        },
+        "step_relations": {
+          "type": "array",
+          "minItems": 1
+        },
+        "parallel_groups": {
+          "type": "array"
+        },
+        "guards": {
+          "type": "array"
+        },
+        "capabilities": {
+          "type": "array",
+          "minItems": 1
+        },
+        "assertions": {
+          "type": "array",
+          "minItems": 1
+        },
+        "runtime_actions": {
+          "type": "array",
+          "minItems": 1
+        },
+        "validation_cases": {
+          "type": "array",
+          "minItems": 1
+        },
+        "runtime_validation_targets": {
+          "type": "array",
+          "minItems": 1
+        },
+        "agents": {
+          "type": "array",
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

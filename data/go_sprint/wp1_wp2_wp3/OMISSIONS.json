@@ -1,0 +1,35 @@
+{
+  "explicit_omissions": [
+    {
+      "source_path": "results/processed/properties_summary.json",
+      "sha256": "4aabfbd2fb34237fa2e507df52c8d78b1042c0de17a4cc3c8a91f4a77c086972",
+      "bytes": 1473,
+      "reason": "Stale earlier 3300-model/4831-row snapshot; superseded here by raw-derived completed_summary.json without changing the original."
+    },
+    {
+      "source_path": "paper_inputs/tables/T9_property_shards.csv",
+      "sha256": "af0f1ffda30619a0e94735f41e7927d2f80352b4dc1ea8e5a29409e703effd98",
+      "bytes": 333,
+      "reason": "Historical property table; not used as a current completed union."
+    },
+    {
+      "source_path": "review/wp2_closure/compatibility_candidate_v1/engineering_exhaustive_v1/selected_cases.json",
+      "sha256": "dab26f5d5453d6adbec02a534ecdf8b3dac29e4833a2c1bf73b82e845545574f",
+      "bytes": 4586670,
+      "reason": "Redundant materialized case selection; all original differential inputs plus source/line joins and replay observations are included."
+    },
+    {
+      "source_path": "review/wp2_closure/compatibility_candidate_v1/state.diff",
+      "sha256": "120d8050c2fdc4c38ee18650b2413ba224c772e245ebfe759c1b1b6705806f76",
+      "bytes": 10934,
+      "reason": "Prototype code patch is outside this data-only handoff; exact changed source hashes remain in closure.json."
+    }
+  ],
+  "other_omitted_categories": [
+    "Earlier engineering/pilot property campaigns and repeated intermediate progress snapshots.",
+    "Backend/evaluator source trees, environments, caches, executable release/replay infrastructure.",
+    "WP1 PDF/SVG/PNG figures and rendering diagnostics; declaration and traceability data are included.",
+    "Paid model datasets and WP4+ evidence are outside this subpackage."
+  ],
+  "data_preserved": "All six completed property JSONLs, their terminal summaries/source pins, the interrupted124 prefix, both original differential probe datasets, and all4896 isolated replay observations are included."
+}

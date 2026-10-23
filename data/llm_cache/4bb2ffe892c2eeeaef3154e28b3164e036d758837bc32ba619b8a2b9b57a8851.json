@@ -1,0 +1,182 @@
+{
+  "cache_key": "4bb2ffe892c2eeeaef3154e28b3164e036d758837bc32ba619b8a2b9b57a8851",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "scene_037_astronomy_gallery.B0.forced.p1.neutral.mini.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "Choose the agent that should answer the visitor about the selected object. The selected object is the routing target even if the question mentions something else. Use the supplied agent information. When an ownership table is supplied, explicit object responsibility takes precedence over group responsibility, which takes precedence over zone responsibility; the first nonempty level must identify exactly one agent. That agent must be the active agent or a directly permitted handoff target. Do not treat a multi-hop path as direct permission. Return only the requested JSON.\nYou must choose exactly one listed agent id, including when the evidence is uncertain or no valid unique recipient is apparent. Set abstain=false. A null recipient and rejection are not available in this condition.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Astronomy Educator\",\"expertise\":[\"astronomy\",\"education\",\"visitor guidance\"],\"id\":\"astronomy_educator\",\"persona\":\"Friendly and knowledgeable astronomy educator who explains spectroscopes and telescopes in detail, eager to share insights about celestial observation techniques.\"},{\"display_name\":\"Meteorite and Orbit Specialist\",\"expertise\":[\"meteorites\",\"orbital mechanics\",\"interactive exhibits\"],\"id\":\"meteorite_orbit_specialist\",\"persona\":\"Expert in meteorites and orbital mechanics who assists visitors with interactive exhibits, encouraging hands-on learning about space materials and celestial dynamics.\"},{\"display_name\":\"Planetary Guide\",\"expertise\":[\"planetary science\",\"education\",\"visitor interaction\"],\"id\":\"planetary_guide\",\"persona\":\"Engaging planetary guide who helps visitors understand planet models and star maps, making celestial navigation and constellation identification accessible and fun.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-OBJECT_018\",\"source_id\":\"object_018\",\"name\":\"orbit_simulator\",\"type\":\"orbit_simulator\",\"group_label\":\"collection_3\",\"zone_names\":[\"Collection 3: Meteorite Displays and Orbit Simulators Zone\"]},\"active_agent_id\":\"astronomy_educator\",\"visitor_question\":\"What can you tell me about this selected object?\"}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "astronomy_educator",
+                  "meteorite_orbit_specialist",
+                  "planetary_guide"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792105755,
+    "created_at": 1792105754,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_00313163e0b03319016ad15d1ab61887d198efed1174dbc998",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\":false,\"answering_agent_id\":\"meteorite_orbit_specialist\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_00313163e0b03319016ad15d1b12b487d19dcfd4edc00e6fd0",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "astronomy_educator",
+                "meteorite_orbit_specialist",
+                "planetary_guide"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 467,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 20,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 487
+    },
+    "user": null
+  },
+  "response_sha256": "521492aac0d9582ff6a11c0a612d2a77ea53842296598d51e29719c176bce049",
+  "saved_at": "2026-10-15T23:09:16.271848+00:00",
+  "status": "SUCCESS"
+}

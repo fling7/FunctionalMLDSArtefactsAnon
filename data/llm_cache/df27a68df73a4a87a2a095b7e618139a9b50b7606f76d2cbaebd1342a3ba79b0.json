@@ -1,0 +1,426 @@
+{
+  "cache_key": "df27a68df73a4a87a2a095b7e618139a9b50b7606f76d2cbaebd1342a3ba79b0",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.guided_initial",
+    "item_id": "guided_llm_v2_12_food_science_center.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"guided_llm_v2_12_food_science_center\",\"domain\":\"Food Science Education\",\"room_purpose\":\"An interactive educational center dedicated to food science, allowing visitors to explore food chemistry, sensory evaluation, safety, and sustainable food technologies through hands-on exhibits.\",\"visitor_goals\":[\"Understand chemical and physical food properties\",\"Experience sensory evaluation of food\",\"Learn about food safety and preservation\",\"Explore innovative food technologies\",\"Gain awareness of sustainability in food production\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":0.0,\"z\":-4.0},\"name\":\"Chemical Analysis Zone\",\"object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"purpose\":\"Zone for analyzing chemical and physical properties of food samples using specialized instruments.\",\"visitor_goals_supported\":[\"Learn food chemical composition\",\"Understand texture and moisture impact\",\"Perform acidity and fat content tests\"],\"zone_id\":\"zone_chem_analysis\"},{\"centroid_xz\":{\"x\":0.0,\"z\":0.0},\"name\":\"Sensory and Safety Zone\",\"object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"purpose\":\"Interactive area for sensory evaluation of food and education on food preservation and safety.\",\"visitor_goals_supported\":[\"Participate in taste tests\",\"Explore flavor compounds\",\"Understand food preservation methods\",\"Learn about foodborne pathogens\"],\"zone_id\":\"zone_sensory_experience\"},{\"centroid_xz\":{\"x\":0.0,\"z\":4.0},\"name\":\"Innovation and Sustainability Zone\",\"object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"purpose\":\"Exhibit area focused on advanced food technologies, fermentation, genetic modification, waste reduction, and sustainable packaging.\",\"visitor_goals_supported\":[\"Observe 3D food printing\",\"Learn fermentation science\",\"Understand GMO crops\",\"Discover food waste reduction\",\"Explore sustainable packaging\"],\"zone_id\":\"zone_innovation_sustainability\"}],\"interaction_topics\":[{\"description\":\"Understanding the chemical composition and physical properties of food samples using analytical devices.\",\"related_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"title\":\"Food Chemistry and Analysis\",\"topic_id\":\"topic_chem_analysis\"},{\"description\":\"Exploring sensory attributes of food including taste, aroma, texture, and preservation techniques through interactive exhibits.\",\"related_object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"title\":\"Sensory Evaluation and Food Safety\",\"topic_id\":\"topic_sensory_safety\"},{\"description\":\"Learning about innovative food production methods, genetic modification, fermentation, and sustainability practices.\",\"related_object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"title\":\"Food Innovation and Sustainability\",\"topic_id\":\"topic_innovation_sustainability\"}],\"agent_role_candidates\":[{\"display_name\":\"Food Science Guide\",\"expertise\":[\"food chemistry\",\"nutritional science\",\"food safety\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_010\"],\"mission\":\"Explain chemical and physical food analysis methods and their importance to visitors.\",\"responsible_zone_ids\":[\"zone_chem_analysis\"],\"role_id\":\"role_001\"},{\"display_name\":\"Sensory Experience Facilitator\",\"expertise\":[\"sensory evaluation\",\"food flavor chemistry\",\"visitor engagement\"],\"grounded_object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\"],\"mission\":\"Guide visitors through sensory testing and interactive exhibits about flavor and preservation.\",\"responsible_zone_ids\":[\"zone_sensory_experience\"],\"role_id\":\"role_002\"},{\"display_name\":\"Sustainability Educator\",\"expertise\":[\"food sustainability\",\"environmental science\",\"food technology\"],\"grounded_object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"mission\":\"Educate visitors on innovative food technologies and sustainable practices in food production and packaging.\",\"responsible_zone_ids\":[\"zone_innovation_sustainability\"],\"role_id\":\"role_003\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"Food Chemistry Analyzer\":1,\"Texture Profile Tester\":1,\"pH Meter Station\":1,\"Moisture Analyzer\":1,\"Fat Content Extractor\":1},\"centroid_xz\":{\"x\":0.0,\"z\":-4.0}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"Sensory Evaluation Booth\":1,\"Flavor Compound Display\":1,\"Food Preservation Exhibit\":1,\"Nutrient Absorption Model\":1,\"Food Safety Monitor\":1},\"centroid_xz\":{\"x\":0.0,\"z\":0.0}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"3D Food Printer\":1,\"Fermentation Chamber\":1,\"Genetically Modified Crop Samples\":1,\"Food Waste Reduction Kiosk\":1,\"Sustainable Packaging Exhibit\":1},\"centroid_xz\":{\"x\":0.0,\"z\":4.0}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"Food Chemistry Analyzer\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-6.0,\"z\":-4.0},\"specification_excerpt\":\"A compact device analyzing chemical composition of food samples. Visitors can place a sample on the tray and observe real-time data on nutrient breakdown.\"},{\"object_id\":\"object_002\",\"object_type\":\"Texture Profile Tester\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-3.0,\"z\":-4.0},\"specification_excerpt\":\"Machine measuring food texture properties like hardness and chewiness. Visitors can test different food samples and compare texture results.\"},{\"object_id\":\"object_003\",\"object_type\":\"pH Meter Station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":0.0,\"z\":-4.0},\"specification_excerpt\":\"Interactive pH meter setup for measuring acidity of food liquids. Visitors can dip test strips and see color changes indicating pH levels.\"},{\"object_id\":\"object_004\",\"object_type\":\"Moisture Analyzer\",\"group\":\"collection_1\",\"position_xz\":{\"x\":3.0,\"z\":-4.0},\"specification_excerpt\":\"Device that determines moisture content in food samples. Visitors can insert samples and learn how moisture affects shelf life.\"},{\"object_id\":\"object_005\",\"object_type\":\"Fat Content Extractor\",\"group\":\"collection_1\",\"position_xz\":{\"x\":6.0,\"z\":-4.0},\"specification_excerpt\":\"Apparatus extracting and measuring fat content in foods. Visitors can observe the extraction process and understand fat's role in nutrition.\"},{\"object_id\":\"object_006\",\"object_type\":\"Sensory Evaluation Booth\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-6.0,\"z\":0.0},\"specification_excerpt\":\"Enclosed booth for tasting and rating food samples. Visitors can participate in sensory tests to evaluate flavor, aroma, and texture.\"},{\"object_id\":\"object_007\",\"object_type\":\"Flavor Compound Display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-3.0,\"z\":0.0},\"specification_excerpt\":\"Interactive display explaining chemical compounds responsible for common food flavors. Visitors can smell sample vials to identify flavors.\"},{\"object_id\":\"object_008\",\"object_type\":\"Food Preservation Exhibit\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":0.0},\"specification_excerpt\":\"Showcase of various food preservation methods. Visitors can operate controls to simulate freezing, drying, and canning effects.\"},{\"object_id\":\"object_009\",\"object_type\":\"Nutrient Absorption Model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":3.0,\"z\":0.0},\"specification_excerpt\":\"3D model demonstrating how nutrients are absorbed in the human digestive system. Visitors can explore interactive panels explaining each step.\"},{\"object_id\":\"object_010\",\"object_type\":\"Food Safety Monitor\",\"group\":\"collection_2\",\"position_xz\":{\"x\":6.0,\"z\":0.0},\"specification_excerpt\":\"Station displaying real-time data on foodborne pathogens. Visitors can learn about contamination risks and prevention techniques.\"},{\"object_id\":\"object_011\",\"object_type\":\"3D Food Printer\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-6.0,\"z\":4.0},\"specification_excerpt\":\"Advanced printer creating edible food items layer by layer. Visitors can select designs and watch the printing process live.\"},{\"object_id\":\"object_012\",\"object_type\":\"Fermentation Chamber\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-3.0,\"z\":4.0},\"specification_excerpt\":\"Controlled environment for fermenting foods like yogurt and kimchi. Visitors can observe microbial activity and learn fermentation science.\"},{\"object_id\":\"object_013\",\"object_type\":\"Genetically Modified Crop Samples\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":4.0},\"specification_excerpt\":\"Display of GMO food crops with explanations of genetic modifications. Visitors can compare traits and understand benefits and concerns.\"},{\"object_id\":\"object_014\",\"object_type\":\"Food Waste Reduction Kiosk\",\"group\":\"collection_3\",\"position_xz\":{\"x\":3.0,\"z\":4.0},\"specification_excerpt\":\"Interactive kiosk teaching strategies to minimize food waste. Visitors can input habits and receive personalized tips.\"},{\"object_id\":\"object_015\",\"object_type\":\"Sustainable Packaging Exhibit\",\"group\":\"collection_3\",\"position_xz\":{\"x\":6.0,\"z\":4.0},\"specification_excerpt\":\"Showcase of biodegradable and eco-friendly food packaging materials. Visitors can handle samples and learn environmental impacts.\"}],\"allowed_zone_ids\":[\"zone_chem_analysis\",\"zone_sensory_experience\",\"zone_innovation_sustainability\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_chem_analysis",
+                          "zone_sensory_experience",
+                          "zone_innovation_sustainability"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0.mini",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792117767,
+    "created_at": 1792117760,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_045cd03f5c10ee64016ad18c00f5e087d1a6461838d9e7274d",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"agents\":[{\"display_name\":\"Food Science Guide\",\"expertise\":[\"food chemistry\",\"nutritional science\",\"food safety\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_010\"],\"handoff_targets\":[\"role_002\",\"role_003\"],\"id\":\"role_001\",\"knowledge_tags\":[\"food_chemistry\",\"nutritional_science\",\"food_safety\",\"chemical_analysis\",\"foodborne_pathogens\"],\"persona\":\"A knowledgeable and patient guide who explains the chemical and physical properties of food, emphasizing the importance of food safety and nutrition.\",\"responsible_zone_ids\":[\"zone_chem_analysis\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"onyx\",\"voice_gender\":\"maennlich\",\"voice_style\":\"informative\"},{\"display_name\":\"Sensory Experience Facilitator\",\"expertise\":[\"sensory evaluation\",\"food flavor chemistry\",\"visitor engagement\"],\"grounded_object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\"],\"handoff_targets\":[\"role_001\",\"role_003\"],\"id\":\"role_002\",\"knowledge_tags\":[\"sensory_evaluation\",\"food_flavor_chemistry\",\"food_preservation\",\"visitor_engagement\"],\"persona\":\"An engaging and friendly facilitator who guides visitors through sensory tests and interactive exhibits about flavor, aroma, and food preservation.\",\"responsible_zone_ids\":[\"zone_sensory_experience\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"fable\",\"voice_gender\":\"weiblich\",\"voice_style\":\"enthusiastic\"},{\"display_name\":\"Sustainability Educator\",\"expertise\":[\"food sustainability\",\"environmental science\",\"food technology\"],\"grounded_object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"handoff_targets\":[\"role_001\",\"role_002\"],\"id\":\"role_003\",\"knowledge_tags\":[\"food_innovation\",\"sustainability\",\"fermentation_science\",\"gmo_crops\",\"food_waste_reduction\",\"sustainable_packaging\"],\"persona\":\"A passionate and insightful educator focused on innovative food technologies and sustainable practices in food production and packaging.\",\"responsible_zone_ids\":[\"zone_innovation_sustainability\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"sage\",\"voice_gender\":\"weiblich\",\"voice_style\":\"inspirational\"}],\"handoffs\":[{\"condition\":\"visitor asks for detailed sensory evaluation after chemical analysis\",\"reason\":\"Sensory Experience Facilitator has expertise in sensory evaluation and flavor chemistry\",\"source_agent_id\":\"role_001\",\"target_agent_id\":\"role_002\"},{\"condition\":\"visitor inquires about sustainability implications of food safety or chemistry topics\",\"reason\":\"Sustainability Educator specializes in sustainability and innovative food technologies\",\"source_agent_id\":\"role_001\",\"target_agent_id\":\"role_003\"},{\"condition\":\"visitor wants to understand chemical basis of flavors or preservation techniques\",\"reason\":\"Food Science Guide has expertise in food chemistry and food safety\",\"source_agent_id\":\"role_002\",\"target_agent_id\":\"role_001\"},{\"condition\":\"visitor asks about chemical or safety aspects related to innovative food technologies\",\"reason\":\"Food Science Guide can explain chemical and safety aspects\",\"source_agent_id\":\"role_003\",\"target_agent_id\":\"role_001\"},{\"condition\":\"visitor seeks sensory experience related to sustainability topics like fermentation or packaging\",\"reason\":\"Sensory Experience Facilitator can guide sensory evaluation and visitor engagement\",\"source_agent_id\":\"role_003\",\"target_agent_id\":\"role_002\"}]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_045cd03f5c10ee64016ad18c01557c87d194297e8eddd79e92",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_chem_analysis",
+                        "zone_sensory_experience",
+                        "zone_innovation_sustainability"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2846,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 722,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3568
+    },
+    "user": null
+  },
+  "response_sha256": "27bdec57cac38f7ea6fead39488be1ad60b490582d2160090b56c917a6920486",
+  "saved_at": "2026-10-16T02:29:29.441509+00:00",
+  "status": "SUCCESS"
+}

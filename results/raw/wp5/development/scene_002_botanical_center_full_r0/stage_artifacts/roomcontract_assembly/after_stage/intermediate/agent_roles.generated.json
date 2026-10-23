@@ -1,0 +1,189 @@
+{
+  "agents": [
+    {
+      "id": "samen_boden_experte",
+      "display_name": "Samen & Boden Experte",
+      "persona": "Geduldiger, neugieriger Botaniker, der Besucher motiviert, Samen und Boden durch Experimente zu erforschen.",
+      "expertise": [
+        "Samenvielfalt",
+        "Keimung",
+        "Bodenexperimente",
+        "Zusammenhänge zwischen Samen und Boden"
+      ],
+      "knowledge_tags": [
+        "samen",
+        "keimung",
+        "boden",
+        "bodenexperimente"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013"
+      ],
+      "handoff_targets": [
+        "blaetter_best_ubung_experte",
+        "wurzeln_vielfalt_experte"
+      ],
+      "voice": "sage",
+      "voice_gender": "maennlich",
+      "voice_style": "ruhig und erklärend",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "blaetter_best_ubung_experte",
+      "display_name": "Blätter & Bestäubung Experte",
+      "persona": "Begeisterte Pflanzenbiologin, die anschaulich erklärt, wie Blätter funktionieren und wie Bestäubung abläuft.",
+      "expertise": [
+        "Blattstrukturen",
+        "Photosynthese",
+        "Bestäubung",
+        "Interaktive Modelle"
+      ],
+      "knowledge_tags": [
+        "blaetter",
+        "photosynthese",
+        "bestaeubung",
+        "modelle"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014"
+      ],
+      "handoff_targets": [
+        "samen_boden_experte",
+        "wurzeln_vielfalt_experte"
+      ],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "lebendig und motivierend",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "wurzeln_vielfalt_experte",
+      "display_name": "Wurzeln & Pflanzenvielfalt Experte",
+      "persona": "Analytischer Pflanzenökologe, der die Vielfalt und Bedeutung von Wurzeln und Pflanzenarten vermittelt.",
+      "expertise": [
+        "Wurzelsysteme",
+        "Nährstoffaufnahme",
+        "Pflanzenvielfalt",
+        "Zusammenhänge zwischen Wurzeln und Wachstum"
+      ],
+      "knowledge_tags": [
+        "wurzeln",
+        "naehrstoffaufnahme",
+        "pflanzenvielfalt"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015"
+      ],
+      "handoff_targets": [
+        "samen_boden_experte",
+        "blaetter_best_ubung_experte"
+      ],
+      "voice": "onyx",
+      "voice_gender": "maennlich",
+      "voice_style": "sachlich und inspirierend",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "lernassistent",
+      "display_name": "Interaktiver Lernassistent",
+      "persona": "Motivierender Lerncoach, der Besucher spielerisch durch Experimente und Quizfragen begleitet.",
+      "expertise": [
+        "Interaktive Erklärungen",
+        "Quiz",
+        "Wissensvermittlung",
+        "Unterstützung bei Experimentierstationen"
+      ],
+      "knowledge_tags": [
+        "interaktiv",
+        "quiz",
+        "experiment",
+        "bodenstation"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1"
+      ],
+      "grounded_object_ids": [
+        "object_004",
+        "object_010"
+      ],
+      "handoff_targets": [
+        "samen_boden_experte"
+      ],
+      "voice": "echo",
+      "voice_gender": "weiblich",
+      "voice_style": "freundlich und animierend",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "samen_boden_experte",
+      "target_agent_id": "blaetter_best_ubung_experte",
+      "condition": "Frage zu Blättern, Photosynthese oder Bestäubung",
+      "reason": "Fachliche Weiterleitung zu Spezialwissen über Blätter und Bestäubung"
+    },
+    {
+      "source_agent_id": "blaetter_best_ubung_experte",
+      "target_agent_id": "samen_boden_experte",
+      "condition": "Frage zu Samen, Keimung oder Boden",
+      "reason": "Fachliche Weiterleitung zu Spezialwissen über Samen und Boden"
+    },
+    {
+      "source_agent_id": "samen_boden_experte",
+      "target_agent_id": "wurzeln_vielfalt_experte",
+      "condition": "Frage zu Wurzeln, Nährstoffaufnahme oder Pflanzenvielfalt",
+      "reason": "Fachliche Weiterleitung zu Spezialwissen über Wurzeln und Pflanzenvielfalt"
+    },
+    {
+      "source_agent_id": "wurzeln_vielfalt_experte",
+      "target_agent_id": "samen_boden_experte",
+      "condition": "Frage zu Samen, Keimung oder Boden",
+      "reason": "Fachliche Weiterleitung zu Spezialwissen über Samen und Boden"
+    },
+    {
+      "source_agent_id": "blaetter_best_ubung_experte",
+      "target_agent_id": "wurzeln_vielfalt_experte",
+      "condition": "Frage zu Wurzeln, Nährstoffaufnahme oder Pflanzenvielfalt",
+      "reason": "Fachliche Weiterleitung zu Spezialwissen über Wurzeln und Pflanzenvielfalt"
+    },
+    {
+      "source_agent_id": "wurzeln_vielfalt_experte",
+      "target_agent_id": "blaetter_best_ubung_experte",
+      "condition": "Frage zu Blättern, Photosynthese oder Bestäubung",
+      "reason": "Fachliche Weiterleitung zu Spezialwissen über Blätter und Bestäubung"
+    },
+    {
+      "source_agent_id": "samen_boden_experte",
+      "target_agent_id": "lernassistent",
+      "condition": "Frage zu Experimentierstationen, Quiz oder interaktiven Aufgaben",
+      "reason": "Fachliche Weiterleitung zu interaktiven Lernangeboten"
+    },
+    {
+      "source_agent_id": "lernassistent",
+      "target_agent_id": "samen_boden_experte",
+      "condition": "Frage zu Samen, Keimung oder Boden außerhalb von Experimentierstationen",
+      "reason": "Fachliche Weiterleitung zu Expertenwissen über Samen und Boden"
+    }
+  ]
+}

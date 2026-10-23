@@ -1,0 +1,39 @@
+{
+  "abstain": true,
+  "available_pair_blocks": 100,
+  "conditions": [
+    "B0",
+    "B1",
+    "B1r"
+  ],
+  "conservative_cost_bound_usd": 1.7984159999999987,
+  "corpus_manifest_sha256": "f1931c06079f212d793c13a4c275c885d13923b8ad4f642e225798d5787287f4",
+  "evaluation_rooms": 20,
+  "fault_rooms": [
+    "scene_007_transport_center",
+    "scene_008_materials_lab",
+    "scene_014_botanical_center",
+    "scene_018_music_workshop",
+    "scene_030_music_workshop",
+    "scene_036_food_science_center",
+    "scene_039_maritime_museum",
+    "scene_043_transport_center"
+  ],
+  "fault_selection": "First four object IDs; duplicate asset owner on first two agents, or remove all asset/group/zone ownership for those targets; first remaining admitted control.",
+  "frozen_utc": "2026-10-19T10:57:14.914422+00:00",
+  "models": [
+    "gpt-4.1-mini-2025-04-14",
+    "gpt-4.1-2025-04-14"
+  ],
+  "natural_selection": "Up to four lexicographic multi-hop/unreachable probes and one admitted control; no natural reject is manufactured.",
+  "repeat": 1,
+  "requests": 270,
+  "requests_sha256": "a7da2b848582e43194bce3b0cd8316d86628f97c04d2c4b997549e0cf17520da",
+  "scale_rule": "Round-robin pairs across seeded fault units first and natural units second, each group ordered by SHA256(room+variant+seed); retain prefix of complete six-condition blocks within USD1.80. Fixed before responses.",
+  "seed": 20261019,
+  "selected_pair_blocks": 45,
+  "source_sha256": "c7aa31e82724f0474d62626a85fa96b7a6a38597bfc01da9cc1ae4bfb0d8e0c5",
+  "stop_utc": "2026-10-19T11:28:00Z",
+  "temperature": 0.3,
+  "unit": "room or mutant; bootstrap resamples parent room clusters with seed20261019,2000 resamples"
+}

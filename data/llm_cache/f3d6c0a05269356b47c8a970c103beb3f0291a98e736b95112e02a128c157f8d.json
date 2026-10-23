@@ -1,0 +1,426 @@
+{
+  "cache_key": "f3d6c0a05269356b47c8a970c103beb3f0291a98e736b95112e02a128c157f8d",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.guided_initial",
+    "item_id": "guided_llm_v2_10_robotics_showroom.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"guided_llm_v2_10_robotics_showroom\",\"domain\":\"robotics exhibition\",\"room_purpose\":\"Robotics showroom and interactive exhibition space designed to educate visitors about various robotic technologies and applications through demonstrations and hands-on experiences.\",\"visitor_goals\":[\"Understand different types of robots and their applications\",\"Interact with robotic exhibits through voice, touch, and augmented reality\",\"Learn programming and control of robots\",\"Experience simulations of real-world robotic tasks\",\"Enjoy creative and entertaining robotic demonstrations\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":0.0,\"z\":-4.0},\"name\":\"Industrial and Service Robotics Zone\",\"object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"purpose\":\"Showcase of humanoid, industrial, delivery, drone, and exoskeleton robots demonstrating service and industrial applications.\",\"visitor_goals_supported\":[\"Learn about industrial and service robots\",\"Interact with humanoid and delivery robots\",\"Experience drone flight simulation\"],\"zone_id\":\"zone_1\"},{\"centroid_xz\":{\"x\":0.0,\"z\":0.0},\"name\":\"Specialized Robotics Zone\",\"object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"purpose\":\"Exhibition of specialized robots including AI pets, surgical, agricultural, sorting, and bartender robots with interactive controls.\",\"visitor_goals_supported\":[\"Interact with AI and specialized robots\",\"Simulate surgery and agricultural tasks\",\"Test sorting algorithms and robotic bartending\"],\"zone_id\":\"zone_2\"},{\"centroid_xz\":{\"x\":0.0,\"z\":4.0},\"name\":\"Educational and Creative Robotics Zone\",\"object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"purpose\":\"Area focused on educational kits, home automation, robotic art, barista services, and search and rescue simulations.\",\"visitor_goals_supported\":[\"Learn programming and assembly\",\"Observe robotic art creation\",\"Experience robotic barista and rescue simulations\"],\"zone_id\":\"zone_3\"}],\"interaction_topics\":[{\"description\":\"Overview and capabilities of humanoid robots for customer assistance and interaction.\",\"related_object_ids\":[\"object_001\"],\"title\":\"Humanoid Robot Interaction\",\"topic_id\":\"topic_001\"},{\"description\":\"Precision assembly and industrial applications demonstrated by robotic arms.\",\"related_object_ids\":[\"object_002\"],\"title\":\"Industrial Robotic Arm\",\"topic_id\":\"topic_002\"},{\"description\":\"Aerial photography and flight path simulation using drones and augmented reality.\",\"related_object_ids\":[\"object_003\"],\"title\":\"Drone Flight Simulation\",\"topic_id\":\"topic_003\"},{\"description\":\"AI learning behaviors and interactive training with robotic pets.\",\"related_object_ids\":[\"object_006\"],\"title\":\"AI-Powered Robotic Pets\",\"topic_id\":\"topic_004\"},{\"description\":\"Medical applications and surgical procedure simulations with robotic systems.\",\"related_object_ids\":[\"object_007\"],\"title\":\"Surgical Robotics\",\"topic_id\":\"topic_005\"},{\"description\":\"Hands-on programming and assembly with educational robot kits.\",\"related_object_ids\":[\"object_011\"],\"title\":\"Educational Robotics Programming\",\"topic_id\":\"topic_006\"},{\"description\":\"Creative robotic art creation and live sculpting demonstrations.\",\"related_object_ids\":[\"object_013\"],\"title\":\"Robotic Art Sculpting\",\"topic_id\":\"topic_007\"},{\"description\":\"Disaster response and search missions simulated with specialized robots.\",\"related_object_ids\":[\"object_015\"],\"title\":\"Search and Rescue Robotics\",\"topic_id\":\"topic_008\"}],\"agent_role_candidates\":[{\"display_name\":\"Robotics Guide\",\"expertise\":[\"robotics\",\"customer assistance\",\"interactive demonstration\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"mission\":\"Assist visitors by providing explanations and guiding them through the robotics showroom exhibits.\",\"responsible_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"role_id\":\"role_001\"},{\"display_name\":\"Interactive Demo Facilitator\",\"expertise\":[\"robotics\",\"user interaction\",\"technology demonstration\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"mission\":\"Help visitors engage with interactive robotic exhibits and operate control interfaces.\",\"responsible_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"role_id\":\"role_002\"},{\"display_name\":\"Technical Specialist\",\"expertise\":[\"robotics\",\"technical knowledge\",\"robot operation\"],\"grounded_object_ids\":[\"object_002\",\"object_007\",\"object_008\",\"object_009\",\"object_015\"],\"mission\":\"Provide detailed technical information and assist with complex robotic systems and simulations.\",\"responsible_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"role_id\":\"role_003\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"Humanoid Robot\":1,\"Robotic Arm\":1,\"Drone Model\":1,\"Autonomous Delivery Robot\":1,\"Robotic Exoskeleton\":1},\"centroid_xz\":{\"x\":0.0,\"z\":-4.0}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"AI-Powered Robot Dog\":1,\"Surgical Robot Model\":1,\"Agricultural Robot\":1,\"Warehouse Sorting Robot\":1,\"Robotic Bartender\":1},\"centroid_xz\":{\"x\":0.0,\"z\":0.0}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"Educational Robot Kit\":1,\"Robotic Vacuum Cleaner\":1,\"Robotic Art Sculptor\":1,\"Robotic Barista\":1,\"Search and Rescue Robot\":1},\"centroid_xz\":{\"x\":0.0,\"z\":4.0}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"Humanoid Robot\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-6.0,\"z\":-4.0},\"specification_excerpt\":\"A sleek humanoid robot designed for customer assistance; visitors can interact via voice commands to learn about its capabilities.\"},{\"object_id\":\"object_002\",\"object_type\":\"Robotic Arm\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-3.0,\"z\":-4.0},\"specification_excerpt\":\"An industrial robotic arm demonstrating precision assembly tasks; visitors can control its movements through a touchscreen interface.\"},{\"object_id\":\"object_003\",\"object_type\":\"Drone Model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":0.0,\"z\":-4.0},\"specification_excerpt\":\"A quadcopter drone used for aerial photography; visitors can simulate flight paths using an augmented reality display.\"},{\"object_id\":\"object_004\",\"object_type\":\"Autonomous Delivery Robot\",\"group\":\"collection_1\",\"position_xz\":{\"x\":3.0,\"z\":-4.0},\"specification_excerpt\":\"A compact delivery robot designed for indoor logistics; visitors can program delivery routes on an interactive panel.\"},{\"object_id\":\"object_005\",\"object_type\":\"Robotic Exoskeleton\",\"group\":\"collection_1\",\"position_xz\":{\"x\":6.0,\"z\":-4.0},\"specification_excerpt\":\"A wearable robotic exoskeleton to assist mobility; visitors can try a virtual demo to experience enhanced strength.\"},{\"object_id\":\"object_006\",\"object_type\":\"AI-Powered Robot Dog\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-6.0,\"z\":0.0},\"specification_excerpt\":\"A robotic pet with AI learning behaviors; visitors can interact to teach it tricks and commands.\"},{\"object_id\":\"object_007\",\"object_type\":\"Surgical Robot Model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-3.0,\"z\":0.0},\"specification_excerpt\":\"A precision surgical robot used in medical procedures; visitors can simulate surgery using a haptic feedback device.\"},{\"object_id\":\"object_008\",\"object_type\":\"Agricultural Robot\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":0.0},\"specification_excerpt\":\"A robot designed for crop monitoring and harvesting; visitors can control it to identify plant health via sensors.\"},{\"object_id\":\"object_009\",\"object_type\":\"Warehouse Sorting Robot\",\"group\":\"collection_2\",\"position_xz\":{\"x\":3.0,\"z\":0.0},\"specification_excerpt\":\"An autonomous robot for sorting packages; visitors can test its sorting algorithms through interactive challenges.\"},{\"object_id\":\"object_010\",\"object_type\":\"Robotic Bartender\",\"group\":\"collection_2\",\"position_xz\":{\"x\":6.0,\"z\":0.0},\"specification_excerpt\":\"A robot mixing and serving drinks; visitors can customize beverage recipes and watch the robot prepare them.\"},{\"object_id\":\"object_011\",\"object_type\":\"Educational Robot Kit\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-6.0,\"z\":4.0},\"specification_excerpt\":\"A modular robot kit for learning programming; visitors can assemble and code simple tasks on-site.\"},{\"object_id\":\"object_012\",\"object_type\":\"Robotic Vacuum Cleaner\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-3.0,\"z\":4.0},\"specification_excerpt\":\"An autonomous vacuum robot demonstrating home cleaning; visitors can schedule cleaning routes via a mobile app.\"},{\"object_id\":\"object_013\",\"object_type\":\"Robotic Art Sculptor\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":4.0},\"specification_excerpt\":\"A robot creating sculptures from clay; visitors can select designs and watch the sculpting process live.\"},{\"object_id\":\"object_014\",\"object_type\":\"Robotic Barista\",\"group\":\"collection_3\",\"position_xz\":{\"x\":3.0,\"z\":4.0},\"specification_excerpt\":\"A coffee-making robot serving fresh espresso; visitors can customize drinks and learn about automation in cafes.\"},{\"object_id\":\"object_015\",\"object_type\":\"Search and Rescue Robot\",\"group\":\"collection_3\",\"position_xz\":{\"x\":6.0,\"z\":4.0},\"specification_excerpt\":\"A rugged robot designed for disaster response; visitors can simulate search missions using remote controls.\"}],\"allowed_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_1",
+                          "zone_2",
+                          "zone_3"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0.mini",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792117517,
+    "created_at": 1792117512,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0d356519d1c6f7b6016ad18b08527c87d1aaa2ea76342bd2ae",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"agents\":[{\"display_name\":\"Industrial Robotics Expert\",\"expertise\":[\"industrial robotics\",\"service robots\",\"drone technology\",\"robotic exoskeletons\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"handoff_targets\":[\"specialized_robotics_specialist\",\"educational_robotics_guide\"],\"id\":\"industrial_robotics_expert\",\"knowledge_tags\":[\"industrial-robotics\",\"service-robots\",\"drone-simulation\",\"robotic-exoskeleton\"],\"persona\":\"A knowledgeable and approachable expert specialized in industrial and service robotics, eager to explain complex machinery in simple terms and engage visitors with interactive demos.\",\"responsible_zone_ids\":[\"zone_1\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"alloy\",\"voice_gender\":\"maennlich\",\"voice_style\":\"freundlich\"} ,{\"display_name\":\"Specialized Robotics Specialist\",\"expertise\":[\"surgical robotics\",\"agricultural robots\",\"robotic sorting\",\"robotic bartending\",\"ai-powered robots\"],\"grounded_object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"handoff_targets\":[\"educational_robotics_guide\"],\"id\":\"specialized_robotics_specialist\",\"knowledge_tags\":[\"surgical-robotics\",\"agricultural-robots\",\"sorting-robots\",\"robotic-bartender\",\"ai-robot-pets\"],\"persona\":\"An expert with deep technical knowledge of specialized robotic systems, passionate about demonstrating advanced applications and guiding visitors through simulations and interactive controls.\",\"responsible_zone_ids\":[\"zone_2\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"sage\",\"voice_gender\":\"weiblich\",\"voice_style\":\"kompetent\"} ,{\"display_name\":\"Educational Robotics Guide\",\"expertise\":[\"robotics education\",\"programming\",\"robotic art\",\"home automation\",\"search and rescue robotics\"],\"grounded_object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"handoff_targets\":[],\"id\":\"educational_robotics_guide\",\"knowledge_tags\":[\"educational-robotics\",\"robotic-programming\",\"robotic-art\",\"home-automation\",\"search-and-rescue\"],\"persona\":\"A friendly and encouraging guide focused on teaching visitors programming and assembly of robots, showcasing creative robotic art, and facilitating hands-on learning experiences.\",\"responsible_zone_ids\":[\"zone_3\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"fable\",\"voice_gender\":\"weiblich\",\"voice_style\":\"inspirierend\"}],\"handoffs\":[{\"condition\":\"visitor requests detailed technical info on specialized robots or simulations\",\"reason\":\"Transfer from general industrial robotics guidance to specialized robotics expertise for in-depth knowledge\",\"source_agent_id\":\"industrial_robotics_expert\",\"target_agent_id\":\"specialized_robotics_specialist\"},{\"condition\":\"visitor seeks programming help, creative robotics, or educational demonstrations\",\"reason\":\"Transfer from industrial or specialized robotics experts to educational guide for focused learning and creative engagement\",\"source_agent_id\":\"industrial_robotics_expert\",\"target_agent_id\":\"educational_robotics_guide\"},{\"condition\":\"visitor seeks programming help, creative robotics, or educational demonstrations\",\"reason\":\"Transfer from specialized robotics specialist to educational guide for focused learning and creative engagement\",\"source_agent_id\":\"specialized_robotics_specialist\",\"target_agent_id\":\"educational_robotics_guide\"}]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0d356519d1c6f7b6016ad18b08eda887d1ba055c12ad096541",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_1",
+                        "zone_2",
+                        "zone_3"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2982,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 694,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3676
+    },
+    "user": null
+  },
+  "response_sha256": "ddde6df9a2b8f1b855ba019cd0e3cea8e6542d98263d7d6371fdd25c46cb26cb",
+  "saved_at": "2026-10-16T02:25:19.295952+00:00",
+  "status": "SUCCESS"
+}

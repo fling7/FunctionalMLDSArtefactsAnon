@@ -1,0 +1,2096 @@
+{
+  "accepted_source_schema_path": "prereg/wp5_extension_v1/accepted_sources.schema.json",
+  "accepted_source_schema_sha256": "1abcb47b740e819e4e38b2e83f3b45d668f812c6ab89e75d35965cb4bdce605f",
+  "allocation": "WP5",
+  "approved_design_sha256": "3dec9c2f5e1501af6df62364c1a173b994c16cd20b80845afd941eb1bb37dff2",
+  "base_plan_sha256": "57a96d281a1ea05b86beb0f800caa485f72e2053d6b736a1dfcffb1cdff29d8e",
+  "budget": {
+    "accounted_snapshot_usd": "1.424960800",
+    "breadth_12_authored_slots_24_mini_baselines_3_repairs_ceiling_usd": "0.762400000",
+    "breadth_plus_one_fresh_drift_round_ceiling_usd": "2.067040000",
+    "breadth_plus_two_fresh_drift_rounds_ceiling_usd": "3.371680000",
+    "current_WP5_stop_usd": "5.400000000",
+    "drift_120_rooms_first_attempt_ceiling_usd": "6.523200000",
+    "drift_120_rooms_observed_mean_forecast_usd": "4.083538320",
+    "drift_120_rooms_observed_stage_max_forecast_usd": "4.847928000",
+    "drift_12_sources_5_runs_2_models_calls": 360,
+    "extension_core_first_attempt_ceiling_usd": "7.339960000",
+    "extension_core_observed_mean_forecast_usd": "4.648059703",
+    "fresh_drift_round_12_sources_2_models_mean_forecast_usd": "0.816707664",
+    "fresh_drift_round_start_forecast_with15percent_contingency_usd": "0.939213814",
+    "llm_source_12_first_attempt_ceiling_usd": "0.108000000",
+    "llm_source_12_with_one_repair_each_ceiling_usd": "0.244800000",
+    "new_15_object_recovery_room_first_attempt_ceiling_usd": {
+      "gpt-4.1-2025-04-14": "0.105000000",
+      "gpt-4.1-mini-2025-04-14": "0.021000000"
+    },
+    "new_15_object_room_first_attempt_ceiling_usd": {
+      "gpt-4.1-2025-04-14": "0.090600000",
+      "gpt-4.1-mini-2025-04-14": "0.018120000"
+    },
+    "observed_15_object_room_mean_forecast_usd": {
+      "gpt-4.1-2025-04-14": "0.059281143",
+      "gpt-4.1-mini-2025-04-14": "0.008777829"
+    },
+    "observed_stage_max_sum_per_room_usd": {
+      "gpt-4.1-2025-04-14": "0.070456000",
+      "gpt-4.1-mini-2025-04-14": "0.010342800"
+    },
+    "ordinary_output_caps": {
+      "agent_roles": 2200,
+      "knowledge_synthesis": 3200,
+      "scene_semantics": 1800
+    },
+    "original_remaining_first_attempt_ceiling_usd": "0.000000000",
+    "original_source_recovery_room_ceiling_usd": {
+      "gpt-4.1-2025-04-14": "0.164000000",
+      "gpt-4.1-mini-2025-04-14": "0.032800000"
+    },
+    "original_unfinished_rows": 0,
+    "proposed_WP5_stop_usd": "7.200000000",
+    "proposed_fixed_input_limits": {
+      "agent_roles": 4500,
+      "knowledge_synthesis": 8000,
+      "scene_semantics": 4000
+    },
+    "recovery_extra_output_reservation_per_room_usd": {
+      "gpt-4.1-2025-04-14": "0.014400000",
+      "gpt-4.1-mini-2025-04-14": "0.002880000"
+    },
+    "recovery_scene_semantics_output_cap": 3600,
+    "remaining_after_reviewed_migration_snapshot_usd": "5.775039200",
+    "remaining_current_snapshot_usd": "3.975039200",
+    "three_targeted_ownership_repair_calls_ceiling_usd": "0.082720000"
+  },
+  "budget_policy_amendment": {
+    "path": "prereg/budget_amendments/001_unused_wp7_to_wp5.json",
+    "proof_path": "results/raw/budget_migration_001/proof.json",
+    "proof_sha256": "bd6a49de2d1467fa058aeba914f892b35c9a8d0d7000e5c06574ab9b7c1094e2",
+    "sha256": "501218c00264d2fc9fa7f443a06ec07f44d927ede8a33d7f2b24e0688232c7c3"
+  },
+  "drift_analysis": {
+    "exclusions": "No exclusion of failed generation; report valid-pair denominator and failure rate separately. No invented before-native model. Identical-input drift excludes capped recovery and ownership repair.",
+    "primary": "fraction of matched source object ids with changed independently resolved provider id; report undefined comparisons and provider-id renaming separately",
+    "secondary": [
+      "routing table change share",
+      "fault status transitions",
+      "byte digest changes",
+      "routing fingerprint changes",
+      "query slice changes"
+    ],
+    "unit": "source; five fresh drift runs nested per source/model, excluding initial corpus baselines; four fixed adjacent pairs per source/model"
+  },
+  "evolution_pairs": "Every adjacent materialized pair, including Gate0 or runtime-loader-faulty generations, with explicit gaps when no native model exists; never bridge a missing generation. Independent-label comparability and runtime-adoption eligibility are separate; unavailable/conflicting provider labels have explicit object denominators. Query-slice and whole-table changes are undefined wherever the relevant I1/I2 labels disagree, with agreement-based denominators; provider metrics remain defined if providers agree even when reasons/actions differ. Independently label routing change using Implementer-A and cross-check B; retain old/new source/model hashes, byte, fingerprint and target-slice changes. Write versioned results/evolution_pairs JSONL without replacing existing evidence.",
+  "freeze_resolution": {
+    "historical_draft_pending_lists": "Retained verbatim as reviewed history. Implementation, original terminal, source checkpoint and budget proof are now resolved by the pins in this final plan.",
+    "scope": "Metadata-only finalization of approved design; identities, prompts, settings, algorithms and stopping rules unchanged.",
+    "still_pending": "Real LLM source authoring, followed by the separately frozen accepted-source manifest before initial pipelines."
+  },
+  "fresh_drift_runs": [
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_01_astronomy_gallery_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_01_astronomy_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_01_astronomy_gallery_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_01_astronomy_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_02_botanical_center_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_02_botanical_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_02_botanical_center_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_02_botanical_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_03_maritime_museum_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_03_maritime_museum"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_03_maritime_museum_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_03_maritime_museum"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_04_energy_exhibition_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_04_energy_exhibition"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_04_energy_exhibition_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_04_energy_exhibition"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_05_archaeology_gallery_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_05_archaeology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_05_archaeology_gallery_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_05_archaeology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_06_music_workshop_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_06_music_workshop"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_06_music_workshop_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_06_music_workshop"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_07_transport_center_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_07_transport_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_07_transport_center_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_07_transport_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_08_materials_lab_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_08_materials_lab"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_08_materials_lab_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_08_materials_lab"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_09_ocean_discovery_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_09_ocean_discovery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_09_ocean_discovery_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_09_ocean_discovery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_10_robotics_showroom_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_10_robotics_showroom"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_10_robotics_showroom_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_10_robotics_showroom"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_11_geology_gallery_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_11_geology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_11_geology_gallery_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_11_geology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_12_food_science_center_drift_mini_r1",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_12_food_science_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_12_food_science_center_drift_full_r1",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 1,
+      "source_id": "extension_drift_12_food_science_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_01_astronomy_gallery_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_01_astronomy_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_01_astronomy_gallery_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_01_astronomy_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_02_botanical_center_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_02_botanical_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_02_botanical_center_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_02_botanical_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_03_maritime_museum_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_03_maritime_museum"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_03_maritime_museum_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_03_maritime_museum"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_04_energy_exhibition_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_04_energy_exhibition"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_04_energy_exhibition_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_04_energy_exhibition"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_05_archaeology_gallery_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_05_archaeology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_05_archaeology_gallery_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_05_archaeology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_06_music_workshop_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_06_music_workshop"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_06_music_workshop_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_06_music_workshop"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_07_transport_center_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_07_transport_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_07_transport_center_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_07_transport_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_08_materials_lab_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_08_materials_lab"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_08_materials_lab_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_08_materials_lab"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_09_ocean_discovery_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_09_ocean_discovery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_09_ocean_discovery_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_09_ocean_discovery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_10_robotics_showroom_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_10_robotics_showroom"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_10_robotics_showroom_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_10_robotics_showroom"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_11_geology_gallery_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_11_geology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_11_geology_gallery_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_11_geology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_12_food_science_center_drift_mini_r2",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_12_food_science_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_12_food_science_center_drift_full_r2",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 2,
+      "source_id": "extension_drift_12_food_science_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_01_astronomy_gallery_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_01_astronomy_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_01_astronomy_gallery_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_01_astronomy_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_02_botanical_center_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_02_botanical_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_02_botanical_center_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_02_botanical_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_03_maritime_museum_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_03_maritime_museum"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_03_maritime_museum_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_03_maritime_museum"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_04_energy_exhibition_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_04_energy_exhibition"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_04_energy_exhibition_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_04_energy_exhibition"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_05_archaeology_gallery_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_05_archaeology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_05_archaeology_gallery_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_05_archaeology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_06_music_workshop_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_06_music_workshop"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_06_music_workshop_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_06_music_workshop"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_07_transport_center_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_07_transport_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_07_transport_center_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_07_transport_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_08_materials_lab_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_08_materials_lab"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_08_materials_lab_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_08_materials_lab"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_09_ocean_discovery_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_09_ocean_discovery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_09_ocean_discovery_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_09_ocean_discovery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_10_robotics_showroom_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_10_robotics_showroom"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_10_robotics_showroom_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_10_robotics_showroom"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_11_geology_gallery_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_11_geology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_11_geology_gallery_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_11_geology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_12_food_science_center_drift_mini_r3",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_12_food_science_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_12_food_science_center_drift_full_r3",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 3,
+      "source_id": "extension_drift_12_food_science_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_01_astronomy_gallery_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_01_astronomy_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_01_astronomy_gallery_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_01_astronomy_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_02_botanical_center_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_02_botanical_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_02_botanical_center_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_02_botanical_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_03_maritime_museum_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_03_maritime_museum"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_03_maritime_museum_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_03_maritime_museum"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_04_energy_exhibition_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_04_energy_exhibition"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_04_energy_exhibition_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_04_energy_exhibition"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_05_archaeology_gallery_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_05_archaeology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_05_archaeology_gallery_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_05_archaeology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_06_music_workshop_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_06_music_workshop"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_06_music_workshop_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_06_music_workshop"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_07_transport_center_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_07_transport_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_07_transport_center_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_07_transport_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_08_materials_lab_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_08_materials_lab"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_08_materials_lab_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_08_materials_lab"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_09_ocean_discovery_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_09_ocean_discovery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_09_ocean_discovery_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_09_ocean_discovery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_10_robotics_showroom_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_10_robotics_showroom"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_10_robotics_showroom_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_10_robotics_showroom"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_11_geology_gallery_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_11_geology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_11_geology_gallery_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_11_geology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_12_food_science_center_drift_mini_r4",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_12_food_science_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_12_food_science_center_drift_full_r4",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 4,
+      "source_id": "extension_drift_12_food_science_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_01_astronomy_gallery_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_01_astronomy_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_01_astronomy_gallery_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_01_astronomy_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_02_botanical_center_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_02_botanical_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_02_botanical_center_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_02_botanical_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_03_maritime_museum_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_03_maritime_museum"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_03_maritime_museum_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_03_maritime_museum"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_04_energy_exhibition_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_04_energy_exhibition"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_04_energy_exhibition_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_04_energy_exhibition"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_05_archaeology_gallery_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_05_archaeology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_05_archaeology_gallery_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_05_archaeology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_06_music_workshop_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_06_music_workshop"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_06_music_workshop_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_06_music_workshop"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_07_transport_center_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_07_transport_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_07_transport_center_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_07_transport_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_08_materials_lab_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_08_materials_lab"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_08_materials_lab_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_08_materials_lab"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_09_ocean_discovery_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_09_ocean_discovery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_09_ocean_discovery_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_09_ocean_discovery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_10_robotics_showroom_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_10_robotics_showroom"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_10_robotics_showroom_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_10_robotics_showroom"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_11_geology_gallery_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_11_geology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_11_geology_gallery_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_11_geology_gallery"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_12_food_science_center_drift_mini_r5",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_12_food_science_center"
+    },
+    {
+      "arm": "fresh_drift",
+      "case_id": "extension_drift_12_food_science_center_drift_full_r5",
+      "model": "gpt-4.1-2025-04-14",
+      "repetition": 5,
+      "source_id": "extension_drift_12_food_science_center"
+    }
+  ],
+  "implementation_freeze_pending": [
+    "separate extension runner and source schema",
+    "exact per-row identity and fixed order",
+    "candidate repair adapter with original artifacts intact",
+    "drift/evolution analysis code and tests",
+    "final original evaluation cost snapshot",
+    "source manifest of accepted LLM scenes before pipeline"
+  ],
+  "implementation_sha256": {
+    "app/backend_root/agent_backend/backend/__init__.py": "e276f7509b8e51028a6c5f7ec25dc7c7e2a1e83cbf4b1843fe057c8bf567aeea",
+    "app/backend_root/agent_backend/backend/app.py": "54612bd943bb8f02a95d6f62a97fc546378367c75d172590b9ca1e3949d45235",
+    "app/backend_root/agent_backend/backend/roomcontract_adapter.py": "d368624fddbbd6bf93e7cf0a0f1014bef8b68084c59c68f42c40d395d7467930",
+    "app/backend_root/agent_backend/backend/roomcontract_v2_runtime.py": "014d19dff4a4482eca3d3f594ebd52e8c42dbb005e39629771db535f103f5bb1",
+    "app/backend_root/agent_backend/backend/guard_config.py": "660fe7b808bedd8ab01b9ce997f6664fc64d486083616b7867f72bc49b168206",
+    "app/backend_root/agent_backend/backend/kb.py": "5898faa9935da357f3801ea570f43bb4c5534e8b3a35afea98f56992c3f23d57",
+    "app/backend_root/agent_backend/backend/openai_client.py": "e36fa651a081f05391f355da4940f8021c4176e1798436473648bf2f5195c6b6",
+    "app/backend_root/agent_backend/backend/placement.py": "6d65ffd026b30dd2f6d86488f610b9301b5eb128d06ab50d23ea8b3f245b1287",
+    "app/backend_root/agent_backend/backend/projects.py": "2054d77916415a664179bbf99300d9f6f68a08b7fffd49d6ffa5febb8449a52e",
+    "app/backend_root/agent_backend/backend/publication.py": "c09d3f1cebc790d3b5787f2eded3ca7ac46a91b1382d422cb4cf5a1b9423f47f",
+    "app/backend_root/agent_backend/backend/runtime_trace.py": "d377c5a8b4aa969568c539f491a1cc62d7870d8a8c10dc0e83d3fa6751ac76d0",
+    "app/backend_root/agent_backend/backend/schemas.py": "2bb547ed2b601a91b18cd9785ac60dcd6f24f6ff593c03c6d4d6f9d6dd8ffb81",
+    "app/backend_root/agent_backend/backend/server.py": "25770fac8c61bcc0710b15f88d66a098ff09e3611d22da29e5dc68de3e0403ba",
+    "app/backend_root/agent_backend/backend/state.py": "3a1bb5fe35352a25f531cb468bc2924d0c3a953d500d2773f58260f0caeb2e34",
+    "app/backend_root/agent_backend/backend/verified_routing.py": "96828221a17b9487a921318444749aec7328330723f4221f8b719341e1f7c939",
+    "app/backend_root/agent_backend/backend/version.py": "41177403f3a1a8d30af70c7928517aae4701ecc1b90377a29e39976c7cc96d28",
+    "experiments/export_wp5_primary.py": "08787dbf0da22c461c9dddeee89fe9456709b364882fd495a917a49970f6fccc",
+    "experiments/export_wp5_projects.py": "0ee38a095f977447dfc60bbff347b0ed3b384eaf40c4eb673d6c7b509d5c9a86",
+    "experiments/lib/backend_driver.py": "87465293d5256cf65eb1ead6bf45bef4b60a8d1d3d1c18176af39d01b51d809e",
+    "experiments/natural_faults.py": "a2db513bd029d7347ad8c24755571718538893f605ca02d5bdad0e04aa4a4915",
+    "experiments/pipeline_runs.py": "e84754c9d5c7ffe9843df02935a1db4511902e02684317ed7283c5918b58bf78",
+    "experiments/scenes/generate_scenes.py": "6c4277f8db089cedf617c3d20c9a07054bed693ac2cac6f273313e8f0fda9d25",
+    "experiments/wp5_extension.py": "fb9370a2ce2c52ecf0178be27e6d31823cefd08d2e2108604b3893332e547839",
+    "experiments/wp5_extension_drift.py": "60eebdb472a2cf21b543ceae41ab2a2ce1817b2782bbc5e84b2ef74ce935f65e",
+    "experiments/wp5_extension_natural.py": "b08be609e9f9752b715dfde6b21855819604d1b6a02d47ac3cf12adfa32855c2",
+    "experiments/wp5_extension_repair.py": "220080791dd8324a8b5596af1444ed810a20d13971ba819365a2525eaf7aa283",
+    "prereg/wp5_extension_v1/accepted_sources.schema.json": "1abcb47b740e819e4e38b2e83f3b45d668f812c6ab89e75d35965cb4bdce605f",
+    "prereg/wp5_extension_v1/manifest_contract.DRAFT.json": "52f804eab060843c55e273e19b78789663df040f19fe30563ea7288ce3dcfa4a",
+    "repro/budget.py": "558037b3850a470a9f5b81fe5be31724a924f3a1b3e0204f3adf99ad54136fd5",
+    "repro/budget_migration.py": "f1d80ad534d4a5593b86851acdcc81ddc161d0298198d6ff12f24bb084a3d946",
+    "repro/llm.py": "2f4aa31ccd488a52083d3a058e911a7106df13a5536f7eaa3d4a6bf7305b6295",
+    "repro/prices.json": "1c834e863696573b4edbf0d9d512ab6ae797ab5b7fe2421bf9f254d40fa5558d",
+    "tools/case_study_pipeline/__init__.py": "fb0891e0427ec975125d0dc3e514e717d2b30962f6298e21ed9e87e4043b6260",
+    "tools/case_study_pipeline/agent_placement.py": "d1ce8d7864b77f0c8b8a345129dc4745e9d30d0b95f2bef7750aad53267fee95",
+    "tools/case_study_pipeline/agent_roles.py": "75fe6563c9f02676b4fe7d7296fe51dc4e7c1edeb2e95a9202dc2aef987d1b0b",
+    "tools/case_study_pipeline/common.py": "dc84e1ae2bf8a2cfeb7c6de327a519fcfc525bec5ef7f31e481d681fb809dec5",
+    "tools/case_study_pipeline/roomcontract_assembler.py": "4471a5769da96e41dd2eb563a8d61696cfd173f006b067abfb9970a02118e811",
+    "tools/case_study_pipeline/roomcontract_v2_assembler.py": "d7f65a87c21bf686603d7a4f26d499ac91d31e56a2407335c12e75702474d64c",
+    "tools/case_study_pipeline/handoff_derivation.py": "9a788cc4f5323aee2f724d49c0a280ad000055e74a825e5cb79f3a047d1d6007",
+    "tools/case_study_pipeline/knowledge_synthesis.py": "42d0632ef0c2c2264a0fbeeece43e8764029d837dd4e812030d0f3202b5b5dc0",
+    "tools/case_study_pipeline/llm_client.py": "a6915d6b35848d1ce6f7a2567f7cbf774b77e4e08156b3dc2e96a46168ec09b4",
+    "tools/case_study_pipeline/rdl_ingestion.py": "714cbdc97e5750cab9f81b9728889ce4fff56d38a6bab3e053f858ca35cf2fcf",
+    "tools/case_study_pipeline/project_materializer.py": "7d9c649feb990042218eb3a989d5fe6fae93b737a73abac91874a1b4cf29e39c",
+    "tools/case_study_pipeline/repair_log.py": "b7d39a121a2f33ff1ef0aaf8a8a01a4ede361692df953d22bd75378f9403e9fb",
+    "tools/case_study_pipeline/scene_semantics.py": "1c8aa8d4745475c2164c5b8c1a35a744b8a107ce0fc8aa4893973d9a754b74cd",
+    "tools/case_study_pipeline/schemas/agent_roles.schema.json": "8e29143c9b53cf0d5f5dba9658d56f85da33533aef4876a017a4da240c4886f8",
+    "tools/case_study_pipeline/schemas/dynamic_functional_rdl_v2_instance.schema.json": "420ddb699a6233863efa0de05e7a6473a8fa29941f93e2a0dc778fe4bbe3cd1f",
+    "tools/case_study_pipeline/schemas/roomcontract_case_study.schema.json": "f210fae3f80abf56d6838553f185a5f3754acf829a48c13531680b870ad23961",
+    "tools/case_study_pipeline/schemas/interactive_agents_project.schema.json": "ef63f0eebe9ff8636935d9378aa33d9de77751a7cc670109b9e37986d371df41",
+    "tools/case_study_pipeline/schemas/knowledge.schema.json": "27e6b08601b35d5da7e94342ee36619e6f620349962dde5384fe3e281521a47f",
+    "tools/case_study_pipeline/schemas/normalized_scene.schema.json": "b8da8871682f810c5299333f420c965425201d8b65d84aa355dcdb4822f0b586",
+    "tools/case_study_pipeline/schemas/runtime_event.schema.json": "eb7b206df480e19212d4c019519bbacbd3ce6ee987ad4d0dcb23201dc0af0f20",
+    "tools/case_study_pipeline/schemas/runtime_event_v2.schema.json": "16df57e3a78c58c122646c9e99ee3b7808e95333c40206d70ca5782ad1e6fe15",
+    "tools/case_study_pipeline/schemas/runtime_validation_v2.schema.json": "950d85535790bf32865bd93dfb21a74c935cab1102759e090b3c55919cc12993",
+    "tools/case_study_pipeline/schemas/scene_semantics.schema.json": "cc62491dfea03a8e8fbba2c822b0b9dc5dc2286d1ff5d2a9d8ee6de4506f1b29",
+    "tools/case_study_pipeline/stage_completion.py": "f05a43b7f6c1b0fca627b8d85570281819313cf097e867a2ad73f65f491c0df7",
+    "tools/case_study_pipeline/validators/__init__.py": "45390b033268f41b2234d71e0f8f27709aad7cb41791999386a3d05ac0c65a49",
+    "tools/case_study_pipeline/validators/roomcontract_invariants.py": "cce4e85cfcce5b04265abefa9d101abd223680eea0810351a65bddf668027889",
+    "tools/case_study_pipeline/validators/handoff_metrics.py": "363d397e27e456f836d0ffe77e91ce653403ca19084bdf6b3852e100079d4fd1",
+    "tools/case_study_pipeline/validators/placement_metrics.py": "a3bddeb3158de0da9a86cd37b49bdfe9689eed3797bd154e1b7a921033438ca0",
+    "tools/case_study_pipeline/validators/schema_validator.py": "f7b8ac681939e0ff8310f507e91cc42bba02f65030d1ad2577c97f5f4c4ed62e",
+    "tools/case_study_pipeline/validators/traceability_metrics.py": "577484ec8193f605671f70c953808496789dc12f936d64a44fb76cf69a490db0",
+    "tools/dynamic_functional_rdl_v2_model.py": "c490b437a902050930bca0f01c5fff570a2f903c784f49fb56974d30fe34108e",
+    "tools/routing_verifier.py": "1570732d431455a6434d71e4a0d491c34eb6cd4f78fb7d1cbbe5aab6c747a7ba",
+    "tools/validate_dynamic_functional_rdl_v2.py": "47397d20ab5db8ccf5561f0b09bd8ee5c96997446d92d8cee894aa6a1d31e9a7",
+    "verification/impl_a/reference.py": "074843e348f4ea435fdcc5f9b16b909bd0e26d92fcbe29c427e1840b5cab51ba",
+    "verification/impl_b/admission.lp": "149e76e157415465f925af7063c1796ce682f4228a5adff4347cb7ff08888fea",
+    "verification/impl_b/policy_adapter.py": "cfa3af7ed9446eefb8b947b889f52d2841db73e3920a18133d37c57c7071dd12"
+  },
+  "initial_baselines": [
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_01_astronomy_gallery_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 1,
+      "source_id": "extension_drift_01_astronomy_gallery",
+      "source_priority": 31
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_02_botanical_center_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 2,
+      "source_id": "extension_drift_02_botanical_center",
+      "source_priority": 32
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_03_maritime_museum_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 3,
+      "source_id": "extension_drift_03_maritime_museum",
+      "source_priority": 33
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_04_energy_exhibition_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 4,
+      "source_id": "extension_drift_04_energy_exhibition",
+      "source_priority": 34
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_05_archaeology_gallery_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 5,
+      "source_id": "extension_drift_05_archaeology_gallery",
+      "source_priority": 35
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_06_music_workshop_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 6,
+      "source_id": "extension_drift_06_music_workshop",
+      "source_priority": 36
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_07_transport_center_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 7,
+      "source_id": "extension_drift_07_transport_center",
+      "source_priority": 37
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_08_materials_lab_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 8,
+      "source_id": "extension_drift_08_materials_lab",
+      "source_priority": 38
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_09_ocean_discovery_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 9,
+      "source_id": "extension_drift_09_ocean_discovery",
+      "source_priority": 39
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_10_robotics_showroom_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 10,
+      "source_id": "extension_drift_10_robotics_showroom",
+      "source_priority": 40
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_11_geology_gallery_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 11,
+      "source_id": "extension_drift_11_geology_gallery",
+      "source_priority": 41
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_drift_12_food_science_center_initial_mini_r0",
+      "family": "extension_deterministic",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 12,
+      "source_id": "extension_drift_12_food_science_center",
+      "source_priority": 42
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_01_astronomy_gallery_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 1,
+      "source_id": "extension_llm_01_astronomy_gallery",
+      "source_priority": 43
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_02_botanical_center_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 2,
+      "source_id": "extension_llm_02_botanical_center",
+      "source_priority": 44
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_03_maritime_museum_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 3,
+      "source_id": "extension_llm_03_maritime_museum",
+      "source_priority": 45
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_04_energy_exhibition_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 4,
+      "source_id": "extension_llm_04_energy_exhibition",
+      "source_priority": 46
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_05_archaeology_gallery_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 5,
+      "source_id": "extension_llm_05_archaeology_gallery",
+      "source_priority": 47
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_06_music_workshop_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 6,
+      "source_id": "extension_llm_06_music_workshop",
+      "source_priority": 48
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_07_transport_center_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 7,
+      "source_id": "extension_llm_07_transport_center",
+      "source_priority": 49
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_08_materials_lab_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 8,
+      "source_id": "extension_llm_08_materials_lab",
+      "source_priority": 50
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_09_ocean_discovery_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 9,
+      "source_id": "extension_llm_09_ocean_discovery",
+      "source_priority": 51
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_10_robotics_showroom_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 10,
+      "source_id": "extension_llm_10_robotics_showroom",
+      "source_priority": 52
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_11_geology_gallery_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 11,
+      "source_id": "extension_llm_11_geology_gallery",
+      "source_priority": 53
+    },
+    {
+      "arm": "initial_baseline",
+      "case_id": "extension_llm_12_food_science_center_initial_mini_r0",
+      "family": "extension_llm",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "repetition": 0,
+      "source_family_order": 12,
+      "source_id": "extension_llm_12_food_science_center",
+      "source_priority": 54
+    }
+  ],
+  "initial_terminal_boundary": "Each of24 initial rows gets an immutable run_result even when source authoring failed or budget stopped before execution. No repair/recovery/drift projects enter primary WP4 selection.",
+  "limitations": "Outcome-informed exploratory extension motivated by original failures; not a revised preregistration of original50. Forecast affordability is not a completion guarantee. Two semantic LLM judges require a separately reviewed judges-share plan.",
+  "llm_authored_sources": [
+    {
+      "domain": "astronomy_gallery",
+      "input_ceiling": 2500,
+      "layout": "two staggered arcs",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_01_astronomy_gallery",
+      "temperature": 0.3
+    },
+    {
+      "domain": "botanical_center",
+      "input_ceiling": 2500,
+      "layout": "perimeter with central island",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_02_botanical_center",
+      "temperature": 0.3
+    },
+    {
+      "domain": "maritime_museum",
+      "input_ceiling": 2500,
+      "layout": "three separated islands",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_03_maritime_museum",
+      "temperature": 0.3
+    },
+    {
+      "domain": "energy_exhibition",
+      "input_ceiling": 2500,
+      "layout": "U-shaped exhibition",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_04_energy_exhibition",
+      "temperature": 0.3
+    },
+    {
+      "domain": "archaeology_gallery",
+      "input_ceiling": 2500,
+      "layout": "two diagonal bands",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_05_archaeology_gallery",
+      "temperature": 0.3
+    },
+    {
+      "domain": "music_workshop",
+      "input_ceiling": 2500,
+      "layout": "offset courtyard",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_06_music_workshop",
+      "temperature": 0.3
+    },
+    {
+      "domain": "transport_center",
+      "input_ceiling": 2500,
+      "layout": "radial spokes with central clearance",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_07_transport_center",
+      "temperature": 0.3
+    },
+    {
+      "domain": "materials_lab",
+      "input_ceiling": 2500,
+      "layout": "three alcoves",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_08_materials_lab",
+      "temperature": 0.3
+    },
+    {
+      "domain": "ocean_discovery",
+      "input_ceiling": 2500,
+      "layout": "two concentric open arcs",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_09_ocean_discovery",
+      "temperature": 0.3
+    },
+    {
+      "domain": "robotics_showroom",
+      "input_ceiling": 2500,
+      "layout": "staggered zigzag with central aisle",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_10_robotics_showroom",
+      "temperature": 0.3
+    },
+    {
+      "domain": "geology_gallery",
+      "input_ceiling": 2500,
+      "layout": "four corner clusters and side displays",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_11_geology_gallery",
+      "temperature": 0.3
+    },
+    {
+      "domain": "food_science_center",
+      "input_ceiling": 2500,
+      "layout": "two islands linked by perimeter displays",
+      "maximum_repairs": 1,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "objects": 15,
+      "output_cap": 5000,
+      "repair_input_ceiling": 8500,
+      "repair_output_cap": 5000,
+      "source_id": "extension_llm_12_food_science_center",
+      "temperature": 0.3
+    }
+  ],
+  "llm_source_minimum_valid": 8,
+  "llm_stages": {
+    "agent_roles": {
+      "input_ceiling": 4500,
+      "output_cap": 2200,
+      "total_stage_attempts": 2
+    },
+    "knowledge_synthesis": {
+      "input_ceiling": 8000,
+      "output_cap": 3200,
+      "total_stage_attempts": 2
+    },
+    "scene_semantics": {
+      "input_ceiling": 4000,
+      "output_cap": 1800,
+      "total_stage_attempts": 2
+    }
+  },
+  "manifest_contract_path": "prereg/wp5_extension_v1/manifest_contract.DRAFT.json",
+  "manifest_contract_sha256": "52f804eab060843c55e273e19b78789663df040f19fe30563ea7288ce3dcfa4a",
+  "measurement_sha256": "2ebc32f7326ea2fceab0d19e2f40789d73d043d91302ced1d7cb75601d2e244b",
+  "models": [
+    "gpt-4.1-mini-2025-04-14",
+    "gpt-4.1-2025-04-14"
+  ],
+  "natural_terminal": {
+    "path": "results/raw/wp5/natural_evaluation_v1/terminal.json",
+    "sha256": "adf7314927756016da7d5140f4d86055f7dea316e0898b6b9aac924ae22b2592"
+  },
+  "new_deterministic_sources": [
+    {
+      "domain": "astronomy_gallery",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_01_astronomy_gallery.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101601,
+      "sha256": "010998be7db5ee90237f552bad92848ff645d55dadd45d29c9ef30bb7531e7ba",
+      "source_id": "extension_drift_01_astronomy_gallery",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "botanical_center",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_02_botanical_center.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101602,
+      "sha256": "e0f96bc6a715719347652384ea32ca46222f2087cd3e6d481cbc09a055a5d80d",
+      "source_id": "extension_drift_02_botanical_center",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "maritime_museum",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_03_maritime_museum.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101603,
+      "sha256": "ae7f29d83de4cbb90cf1d8da504711d9a74a769359d50e7b7c66b914580f99f6",
+      "source_id": "extension_drift_03_maritime_museum",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "energy_exhibition",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_04_energy_exhibition.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101604,
+      "sha256": "cb980427a57962eb1032654d4906edf9cf7aa18d144fe77d75ccb87724f7f033",
+      "source_id": "extension_drift_04_energy_exhibition",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "archaeology_gallery",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_05_archaeology_gallery.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101605,
+      "sha256": "9031c9638668d58810b3eb12479a0063191a423e96939d781e5d2dd6c0ae1084",
+      "source_id": "extension_drift_05_archaeology_gallery",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "music_workshop",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_06_music_workshop.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101606,
+      "sha256": "b764f659497f30f27e1fb8c712507576d141dfa1c3a58970775438856b582fa7",
+      "source_id": "extension_drift_06_music_workshop",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "transport_center",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_07_transport_center.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101607,
+      "sha256": "e39583ff3b449456becae3555729d520a22054fe949464bb91f6f963bfd2d682",
+      "source_id": "extension_drift_07_transport_center",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "materials_lab",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_08_materials_lab.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101608,
+      "sha256": "d1569267e0a9d4d99c747f242880aacab1f2394663f0161d54e2d33bf1b7907d",
+      "source_id": "extension_drift_08_materials_lab",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "ocean_discovery",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_09_ocean_discovery.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101609,
+      "sha256": "2951181e15e972ff9d3531d8831b8760529f17af3815daf455973abaeac7b958",
+      "source_id": "extension_drift_09_ocean_discovery",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "robotics_showroom",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_10_robotics_showroom.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101610,
+      "sha256": "5bb642cced1d6ac12e549c96e5af0f8532635d3c03802117ff56ed14015e5b4a",
+      "source_id": "extension_drift_10_robotics_showroom",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "geology_gallery",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_11_geology_gallery.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101611,
+      "sha256": "4c9a207deb11f22e1ce961813cacb04b95da4b0b0de11a4e55d419460ebb08b4",
+      "source_id": "extension_drift_11_geology_gallery",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "domain": "food_science_center",
+      "objects": 15,
+      "path": "prereg/wp5_extension_v1/sources/extension_drift_12_food_science_center.json",
+      "provenance": "deterministic synthetic source, fresh held-out extension",
+      "seed": 2026101612,
+      "sha256": "c9463a842e3d940fd946714af51042851d6de3ab7c9bde72c2d95286238babbf",
+      "source_id": "extension_drift_12_food_science_center",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    }
+  ],
+  "original_pipeline_prompt_sha256": {
+    "tools/case_study_pipeline/prompts/agent_roles_v1.md": "9cb9aa0e014deb060c9297332c52350b27a1bb3825ecf795ba608a99d1c70043",
+    "tools/case_study_pipeline/prompts/roomcontract_assembly_v1.md": "3ff1b73f7dd27ab12d3cd314aeb26259f7e03b051d27b9ffe20454b8845a95b4",
+    "tools/case_study_pipeline/prompts/knowledge_synthesis_v1.md": "405365373f9b12f824416a4cb43d2d48242d1b8db2869b82aaedcc191fdc99c9",
+    "tools/case_study_pipeline/prompts/repair_invalid_handoff_targets_v1.md": "f4fe09af976143d0078dfc7dbecb8155d4d6ca0b83dccea237e95c57d1831fd1",
+    "tools/case_study_pipeline/prompts/repair_invalid_object_refs_v1.md": "0300a8746eabb144deccb539a7d1589befaddf2f0190c6fe7dcd0182ba7a260e",
+    "tools/case_study_pipeline/prompts/repair_missing_capabilities_v1.md": "04eaf1fbca2fd0ff8e8f4ee594b624750559ac2ebb8cc0512c90fe543eda0f4e",
+    "tools/case_study_pipeline/prompts/repair_missing_knowledge_entries_v1.md": "68c3c267a63e9e3ae326ce83d2772cf2a2c899d28ac022c45b598b33055cb301",
+    "tools/case_study_pipeline/prompts/scene_semantics_v1.md": "2b2910fdee62551a5f6371c5c0682b2a1596ab708305ff2ac8fb42983ad5ff46"
+  },
+  "original_terminal": {
+    "path": "results/raw/wp5/evaluation_terminal_v1.json",
+    "sha256": "a6da6e0bcb1c91a5c3c5c2e3dfc6b446ec39588d26ea33864c98f0cec97d90fa"
+  },
+  "ownership_repair": {
+    "attempts_per_candidate": 1,
+    "input_ceiling": 10000,
+    "no_new_knowledge_generation": true,
+    "output_cap": 2200,
+    "prompt_path": "prereg/wp5_extension_v1/prompts/ownership_repair_v1.txt"
+  },
+  "priority_order": [
+    "1. Author all twelve fixed LLM-written 15-object source slots, aiming for at least eight validated scenes; one first attempt and at most one geometry/ingestion repair each. Failures retained, no synthetic replacements.",
+    "2. Run mini baseline on all twelve fresh deterministic drift sources and every valid LLM-written source, in registered order. Ordinary pipeline prompts and output caps remain the original caps. This broadens distinct produced sources before repeated generations.",
+    "3. Execute one targeted LLM ownership repair on the first three original assembly failures in frozen source/model order, using the original pipeline model for the repair and preserving exact before/after candidates. Reuse earlier real semantic/knowledge artifacts only if unchanged agent identities and validations permit it; otherwise retain failed repair, no silent synthesis.",
+    "4. Before deeper drift, if fewer thirty distinct produced sources exist, run explicitly labeled recovery for original sources lacking any project, in original source order, then remaining original unselected evaluation sources by scene_id. At most one mini recovery per source; semantics cap3600 only in this arm, original input ceilings for 15-80 objects; no overwrite or inclusion in original success rate.",
+    "5. Run five fresh drift rounds 1 through 5 over all twelve sources, mini then full per source. These120 source/model attempts are additional to initial corpus baselines and have distinct gateway identities. Before each round compare the frozen observed-cost forecast plus15percent contingency with remaining allowance; if insufficient, stop before the round. Individual exact reservations always enforce the hard ledger stop, and a partially completed final round remains explicit if a failure or cost overrun stops it. Identical source bytes, prompts, parameters and caps; no reruns of failed identities.",
+    "6. Build three mini scene-edit pipelines on preselected first drift source: add one object to baseline15, remove that added object from16, move object001 from baseline15, plus rename an explicitly selected authored semantic zone after generation as a separately labeled offline scripted authoring edit (no fourth pipeline call). Preserve geometry validity and record the distinction from LLM regeneration."
+  ],
+  "prompt_sha256": {
+    "prereg/wp5_extension_v1/prompts/llm_source_repair_v1.txt": "cb4649d376093c097ca275a711db16776897c45a5aecd442549c4204c6826eb2",
+    "prereg/wp5_extension_v1/prompts/llm_source_v1.txt": "cd4350e5a4e15e0ea7c7e4ca942921ffcb240d779ebf3d8847310f9a732538b5",
+    "prereg/wp5_extension_v1/prompts/ownership_repair_v1.txt": "4b0861380c66a3584c2d6a8a6818cf7e315fdc5b50dc51b580d27c241798c246"
+  },
+  "proposed_implementation_files": {
+    "experiments/export_wp5_primary.py": "drafts/wp5_extension/primary_manifest.py",
+    "experiments/wp5_extension.py": "drafts/wp5_extension/extension_runner.py",
+    "experiments/wp5_extension_drift.py": "drafts/wp5_extension/drift_analysis.py",
+    "experiments/wp5_extension_natural.py": "drafts/wp5_extension/natural_analysis.py",
+    "experiments/wp5_extension_repair.py": "drafts/wp5_extension/repair.py",
+    "repro/budget.py": "drafts/wp5_extension/repro_budget.py",
+    "repro/budget_migration.py": "drafts/wp5_extension/budget_migration.py",
+    "repro/llm.py": "drafts/wp5_extension/repro_llm.py"
+  },
+  "recovery": {
+    "distinct_source_target": 30,
+    "full_room_all_stage_and_transport_attempts_ceiling_usd": "0.328000000",
+    "maximum_room_attempts": 8,
+    "rows": [
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_004_energy_exhibition_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_004_energy_exhibition",
+        "source_path": "experiments/scenes/sources/scene_004_energy_exhibition.json",
+        "source_sha256": "187795a66fec2479245e8ef472fd90512cb5973adaf3187dbdfa9cbfba2e8762"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_048_food_science_center_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_048_food_science_center",
+        "source_path": "experiments/scenes/sources/scene_048_food_science_center.json",
+        "source_sha256": "75a91c62e12442f120f6a15cdc028d9c680fc0b05a273162599d2a74f5207df5"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_011_geology_gallery_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_011_geology_gallery",
+        "source_path": "experiments/scenes/sources/scene_011_geology_gallery.json",
+        "source_sha256": "3e38d09c4c368628416248b70832a0ff5b942df2fe1d38bab103033b9499c56b"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_032_materials_lab_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_032_materials_lab",
+        "source_path": "experiments/scenes/sources/scene_032_materials_lab.json",
+        "source_sha256": "deca73aae20f57b521660bd2f283c4ecbb77f0e375491eeeda424e4870a030eb"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_019_transport_center_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_019_transport_center",
+        "source_path": "experiments/scenes/sources/scene_019_transport_center.json",
+        "source_sha256": "6587b64dd869ea88ec291738cbc9354fea2477efb48fac322137ef45bdd9b478"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_022_robotics_showroom_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_022_robotics_showroom",
+        "source_path": "experiments/scenes/sources/scene_022_robotics_showroom.json",
+        "source_sha256": "ea42fa12430485d250886de1890900087972091e48ec77ed221d82498c7ac593"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_028_energy_exhibition_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_028_energy_exhibition",
+        "source_path": "experiments/scenes/sources/scene_028_energy_exhibition.json",
+        "source_sha256": "2109269dfcc51282e5af01b49c6250209378d8d2328396d3e9592991a36c3668"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_040_energy_exhibition_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_040_energy_exhibition",
+        "source_path": "experiments/scenes/sources/scene_040_energy_exhibition.json",
+        "source_sha256": "f8d7404b324bf873fcf818b0975642b31706e68c95aa295cd110a6db274fcd77"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_031_transport_center_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_031_transport_center",
+        "source_path": "experiments/scenes/sources/scene_031_transport_center.json",
+        "source_sha256": "c942e53ba5243709ab7371f7846aaf7632d98da9a4778ebbbd65718eca1af408"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_016_energy_exhibition_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_016_energy_exhibition",
+        "source_path": "experiments/scenes/sources/scene_016_energy_exhibition.json",
+        "source_sha256": "36b0b70297dc86b2330f6717d5cd83f47276b50e50625b4ca37e4e531a66c194"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_012_food_science_center_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_012_food_science_center",
+        "source_path": "experiments/scenes/sources/scene_012_food_science_center.json",
+        "source_sha256": "fec02a76d33fa2599517b7dd1e1a3c5ba3dd764bc6c4ff47c528ad32d42e7e75"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_025_astronomy_gallery_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_025_astronomy_gallery",
+        "source_path": "experiments/scenes/sources/scene_025_astronomy_gallery.json",
+        "source_sha256": "bc1c657b1012b165bd819f4ee3473b7185936f15a450905bbb08d27426c39c1f"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_005_archaeology_gallery_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_005_archaeology_gallery",
+        "source_path": "experiments/scenes/sources/scene_005_archaeology_gallery.json",
+        "source_sha256": "dbd99cddd825f0ed66bb5703bcfd959dbf4d79d0fa2da222d5a6994544b6ab49"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_009_ocean_discovery_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_009_ocean_discovery",
+        "source_path": "experiments/scenes/sources/scene_009_ocean_discovery.json",
+        "source_sha256": "7d3f5f039112c3ab1be488d33e618b932539d35a189e65439ff35d54cb9ec764"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_013_astronomy_gallery_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_013_astronomy_gallery",
+        "source_path": "experiments/scenes/sources/scene_013_astronomy_gallery.json",
+        "source_sha256": "e2d9e117dcdbca0f76f0a1c3a80026ad05fb81b53e42fdc8b28a122c8a4c8f01"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_017_archaeology_gallery_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_017_archaeology_gallery",
+        "source_path": "experiments/scenes/sources/scene_017_archaeology_gallery.json",
+        "source_sha256": "04f79fa115043a274d3666622f0b687ae879b4653c54600a910c2f942aa5774f"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_020_materials_lab_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_020_materials_lab",
+        "source_path": "experiments/scenes/sources/scene_020_materials_lab.json",
+        "source_sha256": "152bb85ac1ffdeab92781515a5c45f1a2b71324ee7cdd4f5b9af04630c240566"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_023_geology_gallery_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_023_geology_gallery",
+        "source_path": "experiments/scenes/sources/scene_023_geology_gallery.json",
+        "source_sha256": "79adbcf28cecd7ccaaca49322a2f7bffe7021449bfbb29b76a96cb26fd50377d"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_024_food_science_center_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_024_food_science_center",
+        "source_path": "experiments/scenes/sources/scene_024_food_science_center.json",
+        "source_sha256": "1106c484b2bb8f066a1284faa9a03348214cc0d80b45eec747ffeb238ab8218f"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_026_botanical_center_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_026_botanical_center",
+        "source_path": "experiments/scenes/sources/scene_026_botanical_center.json",
+        "source_sha256": "1f5bddf10daf12448276a5949f7e9df72ade08ccae0b82c5670a15b016536f07"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_027_maritime_museum_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_027_maritime_museum",
+        "source_path": "experiments/scenes/sources/scene_027_maritime_museum.json",
+        "source_sha256": "3b33dd2c7cf2445b948775575ac7dd4184be632c86fa6581f0d5b5839c6eb940"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_029_archaeology_gallery_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_029_archaeology_gallery",
+        "source_path": "experiments/scenes/sources/scene_029_archaeology_gallery.json",
+        "source_sha256": "806491a11837f31b5b6fecc28fb2d89b264f3d96006493af9e9cb1de59fd8aa3"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_034_robotics_showroom_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_034_robotics_showroom",
+        "source_path": "experiments/scenes/sources/scene_034_robotics_showroom.json",
+        "source_sha256": "173a2acd83784f7dec4693f1a6003097946fab6c400f37c6cd85ff552b9cf058"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_038_botanical_center_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_038_botanical_center",
+        "source_path": "experiments/scenes/sources/scene_038_botanical_center.json",
+        "source_sha256": "54da51791b36c0fe7bcd30802687bc0a461785585a978d538fe5c155d1637c55"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_044_materials_lab_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_044_materials_lab",
+        "source_path": "experiments/scenes/sources/scene_044_materials_lab.json",
+        "source_sha256": "f5b41cdfe64369aa05763279ceeb349ffad475739227ac5b5b6f3f710adf15c1"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_045_ocean_discovery_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_045_ocean_discovery",
+        "source_path": "experiments/scenes/sources/scene_045_ocean_discovery.json",
+        "source_sha256": "4e962e947e98c88602cd55f82b3849649b53d15a33599eb224f80ddf138f261d"
+      },
+      {
+        "arm": "cap_recovery",
+        "case_id": "scene_047_geology_gallery_caprecovery_mini_r0",
+        "family": "original_recovery",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "repetition": 0,
+        "source_id": "scene_047_geology_gallery",
+        "source_path": "experiments/scenes/sources/scene_047_geology_gallery.json",
+        "source_sha256": "ede01fd6794d42d2491793cbe03bf1af47e57e85f8ed77520602dcb7e546a3ca"
+      }
+    ],
+    "rule": "Before each room, require current recovery reservations/charges plus full 2stage-attempt x5HTTP-attempt room ceiling <=0.50. At most8 source attempts, stop once30 distinct native valid Gate0 sources exist. No denominator replacement.",
+    "sublimit_usd": "0.500000000"
+  },
+  "reductions": [
+    "After the source-coverage priority has executed or reached its fixed sublimit, drop further optional recovery and extra edit generations first.",
+    "Reduce drift round count uniformly across sources/models before dropping any source, preserving every completed record.",
+    "If necessary stop at twelve paired baselines plus maximum complete rounds; target remains PARTIAL if five runs not obtained."
+  ],
+  "remaining_freeze_prerequisites": [
+    "Original natural analysis terminal",
+    "Reviewed code copied byte-identically and committed",
+    "Reviewed budget amendment and migration proof",
+    "Final extension source and plan checkpoint",
+    "Accepted-source freeze after real source authoring before initial baselines"
+  ],
+  "remaining_mission_gaps": "Full-model counterparts for all twelve LLM-written sources and both-model runs for every original source remain separate lower-priority targets, not silently satisfied by mini-only extension materialization. Indicative dual-judge work still requires its own reviewed plan.",
+  "repair_scope": "Natural candidate repair arm is separate from baseline and regeneration drift. No injected failure is called natural. Before/after authoring, native if actually produced, Gate0 and independent labels are retained. A failed repaired candidate remains failed.",
+  "requires_reviewed_migration": "unused WP7 share moves to WP5; total cap20 and WP4/judges/reserve limits unchanged; no migration or extension call until committed code and budget amendment",
+  "schema": "wp5-extension-plan-draft-v1",
+  "source_commit": "4298554c88a04e1c3258bfa4c1c200deb6c69cf5",
+  "source_edits": [
+    {
+      "arm": "source_edit",
+      "case_id": "extension_drift_01_astronomy_gallery_edit_add_mini_r0",
+      "edit": "add",
+      "family": "extension_edit",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "parent": "initial",
+      "repetition": 0,
+      "source_id": "extension_drift_01_astronomy_gallery_edit_add",
+      "source_path": "prereg/wp5_extension_v1/sources/extension_drift_01_astronomy_gallery_edit_add.json",
+      "source_sha256": "eebe4a31265364cff802f330cb86aad794cbf9ab51a854151e5afafc5e891b71",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 16,
+        "status": "valid"
+      }
+    },
+    {
+      "arm": "source_edit",
+      "case_id": "extension_drift_01_astronomy_gallery_edit_remove_mini_r0",
+      "edit": "remove",
+      "family": "extension_edit",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "parent": "add",
+      "repetition": 0,
+      "source_id": "extension_drift_01_astronomy_gallery_edit_remove",
+      "source_path": "prereg/wp5_extension_v1/sources/extension_drift_01_astronomy_gallery_edit_remove.json",
+      "source_sha256": "010998be7db5ee90237f552bad92848ff645d55dadd45d29c9ef30bb7531e7ba",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    },
+    {
+      "arm": "source_edit",
+      "case_id": "extension_drift_01_astronomy_gallery_edit_move_mini_r0",
+      "edit": "move",
+      "family": "extension_edit",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "parent": "initial",
+      "repetition": 0,
+      "source_id": "extension_drift_01_astronomy_gallery_edit_move",
+      "source_path": "prereg/wp5_extension_v1/sources/extension_drift_01_astronomy_gallery_edit_move.json",
+      "source_sha256": "ce86840c076176125a9552630ed52662a98804169fee4dabbe74d5fbca793cdb",
+      "validation": {
+        "geometry": "nonoverlapping axis-aligned footprints inside room; open grid aisles",
+        "group_count": 3,
+        "object_count": 15,
+        "status": "valid"
+      }
+    }
+  ],
+  "source_freeze": "Freeze these prompt and generated-source hashes before authoring. LLM responses become candidate sources; preserve every response and validator report. Freeze accepted source bytes in a separate source manifest before any downstream pipeline calls.",
+  "stage_order": [
+    "rdl_ingestion",
+    "scene_semantics",
+    "agent_roles",
+    "knowledge_synthesis",
+    "agent_placement",
+    "placement_metrics",
+    "roomcontract_assembly",
+    "handoff_derivation",
+    "roomcontract_v2_assembly",
+    "roomcontract_invariants",
+    "project_materialization",
+    "schema_validation",
+    "traceability_metrics",
+    "handoff_metrics"
+  ],
+  "status": "FROZEN",
+  "stop_usd": "7.200000000",
+  "stopping": "Every attempt requires exact input count<=registered limit and shared WP5 ledger reservation. Stop at7.2 only after the separately reviewed policy migration, inclusive of original/dev/unknown/inflight. Before each next priority block compute remaining allowance; stop or finish the current source/model round only when each accepted reservation fits. No automatic share increase, source replacement, identity retry, or reduction of denominators.",
+  "targeted_repair_candidates": [
+    {
+      "candidate_path": "results/raw/wp5/cases/scene_004_energy_exhibition_full_r0/intermediate/agent_roles.generated.json",
+      "candidate_sha256": "27d985fd80e392998f3bcf2a8c34fc496cda1771a2f729c797aed9e322fdedcb",
+      "case_id": "scene_004_energy_exhibition_full_r0",
+      "original_ordinal": 4,
+      "run_result_path": "results/raw/wp5/evaluation/scene_004_energy_exhibition_full_r0/run_result.json",
+      "run_result_sha256": "2b1b65cd9c2b7fb856dca584946f3f33437b6a81ee96c6d8e16b4f4bb8a44154",
+      "source": {
+        "balanced_block": 0,
+        "model": "gpt-4.1-2025-04-14",
+        "phase": "evaluation",
+        "repetition": 0,
+        "scene_id": "scene_004_energy_exhibition",
+        "source_path": "experiments/scenes/sources/scene_004_energy_exhibition.json",
+        "source_sha256": "187795a66fec2479245e8ef472fd90512cb5973adaf3187dbdfa9cbfba2e8762"
+      }
+    },
+    {
+      "candidate_path": "results/raw/wp5/cases/scene_011_geology_gallery_full_r0/intermediate/agent_roles.generated.json",
+      "candidate_sha256": "1d4f171a72e8b859f07095783b2feed3ac4387b26d095707b523461ec9550237",
+      "case_id": "scene_011_geology_gallery_full_r0",
+      "original_ordinal": 6,
+      "run_result_path": "results/raw/wp5/evaluation/scene_011_geology_gallery_full_r0/run_result.json",
+      "run_result_sha256": "f259e53ab45f04773930333dd57b25f7fa69464bed3267fd09d3132acf5b60ff",
+      "source": {
+        "balanced_block": 0,
+        "model": "gpt-4.1-2025-04-14",
+        "phase": "evaluation",
+        "repetition": 0,
+        "scene_id": "scene_011_geology_gallery",
+        "source_path": "experiments/scenes/sources/scene_011_geology_gallery.json",
+        "source_sha256": "3e38d09c4c368628416248b70832a0ff5b942df2fe1d38bab103033b9499c56b"
+      }
+    },
+    {
+      "candidate_path": "results/raw/wp5/cases/scene_019_transport_center_mini_r0/intermediate/agent_roles.generated.json",
+      "candidate_sha256": "0929bbf2cb6babffcb4ce9815f01aa00812fec73ce71a2e279f2d30f7045d5b6",
+      "case_id": "scene_019_transport_center_mini_r0",
+      "original_ordinal": 17,
+      "run_result_path": "results/raw/wp5/evaluation/scene_019_transport_center_mini_r0/run_result.json",
+      "run_result_sha256": "2317f97e382d8877a92c3e83e38a27822e122f88c72742dddf03fac138e1b531",
+      "source": {
+        "balanced_block": 0,
+        "model": "gpt-4.1-mini-2025-04-14",
+        "phase": "evaluation",
+        "repetition": 0,
+        "scene_id": "scene_019_transport_center",
+        "source_path": "experiments/scenes/sources/scene_019_transport_center.json",
+        "source_sha256": "6587b64dd869ea88ec291738cbc9354fea2477efb48fac322137ef45bdd9b478"
+      }
+    }
+  ],
+  "temperature": 0.3,
+  "zone_rename": {
+    "base_case_id": "extension_drift_01_astronomy_gallery_initial_mini_r0",
+    "rule": "First semantic zone by zone_id; append the literal suffix ' (renamed)' to its label only; preserve ids, membership and agent ownership. Regenerate deterministic native artifacts from retained authoring inputs. No LLM call. Label scripted authoring evolution, never natural LLM drift."
+  }
+}

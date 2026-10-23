@@ -1,0 +1,426 @@
+{
+  "cache_key": "68eb30d03e006e8d6159ffe373a44ada7802eaededdba07a59343dff3b00cb5b",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_02_botanical_center.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"extension_drift_02_botanical_center\",\"domain\":\"Botanical Education Center\",\"room_purpose\":\"The room serves as a botanical education center, providing visitors with interactive and visual displays to learn about plant biology, including pollination, root systems, seeds, and soil.\",\"visitor_goals\":[\"Learn about pollination and plant reproduction\",\"Understand root systems and underground plant biology\",\"Explore seed diversity and soil properties\",\"Engage with interactive botanical displays\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"name\":\"Collection 1 Zone\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"purpose\":\"Dedicated to pollination models and leaf models, focusing on above-ground plant biology.\",\"visitor_goals_supported\":[\"Learn about pollination\",\"Understand leaf structure\"],\"zone_id\":\"zone_collection_1\"},{\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"name\":\"Collection 2 Zone\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"purpose\":\"Focuses on root diagrams and plant cases, highlighting underground plant biology.\",\"visitor_goals_supported\":[\"Explore root systems\",\"Inspect plant specimens\"],\"zone_id\":\"zone_collection_2\"},{\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"name\":\"Collection 3 Zone\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"purpose\":\"Showcases seed displays and soil stations, emphasizing plant reproduction and soil science.\",\"visitor_goals_supported\":[\"Discover seed diversity\",\"Interact with soil properties\"],\"zone_id\":\"zone_collection_3\"}],\"interaction_topics\":[{\"description\":\"How pollination works in different plant species using models.\",\"related_object_ids\":[\"object_001\",\"object_007\",\"object_013\"],\"title\":\"Pollination Mechanisms\",\"topic_id\":\"topic_pollination\"},{\"description\":\"Understanding root structures and their role in plant health.\",\"related_object_ids\":[\"object_002\",\"object_008\",\"object_014\"],\"title\":\"Root System Exploration\",\"topic_id\":\"topic_roots\"},{\"description\":\"Exploring seed diversity and the importance of soil for germination.\",\"related_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"title\":\"Seeds and Soil\",\"topic_id\":\"topic_seeds_soil\"}],\"agent_role_candidates\":[{\"display_name\":\"Botanical Guide\",\"expertise\":[\"Botanical education\",\"Plant biology\",\"Exhibit explanation\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"mission\":\"Provide guided tours and in-depth explanations of plant biology using the pollination models and leaf models.\",\"responsible_zone_ids\":[\"zone_collection_1\"],\"role_id\":\"botanical_guide\"},{\"display_name\":\"Root System Specialist\",\"expertise\":[\"Root biology\",\"Soil science\",\"Interactive learning\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"mission\":\"Facilitate interactive learning about root systems and plant cases, focusing on underground plant biology.\",\"responsible_zone_ids\":[\"zone_collection_2\"],\"role_id\":\"root_specialist\"},{\"display_name\":\"Seed and Soil Educator\",\"expertise\":[\"Seed biology\",\"Soil interaction\",\"Hands-on education\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"mission\":\"Engage visitors in understanding seed diversity and soil properties through interactive displays.\",\"responsible_zone_ids\":[\"zone_collection_3\"],\"role_id\":\"seed_soil_educator\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"pollination_model\":3,\"leaf_model\":2},\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"root_diagram\":3,\"plant_case\":2},\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"seed_display\":3,\"soil_station\":2},\"centroid_xz\":{\"x\":0.28,\"z\":0.28}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"pollination_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic botanical center object: pollination model. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_002\",\"object_type\":\"root_diagram\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic botanical center object: root diagram. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_003\",\"object_type\":\"seed_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic botanical center object: seed display. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_004\",\"object_type\":\"leaf_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic botanical center object: leaf model. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_005\",\"object_type\":\"plant_case\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic botanical center object: plant case. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_006\",\"object_type\":\"soil_station\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic botanical center object: soil station. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_007\",\"object_type\":\"pollination_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic botanical center object: pollination model. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_008\",\"object_type\":\"root_diagram\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic botanical center object: root diagram. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_009\",\"object_type\":\"seed_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic botanical center object: seed display. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_010\",\"object_type\":\"leaf_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic botanical center object: leaf model. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_011\",\"object_type\":\"plant_case\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic botanical center object: plant case. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_012\",\"object_type\":\"soil_station\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic botanical center object: soil station. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_013\",\"object_type\":\"pollination_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic botanical center object: pollination model. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clear...\"},{\"object_id\":\"object_014\",\"object_type\":\"root_diagram\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic botanical center object: root diagram. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_015\",\"object_type\":\"seed_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic botanical center object: seed display. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"}],\"allowed_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_collection_1",
+                          "zone_collection_2",
+                          "zone_collection_3"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "5.full",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1792104669,
+    "created_at": 1792104664,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_03cda173c9cbf8c8016ad158d803d087d1a77b8d1228666cdc",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"agents\": [\n    {\n      \"display_name\": \"Botanical Guide\",\n      \"expertise\": [\n        \"botanical_education\",\n        \"plant_biology\",\n        \"exhibit_explanation\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_004\",\n        \"object_007\",\n        \"object_010\",\n        \"object_013\"\n      ],\n      \"handoff_targets\": [\n        \"root_specialist\",\n        \"seed_soil_educator\"\n      ],\n      \"id\": \"botanical_guide\",\n      \"knowledge_tags\": [\n        \"pollination\",\n        \"leaf_structure\",\n        \"above_ground_biology\"\n      ],\n      \"persona\": \"Freundliche, sachkundige Begleitung für Besucher, die anschaulich und verständlich durch die Welt der Bestäubung und Blätter führt.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_1\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"fable\",\n      \"voice_gender\": \"weiblich\",\n      \"voice_style\": \"warm\"\n    },\n    {\n      \"display_name\": \"Root System Specialist\",\n      \"expertise\": [\n        \"root_biology\",\n        \"soil_science\",\n        \"interactive_learning\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_002\",\n        \"object_005\",\n        \"object_008\",\n        \"object_011\",\n        \"object_014\"\n      ],\n      \"handoff_targets\": [\n        \"botanical_guide\",\n        \"seed_soil_educator\"\n      ],\n      \"id\": \"root_specialist\",\n      \"knowledge_tags\": [\n        \"root_systems\",\n        \"underground_biology\",\n        \"soil_health\"\n      ],\n      \"persona\": \"Geduldiger Experte für alles unter der Erde, erklärt anschaulich Wurzelsysteme und deren Bedeutung für Pflanzen.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_2\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"echo\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"ruhig\"\n    },\n    {\n      \"display_name\": \"Seed and Soil Educator\",\n      \"expertise\": [\n        \"seed_biology\",\n        \"soil_interaction\",\n        \"hands_on_education\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_003\",\n        \"object_006\",\n        \"object_009\",\n        \"object_012\",\n        \"object_015\"\n      ],\n      \"handoff_targets\": [\n        \"botanical_guide\",\n        \"root_specialist\"\n      ],\n      \"id\": \"seed_soil_educator\",\n      \"knowledge_tags\": [\n        \"seed_diversity\",\n        \"soil_properties\",\n        \"plant_reproduction\"\n      ],\n      \"persona\": \"Begeisterte Vermittlerin für Samenvielfalt und Boden, lädt Besucher zum Mitmachen und Entdecken ein.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_3\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"nova\",\n      \"voice_gender\": \"weiblich\",\n      \"voice_style\": \"begeistert\"\n    }\n  ],\n  \"handoffs\": [\n    {\n      \"condition\": \"Visitor asks about root systems or underground plant biology while interacting with pollination or leaf models.\",\n      \"reason\": \"Root System Specialist is the expert for underground plant biology.\",\n      \"source_agent_id\": \"botanical_guide\",\n      \"target_agent_id\": \"root_specialist\"\n    },\n    {\n      \"condition\": \"Visitor wants to learn about seeds or soil while interacting with pollination or leaf models.\",\n      \"reason\": \"Seed and Soil Educator specializes in seeds and soil properties.\",\n      \"source_agent_id\": \"botanical_guide\",\n      \"target_agent_id\": \"seed_soil_educator\"\n    },\n    {\n      \"condition\": \"Visitor asks about above-ground plant biology or pollination while in the root system area.\",\n      \"reason\": \"Botanical Guide is responsible for above-ground biology and pollination.\",\n      \"source_agent_id\": \"root_specialist\",\n      \"target_agent_id\": \"botanical_guide\"\n    },\n    {\n      \"condition\": \"Visitor in the root system area wants to know about seeds or soil germination.\",\n      \"reason\": \"Seed and Soil Educator covers seed diversity and soil science.\",\n      \"source_agent_id\": \"root_specialist\",\n      \"target_agent_id\": \"seed_soil_educator\"\n    },\n    {\n      \"condition\": \"Visitor in the seed and soil area asks about pollination or leaf structure.\",\n      \"reason\": \"Botanical Guide is the expert for pollination and leaves.\",\n      \"source_agent_id\": \"seed_soil_educator\",\n      \"target_agent_id\": \"botanical_guide\"\n    },\n    {\n      \"condition\": \"Visitor in the seed and soil area asks about root systems or underground biology.\",\n      \"reason\": \"Root System Specialist is the expert for root biology.\",\n      \"source_agent_id\": \"seed_soil_educator\",\n      \"target_agent_id\": \"root_specialist\"\n    }\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_03cda173c9cbf8c8016ad158d85cb887d1985dab11b5e1a9ee",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_collection_1",
+                        "zone_collection_2",
+                        "zone_collection_3"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2792,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1110,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3902
+    },
+    "user": null
+  },
+  "response_sha256": "ab241fb4dc4c73f8ee1a59bd94847b20b37aaaf782e1b3ed1e7e4863ae9a91c0",
+  "saved_at": "2026-10-15T22:51:10.713446+00:00",
+  "status": "SUCCESS"
+}

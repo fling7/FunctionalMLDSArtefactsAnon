@@ -1,0 +1,182 @@
+{
+  "cache_key": "19dbc83fa1b711d98576772b58f39807c83589d3c4f16a35e8db11cfc2dc5d92",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "scene_015_maritime_museum.B1.forced.p3.neutral.full.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "Act as the routing component for a room of specialist agents. Your task is to name the answering agent for the selected scene object. A different object named by the visitor does not change that selected target. Use profiles to assess responsibility; use the explicit ownership and handoff data when provided. Resolve ownership with priority object > group > zone, stopping at the first nonempty level. Require one owner at that level and at most one directed handoff from the active agent. Output the specified JSON object without an explanation.\nYou must choose exactly one listed agent id, including when the evidence is uncertain or no valid unique recipient is apparent. Set abstain=false. A null recipient and rejection are not available in this condition.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Compass and Buoy Specialist\",\"expertise\":[\"maritime navigation tools\",\"buoy functions\",\"compass cases\",\"maritime safety equipment\"],\"id\":\"agent_compass_buoy\",\"persona\":\"Friendly and knowledgeable maritime tools expert eager to explain compass cases and buoy models to visitors.\"},{\"display_name\":\"Navigation and Sailing Expert\",\"expertise\":[\"maritime navigation\",\"chart reading\",\"sailing techniques\",\"navigation charts\",\"sail diagrams\"],\"id\":\"agent_navigation_sailing\",\"persona\":\"Patient and clear expert guiding visitors through navigation charts and sailing techniques with practical explanations.\"},{\"display_name\":\"Ship and Anchor Specialist\",\"expertise\":[\"ship design\",\"anchoring technology\",\"maritime history\",\"vessel types\"],\"id\":\"agent_ship_anchor\",\"persona\":\"Enthusiastic maritime historian focused on ship models and anchoring technology, sharing stories of vessel evolution.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-OBJECT_009\",\"source_id\":\"object_009\",\"name\":\"sail_diagram\",\"type\":\"sail_diagram\",\"group_label\":\"collection_3\",\"zone_names\":[\"Collection 3: Sail Diagrams and Navigation Charts\"]},\"active_agent_id\":\"agent_navigation_sailing\",\"visitor_question\":\"What can you tell me about this selected object?\",\"ownership_and_handoffs\":{\"agents\":[{\"id\":\"agent_compass_buoy\",\"objects\":[\"ENT-ASSET-OBJECT_001\",\"ENT-ASSET-OBJECT_004\",\"ENT-ASSET-OBJECT_007\",\"ENT-ASSET-OBJECT_010\",\"ENT-ASSET-OBJECT_013\",\"ENT-ASSET-OBJECT_016\",\"ENT-ASSET-OBJECT_019\",\"ENT-ASSET-OBJECT_022\"],\"groups\":[\"ENT-GROUP-COLLECTION_1\"],\"zones\":[\"ENT-ZONE-ZONE_COLLECTION_1\"],\"handoff_targets\":[\"agent_navigation_sailing\",\"agent_ship_anchor\"]},{\"id\":\"agent_navigation_sailing\",\"objects\":[\"ENT-ASSET-OBJECT_003\",\"ENT-ASSET-OBJECT_006\",\"ENT-ASSET-OBJECT_009\",\"ENT-ASSET-OBJECT_012\",\"ENT-ASSET-OBJECT_015\",\"ENT-ASSET-OBJECT_018\",\"ENT-ASSET-OBJECT_021\",\"ENT-ASSET-OBJECT_024\"],\"groups\":[\"ENT-GROUP-COLLECTION_3\"],\"zones\":[\"ENT-ZONE-ZONE_COLLECTION_3\"],\"handoff_targets\":[\"agent_compass_buoy\",\"agent_ship_anchor\"]},{\"id\":\"agent_ship_anchor\",\"objects\":[\"ENT-ASSET-OBJECT_002\",\"ENT-ASSET-OBJECT_005\",\"ENT-ASSET-OBJECT_008\",\"ENT-ASSET-OBJECT_011\",\"ENT-ASSET-OBJECT_014\",\"ENT-ASSET-OBJECT_017\",\"ENT-ASSET-OBJECT_020\",\"ENT-ASSET-OBJECT_023\"],\"groups\":[\"ENT-GROUP-COLLECTION_2\"],\"zones\":[\"ENT-ZONE-ZONE_COLLECTION_2\"],\"handoff_targets\":[\"agent_compass_buoy\",\"agent_navigation_sailing\"]}],\"objects\":[{\"id\":\"ENT-ASSET-OBJECT_001\",\"source_id\":\"object_001\",\"name\":\"compass_case\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_002\",\"source_id\":\"object_002\",\"name\":\"ship_model\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_003\",\"source_id\":\"object_003\",\"name\":\"sail_diagram\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_004\",\"source_id\":\"object_004\",\"name\":\"buoy_model\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_005\",\"source_id\":\"object_005\",\"name\":\"anchor_display\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_006\",\"source_id\":\"object_006\",\"name\":\"navigation_chart\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_007\",\"source_id\":\"object_007\",\"name\":\"compass_case\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_008\",\"source_id\":\"object_008\",\"name\":\"ship_model\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_009\",\"source_id\":\"object_009\",\"name\":\"sail_diagram\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_010\",\"source_id\":\"object_010\",\"name\":\"buoy_model\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_011\",\"source_id\":\"object_011\",\"name\":\"anchor_display\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_012\",\"source_id\":\"object_012\",\"name\":\"navigation_chart\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_013\",\"source_id\":\"object_013\",\"name\":\"compass_case\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_014\",\"source_id\":\"object_014\",\"name\":\"ship_model\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_015\",\"source_id\":\"object_015\",\"name\":\"sail_diagram\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_016\",\"source_id\":\"object_016\",\"name\":\"buoy_model\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_017\",\"source_id\":\"object_017\",\"name\":\"anchor_display\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_018\",\"source_id\":\"object_018\",\"name\":\"navigation_chart\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_019\",\"source_id\":\"object_019\",\"name\":\"compass_case\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_020\",\"source_id\":\"object_020\",\"name\":\"ship_model\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_021\",\"source_id\":\"object_021\",\"name\":\"sail_diagram\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]},{\"id\":\"ENT-ASSET-OBJECT_022\",\"source_id\":\"object_022\",\"name\":\"buoy_model\",\"groups\":[\"ENT-GROUP-COLLECTION_1\"]},{\"id\":\"ENT-ASSET-OBJECT_023\",\"source_id\":\"object_023\",\"name\":\"anchor_display\",\"groups\":[\"ENT-GROUP-COLLECTION_2\"]},{\"id\":\"ENT-ASSET-OBJECT_024\",\"source_id\":\"object_024\",\"name\":\"navigation_chart\",\"groups\":[\"ENT-GROUP-COLLECTION_3\"]}],\"groups\":[{\"id\":\"ENT-GROUP-COLLECTION_1\",\"name\":\"Object group: collection_1\",\"members\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\"]},{\"id\":\"ENT-GROUP-COLLECTION_2\",\"name\":\"Object group: collection_2\",\"members\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\",\"object_017\",\"object_020\",\"object_023\"]},{\"id\":\"ENT-GROUP-COLLECTION_3\",\"name\":\"Object group: collection_3\",\"members\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"]}],\"zones\":[{\"id\":\"ENT-ZONE-ZONE_COLLECTION_1\",\"name\":\"Collection 1: Compass Cases and Buoy Models\",\"members\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\"]},{\"id\":\"ENT-ZONE-ZONE_COLLECTION_2\",\"name\":\"Collection 2: Ship Models and Anchor Displays\",\"members\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\",\"object_017\",\"object_020\",\"object_023\"]},{\"id\":\"ENT-ZONE-ZONE_COLLECTION_3\",\"name\":\"Collection 3: Sail Diagrams and Navigation Charts\",\"members\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"]}]}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "agent_compass_buoy",
+                  "agent_navigation_sailing",
+                  "agent_ship_anchor"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1792106572,
+    "created_at": 1792106572,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0f9aedd25e13bd60016ad1604c30e887d19bcc61a3000272e1",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\": false, \"answering_agent_id\": \"agent_navigation_sailing\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0f9aedd25e13bd60016ad1604c9ad487d1997143e0df1f6e03",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "agent_compass_buoy",
+                "agent_navigation_sailing",
+                "agent_ship_anchor"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2006,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 20,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2026
+    },
+    "user": null
+  },
+  "response_sha256": "a78fa79de39261998b3e4d8e1de231af03a5999f929cbbaca3c4a0d9cc56d212",
+  "saved_at": "2026-10-15T23:22:53.983504+00:00",
+  "status": "SUCCESS"
+}

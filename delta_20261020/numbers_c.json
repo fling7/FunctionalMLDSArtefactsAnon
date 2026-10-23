@@ -1,0 +1,133 @@
+{
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20261015,
+  "cluster_caveat": "Classroom has one source room: bootstrap intervals are degenerate and provide no between-room population uncertainty. Generated has six rooms only. Wilson treats models as Bernoulli trials and is descriptive, not dependence-adjusted.",
+  "cluster_unit": "metadata.room; six generated source rooms, one classroom source room; never treat mutants or probes as independent rooms",
+  "cohorts": {
+    "classroom": {
+      "Va_misses_later_catches": 54,
+      "ablation_wrong_admissions": {
+        "firstmatch": {
+          "models_with_wrong_admission": 18,
+          "source_rooms_with_wrong_admission": 1,
+          "wrongly_admitted_probes": 65
+        },
+        "no_digest": {
+          "models_with_wrong_admission": 0,
+          "source_rooms_with_wrong_admission": 0,
+          "wrongly_admitted_probes": 0
+        },
+        "reach_only": {
+          "models_with_wrong_admission": 120,
+          "source_rooms_with_wrong_admission": 1,
+          "wrongly_admitted_probes": 13452
+        },
+        "runtime": {
+          "models_with_wrong_admission": 0,
+          "source_rooms_with_wrong_admission": 0,
+          "wrongly_admitted_probes": 0
+        },
+        "stale_no_digest": {
+          "models_with_wrong_admission": 105,
+          "source_rooms_with_wrong_admission": 1,
+          "wrongly_admitted_probes": 11697
+        },
+        "stale_runtime": {
+          "models_with_wrong_admission": 0,
+          "source_rooms_with_wrong_admission": 0,
+          "wrongly_admitted_probes": 0
+        },
+        "table": {
+          "models_with_wrong_admission": 0,
+          "source_rooms_with_wrong_admission": 0,
+          "wrongly_admitted_probes": 0
+        }
+      },
+      "models": 153,
+      "routing_faulty": 98,
+      "setup_refused": 33,
+      "source_rooms": 1
+    },
+    "generated": {
+      "Va_misses_later_catches": 252,
+      "ablation_wrong_admissions": {
+        "firstmatch": {
+          "models_with_wrong_admission": 40,
+          "source_rooms_with_wrong_admission": 6,
+          "wrongly_admitted_probes": 117
+        },
+        "no_digest": {
+          "models_with_wrong_admission": 0,
+          "source_rooms_with_wrong_admission": 0,
+          "wrongly_admitted_probes": 0
+        },
+        "reach_only": {
+          "models_with_wrong_admission": 710,
+          "source_rooms_with_wrong_admission": 6,
+          "wrongly_admitted_probes": 119903
+        },
+        "runtime": {
+          "models_with_wrong_admission": 0,
+          "source_rooms_with_wrong_admission": 0,
+          "wrongly_admitted_probes": 0
+        },
+        "stale_no_digest": {
+          "models_with_wrong_admission": 620,
+          "source_rooms_with_wrong_admission": 6,
+          "wrongly_admitted_probes": 104017
+        },
+        "stale_runtime": {
+          "models_with_wrong_admission": 0,
+          "source_rooms_with_wrong_admission": 0,
+          "wrongly_admitted_probes": 0
+        },
+        "table": {
+          "models_with_wrong_admission": 0,
+          "source_rooms_with_wrong_admission": 0,
+          "wrongly_admitted_probes": 0
+        }
+      },
+      "models": 908,
+      "routing_faulty": 522,
+      "setup_refused": 198,
+      "source_rooms": 6
+    }
+  },
+  "detector_truth_definition": "Retained routing_faulty label from agreeing I1/I2. Positive means declared routing fault, not generic invalidity. Gate0/I1/I2 are oracle sanity checks only.",
+  "loader_definition": "Vc_instance OR Vc_trace rejection; backend setup refusal is recorded rejection, not missing execution",
+  "nonoracle_union": {
+    "classroom": {
+      "fn": 11,
+      "fp": 0,
+      "n_models": 153,
+      "sensitivity_rate": 0.8877551020408163,
+      "sensitivity_room_cluster95": [
+        0.8877551020408163,
+        0.8877551020408163
+      ],
+      "sensitivity_wilson95": [
+        0.8101006663032684,
+        0.9361573005411425
+      ],
+      "tn": 55,
+      "tp": 87
+    },
+    "generated": {
+      "fn": 72,
+      "fp": 0,
+      "n_models": 908,
+      "sensitivity_rate": 0.8620689655172413,
+      "sensitivity_room_cluster95": [
+        0.861271676300578,
+        0.8628571428571429
+      ],
+      "sensitivity_wilson95": [
+        0.8298325842854205,
+        0.889015261694129
+      ],
+      "tn": 386,
+      "tp": 450
+    }
+  },
+  "union_definition": "OR of Va_structural, Vb_native_domain, backend_setup, and Vc_instance/Vc_trace; unavailable unrelated metrics do not remove negatives"
+}

@@ -1,0 +1,169 @@
+{
+  "agents": [
+    {
+      "id": "role_educator",
+      "display_name": "Geology Educator",
+      "persona": "Friendly and knowledgeable geology educator passionate about explaining volcanic activity and erosion processes to visitors.",
+      "expertise": [
+        "geology",
+        "education",
+        "visitor guidance"
+      ],
+      "knowledge_tags": [
+        "geology",
+        "volcanoes",
+        "erosion",
+        "zone_001"
+      ],
+      "responsible_zone_ids": [
+        "zone_001"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022",
+        "object_025",
+        "object_028",
+        "object_031",
+        "object_034",
+        "object_037",
+        "object_040"
+      ],
+      "handoff_targets": [
+        "role_mineralogist",
+        "role_rock_guide"
+      ],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "informativ",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "role_mineralogist",
+      "display_name": "Mineralogy Specialist",
+      "persona": "Enthusiastic mineralogy specialist eager to share detailed knowledge about minerals and tectonic faults with visitors.",
+      "expertise": [
+        "mineralogy",
+        "exhibit curation",
+        "visitor interaction"
+      ],
+      "knowledge_tags": [
+        "mineralogy",
+        "faults",
+        "tectonics",
+        "zone_002"
+      ],
+      "responsible_zone_ids": [
+        "zone_002"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023",
+        "object_026",
+        "object_029",
+        "object_032",
+        "object_035",
+        "object_038"
+      ],
+      "handoff_targets": [
+        "role_educator",
+        "role_rock_guide"
+      ],
+      "voice": "ash",
+      "voice_gender": "maennlich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "role_rock_guide",
+      "display_name": "Rock Formation Guide",
+      "persona": "Patient and clear rock formation guide focused on helping visitors understand geological layering and rock types.",
+      "expertise": [
+        "petrology",
+        "rock formations",
+        "visitor assistance"
+      ],
+      "knowledge_tags": [
+        "petrology",
+        "rock_formations",
+        "strata",
+        "zone_003"
+      ],
+      "responsible_zone_ids": [
+        "zone_003"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024",
+        "object_027",
+        "object_030",
+        "object_033",
+        "object_036",
+        "object_039"
+      ],
+      "handoff_targets": [
+        "role_educator",
+        "role_mineralogist"
+      ],
+      "voice": "sage",
+      "voice_gender": "weiblich",
+      "voice_style": "ruhig",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "role_educator",
+      "target_agent_id": "role_mineralogist",
+      "condition": "visitor asks about mineralogy or tectonic faults while with Geology Educator",
+      "reason": "Mineralogy Specialist has deeper expertise in minerals and faults"
+    },
+    {
+      "source_agent_id": "role_educator",
+      "target_agent_id": "role_rock_guide",
+      "condition": "visitor asks about rock formations or strata while with Geology Educator",
+      "reason": "Rock Formation Guide specializes in rock types and geological layering"
+    },
+    {
+      "source_agent_id": "role_mineralogist",
+      "target_agent_id": "role_educator",
+      "condition": "visitor asks about volcanic activity or erosion while with Mineralogy Specialist",
+      "reason": "Geology Educator specializes in volcanic and erosion processes"
+    },
+    {
+      "source_agent_id": "role_mineralogist",
+      "target_agent_id": "role_rock_guide",
+      "condition": "visitor asks about rock formations or strata while with Mineralogy Specialist",
+      "reason": "Rock Formation Guide specializes in rock types and geological layering"
+    },
+    {
+      "source_agent_id": "role_rock_guide",
+      "target_agent_id": "role_educator",
+      "condition": "visitor asks about volcanic activity or erosion while with Rock Formation Guide",
+      "reason": "Geology Educator specializes in volcanic and erosion processes"
+    },
+    {
+      "source_agent_id": "role_rock_guide",
+      "target_agent_id": "role_mineralogist",
+      "condition": "visitor asks about mineralogy or tectonic faults while with Rock Formation Guide",
+      "reason": "Mineralogy Specialist has deeper expertise in minerals and faults"
+    }
+  ]
+}

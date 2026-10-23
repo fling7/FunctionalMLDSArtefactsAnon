@@ -1,0 +1,61 @@
+{
+  "approved_design_sha256": "3dec9c2f5e1501af6df62364c1a173b994c16cd20b80845afd941eb1bb37dff2",
+  "denominators": "Whole table undefined if any relevant query descriptor is unavailable or I1/I2 disagree. Per-query comparison uses only matched defined unique query identities; report registered probe records, unique identities, defined/undefined and unmatched counts. A duplicate identity makes all records in that projection undefined. Source-clustered intervals, same source/model nesting as primary drift.",
+  "descriptor": "Consensus I1/I2 decision/reason/provider/action label plus the unique verified native s->u->c->b->a identifiers, provider/targets, all full five native path nodes, and directly referenced action locator/input-schema/output-schema/runtime-parameter nodes.",
+  "draft_implementation_path": "drafts/wp5_extension/namespace_comparison.py",
+  "extension_plan_path": "prereg/wp5_extension_v1/plan.json",
+  "extension_plan_sha256": "17310d9f1b1a291b16d4e414125386d819f5ed0c7864a5fde7969260d9855da0",
+  "finalization_only": "After review, copy exact source bytes; freeze this supplement with final extension plan SHA and final artifact paths. Do not modify approved primary plan/code to replace its metrics.",
+  "implementation_sha256": {
+    "experiments/natural_faults.py": "a2db513bd029d7347ad8c24755571718538893f605ca02d5bdad0e04aa4a4915",
+    "experiments/wp5_extension_drift.py": "60eebdb472a2cf21b543ceae41ab2a2ce1817b2782bbc5e84b2ef74ce935f65e",
+    "experiments/wp5_namespace_comparison.py": "db44bdecc5978583f7dae00103eb6173daa5edb228df45be6a79079875f611c8",
+    "tools/case_study_pipeline/roomcontract_assembler.py": "4471a5769da96e41dd2eb563a8d61696cfd173f006b067abfb9970a02118e811",
+    "tools/routing_verifier.py": "1570732d431455a6434d71e4a0d491c34eb6cd4f78fb7d1cbbe5aab6c747a7ba"
+  },
+  "limits": "Supplement is a comparison of the selected declared path and action definition, not arbitrary semantic equivalence, full capability/effect closure equivalence, or runtime adoption. It does not rename providers or hide real action/path/endpoint/target/schema-field changes.",
+  "metrics": [
+    "raw declared-path descriptor table change",
+    "namespace-adjusted operation/path table change",
+    "case-namespace-only descriptor table change (raw differs, adjusted equal)",
+    "changed matched defined query fraction"
+  ],
+  "normalization": {
+    "case_token": "Call the pinned assembler _case_prefix(case_id): slugify(...).upper().replace(hyphen,underscore).",
+    "exact_leading_pattern": "KnownKind + hyphen + exact assembler case token + hyphen; preserve suffix exactly. No unanchored replacement.",
+    "identifier_slots": "Only enumerated node id/reference fields, path identifier fields, consensus label.action, and the four known SchemaReference JSON modelBinding fields.",
+    "normal_form": "A structured identifier token {assembler_identifier_kind,case_prefix_removed:true,suffix}; prevents collision with arbitrary literal IDs.",
+    "schema_text": "Parse JSON to adjust only enumerated modelBinding reference fields; canonical key ordering has no semantic effect. Do not rewrite other strings or schema constraints.",
+    "unchanged": "Provider wire/entity IDs, target IDs, user/agent IDs, semantic text, endpoint/tool/topic values, all other schema fields, unknown ID prefixes, node/edge order, and all suffix differences."
+  },
+  "output_path": "results/processed/wp5_operation_path_supplement_v1.json",
+  "pre_outcome_tests": {
+    "coverage": [
+      "namespace-only equality",
+      "provider/action/path/target/endpoint/semantic/schema changes remain different",
+      "unknown IDs untouched",
+      "prefix-looking semantic/provider strings untouched",
+      "literal placeholder collision prevented",
+      "consensus rejection defined; disagreement undefined",
+      "one real retained native path extracted without generation/revalidation",
+      "partial query agreement preserves explicit denominators",
+      "end-to-end real retained project: trace.case_id and model.caseId agree with registered case; all 45 query descriptors defined",
+      "native index errors typed with 0 defined and 45 undefined query records",
+      "one descriptor error retains 44 defined and 1 undefined query records",
+      "duplicate query identities detected before any dictionary assignment or descriptor extraction",
+      "artifact hash, native case-ID and independent-label identity mismatches still fail closed"
+    ],
+    "log": "logs/wp5_namespace_hardening_tests.log",
+    "path": "drafts/wp5_extension/test_namespace_comparison.py",
+    "result": "20 passed in 6.83s; Python 3.11.13; no model calls or native revalidation.",
+    "sha256": "e6e0477cb18059bdae5dcf7391bac1d92821f8f223eb3c4a4cd6f5a99b88246b"
+  },
+  "preserved_primary": "Approved provider-change, raw declared-ID query/table, byte, fingerprint and fault-transition metrics are unchanged and remain primary or originally designated secondary. Report their mechanical case-namespace sensitivity explicitly.",
+  "raw_drift_analysis_sha256": "60eebdb472a2cf21b543ceae41ab2a2ce1817b2782bbc5e84b2ef74ce935f65e",
+  "raw_drift_summary_path": "results/processed/wp5_drift_v1/drift_summary.json",
+  "registered_comparisons": "All120 fresh runs and all96 fixed adjacent pairs in the same frozen order; no Gate0/loader exclusion and no missing-generation bridge.",
+  "schema": "wp5-operation-path-supplement-v1",
+  "status": "FROZEN",
+  "timing": "Before any extension authoring or drift outcome. Motivated by deterministic assembler case-prefix inspection of original retained data.",
+  "unavailable_data_policy": "Descriptor/index extraction errors become typed unavailable reasons without stopping other runs. Known probe counts retain explicit defined/undefined denominators; unavailable counts are null, never inferred as zero. Prescan all source-object/start-agent query identities and reject duplicates for the whole projection before any assignment. Artifact hashes and registered model/trace/analysis identities remain fail-closed protocol checks."
+}

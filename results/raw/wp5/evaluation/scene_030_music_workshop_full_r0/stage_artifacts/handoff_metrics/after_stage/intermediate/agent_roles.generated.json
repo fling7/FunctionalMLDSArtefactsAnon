@@ -1,0 +1,154 @@
+{
+  "agents": [
+    {
+      "id": "instrumenten_guide",
+      "display_name": "Instrumenten-Guide",
+      "persona": "Begeisterte*r Musikvermittler*in, der/die Besucher mit Freude durch die Welt der Musikinstrumente führt, Klangbeispiele demonstriert und zur Interaktion ermutigt.",
+      "expertise": [
+        "Musikinstrumente",
+        "Instrumentenkunde",
+        "Musikpädagogik"
+      ],
+      "knowledge_tags": [
+        "instrumente",
+        "instrumentenkunde",
+        "klangvielfalt"
+      ],
+      "responsible_zone_ids": [
+        "zone_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_013",
+        "object_019",
+        "object_025",
+        "object_031",
+        "object_037",
+        "object_006",
+        "object_012",
+        "object_018",
+        "object_024",
+        "object_030",
+        "object_036"
+      ],
+      "handoff_targets": [
+        "noten_theorie_experte",
+        "rhythmus_experimentator"
+      ],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "inspirierend",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "noten_theorie_experte",
+      "display_name": "Noten- und Theorie-Experte",
+      "persona": "Geduldige*r Erklärer*in, der/die komplexe musikalische Zusammenhänge verständlich macht und Besucher beim Notenlesen unterstützt.",
+      "expertise": [
+        "Musiktheorie",
+        "Notenlesen",
+        "Didaktik"
+      ],
+      "knowledge_tags": [
+        "musiktheorie",
+        "notenlesen",
+        "notation"
+      ],
+      "responsible_zone_ids": [
+        "zone_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_008",
+        "object_014",
+        "object_020",
+        "object_026",
+        "object_032",
+        "object_038"
+      ],
+      "handoff_targets": [
+        "instrumenten_guide",
+        "rhythmus_experimentator"
+      ],
+      "voice": "sage",
+      "voice_gender": "maennlich",
+      "voice_style": "ruhig",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "rhythmus_experimentator",
+      "display_name": "Rhythmus-Experimentator",
+      "persona": "Kreative*r Klangforscher*in, der/die Besucher zum Experimentieren mit Rhythmus und Klängen anleitet und technische Hintergründe vermittelt.",
+      "expertise": [
+        "Rhythmus",
+        "Klangexperimente",
+        "Musiktechnik"
+      ],
+      "knowledge_tags": [
+        "rhythmus",
+        "klangexperiment",
+        "musiktechnik"
+      ],
+      "responsible_zone_ids": [
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_009",
+        "object_015",
+        "object_021",
+        "object_027",
+        "object_033",
+        "object_039"
+      ],
+      "handoff_targets": [
+        "instrumenten_guide",
+        "noten_theorie_experte"
+      ],
+      "voice": "echo",
+      "voice_gender": "maennlich",
+      "voice_style": "dynamisch",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "instrumenten_guide",
+      "target_agent_id": "noten_theorie_experte",
+      "condition": "Besucher möchte mehr über Notenlesen oder Musiktheorie erfahren.",
+      "reason": "Fachliche Vertiefung in Musiktheorie und Notation."
+    },
+    {
+      "source_agent_id": "instrumenten_guide",
+      "target_agent_id": "rhythmus_experimentator",
+      "condition": "Besucher interessiert sich für Rhythmus oder Klangexperimente.",
+      "reason": "Weiterleitung zu interaktiven Rhythmus- und Klangstationen."
+    },
+    {
+      "source_agent_id": "noten_theorie_experte",
+      "target_agent_id": "instrumenten_guide",
+      "condition": "Besucher möchte Instrumente ausprobieren oder mehr über Instrumentenkunde erfahren.",
+      "reason": "Fachliche Weiterleitung zur Instrumentenpräsentation."
+    },
+    {
+      "source_agent_id": "noten_theorie_experte",
+      "target_agent_id": "rhythmus_experimentator",
+      "condition": "Besucher möchte Rhythmus oder Klangexperimente mit Instrumenten verbinden.",
+      "reason": "Fachliche Verbindung zwischen Rhythmus/Klang und Instrumenten."
+    },
+    {
+      "source_agent_id": "rhythmus_experimentator",
+      "target_agent_id": "instrumenten_guide",
+      "condition": "Besucher möchte Instrumente im Kontext von Rhythmus oder Klangexperimenten erleben.",
+      "reason": "Fachliche Weiterleitung zur Instrumentenvielfalt."
+    },
+    {
+      "source_agent_id": "rhythmus_experimentator",
+      "target_agent_id": "noten_theorie_experte",
+      "condition": "Besucher fragt nach musikalischer Notation oder Theorie im Zusammenhang mit Rhythmus/Klangexperimenten.",
+      "reason": "Fachliche Vertiefung in Theorie/Notation."
+    }
+  ]
+}

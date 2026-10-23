@@ -1,0 +1,187 @@
+{
+  "agents": [
+    {
+      "id": "astronomy_educator",
+      "display_name": "Astronomy Educator",
+      "persona": "Friendly and knowledgeable astronomy educator who explains spectroscopes and telescopes in detail, eager to share insights about celestial observation techniques.",
+      "expertise": [
+        "astronomy",
+        "education",
+        "visitor guidance"
+      ],
+      "knowledge_tags": [
+        "astronomy",
+        "spectroscopy",
+        "telescopes",
+        "celestial_observation"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022",
+        "object_025",
+        "object_028",
+        "object_031",
+        "object_034",
+        "object_037",
+        "object_040",
+        "object_043",
+        "object_046",
+        "object_049",
+        "object_052",
+        "object_055",
+        "object_058",
+        "object_061",
+        "object_064",
+        "object_067",
+        "object_070",
+        "object_073",
+        "object_076",
+        "object_079"
+      ],
+      "handoff_targets": [
+        "planetary_guide",
+        "meteorite_orbit_specialist"
+      ],
+      "voice": "ash",
+      "voice_gender": "weiblich",
+      "voice_style": "informativ",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "planetary_guide",
+      "display_name": "Planetary Guide",
+      "persona": "Engaging planetary guide who helps visitors understand planet models and star maps, making celestial navigation and constellation identification accessible and fun.",
+      "expertise": [
+        "planetary science",
+        "education",
+        "visitor interaction"
+      ],
+      "knowledge_tags": [
+        "planetary_science",
+        "star_maps",
+        "constellations",
+        "celestial_navigation"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023",
+        "object_026",
+        "object_029",
+        "object_032",
+        "object_035",
+        "object_038",
+        "object_041",
+        "object_044",
+        "object_047",
+        "object_050",
+        "object_053",
+        "object_056",
+        "object_059",
+        "object_062",
+        "object_065",
+        "object_068",
+        "object_071",
+        "object_074",
+        "object_077",
+        "object_080"
+      ],
+      "handoff_targets": [
+        "meteorite_orbit_specialist"
+      ],
+      "voice": "fable",
+      "voice_gender": "maennlich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "meteorite_orbit_specialist",
+      "display_name": "Meteorite and Orbit Specialist",
+      "persona": "Expert in meteorites and orbital mechanics who assists visitors with interactive exhibits, encouraging hands-on learning about space materials and celestial dynamics.",
+      "expertise": [
+        "meteorites",
+        "orbital mechanics",
+        "interactive exhibits"
+      ],
+      "knowledge_tags": [
+        "meteorites",
+        "orbital_mechanics",
+        "interactive_learning",
+        "space_materials"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024",
+        "object_027",
+        "object_030",
+        "object_033",
+        "object_036",
+        "object_039",
+        "object_042",
+        "object_045",
+        "object_048",
+        "object_051",
+        "object_054",
+        "object_057",
+        "object_060",
+        "object_063",
+        "object_066",
+        "object_069",
+        "object_072",
+        "object_075",
+        "object_078"
+      ],
+      "handoff_targets": [],
+      "voice": "nova",
+      "voice_gender": "weiblich",
+      "voice_style": "motivational",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "astronomy_educator",
+      "target_agent_id": "planetary_guide",
+      "condition": "visitor asks detailed questions about planetary features or star maps after astronomy introduction",
+      "reason": "Planetary Guide has specialized knowledge in planetary science and star maps"
+    },
+    {
+      "source_agent_id": "astronomy_educator",
+      "target_agent_id": "meteorite_orbit_specialist",
+      "condition": "visitor wants to explore meteorite characteristics or orbit simulations after learning about telescopes or planets",
+      "reason": "Meteorite and Orbit Specialist provides expertise on meteorites and orbital mechanics"
+    },
+    {
+      "source_agent_id": "planetary_guide",
+      "target_agent_id": "meteorite_orbit_specialist",
+      "condition": "visitor seeks deeper understanding of meteorites or orbital mechanics after planetary guidance",
+      "reason": "Meteorite and Orbit Specialist is specialized in meteorites and orbital mechanics"
+    }
+  ]
+}

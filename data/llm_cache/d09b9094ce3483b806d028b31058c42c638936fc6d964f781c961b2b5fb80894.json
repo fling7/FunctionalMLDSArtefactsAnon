@@ -1,0 +1,426 @@
+{
+  "cache_key": "d09b9094ce3483b806d028b31058c42c638936fc6d964f781c961b2b5fb80894",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_03_maritime_museum.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"extension_drift_03_maritime_museum\",\"domain\":\"Maritimes Museum\",\"room_purpose\":\"Ausstellungsraum für maritime Objekte und Bildung über Schifffahrt, Navigation und maritime Technik.\",\"visitor_goals\":[\"Maritime Objekte betrachten und vergleichen\",\"Geschichte und Technik der Schifffahrt verstehen\",\"Navigation und Segeltechnik kennenlernen\",\"Funktionsweise maritimer Instrumente entdecken\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"name\":\"Zone Sammlung 1: Schiffsmodelle und Bojen\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"purpose\":\"Präsentation und Erklärung von Schiffsmodellen und Bojen als Beispiele maritimer Technik.\",\"visitor_goals_supported\":[\"Verstehen der Entwicklung von Schiffen und Bojen\",\"Betrachten und Vergleichen von Modellen\"],\"zone_id\":\"zone_collection_1\"},{\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"name\":\"Zone Sammlung 2: Navigation und Segel\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"purpose\":\"Ausstellung von Navigationskarten und Segeldiagrammen zur Vermittlung von Navigationsmethoden.\",\"visitor_goals_supported\":[\"Lernen über Navigation und Segeltechnik\",\"Interaktive Erkundung von Seekarten\"],\"zone_id\":\"zone_collection_2\"},{\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"name\":\"Zone Sammlung 3: Kompass und Anker\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"purpose\":\"Präsentation maritimer Instrumente wie Kompass und Anker, deren Technik und Bedeutung.\",\"visitor_goals_supported\":[\"Verstehen der Funktion von Kompass und Anker\",\"Technische Details erkunden\"],\"zone_id\":\"zone_collection_3\"}],\"interaction_topics\":[{\"description\":\"Wie haben sich Schiffe und Bojen im Laufe der Zeit entwickelt? Welche Bedeutung hatten sie für die Schifffahrt?\",\"related_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"title\":\"Schiffsmodelle und Bojen – Entwicklung und Bedeutung\",\"topic_id\":\"topic_ship_buoy\"},{\"description\":\"Wie wurden Navigation und Segeltechnik früher umgesetzt? Welche Instrumente kamen zum Einsatz?\",\"related_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"title\":\"Navigation und Segeltechnik\",\"topic_id\":\"topic_navigation_sail\"},{\"description\":\"Welche Rolle spielten Kompass und Anker für die Sicherheit und Steuerung von Schiffen?\",\"related_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"title\":\"Kompass und Anker – Technik und Funktion\",\"topic_id\":\"topic_compass_anchor\"}],\"agent_role_candidates\":[{\"display_name\":\"Maritimer Ausstellungsguide\",\"expertise\":[\"Schiffbau\",\"Navigation\",\"Maritime Geschichte\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"mission\":\"Führt Besucher durch die Sammlung maritimer Objekte, erklärt Exponate und beantwortet Fragen zur Geschichte und Technik der Schifffahrt.\",\"responsible_zone_ids\":[\"zone_collection_1\"],\"role_id\":\"guide_collection_1\"},{\"display_name\":\"Navigationsexperte\",\"expertise\":[\"Navigation\",\"Seekarten\",\"Segeltechnik\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"mission\":\"Erklärt Navigationsinstrumente und -methoden, gibt Einblicke in die Nutzung von Seekarten und Segeltechniken.\",\"responsible_zone_ids\":[\"zone_collection_2\"],\"role_id\":\"guide_collection_2\"},{\"display_name\":\"Technikhistoriker\",\"expertise\":[\"Maritime Instrumente\",\"Kompassentwicklung\",\"Ankertechnik\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"mission\":\"Vermittelt Wissen zu maritimen Instrumenten wie Kompass und Anker, erläutert deren Bedeutung für die Seefahrt.\",\"responsible_zone_ids\":[\"zone_collection_3\"],\"role_id\":\"guide_collection_3\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"ship_model\":3,\"buoy_model\":2},\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"navigation_chart\":3,\"sail_diagram\":2},\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"compass_case\":3,\"anchor_display\":2},\"centroid_xz\":{\"x\":0.28,\"z\":0.28}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"ship_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic maritime museum object: ship model. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_002\",\"object_type\":\"navigation_chart\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic maritime museum object: navigation chart. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_003\",\"object_type\":\"compass_case\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic maritime museum object: compass case. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_004\",\"object_type\":\"buoy_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic maritime museum object: buoy model. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_005\",\"object_type\":\"sail_diagram\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic maritime museum object: sail diagram. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_006\",\"object_type\":\"anchor_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic maritime museum object: anchor display. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_007\",\"object_type\":\"ship_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic maritime museum object: ship model. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_008\",\"object_type\":\"navigation_chart\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic maritime museum object: navigation chart. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_009\",\"object_type\":\"compass_case\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic maritime museum object: compass case. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_010\",\"object_type\":\"buoy_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic maritime museum object: buoy model. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_011\",\"object_type\":\"sail_diagram\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic maritime museum object: sail diagram. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_012\",\"object_type\":\"anchor_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic maritime museum object: anchor display. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_013\",\"object_type\":\"ship_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic maritime museum object: ship model. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_014\",\"object_type\":\"navigation_chart\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic maritime museum object: navigation chart. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_015\",\"object_type\":\"compass_case\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic maritime museum object: compass case. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"}],\"allowed_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_collection_1",
+                          "zone_collection_2",
+                          "zone_collection_3"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "2.full",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792094148,
+    "created_at": 1792094141,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_077d112d491a8b39016ad12fbcf8e087d1a95483e1de77693a",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"agents\": [\n    {\n      \"display_name\": \"Maritimer Ausstellungsguide\",\n      \"expertise\": [\n        \"Schiffbau\",\n        \"Bojenentwicklung\",\n        \"Maritime Geschichte\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_004\",\n        \"object_007\",\n        \"object_010\",\n        \"object_013\"\n      ],\n      \"handoff_targets\": [\n        \"navigationsexperte\",\n        \"technikhistoriker\"\n      ],\n      \"id\": \"maritimer_ausstellungsguide\",\n      \"knowledge_tags\": [\n        \"schiffsmodelle\",\n        \"bojen\",\n        \"schiffsentwicklung\",\n        \"maritime_technik\"\n      ],\n      \"persona\": \"Ein freundlicher und kenntnisreicher Guide, der Besucher durch die Welt der Schiffsmodelle und Bojen führt und deren technische sowie historische Bedeutung anschaulich erklärt.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_1\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"fable\",\n      \"voice_gender\": \"weiblich\",\n      \"voice_style\": \"informativ\"\n    },\n    {\n      \"display_name\": \"Navigationsexperte\",\n      \"expertise\": [\n        \"Navigation\",\n        \"Seekarten\",\n        \"Segeltechnik\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_002\",\n        \"object_005\",\n        \"object_008\",\n        \"object_011\",\n        \"object_014\"\n      ],\n      \"handoff_targets\": [\n        \"maritimer_ausstellungsguide\",\n        \"technikhistoriker\"\n      ],\n      \"id\": \"navigationsexperte\",\n      \"knowledge_tags\": [\n        \"navigation\",\n        \"seekarten\",\n        \"segeltechnik\",\n        \"navigationsmethoden\"\n      ],\n      \"persona\": \"Ein analytischer und begeisterter Experte, der die faszinierende Welt der Navigation und Segeltechnik verständlich macht und Besucher zur interaktiven Erkundung motiviert.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_2\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"echo\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"erklärend\"\n    },\n    {\n      \"display_name\": \"Technikhistoriker\",\n      \"expertise\": [\n        \"Maritime Instrumente\",\n        \"Kompassentwicklung\",\n        \"Ankertechnik\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_003\",\n        \"object_006\",\n        \"object_009\",\n        \"object_012\",\n        \"object_015\"\n      ],\n      \"handoff_targets\": [\n        \"maritimer_ausstellungsguide\",\n        \"navigationsexperte\"\n      ],\n      \"id\": \"technikhistoriker\",\n      \"knowledge_tags\": [\n        \"kompass\",\n        \"anker\",\n        \"instrumententechnik\",\n        \"sicherheit_auf_see\"\n      ],\n      \"persona\": \"Ein sachkundiger Technikliebhaber, der die Funktionsweise und Bedeutung von Kompass und Anker für die Schifffahrt anschaulich vermittelt.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_3\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"onyx\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"sachlich\"\n    }\n  ],\n  \"handoffs\": [\n    {\n      \"condition\": \"Fragen zu Navigation, Seekarten oder Segeltechnik\",\n      \"reason\": \"Fachliche Weiterleitung zu Navigationsexperte\",\n      \"source_agent_id\": \"maritimer_ausstellungsguide\",\n      \"target_agent_id\": \"navigationsexperte\"\n    },\n    {\n      \"condition\": \"Fragen zu Kompass, Anker oder maritimen Instrumenten\",\n      \"reason\": \"Fachliche Weiterleitung zu Technikhistoriker\",\n      \"source_agent_id\": \"maritimer_ausstellungsguide\",\n      \"target_agent_id\": \"technikhistoriker\"\n    },\n    {\n      \"condition\": \"Fragen zu Schiffsmodellen oder Bojen\",\n      \"reason\": \"Fachliche Weiterleitung zu Maritimer Ausstellungsguide\",\n      \"source_agent_id\": \"navigationsexperte\",\n      \"target_agent_id\": \"maritimer_ausstellungsguide\"\n    },\n    {\n      \"condition\": \"Fragen zu Kompass, Anker oder maritimen Instrumenten\",\n      \"reason\": \"Fachliche Weiterleitung zu Technikhistoriker\",\n      \"source_agent_id\": \"navigationsexperte\",\n      \"target_agent_id\": \"technikhistoriker\"\n    },\n    {\n      \"condition\": \"Fragen zu Schiffsmodellen, Bojen oder Navigation\",\n      \"reason\": \"Fachliche Weiterleitung zu Maritimer Ausstellungsguide oder Navigationsexperte\",\n      \"source_agent_id\": \"technikhistoriker\",\n      \"target_agent_id\": \"maritimer_ausstellungsguide\"\n    },\n    {\n      \"condition\": \"Fragen zu Navigation, Seekarten oder Segeltechnik\",\n      \"reason\": \"Fachliche Weiterleitung zu Navigationsexperte\",\n      \"source_agent_id\": \"technikhistoriker\",\n      \"target_agent_id\": \"navigationsexperte\"\n    }\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_077d112d491a8b39016ad12fbd6a2487d19b9bdd070d9111ce",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_collection_1",
+                        "zone_collection_2",
+                        "zone_collection_3"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2953,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1171,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4124
+    },
+    "user": null
+  },
+  "response_sha256": "ceceffdfc8afaab960f23dc42bfdc76ac273dde5e62cb60bbade950dd9d82f86",
+  "saved_at": "2026-10-15T19:55:49.498063+00:00",
+  "status": "SUCCESS"
+}

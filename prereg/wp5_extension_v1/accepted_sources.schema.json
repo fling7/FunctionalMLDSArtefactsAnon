@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WP5 extension accepted-source freeze",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "plan_sha256",
+    "authoring_terminal",
+    "slots"
+  ],
+  "properties": {
+    "schema": {
+      "const": "wp5-extension-accepted-sources-v1"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authoring_terminal": {
+      "const": true
+    },
+    "slots": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "family",
+          "source_family_order",
+          "status",
+          "source_path",
+          "source_sha256",
+          "source_authoring_attempt_count",
+          "source_authoring_repaired",
+          "source_authoring_result_path",
+          "validation",
+          "source_authoring_result_sha256"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "family": {
+            "enum": [
+              "extension_deterministic",
+              "extension_llm"
+            ]
+          },
+          "source_family_order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "status": {
+            "enum": [
+              "accepted",
+              "source_authoring_failed",
+              "unexecuted_budget_stop"
+            ]
+          },
+          "source_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "source_authoring_attempt_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          },
+          "source_authoring_repaired": {
+            "type": "boolean"
+          },
+          "source_authoring_result_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "validation": {
+            "type": "object"
+          },
+          "source_authoring_result_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "accepted"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "source_path": {
+                  "type": "string"
+                },
+                "source_sha256": {
+                  "type": "string"
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "source_path": {
+                  "type": "null"
+                },
+                "source_sha256": {
+                  "type": "null"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "family": {
+                  "const": "extension_deterministic"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "source_authoring_result_path": {
+                  "type": "null"
+                },
+                "source_authoring_result_sha256": {
+                  "type": "null"
+                },
+                "source_authoring_attempt_count": {
+                  "const": 0
+                },
+                "source_authoring_repaired": {
+                  "const": false
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "source_authoring_result_path": {
+                  "type": "string"
+                },
+                "source_authoring_result_sha256": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

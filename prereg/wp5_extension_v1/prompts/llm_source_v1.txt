@@ -1,0 +1,15 @@
+Write one original synthetic educational room as JSON, with exactly 15 objects.
+Domain: {domain}. Scene name: {scene_id}. Layout family: {layout}.
+Use the exact wire shape below; supply all fields yourself. No real person,
+institution or participant data. The room must be 20 by 20 metres, height 4,
+centred at x=z=0. Each object has axis-aligned width/depth 0.6 to 1.0,
+height 0.5 to 1.8, bottom y=0, rotation x=y=z=0, a distinct id object_001
+through object_015, and a useful domain-specific specification of 1-2 sentences.
+Keep all complete footprints inside [-9,9] in x/z, separate footprints by at
+least 1 metre, and preserve traversable space. Choose varied positions yourself,
+following the requested layout family. Create three groups collection_1 to
+collection_3, each containing five objects, with distinct six-digit hex colours.
+Write a complete scene; do not return code, a recipe, placeholders, or comments.
+
+Shape:
+{"scene":{"sceneName":"...","environment":{"type":"indoor","dimensions":{"width":20,"height":4,"depth":20},"lighting":[{"lightType":"ambient","intensity":0.7,"color":"#FFFFFF"}],"background":"#ECECEC"},"objectGroups":{"collection_1":{"color":"..."},"collection_2":{"color":"..."},"collection_3":{"color":"..."}},"objects":[{"objectId":"object_001","objectType":"...","position":{"x":0,"y":0.5,"z":0},"rotation":{"x":0,"y":0,"z":0},"dimensions":{"width":1,"height":1,"depth":1},"group":"collection_1","children":[],"specification":"..."}]}}

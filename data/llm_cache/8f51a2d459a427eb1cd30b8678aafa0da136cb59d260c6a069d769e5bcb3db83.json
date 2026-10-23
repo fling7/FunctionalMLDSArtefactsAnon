@@ -1,0 +1,166 @@
+{
+  "cache_key": "8f51a2d459a427eb1cd30b8678aafa0da136cb59d260c6a069d769e5bcb3db83",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.questions",
+    "item_id": "scene_042_music_workshop.ENT-ASSET-OBJECT_009",
+    "payload": {
+      "input": [
+        {
+          "content": "Write two different natural visitor questions about this selected synthetic room object, using its description and the supplied knowledge excerpts. Use English. Each question must explicitly include the object's supplied name or source id, must be at most one sentence, and must not name an agent or ask for a handoff. The first should ask about the object or its purpose; the second should ask about a detail or use that is supported by the supplied information. Do not invent facts. Return JSON with question_1 and question_2.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"object\": {\"id\": \"ENT-ASSET-OBJECT_009\", \"source_id\": \"object_009\", \"name\": \"sound_panel\", \"type\": \"sound_panel\", \"group_label\": \"collection_3\", \"zone_names\": [\"Collection 3: Percussion Stations and Sound Panels Zone\"]}, \"description\": \"Synthetic music workshop object: sound panel. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly visible label; no real person or institution.\", \"knowledge_excerpts\": []}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 256,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "visitor_questions",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "question_1": {
+                "type": "string"
+              },
+              "question_2": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question_1",
+              "question_2"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "judges",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792103204,
+    "created_at": 1792103203,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0dd4200048830326016ad153237e5887d189ea2bb3bd3385a7",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 256,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"question_1\":\"What is the purpose of the sound_panel in the Collection 3: Percussion Stations and Sound Panels Zone?\",\"question_2\":\"How is the sound_panel labeled and presented as an educational display in Collection 3?\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0dd4200048830326016ad15323c8d887d19a13612e26782e0e",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "visitor_questions",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "question_1": {
+              "type": "string"
+            },
+            "question_2": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "question_1",
+            "question_2"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 260,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 51,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 311
+    },
+    "user": null
+  },
+  "response_sha256": "795d6f3a861334953beb067ad481a0598a89ae453f91bfaac1fc902483f36f31",
+  "saved_at": "2026-10-15T22:26:45.126938+00:00",
+  "status": "SUCCESS"
+}

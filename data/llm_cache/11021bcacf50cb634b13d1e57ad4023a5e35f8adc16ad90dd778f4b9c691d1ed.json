@@ -1,0 +1,166 @@
+{
+  "cache_key": "11021bcacf50cb634b13d1e57ad4023a5e35f8adc16ad90dd778f4b9c691d1ed",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.questions",
+    "item_id": "scene_036_food_science_center.ENT-ASSET-OBJECT_001",
+    "payload": {
+      "input": [
+        {
+          "content": "Write two different natural visitor questions about this selected synthetic room object, using its description and the supplied knowledge excerpts. Use English. Each question must explicitly include the object's supplied name or source id, must be at most one sentence, and must not name an agent or ask for a handoff. The first should ask about the object or its purpose; the second should ask about a detail or use that is supported by the supplied information. Do not invent facts. Return JSON with question_1 and question_2.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"object\": {\"id\": \"ENT-ASSET-OBJECT_001\", \"source_id\": \"object_001\", \"name\": \"fermentation_model\", \"type\": \"fermentation_model\", \"group_label\": \"collection_1\", \"zone_names\": [\"Fermentation Area\"]}, \"description\": \"Synthetic food science center object: fermentation model. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly visible label; no real person or institution.\", \"knowledge_excerpts\": [{\"tag\": \"microbiology\", \"file\": \"microbiology\\\\microbiology_overview.txt\", \"chunk_index\": 0, \"score\": 2.25, \"text\": \"This entry summarizes the food science education context for microbiology. It is grounded in object_001 (fermentation_model), object_007 (fermentation_model), object_013 (fermentation_model) and should be used to answer visitor questions about Educational center focused on food science, showcasing fermentation, supply chains, grains, and preservation.. Relevant room object groups include collection_1, collection_2, collection_3; semantic zones include Fermentation Area, Supply Chain Area, Grain and Preservation Area.\"}]}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 256,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "visitor_questions",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "question_1": {
+                "type": "string"
+              },
+              "question_2": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question_1",
+              "question_2"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "judges",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792103608,
+    "created_at": 1792103607,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_009037ecf9c50b98016ad154b7c37887d1a7f04b8ffd5fb089",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 256,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"question_1\":\"What is the purpose of the fermentation_model in the Fermentation Area of the food science center?\",\"question_2\":\"How does the fermentation_model in collection_1 help explain the role of fermentation in food preservation and supply chains?\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_009037ecf9c50b98016ad154b80b9487d182dc3feef1313422",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "visitor_questions",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "question_1": {
+              "type": "string"
+            },
+            "question_2": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "question_1",
+            "question_2"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 394,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 53,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 447
+    },
+    "user": null
+  },
+  "response_sha256": "5e6ad69c9966efdbfe65ff6ec2b08701b2dc659ba03557200d873fed7e77e33e",
+  "saved_at": "2026-10-15T22:33:29.672357+00:00",
+  "status": "SUCCESS"
+}

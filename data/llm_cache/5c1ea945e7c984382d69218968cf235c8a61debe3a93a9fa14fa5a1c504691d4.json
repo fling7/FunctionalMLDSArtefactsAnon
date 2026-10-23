@@ -1,0 +1,194 @@
+{
+  "cache_key": "5c1ea945e7c984382d69218968cf235c8a61debe3a93a9fa14fa5a1c504691d4",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "authored_example.B1.abstain.p2.neutral.mini.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "You assign a grounded visitor question to one agent. Route for selected_object, while treating visitor_question as context rather than a replacement selection. Compare the available agents. If explicit responsibility data is present, check object owners first, then group owners only if no object owner exists, then zone owners only if neither earlier level has an owner. More than one owner at the deciding level is ambiguous. A valid recipient is the unique owner and is either already active or one declared edge away. Produce the JSON decision.\nYou may reject: if no valid unique recipient can be determined from the supplied information, set abstain=true and answering_agent_id=null. Otherwise set abstain=false and answering_agent_id to exactly one listed agent id.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Decorative Zone Ambassador\",\"expertise\":[\"art appreciation\",\"environment aesthetics\",\"visitor engagement\"],\"id\":\"decorative_zone_ambassador\",\"persona\":\"A calm and appreciative guide who enhances visitor experience by sharing insights about the room's decorative art and plants.\"},{\"display_name\":\"Exhibit Interpreter\",\"expertise\":[\"museum education\",\"paleontology basics\",\"visitor engagement\"],\"id\":\"exhibit_interpreter\",\"persona\":\"An enthusiastic and informative expert passionate about educating visitors on the dinosaur skeleton exhibit and paleontology basics.\"},{\"display_name\":\"Reading Area Guide\",\"expertise\":[\"reading facilitation\",\"visitor assistance\",\"environment management\"],\"id\":\"reading_area_guide\",\"persona\":\"A friendly and supportive guide who helps visitors enjoy and utilize the reading area for study and relaxation.\"},{\"display_name\":\"Teacher Agent\",\"expertise\":[\"instruction\",\"classroom management\",\"student engagement\"],\"id\":\"teacher_agent\",\"persona\":\"A knowledgeable and patient classroom instructor dedicated to facilitating learning and managing classroom activities effectively.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-PLANT2\",\"source_id\":\"plant2\",\"name\":\"plant\",\"type\":\"plant\",\"group_label\":\"plants\",\"zone_names\":[\"Decorative Zone\"]},\"active_agent_id\":\"decorative_zone_ambassador\",\"visitor_question\":\"What can you tell me about this selected object?\",\"ownership_and_handoffs\":{\"agents\":[{\"id\":\"decorative_zone_ambassador\",\"objects\":[\"ENT-ASSET-PICTURE1\",\"ENT-ASSET-PICTURE2\",\"ENT-ASSET-PLANT1\",\"ENT-ASSET-PLANT2\",\"ENT-ASSET-PLANT3\",\"ENT-ASSET-PLANT4\"],\"groups\":[\"ENT-GROUP-DECOR\",\"ENT-GROUP-PLANTS\"],\"zones\":[\"ENT-ZONE-DECORATIVE_ZONE\"],\"handoff_targets\":[\"reading_area_guide\",\"teacher_agent\"]},{\"id\":\"exhibit_interpreter\",\"objects\":[\"ENT-ASSET-DINOSAUR_SKELETON\"],\"groups\":[\"ENT-GROUP-DECOR\"],\"zones\":[\"ENT-ZONE-DINOSAUR_DISPLAY_ZONE\"],\"handoff_targets\":[\"teacher_agent\"]},{\"id\":\"reading_area_guide\",\"objects\":[\"ENT-ASSET-BEANBAG1\",\"ENT-ASSET-BEANBAG2\",\"ENT-ASSET-BEANBAG3\",\"ENT-ASSET-BEANBAG4\",\"ENT-ASSET-BOOKCASE\",\"ENT-ASSET-PLANT5\",\"ENT-ASSET-READING_TABLE\"],\"groups\":[\"ENT-GROUP-FURNITURE\",\"ENT-GROUP-PLANTS\",\"ENT-GROUP-SEATING\"],\"zones\":[\"ENT-ZONE-READING_AREA\"],\"handoff_targets\":[\"teacher_agent\"]},{\"id\":\"teacher_agent\",\"objects\":[\"ENT-ASSET-CHALKBOARD\",\"ENT-ASSET-STUDENT_DESK1\",\"ENT-ASSET-STUDENT_DESK10\",\"ENT-ASSET-STUDENT_DESK11\",\"ENT-ASSET-STUDENT_DESK12\",\"ENT-ASSET-STUDENT_DESK13\",\"ENT-ASSET-STUDENT_DESK14\",\"ENT-ASSET-STUDENT_DESK15\",\"ENT-ASSET-STUDENT_DESK16\",\"ENT-ASSET-STUDENT_DESK17\",\"ENT-ASSET-STUDENT_DESK18\",\"ENT-ASSET-STUDENT_DESK19\",\"ENT-ASSET-STUDENT_DESK2\",\"ENT-ASSET-STUDENT_DESK20\",\"ENT-ASSET-STUDENT_DESK3\",\"ENT-ASSET-STUDENT_DESK4\",\"ENT-ASSET-STUDENT_DESK5\",\"ENT-ASSET-STUDENT_DESK6\",\"ENT-ASSET-STUDENT_DESK7\",\"ENT-ASSET-STUDENT_DESK8\",\"ENT-ASSET-STUDENT_DESK9\",\"ENT-ASSET-TEACHER_DESK\"],\"groups\":[\"ENT-GROUP-EQUIPMENT\",\"ENT-GROUP-FURNITURE\"],\"zones\":[\"ENT-ZONE-INSTRUCTION_ZONE\"],\"handoff_targets\":[\"exhibit_interpreter\",\"reading_area_guide\"]}],\"objects\":[{\"id\":\"ENT-ASSET-BEANBAG1\",\"source_id\":\"beanbag1\",\"name\":\"beanbag\",\"groups\":[\"ENT-GROUP-SEATING\"]},{\"id\":\"ENT-ASSET-BEANBAG2\",\"source_id\":\"beanbag2\",\"name\":\"beanbag\",\"groups\":[\"ENT-GROUP-SEATING\"]},{\"id\":\"ENT-ASSET-BEANBAG3\",\"source_id\":\"beanbag3\",\"name\":\"beanbag\",\"groups\":[\"ENT-GROUP-SEATING\"]},{\"id\":\"ENT-ASSET-BEANBAG4\",\"source_id\":\"beanbag4\",\"name\":\"beanbag\",\"groups\":[\"ENT-GROUP-SEATING\"]},{\"id\":\"ENT-ASSET-BOOKCASE\",\"source_id\":\"bookcase\",\"name\":\"bookcase\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-CHALKBOARD\",\"source_id\":\"chalkboard\",\"name\":\"chalkboard\",\"groups\":[\"ENT-GROUP-EQUIPMENT\"]},{\"id\":\"ENT-ASSET-DINOSAUR_SKELETON\",\"source_id\":\"dinosaur_skeleton\",\"name\":\"dinosaur_skeleton\",\"groups\":[\"ENT-GROUP-DECOR\"]},{\"id\":\"ENT-ASSET-PICTURE1\",\"source_id\":\"picture1\",\"name\":\"picture\",\"groups\":[\"ENT-GROUP-DECOR\"]},{\"id\":\"ENT-ASSET-PICTURE2\",\"source_id\":\"picture2\",\"name\":\"picture\",\"groups\":[\"ENT-GROUP-DECOR\"]},{\"id\":\"ENT-ASSET-PLANT1\",\"source_id\":\"plant1\",\"name\":\"plant\",\"groups\":[\"ENT-GROUP-PLANTS\"]},{\"id\":\"ENT-ASSET-PLANT2\",\"source_id\":\"plant2\",\"name\":\"plant\",\"groups\":[\"ENT-GROUP-PLANTS\"]},{\"id\":\"ENT-ASSET-PLANT3\",\"source_id\":\"plant3\",\"name\":\"plant\",\"groups\":[\"ENT-GROUP-PLANTS\"]},{\"id\":\"ENT-ASSET-PLANT4\",\"source_id\":\"plant4\",\"name\":\"plant\",\"groups\":[\"ENT-GROUP-PLANTS\"]},{\"id\":\"ENT-ASSET-PLANT5\",\"source_id\":\"plant5\",\"name\":\"plant\",\"groups\":[\"ENT-GROUP-PLANTS\"]},{\"id\":\"ENT-ASSET-READING_TABLE\",\"source_id\":\"reading_table\",\"name\":\"table\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK1\",\"source_id\":\"student_desk1\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK10\",\"source_id\":\"student_desk10\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK11\",\"source_id\":\"student_desk11\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK12\",\"source_id\":\"student_desk12\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK13\",\"source_id\":\"student_desk13\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK14\",\"source_id\":\"student_desk14\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK15\",\"source_id\":\"student_desk15\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK16\",\"source_id\":\"student_desk16\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK17\",\"source_id\":\"student_desk17\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK18\",\"source_id\":\"student_desk18\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK19\",\"source_id\":\"student_desk19\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK2\",\"source_id\":\"student_desk2\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK20\",\"source_id\":\"student_desk20\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK3\",\"source_id\":\"student_desk3\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK4\",\"source_id\":\"student_desk4\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK5\",\"source_id\":\"student_desk5\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK6\",\"source_id\":\"student_desk6\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK7\",\"source_id\":\"student_desk7\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK8\",\"source_id\":\"student_desk8\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-STUDENT_DESK9\",\"source_id\":\"student_desk9\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]},{\"id\":\"ENT-ASSET-TEACHER_DESK\",\"source_id\":\"teacher_desk\",\"name\":\"desk\",\"groups\":[\"ENT-GROUP-FURNITURE\"]}],\"groups\":[{\"id\":\"ENT-GROUP-DECOR\",\"name\":\"Object group: decor\",\"members\":[\"dinosaur_skeleton\",\"picture1\",\"picture2\"]},{\"id\":\"ENT-GROUP-EQUIPMENT\",\"name\":\"Object group: equipment\",\"members\":[\"chalkboard\"]},{\"id\":\"ENT-GROUP-FURNITURE\",\"name\":\"Object group: furniture\",\"members\":[\"teacher_desk\",\"student_desk1\",\"student_desk2\",\"student_desk3\",\"student_desk4\",\"student_desk5\",\"student_desk6\",\"student_desk7\",\"student_desk8\",\"student_desk9\",\"student_desk10\",\"student_desk11\",\"student_desk12\",\"student_desk13\",\"student_desk14\",\"student_desk15\",\"student_desk16\",\"student_desk17\",\"student_desk18\",\"student_desk19\",\"student_desk20\",\"bookcase\",\"reading_table\"]},{\"id\":\"ENT-GROUP-PLANTS\",\"name\":\"Object group: plants\",\"members\":[\"plant1\",\"plant2\",\"plant3\",\"plant4\",\"plant5\"]},{\"id\":\"ENT-GROUP-SEATING\",\"name\":\"Object group: seating\",\"members\":[\"beanbag1\",\"beanbag2\",\"beanbag3\",\"beanbag4\"]}],\"zones\":[{\"id\":\"ENT-ZONE-DECORATIVE_ZONE\",\"name\":\"Decorative Zone\",\"members\":[\"picture1\",\"picture2\",\"plant1\",\"plant2\",\"plant3\",\"plant4\"]},{\"id\":\"ENT-ZONE-DINOSAUR_DISPLAY_ZONE\",\"name\":\"Dinosaur Display Zone\",\"members\":[\"dinosaur_skeleton\"]},{\"id\":\"ENT-ZONE-INSTRUCTION_ZONE\",\"name\":\"Instruction Zone\",\"members\":[\"chalkboard\",\"teacher_desk\",\"student_desk1\",\"student_desk2\",\"student_desk3\",\"student_desk4\",\"student_desk5\",\"student_desk6\",\"student_desk7\",\"student_desk8\",\"student_desk9\",\"student_desk10\",\"student_desk11\",\"student_desk12\",\"student_desk13\",\"student_desk14\",\"student_desk15\",\"student_desk16\",\"student_desk17\",\"student_desk18\",\"student_desk19\",\"student_desk20\"]},{\"id\":\"ENT-ZONE-READING_AREA\",\"name\":\"Reading Area\",\"members\":[\"reading_table\",\"beanbag1\",\"beanbag2\",\"beanbag3\",\"beanbag4\",\"bookcase\",\"plant5\"]}]}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false,
+                  true
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "decorative_zone_ambassador",
+                  "exhibit_interpreter",
+                  "reading_area_guide",
+                  "teacher_agent",
+                  null
+                ],
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792107380,
+    "created_at": 1792107380,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_05ec7831ec3377bb016ad16374477c87d1aba60a4c919c217a",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\":false,\"answering_agent_id\":\"decorative_zone_ambassador\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_05ec7831ec3377bb016ad16374a82487d1af4154fb9b931f20",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false,
+                true
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "decorative_zone_ambassador",
+                "exhibit_interpreter",
+                "reading_area_guide",
+                "teacher_agent",
+                null
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2698,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 20,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2718
+    },
+    "user": null
+  },
+  "response_sha256": "a0a24781f70c7f5644cd29990d1a70aea913b9b28fccfcde4498a40dc6ad000a",
+  "saved_at": "2026-10-15T23:36:22.513950+00:00",
+  "status": "SUCCESS"
+}

@@ -1,0 +1,203 @@
+{
+  "agents": [
+    {
+      "id": "agent_guide",
+      "display_name": "Transport Center Guide",
+      "persona": "Freundlich, kenntnisreich, gibt einen Überblick über das gesamte Transportzentrum und hilft Besuchern, sich zu orientieren.",
+      "expertise": [
+        "Transport history",
+        "Exhibit explanation",
+        "Visitor orientation"
+      ],
+      "knowledge_tags": [
+        "overview",
+        "visitor_orientation",
+        "transport_history"
+      ],
+      "responsible_zone_ids": [
+        "zone_1",
+        "zone_2",
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_002",
+        "object_003",
+        "object_004",
+        "object_005",
+        "object_006",
+        "object_007",
+        "object_008",
+        "object_009",
+        "object_010",
+        "object_011",
+        "object_012",
+        "object_013",
+        "object_014",
+        "object_015",
+        "object_016",
+        "object_017",
+        "object_018",
+        "object_019",
+        "object_020",
+        "object_021",
+        "object_022",
+        "object_023",
+        "object_024"
+      ],
+      "handoff_targets": [
+        "agent_collection1",
+        "agent_collection2",
+        "agent_collection3"
+      ],
+      "voice": "nova",
+      "voice_gender": "weiblich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "agent_collection1",
+      "display_name": "Netzwerk & Signal Experte",
+      "persona": "Technisch versiert, erklärt gerne die Funktionsweise von Streckennetzen und Signalanlagen.",
+      "expertise": [
+        "Transportnetzwerke",
+        "Signaltechnik",
+        "Betriebssteuerung"
+      ],
+      "knowledge_tags": [
+        "netzwerk",
+        "signalstation",
+        "betriebssteuerung"
+      ],
+      "responsible_zone_ids": [
+        "zone_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022"
+      ],
+      "handoff_targets": [
+        "agent_guide"
+      ],
+      "voice": "echo",
+      "voice_gender": "maennlich",
+      "voice_style": "sachlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "agent_collection2",
+      "display_name": "Fahrzeug & Modell Facilitator",
+      "persona": "Engagiert, motiviert Besucher zur Interaktion mit den Modellen und erklärt technische Details anschaulich.",
+      "expertise": [
+        "Schienenfahrzeuge",
+        "Fahrradtechnik",
+        "Interaktive Demonstration"
+      ],
+      "knowledge_tags": [
+        "fahrzeug",
+        "modell",
+        "interaktiv"
+      ],
+      "responsible_zone_ids": [
+        "zone_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023"
+      ],
+      "handoff_targets": [
+        "agent_guide"
+      ],
+      "voice": "ballad",
+      "voice_gender": "weiblich",
+      "voice_style": "begeisternd",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "agent_collection3",
+      "display_name": "Infrastruktur & Mechanik Spezialist",
+      "persona": "Analytisch, erklärt die technischen und mechanischen Hintergründe von Brücken und Rädern.",
+      "expertise": [
+        "Brückenbau",
+        "Mechanische Prinzipien",
+        "Transportinfrastruktur"
+      ],
+      "knowledge_tags": [
+        "infrastruktur",
+        "mechanik",
+        "bruecke",
+        "rad"
+      ],
+      "responsible_zone_ids": [
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024"
+      ],
+      "handoff_targets": [
+        "agent_guide"
+      ],
+      "voice": "onyx",
+      "voice_gender": "maennlich",
+      "voice_style": "ruhig",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "agent_guide",
+      "target_agent_id": "agent_collection1",
+      "condition": "Besucher möchte detaillierte Informationen zu Streckennetzen oder Signalanlagen.",
+      "reason": "Fachliche Vertiefung zu Netzwerkstruktur und Signalbetrieb."
+    },
+    {
+      "source_agent_id": "agent_guide",
+      "target_agent_id": "agent_collection2",
+      "condition": "Besucher interessiert sich für Modelle von Fahrzeugen oder Fahrrädern.",
+      "reason": "Fachliche Vertiefung zu Fahrzeugtechnik und interaktiven Exponaten."
+    },
+    {
+      "source_agent_id": "agent_guide",
+      "target_agent_id": "agent_collection3",
+      "condition": "Besucher fragt nach Brücken, Rädern oder Infrastrukturprinzipien.",
+      "reason": "Fachliche Vertiefung zu Infrastruktur und mechanischen Komponenten."
+    },
+    {
+      "source_agent_id": "agent_collection1",
+      "target_agent_id": "agent_guide",
+      "condition": "Besucher benötigt einen Überblick oder Orientierung im Transportzentrum.",
+      "reason": "Zurück zur allgemeinen Besucherführung."
+    },
+    {
+      "source_agent_id": "agent_collection2",
+      "target_agent_id": "agent_guide",
+      "condition": "Besucher benötigt einen Überblick oder Orientierung im Transportzentrum.",
+      "reason": "Zurück zur allgemeinen Besucherführung."
+    },
+    {
+      "source_agent_id": "agent_collection3",
+      "target_agent_id": "agent_guide",
+      "condition": "Besucher benötigt einen Überblick oder Orientierung im Transportzentrum.",
+      "reason": "Zurück zur allgemeinen Besucherführung."
+    }
+  ]
+}

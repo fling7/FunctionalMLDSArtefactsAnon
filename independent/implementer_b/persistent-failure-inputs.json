@@ -1,0 +1,420 @@
+{
+  "base_fixture": {
+    "name": "local",
+    "instance": {
+      "objects": [
+        {
+          "id": "A",
+          "type": "Agent",
+          "kind": "agent",
+          "entityRole": "interactiveAgent",
+          "sourceAgentId": "a",
+          "sourceId": "a",
+          "groundedAsset": [
+            "T"
+          ],
+          "groundedObjectGroup": [],
+          "responsibleZone": [],
+          "handoffTarget": [
+            "B"
+          ],
+          "providedCapability": [
+            "C"
+          ]
+        },
+        {
+          "id": "B",
+          "type": "Agent",
+          "kind": "agent",
+          "entityRole": "interactiveAgent",
+          "sourceAgentId": "b",
+          "sourceId": "b",
+          "groundedAsset": [],
+          "groundedObjectGroup": [],
+          "responsibleZone": [],
+          "handoffTarget": [
+            "A"
+          ],
+          "providedCapability": [
+            "C"
+          ]
+        },
+        {
+          "id": "T",
+          "type": "Entity",
+          "kind": "asset",
+          "entityRole": "sceneObject",
+          "sourceId": "object",
+          "objectGroup": [
+            "G"
+          ]
+        },
+        {
+          "id": "G",
+          "type": "Entity",
+          "kind": "asset",
+          "entityRole": "objectGroup",
+          "sourceObjectId": [
+            "object"
+          ]
+        },
+        {
+          "id": "Z",
+          "type": "Entity",
+          "kind": "zone",
+          "entityRole": "semanticZone",
+          "sourceObjectId": [
+            "object"
+          ]
+        },
+        {
+          "id": "S",
+          "type": "ScenarioStep",
+          "capabilityUse": [
+            "U"
+          ]
+        },
+        {
+          "id": "U",
+          "type": "CapabilityUse",
+          "provider": [
+            "A"
+          ],
+          "target": [
+            "T",
+            "G",
+            "Z"
+          ],
+          "typeRef": [
+            "C"
+          ]
+        },
+        {
+          "id": "C",
+          "type": "Capability"
+        },
+        {
+          "id": "RB",
+          "type": "RuntimeBinding",
+          "capability": [
+            "C"
+          ],
+          "runtimeAction": [
+            "RA"
+          ]
+        },
+        {
+          "id": "RA",
+          "type": "RuntimeAction",
+          "locator": [
+            "L"
+          ],
+          "inputSchema": [
+            "IS"
+          ],
+          "outputSchema": []
+        },
+        {
+          "id": "L",
+          "type": "RuntimeActionLocator",
+          "kind": "endpoint",
+          "value": "POST /chat"
+        },
+        {
+          "id": "IS",
+          "type": "SchemaReference",
+          "uri": "json",
+          "text": "{\"type\":\"object\"}"
+        }
+      ]
+    },
+    "trace": {
+      "runtime_actions": [
+        {
+          "action_kind": "chat",
+          "scenario_step_id": "S",
+          "capability_use_id": "U",
+          "capability_id": "C",
+          "provider_entity_id": "A",
+          "target_ids": [
+            "T",
+            "G",
+            "Z"
+          ],
+          "runtime_binding_id": "RB",
+          "runtime_action_id": "RA",
+          "locator": {
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          "endpoint": "POST /chat"
+        }
+      ]
+    },
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "expected": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    }
+  },
+  "static_cr_case": {
+    "name": "local",
+    "instance": {
+      "objects": [
+        {
+          "id": "A\rcontrol",
+          "type": "Agent",
+          "kind": "agent",
+          "entityRole": "interactiveAgent",
+          "sourceAgentId": "a",
+          "sourceId": "a",
+          "groundedAsset": [
+            "T"
+          ],
+          "groundedObjectGroup": [],
+          "responsibleZone": [],
+          "handoffTarget": [
+            "B"
+          ],
+          "providedCapability": [
+            "C"
+          ]
+        },
+        {
+          "id": "B",
+          "type": "Agent",
+          "kind": "agent",
+          "entityRole": "interactiveAgent",
+          "sourceAgentId": "b",
+          "sourceId": "b",
+          "groundedAsset": [],
+          "groundedObjectGroup": [],
+          "responsibleZone": [],
+          "handoffTarget": [
+            "A"
+          ],
+          "providedCapability": [
+            "C"
+          ]
+        },
+        {
+          "id": "T",
+          "type": "Entity",
+          "kind": "asset",
+          "entityRole": "sceneObject",
+          "sourceId": "object",
+          "objectGroup": [
+            "G"
+          ]
+        },
+        {
+          "id": "G",
+          "type": "Entity",
+          "kind": "asset",
+          "entityRole": "objectGroup",
+          "sourceObjectId": [
+            "object"
+          ]
+        },
+        {
+          "id": "Z",
+          "type": "Entity",
+          "kind": "zone",
+          "entityRole": "semanticZone",
+          "sourceObjectId": [
+            "object"
+          ]
+        },
+        {
+          "id": "S",
+          "type": "ScenarioStep",
+          "capabilityUse": [
+            "U"
+          ]
+        },
+        {
+          "id": "U",
+          "type": "CapabilityUse",
+          "provider": [
+            "A"
+          ],
+          "target": [
+            "T",
+            "G",
+            "Z"
+          ],
+          "typeRef": [
+            "C"
+          ]
+        },
+        {
+          "id": "C",
+          "type": "Capability"
+        },
+        {
+          "id": "RB",
+          "type": "RuntimeBinding",
+          "capability": [
+            "C"
+          ],
+          "runtimeAction": [
+            "RA"
+          ]
+        },
+        {
+          "id": "RA",
+          "type": "RuntimeAction",
+          "locator": [
+            "L"
+          ],
+          "inputSchema": [
+            "IS"
+          ],
+          "outputSchema": []
+        },
+        {
+          "id": "L",
+          "type": "RuntimeActionLocator",
+          "kind": "endpoint",
+          "value": "POST /chat"
+        },
+        {
+          "id": "IS",
+          "type": "SchemaReference",
+          "uri": "json",
+          "text": "{\"type\":\"object\"}"
+        }
+      ]
+    },
+    "trace": {
+      "runtime_actions": [
+        {
+          "action_kind": "chat",
+          "scenario_step_id": "S",
+          "capability_use_id": "U",
+          "capability_id": "C",
+          "provider_entity_id": "A",
+          "target_ids": [
+            "T",
+            "G",
+            "Z"
+          ],
+          "runtime_binding_id": "RB",
+          "runtime_action_id": "RA",
+          "locator": {
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          "endpoint": "POST /chat"
+        }
+      ]
+    },
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T",
+        "source_object_id": "object",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "expected": {
+      "decision": "ANSWER_LOCAL",
+      "reason": null,
+      "provider": "a",
+      "action": "RA"
+    }
+  },
+  "static_cr_original_verdict": {
+    "decision": "REJECT",
+    "reason": "E_NO_DECLARED_ACTION",
+    "provider": null,
+    "action": null
+  },
+  "static_cr_candidate_result": {
+    "label": "inherited CR static literal constructor failure",
+    "type": "RuntimeError",
+    "message": "<string>:1:8: error: unexpected token:\n\"\n"
+  },
+  "solve_failure_injection": "Replace _solve_query with a function raising RuntimeError while the current external is true; discard control, restore method, evaluate the base request.",
+  "add_failure_input": ") malformed ASP (",
+  "source_pin_failure": "Temporarily set the candidate EXPECTED_COMPILED_SHA256 in process to 64 zeroes; no file mutation.",
+  "all_expected_failures": [
+    {
+      "label": "active query failure",
+      "type": "RuntimeError",
+      "message": "injected active-query solve failure"
+    },
+    {
+      "label": "partial add failure",
+      "type": "RuntimeError",
+      "message": "parsing failed"
+    },
+    {
+      "label": "unsupported/{ x }.",
+      "type": "UnsupportedPartition",
+      "message": "Persistent rules require ordinary positive single heads"
+    },
+    {
+      "label": "unsupported/:- x.",
+      "type": "UnsupportedPartition",
+      "message": "Persistent rules require ordinary positive single heads"
+    },
+    {
+      "label": "unsupported/#external x.",
+      "type": "UnsupportedPartition",
+      "message": "Unsupported persistent statement: ASTType.External"
+    },
+    {
+      "label": "unsupported/#show x/0.",
+      "type": "UnsupportedPartition",
+      "message": "Unsupported persistent show directive"
+    },
+    {
+      "label": "source-pin-strict",
+      "type": "UnsupportedPartition",
+      "message": "Accepted compiled source differs from its pinned hash"
+    },
+    {
+      "label": "inherited CR static literal constructor failure",
+      "type": "RuntimeError",
+      "message": "<string>:1:8: error: unexpected token:\n\"\n"
+    }
+  ]
+}

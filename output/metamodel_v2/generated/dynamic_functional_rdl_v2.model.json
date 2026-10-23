@@ -1,0 +1,5673 @@
+{
+  "annex_mappings": [
+    {
+      "kind": "optional-semantic",
+      "source": "ScenarioStep",
+      "status": "preliminary",
+      "target": "LogicalTransformation / TransformationOccurrence"
+    },
+    {
+      "kind": "optional-semantic",
+      "source": "StepRelation.sequence",
+      "status": "preliminary",
+      "target": "LogicalPath.segment"
+    },
+    {
+      "kind": "optional-semantic",
+      "source": "ParallelGroup and fork/join",
+      "status": "preliminary",
+      "target": "LogicalPath.strand"
+    },
+    {
+      "kind": "association-bridge",
+      "source": "ScenarioEvent",
+      "status": "preliminary",
+      "target": "TransitionEvent.occurredExecutionEvent -> Timing::Event"
+    },
+    {
+      "kind": "optional-semantic",
+      "source": "ScenarioCondition value condition",
+      "status": "preliminary",
+      "target": "Quantification"
+    },
+    {
+      "kind": "optional-semantic",
+      "source": "ScenarioCondition timing condition",
+      "status": "preliminary",
+      "target": "LogicalTimeCondition"
+    },
+    {
+      "kind": "context-dependent",
+      "source": "StateAssertion",
+      "status": "preliminary",
+      "target": "State / Quantification / VVIntendedOutcome"
+    },
+    {
+      "kind": "optional-semantic",
+      "source": "Capability behavior",
+      "status": "preliminary",
+      "target": "BehaviorConstraintType"
+    }
+  ],
+  "associations": [
+    {
+      "composition": true,
+      "description": "Comment owned by EAElement.",
+      "id": "EAElement_ownedComment",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::Elements",
+      "source": "EAST-ADL::Elements::EAElement",
+      "source_multiplicity": "1",
+      "source_role": "commentOwner",
+      "target": "EAST-ADL::Elements::Comment",
+      "target_multiplicity": "*",
+      "target_role": "ownedComment"
+    },
+    {
+      "composition": true,
+      "description": "Relationships owned by a Context.",
+      "id": "Context_ownedRelationship",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::Elements",
+      "source": "EAST-ADL::Elements::Context",
+      "source_multiplicity": "1",
+      "source_role": "owningContext",
+      "target": "EAST-ADL::Elements::Relationship",
+      "target_multiplicity": "*",
+      "target_role": "ownedRelationship"
+    },
+    {
+      "composition": false,
+      "description": "Traceable specifications identified by a Context.",
+      "id": "Context_traceableSpecification",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Elements",
+      "source": "EAST-ADL::Elements::Context",
+      "source_multiplicity": "*",
+      "source_role": "context",
+      "target": "EAST-ADL::Elements::TraceableSpecification",
+      "target_multiplicity": "*",
+      "target_role": "traceableSpecification"
+    },
+    {
+      "composition": false,
+      "description": "Exact datatype-prototype typing.",
+      "id": "EADatatypePrototype_type",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Datatypes",
+      "source": "EAST-ADL::Datatypes::EADatatypePrototype",
+      "source_multiplicity": "*",
+      "source_role": "typedPrototype",
+      "stereotype": "isOfType",
+      "target": "EAST-ADL::Datatypes::EADatatype",
+      "target_multiplicity": "1",
+      "target_role": "type"
+    },
+    {
+      "composition": false,
+      "description": "Exact EAValue typing; EAValue remains non-identifiable.",
+      "id": "EAValue_type",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Values",
+      "source": "EAST-ADL::Values::EAValue",
+      "source_multiplicity": "*",
+      "source_role": "typedValue",
+      "stereotype": "isOfType",
+      "target": "EAST-ADL::Datatypes::EADatatype",
+      "target_multiplicity": "1",
+      "target_role": "type"
+    },
+    {
+      "composition": false,
+      "description": "Modes in which the Requirement is valid.",
+      "id": "Requirement_mode",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Requirements",
+      "source": "EAST-ADL::Requirements::Requirement",
+      "source_multiplicity": "*",
+      "source_role": "validRequirement",
+      "target": "EAST-ADL::Behavior::Mode",
+      "target_multiplicity": "*",
+      "target_role": "mode"
+    },
+    {
+      "composition": true,
+      "description": "Requirements owned by RequirementsModel.",
+      "id": "RequirementsModel_requirement",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::Requirements",
+      "source": "EAST-ADL::Requirements::RequirementsModel",
+      "source_multiplicity": "1",
+      "source_role": "requirementsModel",
+      "target": "EAST-ADL::Requirements::Requirement",
+      "target_multiplicity": "*",
+      "target_role": "requirement"
+    },
+    {
+      "composition": true,
+      "description": "UseCases owned by RequirementsModel.",
+      "id": "RequirementsModel_useCase",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::Requirements",
+      "source": "EAST-ADL::Requirements::RequirementsModel",
+      "source_multiplicity": "1",
+      "source_role": "requirementsModel",
+      "target": "EAST-ADL::UseCases::UseCase",
+      "target_multiplicity": "*",
+      "target_role": "useCase"
+    },
+    {
+      "composition": false,
+      "description": "Requirements refined by EAElements.",
+      "id": "Refine_refinedRequirement",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Requirements",
+      "source": "EAST-ADL::Requirements::Refine",
+      "source_multiplicity": "*",
+      "source_role": "refine",
+      "target": "EAST-ADL::Requirements::Requirement",
+      "target_multiplicity": "1..*",
+      "target_role": "refinedRequirement"
+    },
+    {
+      "composition": false,
+      "description": "EAElements refining the Requirements; Requirement/RequirementContainer are excluded.",
+      "id": "Refine_refinedBy",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Requirements",
+      "source": "EAST-ADL::Requirements::Refine",
+      "source_multiplicity": "*",
+      "source_role": "refine",
+      "stereotype": "instanceRef",
+      "target": "EAST-ADL::Elements::EAElement",
+      "target_multiplicity": "1..*",
+      "target_role": "refinedBy"
+    },
+    {
+      "composition": false,
+      "description": "Requirements satisfied by the relationship.",
+      "id": "Satisfy_satisfiedRequirement",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Requirements",
+      "source": "EAST-ADL::Requirements::Satisfy",
+      "source_multiplicity": "*",
+      "source_role": "satisfy",
+      "target": "EAST-ADL::Requirements::Requirement",
+      "target_multiplicity": "*",
+      "target_role": "satisfiedRequirement"
+    },
+    {
+      "composition": false,
+      "description": "UseCases satisfied by the relationship.",
+      "id": "Satisfy_satisfiedUseCase",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Requirements",
+      "source": "EAST-ADL::Requirements::Satisfy",
+      "source_multiplicity": "*",
+      "source_role": "satisfy",
+      "target": "EAST-ADL::UseCases::UseCase",
+      "target_multiplicity": "*",
+      "target_role": "satisfiedUseCase"
+    },
+    {
+      "composition": false,
+      "description": "Identifiables intended to satisfy the supplier.",
+      "id": "Satisfy_satisfiedBy",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Requirements",
+      "source": "EAST-ADL::Requirements::Satisfy",
+      "source_multiplicity": "*",
+      "source_role": "satisfy",
+      "stereotype": "instanceRef",
+      "target": "EAST-ADL::Elements::Identifiable",
+      "target_multiplicity": "1..*",
+      "target_role": "satisfiedBy"
+    },
+    {
+      "composition": true,
+      "description": "ExtensionPoints owned by a UseCase.",
+      "id": "UseCase_extensionPoint",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::UseCases",
+      "source": "EAST-ADL::UseCases::UseCase",
+      "source_multiplicity": "1",
+      "source_role": "useCase",
+      "target": "EAST-ADL::UseCases::ExtensionPoint",
+      "target_multiplicity": "*",
+      "target_role": "extensionPoint"
+    },
+    {
+      "composition": true,
+      "description": "Include relationships owned by a UseCase.",
+      "id": "UseCase_include",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::UseCases",
+      "source": "EAST-ADL::UseCases::UseCase",
+      "source_multiplicity": "1",
+      "source_role": "includingUseCase",
+      "target": "EAST-ADL::UseCases::Include",
+      "target_multiplicity": "*",
+      "target_role": "include"
+    },
+    {
+      "composition": true,
+      "description": "Extend relationships owned by the extending UseCase.",
+      "id": "UseCase_extend",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::UseCases",
+      "source": "EAST-ADL::UseCases::UseCase",
+      "source_multiplicity": "1",
+      "source_role": "extendingUseCase",
+      "target": "EAST-ADL::UseCases::Extend",
+      "target_multiplicity": "*",
+      "target_role": "extend"
+    },
+    {
+      "composition": false,
+      "description": "UseCase whose behavior is inserted.",
+      "id": "Include_addition",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::UseCases",
+      "source": "EAST-ADL::UseCases::Include",
+      "source_multiplicity": "*",
+      "source_role": "include",
+      "target": "EAST-ADL::UseCases::UseCase",
+      "target_multiplicity": "1",
+      "target_role": "addition"
+    },
+    {
+      "composition": false,
+      "description": "UseCase being extended.",
+      "id": "Extend_extendedCase",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::UseCases",
+      "source": "EAST-ADL::UseCases::Extend",
+      "source_multiplicity": "*",
+      "source_role": "extend",
+      "target": "EAST-ADL::UseCases::UseCase",
+      "target_multiplicity": "1",
+      "target_role": "extendedCase"
+    },
+    {
+      "composition": false,
+      "description": "ExtensionPoints of the extendedCase.",
+      "id": "Extend_extensionLocation",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::UseCases",
+      "source": "EAST-ADL::UseCases::Extend",
+      "source_multiplicity": "*",
+      "source_role": "extend",
+      "target": "EAST-ADL::UseCases::ExtensionPoint",
+      "target_multiplicity": "1..*",
+      "target_role": "extensionLocation"
+    },
+    {
+      "composition": false,
+      "description": "Exactly two FunctionPorts connected through concrete prototype paths.",
+      "id": "FunctionConnector_port",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::FunctionConnector",
+      "source_multiplicity": "*",
+      "source_role": "functionConnector",
+      "stereotype": "instanceRef",
+      "target": "EAST-ADL::FunctionModeling::FunctionPort",
+      "target_multiplicity": "2",
+      "target_role": "port"
+    },
+    {
+      "composition": false,
+      "description": "Exact FunctionFlowPort datatype.",
+      "id": "FunctionFlowPort_type",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::FunctionFlowPort",
+      "source_multiplicity": "*",
+      "source_role": "typedPort",
+      "stereotype": "isOfType",
+      "target": "EAST-ADL::Datatypes::EADatatype",
+      "target_multiplicity": "1",
+      "target_role": "type"
+    },
+    {
+      "composition": true,
+      "description": "Optional typed default value.",
+      "id": "FunctionFlowPort_defaultValue",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::FunctionFlowPort",
+      "source_multiplicity": "1",
+      "source_role": "functionFlowPort",
+      "target": "EAST-ADL::Values::EAValue",
+      "target_multiplicity": "0..1",
+      "target_role": "defaultValue"
+    },
+    {
+      "composition": true,
+      "description": "FunctionPorts owned by FunctionType.",
+      "id": "FunctionType_port",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::FunctionType",
+      "source_multiplicity": "1",
+      "source_role": "functionType",
+      "target": "EAST-ADL::FunctionModeling::FunctionPort",
+      "target_multiplicity": "*",
+      "target_role": "port"
+    },
+    {
+      "composition": true,
+      "description": "FunctionConnectors owned by FunctionType.",
+      "id": "FunctionType_connector",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::FunctionType",
+      "source_multiplicity": "1",
+      "source_role": "functionType",
+      "target": "EAST-ADL::FunctionModeling::FunctionConnector",
+      "target_multiplicity": "*",
+      "target_role": "connector"
+    },
+    {
+      "composition": true,
+      "description": "PortGroups owned by FunctionType.",
+      "id": "FunctionType_portGroup",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::FunctionType",
+      "source_multiplicity": "1",
+      "source_role": "functionType",
+      "target": "EAST-ADL::FunctionModeling::PortGroup",
+      "target_multiplicity": "*",
+      "target_role": "portGroup"
+    },
+    {
+      "composition": false,
+      "description": "FunctionPorts grouped by PortGroup.",
+      "id": "PortGroup_port",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::PortGroup",
+      "source_multiplicity": "*",
+      "source_role": "portGroup",
+      "target": "EAST-ADL::FunctionModeling::FunctionPort",
+      "target_multiplicity": "*",
+      "target_role": "port"
+    },
+    {
+      "composition": true,
+      "description": "Nested PortGroups.",
+      "id": "PortGroup_portGroup",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::PortGroup",
+      "source_multiplicity": "0..1",
+      "source_role": "parentPortGroup",
+      "target": "EAST-ADL::FunctionModeling::PortGroup",
+      "target_multiplicity": "*",
+      "target_role": "portGroup"
+    },
+    {
+      "composition": false,
+      "description": "Exact analysis prototype typing.",
+      "id": "AnalysisFunctionPrototype_type",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::AnalysisFunctionPrototype",
+      "source_multiplicity": "*",
+      "source_role": "typedPrototype",
+      "stereotype": "isOfType",
+      "target": "EAST-ADL::FunctionModeling::AnalysisFunctionType",
+      "target_multiplicity": "1",
+      "target_role": "type"
+    },
+    {
+      "composition": true,
+      "description": "Analysis function parts.",
+      "id": "AnalysisFunctionType_part",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::AnalysisFunctionType",
+      "source_multiplicity": "1",
+      "source_role": "analysisFunctionType",
+      "target": "EAST-ADL::FunctionModeling::AnalysisFunctionPrototype",
+      "target_multiplicity": "*",
+      "target_role": "part"
+    },
+    {
+      "composition": false,
+      "description": "Exact design prototype typing.",
+      "id": "DesignFunctionPrototype_type",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::DesignFunctionPrototype",
+      "source_multiplicity": "*",
+      "source_role": "typedPrototype",
+      "stereotype": "isOfType",
+      "target": "EAST-ADL::FunctionModeling::DesignFunctionType",
+      "target_multiplicity": "1",
+      "target_role": "type"
+    },
+    {
+      "composition": true,
+      "description": "Design function parts.",
+      "id": "DesignFunctionType_part",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::FunctionModeling",
+      "source": "EAST-ADL::FunctionModeling::DesignFunctionType",
+      "source_multiplicity": "1",
+      "source_role": "designFunctionType",
+      "target": "EAST-ADL::FunctionModeling::DesignFunctionPrototype",
+      "target_multiplicity": "*",
+      "target_role": "part"
+    },
+    {
+      "composition": true,
+      "description": "FAA root is a prototype, not a metaclass.",
+      "id": "AnalysisLevel_functionalAnalysisArchitecture",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::SystemModeling",
+      "source": "EAST-ADL::SystemModeling::AnalysisLevel",
+      "source_multiplicity": "1",
+      "source_role": "analysisLevel",
+      "target": "EAST-ADL::FunctionModeling::AnalysisFunctionPrototype",
+      "target_multiplicity": "0..1",
+      "target_role": "functionalAnalysisArchitecture"
+    },
+    {
+      "composition": true,
+      "description": "FDA root is a prototype, not a metaclass.",
+      "id": "DesignLevel_functionalDesignArchitecture",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::SystemModeling",
+      "source": "EAST-ADL::SystemModeling::DesignLevel",
+      "source_multiplicity": "1",
+      "source_role": "designLevel",
+      "target": "EAST-ADL::FunctionModeling::DesignFunctionPrototype",
+      "target_multiplicity": "0..1",
+      "target_role": "functionalDesignArchitecture"
+    },
+    {
+      "composition": false,
+      "description": "FunctionType whose behavior is described.",
+      "id": "FunctionBehavior_function",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Behavior",
+      "source": "EAST-ADL::Behavior::FunctionBehavior",
+      "source_multiplicity": "*",
+      "source_role": "functionBehavior",
+      "target": "EAST-ADL::FunctionModeling::FunctionType",
+      "target_multiplicity": "0..1",
+      "target_role": "function"
+    },
+    {
+      "composition": false,
+      "description": "Modes in which FunctionBehavior may execute.",
+      "id": "FunctionBehavior_mode",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Behavior",
+      "source": "EAST-ADL::Behavior::FunctionBehavior",
+      "source_multiplicity": "*",
+      "source_role": "functionBehavior",
+      "target": "EAST-ADL::Behavior::Mode",
+      "target_multiplicity": "*",
+      "target_role": "mode"
+    },
+    {
+      "composition": false,
+      "description": "Input FunctionFlowPorts acting as event triggers.",
+      "id": "FunctionTrigger_port",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Behavior",
+      "source": "EAST-ADL::Behavior::FunctionTrigger",
+      "source_multiplicity": "*",
+      "source_role": "functionTrigger",
+      "target": "EAST-ADL::FunctionModeling::FunctionPort",
+      "target_multiplicity": "*",
+      "target_role": "port"
+    },
+    {
+      "composition": false,
+      "description": "FunctionType targeted by the trigger.",
+      "id": "FunctionTrigger_function",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Behavior",
+      "source": "EAST-ADL::Behavior::FunctionTrigger",
+      "source_multiplicity": "*",
+      "source_role": "functionTrigger",
+      "target": "EAST-ADL::FunctionModeling::FunctionType",
+      "target_multiplicity": "0..1",
+      "target_role": "function"
+    },
+    {
+      "composition": false,
+      "description": "FunctionPrototype targeted by the trigger.",
+      "id": "FunctionTrigger_functionPrototype",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Behavior",
+      "source": "EAST-ADL::Behavior::FunctionTrigger",
+      "source_multiplicity": "*",
+      "source_role": "functionTrigger",
+      "target": "EAST-ADL::FunctionModeling::FunctionPrototype",
+      "target_multiplicity": "0..1",
+      "target_role": "functionPrototype"
+    },
+    {
+      "composition": false,
+      "description": "Modes in which the trigger is active.",
+      "id": "FunctionTrigger_mode",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::Behavior",
+      "source": "EAST-ADL::Behavior::FunctionTrigger",
+      "source_multiplicity": "*",
+      "source_role": "functionTrigger",
+      "target": "EAST-ADL::Behavior::Mode",
+      "target_multiplicity": "*",
+      "target_role": "mode"
+    },
+    {
+      "composition": true,
+      "description": "VVTargets owned by the exact container.",
+      "id": "VerificationValidation_vvTarget",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VerificationValidation",
+      "source_multiplicity": "1",
+      "source_role": "verificationValidation",
+      "target": "EAST-ADL::VerificationValidation::VVTarget",
+      "target_multiplicity": "*",
+      "target_role": "vvTarget"
+    },
+    {
+      "composition": true,
+      "description": "VVCases owned only by the exact container.",
+      "id": "VerificationValidation_vvCase",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VerificationValidation",
+      "source_multiplicity": "1",
+      "source_role": "verificationValidation",
+      "target": "EAST-ADL::VerificationValidation::VVCase",
+      "target_multiplicity": "*",
+      "target_role": "vvCase"
+    },
+    {
+      "composition": true,
+      "description": "Verify relationships owned by the exact container.",
+      "id": "VerificationValidation_verify",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VerificationValidation",
+      "source_multiplicity": "1",
+      "source_role": "verificationValidation",
+      "target": "EAST-ADL::VerificationValidation::Verify",
+      "target_multiplicity": "*",
+      "target_role": "verify"
+    },
+    {
+      "composition": false,
+      "description": "Requirements being verified.",
+      "id": "Verify_verifiedRequirement",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::Verify",
+      "source_multiplicity": "*",
+      "source_role": "verify",
+      "target": "EAST-ADL::Requirements::Requirement",
+      "target_multiplicity": "1..*",
+      "target_role": "verifiedRequirement"
+    },
+    {
+      "composition": false,
+      "description": "Optional abstract procedures verifying the Requirements.",
+      "id": "Verify_verifiedByProcedure",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::Verify",
+      "source_multiplicity": "*",
+      "source_role": "verify",
+      "target": "EAST-ADL::VerificationValidation::VVProcedure",
+      "target_multiplicity": "*",
+      "target_role": "verifiedByProcedure"
+    },
+    {
+      "composition": false,
+      "description": "VVCases verifying the Requirements.",
+      "id": "Verify_verifiedByCase",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::Verify",
+      "source_multiplicity": "*",
+      "source_role": "verify",
+      "target": "EAST-ADL::VerificationValidation::VVCase",
+      "target_multiplicity": "1..*",
+      "target_role": "verifiedByCase"
+    },
+    {
+      "composition": false,
+      "description": "Intended outcome to be matched.",
+      "id": "VVActualOutcome_intendedOutcome",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVActualOutcome",
+      "source_multiplicity": "*",
+      "source_role": "actualOutcome",
+      "target": "EAST-ADL::VerificationValidation::VVIntendedOutcome",
+      "target_multiplicity": "0..1",
+      "target_role": "intendedOutcome"
+    },
+    {
+      "composition": true,
+      "description": "Ordered VVProcedures owned by a VVCase.",
+      "id": "VVCase_vvProcedure",
+      "ordered": true,
+      "owner": "source",
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVCase",
+      "source_multiplicity": "1",
+      "source_role": "vvCase",
+      "target": "EAST-ADL::VerificationValidation::VVProcedure",
+      "target_multiplicity": "*",
+      "target_role": "vvProcedure"
+    },
+    {
+      "composition": false,
+      "description": "Concrete testing environments used by a case.",
+      "id": "VVCase_vvTarget",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVCase",
+      "source_multiplicity": "*",
+      "source_role": "vvCase",
+      "target": "EAST-ADL::VerificationValidation::VVTarget",
+      "target_multiplicity": "*",
+      "target_role": "vvTarget"
+    },
+    {
+      "composition": true,
+      "description": "Logs owned by a concrete VVCase.",
+      "id": "VVCase_vvLog",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVCase",
+      "source_multiplicity": "1",
+      "source_role": "vvCase",
+      "target": "EAST-ADL::VerificationValidation::VVLog",
+      "target_multiplicity": "*",
+      "target_role": "vvLog"
+    },
+    {
+      "composition": false,
+      "description": "Optional abstract case identified from a concrete case.",
+      "id": "VVCase_abstractVVCase",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVCase",
+      "source_multiplicity": "*",
+      "source_role": "concreteVVCase",
+      "target": "EAST-ADL::VerificationValidation::VVCase",
+      "target_multiplicity": "0..1",
+      "target_role": "abstractVVCase"
+    },
+    {
+      "composition": false,
+      "description": "Primary subjects under verification; distinct from VVTarget.element.",
+      "id": "VVCase_vvSubject",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVCase",
+      "source_multiplicity": "*",
+      "source_role": "vvCase",
+      "stereotype": "instanceRef",
+      "target": "EAST-ADL::Elements::Identifiable",
+      "target_multiplicity": "*",
+      "target_role": "vvSubject"
+    },
+    {
+      "composition": false,
+      "description": "Procedure performed for this log.",
+      "id": "VVLog_performedVVProcedure",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVLog",
+      "source_multiplicity": "*",
+      "source_role": "vvLog",
+      "target": "EAST-ADL::VerificationValidation::VVProcedure",
+      "target_multiplicity": "1",
+      "target_role": "performedVVProcedure"
+    },
+    {
+      "composition": true,
+      "description": "Actual results exist only inside execution logs.",
+      "id": "VVLog_vvActualOutcome",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVLog",
+      "source_multiplicity": "1",
+      "source_role": "vvLog",
+      "target": "EAST-ADL::VerificationValidation::VVActualOutcome",
+      "target_multiplicity": "*",
+      "target_role": "vvActualOutcome"
+    },
+    {
+      "composition": false,
+      "description": "Optional abstract procedure identified from a concrete procedure.",
+      "id": "VVProcedure_abstractVVProcedure",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVProcedure",
+      "source_multiplicity": "*",
+      "source_role": "concreteVVProcedure",
+      "target": "EAST-ADL::VerificationValidation::VVProcedure",
+      "target_multiplicity": "0..1",
+      "target_role": "abstractVVProcedure"
+    },
+    {
+      "composition": true,
+      "description": "Stimuli of a concrete procedure.",
+      "id": "VVProcedure_vvStimuli",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVProcedure",
+      "source_multiplicity": "1",
+      "source_role": "vvProcedure",
+      "target": "EAST-ADL::VerificationValidation::VVStimuli",
+      "target_multiplicity": "*",
+      "target_role": "vvStimuli"
+    },
+    {
+      "composition": true,
+      "description": "Intended outcomes of a concrete procedure.",
+      "id": "VVProcedure_vvIntendedOutcome",
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVProcedure",
+      "source_multiplicity": "1",
+      "source_role": "vvProcedure",
+      "target": "EAST-ADL::VerificationValidation::VVIntendedOutcome",
+      "target_multiplicity": "*",
+      "target_role": "vvIntendedOutcome"
+    },
+    {
+      "composition": false,
+      "description": "Elements realized by the testing environment; may include support elements or none.",
+      "id": "VVTarget_element",
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::VerificationValidation",
+      "source": "EAST-ADL::VerificationValidation::VVTarget",
+      "source_multiplicity": "*",
+      "source_role": "vvTarget",
+      "stereotype": "instanceRef",
+      "target": "EAST-ADL::Elements::Identifiable",
+      "target_multiplicity": "*",
+      "target_role": "element"
+    },
+    {
+      "composition": true,
+      "description": "Single requirements/use-case container of the model.",
+      "id": "DynamicFunctionalModel_requirementsModel",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::DynamicFunctionalModel",
+      "source_multiplicity": "1",
+      "source_role": "dynamicFunctionalModel",
+      "target": "EAST-ADL::Requirements::RequirementsModel",
+      "target_multiplicity": "1",
+      "target_role": "requirementsModel"
+    },
+    {
+      "composition": true,
+      "description": "Actors owned by the RCM root without modifying EAST-ADL Actor.",
+      "id": "DynamicFunctionalModel_actor",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::DynamicFunctionalModel",
+      "source_multiplicity": "1",
+      "source_role": "dynamicFunctionalModel",
+      "target": "EAST-ADL::UseCases::Actor",
+      "target_multiplicity": "*",
+      "target_role": "actor"
+    },
+    {
+      "composition": true,
+      "description": "Scenarios owned by the root; UseCases reference them through a relationship.",
+      "id": "DynamicFunctionalModel_scenario",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::DynamicFunctionalModel",
+      "source_multiplicity": "1",
+      "source_role": "dynamicFunctionalModel",
+      "target": "RCM::V2::Core::Scenario",
+      "target_multiplicity": "*",
+      "target_role": "scenario"
+    },
+    {
+      "composition": true,
+      "description": "Reusable scenario events owned by the root.",
+      "id": "DynamicFunctionalModel_scenarioEvent",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::DynamicFunctionalModel",
+      "source_multiplicity": "1",
+      "source_role": "dynamicFunctionalModel",
+      "target": "RCM::V2::Core::ScenarioEvent",
+      "target_multiplicity": "*",
+      "target_role": "scenarioEvent"
+    },
+    {
+      "composition": true,
+      "description": "Reusable typed conditions owned by the root.",
+      "id": "DynamicFunctionalModel_scenarioCondition",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::DynamicFunctionalModel",
+      "source_multiplicity": "1",
+      "source_role": "dynamicFunctionalModel",
+      "target": "RCM::V2::Core::ScenarioCondition",
+      "target_multiplicity": "*",
+      "target_role": "scenarioCondition"
+    },
+    {
+      "composition": true,
+      "description": "Reusable assertions of every concrete Assertion kind owned by the root.",
+      "id": "DynamicFunctionalModel_assertion",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::DynamicFunctionalModel",
+      "source_multiplicity": "1",
+      "source_role": "dynamicFunctionalModel",
+      "target": "RCM::V2::Core::Assertion",
+      "target_multiplicity": "*",
+      "target_role": "assertion"
+    },
+    {
+      "composition": true,
+      "description": "Entities owned by the root.",
+      "id": "DynamicFunctionalModel_entity",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::DynamicFunctionalModel",
+      "source_multiplicity": "1",
+      "source_role": "dynamicFunctionalModel",
+      "target": "RCM::V2::Core::Entity",
+      "target_multiplicity": "*",
+      "target_role": "entity"
+    },
+    {
+      "composition": true,
+      "description": "Capabilities owned by the root.",
+      "id": "DynamicFunctionalModel_capability",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::DynamicFunctionalModel",
+      "source_multiplicity": "1",
+      "source_role": "dynamicFunctionalModel",
+      "target": "RCM::V2::Core::Capability",
+      "target_multiplicity": "*",
+      "target_role": "capability"
+    },
+    {
+      "composition": true,
+      "description": "Runtime bindings owned by the root.",
+      "id": "DynamicFunctionalModel_runtimeBinding",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::DynamicFunctionalModel",
+      "source_multiplicity": "1",
+      "source_role": "dynamicFunctionalModel",
+      "target": "RCM::V2::Core::RuntimeBinding",
+      "target_multiplicity": "*",
+      "target_role": "runtimeBinding"
+    },
+    {
+      "composition": true,
+      "description": "Exactly one exact EAST-ADL V&V container; cases are not double-composed by the root.",
+      "id": "DynamicFunctionalModel_verificationValidation",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::DynamicFunctionalModel",
+      "source_multiplicity": "1",
+      "source_role": "dynamicFunctionalModel",
+      "target": "EAST-ADL::VerificationValidation::VerificationValidation",
+      "target_multiplicity": "1",
+      "target_role": "verificationValidation"
+    },
+    {
+      "composition": false,
+      "description": "Unchanged EAST-ADL UseCase being specified.",
+      "id": "UseCaseScenarioSpecification_useCase",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::UseCaseScenarioSpecification",
+      "source_multiplicity": "*",
+      "source_role": "specification",
+      "target": "EAST-ADL::UseCases::UseCase",
+      "target_multiplicity": "1",
+      "target_role": "useCase"
+    },
+    {
+      "composition": false,
+      "description": "One RCM scenario per relationship; zero or more relationships may specify a UseCase.",
+      "id": "UseCaseScenarioSpecification_scenario",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::UseCaseScenarioSpecification",
+      "source_multiplicity": "*",
+      "source_role": "specification",
+      "target": "RCM::V2::Core::Scenario",
+      "target_multiplicity": "1",
+      "target_role": "scenario"
+    },
+    {
+      "composition": false,
+      "description": "External role participating in a UseCase.",
+      "id": "ActorParticipation_actor",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ActorParticipation",
+      "source_multiplicity": "*",
+      "source_role": "participation",
+      "target": "EAST-ADL::UseCases::Actor",
+      "target_multiplicity": "1",
+      "target_role": "actor"
+    },
+    {
+      "composition": false,
+      "description": "UseCase in which the Actor participates.",
+      "id": "ActorParticipation_useCase",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ActorParticipation",
+      "source_multiplicity": "*",
+      "source_role": "participation",
+      "target": "EAST-ADL::UseCases::UseCase",
+      "target_multiplicity": "1",
+      "target_role": "useCase"
+    },
+    {
+      "composition": false,
+      "description": "Boolean condition of the RCM Extend specialization.",
+      "id": "ConditionalExtend_condition",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ConditionalExtend",
+      "source_multiplicity": "*",
+      "source_role": "conditionalExtend",
+      "target": "RCM::V2::Core::ScenarioCondition",
+      "target_multiplicity": "1",
+      "target_role": "condition"
+    },
+    {
+      "composition": false,
+      "description": "Alternative/exception flow's main scenario.",
+      "id": "Scenario_variantOf",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Scenario",
+      "source_multiplicity": "*",
+      "source_role": "variant",
+      "target": "RCM::V2::Core::Scenario",
+      "target_multiplicity": "0..1",
+      "target_role": "variantOf"
+    },
+    {
+      "composition": false,
+      "description": "Reusable preconditions.",
+      "id": "Scenario_precondition",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Scenario",
+      "source_multiplicity": "*",
+      "source_role": "scenario",
+      "target": "RCM::V2::Core::ScenarioCondition",
+      "target_multiplicity": "*",
+      "target_role": "precondition"
+    },
+    {
+      "composition": false,
+      "description": "Reusable postconditions.",
+      "id": "Scenario_postcondition",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Scenario",
+      "source_multiplicity": "*",
+      "source_role": "scenario",
+      "target": "RCM::V2::Core::ScenarioCondition",
+      "target_multiplicity": "*",
+      "target_role": "postcondition"
+    },
+    {
+      "composition": true,
+      "description": "Steps owned by a scenario; storage order is not control-flow semantics.",
+      "id": "Scenario_step",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Scenario",
+      "source_multiplicity": "1",
+      "source_role": "scenario",
+      "target": "RCM::V2::Core::ScenarioStep",
+      "target_multiplicity": "1..*",
+      "target_role": "step"
+    },
+    {
+      "composition": true,
+      "description": "Canonical control-flow edges owned by a scenario.",
+      "id": "Scenario_stepRelation",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Scenario",
+      "source_multiplicity": "1",
+      "source_role": "scenario",
+      "target": "RCM::V2::Core::StepRelation",
+      "target_multiplicity": "*",
+      "target_role": "stepRelation"
+    },
+    {
+      "composition": true,
+      "description": "Structural parallel groups owned by a scenario.",
+      "id": "Scenario_parallelGroup",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Scenario",
+      "source_multiplicity": "1",
+      "source_role": "scenario",
+      "target": "RCM::V2::Core::ParallelGroup",
+      "target_multiplicity": "*",
+      "target_role": "parallelGroup"
+    },
+    {
+      "composition": false,
+      "description": "Concrete executing entities.",
+      "id": "ScenarioStep_performedBy",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ScenarioStep",
+      "source_multiplicity": "*",
+      "source_role": "scenarioStep",
+      "target": "RCM::V2::Core::Entity",
+      "target_multiplicity": "*",
+      "target_role": "performedBy"
+    },
+    {
+      "composition": false,
+      "description": "External roles involved in the step, kept distinct from performers.",
+      "id": "ScenarioStep_actorRole",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ScenarioStep",
+      "source_multiplicity": "*",
+      "source_role": "scenarioStep",
+      "target": "EAST-ADL::UseCases::Actor",
+      "target_multiplicity": "*",
+      "target_role": "actorRole"
+    },
+    {
+      "composition": false,
+      "description": "Events triggering the step.",
+      "id": "ScenarioStep_triggeredBy",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ScenarioStep",
+      "source_multiplicity": "*",
+      "source_role": "scenarioStep",
+      "target": "RCM::V2::Core::ScenarioEvent",
+      "target_multiplicity": "*",
+      "target_role": "triggeredBy"
+    },
+    {
+      "composition": false,
+      "description": "Boolean guard for executing the step.",
+      "id": "ScenarioStep_guard",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ScenarioStep",
+      "source_multiplicity": "*",
+      "source_role": "scenarioStep",
+      "target": "RCM::V2::Core::ScenarioCondition",
+      "target_multiplicity": "0..1",
+      "target_role": "guard"
+    },
+    {
+      "composition": false,
+      "description": "Reusable assertions established by the step; legacy resultingState is a StateAssertion-only projection.",
+      "id": "ScenarioStep_resultingAssertion",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ScenarioStep",
+      "source_multiplicity": "*",
+      "source_role": "scenarioStep",
+      "target": "RCM::V2::Core::Assertion",
+      "target_multiplicity": "*",
+      "target_role": "resultingAssertion"
+    },
+    {
+      "composition": true,
+      "description": "Optional probability value, distinct from UML multiplicity.",
+      "id": "ScenarioStep_occurrenceProbability",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ScenarioStep",
+      "source_multiplicity": "1",
+      "source_role": "scenarioStep",
+      "target": "RCM::V2::Core::ProbabilityValue",
+      "target_multiplicity": "0..1",
+      "target_role": "occurrenceProbability"
+    },
+    {
+      "composition": true,
+      "description": "Capability occurrences required by the step.",
+      "id": "ScenarioStep_capabilityUse",
+      "ordered": true,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ScenarioStep",
+      "source_multiplicity": "1",
+      "source_role": "scenarioStep",
+      "target": "RCM::V2::Core::CapabilityUse",
+      "target_multiplicity": "*",
+      "target_role": "capabilityUse"
+    },
+    {
+      "composition": false,
+      "description": "Control-flow source.",
+      "id": "StepRelation_sourceStep",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::StepRelation",
+      "source_multiplicity": "*",
+      "source_role": "outgoingRelation",
+      "target": "RCM::V2::Core::ScenarioStep",
+      "target_multiplicity": "1",
+      "target_role": "sourceStep"
+    },
+    {
+      "composition": false,
+      "description": "Control-flow target.",
+      "id": "StepRelation_targetStep",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::StepRelation",
+      "source_multiplicity": "*",
+      "source_role": "incomingRelation",
+      "target": "RCM::V2::Core::ScenarioStep",
+      "target_multiplicity": "1",
+      "target_role": "targetStep"
+    },
+    {
+      "composition": false,
+      "description": "Optional local branch guard.",
+      "id": "StepRelation_guard",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::StepRelation",
+      "source_multiplicity": "*",
+      "source_role": "stepRelation",
+      "target": "RCM::V2::Core::ScenarioCondition",
+      "target_multiplicity": "0..1",
+      "target_role": "guard"
+    },
+    {
+      "composition": true,
+      "description": "Optional local branch probability.",
+      "id": "StepRelation_probability",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::StepRelation",
+      "source_multiplicity": "1",
+      "source_role": "stepRelation",
+      "target": "RCM::V2::Core::ProbabilityValue",
+      "target_multiplicity": "0..1",
+      "target_role": "probability"
+    },
+    {
+      "composition": false,
+      "description": "Structurally grouped parallel steps.",
+      "id": "ParallelGroup_memberStep",
+      "ordered": true,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ParallelGroup",
+      "source_multiplicity": "*",
+      "source_role": "parallelGroup",
+      "target": "RCM::V2::Core::ScenarioStep",
+      "target_multiplicity": "2..*",
+      "target_role": "memberStep"
+    },
+    {
+      "composition": false,
+      "description": "Exactly one identifiable subject of every concrete Assertion.",
+      "id": "Assertion_subject",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Assertion",
+      "source_multiplicity": "*",
+      "source_role": "assertion",
+      "stereotype": "instanceRef",
+      "target": "EAST-ADL::Elements::Identifiable",
+      "target_multiplicity": "1",
+      "target_role": "subject"
+    },
+    {
+      "composition": true,
+      "description": "Exactly one typed EAST-ADL expression evaluated by the Assertion.",
+      "id": "Assertion_expression",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Assertion",
+      "source_multiplicity": "1",
+      "source_role": "assertion",
+      "target": "EAST-ADL::Values::EAExpression",
+      "target_multiplicity": "1",
+      "target_role": "expression"
+    },
+    {
+      "composition": false,
+      "description": "Actor roles played by any Entity, including but not limited to Agent.",
+      "id": "Entity_playsActor",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Entity",
+      "source_multiplicity": "*",
+      "source_role": "entity",
+      "target": "EAST-ADL::UseCases::Actor",
+      "target_multiplicity": "*",
+      "target_role": "playsActor"
+    },
+    {
+      "composition": false,
+      "description": "Capabilities provided by an Entity.",
+      "id": "Entity_providedCapability",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Entity",
+      "source_multiplicity": "*",
+      "source_role": "provider",
+      "target": "RCM::V2::Core::Capability",
+      "target_multiplicity": "*",
+      "target_role": "providedCapability"
+    },
+    {
+      "composition": false,
+      "description": "Optional object-group Entity used by the existing Unity projection.",
+      "id": "Entity_objectGroup",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Entity",
+      "source_multiplicity": "*",
+      "source_role": "groupMember",
+      "target": "RCM::V2::Core::Entity",
+      "target_multiplicity": "0..1",
+      "target_role": "objectGroup"
+    },
+    {
+      "composition": false,
+      "description": "Permitted agent handoff targets.",
+      "id": "Agent_handoffTarget",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Agent",
+      "source_multiplicity": "*",
+      "source_role": "handoffSource",
+      "target": "RCM::V2::Core::Agent",
+      "target_multiplicity": "*",
+      "target_role": "handoffTarget"
+    },
+    {
+      "composition": false,
+      "description": "Zone entities for which the Agent is responsible.",
+      "id": "Agent_responsibleZone",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Agent",
+      "source_multiplicity": "*",
+      "source_role": "responsibleAgent",
+      "target": "RCM::V2::Core::Entity",
+      "target_multiplicity": "*",
+      "target_role": "responsibleZone"
+    },
+    {
+      "composition": false,
+      "description": "Asset entities grounded for the Agent.",
+      "id": "Agent_groundedAsset",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Agent",
+      "source_multiplicity": "*",
+      "source_role": "groundedAgent",
+      "target": "RCM::V2::Core::Entity",
+      "target_multiplicity": "*",
+      "target_role": "groundedAsset"
+    },
+    {
+      "composition": false,
+      "description": "Object-group entities grounded for the Agent.",
+      "id": "Agent_groundedObjectGroup",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Agent",
+      "source_multiplicity": "*",
+      "source_role": "groundedAgent",
+      "target": "RCM::V2::Core::Entity",
+      "target_multiplicity": "*",
+      "target_role": "groundedObjectGroup"
+    },
+    {
+      "composition": false,
+      "description": "Formal Capability type/prototype pattern.",
+      "id": "CapabilityUse_type",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityUse",
+      "source_multiplicity": "*",
+      "source_role": "typedCapabilityUse",
+      "stereotype": "isOfType",
+      "target": "RCM::V2::Core::Capability",
+      "target_multiplicity": "1",
+      "target_role": "type"
+    },
+    {
+      "composition": false,
+      "description": "Explicit performer of this CapabilityUse; optional only in the compatibility core and mandatory in the executable profile.",
+      "id": "CapabilityUse_provider",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityUse",
+      "source_multiplicity": "*",
+      "source_role": "providedCapabilityUse",
+      "target": "RCM::V2::Core::Entity",
+      "target_multiplicity": "0..1",
+      "target_role": "provider"
+    },
+    {
+      "composition": false,
+      "description": "Optional identifiable interaction or observation targets of this CapabilityUse.",
+      "id": "CapabilityUse_target",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityUse",
+      "source_multiplicity": "*",
+      "source_role": "targetedCapabilityUse",
+      "stereotype": "instanceRef",
+      "target": "EAST-ADL::Elements::Identifiable",
+      "target_multiplicity": "*",
+      "target_role": "target"
+    },
+    {
+      "composition": true,
+      "description": "Ordered typed parameters of a CapabilityUse.",
+      "id": "CapabilityUse_parameter",
+      "ordered": true,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityUse",
+      "source_multiplicity": "1",
+      "source_role": "capabilityUse",
+      "target": "RCM::V2::Core::KeyValueParameter",
+      "target_multiplicity": "*",
+      "target_role": "parameter"
+    },
+    {
+      "composition": true,
+      "description": "Optional typed value supplied at the use site.",
+      "id": "KeyValueParameter_value",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::KeyValueParameter",
+      "source_multiplicity": "1",
+      "source_role": "keyValueParameter",
+      "target": "EAST-ADL::Values::EAValue",
+      "target_multiplicity": "0..1",
+      "target_role": "value"
+    },
+    {
+      "composition": false,
+      "description": "Conditions required by the Capability.",
+      "id": "Capability_precondition",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Capability",
+      "source_multiplicity": "*",
+      "source_role": "capability",
+      "target": "RCM::V2::Core::ScenarioCondition",
+      "target_multiplicity": "*",
+      "target_role": "precondition"
+    },
+    {
+      "composition": true,
+      "description": "At least one promised observable effect.",
+      "id": "Capability_effect",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Capability",
+      "source_multiplicity": "1",
+      "source_role": "capability",
+      "target": "RCM::V2::Core::Effect",
+      "target_multiplicity": "1..*",
+      "target_role": "effect"
+    },
+    {
+      "composition": false,
+      "description": "Expected, testable Assertions that specify the promised Effect; they are not evidence by themselves.",
+      "id": "Effect_specifiedBy",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Effect",
+      "source_multiplicity": "*",
+      "source_role": "effect",
+      "target": "RCM::V2::Core::Assertion",
+      "target_multiplicity": "1..*",
+      "target_role": "specifiedBy"
+    },
+    {
+      "composition": false,
+      "description": "Actor roles able to observe the effect.",
+      "id": "Effect_observableBy",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::Effect",
+      "source_multiplicity": "*",
+      "source_role": "effect",
+      "target": "EAST-ADL::UseCases::Actor",
+      "target_multiplicity": "*",
+      "target_role": "observableBy"
+    },
+    {
+      "composition": false,
+      "description": "Capability being mapped.",
+      "id": "CapabilityFunctionMapping_capability",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityFunctionMapping",
+      "source_multiplicity": "*",
+      "source_role": "functionMapping",
+      "target": "RCM::V2::Core::Capability",
+      "target_multiplicity": "1",
+      "target_role": "capability"
+    },
+    {
+      "composition": false,
+      "description": "Optional prototype-level capability occurrence being mapped.",
+      "id": "CapabilityFunctionMapping_capabilityUse",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityFunctionMapping",
+      "source_multiplicity": "*",
+      "source_role": "functionMapping",
+      "target": "RCM::V2::Core::CapabilityUse",
+      "target_multiplicity": "0..1",
+      "target_role": "capabilityUse"
+    },
+    {
+      "composition": false,
+      "description": "Optional analysis type target.",
+      "id": "CapabilityFunctionMapping_analysisType",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityFunctionMapping",
+      "source_multiplicity": "*",
+      "source_role": "functionMapping",
+      "target": "EAST-ADL::FunctionModeling::AnalysisFunctionType",
+      "target_multiplicity": "0..1",
+      "target_role": "analysisFunctionType"
+    },
+    {
+      "composition": false,
+      "description": "Optional analysis prototype target.",
+      "id": "CapabilityFunctionMapping_analysisPrototype",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityFunctionMapping",
+      "source_multiplicity": "*",
+      "source_role": "functionMapping",
+      "target": "EAST-ADL::FunctionModeling::AnalysisFunctionPrototype",
+      "target_multiplicity": "0..1",
+      "target_role": "analysisFunctionPrototype"
+    },
+    {
+      "composition": false,
+      "description": "Optional design type target.",
+      "id": "CapabilityFunctionMapping_designType",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityFunctionMapping",
+      "source_multiplicity": "*",
+      "source_role": "functionMapping",
+      "target": "EAST-ADL::FunctionModeling::DesignFunctionType",
+      "target_multiplicity": "0..1",
+      "target_role": "designFunctionType"
+    },
+    {
+      "composition": false,
+      "description": "Optional design prototype target.",
+      "id": "CapabilityFunctionMapping_designPrototype",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityFunctionMapping",
+      "source_multiplicity": "*",
+      "source_role": "functionMapping",
+      "target": "EAST-ADL::FunctionModeling::DesignFunctionPrototype",
+      "target_multiplicity": "0..1",
+      "target_role": "designFunctionPrototype"
+    },
+    {
+      "composition": false,
+      "description": "Capability whose optional formal behavior is linked.",
+      "id": "CapabilityBehaviorBinding_capability",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityBehaviorBinding",
+      "source_multiplicity": "*",
+      "source_role": "behaviorBinding",
+      "target": "RCM::V2::Core::Capability",
+      "target_multiplicity": "1",
+      "target_role": "capability"
+    },
+    {
+      "composition": false,
+      "description": "Synchronous FunctionBehavior target.",
+      "id": "CapabilityBehaviorBinding_functionBehavior",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::CapabilityBehaviorBinding",
+      "source_multiplicity": "*",
+      "source_role": "behaviorBinding",
+      "target": "EAST-ADL::Behavior::FunctionBehavior",
+      "target_multiplicity": "1",
+      "target_role": "functionBehavior"
+    },
+    {
+      "composition": false,
+      "description": "Capability realized by this binding.",
+      "id": "RuntimeBinding_capability",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::RuntimeBinding",
+      "source_multiplicity": "*",
+      "source_role": "runtimeBinding",
+      "target": "RCM::V2::Core::Capability",
+      "target_multiplicity": "1",
+      "target_role": "capability"
+    },
+    {
+      "composition": true,
+      "description": "Ordered action sequence; scenario flow semantics remain separate.",
+      "id": "RuntimeBinding_runtimeAction",
+      "ordered": true,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::RuntimeBinding",
+      "source_multiplicity": "1",
+      "source_role": "runtimeBinding",
+      "target": "RCM::V2::Core::RuntimeAction",
+      "target_multiplicity": "1..*",
+      "target_role": "runtimeAction"
+    },
+    {
+      "composition": true,
+      "description": "Exactly one structured endpoint/tool/topic locator.",
+      "id": "RuntimeAction_locator",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::RuntimeAction",
+      "source_multiplicity": "1",
+      "source_role": "runtimeAction",
+      "target": "RCM::V2::Core::RuntimeActionLocator",
+      "target_multiplicity": "1",
+      "target_role": "locator"
+    },
+    {
+      "composition": true,
+      "description": "Optional input schema.",
+      "id": "RuntimeAction_inputSchema",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::RuntimeAction",
+      "source_multiplicity": "1",
+      "source_role": "runtimeAction",
+      "target": "RCM::V2::Core::SchemaReference",
+      "target_multiplicity": "0..1",
+      "target_role": "inputSchema"
+    },
+    {
+      "composition": true,
+      "description": "Optional output schema.",
+      "id": "RuntimeAction_outputSchema",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::RuntimeAction",
+      "source_multiplicity": "1",
+      "source_role": "runtimeAction",
+      "target": "RCM::V2::Core::SchemaReference",
+      "target_multiplicity": "0..1",
+      "target_role": "outputSchema"
+    },
+    {
+      "composition": true,
+      "description": "Ordered typed input/output parameters.",
+      "id": "RuntimeAction_runtimeParameter",
+      "ordered": true,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::RuntimeAction",
+      "source_multiplicity": "1",
+      "source_role": "runtimeAction",
+      "target": "RCM::V2::Core::RuntimeParameter",
+      "target_multiplicity": "*",
+      "target_role": "runtimeParameter"
+    },
+    {
+      "composition": false,
+      "description": "Source CapabilityUse parameter.",
+      "id": "ParameterBinding_capabilityParameter",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ParameterBinding",
+      "source_multiplicity": "*",
+      "source_role": "parameterBinding",
+      "target": "RCM::V2::Core::KeyValueParameter",
+      "target_multiplicity": "1",
+      "target_role": "capabilityParameter"
+    },
+    {
+      "composition": false,
+      "description": "Target runtime parameter.",
+      "id": "ParameterBinding_runtimeParameter",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ParameterBinding",
+      "source_multiplicity": "*",
+      "source_role": "parameterBinding",
+      "target": "RCM::V2::Core::RuntimeParameter",
+      "target_multiplicity": "1",
+      "target_role": "runtimeParameter"
+    },
+    {
+      "composition": true,
+      "description": "Optional typed conversion expression.",
+      "id": "ParameterBinding_transformation",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ParameterBinding",
+      "source_multiplicity": "1",
+      "source_role": "parameterBinding",
+      "target": "EAST-ADL::Values::EAExpression",
+      "target_multiplicity": "0..1",
+      "target_role": "transformation"
+    },
+    {
+      "composition": false,
+      "description": "Reusable Assertions that constitute the intended outcome.",
+      "id": "AssertionOutcome_assertion",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::AssertionOutcome",
+      "source_multiplicity": "*",
+      "source_role": "assertionOutcome",
+      "target": "RCM::V2::Core::Assertion",
+      "target_multiplicity": "1..*",
+      "target_role": "assertion"
+    },
+    {
+      "composition": false,
+      "description": "The single expected Assertion evaluated by this result.",
+      "id": "AssertionResult_assertion",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::AssertionResult",
+      "source_multiplicity": "*",
+      "source_role": "assertionResult",
+      "target": "RCM::V2::Core::Assertion",
+      "target_multiplicity": "1",
+      "target_role": "assertion"
+    },
+    {
+      "composition": true,
+      "description": "Optional typed value observed during evaluation.",
+      "id": "AssertionResult_observedValue",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::AssertionResult",
+      "source_multiplicity": "1",
+      "source_role": "assertionResult",
+      "target": "EAST-ADL::Values::EAValue",
+      "target_multiplicity": "0..1",
+      "target_role": "observedValue"
+    },
+    {
+      "composition": true,
+      "description": "Structured results captured by one actual runtime outcome.",
+      "id": "RuntimeActualOutcome_result",
+      "ordered": false,
+      "owner": "source",
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::RuntimeActualOutcome",
+      "source_multiplicity": "1",
+      "source_role": "runtimeActualOutcome",
+      "target": "RCM::V2::Core::AssertionResult",
+      "target_multiplicity": "1..*",
+      "target_role": "result"
+    },
+    {
+      "composition": false,
+      "description": "Runtime bindings configured in this platform/environment; each is also an inherited VVTarget.element.",
+      "id": "RuntimeValidationTarget_runtimeBinding",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::RuntimeValidationTarget",
+      "source_multiplicity": "*",
+      "source_role": "runtimeValidationTarget",
+      "stereotype": "instanceRef",
+      "target": "RCM::V2::Core::RuntimeBinding",
+      "target_multiplicity": "*",
+      "target_role": "runtimeBinding"
+    },
+    {
+      "composition": false,
+      "description": "Optional scenario event stimulus.",
+      "id": "RuntimeStimulus_scenarioEvent",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::RuntimeStimulus",
+      "source_multiplicity": "*",
+      "source_role": "runtimeStimulus",
+      "target": "RCM::V2::Core::ScenarioEvent",
+      "target_multiplicity": "0..1",
+      "target_role": "scenarioEvent"
+    },
+    {
+      "composition": false,
+      "description": "Optional runtime-action stimulus.",
+      "id": "RuntimeStimulus_runtimeAction",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::RuntimeStimulus",
+      "source_multiplicity": "*",
+      "source_role": "runtimeStimulus",
+      "target": "RCM::V2::Core::RuntimeAction",
+      "target_multiplicity": "0..1",
+      "target_role": "runtimeAction"
+    },
+    {
+      "composition": false,
+      "description": "ValidationCase associated with a UseCase.",
+      "id": "ValidationCaseUseCaseBinding_validationCase",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ValidationCaseUseCaseBinding",
+      "source_multiplicity": "*",
+      "source_role": "useCaseBinding",
+      "target": "RCM::V2::Core::ValidationCase",
+      "target_multiplicity": "1",
+      "target_role": "validationCase"
+    },
+    {
+      "composition": false,
+      "description": "One UseCase validated per relationship; separate from requirement Verify.",
+      "id": "ValidationCaseUseCaseBinding_useCase",
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::Core",
+      "source": "RCM::V2::Core::ValidationCaseUseCaseBinding",
+      "source_multiplicity": "*",
+      "source_role": "useCaseBinding",
+      "target": "EAST-ADL::UseCases::UseCase",
+      "target_multiplicity": "1",
+      "target_role": "useCase"
+    },
+    {
+      "composition": false,
+      "description": "BehaviorConstraintType assigned to the targets.",
+      "id": "BehaviorConstraintTargetBinding_behaviorConstraintType",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::AnnexC::BehaviorDescription",
+      "source": "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintTargetBinding",
+      "source_multiplicity": "*",
+      "source_role": "targetBinding",
+      "target": "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintType",
+      "target_multiplicity": "1",
+      "target_role": "behaviorConstraintType"
+    },
+    {
+      "composition": false,
+      "description": "Target functions of a behavior-constraint description.",
+      "id": "BehaviorConstraintTargetBinding_targetedFunctionType",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::AnnexC::BehaviorDescription",
+      "source": "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintTargetBinding",
+      "source_multiplicity": "*",
+      "source_role": "targetBinding",
+      "target": "EAST-ADL::FunctionModeling::FunctionType",
+      "target_multiplicity": "*",
+      "target_role": "targetedFunctionType"
+    },
+    {
+      "composition": false,
+      "description": "Target vehicle features of a behavior-constraint description.",
+      "id": "BehaviorConstraintTargetBinding_targetedVehicleFeature",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::AnnexC::BehaviorDescription",
+      "source": "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintTargetBinding",
+      "source_multiplicity": "*",
+      "source_role": "targetBinding",
+      "target": "EAST-ADL::VehicleFeatureModeling::VehicleFeature",
+      "target_multiplicity": "*",
+      "target_role": "targetedVehicleFeature"
+    },
+    {
+      "composition": false,
+      "description": "Modes constrained by a behavior-constraint description.",
+      "id": "BehaviorConstraintTargetBinding_constrainedModeBehavior",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::AnnexC::BehaviorDescription",
+      "source": "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintTargetBinding",
+      "source_multiplicity": "*",
+      "source_role": "targetBinding",
+      "target": "EAST-ADL::Behavior::Mode",
+      "target_multiplicity": "*",
+      "target_role": "constrainedModeBehavior"
+    },
+    {
+      "composition": false,
+      "description": "Function behaviors constrained by a behavior-constraint description.",
+      "id": "BehaviorConstraintTargetBinding_constrainedFunctionBehavior",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::AnnexC::BehaviorDescription",
+      "source": "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintTargetBinding",
+      "source_multiplicity": "*",
+      "source_role": "targetBinding",
+      "target": "EAST-ADL::Behavior::FunctionBehavior",
+      "target_multiplicity": "*",
+      "target_role": "constrainedFunctionBehavior"
+    },
+    {
+      "composition": false,
+      "description": "Function triggers constrained by a behavior-constraint description.",
+      "id": "BehaviorConstraintTargetBinding_constrainedFunctionTriggering",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::AnnexC::BehaviorDescription",
+      "source": "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintTargetBinding",
+      "source_multiplicity": "*",
+      "source_role": "targetBinding",
+      "target": "EAST-ADL::Behavior::FunctionTrigger",
+      "target_multiplicity": "*",
+      "target_role": "constrainedFunctionTriggering"
+    },
+    {
+      "composition": false,
+      "description": "Ordered subordinate logical paths in sequence.",
+      "id": "LogicalPath_segment",
+      "optional": true,
+      "ordered": true,
+      "owner": null,
+      "package": "EAST-ADL::AnnexC::ComputationConstraint",
+      "source": "EAST-ADL::AnnexC::ComputationConstraint::LogicalPath",
+      "source_multiplicity": "*",
+      "source_role": "logicalPath",
+      "target": "EAST-ADL::AnnexC::ComputationConstraint::LogicalPath",
+      "target_multiplicity": "*",
+      "target_role": "segment"
+    },
+    {
+      "composition": false,
+      "description": "Logical paths in parallel.",
+      "id": "LogicalPath_strand",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::AnnexC::ComputationConstraint",
+      "source": "EAST-ADL::AnnexC::ComputationConstraint::LogicalPath",
+      "source_multiplicity": "*",
+      "source_role": "logicalPath",
+      "target": "EAST-ADL::AnnexC::ComputationConstraint::LogicalPath",
+      "target_multiplicity": "*",
+      "target_role": "strand"
+    },
+    {
+      "composition": true,
+      "description": "Optional activation of logical transformations in a path.",
+      "id": "LogicalPath_transformationOccurrence",
+      "optional": true,
+      "ordered": false,
+      "owner": "source",
+      "package": "EAST-ADL::AnnexC::ComputationConstraint",
+      "source": "EAST-ADL::AnnexC::ComputationConstraint::LogicalPath",
+      "source_multiplicity": "1",
+      "source_role": "logicalPath",
+      "target": "EAST-ADL::AnnexC::ComputationConstraint::TransformationOccurrence",
+      "target_multiplicity": "0..1",
+      "target_role": "transformationOccurrence"
+    },
+    {
+      "composition": false,
+      "description": "Logical transformation invoked by the occurrence.",
+      "id": "TransformationOccurrence_invokedLogicalTransformation",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::AnnexC::ComputationConstraint",
+      "source": "EAST-ADL::AnnexC::ComputationConstraint::TransformationOccurrence",
+      "source_multiplicity": "*",
+      "source_role": "transformationOccurrence",
+      "target": "EAST-ADL::AnnexC::ComputationConstraint::LogicalTransformation",
+      "target_multiplicity": "1",
+      "target_role": "invokedLogicalTransformation"
+    },
+    {
+      "composition": false,
+      "description": "Association bridge to occurred Timing::Events; never generalization.",
+      "id": "TransitionEvent_occurredExecutionEvent",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "EAST-ADL::AnnexC::TemporalConstraint",
+      "source": "EAST-ADL::AnnexC::TemporalConstraint::TransitionEvent",
+      "source_multiplicity": "*",
+      "source_role": "transitionEvent",
+      "target": "EAST-ADL::Timing::Event",
+      "target_multiplicity": "*",
+      "target_role": "occurredExecutionEvent"
+    },
+    {
+      "composition": false,
+      "description": "Optional source scenario step.",
+      "id": "ScenarioAnnexMapping_scenarioStep",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::AnnexCBridge",
+      "source": "RCM::V2::AnnexCBridge::ScenarioAnnexMapping",
+      "source_multiplicity": "*",
+      "source_role": "annexMapping",
+      "target": "RCM::V2::Core::ScenarioStep",
+      "target_multiplicity": "0..1",
+      "target_role": "scenarioStep"
+    },
+    {
+      "composition": false,
+      "description": "Optional source flow edge.",
+      "id": "ScenarioAnnexMapping_stepRelation",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::AnnexCBridge",
+      "source": "RCM::V2::AnnexCBridge::ScenarioAnnexMapping",
+      "source_multiplicity": "*",
+      "source_role": "annexMapping",
+      "target": "RCM::V2::Core::StepRelation",
+      "target_multiplicity": "0..1",
+      "target_role": "stepRelation"
+    },
+    {
+      "composition": false,
+      "description": "Optional source scenario event.",
+      "id": "ScenarioAnnexMapping_scenarioEvent",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::AnnexCBridge",
+      "source": "RCM::V2::AnnexCBridge::ScenarioAnnexMapping",
+      "source_multiplicity": "*",
+      "source_role": "annexMapping",
+      "target": "RCM::V2::Core::ScenarioEvent",
+      "target_multiplicity": "0..1",
+      "target_role": "scenarioEvent"
+    },
+    {
+      "composition": false,
+      "description": "Optional source state assertion.",
+      "id": "ScenarioAnnexMapping_stateAssertion",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::AnnexCBridge",
+      "source": "RCM::V2::AnnexCBridge::ScenarioAnnexMapping",
+      "source_multiplicity": "*",
+      "source_role": "annexMapping",
+      "target": "RCM::V2::Core::StateAssertion",
+      "target_multiplicity": "0..1",
+      "target_role": "stateAssertion"
+    },
+    {
+      "composition": false,
+      "description": "Optional source capability for a BehaviorConstraintType mapping.",
+      "id": "ScenarioAnnexMapping_capability",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::AnnexCBridge",
+      "source": "RCM::V2::AnnexCBridge::ScenarioAnnexMapping",
+      "source_multiplicity": "*",
+      "source_role": "annexMapping",
+      "target": "RCM::V2::Core::Capability",
+      "target_multiplicity": "0..1",
+      "target_role": "capability"
+    },
+    {
+      "composition": false,
+      "description": "Target constrained by mapping kind to the declared preliminary Annex C classes.",
+      "id": "ScenarioAnnexMapping_annexElement",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::AnnexCBridge",
+      "source": "RCM::V2::AnnexCBridge::ScenarioAnnexMapping",
+      "source_multiplicity": "*",
+      "source_role": "annexMapping",
+      "target": "EAST-ADL::Elements::EAElement",
+      "target_multiplicity": "1..*",
+      "target_role": "annexElement"
+    },
+    {
+      "composition": false,
+      "description": "Capability being mapped.",
+      "id": "CapabilityFeatureMapping_capability",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::FeatureBridge",
+      "source": "RCM::V2::FeatureBridge::CapabilityFeatureMapping",
+      "source_multiplicity": "*",
+      "source_role": "featureMapping",
+      "target": "RCM::V2::Core::Capability",
+      "target_multiplicity": "1",
+      "target_role": "capability"
+    },
+    {
+      "composition": false,
+      "description": "Generic or VehicleFeature target through specialization.",
+      "id": "CapabilityFeatureMapping_feature",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::FeatureBridge",
+      "source": "RCM::V2::FeatureBridge::CapabilityFeatureMapping",
+      "source_multiplicity": "*",
+      "source_role": "featureMapping",
+      "target": "EAST-ADL::FeatureModeling::Feature",
+      "target_multiplicity": "1",
+      "target_role": "feature"
+    },
+    {
+      "composition": false,
+      "description": "Agent receiving rights/knowledge.",
+      "id": "AgentKnowledgeBinding_agent",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::AgentKnowledge",
+      "source": "RCM::V2::AgentKnowledge::AgentKnowledgeBinding",
+      "source_multiplicity": "*",
+      "source_role": "knowledgeBinding",
+      "target": "RCM::V2::Core::Agent",
+      "target_multiplicity": "1",
+      "target_role": "agent"
+    },
+    {
+      "composition": false,
+      "description": "Knowledge subject.",
+      "id": "AgentKnowledgeBinding_knowledgeItem",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::AgentKnowledge",
+      "source": "RCM::V2::AgentKnowledge::AgentKnowledgeBinding",
+      "source_multiplicity": "*",
+      "source_role": "knowledgeBinding",
+      "target": "RCM::V2::AgentKnowledge::KnowledgeItem",
+      "target_multiplicity": "1",
+      "target_role": "knowledgeItem"
+    },
+    {
+      "composition": false,
+      "description": "Optional provenance source.",
+      "id": "AgentKnowledgeBinding_source",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::AgentKnowledge",
+      "source": "RCM::V2::AgentKnowledge::AgentKnowledgeBinding",
+      "source_multiplicity": "*",
+      "source_role": "knowledgeBinding",
+      "target": "RCM::V2::AgentKnowledge::KnowledgeSource",
+      "target_multiplicity": "0..1",
+      "target_role": "source"
+    },
+    {
+      "composition": false,
+      "description": "Entities grounding the knowledge item.",
+      "id": "AgentKnowledgeBinding_groundedEntity",
+      "optional": true,
+      "ordered": false,
+      "owner": null,
+      "package": "RCM::V2::AgentKnowledge",
+      "source": "RCM::V2::AgentKnowledge::AgentKnowledgeBinding",
+      "source_multiplicity": "*",
+      "source_role": "knowledgeBinding",
+      "target": "RCM::V2::Core::Entity",
+      "target_multiplicity": "*",
+      "target_role": "groundedEntity"
+    }
+  ],
+  "classes": {
+    "RCM::V2::AgentKnowledge::AgentKnowledgeBinding": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1..*",
+          "name": "permissions",
+          "type": "RCM::V2::AgentKnowledge::KnowledgePermission"
+        },
+        {
+          "multiplicity": "1",
+          "name": "provenanceKind",
+          "type": "RCM::V2::AgentKnowledge::KnowledgeProvenanceKind"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Optional permissions and provenance relationship for agent knowledge.",
+      "name": "AgentKnowledgeBinding",
+      "optional": true,
+      "package": "RCM::V2::AgentKnowledge"
+    },
+    "RCM::V2::AgentKnowledge::KnowledgeItem": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Optional traceable knowledge item.",
+      "name": "KnowledgeItem",
+      "optional": true,
+      "package": "RCM::V2::AgentKnowledge"
+    },
+    "RCM::V2::AgentKnowledge::KnowledgeSource": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "0..1",
+          "name": "uri",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Optional source/provenance record.",
+      "name": "KnowledgeSource",
+      "optional": true,
+      "package": "RCM::V2::AgentKnowledge"
+    },
+    "RCM::V2::AnnexCBridge::ScenarioAnnexMapping": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Optional bridge to preliminary Annex C constructs; never a Core prerequisite.",
+      "name": "ScenarioAnnexMapping",
+      "optional": true,
+      "package": "RCM::V2::AnnexCBridge"
+    },
+    "RCM::V2::Core::ActorParticipation": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "RCM relationship assigning external Actor roles to UseCases.",
+      "name": "ActorParticipation",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::Agent": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "0..1",
+          "name": "sourceAgentId",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "displayName",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "persona",
+          "type": "String"
+        },
+        {
+          "multiplicity": "*",
+          "name": "expertise",
+          "ordered": true,
+          "type": "String"
+        },
+        {
+          "multiplicity": "*",
+          "name": "knowledgeTag",
+          "ordered": true,
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "voice",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "voiceGender",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "voiceStyle",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "ttsModel",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "RCM::V2::Core::Entity"
+      ],
+      "description": "Entity capable of providing capabilities, grounded runtime interaction and handoffs.",
+      "name": "Agent",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::Assertion": {
+      "abstract": true,
+      "attributes": [
+        {
+          "derived": true,
+          "description": "Compatibility/display projection of expression.",
+          "multiplicity": "1",
+          "name": "expressionText",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "severity",
+          "type": "RCM::V2::Core::AssertionSeverity"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Abstract reusable, evaluable assertion about an identifiable subject.",
+      "name": "Assertion",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::AssertionOutcome": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::VerificationValidation::VVIntendedOutcome"
+      ],
+      "description": "Intended outcome specified by one or more reusable Assertions.",
+      "name": "AssertionOutcome",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::AssertionResult": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "verdict",
+          "type": "RCM::V2::Core::AssertionVerdict"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "evidenceRef",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "timestamp",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Structured runtime evaluation result for exactly one Assertion.",
+      "name": "AssertionResult",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::Capability": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAType",
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Domain-independent capability type retaining traceable intent and effects.",
+      "name": "Capability",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::CapabilityBehaviorBinding": {
+      "abstract": false,
+      "attributes": [
+        {
+          "default": true,
+          "multiplicity": "1",
+          "name": "requiresRunToCompletion",
+          "type": "Boolean"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Optional relationship to a synchronous EAST-ADL FunctionBehavior; it is not Refine.",
+      "name": "CapabilityBehaviorBinding",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::CapabilityFunctionMapping": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Optional mapping, not identity, to an exact analysis/design function type or prototype.",
+      "name": "CapabilityFunctionMapping",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::CapabilityUse": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAPrototype",
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Typed occurrence of a Capability in a ScenarioStep.",
+      "name": "CapabilityUse",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ConditionalExtend": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::UseCases::Extend"
+      ],
+      "description": "Condition-bearing specialization of EAST-ADL Extend; remains admissible in UseCase.extend.",
+      "name": "ConditionalExtend",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::DynamicFunctionalModel": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Context"
+      ],
+      "description": "Single root Context for a RCM V2 model.",
+      "name": "DynamicFunctionalModel",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::Effect": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Observable promised effect of a Capability.",
+      "name": "Effect",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::Entity": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "0..1",
+          "name": "kind",
+          "type": "RCM::V2::Core::EntityKind"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "sourceId",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "entityRole",
+          "type": "String"
+        },
+        {
+          "multiplicity": "*",
+          "name": "sourceObjectId",
+          "ordered": true,
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "purpose",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "sourceGroup",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "objectType",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Concrete participant, asset, zone, signal or state object with optional source/provenance metadata.",
+      "name": "Entity",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::EventAssertion": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "RCM::V2::Core::Assertion"
+      ],
+      "description": "Assertion that an event occurred or did not occur.",
+      "name": "EventAssertion",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::GroundingAssertion": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "RCM::V2::Core::Assertion"
+      ],
+      "description": "Assertion that information or interaction is grounded in an identifiable model element or source.",
+      "name": "GroundingAssertion",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::KeyValueParameter": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Datatypes::EADatatypePrototype"
+      ],
+      "description": "Typed capability-use parameter; shortName is the key.",
+      "name": "KeyValueParameter",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::OutputAssertion": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "RCM::V2::Core::Assertion"
+      ],
+      "description": "Assertion about an emitted visual, audio, textual or technical output.",
+      "name": "OutputAssertion",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ParallelGroup": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Structural grouping of parallel steps bounded by matching fork and join flow.",
+      "name": "ParallelGroup",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ParameterBinding": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Maps capability-use parameters to runtime parameters with an optional typed transformation.",
+      "name": "ParameterBinding",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ProbabilityValue": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Values::EANumericalValue"
+      ],
+      "description": "Numerical value whose type is the bounded RCM Probability datatype.",
+      "name": "ProbabilityValue",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RelationAssertion": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "RCM::V2::Core::Assertion"
+      ],
+      "description": "Assertion about a relation between identifiable model elements.",
+      "name": "RelationAssertion",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeAction": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Atomic technical action with exactly one structured locator.",
+      "name": "RuntimeAction",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeActionLocator": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "kind",
+          "type": "RCM::V2::Core::RuntimeLocatorKind"
+        },
+        {
+          "multiplicity": "1",
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Exclusive endpoint, tool or topic locator.",
+      "name": "RuntimeActionLocator",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeActualOutcome": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::VerificationValidation::VVActualOutcome"
+      ],
+      "description": "Actual runtime outcome; owned only by RuntimeValidationLog.",
+      "name": "RuntimeActualOutcome",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeBinding": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "targetPlatform",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Ordered technical realization choices for a Capability.",
+      "name": "RuntimeBinding",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeParameter": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "direction",
+          "type": "RCM::V2::Core::RuntimeParameterDirection"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Datatypes::EADatatypePrototype"
+      ],
+      "description": "Typed runtime input/output parameter.",
+      "name": "RuntimeParameter",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeStimulus": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::VerificationValidation::VVStimuli"
+      ],
+      "description": "Runtime stimulus specialization.",
+      "name": "RuntimeStimulus",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeValidationLog": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::VerificationValidation::VVLog"
+      ],
+      "description": "Runtime execution log containing actual outcomes.",
+      "name": "RuntimeValidationLog",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeValidationProcedure": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::VerificationValidation::VVProcedure"
+      ],
+      "description": "Runtime-validation specialization of VVProcedure.",
+      "name": "RuntimeValidationProcedure",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeValidationTarget": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "platform",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "environmentRef",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::VerificationValidation::VVTarget"
+      ],
+      "description": "Runtime test environment with an explicit platform; its elements need not equal the case's vvSubjects.",
+      "name": "RuntimeValidationTarget",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::Scenario": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "kind",
+          "type": "RCM::V2::Core::ScenarioKind"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Complete main, alternative or exception execution flow.",
+      "name": "Scenario",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ScenarioCondition": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "kind",
+          "type": "RCM::V2::Core::ConditionKind"
+        },
+        {
+          "multiplicity": "1",
+          "name": "expressionText",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::EAElement",
+        "EAST-ADL::Values::EAExpression"
+      ],
+      "description": "Identifiable Boolean-typed EAExpression used as guard, pre/post, spatial or timing condition.",
+      "name": "ScenarioCondition",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ScenarioEvent": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "kind",
+          "type": "RCM::V2::Core::ScenarioEventKind"
+        },
+        {
+          "multiplicity": "1",
+          "name": "expressionText",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Timing::Event",
+        "EAST-ADL::Values::EAExpression"
+      ],
+      "description": "Identifiable timing event with an EAExpression lexical representation.",
+      "name": "ScenarioEvent",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ScenarioExternalEvent": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "RCM::V2::Core::ScenarioEvent",
+        "EAST-ADL::Events::ExternalEvent"
+      ],
+      "description": "Scenario event representing a user, environment, spatial or other external state change.",
+      "name": "ScenarioExternalEvent",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ScenarioStep": {
+      "abstract": false,
+      "attributes": [
+        {
+          "derived": true,
+          "description": "Display-only order derived from control flow.",
+          "multiplicity": "1",
+          "name": "stepNumber",
+          "type": "Integer"
+        },
+        {
+          "multiplicity": "1",
+          "name": "kind",
+          "type": "RCM::V2::Core::ScenarioStepKind"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Traceable step in a scenario; it never references a RuntimeAction directly.",
+      "name": "ScenarioStep",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::SchemaReference": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "0..1",
+          "name": "uri",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "dialect",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Reference to, or textual form of, a runtime data schema.",
+      "name": "SchemaReference",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::StateAssertion": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "RCM::V2::Core::Assertion"
+      ],
+      "description": "Assertion about a state or state transition; retained as the v0.5-compatible specialization.",
+      "name": "StateAssertion",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::StateAssertionOutcome": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "RCM::V2::Core::AssertionOutcome"
+      ],
+      "description": "v0.5-compatible intended-outcome specialization for StateAssertions.",
+      "name": "StateAssertionOutcome",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::StepRelation": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "kind",
+          "type": "RCM::V2::Core::StepRelationKind"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Canonical local control-flow edge between scenario steps.",
+      "name": "StepRelation",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::UseCaseScenarioSpecification": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Conservative RCM relationship from an unchanged EAST-ADL UseCase to scenarios.",
+      "name": "UseCaseScenarioSpecification",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ValidationCase": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::VerificationValidation::VVCase"
+      ],
+      "description": "RCM runtime-validation specialization of VVCase; legacy level is preserved by projection, not inferred.",
+      "name": "ValidationCase",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ValidationCaseUseCaseBinding": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "RCM relationship for legacy validates_use_case_ids; Verify remains requirement-only.",
+      "name": "ValidationCaseUseCaseBinding",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::FeatureBridge::CapabilityFeatureMapping": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Optional mapping from Capability to generic Feature or automotive VehicleFeature.",
+      "name": "CapabilityFeatureMapping",
+      "optional": true,
+      "package": "RCM::V2::FeatureBridge"
+    },
+    "EAST-ADL::AnnexC::AttributeQuantificationConstraint::Quantification": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement",
+        "EAST-ADL::Values::EAExpression"
+      ],
+      "description": "Preliminary Annex C value-condition expression.",
+      "east_adl_source": "Annex C 31.2.5, pp. 223-224",
+      "name": "Quantification",
+      "optional": true,
+      "package": "EAST-ADL::AnnexC::AttributeQuantificationConstraint"
+    },
+    "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintParameter": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [],
+      "description": "Abstract Annex C behavior-constraint parameter with no generalization.",
+      "east_adl_source": "Annex C 30.2.4, p. 217",
+      "name": "BehaviorConstraintParameter",
+      "optional": true,
+      "package": "EAST-ADL::AnnexC::BehaviorDescription"
+    },
+    "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintTargetBinding": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Preliminary Annex C relationship assigning a BehaviorConstraintType to behavior targets.",
+      "east_adl_source": "Annex C 30.2.6, pp. 218-219",
+      "name": "BehaviorConstraintTargetBinding",
+      "optional": true,
+      "package": "EAST-ADL::AnnexC::BehaviorDescription"
+    },
+    "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintType": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Context"
+      ],
+      "description": "Preliminary Annex C behavior-constraint type.",
+      "east_adl_source": "Annex C 30.2.7, pp. 219-220",
+      "name": "BehaviorConstraintType",
+      "optional": true,
+      "package": "EAST-ADL::AnnexC::BehaviorDescription",
+      "stereotypes": [
+        "atpType"
+      ]
+    },
+    "EAST-ADL::AnnexC::ComputationConstraint::LogicalPath": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Preliminary Annex C ordered/parallel logical cause-effect path.",
+      "east_adl_source": "Annex C 32.2.2, pp. 226-227",
+      "name": "LogicalPath",
+      "optional": true,
+      "package": "EAST-ADL::AnnexC::ComputationConstraint"
+    },
+    "EAST-ADL::AnnexC::ComputationConstraint::LogicalTransformation": {
+      "abstract": false,
+      "attributes": [
+        {
+          "default": false,
+          "multiplicity": "1",
+          "name": "isClientServerInterface",
+          "type": "Boolean"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Preliminary Annex C logical computation restriction.",
+      "east_adl_source": "Annex C 32.2.3, pp. 227-228",
+      "name": "LogicalTransformation",
+      "optional": true,
+      "package": "EAST-ADL::AnnexC::ComputationConstraint"
+    },
+    "EAST-ADL::AnnexC::ComputationConstraint::TransformationOccurrence": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Activation of a logical transformation.",
+      "east_adl_source": "Annex C 32.2.4, pp. 228-229",
+      "name": "TransformationOccurrence",
+      "optional": true,
+      "package": "EAST-ADL::AnnexC::ComputationConstraint"
+    },
+    "EAST-ADL::AnnexC::TemporalConstraint::LogicalTimeCondition": {
+      "abstract": false,
+      "attributes": [
+        {
+          "default": false,
+          "multiplicity": "1",
+          "name": "isLogicalTimeSuspended",
+          "type": "Boolean"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Preliminary Annex C logical time interval condition.",
+      "east_adl_source": "Annex C 33.2.1, p. 232",
+      "name": "LogicalTimeCondition",
+      "optional": true,
+      "package": "EAST-ADL::AnnexC::TemporalConstraint"
+    },
+    "EAST-ADL::AnnexC::TemporalConstraint::State": {
+      "abstract": false,
+      "attributes": [
+        {
+          "default": false,
+          "multiplicity": "1",
+          "name": "isErrorState",
+          "type": "Boolean"
+        },
+        {
+          "default": false,
+          "multiplicity": "1",
+          "name": "isHazard",
+          "type": "Boolean"
+        },
+        {
+          "default": false,
+          "multiplicity": "1",
+          "name": "isInitState",
+          "type": "Boolean"
+        },
+        {
+          "default": false,
+          "multiplicity": "1",
+          "name": "isMode",
+          "type": "Boolean"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Preliminary Annex C discrete state.",
+      "east_adl_source": "Annex C 33.2.2, pp. 232-233",
+      "name": "State",
+      "optional": true,
+      "package": "EAST-ADL::AnnexC::TemporalConstraint"
+    },
+    "EAST-ADL::AnnexC::TemporalConstraint::TransitionEvent": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement",
+        "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintParameter"
+      ],
+      "description": "Occurrence parameter firing a transition; deliberately not a Timing::Event subtype.",
+      "east_adl_source": "Annex C 33.2.7, p. 236",
+      "name": "TransitionEvent",
+      "optional": true,
+      "package": "EAST-ADL::AnnexC::TemporalConstraint"
+    },
+    "EAST-ADL::Behavior::FunctionBehavior": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "path",
+          "type": "String"
+        },
+        {
+          "multiplicity": "1",
+          "name": "representation",
+          "type": "EAST-ADL::Behavior::FunctionBehaviorKind"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::Context"
+      ],
+      "description": "Synchronous run-to-completion behavior assigned to at most one FunctionType.",
+      "east_adl_source": "9.2.2, pp. 69-70",
+      "name": "FunctionBehavior",
+      "package": "EAST-ADL::Behavior"
+    },
+    "EAST-ADL::Behavior::FunctionTrigger": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "triggerPolicy",
+          "type": "EAST-ADL::Behavior::TriggerPolicyKind"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Values::EAExpression",
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Event- or time-driven trigger for a FunctionType or FunctionPrototype.",
+      "east_adl_source": "9.2.4, pp. 71-72",
+      "name": "FunctionTrigger",
+      "package": "EAST-ADL::Behavior"
+    },
+    "EAST-ADL::Behavior::Mode": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "condition",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Execution mode with its mandatory activation condition.",
+      "east_adl_source": "9.2.5, p. 72",
+      "name": "Mode",
+      "package": "EAST-ADL::Behavior"
+    },
+    "EAST-ADL::Datatypes::EABoolean": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Datatypes::EADatatype"
+      ],
+      "description": "Boolean datatype with true and false values.",
+      "east_adl_source": "23.2.3, p. 177",
+      "name": "EABoolean",
+      "package": "EAST-ADL::Datatypes"
+    },
+    "EAST-ADL::Datatypes::EADatatype": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Type whose instances are identified only by value.",
+      "east_adl_source": "23.2.4, p. 178",
+      "name": "EADatatype",
+      "package": "EAST-ADL::Datatypes",
+      "stereotypes": [
+        "atpType"
+      ]
+    },
+    "EAST-ADL::Datatypes::EADatatypePrototype": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Typed variable acting as an appearance of an EADatatype.",
+      "east_adl_source": "23.2.5, p. 178",
+      "name": "EADatatypePrototype",
+      "package": "EAST-ADL::Datatypes",
+      "stereotypes": [
+        "atpPrototype"
+      ]
+    },
+    "EAST-ADL::Datatypes::EANumerical": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "0..1",
+          "name": "max",
+          "type": "Numerical"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "min",
+          "type": "Numerical"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Datatypes::EADatatype"
+      ],
+      "description": "Numerical datatype with optional range bounds.",
+      "east_adl_source": "23.2.6, pp. 178-179",
+      "name": "EANumerical",
+      "package": "EAST-ADL::Datatypes"
+    },
+    "EAST-ADL::Elements::Comment": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "body",
+          "type": "String"
+        }
+      ],
+      "bases": [],
+      "description": "Textual annotation.",
+      "east_adl_source": "25.2.1, pp. 188-189",
+      "name": "Comment",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::Context": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAPackageableElement"
+      ],
+      "description": "Owns relationships and identifies traceable specifications in a model context.",
+      "east_adl_source": "25.2.2, p. 189",
+      "name": "Context",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::EAConnector": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [],
+      "description": "Abstract connector marker; it has no generalization.",
+      "east_adl_source": "25.2.3, p. 189",
+      "name": "EAConnector",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::EAElement": {
+      "abstract": true,
+      "attributes": [
+        {
+          "multiplicity": "0..1",
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::Identifiable"
+      ],
+      "description": "Arbitrary named EAST-ADL domain-model entity.",
+      "east_adl_source": "25.2.4, pp. 189-190",
+      "name": "EAElement",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::EAPackageableElement": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Element that may be directly contained in an EAPackage.",
+      "east_adl_source": "25.2.6, pp. 190-191",
+      "name": "EAPackageableElement",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::EAPort": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [],
+      "description": "Abstract port marker; it has no generalization.",
+      "east_adl_source": "25.2.7, p. 191",
+      "name": "EAPort",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::EAPrototype": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [],
+      "description": "Abstract prototype-pattern marker; it has no generalization.",
+      "east_adl_source": "25.2.8, p. 191",
+      "name": "EAPrototype",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::EAType": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [],
+      "description": "Abstract type-pattern marker; it has no generalization.",
+      "east_adl_source": "25.2.9, p. 191",
+      "name": "EAType",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::Identifiable": {
+      "abstract": true,
+      "attributes": [
+        {
+          "multiplicity": "0..1",
+          "name": "category",
+          "type": "Identifier"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "uuid",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::Referrable"
+      ],
+      "description": "Referrable element with optional category and UUID.",
+      "east_adl_source": "25.2.11, pp. 192-193",
+      "name": "Identifiable",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::Referrable": {
+      "abstract": true,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "shortName",
+          "type": "Identifier"
+        }
+      ],
+      "bases": [],
+      "description": "Element referable by a context-unique shortName.",
+      "east_adl_source": "25.2.14, p. 194",
+      "name": "Referrable",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::Relationship": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Relationship between arbitrary elements.",
+      "east_adl_source": "25.2.15, pp. 194-195",
+      "name": "Relationship",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Elements::TraceableSpecification": {
+      "abstract": true,
+      "attributes": [
+        {
+          "multiplicity": "0..1",
+          "name": "text",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::EAPackageableElement"
+      ],
+      "description": "Specification allocatable to a Context; text is its only local attribute.",
+      "east_adl_source": "25.2.16, p. 195",
+      "name": "TraceableSpecification",
+      "package": "EAST-ADL::Elements"
+    },
+    "EAST-ADL::Events::ExternalEvent": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Timing::Event"
+      ],
+      "description": "Particular externally described form of state change.",
+      "east_adl_source": "16.2.8, p. 139",
+      "name": "ExternalEvent",
+      "package": "EAST-ADL::Events"
+    },
+    "EAST-ADL::FeatureModeling::Feature": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "cardinality",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::FeatureModeling::FeatureTreeNode"
+      ],
+      "description": "Generic EAST-ADL feature.",
+      "east_adl_source": "4.2.3, pp. 28-29",
+      "name": "Feature",
+      "optional": true,
+      "package": "EAST-ADL::FeatureModeling",
+      "stereotypes": [
+        "atpStructureElement"
+      ]
+    },
+    "EAST-ADL::FeatureModeling::FeatureTreeNode": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Context"
+      ],
+      "description": "Abstract base for elements in a feature tree.",
+      "east_adl_source": "4.2.8, p. 32",
+      "name": "FeatureTreeNode",
+      "optional": true,
+      "package": "EAST-ADL::FeatureModeling"
+    },
+    "EAST-ADL::FunctionModeling::AllocateableElement": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [],
+      "description": "Abstract marker for allocateable elements.",
+      "east_adl_source": "6.2.1, p. 41",
+      "name": "AllocateableElement",
+      "package": "EAST-ADL::FunctionModeling"
+    },
+    "EAST-ADL::FunctionModeling::AnalysisFunctionPrototype": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::FunctionModeling::FunctionPrototype"
+      ],
+      "description": "Prototype typed by AnalysisFunctionType.",
+      "east_adl_source": "6.2.3, p. 42",
+      "name": "AnalysisFunctionPrototype",
+      "package": "EAST-ADL::FunctionModeling"
+    },
+    "EAST-ADL::FunctionModeling::AnalysisFunctionType": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::FunctionModeling::FunctionType"
+      ],
+      "description": "Function type used at AnalysisLevel; owns analysis parts.",
+      "east_adl_source": "6.2.4, pp. 42-43",
+      "name": "AnalysisFunctionType",
+      "package": "EAST-ADL::FunctionModeling"
+    },
+    "EAST-ADL::FunctionModeling::DesignFunctionPrototype": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::FunctionModeling::AllocateableElement",
+        "EAST-ADL::FunctionModeling::FunctionPrototype"
+      ],
+      "description": "Allocateable prototype typed by DesignFunctionType.",
+      "east_adl_source": "6.2.7, p. 44",
+      "name": "DesignFunctionPrototype",
+      "package": "EAST-ADL::FunctionModeling"
+    },
+    "EAST-ADL::FunctionModeling::DesignFunctionType": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::FunctionModeling::FunctionType"
+      ],
+      "description": "Function type used at DesignLevel; owns design parts.",
+      "east_adl_source": "6.2.8, pp. 44-45",
+      "name": "DesignFunctionType",
+      "package": "EAST-ADL::FunctionModeling"
+    },
+    "EAST-ADL::FunctionModeling::FunctionConnector": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::FunctionModeling::AllocateableElement",
+        "EAST-ADL::Elements::EAConnector",
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Connector between exactly two FunctionPorts through an instance reference.",
+      "east_adl_source": "6.2.14, pp. 47-48",
+      "name": "FunctionConnector",
+      "package": "EAST-ADL::FunctionModeling",
+      "stereotypes": [
+        "atpStructureElement"
+      ]
+    },
+    "EAST-ADL::FunctionModeling::FunctionFlowPort": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "direction",
+          "type": "EAST-ADL::FunctionModeling::EADirectionKind"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::FunctionModeling::FunctionPort"
+      ],
+      "description": "Single-buffer flow port typed by an EADatatype.",
+      "east_adl_source": "6.2.15, pp. 48-49",
+      "name": "FunctionFlowPort",
+      "package": "EAST-ADL::FunctionModeling"
+    },
+    "EAST-ADL::FunctionModeling::FunctionPort": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAPort",
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Abstract function interaction port.",
+      "east_adl_source": "6.2.16, pp. 49-50",
+      "name": "FunctionPort",
+      "package": "EAST-ADL::FunctionModeling",
+      "stereotypes": [
+        "atpPrototype"
+      ]
+    },
+    "EAST-ADL::FunctionModeling::FunctionPrototype": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement",
+        "EAST-ADL::Elements::EAPrototype"
+      ],
+      "description": "Occurrence of a FunctionType when acting as a part.",
+      "east_adl_source": "6.2.18, pp. 50-51",
+      "name": "FunctionPrototype",
+      "package": "EAST-ADL::FunctionModeling",
+      "stereotypes": [
+        "atpPrototype"
+      ]
+    },
+    "EAST-ADL::FunctionModeling::FunctionType": {
+      "abstract": true,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "isElementary",
+          "type": "Boolean"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::EAType",
+        "EAST-ADL::Elements::Context"
+      ],
+      "description": "Abstract function component type owning ports, connectors and port groups.",
+      "east_adl_source": "6.2.19, p. 51",
+      "name": "FunctionType",
+      "package": "EAST-ADL::FunctionModeling",
+      "stereotypes": [
+        "atpType"
+      ]
+    },
+    "EAST-ADL::FunctionModeling::PortGroup": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Graphical grouping of FunctionPorts without added behavior semantics.",
+      "east_adl_source": "6.2.23, p. 54",
+      "name": "PortGroup",
+      "package": "EAST-ADL::FunctionModeling"
+    },
+    "EAST-ADL::Requirements::Refine": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Requirements::RequirementsRelationship"
+      ],
+      "description": "Exact requirement-to-EAElement refinement relationship.",
+      "east_adl_source": "11.2.5, p. 94",
+      "name": "Refine",
+      "package": "EAST-ADL::Requirements"
+    },
+    "EAST-ADL::Requirements::Requirement": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "0..1",
+          "name": "formalism",
+          "type": "String"
+        },
+        {
+          "multiplicity": "0..1",
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Capability or condition to be satisfied; text is inherited and optional.",
+      "east_adl_source": "11.2.6, pp. 94-95",
+      "name": "Requirement",
+      "package": "EAST-ADL::Requirements"
+    },
+    "EAST-ADL::Requirements::RequirementsModel": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Context"
+      ],
+      "description": "Container for requirements, their relationships and use cases.",
+      "east_adl_source": "11.2.9, p. 97",
+      "name": "RequirementsModel",
+      "package": "EAST-ADL::Requirements"
+    },
+    "EAST-ADL::Requirements::RequirementsRelationship": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Abstract base for requirement relationships.",
+      "east_adl_source": "11.2.10, p. 97",
+      "name": "RequirementsRelationship",
+      "package": "EAST-ADL::Requirements"
+    },
+    "EAST-ADL::Requirements::Satisfy": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Requirements::RequirementsRelationship"
+      ],
+      "description": "Relates Requirement or UseCase suppliers to satisfying Identifiables.",
+      "east_adl_source": "11.2.12, pp. 98-99",
+      "name": "Satisfy",
+      "package": "EAST-ADL::Requirements"
+    },
+    "EAST-ADL::SystemModeling::AnalysisLevel": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Context"
+      ],
+      "description": "Analysis abstraction level containing an optional FAA root prototype.",
+      "east_adl_source": "3.2.1, pp. 20-21",
+      "name": "AnalysisLevel",
+      "package": "EAST-ADL::SystemModeling",
+      "stereotypes": [
+        "atpStructureElement"
+      ]
+    },
+    "EAST-ADL::SystemModeling::DesignLevel": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Context"
+      ],
+      "description": "Design abstraction level containing an optional FDA root prototype.",
+      "east_adl_source": "3.2.2, pp. 21-22",
+      "name": "DesignLevel",
+      "package": "EAST-ADL::SystemModeling",
+      "stereotypes": [
+        "atpStructureElement"
+      ]
+    },
+    "EAST-ADL::Timing::Event": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Timing::TimingDescription"
+      ],
+      "description": "Identifiable form of state change with semantic occurrences.",
+      "east_adl_source": "14.2.1, pp. 113-114",
+      "name": "Event",
+      "package": "EAST-ADL::Timing"
+    },
+    "EAST-ADL::Timing::TimingDescription": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Abstract timing description.",
+      "east_adl_source": "14.2.6, p. 116",
+      "name": "TimingDescription",
+      "package": "EAST-ADL::Timing"
+    },
+    "EAST-ADL::UseCases::Actor": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "External role interacting with a UseCase, not a concrete physical entity.",
+      "east_adl_source": "12.2.1, p. 101",
+      "name": "Actor",
+      "package": "EAST-ADL::UseCases"
+    },
+    "EAST-ADL::UseCases::Extend": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Extends a UseCase at one or more ExtensionPoints; EAST-ADL defines no condition property.",
+      "east_adl_source": "12.2.2, pp. 101-102",
+      "name": "Extend",
+      "package": "EAST-ADL::UseCases"
+    },
+    "EAST-ADL::UseCases::ExtensionPoint": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::UseCases::RedefinableElement"
+      ],
+      "description": "Point where a UseCase can be augmented; name is inherited and optional.",
+      "east_adl_source": "12.2.3, p. 102",
+      "name": "ExtensionPoint",
+      "package": "EAST-ADL::UseCases"
+    },
+    "EAST-ADL::UseCases::Include": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Relationship"
+      ],
+      "description": "Mandatory insertion of an addition UseCase.",
+      "east_adl_source": "12.2.4, p. 102",
+      "name": "Include",
+      "package": "EAST-ADL::UseCases"
+    },
+    "EAST-ADL::UseCases::RedefinableElement": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::EAElement"
+      ],
+      "description": "Named element that can be redefined in a specializing context.",
+      "east_adl_source": "12.2.5, pp. 102-103",
+      "name": "RedefinableElement",
+      "package": "EAST-ADL::UseCases"
+    },
+    "EAST-ADL::UseCases::UseCase": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Usage of a system; text is inherited and optional.",
+      "east_adl_source": "12.2.6, p. 103",
+      "name": "UseCase",
+      "package": "EAST-ADL::UseCases"
+    },
+    "EAST-ADL::Values::EAExpression": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Values::EAValue"
+      ],
+      "description": "Mixed-string expression capable of model references.",
+      "east_adl_source": "24.2.5, p. 185",
+      "name": "EAExpression",
+      "package": "EAST-ADL::Values",
+      "stereotypes": [
+        "atpMixedString"
+      ]
+    },
+    "EAST-ADL::Values::EANumericalValue": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "value",
+          "type": "Numerical"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Values::EAValue"
+      ],
+      "description": "Numerical value typed by EANumerical or RangeableValueType.",
+      "east_adl_source": "24.2.6, p. 185",
+      "name": "EANumericalValue",
+      "package": "EAST-ADL::Values"
+    },
+    "EAST-ADL::Values::EAValue": {
+      "abstract": true,
+      "attributes": [],
+      "bases": [],
+      "description": "Abstract non-identifiable typed value.",
+      "east_adl_source": "24.2.8, p. 186",
+      "name": "EAValue",
+      "package": "EAST-ADL::Values",
+      "stereotypes": [
+        "atpPrototype"
+      ]
+    },
+    "EAST-ADL::VehicleFeatureModeling::VehicleFeature": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "isCustomerVisible",
+          "type": "Boolean"
+        },
+        {
+          "multiplicity": "1",
+          "name": "isDesignVariabilityRationale",
+          "type": "Boolean"
+        },
+        {
+          "multiplicity": "1",
+          "name": "isRemoved",
+          "type": "Boolean"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::FeatureModeling::Feature"
+      ],
+      "description": "Automotive VehicleLevel feature; never required by the domain-independent Core.",
+      "east_adl_source": "5.2.3, pp. 38-39",
+      "name": "VehicleFeature",
+      "optional": true,
+      "package": "EAST-ADL::VehicleFeatureModeling"
+    },
+    "EAST-ADL::VerificationValidation::VVActualOutcome": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Actual output captured by a VVLog.",
+      "east_adl_source": "13.2.3, p. 107",
+      "name": "VVActualOutcome",
+      "package": "EAST-ADL::VerificationValidation"
+    },
+    "EAST-ADL::VerificationValidation::VVCase": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Groups VVProcedures and identifies subjects and concrete test targets.",
+      "east_adl_source": "13.2.4, pp. 107-108",
+      "name": "VVCase",
+      "package": "EAST-ADL::VerificationValidation"
+    },
+    "EAST-ADL::VerificationValidation::VVIntendedOutcome": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Expected output of a concrete VVProcedure.",
+      "east_adl_source": "13.2.5, p. 108",
+      "name": "VVIntendedOutcome",
+      "package": "EAST-ADL::VerificationValidation"
+    },
+    "EAST-ADL::VerificationValidation::VVLog": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "date",
+          "type": "String"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Execution log of a concrete VVCase; owns the actual outcomes.",
+      "east_adl_source": "13.2.6, pp. 108-109",
+      "name": "VVLog",
+      "package": "EAST-ADL::VerificationValidation"
+    },
+    "EAST-ADL::VerificationValidation::VVProcedure": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Individual abstract or concrete task in a V&V effort.",
+      "east_adl_source": "13.2.7, pp. 109-110",
+      "name": "VVProcedure",
+      "package": "EAST-ADL::VerificationValidation"
+    },
+    "EAST-ADL::VerificationValidation::VVStimuli": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Concrete input values used by a VVProcedure.",
+      "east_adl_source": "13.2.8, p. 110",
+      "name": "VVStimuli",
+      "package": "EAST-ADL::VerificationValidation"
+    },
+    "EAST-ADL::VerificationValidation::VVTarget": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::TraceableSpecification"
+      ],
+      "description": "Concrete testing environment, distinct from VVCase.vvSubject.",
+      "east_adl_source": "13.2.9, pp. 110-111",
+      "name": "VVTarget",
+      "package": "EAST-ADL::VerificationValidation"
+    },
+    "EAST-ADL::VerificationValidation::VerificationValidation": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Elements::Context"
+      ],
+      "description": "Container for related VVTargets, VVCases and Verify relationships.",
+      "east_adl_source": "13.2.1, p. 106",
+      "name": "VerificationValidation",
+      "package": "EAST-ADL::VerificationValidation"
+    },
+    "EAST-ADL::VerificationValidation::Verify": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Requirements::RequirementsRelationship"
+      ],
+      "description": "Relates Requirements to verifying VVCases and optional VVProcedures.",
+      "east_adl_source": "13.2.2, pp. 106-107",
+      "name": "Verify",
+      "package": "EAST-ADL::VerificationValidation"
+    }
+  },
+  "compatibility_contract": {
+    "canonical_v2_independence": "The v0.5 JSON schema and runtime implementation remain unchanged.",
+    "forbidden_shortcut": "ScenarioStep -> RuntimeAction",
+    "laws": [
+      "exportV05(importV05(x, ledger), ledger) == x for every valid v0.5 instance",
+      "importV05(exportV05(y, ledger), ledger) == y only for the v0.5-representable V2 subset or a complete ledger"
+    ],
+    "ledger_preserves": [
+      "complete envelope and unknown extension data",
+      "array order and main-scenario-first ordering",
+      "presence versus explicit null versus empty values",
+      "all opaque identifiers and enum lexemes",
+      "raw stepNumber and storage order",
+      "AG-* to ENT-AGENT-* alias/provenance pairs",
+      "legacy ValidationCase.level without deriving it from abstractVVCase",
+      "legacy endpoint/tool/topic slots while V2 uses one RuntimeActionLocator"
+    ],
+    "projection_name": "V05ProjectionLedger",
+    "required_chain": [
+      "ScenarioStep",
+      "CapabilityUse",
+      "Capability",
+      "RuntimeBinding",
+      "RuntimeAction"
+    ],
+    "source_version": "Dynamic Functional RDL v0.5"
+  },
+  "datatypes": {
+    "RCM::V2::Core::Probability": {
+      "abstract": false,
+      "attributes": [],
+      "bases": [
+        "EAST-ADL::Datatypes::EANumerical"
+      ],
+      "description": "EANumerical specialization with closed value range [0, 1].",
+      "max": 1,
+      "min": 0,
+      "name": "Probability",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RandomVariable": {
+      "abstract": false,
+      "attributes": [
+        {
+          "multiplicity": "1",
+          "name": "distribution",
+          "type": "RCM::V2::Core::DistributionKind"
+        }
+      ],
+      "bases": [
+        "EAST-ADL::Datatypes::EANumerical"
+      ],
+      "description": "Typed stochastic quantity used by optional probabilistic expressions.",
+      "name": "RandomVariable",
+      "package": "RCM::V2::Core"
+    }
+  },
+  "enums": {
+    "RCM::V2::AgentKnowledge::KnowledgePermission": {
+      "literals": [
+        "perceive",
+        "know",
+        "explain",
+        "modify"
+      ],
+      "name": "KnowledgePermission",
+      "package": "RCM::V2::AgentKnowledge"
+    },
+    "RCM::V2::AgentKnowledge::KnowledgeProvenanceKind": {
+      "literals": [
+        "authored",
+        "observed",
+        "imported",
+        "inferred"
+      ],
+      "name": "KnowledgeProvenanceKind",
+      "package": "RCM::V2::AgentKnowledge"
+    },
+    "RCM::V2::Core::AssertionSeverity": {
+      "literals": [
+        "info",
+        "warning",
+        "error",
+        "critical"
+      ],
+      "name": "AssertionSeverity",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::AssertionVerdict": {
+      "literals": [
+        "pass",
+        "fail",
+        "inconclusive",
+        "error"
+      ],
+      "name": "AssertionVerdict",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ConditionKind": {
+      "literals": [
+        "guard",
+        "precondition",
+        "postcondition",
+        "spatial",
+        "timing"
+      ],
+      "name": "ConditionKind",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::DistributionKind": {
+      "literals": [
+        "constant",
+        "uniform",
+        "normal",
+        "bernoulli",
+        "custom"
+      ],
+      "name": "DistributionKind",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::EntityKind": {
+      "literals": [
+        "agent",
+        "asset",
+        "zone",
+        "signal",
+        "stateObject"
+      ],
+      "name": "EntityKind",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeLocatorKind": {
+      "literals": [
+        "endpoint",
+        "tool",
+        "topic"
+      ],
+      "name": "RuntimeLocatorKind",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::RuntimeParameterDirection": {
+      "literals": [
+        "input",
+        "output",
+        "inout"
+      ],
+      "name": "RuntimeParameterDirection",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ScenarioEventKind": {
+      "literals": [
+        "temporal",
+        "spatial",
+        "signal",
+        "user",
+        "environment"
+      ],
+      "name": "ScenarioEventKind",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ScenarioKind": {
+      "literals": [
+        "main",
+        "alternative",
+        "exception"
+      ],
+      "name": "ScenarioKind",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::ScenarioStepKind": {
+      "literals": [
+        "actorIntent",
+        "systemResponse",
+        "environmentObservation"
+      ],
+      "name": "ScenarioStepKind",
+      "package": "RCM::V2::Core"
+    },
+    "RCM::V2::Core::StepRelationKind": {
+      "literals": [
+        "sequence",
+        "alternative",
+        "exception",
+        "fork",
+        "join",
+        "loop"
+      ],
+      "name": "StepRelationKind",
+      "package": "RCM::V2::Core"
+    },
+    "EAST-ADL::Behavior::FunctionBehaviorKind": {
+      "east_adl_source": "9.2.3, pp. 70-71",
+      "literals": [
+        "ASCET",
+        "MARTE",
+        "OTHER",
+        "SCADE",
+        "SCILAB",
+        "SDL",
+        "SIMULINK",
+        "STATEMATE",
+        "UML"
+      ],
+      "name": "FunctionBehaviorKind",
+      "package": "EAST-ADL::Behavior"
+    },
+    "EAST-ADL::Behavior::TriggerPolicyKind": {
+      "east_adl_source": "9.2.7, p. 73",
+      "literals": [
+        "EVENT",
+        "TIME"
+      ],
+      "name": "TriggerPolicyKind",
+      "package": "EAST-ADL::Behavior"
+    },
+    "EAST-ADL::FunctionModeling::EADirectionKind": {
+      "east_adl_source": "6.2.9, p. 45",
+      "literals": [
+        "in",
+        "inout",
+        "out"
+      ],
+      "name": "EADirectionKind",
+      "package": "EAST-ADL::FunctionModeling"
+    }
+  },
+  "invariant_index": [
+    "INV-001",
+    "INV-002",
+    "INV-003",
+    "INV-004",
+    "INV-005",
+    "INV-006",
+    "INV-007",
+    "INV-008",
+    "INV-009",
+    "INV-010",
+    "INV-011",
+    "INV-012",
+    "INV-013",
+    "INV-014",
+    "INV-015",
+    "INV-016",
+    "INV-017",
+    "INV-018",
+    "INV-019",
+    "INV-020",
+    "INV-021",
+    "INV-022",
+    "INV-023",
+    "INV-024",
+    "INV-025",
+    "INV-026",
+    "INV-027",
+    "INV-028",
+    "INV-029",
+    "INV-030",
+    "INV-031",
+    "INV-032",
+    "INV-033",
+    "INV-034",
+    "INV-035",
+    "INV-036",
+    "INV-037",
+    "INV-038",
+    "INV-039",
+    "INV-040",
+    "INV-041",
+    "INV-042",
+    "INV-043",
+    "INV-044",
+    "INV-045",
+    "INV-046",
+    "INV-047",
+    "INV-048",
+    "INV-049",
+    "INV-050",
+    "INV-051",
+    "INV-052",
+    "INV-053",
+    "INV-054",
+    "INV-055",
+    "INV-056",
+    "INV-057",
+    "INV-058",
+    "INV-059",
+    "INV-060",
+    "INV-061",
+    "INV-062",
+    "INV-063",
+    "INV-064",
+    "INV-065",
+    "INV-066",
+    "INV-067",
+    "INV-068",
+    "INV-069",
+    "INV-070",
+    "INV-071",
+    "INV-072",
+    "INV-073",
+    "INV-074",
+    "INV-075",
+    "INV-076",
+    "INV-077",
+    "INV-078",
+    "INV-079",
+    "INV-080",
+    "INV-081"
+  ],
+  "invariants": [
+    {
+      "expression": "EAST_ADL.packages.imports->excludes(RCM_V2)",
+      "id": "INV-001",
+      "profile": "core",
+      "scope": "PackageDependency",
+      "severity": "error",
+      "text": "Dependencies are one-way: RCM may import EAST-ADL; no EAST-ADL package imports RCM."
+    },
+    {
+      "expression": "localAttributes = {'text: String [0..1]'}",
+      "id": "INV-002",
+      "profile": "core",
+      "scope": "TraceableSpecification",
+      "severity": "error",
+      "text": "The imported TraceableSpecification has exactly one local optional text attribute."
+    },
+    {
+      "expression": "bases->isEmpty()",
+      "id": "INV-003",
+      "profile": "core",
+      "scope": "EAType|EAPrototype|EAPort|EAConnector",
+      "severity": "error",
+      "text": "The four imported infrastructure marker metaclasses have no generalizations."
+    },
+    {
+      "expression": "satisfiedRequirement->notEmpty() xor satisfiedUseCase->notEmpty()",
+      "id": "INV-004",
+      "profile": "core",
+      "scope": "Satisfy",
+      "severity": "error",
+      "text": "Satisfy targets Requirements or UseCases, never both in one relationship."
+    },
+    {
+      "expression": "satisfiedBy->forAll(not oclIsKindOf(Requirement) and not oclIsKindOf(RequirementContainer))",
+      "id": "INV-005",
+      "profile": "core",
+      "scope": "Satisfy",
+      "severity": "error",
+      "text": "satisfiedBy excludes Requirement and RequirementContainer."
+    },
+    {
+      "expression": "localAttributes->isEmpty() and localAssociations->excludes(condition)",
+      "id": "INV-006",
+      "profile": "core",
+      "scope": "Extend",
+      "severity": "error",
+      "text": "Imported EAST-ADL Extend has no condition; ConditionalExtend adds it conservatively."
+    },
+    {
+      "expression": "scenario->size() >= 0",
+      "id": "INV-007",
+      "profile": "core",
+      "scope": "UseCaseScenarioSpecification",
+      "severity": "error",
+      "text": "An unchanged EAST-ADL UseCase may have zero RCM scenarios in the core profile."
+    },
+    {
+      "expression": "scenario->select(kind=main)->size() = 1",
+      "id": "INV-008",
+      "profile": "executable",
+      "scope": "UseCaseScenarioSpecification",
+      "severity": "error",
+      "text": "The executable RCM profile requires exactly one main scenario per specified UseCase."
+    },
+    {
+      "expression": "kind=main implies variantOf->isEmpty()",
+      "id": "INV-009",
+      "profile": "core",
+      "scope": "Scenario",
+      "severity": "error",
+      "text": "A main scenario has no variantOf reference."
+    },
+    {
+      "expression": "kind<>main implies variantOf->size()=1 and variantOf.kind=main",
+      "id": "INV-010",
+      "profile": "core",
+      "scope": "Scenario",
+      "severity": "error",
+      "text": "Every alternative or exception scenario references exactly one main scenario."
+    },
+    {
+      "expression": "stepRelation->select(kind=sequence or kind=fork or kind=join or kind=alternative or kind=exception or kind=loop)",
+      "id": "INV-011",
+      "profile": "core",
+      "scope": "Scenario",
+      "severity": "error",
+      "text": "StepRelation is the single semantic source of control flow; collection order and stepNumber are display/projection data."
+    },
+    {
+      "expression": "stepNumber = deriveTopologicalDisplayOrder(self)",
+      "id": "INV-012",
+      "profile": "core",
+      "scope": "ScenarioStep",
+      "severity": "error",
+      "text": "stepNumber is derived for display and is not a third control-flow authority."
+    },
+    {
+      "expression": "memberStep->size()>=2 and boundedByReachableForkJoin(self)",
+      "id": "INV-013",
+      "profile": "core",
+      "scope": "ParallelGroup",
+      "severity": "error",
+      "text": "A ParallelGroup is structural and all members are reachable between matching fork and join relations."
+    },
+    {
+      "expression": "not hasDirectReference(RuntimeAction)",
+      "id": "INV-014",
+      "profile": "core",
+      "scope": "ScenarioStep",
+      "severity": "error",
+      "text": "ScenarioStep never directly references RuntimeAction; the capability chain remains mandatory."
+    },
+    {
+      "expression": "type.oclIsKindOf(EABoolean)",
+      "id": "INV-015",
+      "profile": "core",
+      "scope": "ScenarioCondition",
+      "severity": "error",
+      "text": "Every ScenarioCondition EAExpression is Boolean-typed."
+    },
+    {
+      "expression": "oclIsKindOf(Timing::Event) and oclIsKindOf(EAExpression)",
+      "id": "INV-016",
+      "profile": "core",
+      "scope": "ScenarioEvent",
+      "severity": "error",
+      "text": "ScenarioEvent combines identifiable timing-event semantics with expression semantics."
+    },
+    {
+      "expression": "min=0 and max=1",
+      "id": "INV-017",
+      "profile": "core",
+      "scope": "Probability",
+      "severity": "error",
+      "text": "Probability is an EANumerical type with the closed range [0,1]; this is not a UML multiplicity."
+    },
+    {
+      "expression": "type.oclIsTypeOf(Probability) and value>=0 and value<=1",
+      "id": "INV-018",
+      "profile": "core",
+      "scope": "ProbabilityValue",
+      "severity": "error",
+      "text": "Every ProbabilityValue is typed by Probability and lies in its range."
+    },
+    {
+      "expression": "oclIsKindOf(Agent) iff kind=EntityKind::agent",
+      "id": "INV-019",
+      "profile": "core",
+      "scope": "Agent|Entity",
+      "severity": "error",
+      "text": "Unity-compatible EntityKind.agent is retained and exactly equivalent to Agent specialization."
+    },
+    {
+      "expression": "performedBy->forAll(oclIsKindOf(Entity)) and actorRole->forAll(oclIsKindOf(Actor))",
+      "id": "INV-020",
+      "profile": "core",
+      "scope": "ScenarioStep",
+      "severity": "error",
+      "text": "Concrete performers and external Actor roles remain separate."
+    },
+    {
+      "expression": "type->size()=1 and type.oclIsKindOf(Capability)",
+      "id": "INV-021",
+      "profile": "core",
+      "scope": "CapabilityUse",
+      "severity": "error",
+      "text": "CapabilityUse follows the formal EAPrototype-to-EAType pattern."
+    },
+    {
+      "expression": "effect->size()>=1",
+      "id": "INV-022",
+      "profile": "core",
+      "scope": "Capability",
+      "severity": "error",
+      "text": "Every Capability promises at least one observable Effect."
+    },
+    {
+      "expression": "specifiedBy->size()>=1",
+      "id": "INV-023",
+      "profile": "core",
+      "scope": "Effect",
+      "severity": "error",
+      "text": "Every Effect is specified by at least one reusable, testable Assertion; an expectation is not mislabeled as evidence."
+    },
+    {
+      "expression": "targetCount(analysisFunctionType,analysisFunctionPrototype,designFunctionType,designFunctionPrototype)=1",
+      "id": "INV-024",
+      "profile": "core",
+      "scope": "CapabilityFunctionMapping",
+      "severity": "error",
+      "text": "A function mapping selects exactly one real EAST-ADL type/prototype target; FAA/FDA are not invented metaclasses."
+    },
+    {
+      "expression": "isElementary implies parts()->isEmpty()",
+      "id": "INV-025",
+      "profile": "core",
+      "scope": "FunctionType",
+      "severity": "error",
+      "text": "Elementary FunctionTypes have no analysis/design parts (exact EAST-ADL constraint)."
+    },
+    {
+      "expression": "port->size()=2",
+      "id": "INV-026",
+      "profile": "core",
+      "scope": "FunctionConnector",
+      "severity": "error",
+      "text": "FunctionConnector links exactly two FunctionPorts through instance references."
+    },
+    {
+      "expression": "path->size()=1 and representation->size()=1",
+      "id": "INV-027",
+      "profile": "core",
+      "scope": "FunctionBehavior",
+      "severity": "error",
+      "text": "FunctionBehavior keeps both mandatory EAST-ADL attributes."
+    },
+    {
+      "expression": "executionSemantics=readInputs_executeToCompletion_publishOutputs",
+      "id": "INV-028",
+      "profile": "core",
+      "scope": "FunctionBehavior",
+      "severity": "error",
+      "text": "FunctionBehavior has synchronous run-to-completion execution semantics."
+    },
+    {
+      "expression": "requiresRunToCompletion=true",
+      "id": "INV-029",
+      "profile": "core",
+      "scope": "CapabilityBehaviorBinding",
+      "severity": "error",
+      "text": "A behavior binding is admissible only where the bound behavior's run-to-completion semantics fit; it is never a Refine relation."
+    },
+    {
+      "expression": "runtimeAction->size()>=1 and runtimeAction.isOrdered=true",
+      "id": "INV-030",
+      "profile": "core",
+      "scope": "RuntimeBinding",
+      "severity": "error",
+      "text": "Every RuntimeBinding owns at least one ordered RuntimeAction."
+    },
+    {
+      "expression": "locator->size()=1",
+      "id": "INV-031",
+      "profile": "core",
+      "scope": "RuntimeAction",
+      "severity": "error",
+      "text": "Every V2 RuntimeAction has exactly one structured locator."
+    },
+    {
+      "expression": "kind=endpoint xor kind=tool xor kind=topic",
+      "id": "INV-032",
+      "profile": "core",
+      "scope": "RuntimeActionLocator",
+      "severity": "error",
+      "text": "Locator kind is exclusive; legacy endpoint/tool/topic slots are projection fields."
+    },
+    {
+      "expression": "capabilityParameter->size()=1 and runtimeParameter->size()=1",
+      "id": "INV-033",
+      "profile": "core",
+      "scope": "ParameterBinding",
+      "severity": "error",
+      "text": "ParameterBinding maps one typed use parameter to one typed runtime parameter."
+    },
+    {
+      "expression": "verificationValidation->size()=1",
+      "id": "INV-034",
+      "profile": "core",
+      "scope": "DynamicFunctionalModel",
+      "severity": "error",
+      "text": "The root owns exactly one exact VerificationValidation container."
+    },
+    {
+      "expression": "compositeOwner(self).oclIsKindOf(VerificationValidation)",
+      "id": "INV-035",
+      "profile": "core",
+      "scope": "ValidationCase",
+      "severity": "error",
+      "text": "ValidationCase is composed only through VerificationValidation.vvCase, never directly by the root."
+    },
+    {
+      "expression": "vvLog->notEmpty() implies isConcrete(self)",
+      "id": "INV-036",
+      "profile": "core",
+      "scope": "VVCase",
+      "severity": "error",
+      "text": "Only a concrete VVCase may own VVLogs."
+    },
+    {
+      "expression": "vvTarget->notEmpty() implies isConcrete(self)",
+      "id": "INV-037",
+      "profile": "core",
+      "scope": "VVCase",
+      "severity": "error",
+      "text": "Only a concrete VVCase may have VVTargets."
+    },
+    {
+      "expression": "abstractVVCase->notEmpty() implies isConcrete(self)",
+      "id": "INV-038",
+      "profile": "core",
+      "scope": "VVCase",
+      "severity": "error",
+      "text": "Only a concrete VVCase may identify an abstractVVCase."
+    },
+    {
+      "expression": "(vvStimuli->notEmpty() or vvIntendedOutcome->notEmpty() or abstractVVProcedure->notEmpty()) implies isConcrete(self)",
+      "id": "INV-039",
+      "profile": "core",
+      "scope": "VVProcedure",
+      "severity": "error",
+      "text": "Stimuli, intended outcomes and abstractVVProcedure are concrete-procedure features."
+    },
+    {
+      "expression": "compositeOwner(self).oclIsKindOf(RuntimeValidationLog)",
+      "id": "INV-040",
+      "profile": "core",
+      "scope": "RuntimeActualOutcome",
+      "severity": "error",
+      "text": "Actual runtime outcomes exist only under RuntimeValidationLog/VVLog."
+    },
+    {
+      "expression": "distinctRoles(vvSubject,VVTarget.element) and not requiredEqual(vvSubject,VVTarget.element)",
+      "id": "INV-041",
+      "profile": "core",
+      "scope": "VVCase",
+      "severity": "error",
+      "text": "vvSubject and VVTarget.element have distinct roles but may coincidentally reference some of the same elements."
+    },
+    {
+      "expression": "verifiedRequirement->size()>=1 and verifiedByCase->size()>=1",
+      "id": "INV-042",
+      "profile": "core",
+      "scope": "Verify",
+      "severity": "error",
+      "text": "Verify remains a RequirementsRelationship between Requirements and VVCases/optional procedures."
+    },
+    {
+      "expression": "validationCase->size()=1 and useCase->size()=1",
+      "id": "INV-043",
+      "profile": "core",
+      "scope": "ValidationCaseUseCaseBinding",
+      "severity": "error",
+      "text": "Each UseCase-validation relationship has exactly one case and one UseCase and does not overload Verify."
+    },
+    {
+      "expression": "legacyLevel is suppliedBy(V05ProjectionLedger)",
+      "id": "INV-044",
+      "profile": "core",
+      "scope": "ValidationCase",
+      "severity": "error",
+      "text": "Legacy abstract/concrete level is not uniquely derivable from abstractVVCase and must be preserved by the projection ledger."
+    },
+    {
+      "expression": "exportV05(importV05(x,ledger),ledger)=x",
+      "id": "INV-045",
+      "profile": "compatibility",
+      "scope": "V05Projection",
+      "severity": "error",
+      "text": "Every valid v0.5 instance round-trips byte-semantically, including IDs, array order, null/missing distinctions and enum lexemes."
+    },
+    {
+      "expression": "reverseRoundTripRequires(isV05Representable(v2) or completeLedger(v2))",
+      "id": "INV-046",
+      "profile": "compatibility",
+      "scope": "V05Projection",
+      "severity": "error",
+      "text": "V2-to-v0.5 reverse projection is total only for the representable subset or with a complete sidecar ledger."
+    },
+    {
+      "expression": "mainScenario is serialized before variants",
+      "id": "INV-047",
+      "profile": "compatibility",
+      "scope": "V05Projection",
+      "severity": "error",
+      "text": "The v0.5 compatibility view keeps the main scenario first for existing backend selection behavior."
+    },
+    {
+      "expression": "preserveAgentEntityAlias(AG_id,ENT_AGENT_id)",
+      "id": "INV-048",
+      "profile": "compatibility",
+      "scope": "V05Projection",
+      "severity": "error",
+      "text": "The two existing Agent identities and their provenance are preserved exactly."
+    },
+    {
+      "expression": "not oclIsKindOf(Timing::Event)",
+      "id": "INV-049",
+      "profile": "annex-c",
+      "scope": "TransitionEvent",
+      "severity": "error",
+      "text": "Annex C TransitionEvent is EAElement plus BehaviorConstraintParameter, not a Timing::Event subtype."
+    },
+    {
+      "expression": "occurredExecutionEvent->forAll(oclIsKindOf(Timing::Event))",
+      "id": "INV-050",
+      "profile": "annex-c",
+      "scope": "TransitionEvent",
+      "severity": "error",
+      "text": "The Annex C connection to Timing::Event is an association only."
+    },
+    {
+      "expression": "optional=true and preliminary=true and not Core.imports(AnnexCBridge)",
+      "id": "INV-051",
+      "profile": "annex-c",
+      "scope": "AnnexCBridge",
+      "severity": "error",
+      "text": "Annex C mapping is optional and preliminary and creates no Core back-dependency."
+    },
+    {
+      "expression": "optional=true and not Core.imports(FeatureBridge)",
+      "id": "INV-052",
+      "profile": "feature",
+      "scope": "FeatureBridge",
+      "severity": "error",
+      "text": "Generic/VehicleFeature mapping is optional; the domain-independent Core has no automotive dependency."
+    },
+    {
+      "expression": "optional=true and not Core.imports(AgentKnowledge)",
+      "id": "INV-053",
+      "profile": "agent-knowledge",
+      "scope": "AgentKnowledge",
+      "severity": "error",
+      "text": "Knowledge/perception/provenance support is optional and does not invalidate existing Agent instances."
+    },
+    {
+      "expression": "capabilityUse->notEmpty() and prototypeTarget->notEmpty() implies prototypeTarget.type = mappedTypeFor(capabilityUse.type)",
+      "id": "INV-054",
+      "profile": "core",
+      "scope": "CapabilityFunctionMapping",
+      "severity": "error",
+      "text": "A CapabilityUse-to-function-prototype mapping must use a prototype whose type matches the function type mapped for the same Capability."
+    },
+    {
+      "expression": "targetBindings(self).targets()->notEmpty() or refinedRequirements(self)->notEmpty()",
+      "id": "INV-055",
+      "profile": "annex-c",
+      "scope": "BehaviorConstraintType",
+      "severity": "error",
+      "text": "An Annex C BehaviorConstraintType references at least one requirement, vehicle feature, mode, function type, function behavior, function trigger or error behavior definition."
+    },
+    {
+      "expression": "scenarioEvent->notEmpty() or runtimeAction->notEmpty()",
+      "id": "INV-056",
+      "profile": "core",
+      "scope": "RuntimeStimulus",
+      "severity": "error",
+      "text": "A concrete RuntimeStimulus identifies at least one ScenarioEvent or RuntimeAction."
+    },
+    {
+      "expression": "responsibleZone.kind=zone and groundedAsset.kind=asset",
+      "id": "INV-057",
+      "profile": "core",
+      "scope": "Agent",
+      "severity": "error",
+      "text": "Agent responsibility and grounding references retain the Unity-visible zone/asset meaning."
+    },
+    {
+      "expression": "refinedBy->forAll(not oclIsKindOf(Requirement) and not oclIsKindOf(RequirementContainer))",
+      "id": "INV-058",
+      "profile": "core",
+      "scope": "Refine",
+      "severity": "error",
+      "text": "The exact Refine.refinedBy role excludes Requirement and RequirementContainer."
+    },
+    {
+      "expression": "triggerPolicy=EVENT implies port->notEmpty()",
+      "id": "INV-059",
+      "profile": "core",
+      "scope": "FunctionTrigger",
+      "severity": "error",
+      "text": "An event-driven FunctionTrigger references at least one triggering port."
+    },
+    {
+      "expression": "triggerPolicy=TIME implies port->isEmpty()",
+      "id": "INV-060",
+      "profile": "core",
+      "scope": "FunctionTrigger",
+      "severity": "error",
+      "text": "A time-driven FunctionTrigger has no triggering port."
+    },
+    {
+      "expression": "function->notEmpty() xor functionPrototype->notEmpty()",
+      "id": "INV-061",
+      "profile": "core",
+      "scope": "FunctionTrigger",
+      "severity": "error",
+      "text": "A FunctionTrigger identifies either one FunctionType or one FunctionPrototype, never both."
+    },
+    {
+      "expression": "port->forAll(oclIsKindOf(FunctionFlowPort) and direction=in)",
+      "id": "INV-062",
+      "profile": "core",
+      "scope": "FunctionTrigger",
+      "severity": "error",
+      "text": "Every triggering port is an input FunctionFlowPort."
+    },
+    {
+      "expression": "requirementsModel->size()=1",
+      "id": "INV-063",
+      "profile": "core",
+      "scope": "DynamicFunctionalModel",
+      "severity": "error",
+      "text": "The RCM application profile requires exactly one RequirementsModel in addition to exactly one VerificationValidation container."
+    },
+    {
+      "expression": "provider->notEmpty() implies scenarioStep.performedBy->includes(provider) and provider.providedCapability->includes(type)",
+      "id": "INV-064",
+      "profile": "core",
+      "scope": "CapabilityUse",
+      "severity": "error",
+      "text": "An explicit CapabilityUse provider must perform the owning step and provide the referenced Capability type."
+    },
+    {
+      "expression": "provider->size()=1",
+      "id": "INV-065",
+      "profile": "executable",
+      "scope": "CapabilityUse",
+      "severity": "error",
+      "text": "Every CapabilityUse in the executable authoring profile has exactly one explicit provider; the compatibility core remains [0..1] because legacy data cannot identify one unambiguously."
+    },
+    {
+      "expression": "not self.oclIsTypeOf(Assertion) and subject->size()=1 and expression->size()=1",
+      "id": "INV-066",
+      "profile": "core",
+      "scope": "Assertion",
+      "severity": "error",
+      "text": "Only concrete Assertion specializations may be instantiated, each with exactly one identifiable subject and one EAExpression."
+    },
+    {
+      "expression": "assertion->size()=1 and verdict->size()=1",
+      "id": "INV-067",
+      "profile": "core",
+      "scope": "AssertionResult",
+      "severity": "error",
+      "text": "Each structured result evaluates exactly one Assertion and records exactly one verdict."
+    },
+    {
+      "expression": "result->size()>=1",
+      "id": "INV-068",
+      "profile": "core",
+      "scope": "RuntimeActualOutcome",
+      "severity": "error",
+      "text": "Every runtime actual outcome contains at least one structured AssertionResult."
+    },
+    {
+      "expression": "platform->size()=1 and runtimeBinding->forAll(rb | element->includes(rb))",
+      "id": "INV-069",
+      "profile": "core",
+      "scope": "RuntimeValidationTarget",
+      "severity": "error",
+      "text": "Every runtime target names one platform and exposes every configured RuntimeBinding through the inherited VVTarget.element role."
+    },
+    {
+      "expression": "vvSubject->forAll(s | s.oclIsKindOf(ScenarioStep) or s.oclIsKindOf(Capability) or s.oclIsKindOf(RuntimeBinding) or s.oclIsKindOf(Entity))",
+      "id": "INV-070",
+      "profile": "core",
+      "scope": "ValidationCase",
+      "severity": "error",
+      "text": "RCM ValidationCase subjects are ScenarioSteps, Capabilities, RuntimeBindings or Entities while EAST-ADL VVCase.vvSubject remains unchanged."
+    },
+    {
+      "expression": "sourceStep.scenario = targetStep.scenario",
+      "id": "INV-071",
+      "profile": "core",
+      "scope": "StepRelation",
+      "severity": "error",
+      "text": "Both endpoints of a StepRelation belong to the same owning Scenario."
+    },
+    {
+      "expression": "memberStep->forAll(s | s.scenario = self.scenario) and memberStep->size()>=2 and boundedByReachableForkJoin(self)",
+      "id": "INV-072",
+      "profile": "core",
+      "scope": "ParallelGroup",
+      "severity": "error",
+      "text": "A ParallelGroup is owned with at least two members in one Scenario, structurally between matching fork and join relations."
+    },
+    {
+      "expression": "probability->notEmpty() implies (kind=alternative or kind=exception)",
+      "id": "INV-073",
+      "profile": "core",
+      "scope": "StepRelation",
+      "severity": "error",
+      "text": "A control-flow probability is permitted only on alternative or exception edges."
+    },
+    {
+      "expression": "completeProbabilisticBranches()->forAll(b | abs(b.outgoing.probability.value->sum()-1.0)<0.000001)",
+      "id": "INV-074",
+      "profile": "core",
+      "scope": "Scenario",
+      "severity": "error",
+      "text": "If every alternative/exception edge of a branch carries a probability, the complete branch probabilities sum to one."
+    },
+    {
+      "expression": "sceneObjects()->forAll(t | decidingOwners(t)->size() <= 1)",
+      "id": "INV-075",
+      "profile": "executable",
+      "scope": "Entity",
+      "severity": "error",
+      "text": "Every scene object has at most one provider at the first nonempty asset/group/zone responsibility level; no fallback follows an ambiguity."
+    },
+    {
+      "expression": "sceneObjects()->forAll(t | decidingOwners(t)->notEmpty())",
+      "id": "INV-076",
+      "profile": "executable",
+      "scope": "Entity",
+      "severity": "error",
+      "text": "Every scene object has an owner at some responsibility level; together INV-075 and INV-076 require exactly one deciding provider."
+    },
+    {
+      "expression": "sceneObjects()->forAll(t | uniqueAnsweringPath(decidingProvider(t), t))",
+      "id": "INV-077",
+      "profile": "executable",
+      "scope": "CapabilityUse",
+      "severity": "error",
+      "text": "Each uniquely owned scene object has one native ScenarioStep-to-CapabilityUse-to-Capability-to-RuntimeBinding-to-RuntimeAction answering path and one matching chat trace projection."
+    },
+    {
+      "expression": "handoffTarget->isUnique(id) and handoffTarget->excludes(self) and handoffTarget->forAll(oclIsKindOf(Agent))",
+      "id": "INV-078",
+      "profile": "executable",
+      "scope": "Agent",
+      "severity": "error",
+      "text": "Handoff references identify distinct other agents, without self-loops or duplicates."
+    },
+    {
+      "expression": "sharedGroupOrZoneOwners()->forAll(e | members(e)->forAll(t | assetOwners(t)->size()=1))",
+      "id": "INV-079",
+      "profile": "executable",
+      "scope": "Entity",
+      "severity": "warning",
+      "text": "Warn when a group or zone has several owners and any member lacks unique asset-level coverage; fully shielded shared ownership is also reported."
+    },
+    {
+      "expression": "agentObjectPairs()->report(shortestHandoffs > 1 or noPath)",
+      "id": "INV-080",
+      "profile": "executable",
+      "scope": "Agent|Entity",
+      "severity": "report",
+      "text": "Report every start-agent/object pair needing more than one handoff or having no directed path; these pairs reject at runtime and do not invalidate publication."
+    },
+    {
+      "expression": "digestScheme='sha256-lf-v1' and declarationsMatch(SHA256(normalizeCRLF(serializedModel)))",
+      "id": "INV-081",
+      "profile": "executable",
+      "scope": "ProjectPublication",
+      "severity": "error",
+      "text": "Project and trace declare sha256-lf-v1 and a matching model digest. This is a project-level publication obligation, not a metamodel class."
+    }
+  ],
+  "metadata": {
+    "canonical_source": "tools/dynamic_functional_rdl_v2_model.py",
+    "date": "2026-10-15",
+    "east_adl_specification_sha256": "6B1645C4FA668DBFA8AF24C37B83BC0B7343B9B6284E1DD29E1085B10BC59C3D",
+    "east_adl_version": "2.1.12",
+    "model_version": "2.1.0-executable",
+    "name": "Dynamic Functional RDL V2",
+    "namespace": "RCM::V2",
+    "scope": "native V2 model consumed by backend and authoring pipeline; executable routing profile with publish-time verification",
+    "status": "executable-routing-profile"
+  },
+  "packages": {
+    "RCM::V2::AgentKnowledge": {
+      "description": "Optional perception, provenance, knowledge and modification-rights module.",
+      "imports": [
+        "EAST-ADL::Elements",
+        "RCM::V2::Core"
+      ],
+      "kind": "optional-rcm-extension",
+      "name": "AgentKnowledge",
+      "normative": false
+    },
+    "RCM::V2::AnnexCBridge": {
+      "description": "Optional semantic mapping onto preliminary Annex C; Core has no dependency on it.",
+      "imports": [
+        "EAST-ADL::Elements",
+        "RCM::V2::Core",
+        "EAST-ADL::AnnexC::ComputationConstraint",
+        "EAST-ADL::AnnexC::TemporalConstraint",
+        "EAST-ADL::AnnexC::AttributeQuantificationConstraint",
+        "EAST-ADL::AnnexC::BehaviorDescription"
+      ],
+      "kind": "optional-rcm-extension",
+      "name": "AnnexCBridge",
+      "normative": false,
+      "preliminary": true
+    },
+    "RCM::V2::Core": {
+      "description": "Conservative RCM V2 extension; imported EAST-ADL packages never import it.",
+      "imports": [
+        "EAST-ADL::Elements",
+        "EAST-ADL::Datatypes",
+        "EAST-ADL::Values",
+        "EAST-ADL::Requirements",
+        "EAST-ADL::UseCases",
+        "EAST-ADL::SystemModeling",
+        "EAST-ADL::FunctionModeling",
+        "EAST-ADL::Behavior",
+        "EAST-ADL::Timing",
+        "EAST-ADL::Events",
+        "EAST-ADL::VerificationValidation"
+      ],
+      "kind": "rcm-extension",
+      "name": "Core",
+      "normative": true
+    },
+    "RCM::V2::FeatureBridge": {
+      "description": "Optional feature mapping; no VehicleFeature dependency in Core.",
+      "imports": [
+        "EAST-ADL::Elements",
+        "RCM::V2::Core",
+        "EAST-ADL::FeatureModeling",
+        "EAST-ADL::VehicleFeatureModeling"
+      ],
+      "kind": "optional-rcm-extension",
+      "name": "FeatureBridge",
+      "normative": false
+    },
+    "EAST-ADL::AnnexC::AttributeQuantificationConstraint": {
+      "description": "Preliminary Annex C quantification slice.",
+      "imports": [
+        "EAST-ADL::Elements",
+        "EAST-ADL::Values"
+      ],
+      "kind": "imported-east-adl-annex-c",
+      "name": "AttributeQuantificationConstraint",
+      "normative": false,
+      "preliminary": true
+    },
+    "EAST-ADL::AnnexC::BehaviorDescription": {
+      "description": "Preliminary Annex C behavior-description slice.",
+      "imports": [
+        "EAST-ADL::Elements",
+        "EAST-ADL::FunctionModeling",
+        "EAST-ADL::Behavior",
+        "EAST-ADL::VehicleFeatureModeling"
+      ],
+      "kind": "imported-east-adl-annex-c",
+      "name": "BehaviorDescription",
+      "normative": false,
+      "preliminary": true
+    },
+    "EAST-ADL::AnnexC::ComputationConstraint": {
+      "description": "Preliminary Annex C logical-computation slice.",
+      "imports": [
+        "EAST-ADL::Elements",
+        "EAST-ADL::AnnexC::AttributeQuantificationConstraint"
+      ],
+      "kind": "imported-east-adl-annex-c",
+      "name": "ComputationConstraint",
+      "normative": false,
+      "preliminary": true
+    },
+    "EAST-ADL::AnnexC::TemporalConstraint": {
+      "description": "Preliminary Annex C temporal-constraint slice; TransitionEvent is not Timing::Event.",
+      "imports": [
+        "EAST-ADL::Elements",
+        "EAST-ADL::Values",
+        "EAST-ADL::Timing",
+        "EAST-ADL::AnnexC::BehaviorDescription",
+        "EAST-ADL::AnnexC::AttributeQuantificationConstraint"
+      ],
+      "kind": "imported-east-adl-annex-c",
+      "name": "TemporalConstraint",
+      "normative": false,
+      "preliminary": true
+    },
+    "EAST-ADL::Behavior": {
+      "description": "Selected exact EAST-ADL FunctionBehavior slice (section 9).",
+      "imports": [
+        "EAST-ADL::Elements",
+        "EAST-ADL::FunctionModeling",
+        "EAST-ADL::Values"
+      ],
+      "kind": "imported-east-adl",
+      "name": "Behavior",
+      "normative": true
+    },
+    "EAST-ADL::Datatypes": {
+      "description": "Selected exact EAST-ADL datatype slice (section 23).",
+      "imports": [
+        "EAST-ADL::Elements"
+      ],
+      "kind": "imported-east-adl",
+      "name": "Datatypes",
+      "normative": true
+    },
+    "EAST-ADL::Elements": {
+      "description": "Selected exact EAST-ADL V2.1.12 infrastructure slice (section 25).",
+      "imports": [],
+      "kind": "imported-east-adl",
+      "name": "Elements",
+      "normative": true
+    },
+    "EAST-ADL::Events": {
+      "description": "Selected exact EAST-ADL ExternalEvent slice (section 16).",
+      "imports": [
+        "EAST-ADL::Timing"
+      ],
+      "kind": "imported-east-adl",
+      "name": "Events",
+      "normative": true
+    },
+    "EAST-ADL::FeatureModeling": {
+      "description": "Minimal target slice for optional generic feature mapping.",
+      "imports": [
+        "EAST-ADL::Elements"
+      ],
+      "kind": "imported-east-adl-optional",
+      "name": "FeatureModeling",
+      "normative": true
+    },
+    "EAST-ADL::FunctionModeling": {
+      "description": "Selected exact EAST-ADL function type/prototype slice (section 6).",
+      "imports": [
+        "EAST-ADL::Elements",
+        "EAST-ADL::Datatypes",
+        "EAST-ADL::Values"
+      ],
+      "kind": "imported-east-adl",
+      "name": "FunctionModeling",
+      "normative": true
+    },
+    "EAST-ADL::Requirements": {
+      "description": "Selected exact EAST-ADL requirements slice (section 11).",
+      "imports": [
+        "EAST-ADL::Elements",
+        "EAST-ADL::UseCases",
+        "EAST-ADL::Behavior"
+      ],
+      "kind": "imported-east-adl",
+      "name": "Requirements",
+      "normative": true
+    },
+    "EAST-ADL::SystemModeling": {
+      "description": "Selected exact EAST-ADL abstraction-level slice (section 3).",
+      "imports": [
+        "EAST-ADL::Elements",
+        "EAST-ADL::FunctionModeling"
+      ],
+      "kind": "imported-east-adl",
+      "name": "SystemModeling",
+      "normative": true
+    },
+    "EAST-ADL::Timing": {
+      "description": "Selected exact EAST-ADL timing event slice (section 14).",
+      "imports": [
+        "EAST-ADL::Elements"
+      ],
+      "kind": "imported-east-adl",
+      "name": "Timing",
+      "normative": true
+    },
+    "EAST-ADL::UseCases": {
+      "description": "Exact EAST-ADL Actor, UseCase, Extend, Include and ExtensionPoint slice (section 12).",
+      "imports": [
+        "EAST-ADL::Elements"
+      ],
+      "kind": "imported-east-adl",
+      "name": "UseCases",
+      "normative": true
+    },
+    "EAST-ADL::Values": {
+      "description": "Selected exact EAST-ADL value slice (section 24).",
+      "imports": [
+        "EAST-ADL::Datatypes"
+      ],
+      "kind": "imported-east-adl",
+      "name": "Values",
+      "normative": true
+    },
+    "EAST-ADL::VehicleFeatureModeling": {
+      "description": "Automotive-only VehicleFeature target slice.",
+      "imports": [
+        "EAST-ADL::FeatureModeling"
+      ],
+      "kind": "imported-east-adl-optional",
+      "name": "VehicleFeatureModeling",
+      "normative": true
+    },
+    "EAST-ADL::VerificationValidation": {
+      "description": "Exact EAST-ADL V&V container and element slice (section 13).",
+      "imports": [
+        "EAST-ADL::Elements",
+        "EAST-ADL::Requirements"
+      ],
+      "kind": "imported-east-adl",
+      "name": "VerificationValidation",
+      "normative": true
+    }
+  },
+  "primitives": {
+    "Boolean": {
+      "description": "Boolean primitive."
+    },
+    "Identifier": {
+      "description": "EAST-ADL identifier primitive."
+    },
+    "Integer": {
+      "description": "Integer primitive."
+    },
+    "Numerical": {
+      "description": "EAST-ADL numerical literal primitive."
+    },
+    "Real": {
+      "description": "Real-number primitive."
+    },
+    "String": {
+      "description": "String primitive."
+    }
+  },
+  "views": {
+    "01_east_adl_infrastructure": {
+      "description": "Exact selected infrastructure, datatype and value inheritance.",
+      "diagram_association_ids": [
+        "EAElement_ownedComment",
+        "Context_ownedRelationship",
+        "Context_traceableSpecification",
+        "EADatatypePrototype_type",
+        "EAValue_type"
+      ],
+      "row_labels": [
+        "Element and type bases",
+        "Values and datatypes",
+        "Identifiable elements",
+        "Packageable elements",
+        "Contexts"
+      ],
+      "rows": [
+        [
+          "EAST-ADL::Elements::Referrable",
+          "EAST-ADL::Elements::EAType",
+          "EAST-ADL::Elements::EAPrototype",
+          "EAST-ADL::Elements::EAPort",
+          "EAST-ADL::Elements::EAConnector",
+          "EAST-ADL::Values::EAValue"
+        ],
+        [
+          "EAST-ADL::Datatypes::EADatatype",
+          "EAST-ADL::Datatypes::EADatatypePrototype",
+          "EAST-ADL::Values::EAExpression",
+          "EAST-ADL::Values::EANumericalValue"
+        ],
+        [
+          "EAST-ADL::Elements::Identifiable",
+          "EAST-ADL::Elements::EAElement",
+          "EAST-ADL::Datatypes::EABoolean",
+          "EAST-ADL::Datatypes::EANumerical"
+        ],
+        [
+          "EAST-ADL::Elements::EAPackageableElement",
+          "EAST-ADL::Elements::Relationship",
+          "EAST-ADL::Elements::Comment"
+        ],
+        [
+          "EAST-ADL::Elements::Context",
+          "EAST-ADL::Elements::TraceableSpecification"
+        ]
+      ],
+      "title": "EAST-ADL V2.1.12 – selected infrastructure slice"
+    },
+    "02_east_adl_requirements_usecases": {
+      "description": "Unmodified Requirements and UseCases metaclasses plus their exact infrastructure bases.",
+      "diagram_association_ids": [
+        "RequirementsModel_requirement",
+        "Satisfy_satisfiedRequirement",
+        "UseCase_include",
+        "UseCase_extend",
+        "Extend_extensionLocation"
+      ],
+      "row_labels": [
+        "EAST-ADL bases",
+        "Requirements and UseCases",
+        "UseCase relationships",
+        "Requirements relationships"
+      ],
+      "rows": [
+        [
+          "EAST-ADL::Elements::Context",
+          "EAST-ADL::Elements::TraceableSpecification",
+          "EAST-ADL::Elements::EAElement"
+        ],
+        [
+          "EAST-ADL::Requirements::RequirementsModel",
+          "EAST-ADL::Requirements::Requirement",
+          "EAST-ADL::UseCases::Actor",
+          "EAST-ADL::UseCases::UseCase",
+          "EAST-ADL::Elements::Relationship",
+          "EAST-ADL::UseCases::RedefinableElement"
+        ],
+        [
+          "EAST-ADL::Requirements::RequirementsRelationship",
+          "EAST-ADL::UseCases::Include",
+          "EAST-ADL::UseCases::Extend",
+          "EAST-ADL::UseCases::ExtensionPoint"
+        ],
+        [
+          "EAST-ADL::Requirements::Satisfy",
+          "EAST-ADL::Requirements::Refine",
+          "EAST-ADL::VerificationValidation::Verify"
+        ]
+      ],
+      "title": "EAST-ADL Requirements/UseCases – selected slice"
+    },
+    "03_east_adl_function_system_behavior": {
+      "description": "Exact type/prototype, FAA/FDA root, connector and behavior semantics.",
+      "diagram_association_ids": [
+        "FunctionConnector_port",
+        "FunctionType_port",
+        "FunctionType_connector",
+        "PortGroup_portGroup",
+        "AnalysisFunctionPrototype_type",
+        "AnalysisFunctionType_part",
+        "DesignFunctionPrototype_type",
+        "DesignFunctionType_part"
+      ],
+      "row_labels": [
+        "EAST-ADL bases",
+        "Generic function structure",
+        "Analysis and design",
+        "Architecture contexts"
+      ],
+      "rows": [
+        [
+          "EAST-ADL::Elements::EAType",
+          "EAST-ADL::Elements::EAPrototype",
+          "EAST-ADL::Elements::EAElement",
+          "EAST-ADL::Elements::EAPort",
+          "EAST-ADL::Elements::EAConnector",
+          "EAST-ADL::Elements::Context"
+        ],
+        [
+          "EAST-ADL::FunctionModeling::FunctionType",
+          "EAST-ADL::FunctionModeling::FunctionPrototype",
+          "EAST-ADL::FunctionModeling::FunctionPort",
+          "EAST-ADL::FunctionModeling::FunctionConnector",
+          "EAST-ADL::FunctionModeling::PortGroup",
+          "EAST-ADL::FunctionModeling::FunctionFlowPort",
+          "EAST-ADL::Behavior::FunctionBehavior"
+        ],
+        [
+          "EAST-ADL::FunctionModeling::AnalysisFunctionType",
+          "EAST-ADL::FunctionModeling::AnalysisFunctionPrototype",
+          "EAST-ADL::FunctionModeling::DesignFunctionType",
+          "EAST-ADL::FunctionModeling::DesignFunctionPrototype"
+        ],
+        [
+          "EAST-ADL::SystemModeling::AnalysisLevel",
+          "EAST-ADL::SystemModeling::DesignLevel"
+        ]
+      ],
+      "title": "EAST-ADL Function/System/Behavior – selected slice"
+    },
+    "04_rcm_scenario_flow": {
+      "adjacent_route_shifts": {
+        "StepRelation_probability": 70.0
+      },
+      "description": "UseCase binding, actor/entity separation, typed events/conditions and canonical control flow.",
+      "diagram_association_ids": [
+        "UseCaseScenarioSpecification_useCase",
+        "UseCaseScenarioSpecification_scenario",
+        "ActorParticipation_actor",
+        "Scenario_step",
+        "Scenario_stepRelation",
+        "Scenario_parallelGroup",
+        "StepRelation_sourceStep",
+        "StepRelation_targetStep",
+        "StepRelation_probability"
+      ],
+      "row_labels": [
+        "EAST-ADL bases",
+        "UseCase and role binding",
+        "Scenario",
+        "Control flow",
+        "Events, conditions and probabilities",
+        "Abstract assertion base",
+        "Specialized assertion kinds"
+      ],
+      "rows": [
+        [
+          "EAST-ADL::Elements::Context",
+          "EAST-ADL::Elements::TraceableSpecification",
+          "EAST-ADL::Elements::Relationship",
+          "EAST-ADL::Elements::Identifiable",
+          "EAST-ADL::Timing::Event",
+          "EAST-ADL::Values::EAExpression"
+        ],
+        [
+          "RCM::V2::Core::DynamicFunctionalModel",
+          "EAST-ADL::UseCases::Actor",
+          "RCM::V2::Core::ActorParticipation",
+          "EAST-ADL::UseCases::UseCase",
+          "RCM::V2::Core::UseCaseScenarioSpecification",
+          "RCM::V2::Core::ConditionalExtend"
+        ],
+        [
+          "RCM::V2::Core::Scenario"
+        ],
+        [
+          "RCM::V2::Core::ScenarioStep",
+          "RCM::V2::Core::StepRelation",
+          "RCM::V2::Core::ParallelGroup"
+        ],
+        [
+          "RCM::V2::Core::Entity",
+          "EAST-ADL::Events::ExternalEvent",
+          "RCM::V2::Core::ScenarioEvent",
+          "RCM::V2::Core::ScenarioExternalEvent",
+          "RCM::V2::Core::ScenarioCondition",
+          "RCM::V2::Core::ProbabilityValue",
+          "RCM::V2::Core::Probability"
+        ],
+        [
+          "RCM::V2::Core::Assertion"
+        ],
+        [
+          "RCM::V2::Core::StateAssertion",
+          "RCM::V2::Core::EventAssertion",
+          "RCM::V2::Core::OutputAssertion",
+          "RCM::V2::Core::GroundingAssertion",
+          "RCM::V2::Core::RelationAssertion"
+        ]
+      ],
+      "same_row_route_sides": {
+        "StepRelation_sourceStep": "bottom"
+      },
+      "source_port_shifts": {
+        "StepRelation_probability": 120.0
+      },
+      "title": "RCM V2 – conservative scenario and control-flow core"
+    },
+    "05_rcm_capability_runtime": {
+      "description": "EAType/EAPrototype capability pattern, optional exact function mapping and ordered runtime realization.",
+      "diagram_association_ids": [
+        "CapabilityUse_type",
+        "CapabilityUse_provider",
+        "CapabilityUse_target",
+        "Capability_effect",
+        "Effect_specifiedBy",
+        "RuntimeBinding_capability",
+        "RuntimeBinding_runtimeAction",
+        "RuntimeAction_locator",
+        "CapabilityFunctionMapping_analysisType",
+        "CapabilityFunctionMapping_designType",
+        "CapabilityBehaviorBinding_functionBehavior"
+      ],
+      "layout": "capability_runtime",
+      "row_labels": [
+        "EAST-ADL bases",
+        "Capability core",
+        "Technical runtime realization",
+        "Behavior and function mapping",
+        "EAST-ADL function targets"
+      ],
+      "rows": [
+        [
+          "EAST-ADL::Elements::Identifiable",
+          "EAST-ADL::Elements::EAType",
+          "EAST-ADL::Elements::EAPrototype",
+          "EAST-ADL::Elements::EAElement",
+          "EAST-ADL::Elements::TraceableSpecification",
+          "EAST-ADL::Elements::Relationship"
+        ],
+        [
+          "RCM::V2::Core::Entity",
+          "RCM::V2::Core::Agent",
+          "RCM::V2::Core::CapabilityUse",
+          "RCM::V2::Core::Capability",
+          "RCM::V2::Core::Effect",
+          "RCM::V2::Core::Assertion"
+        ],
+        [
+          "RCM::V2::Core::KeyValueParameter",
+          "RCM::V2::Core::ParameterBinding",
+          "RCM::V2::Core::RuntimeBinding",
+          "RCM::V2::Core::RuntimeAction",
+          "RCM::V2::Core::RuntimeActionLocator",
+          "RCM::V2::Core::SchemaReference",
+          "RCM::V2::Core::RuntimeParameter"
+        ],
+        [
+          "RCM::V2::Core::CapabilityFunctionMapping",
+          "RCM::V2::Core::CapabilityBehaviorBinding",
+          "EAST-ADL::Behavior::FunctionBehavior"
+        ],
+        [
+          "EAST-ADL::FunctionModeling::AnalysisFunctionType",
+          "EAST-ADL::FunctionModeling::AnalysisFunctionPrototype",
+          "EAST-ADL::FunctionModeling::DesignFunctionType",
+          "EAST-ADL::FunctionModeling::DesignFunctionPrototype"
+        ]
+      ],
+      "title": "RCM V2 – Capability, Function and Runtime bridge"
+    },
+    "06_east_adl_rcm_verification_validation": {
+      "description": "Exact V&V container ownership with RCM specializations, logs and distinct subject/target semantics.",
+      "diagram_association_ids": [
+        "VerificationValidation_vvCase",
+        "VVCase_vvTarget",
+        "VVLog_vvActualOutcome",
+        "VVProcedure_vvStimuli",
+        "VVProcedure_vvIntendedOutcome",
+        "AssertionOutcome_assertion",
+        "AssertionResult_assertion",
+        "AssertionResult_observedValue",
+        "RuntimeActualOutcome_result",
+        "RuntimeValidationTarget_runtimeBinding",
+        "ValidationCaseUseCaseBinding_useCase"
+      ],
+      "row_labels": [
+        "Requirements and infrastructure links",
+        "EAST-ADL V&V container",
+        "EAST-ADL V&V flow",
+        "RCM specializations",
+        "Bindings, assertions and results"
+      ],
+      "rows": [
+        [
+          "EAST-ADL::Elements::Context",
+          "EAST-ADL::Elements::TraceableSpecification",
+          "EAST-ADL::Elements::Identifiable",
+          "EAST-ADL::Requirements::RequirementsRelationship",
+          "EAST-ADL::Requirements::Requirement",
+          "EAST-ADL::VerificationValidation::Verify"
+        ],
+        [
+          "EAST-ADL::VerificationValidation::VerificationValidation"
+        ],
+        [
+          "EAST-ADL::VerificationValidation::VVTarget",
+          "EAST-ADL::VerificationValidation::VVCase",
+          "EAST-ADL::VerificationValidation::VVProcedure",
+          "EAST-ADL::VerificationValidation::VVStimuli",
+          "EAST-ADL::VerificationValidation::VVIntendedOutcome",
+          "EAST-ADL::VerificationValidation::VVLog",
+          "EAST-ADL::VerificationValidation::VVActualOutcome"
+        ],
+        [
+          "RCM::V2::Core::RuntimeValidationTarget",
+          "RCM::V2::Core::ValidationCase",
+          "RCM::V2::Core::RuntimeValidationProcedure",
+          "RCM::V2::Core::RuntimeStimulus",
+          "RCM::V2::Core::AssertionOutcome",
+          "RCM::V2::Core::StateAssertionOutcome",
+          "RCM::V2::Core::RuntimeValidationLog",
+          "RCM::V2::Core::RuntimeActualOutcome"
+        ],
+        [
+          "RCM::V2::Core::RuntimeBinding",
+          "RCM::V2::Core::ValidationCaseUseCaseBinding",
+          "EAST-ADL::UseCases::UseCase",
+          "RCM::V2::Core::StateAssertion",
+          "RCM::V2::Core::Assertion",
+          "EAST-ADL::Values::EAValue",
+          "RCM::V2::Core::AssertionResult"
+        ]
+      ],
+      "same_row_route_sides": {
+        "AssertionResult_assertion": "bottom",
+        "AssertionResult_observedValue": "top",
+        "ValidationCaseUseCaseBinding_useCase": "bottom"
+      },
+      "title": "EAST-ADL / RCM V2 – Verification & Validation"
+    },
+    "07_optional_annex_feature_knowledge": {
+      "description": "Optional one-way bridges; Annex C is preliminary and TransitionEvent is not Timing::Event.",
+      "diagram_association_ids": [
+        "BehaviorConstraintTargetBinding_behaviorConstraintType",
+        "BehaviorConstraintTargetBinding_targetedFunctionType",
+        "LogicalPath_transformationOccurrence",
+        "TransformationOccurrence_invokedLogicalTransformation",
+        "TransitionEvent_occurredExecutionEvent",
+        "ScenarioAnnexMapping_scenarioStep",
+        "CapabilityFeatureMapping_capability",
+        "CapabilityFeatureMapping_feature",
+        "AgentKnowledgeBinding_agent",
+        "AgentKnowledgeBinding_knowledgeItem"
+      ],
+      "layout": "optional_modules",
+      "row_labels": [
+        "Core anchors",
+        "Optional bridges",
+        "Annex C",
+        "Target models and knowledge"
+      ],
+      "rows": [
+        [
+          "RCM::V2::Core::ScenarioStep",
+          "RCM::V2::Core::StepRelation",
+          "RCM::V2::Core::ScenarioEvent",
+          "RCM::V2::Core::StateAssertion",
+          "RCM::V2::Core::Capability",
+          "RCM::V2::Core::Agent",
+          "RCM::V2::Core::Entity"
+        ],
+        [
+          "RCM::V2::AnnexCBridge::ScenarioAnnexMapping",
+          "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintTargetBinding",
+          "EAST-ADL::AnnexC::BehaviorDescription::BehaviorConstraintType",
+          "RCM::V2::FeatureBridge::CapabilityFeatureMapping",
+          "RCM::V2::AgentKnowledge::AgentKnowledgeBinding"
+        ],
+        [
+          "EAST-ADL::AnnexC::ComputationConstraint::LogicalTransformation",
+          "EAST-ADL::AnnexC::ComputationConstraint::TransformationOccurrence",
+          "EAST-ADL::AnnexC::ComputationConstraint::LogicalPath",
+          "EAST-ADL::AnnexC::AttributeQuantificationConstraint::Quantification",
+          "EAST-ADL::AnnexC::TemporalConstraint::LogicalTimeCondition",
+          "EAST-ADL::AnnexC::TemporalConstraint::State",
+          "EAST-ADL::AnnexC::TemporalConstraint::TransitionEvent"
+        ],
+        [
+          "EAST-ADL::Timing::Event",
+          "EAST-ADL::Behavior::FunctionTrigger",
+          "EAST-ADL::Behavior::FunctionBehavior",
+          "EAST-ADL::FunctionModeling::FunctionType",
+          "EAST-ADL::FeatureModeling::Feature",
+          "EAST-ADL::VehicleFeatureModeling::VehicleFeature",
+          "RCM::V2::AgentKnowledge::KnowledgeItem",
+          "RCM::V2::AgentKnowledge::KnowledgeSource"
+        ]
+      ],
+      "title": "RCM V2 – optional Annex C, Feature and Knowledge modules"
+    },
+    "dynamic_functional_rdl_v2_metamodel": {
+      "description": "Central EAST-ADL-aligned A/B/C overview; seven detailed views cover the complete model.",
+      "kind": "overview",
+      "rows": [
+        [
+          "RCM::V2::Core::DynamicFunctionalModel",
+          "EAST-ADL::Requirements::RequirementsModel",
+          "EAST-ADL::Requirements::Requirement",
+          "EAST-ADL::Requirements::Satisfy",
+          "EAST-ADL::UseCases::Actor",
+          "RCM::V2::Core::ActorParticipation",
+          "EAST-ADL::UseCases::UseCase",
+          "RCM::V2::Core::UseCaseScenarioSpecification",
+          "EAST-ADL::UseCases::ExtensionPoint",
+          "EAST-ADL::UseCases::Include",
+          "EAST-ADL::UseCases::Extend",
+          "RCM::V2::Core::ConditionalExtend"
+        ],
+        [
+          "RCM::V2::Core::ScenarioEvent",
+          "RCM::V2::Core::Scenario",
+          "RCM::V2::Core::ScenarioCondition",
+          "RCM::V2::Core::ScenarioStep",
+          "RCM::V2::Core::StepRelation",
+          "RCM::V2::Core::ParallelGroup",
+          "RCM::V2::Core::Assertion",
+          "RCM::V2::Core::StateAssertion",
+          "RCM::V2::Core::ProbabilityValue",
+          "RCM::V2::Core::CapabilityUse"
+        ],
+        [
+          "RCM::V2::Core::Agent",
+          "RCM::V2::Core::Entity",
+          "RCM::V2::Core::Capability",
+          "RCM::V2::Core::Effect",
+          "RCM::V2::Core::CapabilityBehaviorBinding",
+          "EAST-ADL::Behavior::FunctionBehavior",
+          "RCM::V2::Core::RuntimeBinding",
+          "RCM::V2::Core::RuntimeAction",
+          "EAST-ADL::VerificationValidation::VerificationValidation",
+          "RCM::V2::Core::ValidationCase",
+          "RCM::V2::Core::RuntimeValidationProcedure",
+          "RCM::V2::Core::RuntimeStimulus",
+          "RCM::V2::Core::StateAssertionOutcome",
+          "RCM::V2::Core::RuntimeValidationLog",
+          "RCM::V2::Core::RuntimeActualOutcome",
+          "RCM::V2::Core::RuntimeValidationTarget",
+          "RCM::V2::Core::AssertionResult"
+        ]
+      ],
+      "title": "Compact metamodel for Dynamic Functional RDL (V2)"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "handoffs": [
+    {
+      "source_agent_id": "agent_compass_buoy",
+      "target_agent_id": "agent_ship_anchor",
+      "condition": "visitor asks about ship design or anchoring after learning about compass or buoy",
+      "reason": "Visitor interested in vessel types and anchoring mechanisms after maritime navigation tools"
+    },
+    {
+      "source_agent_id": "agent_ship_anchor",
+      "target_agent_id": "agent_navigation_sailing",
+      "condition": "visitor asks about navigation charts or sailing techniques after ship and anchor explanations",
+      "reason": "Visitor wants to deepen understanding of maritime navigation methods following ship and anchor info"
+    },
+    {
+      "source_agent_id": "agent_compass_buoy",
+      "target_agent_id": "agent_navigation_sailing",
+      "condition": "Visitor question concerns maritime navigation, chart reading, sailing techniques, navigation charts, sail diagrams, ...; the current agent should hand off to Navigation and Sailing Expert.",
+      "reason": "Navigation and Sailing Expert owns maritime navigation, chart reading, sailing techniques, navigation charts, sail diagrams, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "agent_ship_anchor",
+      "target_agent_id": "agent_compass_buoy",
+      "condition": "Visitor question concerns maritime navigation tools, buoy functions, compass cases, maritime safety equipment, compass_cases, ...; the current agent should hand off to Compass and Buoy Specialist.",
+      "reason": "Compass and Buoy Specialist owns maritime navigation tools, buoy functions, compass cases, maritime safety equipment, compass_cases, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "agent_navigation_sailing",
+      "target_agent_id": "agent_compass_buoy",
+      "condition": "Visitor question concerns maritime navigation tools, buoy functions, compass cases, maritime safety equipment, compass_cases, ...; the current agent should hand off to Compass and Buoy Specialist.",
+      "reason": "Compass and Buoy Specialist owns maritime navigation tools, buoy functions, compass cases, maritime safety equipment, compass_cases, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "agent_navigation_sailing",
+      "target_agent_id": "agent_ship_anchor",
+      "condition": "Visitor question concerns ship design, anchoring technology, maritime history, vessel types, ship_models, ...; the current agent should hand off to Ship and Anchor Specialist.",
+      "reason": "Ship and Anchor Specialist owns ship design, anchoring technology, maritime history, vessel types, ship_models, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    }
+  ]
+}

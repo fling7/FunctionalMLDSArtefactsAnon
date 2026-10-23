@@ -1,0 +1,44 @@
+{
+  "unit": "room",
+  "rooms": 1,
+  "probes": 2448,
+  "disagreement_probes": 720,
+  "decision_disagreement_probes": 468,
+  "reason_only_disagreement_probes": 252,
+  "I1_I2_disagreements": 0,
+  "classifications": {
+    "backend bug": 432,
+    "spec ambiguity": 288
+  },
+  "rules": {
+    "user_text_number": [
+      "backend bug",
+      "SPEC 4.3 requires the original request to satisfy its declared schema; numeric text is coerced by the packet."
+    ],
+    "user_text_empty": [
+      "backend bug",
+      "The packet checks empty utterance before ownership/reachability, contrary to SPEC first-failing-condition order."
+    ],
+    "source_alias_conflict": [
+      "backend bug",
+      "SPEC 4.3 requires consistent supplied identities; A001 explicitly covers both aliases."
+    ],
+    "empty_candidates": [
+      "spec ambiguity",
+      "SPEC v1 did not define empty candidate-list semantics; A001 chose exact singleton when supplied."
+    ],
+    "ambiguity_reason_only": [
+      "spec ambiguity",
+      "A001 distinguishes boolean ambiguity flags from explanatory text."
+    ],
+    "active_and_digest": [
+      "backend bug",
+      "SPEC 4.3 requires stale digest to be the first error, before active-agent membership."
+    ]
+  },
+  "fix_status": "Unfixed default compatibility findings; no independent implementation changed to obtain agreement.",
+  "raw_sources": [
+    "results/raw/differential/example-initial/probes.jsonl",
+    "results/raw/differential/schema-admission-v1/probes.jsonl"
+  ]
+}

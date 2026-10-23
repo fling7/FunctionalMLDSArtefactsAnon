@@ -1,0 +1,3862 @@
+{
+  "first_smoke_exit_code": 1,
+  "first_smoke_source_sha256": "9df0b0aa11f7ded9f5714a75d2aef47b473d2e618bd5f9cac9e79d35cfdd1e3b",
+  "request_cases": 18,
+  "all_returned_equal_verdict_cases": 15,
+  "compilation": [
+    {
+      "payload_index": 0,
+      "payload": "quote\"backslash\\",
+      "outcomes": {
+        "backend": {
+          "status": "compiled"
+        },
+        "bulk": {
+          "status": "compiled"
+        }
+      },
+      "fact_splitlines_count": 152,
+      "fact_lf_split_count": 152,
+      "first_bad_fact_lines": []
+    },
+    {
+      "payload_index": 1,
+      "payload": "line\nbreak\ttab\rcarriage",
+      "outcomes": {
+        "backend": {
+          "status": "error",
+          "type": "RuntimeError",
+          "message": "<string>:1:8: error: unexpected token:\n\"\n"
+        },
+        "bulk": {
+          "status": "error",
+          "type": "RuntimeError",
+          "message": "<string>:1:8: error: unexpected token:\n\"\n"
+        }
+      },
+      "fact_splitlines_count": 294,
+      "fact_lf_split_count": 152,
+      "first_bad_fact_lines": [
+        {
+          "line_number": 1,
+          "line": "obj(0,\"A::line\\nbreak\ttab",
+          "error": {
+            "status": "error",
+            "type": "RuntimeError",
+            "message": "<string>:1:8: error: unexpected token:\n\"\n"
+          }
+        },
+        {
+          "line_number": 2,
+          "line": "carriage\",\"Agent\").",
+          "error": {
+            "status": "error",
+            "type": "RuntimeError",
+            "message": "<string>:1:12: error: syntax error, unexpected <STRING>, expecting <EOF>\n"
+          }
+        },
+        {
+          "line_number": 3,
+          "line": "v(\"A::line\\nbreak\ttab",
+          "error": {
+            "status": "error",
+            "type": "RuntimeError",
+            "message": "<string>:1:4: error: unexpected token:\n\"\n"
+          }
+        }
+      ]
+    },
+    {
+      "payload_index": 2,
+      "payload": "Greek Ω / 中文 / 🦖",
+      "outcomes": {
+        "backend": {
+          "status": "compiled"
+        },
+        "bulk": {
+          "status": "compiled"
+        }
+      },
+      "fact_splitlines_count": 152,
+      "fact_lf_split_count": 152,
+      "first_bad_fact_lines": []
+    },
+    {
+      "payload_index": 3,
+      "payload": "x\").\nverdict(\"FORGED\",null,null,null).\n%",
+      "outcomes": {
+        "backend": {
+          "status": "compiled"
+        },
+        "bulk": {
+          "status": "compiled"
+        }
+      },
+      "fact_splitlines_count": 152,
+      "fact_lf_split_count": 152,
+      "first_bad_fact_lines": []
+    },
+    {
+      "payload_index": 4,
+      "payload": "brackets[]{};,:#@!<>",
+      "outcomes": {
+        "backend": {
+          "status": "compiled"
+        },
+        "bulk": {
+          "status": "compiled"
+        }
+      },
+      "fact_splitlines_count": 152,
+      "fact_lf_split_count": 152,
+      "first_bad_fact_lines": []
+    },
+    {
+      "payload_index": 5,
+      "payload": "",
+      "outcomes": {
+        "backend": {
+          "status": "compiled"
+        },
+        "bulk": {
+          "status": "compiled"
+        }
+      },
+      "fact_splitlines_count": 152,
+      "fact_lf_split_count": 152,
+      "first_bad_fact_lines": []
+    }
+  ],
+  "protected_files_unchanged": {
+    "COMPILED_API.md": true,
+    "OPTIMIZATION_WORKLOG.md": true,
+    "WORKLOG.md": true,
+    "admission.lp": true,
+    "ambiguities.md": true,
+    "compiled_policy.py": true,
+    "docs/AMENDMENT_A001.md": true,
+    "docs/AMENDMENT_A002.md": true,
+    "docs/AMENDMENT_A003.md": true,
+    "docs/SPEC.md": true,
+    "example.instance.json": true,
+    "example.trace.json": true,
+    "fixtures.json": true,
+    "instance.schema.json": true,
+    "optimization-equivalence.json": true,
+    "optimization-manifest.json": true,
+    "optimization-models.json": true,
+    "optimization-progress.jsonl": true,
+    "optimization-summary.json": true,
+    "optimization_selftest.py": true,
+    "policy_adapter.py": true,
+    "selftest.input.json": true,
+    "selftest.py": true,
+    "test-results.txt": true,
+    "test-summary.json": true
+  },
+  "records": [
+    {
+      "payload_index": 0,
+      "payload": "quote\"backslash\\",
+      "turn": 0,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::quote\"backslash\\",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::quote\"backslash\\",
+            "sourceId": "a::quote\"backslash\\",
+            "groundedAsset": [
+              "T::quote\"backslash\\"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::quote\"backslash\\"
+            ],
+            "providedCapability": [
+              "C::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "B::quote\"backslash\\",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::quote\"backslash\\",
+            "sourceId": "b::quote\"backslash\\",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::quote\"backslash\\"
+            ],
+            "providedCapability": [
+              "C::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "T::quote\"backslash\\",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::quote\"backslash\\",
+            "objectGroup": [
+              "G::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "G::quote\"backslash\\",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "Z::quote\"backslash\\",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "S::quote\"backslash\\",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "U::quote\"backslash\\",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::quote\"backslash\\"
+            ],
+            "target": [
+              "T::quote\"backslash\\",
+              "G::quote\"backslash\\",
+              "Z::quote\"backslash\\"
+            ],
+            "typeRef": [
+              "C::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "C::quote\"backslash\\",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::quote\"backslash\\",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::quote\"backslash\\"
+            ],
+            "runtimeAction": [
+              "RA::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "RA::quote\"backslash\\",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::quote\"backslash\\"
+            ],
+            "inputSchema": [
+              "IS::quote\"backslash\\"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::quote\"backslash\\",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::quote\"backslash\\",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::quote\"backslash\\",
+            "capability_use_id": "U::quote\"backslash\\",
+            "capability_id": "C::quote\"backslash\\",
+            "provider_entity_id": "A::quote\"backslash\\",
+            "target_ids": [
+              "T::quote\"backslash\\",
+              "G::quote\"backslash\\",
+              "Z::quote\"backslash\\"
+            ],
+            "runtime_binding_id": "RB::quote\"backslash\\",
+            "runtime_action_id": "RA::quote\"backslash\\",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::quote\"backslash\\",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::quote\"backslash\\",
+          "source_object_id": "object::quote\"backslash\\",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::quote\"backslash\\",
+            "action": "RA::quote\"backslash\\"
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::quote\"backslash\\",
+            "action": "RA::quote\"backslash\\"
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::quote\"backslash\\",
+            "action": "RA::quote\"backslash\\"
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 0,
+      "payload": "quote\"backslash\\",
+      "turn": 1,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::quote\"backslash\\",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::quote\"backslash\\",
+            "sourceId": "a::quote\"backslash\\",
+            "groundedAsset": [
+              "T::quote\"backslash\\"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::quote\"backslash\\"
+            ],
+            "providedCapability": [
+              "C::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "B::quote\"backslash\\",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::quote\"backslash\\",
+            "sourceId": "b::quote\"backslash\\",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::quote\"backslash\\"
+            ],
+            "providedCapability": [
+              "C::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "T::quote\"backslash\\",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::quote\"backslash\\",
+            "objectGroup": [
+              "G::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "G::quote\"backslash\\",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "Z::quote\"backslash\\",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "S::quote\"backslash\\",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "U::quote\"backslash\\",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::quote\"backslash\\"
+            ],
+            "target": [
+              "T::quote\"backslash\\",
+              "G::quote\"backslash\\",
+              "Z::quote\"backslash\\"
+            ],
+            "typeRef": [
+              "C::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "C::quote\"backslash\\",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::quote\"backslash\\",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::quote\"backslash\\"
+            ],
+            "runtimeAction": [
+              "RA::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "RA::quote\"backslash\\",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::quote\"backslash\\"
+            ],
+            "inputSchema": [
+              "IS::quote\"backslash\\"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::quote\"backslash\\",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::quote\"backslash\\",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::quote\"backslash\\",
+            "capability_use_id": "U::quote\"backslash\\",
+            "capability_id": "C::quote\"backslash\\",
+            "provider_entity_id": "A::quote\"backslash\\",
+            "target_ids": [
+              "T::quote\"backslash\\",
+              "G::quote\"backslash\\",
+              "Z::quote\"backslash\\"
+            ],
+            "runtime_binding_id": "RB::quote\"backslash\\",
+            "runtime_action_id": "RA::quote\"backslash\\",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::quote\"backslash\\",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::quote\"backslash\\",
+          "source_object_id": "object::quote\"backslash\\",
+          "state": "none",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 0,
+      "payload": "quote\"backslash\\",
+      "turn": 2,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::quote\"backslash\\",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::quote\"backslash\\",
+            "sourceId": "a::quote\"backslash\\",
+            "groundedAsset": [
+              "T::quote\"backslash\\"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::quote\"backslash\\"
+            ],
+            "providedCapability": [
+              "C::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "B::quote\"backslash\\",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::quote\"backslash\\",
+            "sourceId": "b::quote\"backslash\\",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::quote\"backslash\\"
+            ],
+            "providedCapability": [
+              "C::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "T::quote\"backslash\\",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::quote\"backslash\\",
+            "objectGroup": [
+              "G::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "G::quote\"backslash\\",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "Z::quote\"backslash\\",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "S::quote\"backslash\\",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "U::quote\"backslash\\",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::quote\"backslash\\"
+            ],
+            "target": [
+              "T::quote\"backslash\\",
+              "G::quote\"backslash\\",
+              "Z::quote\"backslash\\"
+            ],
+            "typeRef": [
+              "C::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "C::quote\"backslash\\",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::quote\"backslash\\",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::quote\"backslash\\"
+            ],
+            "runtimeAction": [
+              "RA::quote\"backslash\\"
+            ]
+          },
+          {
+            "id": "RA::quote\"backslash\\",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::quote\"backslash\\"
+            ],
+            "inputSchema": [
+              "IS::quote\"backslash\\"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::quote\"backslash\\",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::quote\"backslash\\",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::quote\"backslash\\",
+            "capability_use_id": "U::quote\"backslash\\",
+            "capability_id": "C::quote\"backslash\\",
+            "provider_entity_id": "A::quote\"backslash\\",
+            "target_ids": [
+              "T::quote\"backslash\\",
+              "G::quote\"backslash\\",
+              "Z::quote\"backslash\\"
+            ],
+            "runtime_binding_id": "RB::quote\"backslash\\",
+            "runtime_action_id": "RA::quote\"backslash\\",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::quote\"backslash\\",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::quote\"backslash\\",
+          "source_object_id": "object::quote\"backslash\\",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::quote\"backslash\\",
+            "action": "RA::quote\"backslash\\"
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::quote\"backslash\\",
+            "action": "RA::quote\"backslash\\"
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::quote\"backslash\\",
+            "action": "RA::quote\"backslash\\"
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 1,
+      "payload": "line\nbreak\ttab\rcarriage",
+      "turn": 0,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::line\nbreak\ttab\rcarriage",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::line\nbreak\ttab\rcarriage",
+            "sourceId": "a::line\nbreak\ttab\rcarriage",
+            "groundedAsset": [
+              "T::line\nbreak\ttab\rcarriage"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::line\nbreak\ttab\rcarriage"
+            ],
+            "providedCapability": [
+              "C::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "B::line\nbreak\ttab\rcarriage",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::line\nbreak\ttab\rcarriage",
+            "sourceId": "b::line\nbreak\ttab\rcarriage",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::line\nbreak\ttab\rcarriage"
+            ],
+            "providedCapability": [
+              "C::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "T::line\nbreak\ttab\rcarriage",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::line\nbreak\ttab\rcarriage",
+            "objectGroup": [
+              "G::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "G::line\nbreak\ttab\rcarriage",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "Z::line\nbreak\ttab\rcarriage",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "S::line\nbreak\ttab\rcarriage",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "U::line\nbreak\ttab\rcarriage",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::line\nbreak\ttab\rcarriage"
+            ],
+            "target": [
+              "T::line\nbreak\ttab\rcarriage",
+              "G::line\nbreak\ttab\rcarriage",
+              "Z::line\nbreak\ttab\rcarriage"
+            ],
+            "typeRef": [
+              "C::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "C::line\nbreak\ttab\rcarriage",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::line\nbreak\ttab\rcarriage",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::line\nbreak\ttab\rcarriage"
+            ],
+            "runtimeAction": [
+              "RA::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "RA::line\nbreak\ttab\rcarriage",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::line\nbreak\ttab\rcarriage"
+            ],
+            "inputSchema": [
+              "IS::line\nbreak\ttab\rcarriage"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::line\nbreak\ttab\rcarriage",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::line\nbreak\ttab\rcarriage",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::line\nbreak\ttab\rcarriage",
+            "capability_use_id": "U::line\nbreak\ttab\rcarriage",
+            "capability_id": "C::line\nbreak\ttab\rcarriage",
+            "provider_entity_id": "A::line\nbreak\ttab\rcarriage",
+            "target_ids": [
+              "T::line\nbreak\ttab\rcarriage",
+              "G::line\nbreak\ttab\rcarriage",
+              "Z::line\nbreak\ttab\rcarriage"
+            ],
+            "runtime_binding_id": "RB::line\nbreak\ttab\rcarriage",
+            "runtime_action_id": "RA::line\nbreak\ttab\rcarriage",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::line\nbreak\ttab\rcarriage",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::line\nbreak\ttab\rcarriage",
+          "source_object_id": "object::line\nbreak\ttab\rcarriage",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::line\nbreak\ttab\rcarriage",
+            "action": "RA::line\nbreak\ttab\rcarriage"
+          }
+        },
+        "backend": {
+          "status": "error",
+          "type": "RuntimeError",
+          "message": "<string>:1:8: error: unexpected token:\n\"\n"
+        },
+        "bulk": {
+          "status": "error",
+          "type": "RuntimeError",
+          "message": "<string>:1:8: error: unexpected token:\n\"\n"
+        }
+      },
+      "all_returned_equal_verdicts": false
+    },
+    {
+      "payload_index": 1,
+      "payload": "line\nbreak\ttab\rcarriage",
+      "turn": 1,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::line\nbreak\ttab\rcarriage",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::line\nbreak\ttab\rcarriage",
+            "sourceId": "a::line\nbreak\ttab\rcarriage",
+            "groundedAsset": [
+              "T::line\nbreak\ttab\rcarriage"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::line\nbreak\ttab\rcarriage"
+            ],
+            "providedCapability": [
+              "C::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "B::line\nbreak\ttab\rcarriage",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::line\nbreak\ttab\rcarriage",
+            "sourceId": "b::line\nbreak\ttab\rcarriage",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::line\nbreak\ttab\rcarriage"
+            ],
+            "providedCapability": [
+              "C::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "T::line\nbreak\ttab\rcarriage",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::line\nbreak\ttab\rcarriage",
+            "objectGroup": [
+              "G::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "G::line\nbreak\ttab\rcarriage",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "Z::line\nbreak\ttab\rcarriage",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "S::line\nbreak\ttab\rcarriage",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "U::line\nbreak\ttab\rcarriage",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::line\nbreak\ttab\rcarriage"
+            ],
+            "target": [
+              "T::line\nbreak\ttab\rcarriage",
+              "G::line\nbreak\ttab\rcarriage",
+              "Z::line\nbreak\ttab\rcarriage"
+            ],
+            "typeRef": [
+              "C::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "C::line\nbreak\ttab\rcarriage",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::line\nbreak\ttab\rcarriage",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::line\nbreak\ttab\rcarriage"
+            ],
+            "runtimeAction": [
+              "RA::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "RA::line\nbreak\ttab\rcarriage",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::line\nbreak\ttab\rcarriage"
+            ],
+            "inputSchema": [
+              "IS::line\nbreak\ttab\rcarriage"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::line\nbreak\ttab\rcarriage",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::line\nbreak\ttab\rcarriage",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::line\nbreak\ttab\rcarriage",
+            "capability_use_id": "U::line\nbreak\ttab\rcarriage",
+            "capability_id": "C::line\nbreak\ttab\rcarriage",
+            "provider_entity_id": "A::line\nbreak\ttab\rcarriage",
+            "target_ids": [
+              "T::line\nbreak\ttab\rcarriage",
+              "G::line\nbreak\ttab\rcarriage",
+              "Z::line\nbreak\ttab\rcarriage"
+            ],
+            "runtime_binding_id": "RB::line\nbreak\ttab\rcarriage",
+            "runtime_action_id": "RA::line\nbreak\ttab\rcarriage",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::line\nbreak\ttab\rcarriage",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::line\nbreak\ttab\rcarriage",
+          "source_object_id": "object::line\nbreak\ttab\rcarriage",
+          "state": "none",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "backend": {
+          "status": "error",
+          "type": "RuntimeError",
+          "message": "<string>:1:8: error: unexpected token:\n\"\n"
+        },
+        "bulk": {
+          "status": "error",
+          "type": "RuntimeError",
+          "message": "<string>:1:8: error: unexpected token:\n\"\n"
+        }
+      },
+      "all_returned_equal_verdicts": false
+    },
+    {
+      "payload_index": 1,
+      "payload": "line\nbreak\ttab\rcarriage",
+      "turn": 2,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::line\nbreak\ttab\rcarriage",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::line\nbreak\ttab\rcarriage",
+            "sourceId": "a::line\nbreak\ttab\rcarriage",
+            "groundedAsset": [
+              "T::line\nbreak\ttab\rcarriage"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::line\nbreak\ttab\rcarriage"
+            ],
+            "providedCapability": [
+              "C::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "B::line\nbreak\ttab\rcarriage",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::line\nbreak\ttab\rcarriage",
+            "sourceId": "b::line\nbreak\ttab\rcarriage",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::line\nbreak\ttab\rcarriage"
+            ],
+            "providedCapability": [
+              "C::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "T::line\nbreak\ttab\rcarriage",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::line\nbreak\ttab\rcarriage",
+            "objectGroup": [
+              "G::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "G::line\nbreak\ttab\rcarriage",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "Z::line\nbreak\ttab\rcarriage",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "S::line\nbreak\ttab\rcarriage",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "U::line\nbreak\ttab\rcarriage",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::line\nbreak\ttab\rcarriage"
+            ],
+            "target": [
+              "T::line\nbreak\ttab\rcarriage",
+              "G::line\nbreak\ttab\rcarriage",
+              "Z::line\nbreak\ttab\rcarriage"
+            ],
+            "typeRef": [
+              "C::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "C::line\nbreak\ttab\rcarriage",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::line\nbreak\ttab\rcarriage",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::line\nbreak\ttab\rcarriage"
+            ],
+            "runtimeAction": [
+              "RA::line\nbreak\ttab\rcarriage"
+            ]
+          },
+          {
+            "id": "RA::line\nbreak\ttab\rcarriage",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::line\nbreak\ttab\rcarriage"
+            ],
+            "inputSchema": [
+              "IS::line\nbreak\ttab\rcarriage"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::line\nbreak\ttab\rcarriage",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::line\nbreak\ttab\rcarriage",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::line\nbreak\ttab\rcarriage",
+            "capability_use_id": "U::line\nbreak\ttab\rcarriage",
+            "capability_id": "C::line\nbreak\ttab\rcarriage",
+            "provider_entity_id": "A::line\nbreak\ttab\rcarriage",
+            "target_ids": [
+              "T::line\nbreak\ttab\rcarriage",
+              "G::line\nbreak\ttab\rcarriage",
+              "Z::line\nbreak\ttab\rcarriage"
+            ],
+            "runtime_binding_id": "RB::line\nbreak\ttab\rcarriage",
+            "runtime_action_id": "RA::line\nbreak\ttab\rcarriage",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::line\nbreak\ttab\rcarriage",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::line\nbreak\ttab\rcarriage",
+          "source_object_id": "object::line\nbreak\ttab\rcarriage",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::line\nbreak\ttab\rcarriage",
+            "action": "RA::line\nbreak\ttab\rcarriage"
+          }
+        },
+        "backend": {
+          "status": "error",
+          "type": "RuntimeError",
+          "message": "<string>:1:8: error: unexpected token:\n\"\n"
+        },
+        "bulk": {
+          "status": "error",
+          "type": "RuntimeError",
+          "message": "<string>:1:8: error: unexpected token:\n\"\n"
+        }
+      },
+      "all_returned_equal_verdicts": false
+    },
+    {
+      "payload_index": 2,
+      "payload": "Greek Ω / 中文 / 🦖",
+      "turn": 0,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::Greek Ω / 中文 / 🦖",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::Greek Ω / 中文 / 🦖",
+            "sourceId": "a::Greek Ω / 中文 / 🦖",
+            "groundedAsset": [
+              "T::Greek Ω / 中文 / 🦖"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::Greek Ω / 中文 / 🦖"
+            ],
+            "providedCapability": [
+              "C::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "B::Greek Ω / 中文 / 🦖",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::Greek Ω / 中文 / 🦖",
+            "sourceId": "b::Greek Ω / 中文 / 🦖",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::Greek Ω / 中文 / 🦖"
+            ],
+            "providedCapability": [
+              "C::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "T::Greek Ω / 中文 / 🦖",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::Greek Ω / 中文 / 🦖",
+            "objectGroup": [
+              "G::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "G::Greek Ω / 中文 / 🦖",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "Z::Greek Ω / 中文 / 🦖",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "S::Greek Ω / 中文 / 🦖",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "U::Greek Ω / 中文 / 🦖",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::Greek Ω / 中文 / 🦖"
+            ],
+            "target": [
+              "T::Greek Ω / 中文 / 🦖",
+              "G::Greek Ω / 中文 / 🦖",
+              "Z::Greek Ω / 中文 / 🦖"
+            ],
+            "typeRef": [
+              "C::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "C::Greek Ω / 中文 / 🦖",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::Greek Ω / 中文 / 🦖",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::Greek Ω / 中文 / 🦖"
+            ],
+            "runtimeAction": [
+              "RA::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "RA::Greek Ω / 中文 / 🦖",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::Greek Ω / 中文 / 🦖"
+            ],
+            "inputSchema": [
+              "IS::Greek Ω / 中文 / 🦖"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::Greek Ω / 中文 / 🦖",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::Greek Ω / 中文 / 🦖",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::Greek Ω / 中文 / 🦖",
+            "capability_use_id": "U::Greek Ω / 中文 / 🦖",
+            "capability_id": "C::Greek Ω / 中文 / 🦖",
+            "provider_entity_id": "A::Greek Ω / 中文 / 🦖",
+            "target_ids": [
+              "T::Greek Ω / 中文 / 🦖",
+              "G::Greek Ω / 中文 / 🦖",
+              "Z::Greek Ω / 中文 / 🦖"
+            ],
+            "runtime_binding_id": "RB::Greek Ω / 中文 / 🦖",
+            "runtime_action_id": "RA::Greek Ω / 中文 / 🦖",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::Greek Ω / 中文 / 🦖",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::Greek Ω / 中文 / 🦖",
+          "source_object_id": "object::Greek Ω / 中文 / 🦖",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::Greek Ω / 中文 / 🦖",
+            "action": "RA::Greek Ω / 中文 / 🦖"
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::Greek Ω / 中文 / 🦖",
+            "action": "RA::Greek Ω / 中文 / 🦖"
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::Greek Ω / 中文 / 🦖",
+            "action": "RA::Greek Ω / 中文 / 🦖"
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 2,
+      "payload": "Greek Ω / 中文 / 🦖",
+      "turn": 1,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::Greek Ω / 中文 / 🦖",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::Greek Ω / 中文 / 🦖",
+            "sourceId": "a::Greek Ω / 中文 / 🦖",
+            "groundedAsset": [
+              "T::Greek Ω / 中文 / 🦖"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::Greek Ω / 中文 / 🦖"
+            ],
+            "providedCapability": [
+              "C::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "B::Greek Ω / 中文 / 🦖",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::Greek Ω / 中文 / 🦖",
+            "sourceId": "b::Greek Ω / 中文 / 🦖",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::Greek Ω / 中文 / 🦖"
+            ],
+            "providedCapability": [
+              "C::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "T::Greek Ω / 中文 / 🦖",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::Greek Ω / 中文 / 🦖",
+            "objectGroup": [
+              "G::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "G::Greek Ω / 中文 / 🦖",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "Z::Greek Ω / 中文 / 🦖",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "S::Greek Ω / 中文 / 🦖",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "U::Greek Ω / 中文 / 🦖",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::Greek Ω / 中文 / 🦖"
+            ],
+            "target": [
+              "T::Greek Ω / 中文 / 🦖",
+              "G::Greek Ω / 中文 / 🦖",
+              "Z::Greek Ω / 中文 / 🦖"
+            ],
+            "typeRef": [
+              "C::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "C::Greek Ω / 中文 / 🦖",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::Greek Ω / 中文 / 🦖",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::Greek Ω / 中文 / 🦖"
+            ],
+            "runtimeAction": [
+              "RA::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "RA::Greek Ω / 中文 / 🦖",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::Greek Ω / 中文 / 🦖"
+            ],
+            "inputSchema": [
+              "IS::Greek Ω / 中文 / 🦖"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::Greek Ω / 中文 / 🦖",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::Greek Ω / 中文 / 🦖",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::Greek Ω / 中文 / 🦖",
+            "capability_use_id": "U::Greek Ω / 中文 / 🦖",
+            "capability_id": "C::Greek Ω / 中文 / 🦖",
+            "provider_entity_id": "A::Greek Ω / 中文 / 🦖",
+            "target_ids": [
+              "T::Greek Ω / 中文 / 🦖",
+              "G::Greek Ω / 中文 / 🦖",
+              "Z::Greek Ω / 中文 / 🦖"
+            ],
+            "runtime_binding_id": "RB::Greek Ω / 中文 / 🦖",
+            "runtime_action_id": "RA::Greek Ω / 中文 / 🦖",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::Greek Ω / 中文 / 🦖",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::Greek Ω / 中文 / 🦖",
+          "source_object_id": "object::Greek Ω / 中文 / 🦖",
+          "state": "none",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 2,
+      "payload": "Greek Ω / 中文 / 🦖",
+      "turn": 2,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::Greek Ω / 中文 / 🦖",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::Greek Ω / 中文 / 🦖",
+            "sourceId": "a::Greek Ω / 中文 / 🦖",
+            "groundedAsset": [
+              "T::Greek Ω / 中文 / 🦖"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::Greek Ω / 中文 / 🦖"
+            ],
+            "providedCapability": [
+              "C::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "B::Greek Ω / 中文 / 🦖",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::Greek Ω / 中文 / 🦖",
+            "sourceId": "b::Greek Ω / 中文 / 🦖",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::Greek Ω / 中文 / 🦖"
+            ],
+            "providedCapability": [
+              "C::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "T::Greek Ω / 中文 / 🦖",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::Greek Ω / 中文 / 🦖",
+            "objectGroup": [
+              "G::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "G::Greek Ω / 中文 / 🦖",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "Z::Greek Ω / 中文 / 🦖",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "S::Greek Ω / 中文 / 🦖",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "U::Greek Ω / 中文 / 🦖",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::Greek Ω / 中文 / 🦖"
+            ],
+            "target": [
+              "T::Greek Ω / 中文 / 🦖",
+              "G::Greek Ω / 中文 / 🦖",
+              "Z::Greek Ω / 中文 / 🦖"
+            ],
+            "typeRef": [
+              "C::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "C::Greek Ω / 中文 / 🦖",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::Greek Ω / 中文 / 🦖",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::Greek Ω / 中文 / 🦖"
+            ],
+            "runtimeAction": [
+              "RA::Greek Ω / 中文 / 🦖"
+            ]
+          },
+          {
+            "id": "RA::Greek Ω / 中文 / 🦖",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::Greek Ω / 中文 / 🦖"
+            ],
+            "inputSchema": [
+              "IS::Greek Ω / 中文 / 🦖"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::Greek Ω / 中文 / 🦖",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::Greek Ω / 中文 / 🦖",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::Greek Ω / 中文 / 🦖",
+            "capability_use_id": "U::Greek Ω / 中文 / 🦖",
+            "capability_id": "C::Greek Ω / 中文 / 🦖",
+            "provider_entity_id": "A::Greek Ω / 中文 / 🦖",
+            "target_ids": [
+              "T::Greek Ω / 中文 / 🦖",
+              "G::Greek Ω / 中文 / 🦖",
+              "Z::Greek Ω / 中文 / 🦖"
+            ],
+            "runtime_binding_id": "RB::Greek Ω / 中文 / 🦖",
+            "runtime_action_id": "RA::Greek Ω / 中文 / 🦖",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::Greek Ω / 中文 / 🦖",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::Greek Ω / 中文 / 🦖",
+          "source_object_id": "object::Greek Ω / 中文 / 🦖",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::Greek Ω / 中文 / 🦖",
+            "action": "RA::Greek Ω / 中文 / 🦖"
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::Greek Ω / 中文 / 🦖",
+            "action": "RA::Greek Ω / 中文 / 🦖"
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::Greek Ω / 中文 / 🦖",
+            "action": "RA::Greek Ω / 中文 / 🦖"
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 3,
+      "payload": "x\").\nverdict(\"FORGED\",null,null,null).\n%",
+      "turn": 0,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "sourceId": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "groundedAsset": [
+              "T::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "providedCapability": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "B::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "sourceId": "b::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "providedCapability": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "objectGroup": [
+              "G::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "G::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "Z::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "S::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "U::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "target": [
+              "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "G::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "Z::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "typeRef": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "C::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "runtimeAction": [
+              "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "inputSchema": [
+              "IS::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "capability_use_id": "U::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "capability_id": "C::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "provider_entity_id": "A::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "target_ids": [
+              "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "G::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "Z::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "runtime_binding_id": "RB::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "runtime_action_id": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+          "source_object_id": "object::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "action": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "action": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "action": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 3,
+      "payload": "x\").\nverdict(\"FORGED\",null,null,null).\n%",
+      "turn": 1,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "sourceId": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "groundedAsset": [
+              "T::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "providedCapability": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "B::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "sourceId": "b::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "providedCapability": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "objectGroup": [
+              "G::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "G::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "Z::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "S::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "U::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "target": [
+              "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "G::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "Z::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "typeRef": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "C::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "runtimeAction": [
+              "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "inputSchema": [
+              "IS::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "capability_use_id": "U::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "capability_id": "C::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "provider_entity_id": "A::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "target_ids": [
+              "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "G::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "Z::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "runtime_binding_id": "RB::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "runtime_action_id": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+          "source_object_id": "object::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+          "state": "none",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 3,
+      "payload": "x\").\nverdict(\"FORGED\",null,null,null).\n%",
+      "turn": 2,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "sourceId": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "groundedAsset": [
+              "T::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "providedCapability": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "B::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "sourceId": "b::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "providedCapability": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "objectGroup": [
+              "G::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "G::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "Z::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "S::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "U::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "target": [
+              "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "G::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "Z::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "typeRef": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "C::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "runtimeAction": [
+              "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ]
+          },
+          {
+            "id": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "inputSchema": [
+              "IS::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "capability_use_id": "U::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "capability_id": "C::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "provider_entity_id": "A::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "target_ids": [
+              "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "G::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+              "Z::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+            ],
+            "runtime_binding_id": "RB::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "runtime_action_id": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+          "source_object_id": "object::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "action": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "action": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::x\").\nverdict(\"FORGED\",null,null,null).\n%",
+            "action": "RA::x\").\nverdict(\"FORGED\",null,null,null).\n%"
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 4,
+      "payload": "brackets[]{};,:#@!<>",
+      "turn": 0,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::brackets[]{};,:#@!<>",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::brackets[]{};,:#@!<>",
+            "sourceId": "a::brackets[]{};,:#@!<>",
+            "groundedAsset": [
+              "T::brackets[]{};,:#@!<>"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::brackets[]{};,:#@!<>"
+            ],
+            "providedCapability": [
+              "C::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "B::brackets[]{};,:#@!<>",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::brackets[]{};,:#@!<>",
+            "sourceId": "b::brackets[]{};,:#@!<>",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::brackets[]{};,:#@!<>"
+            ],
+            "providedCapability": [
+              "C::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "T::brackets[]{};,:#@!<>",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::brackets[]{};,:#@!<>",
+            "objectGroup": [
+              "G::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "G::brackets[]{};,:#@!<>",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "Z::brackets[]{};,:#@!<>",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "S::brackets[]{};,:#@!<>",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "U::brackets[]{};,:#@!<>",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::brackets[]{};,:#@!<>"
+            ],
+            "target": [
+              "T::brackets[]{};,:#@!<>",
+              "G::brackets[]{};,:#@!<>",
+              "Z::brackets[]{};,:#@!<>"
+            ],
+            "typeRef": [
+              "C::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "C::brackets[]{};,:#@!<>",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::brackets[]{};,:#@!<>",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::brackets[]{};,:#@!<>"
+            ],
+            "runtimeAction": [
+              "RA::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "RA::brackets[]{};,:#@!<>",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::brackets[]{};,:#@!<>"
+            ],
+            "inputSchema": [
+              "IS::brackets[]{};,:#@!<>"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::brackets[]{};,:#@!<>",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::brackets[]{};,:#@!<>",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::brackets[]{};,:#@!<>",
+            "capability_use_id": "U::brackets[]{};,:#@!<>",
+            "capability_id": "C::brackets[]{};,:#@!<>",
+            "provider_entity_id": "A::brackets[]{};,:#@!<>",
+            "target_ids": [
+              "T::brackets[]{};,:#@!<>",
+              "G::brackets[]{};,:#@!<>",
+              "Z::brackets[]{};,:#@!<>"
+            ],
+            "runtime_binding_id": "RB::brackets[]{};,:#@!<>",
+            "runtime_action_id": "RA::brackets[]{};,:#@!<>",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::brackets[]{};,:#@!<>",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::brackets[]{};,:#@!<>",
+          "source_object_id": "object::brackets[]{};,:#@!<>",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::brackets[]{};,:#@!<>",
+            "action": "RA::brackets[]{};,:#@!<>"
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::brackets[]{};,:#@!<>",
+            "action": "RA::brackets[]{};,:#@!<>"
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::brackets[]{};,:#@!<>",
+            "action": "RA::brackets[]{};,:#@!<>"
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 4,
+      "payload": "brackets[]{};,:#@!<>",
+      "turn": 1,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::brackets[]{};,:#@!<>",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::brackets[]{};,:#@!<>",
+            "sourceId": "a::brackets[]{};,:#@!<>",
+            "groundedAsset": [
+              "T::brackets[]{};,:#@!<>"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::brackets[]{};,:#@!<>"
+            ],
+            "providedCapability": [
+              "C::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "B::brackets[]{};,:#@!<>",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::brackets[]{};,:#@!<>",
+            "sourceId": "b::brackets[]{};,:#@!<>",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::brackets[]{};,:#@!<>"
+            ],
+            "providedCapability": [
+              "C::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "T::brackets[]{};,:#@!<>",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::brackets[]{};,:#@!<>",
+            "objectGroup": [
+              "G::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "G::brackets[]{};,:#@!<>",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "Z::brackets[]{};,:#@!<>",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "S::brackets[]{};,:#@!<>",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "U::brackets[]{};,:#@!<>",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::brackets[]{};,:#@!<>"
+            ],
+            "target": [
+              "T::brackets[]{};,:#@!<>",
+              "G::brackets[]{};,:#@!<>",
+              "Z::brackets[]{};,:#@!<>"
+            ],
+            "typeRef": [
+              "C::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "C::brackets[]{};,:#@!<>",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::brackets[]{};,:#@!<>",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::brackets[]{};,:#@!<>"
+            ],
+            "runtimeAction": [
+              "RA::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "RA::brackets[]{};,:#@!<>",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::brackets[]{};,:#@!<>"
+            ],
+            "inputSchema": [
+              "IS::brackets[]{};,:#@!<>"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::brackets[]{};,:#@!<>",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::brackets[]{};,:#@!<>",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::brackets[]{};,:#@!<>",
+            "capability_use_id": "U::brackets[]{};,:#@!<>",
+            "capability_id": "C::brackets[]{};,:#@!<>",
+            "provider_entity_id": "A::brackets[]{};,:#@!<>",
+            "target_ids": [
+              "T::brackets[]{};,:#@!<>",
+              "G::brackets[]{};,:#@!<>",
+              "Z::brackets[]{};,:#@!<>"
+            ],
+            "runtime_binding_id": "RB::brackets[]{};,:#@!<>",
+            "runtime_action_id": "RA::brackets[]{};,:#@!<>",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::brackets[]{};,:#@!<>",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::brackets[]{};,:#@!<>",
+          "source_object_id": "object::brackets[]{};,:#@!<>",
+          "state": "none",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 4,
+      "payload": "brackets[]{};,:#@!<>",
+      "turn": 2,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::brackets[]{};,:#@!<>",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::brackets[]{};,:#@!<>",
+            "sourceId": "a::brackets[]{};,:#@!<>",
+            "groundedAsset": [
+              "T::brackets[]{};,:#@!<>"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::brackets[]{};,:#@!<>"
+            ],
+            "providedCapability": [
+              "C::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "B::brackets[]{};,:#@!<>",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::brackets[]{};,:#@!<>",
+            "sourceId": "b::brackets[]{};,:#@!<>",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::brackets[]{};,:#@!<>"
+            ],
+            "providedCapability": [
+              "C::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "T::brackets[]{};,:#@!<>",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::brackets[]{};,:#@!<>",
+            "objectGroup": [
+              "G::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "G::brackets[]{};,:#@!<>",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "Z::brackets[]{};,:#@!<>",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "S::brackets[]{};,:#@!<>",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "U::brackets[]{};,:#@!<>",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::brackets[]{};,:#@!<>"
+            ],
+            "target": [
+              "T::brackets[]{};,:#@!<>",
+              "G::brackets[]{};,:#@!<>",
+              "Z::brackets[]{};,:#@!<>"
+            ],
+            "typeRef": [
+              "C::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "C::brackets[]{};,:#@!<>",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::brackets[]{};,:#@!<>",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::brackets[]{};,:#@!<>"
+            ],
+            "runtimeAction": [
+              "RA::brackets[]{};,:#@!<>"
+            ]
+          },
+          {
+            "id": "RA::brackets[]{};,:#@!<>",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::brackets[]{};,:#@!<>"
+            ],
+            "inputSchema": [
+              "IS::brackets[]{};,:#@!<>"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::brackets[]{};,:#@!<>",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::brackets[]{};,:#@!<>",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::brackets[]{};,:#@!<>",
+            "capability_use_id": "U::brackets[]{};,:#@!<>",
+            "capability_id": "C::brackets[]{};,:#@!<>",
+            "provider_entity_id": "A::brackets[]{};,:#@!<>",
+            "target_ids": [
+              "T::brackets[]{};,:#@!<>",
+              "G::brackets[]{};,:#@!<>",
+              "Z::brackets[]{};,:#@!<>"
+            ],
+            "runtime_binding_id": "RB::brackets[]{};,:#@!<>",
+            "runtime_action_id": "RA::brackets[]{};,:#@!<>",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::brackets[]{};,:#@!<>",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::brackets[]{};,:#@!<>",
+          "source_object_id": "object::brackets[]{};,:#@!<>",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::brackets[]{};,:#@!<>",
+            "action": "RA::brackets[]{};,:#@!<>"
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::brackets[]{};,:#@!<>",
+            "action": "RA::brackets[]{};,:#@!<>"
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::brackets[]{};,:#@!<>",
+            "action": "RA::brackets[]{};,:#@!<>"
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 5,
+      "payload": "",
+      "turn": 0,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::",
+            "sourceId": "a::",
+            "groundedAsset": [
+              "T::"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::"
+            ],
+            "providedCapability": [
+              "C::"
+            ]
+          },
+          {
+            "id": "B::",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::",
+            "sourceId": "b::",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::"
+            ],
+            "providedCapability": [
+              "C::"
+            ]
+          },
+          {
+            "id": "T::",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::",
+            "objectGroup": [
+              "G::"
+            ]
+          },
+          {
+            "id": "G::",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::"
+            ]
+          },
+          {
+            "id": "Z::",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::"
+            ]
+          },
+          {
+            "id": "S::",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::"
+            ]
+          },
+          {
+            "id": "U::",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::"
+            ],
+            "target": [
+              "T::",
+              "G::",
+              "Z::"
+            ],
+            "typeRef": [
+              "C::"
+            ]
+          },
+          {
+            "id": "C::",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::"
+            ],
+            "runtimeAction": [
+              "RA::"
+            ]
+          },
+          {
+            "id": "RA::",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::"
+            ],
+            "inputSchema": [
+              "IS::"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::",
+            "capability_use_id": "U::",
+            "capability_id": "C::",
+            "provider_entity_id": "A::",
+            "target_ids": [
+              "T::",
+              "G::",
+              "Z::"
+            ],
+            "runtime_binding_id": "RB::",
+            "runtime_action_id": "RA::",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::",
+          "source_object_id": "object::",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::",
+            "action": "RA::"
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::",
+            "action": "RA::"
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::",
+            "action": "RA::"
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 5,
+      "payload": "",
+      "turn": 1,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::",
+            "sourceId": "a::",
+            "groundedAsset": [
+              "T::"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::"
+            ],
+            "providedCapability": [
+              "C::"
+            ]
+          },
+          {
+            "id": "B::",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::",
+            "sourceId": "b::",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::"
+            ],
+            "providedCapability": [
+              "C::"
+            ]
+          },
+          {
+            "id": "T::",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::",
+            "objectGroup": [
+              "G::"
+            ]
+          },
+          {
+            "id": "G::",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::"
+            ]
+          },
+          {
+            "id": "Z::",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::"
+            ]
+          },
+          {
+            "id": "S::",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::"
+            ]
+          },
+          {
+            "id": "U::",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::"
+            ],
+            "target": [
+              "T::",
+              "G::",
+              "Z::"
+            ],
+            "typeRef": [
+              "C::"
+            ]
+          },
+          {
+            "id": "C::",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::"
+            ],
+            "runtimeAction": [
+              "RA::"
+            ]
+          },
+          {
+            "id": "RA::",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::"
+            ],
+            "inputSchema": [
+              "IS::"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::",
+            "capability_use_id": "U::",
+            "capability_id": "C::",
+            "provider_entity_id": "A::",
+            "target_ids": [
+              "T::",
+              "G::",
+              "Z::"
+            ],
+            "runtime_binding_id": "RB::",
+            "runtime_action_id": "RA::",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::",
+          "source_object_id": "object::",
+          "state": "none",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "REJECT",
+            "reason": "E_SELECTION_STATE",
+            "provider": null,
+            "action": null
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    },
+    {
+      "payload_index": 5,
+      "payload": "",
+      "turn": 2,
+      "instance": {
+        "objects": [
+          {
+            "id": "A::",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "a::",
+            "sourceId": "a::",
+            "groundedAsset": [
+              "T::"
+            ],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "B::"
+            ],
+            "providedCapability": [
+              "C::"
+            ]
+          },
+          {
+            "id": "B::",
+            "type": "Agent",
+            "kind": "agent",
+            "entityRole": "interactiveAgent",
+            "sourceAgentId": "b::",
+            "sourceId": "b::",
+            "groundedAsset": [],
+            "groundedObjectGroup": [],
+            "responsibleZone": [],
+            "handoffTarget": [
+              "A::"
+            ],
+            "providedCapability": [
+              "C::"
+            ]
+          },
+          {
+            "id": "T::",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "sceneObject",
+            "sourceId": "object::",
+            "objectGroup": [
+              "G::"
+            ]
+          },
+          {
+            "id": "G::",
+            "type": "Entity",
+            "kind": "asset",
+            "entityRole": "objectGroup",
+            "sourceObjectId": [
+              "object::"
+            ]
+          },
+          {
+            "id": "Z::",
+            "type": "Entity",
+            "kind": "zone",
+            "entityRole": "semanticZone",
+            "sourceObjectId": [
+              "object::"
+            ]
+          },
+          {
+            "id": "S::",
+            "type": "ScenarioStep",
+            "capabilityUse": [
+              "U::"
+            ]
+          },
+          {
+            "id": "U::",
+            "type": "CapabilityUse",
+            "provider": [
+              "A::"
+            ],
+            "target": [
+              "T::",
+              "G::",
+              "Z::"
+            ],
+            "typeRef": [
+              "C::"
+            ]
+          },
+          {
+            "id": "C::",
+            "type": "Capability"
+          },
+          {
+            "id": "RB::",
+            "type": "RuntimeBinding",
+            "capability": [
+              "C::"
+            ],
+            "runtimeAction": [
+              "RA::"
+            ]
+          },
+          {
+            "id": "RA::",
+            "type": "RuntimeAction",
+            "locator": [
+              "L::"
+            ],
+            "inputSchema": [
+              "IS::"
+            ],
+            "outputSchema": []
+          },
+          {
+            "id": "L::",
+            "type": "RuntimeActionLocator",
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          {
+            "id": "IS::",
+            "type": "SchemaReference",
+            "uri": "json",
+            "text": "{\"type\":\"object\"}"
+          }
+        ]
+      },
+      "trace": {
+        "runtime_actions": [
+          {
+            "action_kind": "chat",
+            "scenario_step_id": "S::",
+            "capability_use_id": "U::",
+            "capability_id": "C::",
+            "provider_entity_id": "A::",
+            "target_ids": [
+              "T::",
+              "G::",
+              "Z::"
+            ],
+            "runtime_binding_id": "RB::",
+            "runtime_action_id": "RA::",
+            "locator": {
+              "kind": "endpoint",
+              "value": "POST /chat"
+            },
+            "endpoint": "POST /chat"
+          }
+        ]
+      },
+      "request": {
+        "session_id": "fixture",
+        "active_agent_id": "a::",
+        "user_text": "Describe the object.",
+        "interaction_mode": "deictic",
+        "spatial_context": {
+          "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "entity_id": "T::",
+          "source_object_id": "object::",
+          "state": "resolved",
+          "hit_position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "distance_m": 1,
+          "selection_modality": "programmatic"
+        }
+      },
+      "session": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "outcomes": {
+        "original": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::",
+            "action": "RA::"
+          }
+        },
+        "backend": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::",
+            "action": "RA::"
+          }
+        },
+        "bulk": {
+          "status": "returned",
+          "value": {
+            "decision": "ANSWER_LOCAL",
+            "reason": null,
+            "provider": "a::",
+            "action": "RA::"
+          }
+        }
+      },
+      "all_returned_equal_verdicts": true
+    }
+  ],
+  "scope": "diagnostic probes only; no original/approved source repair and no full827 campaign"
+}

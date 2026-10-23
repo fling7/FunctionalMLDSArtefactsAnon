@@ -1,0 +1,136 @@
+{
+  "created_at": "2026-10-15T12:40:21.307419+00:00",
+  "evidence": [
+    "results/raw/wp5/development_revalidation/schema_digest_fix/",
+    "logs/schema_digest_fix_tests.log",
+    "logs/wp5_amendment_tests.log"
+  ],
+  "implementation_updates": {
+    "app/backend_root/agent_backend/backend/__init__.py": {
+      "new_sha256": "e276f7509b8e51028a6c5f7ec25dc7c7e2a1e83cbf4b1843fe057c8bf567aeea",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/app.py": {
+      "new_sha256": "54612bd943bb8f02a95d6f62a97fc546378367c75d172590b9ca1e3949d45235",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/guard_config.py": {
+      "new_sha256": "660fe7b808bedd8ab01b9ce997f6664fc64d486083616b7867f72bc49b168206",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/kb.py": {
+      "new_sha256": "5898faa9935da357f3801ea570f43bb4c5534e8b3a35afea98f56992c3f23d57",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/placement.py": {
+      "new_sha256": "6d65ffd026b30dd2f6d86488f610b9301b5eb128d06ab50d23ea8b3f245b1287",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/projects.py": {
+      "new_sha256": "2054d77916415a664179bbf99300d9f6f68a08b7fffd49d6ffa5febb8449a52e",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/publication.py": {
+      "new_sha256": "c09d3f1cebc790d3b5787f2eded3ca7ac46a91b1382d422cb4cf5a1b9423f47f",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/runtime_trace.py": {
+      "new_sha256": "d377c5a8b4aa969568c539f491a1cc62d7870d8a8c10dc0e83d3fa6751ac76d0",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/schemas.py": {
+      "new_sha256": "2bb547ed2b601a91b18cd9785ac60dcd6f24f6ff593c03c6d4d6f9d6dd8ffb81",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/server.py": {
+      "new_sha256": "25770fac8c61bcc0710b15f88d66a098ff09e3611d22da29e5dc68de3e0403ba",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/state.py": {
+      "new_sha256": "3a1bb5fe35352a25f531cb468bc2924d0c3a953d500d2773f58260f0caeb2e34",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/verified_routing.py": {
+      "new_sha256": "96828221a17b9487a921318444749aec7328330723f4221f8b719341e1f7c939",
+      "old_sha256": null
+    },
+    "app/backend_root/agent_backend/backend/version.py": {
+      "new_sha256": "41177403f3a1a8d30af70c7928517aae4701ecc1b90377a29e39976c7cc96d28",
+      "old_sha256": null
+    },
+    "experiments/lib/backend_driver.py": {
+      "new_sha256": "87465293d5256cf65eb1ead6bf45bef4b60a8d1d3d1c18176af39d01b51d809e",
+      "old_sha256": null
+    },
+    "experiments/natural_faults.py": {
+      "new_sha256": "a2db513bd029d7347ad8c24755571718538893f605ca02d5bdad0e04aa4a4915",
+      "old_sha256": null
+    },
+    "experiments/pipeline_runs.py": {
+      "new_sha256": "27a9b40d870925185ec9e6f4beb01693f0825f0b54c78569a9ee4df61ae81e4e",
+      "old_sha256": "436635b7b4711e8a2e7768afdb7aacb6cc0999d86d84675b2ede71accae9a846"
+    },
+    "tools/case_study_pipeline/validators/schema_validator.py": {
+      "new_sha256": "f7b8ac681939e0ff8310f507e91cc42bba02f65030d1ad2577c97f5f4c4ed62e",
+      "old_sha256": "a622ccb2d5e5c449217966799aaa970b31a2f0692f58dcaa58e12326cd5a03e4"
+    },
+    "verification/impl_a/reference.py": {
+      "new_sha256": "074843e348f4ea435fdcc5f9b16b909bd0e26d92fcbe29c427e1840b5cab51ba",
+      "old_sha256": null
+    },
+    "verification/impl_b/admission.lp": {
+      "new_sha256": "149e76e157415465f925af7063c1796ce682f4228a5adff4347cb7ff08888fea",
+      "old_sha256": null
+    },
+    "verification/impl_b/policy_adapter.py": {
+      "new_sha256": "cfa3af7ed9446eefb8b947b889f52d2841db73e3920a18133d37c57c7071dd12",
+      "old_sha256": null
+    }
+  },
+  "kind": "implementation-only",
+  "natural_fault_protocol": {
+    "checks": [
+      "packet canonical authoring",
+      "packet schema authoring",
+      "Gate0",
+      "I1 native reference",
+      "I2 ASP policy",
+      "I0 direct production admission stopping before generation"
+    ],
+    "intervals": "Source-cluster bootstrap of room rates, model-stratified; fixed seed20261015,2000replicates; no interval with<2sourceclusters. Pooled ratios secondary.",
+    "metrics": [
+      "unowned",
+      "ambiguous deciding owner",
+      "latent group/zone ambiguity",
+      "missing declared action",
+      "multi-hop/no-path pairs",
+      "isolated agents",
+      "graph density and directed diameter",
+      "nearest-agent proxy",
+      "static admitted fractions at hop limits1/2/3"
+    ],
+    "population": "Every produced project and every failed run stays in the denominator, phase separated.",
+    "repair_evidence": "Revalidate exact retained intermediate before-repair and after-stage candidates. Do not synthesize native before-repair rooms when pipeline had not assembled one.",
+    "runtime_limit": "Model-only normal-request admission sequence. No answer generation, state transition or commit claim.",
+    "semantic_lint": "Indicative containment in bounding boxes derived from owner-zone members; no authoritative polygons or semantic ground truth.",
+    "unfunded": [
+      "two LLM judges",
+      "regeneration drift",
+      "additional LLM-authored sources"
+    ],
+    "unit": "source scene; model runs nested; all agent-object probes secondary"
+  },
+  "prior_freeze_sha256": "57a96d281a1ea05b86beb0f800caa485f72e2053d6b736a1dfcffb1cdff29d8e",
+  "reason": "Development exposed schema_validator hashing raw CRLF bytes despite declared sha256-lf-v1. Honor canonical and legacy schemes, preserve original failed runs, and revalidate saved projects offline. Add immutable execution amendment verification and preregister natural-fault analysis before evaluation.",
+  "sequence": 1,
+  "unchanged": [
+    "sample and model order",
+    "models",
+    "temperature",
+    "prompts",
+    "input ceilings",
+    "output caps",
+    "repair policy",
+    "share and total caps"
+  ]
+}

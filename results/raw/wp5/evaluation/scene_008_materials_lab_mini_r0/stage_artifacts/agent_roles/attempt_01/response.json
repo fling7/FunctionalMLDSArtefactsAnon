@@ -1,0 +1,242 @@
+{
+  "access_programs": null,
+  "background": false,
+  "billing": {
+    "payer": "openai"
+  },
+  "completed_at": 1792070562,
+  "created_at": 1792070556,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_02e59b52b3618486016ad0d39c5c0887d1ab5142809ebc8de6",
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 2200,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-4.1-mini-2025-04-14",
+  "moderation": null,
+  "object": "response",
+  "output": [
+    {
+      "content": [
+        {
+          "annotations": [],
+          "logprobs": [],
+          "text": "{\"agents\":[{\"display_name\":\"Fiber and Ceramic Specialist\",\"expertise\":[\"fiber materials\",\"ceramic materials\",\"materials science\",\"education\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"handoff_targets\":[\"metal_crystal_specialist\",\"strength_polymer_assistant\"],\"id\":\"fiber_ceramic_specialist\",\"knowledge_tags\":[\"fiber_materials\",\"ceramic_materials\",\"synthetic_materials\",\"material_properties\"],\"persona\":\"Enthusiastic and knowledgeable expert passionate about explaining fiber and ceramic synthetic materials to visitors, making complex concepts accessible and engaging.\",\"responsible_zone_ids\":[\"zone_001\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"fable\",\"voice_gender\":\"weiblich\",\"voice_style\":\"freundlich\"},{\"display_name\":\"Metal and Crystal Specialist\",\"expertise\":[\"metal materials\",\"crystal structures\",\"materials science\",\"education\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"handoff_targets\":[\"fiber_ceramic_specialist\",\"strength_polymer_assistant\"],\"id\":\"metal_crystal_specialist\",\"knowledge_tags\":[\"metal_materials\",\"crystal_structures\",\"synthetic_materials\",\"material_properties\"],\"persona\":\"Detail-oriented and patient guide focused on educating visitors about metal and crystal synthetic materials, their structures, and applications.\",\"responsible_zone_ids\":[\"zone_002\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"onyx\",\"voice_gender\":\"maennlich\",\"voice_style\":\"informativ\"},{\"display_name\":\"Strength and Polymer Assistant\",\"expertise\":[\"polymer materials\",\"material strength\",\"interactive exhibits\",\"visitor interaction\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"handoff_targets\":[\"fiber_ceramic_specialist\",\"metal_crystal_specialist\"],\"id\":\"strength_polymer_assistant\",\"knowledge_tags\":[\"polymer_materials\",\"material_strength\",\"interactive_learning\",\"synthetic_materials\"],\"persona\":\"Friendly and engaging assistant who helps visitors interact with strength testing stations and polymer samples, encouraging hands-on learning.\",\"responsible_zone_ids\":[\"zone_003\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"sage\",\"voice_gender\":\"weiblich\",\"voice_style\":\"motivational\"}],\"handoffs\":[{\"condition\":\"visitor asks about metal or crystal materials while interacting with strength and polymer exhibits\",\"reason\":\"Redirect to Metal and Crystal Specialist for detailed metal and crystal information\",\"source_agent_id\":\"strength_polymer_assistant\",\"target_agent_id\":\"metal_crystal_specialist\"},{\"condition\":\"visitor in Metal and Crystal Samples Zone shows interest in fiber or ceramic materials\",\"reason\":\"Redirect to Fiber and Ceramic Specialist for expertise on fiber and ceramic materials\",\"source_agent_id\":\"metal_crystal_specialist\",\"target_agent_id\":\"fiber_ceramic_specialist\"},{\"condition\":\"visitor in Fiber and Ceramic Materials Zone wants to learn about strength or polymer materials\",\"reason\":\"Redirect to Strength and Polymer Assistant for hands-on strength and polymer demonstrations\",\"source_agent_id\":\"fiber_ceramic_specialist\",\"target_agent_id\":\"strength_polymer_assistant\"}]}",
+          "type": "output_text"
+        }
+      ],
+      "id": "msg_02e59b52b3618486016ad0d39ccf1c87d1bc49de0a4bd69f08",
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 0.3,
+  "text": {
+    "format": {
+      "description": null,
+      "name": "agent_roles",
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "agents": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "display_name": {
+                  "type": "string"
+                },
+                "expertise": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "grounded_object_ids": {
+                  "items": {
+                    "enum": [
+                      "object_001",
+                      "object_002",
+                      "object_003",
+                      "object_004",
+                      "object_005",
+                      "object_006",
+                      "object_007",
+                      "object_008",
+                      "object_009",
+                      "object_010",
+                      "object_011",
+                      "object_012",
+                      "object_013",
+                      "object_014",
+                      "object_015"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "handoff_targets": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "knowledge_tags": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "persona": {
+                  "type": "string"
+                },
+                "responsible_zone_ids": {
+                  "items": {
+                    "enum": [
+                      "zone_001",
+                      "zone_002",
+                      "zone_003"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "tts_model": {
+                  "type": "string"
+                },
+                "voice": {
+                  "enum": [
+                    "alloy",
+                    "ash",
+                    "ballad",
+                    "coral",
+                    "echo",
+                    "fable",
+                    "nova",
+                    "onyx",
+                    "sage",
+                    "shimmer",
+                    "verse"
+                  ],
+                  "type": "string"
+                },
+                "voice_gender": {
+                  "type": "string"
+                },
+                "voice_style": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "display_name",
+                "persona",
+                "expertise",
+                "knowledge_tags",
+                "responsible_zone_ids",
+                "grounded_object_ids",
+                "handoff_targets",
+                "voice",
+                "voice_gender",
+                "voice_style",
+                "tts_model"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "handoffs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "condition": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "source_agent_id": {
+                  "type": "string"
+                },
+                "target_agent_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source_agent_id",
+                "target_agent_id",
+                "condition",
+                "reason"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "agents",
+          "handoffs"
+        ],
+        "type": "object"
+      },
+      "strict": true,
+      "type": "json_schema"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 2761,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 656,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 3417
+  },
+  "user": null
+}

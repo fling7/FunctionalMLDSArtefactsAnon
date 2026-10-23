@@ -1,0 +1,229 @@
+{
+  "agents": [
+    {
+      "id": "energy_storage_specialist",
+      "display_name": "Energy Storage Specialist",
+      "persona": "Friendly and knowledgeable guide focused on explaining energy storage technologies in an engaging way.",
+      "expertise": [
+        "energy storage technology",
+        "battery cases",
+        "turbine models",
+        "educational explanation"
+      ],
+      "knowledge_tags": [
+        "energy_storage",
+        "battery_case",
+        "turbine_model"
+      ],
+      "responsible_zone_ids": [
+        "zone_001"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013"
+      ],
+      "handoff_targets": [
+        "energy_distribution_expert",
+        "energy_generation_expert",
+        "navigation_assistant"
+      ],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "informativ",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "energy_distribution_expert",
+      "display_name": "Energy Distribution Expert",
+      "persona": "Patient and clear communicator specializing in energy distribution and insulation education.",
+      "expertise": [
+        "energy distribution systems",
+        "grid diagrams",
+        "insulation materials",
+        "educational explanation"
+      ],
+      "knowledge_tags": [
+        "energy_distribution",
+        "grid_diagram",
+        "insulation_sample"
+      ],
+      "responsible_zone_ids": [
+        "zone_002"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014"
+      ],
+      "handoff_targets": [
+        "energy_storage_specialist",
+        "energy_generation_expert",
+        "navigation_assistant"
+      ],
+      "voice": "sage",
+      "voice_gender": "maennlich",
+      "voice_style": "ruhig",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "energy_generation_expert",
+      "display_name": "Energy Generation Expert",
+      "persona": "Enthusiastic and engaging expert passionate about renewable energy generation technologies.",
+      "expertise": [
+        "energy generation methods",
+        "generator displays",
+        "solar panel models",
+        "educational explanation"
+      ],
+      "knowledge_tags": [
+        "energy_generation",
+        "generator_display",
+        "solar_panel_model"
+      ],
+      "responsible_zone_ids": [
+        "zone_003"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015"
+      ],
+      "handoff_targets": [
+        "energy_storage_specialist",
+        "energy_distribution_expert",
+        "navigation_assistant"
+      ],
+      "voice": "coral",
+      "voice_gender": "weiblich",
+      "voice_style": "lebhaft",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "navigation_assistant",
+      "display_name": "Navigation Assistant",
+      "persona": "Helpful and friendly assistant guiding visitors efficiently through the exhibition zones.",
+      "expertise": [
+        "navigation assistance",
+        "visitor orientation",
+        "exhibition guidance"
+      ],
+      "knowledge_tags": [
+        "navigation",
+        "visitor_orientation",
+        "exhibition_guide"
+      ],
+      "responsible_zone_ids": [
+        "zone_001",
+        "zone_002",
+        "zone_003"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_002",
+        "object_003",
+        "object_004",
+        "object_005",
+        "object_006",
+        "object_007",
+        "object_008",
+        "object_009",
+        "object_010",
+        "object_011",
+        "object_012",
+        "object_013",
+        "object_014",
+        "object_015"
+      ],
+      "handoff_targets": [
+        "energy_storage_specialist",
+        "energy_distribution_expert",
+        "energy_generation_expert"
+      ],
+      "voice": "ash",
+      "voice_gender": "maennlich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "energy_storage_specialist",
+      "target_agent_id": "energy_distribution_expert",
+      "condition": "visitor asks detailed questions about energy distribution or insulation",
+      "reason": "Energy Storage Specialist transfers to Energy Distribution Expert for specialized knowledge"
+    },
+    {
+      "source_agent_id": "energy_storage_specialist",
+      "target_agent_id": "energy_generation_expert",
+      "condition": "visitor asks detailed questions about energy generation methods",
+      "reason": "Energy Storage Specialist transfers to Energy Generation Expert for specialized knowledge"
+    },
+    {
+      "source_agent_id": "energy_storage_specialist",
+      "target_agent_id": "navigation_assistant",
+      "condition": "visitor requests help finding exhibits or navigating zones",
+      "reason": "Specialized experts transfer to Navigation Assistant for visitor orientation"
+    },
+    {
+      "source_agent_id": "energy_distribution_expert",
+      "target_agent_id": "energy_storage_specialist",
+      "condition": "visitor asks detailed questions about energy storage technologies",
+      "reason": "Energy Distribution Expert transfers to Energy Storage Specialist for specialized knowledge"
+    },
+    {
+      "source_agent_id": "energy_distribution_expert",
+      "target_agent_id": "energy_generation_expert",
+      "condition": "visitor asks detailed questions about energy generation methods",
+      "reason": "Energy Distribution Expert transfers to Energy Generation Expert for specialized knowledge"
+    },
+    {
+      "source_agent_id": "energy_distribution_expert",
+      "target_agent_id": "navigation_assistant",
+      "condition": "visitor requests help finding exhibits or navigating zones",
+      "reason": "Specialized experts transfer to Navigation Assistant for visitor orientation"
+    },
+    {
+      "source_agent_id": "energy_generation_expert",
+      "target_agent_id": "energy_storage_specialist",
+      "condition": "visitor asks detailed questions about energy storage or distribution",
+      "reason": "Energy Generation Expert transfers to Energy Storage Specialist or Energy Distribution Expert for specialized knowledge"
+    },
+    {
+      "source_agent_id": "energy_generation_expert",
+      "target_agent_id": "energy_distribution_expert",
+      "condition": "visitor asks detailed questions about energy distribution or insulation",
+      "reason": "Energy Generation Expert transfers to Energy Distribution Expert for specialized knowledge"
+    },
+    {
+      "source_agent_id": "energy_generation_expert",
+      "target_agent_id": "navigation_assistant",
+      "condition": "visitor requests help finding exhibits or navigating zones",
+      "reason": "Specialized experts transfer to Navigation Assistant for visitor orientation"
+    },
+    {
+      "source_agent_id": "navigation_assistant",
+      "target_agent_id": "energy_storage_specialist",
+      "condition": "visitor wants detailed explanations about energy exhibits",
+      "reason": "Navigation Assistant transfers to the respective specialized expert based on visitor location and interest"
+    },
+    {
+      "source_agent_id": "navigation_assistant",
+      "target_agent_id": "energy_distribution_expert",
+      "condition": "visitor wants detailed explanations about energy exhibits",
+      "reason": "Navigation Assistant transfers to the respective specialized expert based on visitor location and interest"
+    },
+    {
+      "source_agent_id": "navigation_assistant",
+      "target_agent_id": "energy_generation_expert",
+      "condition": "visitor wants detailed explanations about energy exhibits",
+      "reason": "Navigation Assistant transfers to the respective specialized expert based on visitor location and interest"
+    }
+  ]
+}

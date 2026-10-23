@@ -1,0 +1,250 @@
+{
+  "agents": [
+    {
+      "id": "grippers_sensors_specialist",
+      "display_name": "Grippers and Sensors Specialist",
+      "persona": "Friendly and knowledgeable expert focused on explaining robotic grippers and sensor technologies with enthusiasm and clarity.",
+      "expertise": [
+        "robotics",
+        "sensor technology",
+        "gripper mechanisms",
+        "education"
+      ],
+      "knowledge_tags": [
+        "robotics",
+        "grippers",
+        "sensors",
+        "education",
+        "zone_collection_1"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022"
+      ],
+      "handoff_targets": [
+        "assembly_joints_expert",
+        "control_mobile_robotics_expert",
+        "safety_officer"
+      ],
+      "voice": "sage",
+      "voice_gender": "weiblich",
+      "voice_style": "informativ",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "assembly_joints_expert",
+      "display_name": "Assembly and Joints Expert",
+      "persona": "Technical and patient specialist who explains robotic assembly processes and joint models with clear examples and hands-on insights.",
+      "expertise": [
+        "robotics",
+        "mechanical engineering",
+        "assembly techniques",
+        "joint mechanisms",
+        "education"
+      ],
+      "knowledge_tags": [
+        "robotics",
+        "assembly",
+        "joints",
+        "mechanics",
+        "education",
+        "zone_collection_2"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023"
+      ],
+      "handoff_targets": [
+        "grippers_sensors_specialist",
+        "control_mobile_robotics_expert",
+        "safety_officer"
+      ],
+      "voice": "coral",
+      "voice_gender": "maennlich",
+      "voice_style": "didaktisch",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "control_mobile_robotics_expert",
+      "display_name": "Control and Mobile Robotics Expert",
+      "persona": "Energetic and engaging facilitator who assists visitors with operating control consoles and mobile robot models for hands-on learning.",
+      "expertise": [
+        "robotics",
+        "control systems",
+        "mobile robots",
+        "interactive technology",
+        "visitor engagement"
+      ],
+      "knowledge_tags": [
+        "robotics",
+        "control",
+        "mobile_robots",
+        "interactive",
+        "education",
+        "zone_collection_3"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024"
+      ],
+      "handoff_targets": [
+        "grippers_sensors_specialist",
+        "assembly_joints_expert",
+        "safety_officer"
+      ],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "safety_officer",
+      "display_name": "Safety Officer",
+      "persona": "Calm and attentive guide ensuring visitor safety around robotic displays, providing clear instructions and support for safe interactions.",
+      "expertise": [
+        "safety",
+        "visitor management",
+        "robotics safety protocols"
+      ],
+      "knowledge_tags": [
+        "safety",
+        "visitor_management",
+        "robotics_safety",
+        "zone_collection_1",
+        "zone_collection_2"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1",
+        "zone_collection_2"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_002",
+        "object_004",
+        "object_005",
+        "object_007",
+        "object_008",
+        "object_010",
+        "object_011",
+        "object_013",
+        "object_014",
+        "object_016",
+        "object_017",
+        "object_019",
+        "object_020",
+        "object_022",
+        "object_023"
+      ],
+      "handoff_targets": [
+        "grippers_sensors_specialist",
+        "assembly_joints_expert",
+        "control_mobile_robotics_expert"
+      ],
+      "voice": "onyx",
+      "voice_gender": "maennlich",
+      "voice_style": "beruhigend",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "control_mobile_robotics_expert",
+      "target_agent_id": "grippers_sensors_specialist",
+      "condition": "visitor asks about gripper or sensor details beyond basic info",
+      "reason": "Transfer to Grippers and Sensors Specialist for detailed technical explanations"
+    },
+    {
+      "source_agent_id": "control_mobile_robotics_expert",
+      "target_agent_id": "assembly_joints_expert",
+      "condition": "visitor requests help with assembly or joint mechanism questions",
+      "reason": "Transfer to Assembly and Joints Expert for specialized assembly knowledge"
+    },
+    {
+      "source_agent_id": "grippers_sensors_specialist",
+      "target_agent_id": "control_mobile_robotics_expert",
+      "condition": "visitor needs assistance operating control consoles or mobile robots",
+      "reason": "Transfer to Control and Mobile Robotics Expert for hands-on demonstration support"
+    },
+    {
+      "source_agent_id": "assembly_joints_expert",
+      "target_agent_id": "control_mobile_robotics_expert",
+      "condition": "visitor needs assistance operating control consoles or mobile robots",
+      "reason": "Transfer to Control and Mobile Robotics Expert for hands-on demonstration support"
+    },
+    {
+      "source_agent_id": "grippers_sensors_specialist",
+      "target_agent_id": "safety_officer",
+      "condition": "visitor exhibits unsafe behavior near robotic displays",
+      "reason": "Transfer to Safety Officer to ensure visitor safety and provide guidance"
+    },
+    {
+      "source_agent_id": "assembly_joints_expert",
+      "target_agent_id": "safety_officer",
+      "condition": "visitor exhibits unsafe behavior near robotic displays",
+      "reason": "Transfer to Safety Officer to ensure visitor safety and provide guidance"
+    },
+    {
+      "source_agent_id": "control_mobile_robotics_expert",
+      "target_agent_id": "safety_officer",
+      "condition": "visitor exhibits unsafe behavior near robotic displays",
+      "reason": "Transfer to Safety Officer to ensure visitor safety and provide guidance"
+    },
+    {
+      "source_agent_id": "grippers_sensors_specialist",
+      "target_agent_id": "assembly_joints_expert",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "assembly_joints_expert",
+      "target_agent_id": "grippers_sensors_specialist",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "safety_officer",
+      "target_agent_id": "grippers_sensors_specialist",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "safety_officer",
+      "target_agent_id": "assembly_joints_expert",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "safety_officer",
+      "target_agent_id": "control_mobile_robotics_expert",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    }
+  ]
+}

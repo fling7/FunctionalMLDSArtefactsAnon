@@ -1,0 +1,166 @@
+{
+  "cache_key": "a904ee3e2086923ec7ad66673c29cfef397887e2d1cd259097ef7b4492f4fe7f",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.questions",
+    "item_id": "scene_037_astronomy_gallery.ENT-ASSET-OBJECT_034",
+    "payload": {
+      "input": [
+        {
+          "content": "Write two different natural visitor questions about this selected synthetic room object, using its description and the supplied knowledge excerpts. Use English. Each question must explicitly include the object's supplied name or source id, must be at most one sentence, and must not name an agent or ask for a handoff. The first should ask about the object or its purpose; the second should ask about a detail or use that is supported by the supplied information. Do not invent facts. Return JSON with question_1 and question_2.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"object\": {\"id\": \"ENT-ASSET-OBJECT_034\", \"source_id\": \"object_034\", \"name\": \"telescope\", \"type\": \"telescope\", \"group_label\": \"collection_1\", \"zone_names\": [\"Collection 1: Spectroscopes and Telescopes Zone\"]}, \"description\": \"Synthetic astronomy gallery object: telescope. Display 34 explains a distinct example in collection 1. A freestanding educational display with a clearly visible label; no real person or institution.\", \"knowledge_excerpts\": []}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 256,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "visitor_questions",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "question_1": {
+                "type": "string"
+              },
+              "question_2": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question_1",
+              "question_2"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "judges",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792103073,
+    "created_at": 1792103072,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0f02a7f0945634e8016ad152a0f6b887d189b77e3d6515d3d6",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 256,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"question_1\":\"What is the purpose of the telescope labeled object_034 in the Collection 1: Spectroscopes and Telescopes Zone?\",\"question_2\":\"How is the telescope object_034 presented in the synthetic astronomy gallery as part of display 34?\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0f02a7f0945634e8016ad152a162cc87d18ae95ee563584478",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "visitor_questions",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "question_1": {
+              "type": "string"
+            },
+            "question_2": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "question_1",
+            "question_2"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 260,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 58,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 318
+    },
+    "user": null
+  },
+  "response_sha256": "a6c86fbd3eba187fd5704928d1c5d2882d6c41afa3b1f61904fe0ebbad39ca23",
+  "saved_at": "2026-10-15T22:24:34.703090+00:00",
+  "status": "SUCCESS"
+}

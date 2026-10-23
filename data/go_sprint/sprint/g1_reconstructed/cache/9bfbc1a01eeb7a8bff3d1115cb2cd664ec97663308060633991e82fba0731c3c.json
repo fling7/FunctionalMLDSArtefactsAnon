@@ -1,0 +1,182 @@
+{
+  "cache_key": "9bfbc1a01eeb7a8bff3d1115cb2cd664ec97663308060633991e82fba0731c3c",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "extension_drift_01_astronomy_gallery.B0.forced.p2.neutral.full.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "You assign a grounded visitor question to one agent. Route for selected_object, while treating visitor_question as context rather than a replacement selection. Compare the available agents. If explicit responsibility data is present, check object owners first, then group owners only if no object owner exists, then zone owners only if neither earlier level has an owner. More than one owner at the deciding level is ambiguous. A valid recipient is the unique owner and is either already active or one declared edge away. Produce the JSON decision.\nYou must choose exactly one listed agent id, including when the evidence is uncertain or no valid unique recipient is apparent. Set abstain=false. A null recipient and rejection are not available in this condition.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Orbital Mechanics Guide\",\"expertise\":[\"astronomy\",\"orbital mechanics\",\"education\"],\"id\":\"orbital_mechanics_guide\",\"persona\":\"Enthusiastic and clear explainer focused on orbital dynamics and meteorite characteristics.\"},{\"display_name\":\"Planetary Specialist\",\"expertise\":[\"planetary science\",\"astronomy\",\"education\"],\"id\":\"planetary_specialist\",\"persona\":\"Knowledgeable and engaging expert on planets and telescope observations.\"},{\"display_name\":\"Star Map Interpreter\",\"expertise\":[\"astronomy\",\"navigation\",\"spectroscopy\",\"education\"],\"id\":\"star_map_interpreter\",\"persona\":\"Patient and insightful guide helping visitors understand star maps and stellar properties.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-OBJECT_009\",\"source_id\":\"object_009\",\"name\":\"planet_model\",\"type\":\"planet_model\",\"group_label\":\"collection_3\",\"zone_names\":[\"Planetary Science Zone\"]},\"active_agent_id\":\"planetary_specialist\",\"visitor_question\":\"What can you tell me about this selected object?\"}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "orbital_mechanics_guide",
+                  "planetary_specialist",
+                  "star_map_interpreter"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1792107155,
+    "created_at": 1792107154,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0fdd0ef26410bbc2016ad16292f6b087d190e9ae37618febea",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\":false,\"answering_agent_id\":\"planetary_specialist\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0fdd0ef26410bbc2016ad162933c5887d1a8b7cfc91d31e549",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "orbital_mechanics_guide",
+                "planetary_specialist",
+                "star_map_interpreter"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 420,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 18,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 438
+    },
+    "user": null
+  },
+  "response_sha256": "cec367465beb17aec46a53c0cb5c471970b902112b3e5913557dd53b2457f3bd",
+  "saved_at": "2026-10-15T23:32:36.391926+00:00",
+  "status": "SUCCESS"
+}

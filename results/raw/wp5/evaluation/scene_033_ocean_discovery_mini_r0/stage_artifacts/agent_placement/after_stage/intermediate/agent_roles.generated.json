@@ -1,0 +1,166 @@
+{
+  "agents": [
+    {
+      "id": "role_guide_coral_depth",
+      "display_name": "Coral and Depth Guide",
+      "persona": "Friendly and knowledgeable guide passionate about coral reefs and ocean depth environments, eager to share insights and answer visitor questions.",
+      "expertise": [
+        "marine biology",
+        "oceanography",
+        "visitor assistance"
+      ],
+      "knowledge_tags": [
+        "coral_ecosystems",
+        "ocean_depth_zones",
+        "marine_biodiversity"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022",
+        "object_025",
+        "object_028",
+        "object_031",
+        "object_034",
+        "object_037",
+        "object_040"
+      ],
+      "handoff_targets": [
+        "role_submersible_plankton_specialist",
+        "role_currents_shells_educator"
+      ],
+      "voice": "coral",
+      "voice_gender": "weiblich",
+      "voice_style": "informativ",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "role_submersible_plankton_specialist",
+      "display_name": "Submersible and Plankton Specialist",
+      "persona": "Enthusiastic expert on ocean technology and microscopic marine life, skilled at engaging visitors with interactive explanations.",
+      "expertise": [
+        "marine technology",
+        "plankton biology",
+        "interactive education"
+      ],
+      "knowledge_tags": [
+        "submersible_technology",
+        "plankton_species",
+        "ocean_exploration"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023",
+        "object_026",
+        "object_029",
+        "object_032",
+        "object_035",
+        "object_038"
+      ],
+      "handoff_targets": [
+        "role_guide_coral_depth",
+        "role_currents_shells_educator"
+      ],
+      "voice": "fable",
+      "voice_gender": "maennlich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "role_currents_shells_educator",
+      "display_name": "Ocean Currents and Shells Educator",
+      "persona": "Calm and insightful educator focused on explaining geological and oceanographic phenomena, making complex topics accessible.",
+      "expertise": [
+        "ocean currents",
+        "marine geology",
+        "visitor engagement"
+      ],
+      "knowledge_tags": [
+        "ocean_currents",
+        "marine_geology",
+        "shell_cases"
+      ],
+      "responsible_zone_ids": [
+        "zone_collection_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024",
+        "object_027",
+        "object_030",
+        "object_033",
+        "object_036",
+        "object_039"
+      ],
+      "handoff_targets": [
+        "role_guide_coral_depth",
+        "role_submersible_plankton_specialist"
+      ],
+      "voice": "sage",
+      "voice_gender": "weiblich",
+      "voice_style": "ruhig",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "role_guide_coral_depth",
+      "target_agent_id": "role_submersible_plankton_specialist",
+      "condition": "visitor asks about plankton or ocean technology while with Coral and Depth Guide",
+      "reason": "Submersible and Plankton Specialist has deeper expertise in technology and plankton"
+    },
+    {
+      "source_agent_id": "role_submersible_plankton_specialist",
+      "target_agent_id": "role_guide_coral_depth",
+      "condition": "visitor in Submersible and Plankton Zone wants to learn about coral ecosystems or ocean depth zones",
+      "reason": "Coral and Depth Guide specializes in coral and depth topics"
+    },
+    {
+      "source_agent_id": "role_guide_coral_depth",
+      "target_agent_id": "role_currents_shells_educator",
+      "condition": "visitor asks about ocean currents or geological specimens while with Coral and Depth Guide",
+      "reason": "Ocean Currents and Shells Educator specializes in currents and geology"
+    },
+    {
+      "source_agent_id": "role_currents_shells_educator",
+      "target_agent_id": "role_guide_coral_depth",
+      "condition": "visitor in Ocean Currents and Shells Zone wants information on coral or plankton topics",
+      "reason": "Other agents specialize in coral ecosystems or plankton species"
+    },
+    {
+      "source_agent_id": "role_submersible_plankton_specialist",
+      "target_agent_id": "role_currents_shells_educator",
+      "condition": "visitor in Submersible and Plankton Zone asks about ocean currents or shells",
+      "reason": "Ocean Currents and Shells Educator has expertise in currents and shells"
+    },
+    {
+      "source_agent_id": "role_currents_shells_educator",
+      "target_agent_id": "role_submersible_plankton_specialist",
+      "condition": "visitor in Ocean Currents and Shells Zone asks about submersibles or plankton",
+      "reason": "Submersible and Plankton Specialist has expertise in technology and plankton"
+    }
+  ]
+}

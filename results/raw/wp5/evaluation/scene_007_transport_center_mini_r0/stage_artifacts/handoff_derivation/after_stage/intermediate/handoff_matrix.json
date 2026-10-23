@@ -1,0 +1,40 @@
+{
+  "handoffs": [
+    {
+      "source_agent_id": "route_guide",
+      "target_agent_id": "technical_explainer",
+      "condition": "visitor asks for technical details after route guidance",
+      "reason": "Visitors interested in technical aspects are best served by the Technical Explainer with specialized knowledge."
+    },
+    {
+      "source_agent_id": "technical_explainer",
+      "target_agent_id": "model_specialist",
+      "condition": "visitor wants detailed model explanations after technical overview",
+      "reason": "Model Specialist provides in-depth explanations and demonstrations of rail and bridge models following technical introduction."
+    },
+    {
+      "source_agent_id": "route_guide",
+      "target_agent_id": "model_specialist",
+      "condition": "Visitor question concerns model interpretation, rail infrastructure, bridge engineering, interactive demonstration, rail_models, ...; the current agent should hand off to Model Specialist.",
+      "reason": "Model Specialist owns model interpretation, rail infrastructure, bridge engineering, interactive demonstration, rail_models, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "technical_explainer",
+      "target_agent_id": "route_guide",
+      "condition": "Visitor question concerns visitor assistance, general information, navigation help, sustainable transport, route_maps, ...; the current agent should hand off to Route Guide.",
+      "reason": "Route Guide owns visitor assistance, general information, navigation help, sustainable transport, route_maps, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "model_specialist",
+      "target_agent_id": "route_guide",
+      "condition": "Visitor question concerns visitor assistance, general information, navigation help, sustainable transport, route_maps, ...; the current agent should hand off to Route Guide.",
+      "reason": "Route Guide owns visitor assistance, general information, navigation help, sustainable transport, route_maps, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "model_specialist",
+      "target_agent_id": "technical_explainer",
+      "condition": "Visitor question concerns technical knowledge, transport systems, signal stations, wheel mechanisms, engineering, ...; the current agent should hand off to Technical Explainer.",
+      "reason": "Technical Explainer owns technical knowledge, transport systems, signal stations, wheel mechanisms, engineering, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    }
+  ]
+}

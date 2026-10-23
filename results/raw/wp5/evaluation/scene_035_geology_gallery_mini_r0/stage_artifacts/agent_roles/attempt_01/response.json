@@ -1,0 +1,267 @@
+{
+  "access_programs": null,
+  "background": false,
+  "billing": {
+    "payer": "openai"
+  },
+  "completed_at": 1792072891,
+  "created_at": 1792072885,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_020507e4211ec609016ad0dcb52ce887d19e1032b747fbe5cb",
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": 2200,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-4.1-mini-2025-04-14",
+  "moderation": null,
+  "object": "response",
+  "output": [
+    {
+      "content": [
+        {
+          "annotations": [],
+          "logprobs": [],
+          "text": "{\"agents\":[{\"display_name\":\"Geology Educator\",\"expertise\":[\"geology\",\"education\",\"visitor guidance\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\",\"object_025\",\"object_028\",\"object_031\",\"object_034\",\"object_037\",\"object_040\"],\"handoff_targets\":[\"role_mineralogist\",\"role_rock_guide\"],\"id\":\"role_educator\",\"knowledge_tags\":[\"geology\",\"volcanoes\",\"erosion\",\"zone_001\"],\"persona\":\"Friendly and knowledgeable geology educator passionate about explaining volcanic activity and erosion processes to visitors.\",\"responsible_zone_ids\":[\"zone_001\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"fable\",\"voice_gender\":\"weiblich\",\"voice_style\":\"informativ\"},{\"display_name\":\"Mineralogy Specialist\",\"expertise\":[\"mineralogy\",\"exhibit curation\",\"visitor interaction\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\",\"object_017\",\"object_020\",\"object_023\",\"object_026\",\"object_029\",\"object_032\",\"object_035\",\"object_038\"],\"handoff_targets\":[\"role_educator\",\"role_rock_guide\"],\"id\":\"role_mineralogist\",\"knowledge_tags\":[\"mineralogy\",\"faults\",\"tectonics\",\"zone_002\"],\"persona\":\"Enthusiastic mineralogy specialist eager to share detailed knowledge about minerals and tectonic faults with visitors.\",\"responsible_zone_ids\":[\"zone_002\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"ash\",\"voice_gender\":\"maennlich\",\"voice_style\":\"freundlich\"},{\"display_name\":\"Rock Formation Guide\",\"expertise\":[\"petrology\",\"rock formations\",\"visitor assistance\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\",\"object_027\",\"object_030\",\"object_033\",\"object_036\",\"object_039\"],\"handoff_targets\":[\"role_educator\",\"role_mineralogist\"],\"id\":\"role_rock_guide\",\"knowledge_tags\":[\"petrology\",\"rock formations\",\"strata\",\"zone_003\"],\"persona\":\"Patient and clear rock formation guide focused on helping visitors understand geological layering and rock types.\",\"responsible_zone_ids\":[\"zone_003\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"sage\",\"voice_gender\":\"weiblich\",\"voice_style\":\"ruhig\"}],\"handoffs\":[{\"condition\":\"visitor asks about mineralogy or tectonic faults while with Geology Educator\",\"reason\":\"Mineralogy Specialist has deeper expertise in minerals and faults\",\"source_agent_id\":\"role_educator\",\"target_agent_id\":\"role_mineralogist\"},{\"condition\":\"visitor asks about rock formations or strata while with Geology Educator\",\"reason\":\"Rock Formation Guide specializes in rock types and geological layering\",\"source_agent_id\":\"role_educator\",\"target_agent_id\":\"role_rock_guide\"},{\"condition\":\"visitor asks about volcanic activity or erosion while with Mineralogy Specialist\",\"reason\":\"Geology Educator specializes in volcanic and erosion processes\",\"source_agent_id\":\"role_mineralogist\",\"target_agent_id\":\"role_educator\"},{\"condition\":\"visitor asks about rock formations or strata while with Mineralogy Specialist\",\"reason\":\"Rock Formation Guide specializes in rock types and geological layering\",\"source_agent_id\":\"role_mineralogist\",\"target_agent_id\":\"role_rock_guide\"},{\"condition\":\"visitor asks about volcanic activity or erosion while with Rock Formation Guide\",\"reason\":\"Geology Educator specializes in volcanic and erosion processes\",\"source_agent_id\":\"role_rock_guide\",\"target_agent_id\":\"role_educator\"},{\"condition\":\"visitor asks about mineralogy or tectonic faults while with Rock Formation Guide\",\"reason\":\"Mineralogy Specialist has deeper expertise in minerals and faults\",\"source_agent_id\":\"role_rock_guide\",\"target_agent_id\":\"role_mineralogist\"}]}",
+          "type": "output_text"
+        }
+      ],
+      "id": "msg_020507e4211ec609016ad0dcb5a4fc87d183a88a6581d964d9",
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": "in_memory",
+  "reasoning": {
+    "context": null,
+    "effort": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 0.3,
+  "text": {
+    "format": {
+      "description": null,
+      "name": "agent_roles",
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "agents": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "display_name": {
+                  "type": "string"
+                },
+                "expertise": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "grounded_object_ids": {
+                  "items": {
+                    "enum": [
+                      "object_001",
+                      "object_002",
+                      "object_003",
+                      "object_004",
+                      "object_005",
+                      "object_006",
+                      "object_007",
+                      "object_008",
+                      "object_009",
+                      "object_010",
+                      "object_011",
+                      "object_012",
+                      "object_013",
+                      "object_014",
+                      "object_015",
+                      "object_016",
+                      "object_017",
+                      "object_018",
+                      "object_019",
+                      "object_020",
+                      "object_021",
+                      "object_022",
+                      "object_023",
+                      "object_024",
+                      "object_025",
+                      "object_026",
+                      "object_027",
+                      "object_028",
+                      "object_029",
+                      "object_030",
+                      "object_031",
+                      "object_032",
+                      "object_033",
+                      "object_034",
+                      "object_035",
+                      "object_036",
+                      "object_037",
+                      "object_038",
+                      "object_039",
+                      "object_040"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "handoff_targets": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "knowledge_tags": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "persona": {
+                  "type": "string"
+                },
+                "responsible_zone_ids": {
+                  "items": {
+                    "enum": [
+                      "zone_001",
+                      "zone_002",
+                      "zone_003"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "tts_model": {
+                  "type": "string"
+                },
+                "voice": {
+                  "enum": [
+                    "alloy",
+                    "ash",
+                    "ballad",
+                    "coral",
+                    "echo",
+                    "fable",
+                    "nova",
+                    "onyx",
+                    "sage",
+                    "shimmer",
+                    "verse"
+                  ],
+                  "type": "string"
+                },
+                "voice_gender": {
+                  "type": "string"
+                },
+                "voice_style": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "display_name",
+                "persona",
+                "expertise",
+                "knowledge_tags",
+                "responsible_zone_ids",
+                "grounded_object_ids",
+                "handoff_targets",
+                "voice",
+                "voice_gender",
+                "voice_style",
+                "tts_model"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "handoffs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "condition": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "source_agent_id": {
+                  "type": "string"
+                },
+                "target_agent_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source_agent_id",
+                "target_agent_id",
+                "condition",
+                "reason"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "agents",
+          "handoffs"
+        ],
+        "type": "object"
+      },
+      "strict": true,
+      "type": "json_schema"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 1.0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 5119,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 845,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 5964
+  },
+  "user": null
+}

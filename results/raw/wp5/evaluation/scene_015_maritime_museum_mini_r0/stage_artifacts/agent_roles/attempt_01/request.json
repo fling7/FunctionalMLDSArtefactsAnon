@@ -1,0 +1,177 @@
+{
+  "input": [
+    {
+      "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+      "role": "system"
+    },
+    {
+      "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"scene_015_maritime_museum\",\"domain\":\"maritime museum\",\"room_purpose\":\"Educational exhibition space for maritime history and navigation artifacts.\",\"visitor_goals\":[\"Learn about maritime navigation tools and history\",\"Understand ship design and sailing technology\",\"Explore maritime safety equipment\",\"Gain knowledge about historical navigation methods\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-3.7,\"z\":-4.7},\"name\":\"Collection 1: Compass Cases and Buoy Models\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\"],\"purpose\":\"Showcase of compass cases and buoy models illustrating maritime navigation and safety equipment.\",\"visitor_goals_supported\":[\"Learn about maritime navigation tools\",\"Understand buoy functions and designs\"],\"zone_id\":\"zone_collection_1\"},{\"centroid_xz\":{\"x\":1.4,\"z\":-3.7},\"name\":\"Collection 2: Ship Models and Anchor Displays\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\",\"object_017\",\"object_020\",\"object_023\"],\"purpose\":\"Exhibition of ship models and anchors demonstrating vessel types and anchoring technology.\",\"visitor_goals_supported\":[\"Explore ship design evolution\",\"Understand anchoring mechanisms\"],\"zone_id\":\"zone_collection_2\"},{\"centroid_xz\":{\"x\":-1.4,\"z\":1.4},\"name\":\"Collection 3: Sail Diagrams and Navigation Charts\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"],\"purpose\":\"Display of sail diagrams and navigation charts explaining sailing techniques and maritime navigation methods.\",\"visitor_goals_supported\":[\"Learn sailing techniques\",\"Understand maritime chart reading\"],\"zone_id\":\"zone_collection_3\"}],\"interaction_topics\":[{\"description\":\"Explanation of compass cases and their role in maritime navigation.\",\"related_object_ids\":[\"object_001\",\"object_007\",\"object_013\",\"object_019\"],\"title\":\"Compass Cases in Maritime Navigation\",\"topic_id\":\"topic_001\"},{\"description\":\"Details about ship models and their historical significance.\",\"related_object_ids\":[\"object_002\",\"object_008\",\"object_014\",\"object_020\"],\"title\":\"Ship Models and Maritime History\",\"topic_id\":\"topic_002\"},{\"description\":\"Understanding sail diagrams and sailing techniques.\",\"related_object_ids\":[\"object_003\",\"object_009\",\"object_015\",\"object_021\"],\"title\":\"Sail Diagrams and Sailing Technology\",\"topic_id\":\"topic_003\"},{\"description\":\"Navigation charts and their use in maritime navigation.\",\"related_object_ids\":[\"object_006\",\"object_012\",\"object_018\",\"object_024\"],\"title\":\"Navigation Charts and Maritime Navigation\",\"topic_id\":\"topic_004\"}],\"agent_role_candidates\":[{\"display_name\":\"Maritime History Guide\",\"expertise\":[\"maritime history\",\"museum education\",\"visitor engagement\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\",\"object_016\",\"object_017\",\"object_018\",\"object_019\",\"object_020\",\"object_021\",\"object_022\",\"object_023\",\"object_024\"],\"mission\":\"Provide detailed explanations about maritime artifacts and their historical context to visitors.\",\"responsible_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"role_id\":\"role_guide_001\"},{\"display_name\":\"Navigation Expert\",\"expertise\":[\"maritime navigation\",\"chart reading\",\"sailing technology\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"],\"mission\":\"Assist visitors in understanding navigation charts, sail diagrams, and maritime navigation techniques.\",\"responsible_zone_ids\":[\"zone_collection_3\"],\"role_id\":\"role_expert_002\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":8,\"object_types\":{\"compass_case\":4,\"buoy_model\":4},\"centroid_xz\":{\"x\":-0.7,\"z\":-0.7}},{\"group\":\"collection_2\",\"object_count\":8,\"object_types\":{\"ship_model\":4,\"anchor_display\":4},\"centroid_xz\":{\"x\":0.35,\"z\":-0.35}},{\"group\":\"collection_3\",\"object_count\":8,\"object_types\":{\"sail_diagram\":4,\"navigation_chart\":4},\"centroid_xz\":{\"x\":-0.35,\"z\":0.35}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"compass_case\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-5.6,\"z\":-5.6},\"specification_excerpt\":\"Synthetic maritime museum object: compass case. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_002\",\"object_type\":\"ship_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-2.8,\"z\":-5.6},\"specification_excerpt\":\"Synthetic maritime museum object: ship model. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_003\",\"object_type\":\"sail_diagram\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":-5.6},\"specification_excerpt\":\"Synthetic maritime museum object: sail diagram. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_004\",\"object_type\":\"buoy_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":2.8,\"z\":-5.6},\"specification_excerpt\":\"Synthetic maritime museum object: buoy model. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_005\",\"object_type\":\"anchor_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":5.6,\"z\":-5.6},\"specification_excerpt\":\"Synthetic maritime museum object: anchor display. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_006\",\"object_type\":\"navigation_chart\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-5.6,\"z\":-2.8},\"specification_excerpt\":\"Synthetic maritime museum object: navigation chart. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_007\",\"object_type\":\"compass_case\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-2.8,\"z\":-2.8},\"specification_excerpt\":\"Synthetic maritime museum object: compass case. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_008\",\"object_type\":\"ship_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":-2.8},\"specification_excerpt\":\"Synthetic maritime museum object: ship model. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_009\",\"object_type\":\"sail_diagram\",\"group\":\"collection_3\",\"position_xz\":{\"x\":2.8,\"z\":-2.8},\"specification_excerpt\":\"Synthetic maritime museum object: sail diagram. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_010\",\"object_type\":\"buoy_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":5.6,\"z\":-2.8},\"specification_excerpt\":\"Synthetic maritime museum object: buoy model. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_011\",\"object_type\":\"anchor_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-5.6,\"z\":0.0},\"specification_excerpt\":\"Synthetic maritime museum object: anchor display. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_012\",\"object_type\":\"navigation_chart\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-2.8,\"z\":0.0},\"specification_excerpt\":\"Synthetic maritime museum object: navigation chart. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_013\",\"object_type\":\"compass_case\",\"group\":\"collection_1\",\"position_xz\":{\"x\":0.0,\"z\":0.0},\"specification_excerpt\":\"Synthetic maritime museum object: compass case. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_014\",\"object_type\":\"ship_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":2.8,\"z\":0.0},\"specification_excerpt\":\"Synthetic maritime museum object: ship model. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_015\",\"object_type\":\"sail_diagram\",\"group\":\"collection_3\",\"position_xz\":{\"x\":5.6,\"z\":0.0},\"specification_excerpt\":\"Synthetic maritime museum object: sail diagram. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_016\",\"object_type\":\"buoy_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-5.6,\"z\":2.8},\"specification_excerpt\":\"Synthetic maritime museum object: buoy model. Display 16 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_017\",\"object_type\":\"anchor_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-2.8,\"z\":2.8},\"specification_excerpt\":\"Synthetic maritime museum object: anchor display. Display 17 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_018\",\"object_type\":\"navigation_chart\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":2.8},\"specification_excerpt\":\"Synthetic maritime museum object: navigation chart. Display 18 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_019\",\"object_type\":\"compass_case\",\"group\":\"collection_1\",\"position_xz\":{\"x\":2.8,\"z\":2.8},\"specification_excerpt\":\"Synthetic maritime museum object: compass case. Display 19 explains a distinct example in collection 1. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_020\",\"object_type\":\"ship_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":5.6,\"z\":2.8},\"specification_excerpt\":\"Synthetic maritime museum object: ship model. Display 20 explains a distinct example in collection 2. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_021\",\"object_type\":\"sail_diagram\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-5.6,\"z\":5.6},\"specification_excerpt\":\"Synthetic maritime museum object: sail diagram. Display 21 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_022\",\"object_type\":\"buoy_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-2.8,\"z\":5.6},\"specification_excerpt\":\"Synthetic maritime museum object: buoy model. Display 22 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_023\",\"object_type\":\"anchor_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":5.6},\"specification_excerpt\":\"Synthetic maritime museum object: anchor display. Display 23 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_024\",\"object_type\":\"navigation_chart\",\"group\":\"collection_3\",\"position_xz\":{\"x\":2.8,\"z\":5.6},\"specification_excerpt\":\"Synthetic maritime museum object: navigation chart. Display 24 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"}],\"allowed_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\",\"object_016\",\"object_017\",\"object_018\",\"object_019\",\"object_020\",\"object_021\",\"object_022\",\"object_023\",\"object_024\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+      "role": "user"
+    }
+  ],
+  "max_output_tokens": 2200,
+  "model": "gpt-4.1-mini-2025-04-14",
+  "temperature": 0.3,
+  "text": {
+    "format": {
+      "name": "agent_roles",
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "agents": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "display_name": {
+                  "type": "string"
+                },
+                "expertise": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "grounded_object_ids": {
+                  "items": {
+                    "enum": [
+                      "object_001",
+                      "object_002",
+                      "object_003",
+                      "object_004",
+                      "object_005",
+                      "object_006",
+                      "object_007",
+                      "object_008",
+                      "object_009",
+                      "object_010",
+                      "object_011",
+                      "object_012",
+                      "object_013",
+                      "object_014",
+                      "object_015",
+                      "object_016",
+                      "object_017",
+                      "object_018",
+                      "object_019",
+                      "object_020",
+                      "object_021",
+                      "object_022",
+                      "object_023",
+                      "object_024"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "handoff_targets": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "knowledge_tags": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "persona": {
+                  "type": "string"
+                },
+                "responsible_zone_ids": {
+                  "items": {
+                    "enum": [
+                      "zone_collection_1",
+                      "zone_collection_2",
+                      "zone_collection_3"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "tts_model": {
+                  "type": "string"
+                },
+                "voice": {
+                  "enum": [
+                    "alloy",
+                    "ash",
+                    "ballad",
+                    "coral",
+                    "echo",
+                    "fable",
+                    "nova",
+                    "onyx",
+                    "sage",
+                    "shimmer",
+                    "verse"
+                  ],
+                  "type": "string"
+                },
+                "voice_gender": {
+                  "type": "string"
+                },
+                "voice_style": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "display_name",
+                "persona",
+                "expertise",
+                "knowledge_tags",
+                "responsible_zone_ids",
+                "grounded_object_ids",
+                "handoff_targets",
+                "voice",
+                "voice_gender",
+                "voice_style",
+                "tts_model"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "handoffs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "condition": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "source_agent_id": {
+                  "type": "string"
+                },
+                "target_agent_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source_agent_id",
+                "target_agent_id",
+                "condition",
+                "reason"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "agents",
+          "handoffs"
+        ],
+        "type": "object"
+      },
+      "strict": true,
+      "type": "json_schema"
+    }
+  }
+}

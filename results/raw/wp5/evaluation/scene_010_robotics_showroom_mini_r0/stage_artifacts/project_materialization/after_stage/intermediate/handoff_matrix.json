@@ -1,0 +1,40 @@
+{
+  "handoffs": [
+    {
+      "source_agent_id": "robotics_guide",
+      "target_agent_id": "control_systems_expert",
+      "condition": "visitor asks about control or sensor systems after discussing manipulation and mobility",
+      "reason": "Visitor interest shifts from manipulation technologies to control and sensing, requiring specialized expertise"
+    },
+    {
+      "source_agent_id": "control_systems_expert",
+      "target_agent_id": "mechanical_assembly_specialist",
+      "condition": "visitor inquires about mechanical design or assembly after control and sensor explanations",
+      "reason": "Visitor interest extends to mechanical aspects needing detailed mechanical engineering knowledge"
+    },
+    {
+      "source_agent_id": "mechanical_assembly_specialist",
+      "target_agent_id": "robotics_guide",
+      "condition": "visitor wants to revisit manipulation and mobility topics after mechanical assembly explanations",
+      "reason": "Visitor returns to earlier topics requiring the robotics guide's expertise"
+    },
+    {
+      "source_agent_id": "robotics_guide",
+      "target_agent_id": "mechanical_assembly_specialist",
+      "condition": "Visitor question concerns robotics, mechanical engineering, assembly, mechanical_assembly, joints, ...; the current agent should hand off to Mechanical Assembly Specialist.",
+      "reason": "Mechanical Assembly Specialist owns robotics, mechanical engineering, assembly, mechanical_assembly, joints, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "control_systems_expert",
+      "target_agent_id": "robotics_guide",
+      "condition": "Visitor question concerns robotics, education, visitor assistance, manipulation, mobility, ...; the current agent should hand off to Robotics Guide.",
+      "reason": "Robotics Guide owns robotics, education, visitor assistance, manipulation, mobility, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "mechanical_assembly_specialist",
+      "target_agent_id": "control_systems_expert",
+      "condition": "Visitor question concerns robotics, control systems, sensor technology, control_systems, sensors, ...; the current agent should hand off to Control Systems Expert.",
+      "reason": "Control Systems Expert owns robotics, control systems, sensor technology, control_systems, sensors, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    }
+  ]
+}

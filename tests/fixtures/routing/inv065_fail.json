@@ -1,0 +1,317 @@
+{
+  "instance": {
+    "fixture_profile": "executable",
+    "objects": [
+      {
+        "displayName": "Reading Area Guide",
+        "entityRole": "interactiveAgent",
+        "expertise": [
+          "reading facilitation",
+          "visitor assistance",
+          "environment management"
+        ],
+        "groundedAsset": [
+          "ENT-ASSET-BEANBAG1"
+        ],
+        "groundedObjectGroup": [],
+        "handoffTarget": [
+          "ENT-AGENT-TEACHER_AGENT"
+        ],
+        "id": "ENT-AGENT-READING_AREA_GUIDE",
+        "kind": "agent",
+        "knowledgeTag": [
+          "reading_area",
+          "reading_area_usage"
+        ],
+        "name": "Reading Area Guide",
+        "persona": "A friendly and supportive guide who helps visitors enjoy and utilize the reading area for study and relaxation.",
+        "playsActor": [
+          "ACT-ROOM-GUIDE"
+        ],
+        "providedCapability": [
+          "CAP-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION"
+        ],
+        "responsibleZone": [],
+        "sourceAgentId": "reading_area_guide",
+        "sourceId": "reading_area_guide",
+        "ttsModel": "gpt-4o-mini-tts",
+        "type": "Agent",
+        "voice": "fable",
+        "voiceGender": "maennlich",
+        "voiceStyle": "warm and inviting"
+      },
+      {
+        "displayName": "Teacher Agent",
+        "entityRole": "interactiveAgent",
+        "expertise": [
+          "instruction",
+          "classroom management",
+          "student engagement"
+        ],
+        "groundedAsset": [],
+        "groundedObjectGroup": [],
+        "handoffTarget": [
+          "ENT-AGENT-READING_AREA_GUIDE"
+        ],
+        "id": "ENT-AGENT-TEACHER_AGENT",
+        "kind": "agent",
+        "knowledgeTag": [
+          "instruction_zone",
+          "chalkboard_usage",
+          "student_seating_arrangement"
+        ],
+        "name": "Teacher Agent",
+        "persona": "A knowledgeable and patient classroom instructor dedicated to facilitating learning and managing classroom activities effectively.",
+        "playsActor": [
+          "ACT-ROOM-GUIDE"
+        ],
+        "providedCapability": [],
+        "responsibleZone": [],
+        "sourceAgentId": "teacher_agent",
+        "sourceId": "teacher_agent",
+        "ttsModel": "gpt-4o-mini-tts",
+        "type": "Agent",
+        "voice": "sage",
+        "voiceGender": "weiblich",
+        "voiceStyle": "clear and encouraging"
+      },
+      {
+        "entityRole": "sceneObject",
+        "id": "ENT-ASSET-BEANBAG1",
+        "kind": "asset",
+        "name": "beanbag",
+        "objectGroup": [
+          "ENT-GROUP-SEATING"
+        ],
+        "objectType": "beanbag",
+        "sourceGroup": "seating",
+        "sourceId": "beanbag1",
+        "type": "Entity"
+      },
+      {
+        "entityRole": "objectGroup",
+        "id": "ENT-GROUP-SEATING",
+        "kind": "asset",
+        "name": "Object group: seating",
+        "sourceGroup": "seating",
+        "sourceId": "group:seating",
+        "sourceObjectId": [
+          "beanbag1"
+        ],
+        "type": "Entity"
+      },
+      {
+        "entityRole": "semanticZone",
+        "id": "ENT-ZONE-READING_AREA",
+        "kind": "zone",
+        "name": "Reading Area",
+        "purpose": "Cozy space for reading and quiet study",
+        "sourceId": "reading_area",
+        "sourceObjectId": [
+          "beanbag1"
+        ],
+        "type": "Entity"
+      },
+      {
+        "actorRole": [
+          "ACT-ROOM-GUIDE"
+        ],
+        "capabilityUse": [
+          "CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-ANSWER-ROOM-GROUNDED-QUESTION"
+        ],
+        "id": "STEP-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-ANSWER",
+        "kind": "systemResponse",
+        "occurrenceProbability": [
+          "PV-STEP-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-ANSWER-OCCURRENCE"
+        ],
+        "performedBy": [
+          "ENT-AGENT-READING_AREA_GUIDE"
+        ],
+        "resultingAssertion": [
+          "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED"
+        ],
+        "text": "Reading Area Guide describes beanbag using knowledge grounded in source object beanbag1.",
+        "triggeredBy": [],
+        "type": "ScenarioStep"
+      },
+      {
+        "id": "CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-ANSWER-ROOM-GROUNDED-QUESTION",
+        "parameter": [
+          "PARAM-CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-ANSWER-ROOM-GROUNDED-QUESTION-MODEL-GROUNDED-TARGET"
+        ],
+        "provider": [],
+        "target": [
+          "ENT-ASSET-BEANBAG1"
+        ],
+        "type": "CapabilityUse",
+        "typeRef": [
+          "CAP-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION"
+        ]
+      },
+      {
+        "effect": [
+          "EFF-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION-01"
+        ],
+        "id": "CAP-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "name": "Answer Room Grounded Question",
+        "precondition": [],
+        "text": "Answer visitor questions using room-grounded agent knowledge.",
+        "type": "Capability"
+      },
+      {
+        "capability": [
+          "CAP-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION"
+        ],
+        "id": "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "runtimeAction": [
+          "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+        ],
+        "targetPlatform": "agent_backendBackend",
+        "type": "RuntimeBinding"
+      },
+      {
+        "id": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT",
+        "inputSchema": [
+          "SCHEMA-RA-CLASSROOM_DINOSAUR-BACKEND-CHAT-INPUT"
+        ],
+        "locator": [
+          "LOC-RA-CLASSROOM_DINOSAUR-BACKEND-CHAT"
+        ],
+        "outputSchema": [
+          "SCHEMA-RA-CLASSROOM_DINOSAUR-BACKEND-CHAT-OUTPUT"
+        ],
+        "runtimeParameter": [],
+        "type": "RuntimeAction"
+      },
+      {
+        "id": "LOC-RA-CLASSROOM_DINOSAUR-BACKEND-CHAT",
+        "kind": "endpoint",
+        "type": "RuntimeActionLocator",
+        "value": "POST /chat"
+      },
+      {
+        "id": "SCHEMA-RA-CLASSROOM_DINOSAUR-BACKEND-CHAT-INPUT",
+        "text": "{\"$id\":\"urn:roomcontract:wire:chat:request:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"allOf\":[{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"required\":[\"spatial_context\"]}},{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"non_deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"not\":{\"required\":[\"spatial_context\"]}}}],\"applicationActionKind\":\"chat\",\"modelBinding\":{\"capabilityIds\":[\"CAP-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION\"],\"capabilityUseIds\":[\"CU-CLASSROOM_DINOSAUR-S11-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-TEACHER_DESK-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK1-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK2-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK3-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK4-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK5-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK6-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK7-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK8-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK9-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK10-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK11-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK12-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK13-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK14-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK15-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK16-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK17-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK18-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK19-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK20-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-BOOKCASE-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-READING_TABLE-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG2-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG3-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG4-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-DINOSAUR_SKELETON-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PLANT1-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PLANT2-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PLANT3-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PLANT4-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PLANT5-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PICTURE1-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PICTURE2-ANSWER-ROOM-GROUNDED-QUESTION\"],\"runtimeActionId\":\"RA-CLASSROOM_DINOSAUR-BACKEND-CHAT\",\"runtimeBindingId\":\"RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION\"},\"properties\":{\"active_agent_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"interaction_mode\":{\"enum\":[\"deictic\",\"non_deictic\"],\"type\":\"string\"},\"session_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"spatial_context\":{\"additionalProperties\":false,\"anyOf\":[{\"required\":[\"entity_id\"]},{\"required\":[\"source_object_id\"]},{\"required\":[\"source_id\"]}],\"properties\":{\"ambiguity\":{\"oneOf\":[{\"type\":\"boolean\"},{\"additionalProperties\":true,\"maxProperties\":8,\"type\":\"object\"}]},\"ambiguity_reason\":{\"maxLength\":512,\"type\":\"string\"},\"ambiguous\":{\"type\":\"boolean\"},\"candidate_entity_ids\":{\"items\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"maxItems\":16,\"type\":\"array\",\"uniqueItems\":true},\"distance_m\":{\"maximum\":1000000,\"minimum\":0,\"type\":\"number\"},\"entity_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"hit_position\":{\"additionalProperties\":false,\"properties\":{\"x\":{\"maximum\":1000000,\"minimum\":-1000000,\"type\":\"number\"},\"y\":{\"maximum\":1000000,\"minimum\":-1000000,\"type\":\"number\"},\"z\":{\"maximum\":1000000,\"minimum\":-1000000,\"type\":\"number\"}},\"required\":[\"x\",\"y\",\"z\"],\"type\":\"object\"},\"modality\":{\"enum\":[\"desktop_ray\",\"mouse_ray\",\"keyboard_mouse\",\"xr_controller_ray\",\"controller_ray\",\"gaze\",\"touch\",\"direct\",\"programmatic\"],\"type\":\"string\"},\"model_sha256\":{\"pattern\":\"^[0-9A-Fa-f]{64}$\",\"type\":\"string\"},\"object_group_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"selection_modality\":{\"enum\":[\"desktop_ray\",\"mouse_ray\",\"keyboard_mouse\",\"xr_controller_ray\",\"controller_ray\",\"gaze\",\"touch\",\"direct\",\"programmatic\"],\"type\":\"string\"},\"source_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"source_object_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"state\":{\"const\":\"resolved\"},\"zone_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"model_sha256\",\"state\",\"hit_position\",\"distance_m\",\"selection_modality\"],\"type\":\"object\"},\"user_text\":{\"maxLength\":32768,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"session_id\",\"active_agent_id\",\"user_text\",\"interaction_mode\"],\"title\":\"Interactive Agents chat request\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+        "type": "SchemaReference",
+        "uri": "json"
+      },
+      {
+        "id": "SCHEMA-RA-CLASSROOM_DINOSAUR-BACKEND-CHAT-OUTPUT",
+        "text": "{\"$id\":\"urn:roomcontract:wire:chat:response:2.0\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":true,\"allOf\":[{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"required\":[\"grounded_entity_ids\",\"grounding_evidence\",\"routing_reason\",\"grounding\",\"routing\"]}},{\"if\":{\"properties\":{\"interaction_mode\":{\"const\":\"non_deictic\"}},\"required\":[\"interaction_mode\"]},\"then\":{\"not\":{\"anyOf\":[{\"required\":[\"grounded_entity_ids\"]},{\"required\":[\"grounding_evidence\"]},{\"required\":[\"routing_reason\"]},{\"required\":[\"grounding\"]},{\"required\":[\"routing\"]}]}}}],\"applicationActionKind\":\"chat\",\"modelBinding\":{\"capabilityIds\":[\"CAP-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION\"],\"capabilityUseIds\":[\"CU-CLASSROOM_DINOSAUR-S11-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-TEACHER_DESK-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK1-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK2-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK3-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK4-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK5-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK6-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK7-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK8-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK9-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK10-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK11-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK12-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK13-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK14-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK15-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK16-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK17-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK18-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK19-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK20-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-BOOKCASE-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-READING_TABLE-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG2-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG3-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG4-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-DINOSAUR_SKELETON-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PLANT1-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PLANT2-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PLANT3-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PLANT4-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PLANT5-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PICTURE1-ANSWER-ROOM-GROUNDED-QUESTION\",\"CU-CLASSROOM_DINOSAUR-INTERACT-PICTURE2-ANSWER-ROOM-GROUNDED-QUESTION\"],\"runtimeActionId\":\"RA-CLASSROOM_DINOSAUR-BACKEND-CHAT\",\"runtimeBindingId\":\"RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION\"},\"properties\":{\"active_agent_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"events\":{\"type\":\"array\"},\"grounded_entity_ids\":{\"items\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"maxItems\":64,\"minItems\":1,\"type\":\"array\",\"uniqueItems\":true},\"grounding\":{\"type\":\"object\"},\"grounding_evidence\":{\"items\":{\"type\":\"object\"},\"maxItems\":128,\"minItems\":1,\"type\":\"array\"},\"handoff\":{\"type\":[\"object\",\"null\"]},\"interaction_mode\":{\"enum\":[\"deictic\",\"non_deictic\"],\"type\":\"string\"},\"memory_mode\":{\"type\":\"string\"},\"model_binding\":{\"additionalProperties\":false,\"properties\":{\"capability_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"capability_use_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"runtime_action_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"},\"runtime_binding_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"runtime_binding_id\",\"runtime_action_id\",\"capability_id\",\"capability_use_id\"],\"type\":\"object\"},\"routing\":{\"type\":\"object\"},\"routing_reason\":{\"maxLength\":2048,\"minLength\":1,\"type\":\"string\"},\"session_id\":{\"maxLength\":256,\"minLength\":1,\"type\":\"string\"}},\"required\":[\"session_id\",\"active_agent_id\",\"memory_mode\",\"handoff\",\"events\",\"interaction_mode\",\"model_binding\"],\"title\":\"Interactive Agents chat response\",\"type\":\"object\",\"wireContractVersion\":\"2.0\"}",
+        "type": "SchemaReference",
+        "uri": "json"
+      }
+    ]
+  },
+  "project": {
+    "roomcontract_digest_scheme": "sha256-lf-v1",
+    "roomcontract_model_sha256": "75C58F36EAE6DBD043CB6947413216DCFD7C1376647239B11C934CC8A5D9532E"
+  },
+  "provenance": "Small routing-semantic projection derived from the supplied classroom example; not a full authoring fixture.",
+  "trace": {
+    "digest_scheme": "sha256-lf-v1",
+    "model_sha256": "75C58F36EAE6DBD043CB6947413216DCFD7C1376647239B11C934CC8A5D9532E",
+    "runtime_actions": [
+      {
+        "action_kind": "chat",
+        "assertion_ids": [
+          "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED"
+        ],
+        "capability_id": "CAP-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "capability_use_id": "CU-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-ANSWER-ROOM-GROUNDED-QUESTION",
+        "endpoint": "POST /chat",
+        "locator": {
+          "kind": "endpoint",
+          "value": "POST /chat"
+        },
+        "provider_entity_id": "ENT-AGENT-READING_AREA_GUIDE",
+        "runtime_action_id": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT",
+        "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "runtime_validation_target_ids": [
+          "VC-CLASSROOM_DINOSAUR-CHAT-GROUNDING-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-TEACHER_DESK-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK1-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK2-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK3-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK4-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK5-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK6-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK7-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK8-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK9-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK10-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK11-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK12-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK13-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK14-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK15-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK16-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK17-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK18-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK19-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK20-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-BOOKCASE-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-READING_TABLE-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG2-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG3-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG4-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-DINOSAUR_SKELETON-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT1-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT2-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT3-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT4-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT5-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PICTURE1-TARGET-1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PICTURE2-TARGET-1"
+        ],
+        "scenario_id": "SC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-MAIN",
+        "scenario_step_id": "STEP-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1-ANSWER",
+        "target_ids": [
+          "ENT-ASSET-BEANBAG1"
+        ],
+        "tool": null,
+        "topic": null,
+        "use_case_id": "UC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1",
+        "validation_case_ids": [
+          "VC-CLASSROOM_DINOSAUR-CHAT-GROUNDING",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-TEACHER_DESK",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK2",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK3",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK4",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK5",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK6",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK7",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK8",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK9",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK10",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK11",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK12",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK13",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK14",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK15",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK16",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK17",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK18",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK19",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK20",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-BOOKCASE",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-READING_TABLE",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG2",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG3",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG4",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-DINOSAUR_SKELETON",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT2",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT3",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT4",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT5",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PICTURE1",
+          "VC-CLASSROOM_DINOSAUR-INTERACT-PICTURE2"
+        ]
+      }
+    ]
+  }
+}

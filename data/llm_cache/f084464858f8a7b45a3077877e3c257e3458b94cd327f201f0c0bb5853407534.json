@@ -1,0 +1,226 @@
+{
+  "cache_key": "f084464858f8a7b45a3077877e3c257e3458b94cd327f201f0c0bb5853407534",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.http",
+    "item_id": "scene_010_robotics_showroom.full.turn02",
+    "payload": {
+      "input": [
+        {
+          "content": "Du bist ein virtueller Gesprächspartner (NPC) in Unity.\nName: Robotics Guide (id: robotics_guide)\nPersona:\nFriendly and knowledgeable guide specializing in robotic manipulation and mobility technologies, eager to help visitors understand and interact with exhibits.\nExpertise (Schwerpunkte): robotics, education, visitor assistance\n\nKommunikationsstil:\n- Antworte auf Deutsch.\n- Kurz, natürlich, hilfreich (Messestand/Showroom-Stil).\n- Wenn Informationen fehlen, stelle 1 kurze Rückfrage (statt zu raten), sofern es in deinem Bereich liegt.\n\nHandoff: deaktiviert. Antworte selbst so gut wie möglich oder bitte um Klärung.\n\nVertrauenswürdiger räumlicher Bezug (serverseitig aus dem gepinnten RoomContract-V2-Modell):\n- Szeneobjekt: gripper_display (entity_id=ENT-ASSET-OBJECT_001, source_object_id=object_001)\n- Modellierte Objektgruppen: ENT-GROUP-COLLECTION_1\n- Modellierte Zonen: ENT-ZONE-ZONE_001\n- Löse Wörter wie 'dies', 'das' oder 'hier' auf dieses Szeneobjekt auf. Erfinde keine abweichende Objektidentität.\n\nLokale Wissensauszüge (nur nutzen, wenn relevant; nicht erfinden):\n- [mobility/mobility\\mobility_overview.txt#0] This entry summarizes the robotics showroom context for mobility. It is grounded in object_001 (gripper_display), object_004 (mobile_robot_model), object_007 (gripper_display) and should be used to answer visitor questions about Educational robotics showroom for demonstrating and explaining various robotics technologies and components.. Relevant room object groups include collection_1, collection_2, collection_3; semantic zones include Manipulation and Mobility Zone, Control and Sensor Zone, Mechanical Assembly Zone.\n- [robotics/robotics\\robotics_overview.txt#0] This entry summarizes the robotics showroom context for robotics. It is grounded in object_001 (gripper_display), object_004 (mobile_robot_model), object_007 (gripper_display) and should be used to answer visitor questions about Educational robotics showroom for demonstrating and explaining various robotics technologies and components.. Relevant room object groups include collection_1, collection_2, collection_3; semantic zones include Manipulation and Mobility Zone, Control and Sensor Zone, Mechanical Assembly Zone.\n- [grippers/grippers\\robotic_grippers_and_mobile_robots_overview.txt#0] Die Greifer-Displays und mobilen Robotermodelle in der Manipulations- und Mobilitätszone zeigen unterschiedliche mechanische Greifprinzipien und Mobilitätskonzepte. Diese Objekte sind zentral für das Verständnis, wie Roboter Objekte erfassen und sich in ihrer Umgebung bewegen.\n- [manipulation/manipulation\\robotic_manipulation_and_mobility_exhibits.txt#0] Im Manipulations- und Mobilitätsbereich des Showrooms befinden sich mehrere freistehende Displays mit Greifern (z.B. Objekt_001, Objekt_007, Objekt_013) und mobilen Robotermodellen (z.B. Objekt_004, Objekt_010). Diese Objekte veranschaulichen verschiedene Greiftechnologien und mobile Robotikdesigns, die Besuchern die Grundlagen der Roboterbewegung und -manipulation näherbringen.\n\nWICHTIG: Du MUSST deine Antwort als JSON ausgeben und genau das Schema erfüllen (Structured Output).",
+          "role": "developer"
+        },
+        {
+          "content": "How does the gripper_display in collection_1 help visitors understand robotics technologies in the Manipulation and Mobility Zone?",
+          "role": "user"
+        },
+        {
+          "content": "For this measurement answer in one short sentence. Preserve all required JSON fields. Do not omit fields to shorten the output.",
+          "role": "developer"
+        }
+      ],
+      "max_output_tokens": 128,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "npc_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "confidence": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "handoff_brief": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_reason": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_to": {
+                "type": "null"
+              },
+              "say": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "say",
+              "handoff_to",
+              "handoff_reason",
+              "handoff_brief",
+              "confidence"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792123494,
+    "created_at": 1792123493,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_033b4d6741a357a7016ad1a26570c087d18dfc8a65af80f552",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 128,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"confidence\":0.98,\"handoff_brief\":null,\"handoff_reason\":null,\"handoff_to\":null,\"say\":\"Das Greifer-Display in collection_1 zeigt anschaulich verschiedene Greiftechnologien, sodass Besucher direkt erleben können, wie Roboter Objekte greifen und bewegen.\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_033b4d6741a357a7016ad1a265d6f887d1bf6becdcc16883a2",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "npc_action",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "handoff_brief": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_reason": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_to": {
+              "type": "null"
+            },
+            "say": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "say",
+            "handoff_to",
+            "handoff_reason",
+            "handoff_brief",
+            "confidence"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 848,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 64,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 912
+    },
+    "user": null
+  },
+  "response_sha256": "23304967f15194a2187e6776f32c639fb9016c7aebc354001805d8d266ce53f9",
+  "saved_at": "2026-10-16T04:04:55.828068+00:00",
+  "status": "SUCCESS"
+}

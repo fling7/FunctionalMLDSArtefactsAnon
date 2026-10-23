@@ -1,0 +1,1437 @@
+{
+  "actors": [
+    {
+      "description": "Provides RDL input and runs the validation pipeline.",
+      "id": "ACT-CASE-STUDY-ENGINEER",
+      "name": "Case Study Engineer"
+    },
+    {
+      "description": "Asks room-related questions in the generated immersive environment.",
+      "id": "ACT-VISITOR",
+      "name": "Visitor"
+    },
+    {
+      "description": "Role played by generated interactive agents.",
+      "id": "ACT-ROOM-GUIDE",
+      "name": "Room Guide"
+    }
+  ],
+  "agents": [
+    {
+      "display_name": "a0",
+      "entity_id": "ENT-AGENT-A0",
+      "expertise": [
+        "synthetic room"
+      ],
+      "groundedAssetEntityIds": [
+        "ENT-ASSET-O0"
+      ],
+      "groundedObjectGroupEntityIds": [],
+      "grounded_object_groups": [],
+      "grounded_object_ids": [
+        "o0"
+      ],
+      "handoffTargetAgentIds": [
+        "AG-FIRSTMATCH_PROPERTY-A1"
+      ],
+      "handoff_targets": [
+        "a1"
+      ],
+      "id": "AG-FIRSTMATCH_PROPERTY-A0",
+      "knowledge_tags": [
+        "room"
+      ],
+      "persona": "Synthetic educational guide.",
+      "playsActor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "providedCapabilityIds": [
+        "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "responsibleZoneEntityIds": [],
+      "responsible_zone_ids": [],
+      "source_agent_id": "a0",
+      "tts_model": "gpt-4o-mini-tts",
+      "voice": "alloy",
+      "voice_gender": "neutral",
+      "voice_style": "neutral"
+    },
+    {
+      "display_name": "a1",
+      "entity_id": "ENT-AGENT-A1",
+      "expertise": [
+        "synthetic room"
+      ],
+      "groundedAssetEntityIds": [
+        "ENT-ASSET-O0",
+        "ENT-ASSET-O1"
+      ],
+      "groundedObjectGroupEntityIds": [],
+      "grounded_object_groups": [],
+      "grounded_object_ids": [
+        "o0",
+        "o1"
+      ],
+      "handoffTargetAgentIds": [
+        "AG-FIRSTMATCH_PROPERTY-A0"
+      ],
+      "handoff_targets": [
+        "a0"
+      ],
+      "id": "AG-FIRSTMATCH_PROPERTY-A1",
+      "knowledge_tags": [
+        "room"
+      ],
+      "persona": "Synthetic educational guide.",
+      "playsActor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "providedCapabilityIds": [
+        "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+        "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "responsibleZoneEntityIds": [],
+      "responsible_zone_ids": [],
+      "source_agent_id": "a1",
+      "tts_model": "gpt-4o-mini-tts",
+      "voice": "alloy",
+      "voice_gender": "neutral",
+      "voice_style": "neutral"
+    }
+  ],
+  "capabilities": [
+    {
+      "effects": [
+        {
+          "evidencedBy": [
+            "SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID"
+          ],
+          "id": "EFF-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE-01",
+          "text": "Effect of ANALYZE-RDL-SCENE: normalized scene valid."
+        },
+        {
+          "evidencedBy": [
+            "SA-FIRSTMATCH_PROPERTY-SCENE-SEMANTICS-VALID"
+          ],
+          "id": "EFF-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE-02",
+          "text": "Effect of ANALYZE-RDL-SCENE: scene semantics valid."
+        }
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE",
+      "name": "Analyze Rdl Scene",
+      "precondition_ids": [],
+      "text": "Analyze RDL scene structure and normalize room objects."
+    },
+    {
+      "effects": [
+        {
+          "evidencedBy": [
+            "SA-FIRSTMATCH_PROPERTY-AGENT-ROLES-VALID"
+          ],
+          "id": "EFF-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES-01",
+          "text": "Effect of DERIVE-SPATIAL-AGENT-ROLES: agent roles valid."
+        }
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES",
+      "name": "Derive Spatial Agent Roles",
+      "precondition_ids": [],
+      "text": "Derive agent roles grounded in semantic zones and objects."
+    },
+    {
+      "effects": [
+        {
+          "evidencedBy": [
+            "SA-FIRSTMATCH_PROPERTY-KNOWLEDGE-VALID"
+          ],
+          "id": "EFF-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE-01",
+          "text": "Effect of GENERATE-ROOM-KNOWLEDGE: knowledge valid."
+        }
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE",
+      "name": "Generate Room Knowledge",
+      "precondition_ids": [],
+      "text": "Generate local knowledge entries for all agent knowledge tags."
+    },
+    {
+      "effects": [
+        {
+          "evidencedBy": [
+            "SA-FIRSTMATCH_PROPERTY-PLACEMENT-VALID"
+          ],
+          "id": "EFF-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE-01",
+          "text": "Effect of PLACE-AGENTS-IN-SCENE: placement valid."
+        }
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE",
+      "name": "Place Agents In Scene",
+      "precondition_ids": [],
+      "text": "Place agents in valid positions near their responsible zones."
+    },
+    {
+      "effects": [
+        {
+          "evidencedBy": [
+            "SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID"
+          ],
+          "id": "EFF-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL-01",
+          "text": "Effect of ASSEMBLE-FUNCTIONAL-RDL: roomcontract valid."
+        }
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL",
+      "name": "Assemble Functional Rdl",
+      "precondition_ids": [],
+      "text": "Assemble a valid RoomContract instance for the case study."
+    },
+    {
+      "effects": [
+        {
+          "evidencedBy": [
+            "SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED"
+          ],
+          "id": "EFF-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT-01",
+          "text": "Effect of MATERIALIZE-INTERACTIVE-AGENTS-PROJECT: project materialized."
+        }
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "name": "Materialize Interactive Agents Project",
+      "precondition_ids": [],
+      "text": "Write backend-compatible Interactive Agents project files."
+    },
+    {
+      "effects": [
+        {
+          "evidencedBy": [
+            "SA-FIRSTMATCH_PROPERTY-SETUP-VALID"
+          ],
+          "id": "EFF-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION-01",
+          "text": "Effect of SETUP-INTERACTIVE-SESSION: setup valid."
+        }
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION",
+      "name": "Setup Interactive Session",
+      "precondition_ids": [],
+      "text": "Initialize the runtime session for the generated project."
+    },
+    {
+      "effects": [
+        {
+          "evidencedBy": [
+            "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+          ],
+          "id": "EFF-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION-01",
+          "text": "Effect of ANSWER-ROOM-GROUNDED-QUESTION: answer grounded."
+        }
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+      "name": "Answer Room Grounded Question",
+      "precondition_ids": [],
+      "text": "Answer visitor questions using room-grounded agent knowledge."
+    },
+    {
+      "effects": [
+        {
+          "evidencedBy": [
+            "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+          ],
+          "id": "EFF-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT-01",
+          "text": "Effect of HANDOFF-TO-RESPONSIBLE-AGENT: handoff valid."
+        }
+      ],
+      "id": "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "name": "Handoff To Responsible Agent",
+      "precondition_ids": [],
+      "text": "Forward a question to an existing responsible specialist agent."
+    }
+  ],
+  "capabilityUses": [
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE",
+      "id": "CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE",
+      "parameters": [],
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S02"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE",
+      "id": "CU-FIRSTMATCH_PROPERTY-S03-ANALYZE-RDL-SCENE",
+      "parameters": [],
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S03"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES",
+      "id": "CU-FIRSTMATCH_PROPERTY-S04-DERIVE-SPATIAL-AGENT-ROLES",
+      "parameters": [],
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S04"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE",
+      "id": "CU-FIRSTMATCH_PROPERTY-S05-GENERATE-ROOM-KNOWLEDGE",
+      "parameters": [],
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S05"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE",
+      "id": "CU-FIRSTMATCH_PROPERTY-S06-PLACE-AGENTS-IN-SCENE",
+      "parameters": [],
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S06"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL",
+      "id": "CU-FIRSTMATCH_PROPERTY-S07-ASSEMBLE-FUNCTIONAL-RDL",
+      "parameters": [],
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S07"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "id": "CU-FIRSTMATCH_PROPERTY-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "parameters": [],
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S08"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION",
+      "id": "CU-FIRSTMATCH_PROPERTY-S09-SETUP-INTERACTIVE-SESSION",
+      "parameters": [],
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S09"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+      "id": "CU-FIRSTMATCH_PROPERTY-A0-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-A0",
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S11"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+      "id": "CU-FIRSTMATCH_PROPERTY-A1-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-A1",
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S11"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "id": "CU-FIRSTMATCH_PROPERTY-A0-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-A0",
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S12"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "id": "CU-FIRSTMATCH_PROPERTY-A1-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-A1",
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-S12"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "id": "CU-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-A0",
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF",
+      "target_entity_ids": [
+        "ENT-ASSET-O0",
+        "ENT-GROUP-GROUP_A",
+        "ENT-ZONE-ZONE_A"
+      ]
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "id": "CU-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-A1",
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF",
+      "target_entity_ids": [
+        "ENT-ASSET-O1",
+        "ENT-GROUP-GROUP_A",
+        "ENT-ZONE-ZONE_A"
+      ]
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+      "id": "CU-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-A0",
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER",
+      "target_entity_ids": [
+        "ENT-ASSET-O0",
+        "ENT-GROUP-GROUP_A",
+        "ENT-ZONE-ZONE_A"
+      ]
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+      "id": "CU-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER-ROOM-GROUNDED-QUESTION",
+      "parameters": [],
+      "preferred_provider_entity_id": "ENT-AGENT-A1",
+      "step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER",
+      "target_entity_ids": [
+        "ENT-ASSET-O1",
+        "ENT-GROUP-GROUP_A",
+        "ENT-ZONE-ZONE_A"
+      ]
+    }
+  ],
+  "caseId": "firstmatch_property",
+  "conditions": [
+    {
+      "expression": "RDL input parses successfully",
+      "id": "COND-FIRSTMATCH_PROPERTY-VALID-INPUT",
+      "kind": "precondition"
+    },
+    {
+      "expression": "at least two valid agents exist",
+      "id": "COND-FIRSTMATCH_PROPERTY-AGENTS-AVAILABLE",
+      "kind": "guard"
+    },
+    {
+      "expression": "handoff target exists and is not the source agent",
+      "id": "COND-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-AVAILABLE",
+      "kind": "guard"
+    }
+  ],
+  "entities": [
+    {
+      "entityRole": "semanticZone",
+      "id": "ENT-ZONE-ZONE_A",
+      "kind": "zone",
+      "name": "zone_a",
+      "purpose": "Synthetic zone.",
+      "source_id": "zone_a",
+      "source_object_ids": [
+        "o0",
+        "o1"
+      ]
+    },
+    {
+      "entityRole": "objectGroup",
+      "id": "ENT-GROUP-GROUP_A",
+      "kind": "asset",
+      "name": "Object group: group_a",
+      "source_group": "group_a",
+      "source_id": "group:group_a",
+      "source_object_ids": [
+        "o0",
+        "o1"
+      ]
+    },
+    {
+      "entityRole": "sceneObject",
+      "id": "ENT-ASSET-O0",
+      "kind": "asset",
+      "name": "educational_display",
+      "object_group_entity_id": "ENT-GROUP-GROUP_A",
+      "object_type": "educational_display",
+      "source_group": "group_a",
+      "source_id": "o0"
+    },
+    {
+      "entityRole": "sceneObject",
+      "id": "ENT-ASSET-O1",
+      "kind": "asset",
+      "name": "educational_display",
+      "object_group_entity_id": "ENT-GROUP-GROUP_A",
+      "object_type": "educational_display",
+      "source_group": "group_a",
+      "source_id": "o1"
+    },
+    {
+      "entityRole": "interactiveAgent",
+      "id": "ENT-AGENT-A0",
+      "kind": "agent",
+      "name": "a0",
+      "source_id": "a0"
+    },
+    {
+      "entityRole": "interactiveAgent",
+      "id": "ENT-AGENT-A1",
+      "kind": "agent",
+      "name": "a1",
+      "source_id": "a1"
+    },
+    {
+      "id": "ENT-STATE-FIRSTMATCH_PROPERTY",
+      "kind": "stateObject",
+      "name": "Case study validation state",
+      "source_id": "validation_state"
+    }
+  ],
+  "events": [
+    {
+      "expression": "source_rdl.json available",
+      "id": "EV-FIRSTMATCH_PROPERTY-RDL-PROVIDED",
+      "kind": "environment"
+    },
+    {
+      "expression": "visitor asks a room-related question",
+      "id": "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION",
+      "kind": "user"
+    },
+    {
+      "expression": "visitor question belongs to another agent expertise",
+      "id": "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED",
+      "kind": "user"
+    }
+  ],
+  "metamodelVersion": "v0.5",
+  "requirementsModel": {
+    "id": "RM-FIRSTMATCH_PROPERTY",
+    "requirements": [
+      {
+        "id": "REQ-FIRSTMATCH_PROPERTY-001",
+        "text": "The pipeline shall ingest an RDL scene and preserve stable object identities."
+      },
+      {
+        "id": "REQ-FIRSTMATCH_PROPERTY-002",
+        "text": "The pipeline shall derive room semantics grounded in existing RDL objects."
+      },
+      {
+        "id": "REQ-FIRSTMATCH_PROPERTY-003",
+        "text": "The pipeline shall synthesize backend-compatible spatial agent roles."
+      },
+      {
+        "id": "REQ-FIRSTMATCH_PROPERTY-004",
+        "text": "Every generated agent knowledge tag shall be covered by materialized knowledge."
+      },
+      {
+        "id": "REQ-FIRSTMATCH_PROPERTY-005",
+        "text": "Every generated agent shall be placed inside the room without obstacle overlap."
+      },
+      {
+        "id": "REQ-FIRSTMATCH_PROPERTY-006",
+        "text": "The generated behavior shall be traceable from requirements to runtime actions and validation cases."
+      }
+    ],
+    "useCases": [
+      {
+        "actor_ids": [
+          "ACT-CASE-STUDY-ENGINEER",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extends": [],
+        "extensionPoints": [],
+        "id": "UC-FIRSTMATCH_PROPERTY-01",
+        "includes": [],
+        "name": "Generate spatially grounded multi-agent guide",
+        "scenarios": [
+          {
+            "description": "Authoring pipeline for generating and validating a spatially grounded multi-agent room guide.",
+            "id": "SC-FIRSTMATCH_PROPERTY-MAIN",
+            "kind": "main",
+            "parallelGroups": [],
+            "postcondition_ids": [
+              "SA-FIRSTMATCH_PROPERTY-SETUP-VALID"
+            ],
+            "precondition_ids": [
+              "COND-FIRSTMATCH_PROPERTY-VALID-INPUT"
+            ],
+            "stepRelations": [
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-01-02",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S01",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S02"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-02-03",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S02",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S03"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-03-04",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S03",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S04"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-04-05",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S04",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S05"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-05-06",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S05",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S06"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-06-07",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S06",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S07"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-07-08",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S07",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S08"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-08-09",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S08",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S09"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-09-10",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S09",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S10"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-10-11",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S10",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S11"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-11-12",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-S11",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-S12"
+              }
+            ],
+            "steps": [
+              {
+                "capabilityUseIds": [],
+                "guard": "COND-FIRSTMATCH_PROPERTY-VALID-INPUT",
+                "id": "STEP-FIRSTMATCH_PROPERTY-S01",
+                "kind": "actorIntent",
+                "occurrenceProbability": 1.0,
+                "performedBy": "ACT-CASE-STUDY-ENGINEER",
+                "resultingState": [],
+                "stepNumber": 1,
+                "text": "Provide an RDL file as case-study input.",
+                "triggeredBy": [
+                  "EV-FIRSTMATCH_PROPERTY-RDL-PROVIDED"
+                ]
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-S02-ANALYZE-RDL-SCENE"
+                ],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-S02",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": null,
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID"
+                ],
+                "stepNumber": 2,
+                "text": "Load and normalize the RDL scene.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-S03-ANALYZE-RDL-SCENE"
+                ],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-S03",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": null,
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-SCENE-SEMANTICS-VALID"
+                ],
+                "stepNumber": 3,
+                "text": "Derive semantic zones, visitor goals and interaction topics.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-S04-DERIVE-SPATIAL-AGENT-ROLES"
+                ],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-S04",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": null,
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-AGENT-ROLES-VALID"
+                ],
+                "stepNumber": 4,
+                "text": "Generate spatially grounded agent roles and handoff rules.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-S05-GENERATE-ROOM-KNOWLEDGE"
+                ],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-S05",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": null,
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-KNOWLEDGE-VALID"
+                ],
+                "stepNumber": 5,
+                "text": "Generate materialized knowledge entries for all agent knowledge tags.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-S06-PLACE-AGENTS-IN-SCENE"
+                ],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-S06",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": null,
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-PLACEMENT-VALID"
+                ],
+                "stepNumber": 6,
+                "text": "Place generated agents inside the room near their responsibilities.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-S07-ASSEMBLE-FUNCTIONAL-RDL"
+                ],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-S07",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": null,
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID"
+                ],
+                "stepNumber": 7,
+                "text": "Assemble and validate the RoomContract trace instance.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+                ],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-S08",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": null,
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED"
+                ],
+                "stepNumber": 8,
+                "text": "Materialize the Interactive Agents project files.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-S09-SETUP-INTERACTIVE-SESSION"
+                ],
+                "guard": "COND-FIRSTMATCH_PROPERTY-AGENTS-AVAILABLE",
+                "id": "STEP-FIRSTMATCH_PROPERTY-S09",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": null,
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-SETUP-VALID"
+                ],
+                "stepNumber": 9,
+                "text": "Set up an Interactive Agents runtime session.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-S10",
+                "kind": "actorIntent",
+                "occurrenceProbability": 1.0,
+                "performedBy": "ACT-VISITOR",
+                "resultingState": [],
+                "stepNumber": 10,
+                "text": "Ask a general room-related question to an agent.",
+                "triggeredBy": [
+                  "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION"
+                ]
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-A0-S11-ANSWER-ROOM-GROUNDED-QUESTION",
+                  "CU-FIRSTMATCH_PROPERTY-A1-S11-ANSWER-ROOM-GROUNDED-QUESTION"
+                ],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-S11",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": null,
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+                ],
+                "stepNumber": 11,
+                "text": "Answer a general visitor question without a selected scene object.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-A0-S12-HANDOFF-TO-RESPONSIBLE-AGENT",
+                  "CU-FIRSTMATCH_PROPERTY-A1-S12-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ],
+                "guard": "COND-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-AVAILABLE",
+                "id": "STEP-FIRSTMATCH_PROPERTY-S12",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": null,
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+                ],
+                "stepNumber": 12,
+                "text": "Optionally hand off a general question to a responsible specialist agent.",
+                "triggeredBy": [
+                  "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extends": [],
+        "extensionPoints": [],
+        "id": "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "includes": [],
+        "name": "Describe grounded scene object o0",
+        "scenarios": [
+          {
+            "description": "Visitor asks about source object o0; the model binds the interaction to a0 and its asset, group, and zone context.",
+            "id": "SC-FIRSTMATCH_PROPERTY-INTERACT-O0-MAIN",
+            "kind": "main",
+            "parallelGroups": [],
+            "postcondition_ids": [
+              "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+              "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+            ],
+            "precondition_ids": [
+              "COND-FIRSTMATCH_PROPERTY-AGENTS-AVAILABLE"
+            ],
+            "stepRelations": [
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-INTERACT-O0-01",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ASK",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-INTERACT-O0-02",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF"
+              }
+            ],
+            "steps": [
+              {
+                "capabilityUseIds": [],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ASK",
+                "kind": "actorIntent",
+                "occurrenceProbability": 1.0,
+                "performedBy": "ACT-VISITOR",
+                "resultingState": [],
+                "stepNumber": 1,
+                "text": "Select educational_display (o0) and ask for a description.",
+                "triggeredBy": [
+                  "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION"
+                ]
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER-ROOM-GROUNDED-QUESTION"
+                ],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-ANSWER",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": "ACT-ROOM-GUIDE",
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+                ],
+                "stepNumber": 2,
+                "text": "a0 describes educational_display using knowledge grounded in source object o0.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ],
+                "guard": "COND-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-AVAILABLE",
+                "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O0-HANDOFF",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": "ACT-ROOM-GUIDE",
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+                ],
+                "stepNumber": 3,
+                "text": "Constrain any follow-up handoff about educational_display to the modeled responsibility of a0.",
+                "triggeredBy": [
+                  "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "actor_ids": [
+          "ACT-VISITOR",
+          "ACT-ROOM-GUIDE"
+        ],
+        "extends": [],
+        "extensionPoints": [],
+        "id": "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "includes": [],
+        "name": "Describe grounded scene object o1",
+        "scenarios": [
+          {
+            "description": "Visitor asks about source object o1; the model binds the interaction to a1 and its asset, group, and zone context.",
+            "id": "SC-FIRSTMATCH_PROPERTY-INTERACT-O1-MAIN",
+            "kind": "main",
+            "parallelGroups": [],
+            "postcondition_ids": [
+              "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+              "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+            ],
+            "precondition_ids": [
+              "COND-FIRSTMATCH_PROPERTY-AGENTS-AVAILABLE"
+            ],
+            "stepRelations": [
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-INTERACT-O1-01",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ASK",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER"
+              },
+              {
+                "guard": null,
+                "id": "REL-FIRSTMATCH_PROPERTY-INTERACT-O1-02",
+                "kind": "sequence",
+                "probability": 1.0,
+                "source_step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER",
+                "target_step_id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF"
+              }
+            ],
+            "steps": [
+              {
+                "capabilityUseIds": [],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ASK",
+                "kind": "actorIntent",
+                "occurrenceProbability": 1.0,
+                "performedBy": "ACT-VISITOR",
+                "resultingState": [],
+                "stepNumber": 1,
+                "text": "Select educational_display (o1) and ask for a description.",
+                "triggeredBy": [
+                  "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION"
+                ]
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER-ROOM-GROUNDED-QUESTION"
+                ],
+                "guard": null,
+                "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-ANSWER",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": "ACT-ROOM-GUIDE",
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+                ],
+                "stepNumber": 2,
+                "text": "a1 describes educational_display using knowledge grounded in source object o1.",
+                "triggeredBy": []
+              },
+              {
+                "capabilityUseIds": [
+                  "CU-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF-TO-RESPONSIBLE-AGENT"
+                ],
+                "guard": "COND-FIRSTMATCH_PROPERTY-HANDOFF-TARGET-AVAILABLE",
+                "id": "STEP-FIRSTMATCH_PROPERTY-INTERACT-O1-HANDOFF",
+                "kind": "systemResponse",
+                "occurrenceProbability": 1.0,
+                "performedBy": "ACT-ROOM-GUIDE",
+                "resultingState": [
+                  "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+                ],
+                "stepNumber": 3,
+                "text": "Constrain any follow-up handoff about educational_display to the modeled responsibility of a1.",
+                "triggeredBy": [
+                  "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "runtimeBindings": [
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE",
+      "id": "RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE",
+      "runtimeActions": [
+        {
+          "endpoint": null,
+          "id": "RA-FIRSTMATCH_PROPERTY-RUN-RDL-INGESTION",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": "tools.case_study_pipeline.rdl_ingestion.run_ingestion_for_case",
+          "topic": null
+        },
+        {
+          "endpoint": null,
+          "id": "RA-FIRSTMATCH_PROPERTY-RUN-SCENE-SEMANTICS",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": "tools.case_study_pipeline.scene_semantics.run_scene_semantics_for_case",
+          "topic": null
+        },
+        {
+          "endpoint": "POST /projects/arrow/analyze",
+          "id": "RA-FIRSTMATCH_PROPERTY-ARROW-ANALYZE",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": null,
+          "topic": null
+        }
+      ],
+      "targetPlatform": "CaseStudyPipeline"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES",
+      "id": "RB-FIRSTMATCH_PROPERTY-DERIVE-SPATIAL-AGENT-ROLES",
+      "runtimeActions": [
+        {
+          "endpoint": null,
+          "id": "RA-FIRSTMATCH_PROPERTY-RUN-AGENT-ROLES",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": "tools.case_study_pipeline.agent_roles.run_agent_roles_for_case",
+          "topic": null
+        }
+      ],
+      "targetPlatform": "CaseStudyPipeline"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE",
+      "id": "RB-FIRSTMATCH_PROPERTY-GENERATE-ROOM-KNOWLEDGE",
+      "runtimeActions": [
+        {
+          "endpoint": null,
+          "id": "RA-FIRSTMATCH_PROPERTY-RUN-KNOWLEDGE-SYNTHESIS",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": "tools.case_study_pipeline.knowledge_synthesis.run_knowledge_synthesis_for_case",
+          "topic": null
+        }
+      ],
+      "targetPlatform": "CaseStudyPipeline"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE",
+      "id": "RB-FIRSTMATCH_PROPERTY-PLACE-AGENTS-IN-SCENE",
+      "runtimeActions": [
+        {
+          "endpoint": null,
+          "id": "RA-FIRSTMATCH_PROPERTY-RUN-AGENT-PLACEMENT",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": "tools.case_study_pipeline.agent_placement.run_agent_placement_for_case",
+          "topic": null
+        }
+      ],
+      "targetPlatform": "CaseStudyPipeline"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL",
+      "id": "RB-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL",
+      "runtimeActions": [
+        {
+          "endpoint": null,
+          "id": "RA-FIRSTMATCH_PROPERTY-RUN-ROOMCONTRACT-ASSEMBLER",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": "tools.case_study_pipeline.roomcontract_assembler.run_roomcontract_assembly_for_case",
+          "topic": null
+        }
+      ],
+      "targetPlatform": "CaseStudyPipeline"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "id": "RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "runtimeActions": [
+        {
+          "endpoint": "POST /projects/arrow/commit",
+          "id": "RA-FIRSTMATCH_PROPERTY-ARROW-COMMIT",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": null,
+          "topic": null
+        },
+        {
+          "endpoint": null,
+          "id": "RA-FIRSTMATCH_PROPERTY-WRITE-PROJECT-FILES",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": "tools.case_study_pipeline.project_materializer.run_project_materializer_for_case",
+          "topic": null
+        }
+      ],
+      "targetPlatform": "agent_backendBackend"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION",
+      "id": "RB-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION",
+      "runtimeActions": [
+        {
+          "endpoint": "POST /setup",
+          "id": "RA-FIRSTMATCH_PROPERTY-BACKEND-SETUP",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": null,
+          "topic": null
+        }
+      ],
+      "targetPlatform": "agent_backendBackend"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+      "id": "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+      "runtimeActions": [
+        {
+          "endpoint": "POST /chat",
+          "id": "RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": null,
+          "topic": null
+        }
+      ],
+      "targetPlatform": "agent_backendBackend"
+    },
+    {
+      "capability_id": "CAP-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "id": "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "runtimeActions": [
+        {
+          "endpoint": "POST /chat",
+          "id": "RA-FIRSTMATCH_PROPERTY-BACKEND-CHAT-HANDOFF",
+          "inputSchema": "json",
+          "outputSchema": "json",
+          "tool": null,
+          "topic": null
+        }
+      ],
+      "targetPlatform": "agent_backendBackend"
+    }
+  ],
+  "satisfyRelationships": [
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-001",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-001"
+      ],
+      "satisfiedUseCase": []
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-002",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-002"
+      ],
+      "satisfiedUseCase": []
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-003",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-003"
+      ],
+      "satisfiedUseCase": []
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-004",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-004"
+      ],
+      "satisfiedUseCase": []
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-005",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-005"
+      ],
+      "satisfiedUseCase": []
+    },
+    {
+      "id": "SAT-REQ-FIRSTMATCH_PROPERTY-006",
+      "satisfiedBy": [
+        "UC-FIRSTMATCH_PROPERTY-01",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0",
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+        "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS"
+      ],
+      "satisfiedRequirement": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ],
+      "satisfiedUseCase": []
+    }
+  ],
+  "schema": "roomcontract_case_study",
+  "stateAssertions": [
+    {
+      "expression": "Normalized RDL scene is valid and object IDs are unique.",
+      "id": "SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID",
+      "subject_id": "ENT-STATE-FIRSTMATCH_PROPERTY"
+    },
+    {
+      "expression": "Scene semantics are grounded in existing object IDs.",
+      "id": "SA-FIRSTMATCH_PROPERTY-SCENE-SEMANTICS-VALID",
+      "subject_id": "ENT-STATE-FIRSTMATCH_PROPERTY"
+    },
+    {
+      "expression": "Generated agents have valid zones, objects, knowledge tags and handoff targets.",
+      "id": "SA-FIRSTMATCH_PROPERTY-AGENT-ROLES-VALID",
+      "subject_id": "ENT-STATE-FIRSTMATCH_PROPERTY"
+    },
+    {
+      "expression": "Every agent knowledge tag has at least one materialized knowledge entry.",
+      "id": "SA-FIRSTMATCH_PROPERTY-KNOWLEDGE-VALID",
+      "subject_id": "ENT-STATE-FIRSTMATCH_PROPERTY"
+    },
+    {
+      "expression": "Every generated agent has a valid room position and forward vector.",
+      "id": "SA-FIRSTMATCH_PROPERTY-PLACEMENT-VALID",
+      "subject_id": "ENT-STATE-FIRSTMATCH_PROPERTY"
+    },
+    {
+      "expression": "RoomContract instance satisfies all core invariants.",
+      "id": "SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID",
+      "subject_id": "ENT-STATE-FIRSTMATCH_PROPERTY"
+    },
+    {
+      "expression": "Interactive Agents project files are present and backend-readable.",
+      "id": "SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED",
+      "subject_id": "ENT-STATE-FIRSTMATCH_PROPERTY"
+    },
+    {
+      "expression": "Interactive Agents backend setup returns a valid session with all agents.",
+      "id": "SA-FIRSTMATCH_PROPERTY-SETUP-VALID",
+      "subject_id": "ENT-STATE-FIRSTMATCH_PROPERTY"
+    },
+    {
+      "expression": "A visitor question is answered using room-grounded agent knowledge.",
+      "id": "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+      "subject_id": "ENT-STATE-FIRSTMATCH_PROPERTY"
+    },
+    {
+      "expression": "A specialist handoff targets an existing responsible agent when needed.",
+      "id": "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID",
+      "subject_id": "ENT-STATE-FIRSTMATCH_PROPERTY"
+    }
+  ],
+  "validationCases": [
+    {
+      "expectedOutcome": [
+        "SA-FIRSTMATCH_PROPERTY-NORMALIZED-SCENE-VALID"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-RDL-INGESTION",
+      "level": "concrete",
+      "runtime_binding_ids": [
+        "RB-FIRSTMATCH_PROPERTY-ANALYZE-RDL-SCENE"
+      ],
+      "stimulus_ids": [
+        "EV-FIRSTMATCH_PROPERTY-RDL-PROVIDED"
+      ],
+      "validates_use_case_ids": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-FIRSTMATCH_PROPERTY-001"
+      ]
+    },
+    {
+      "expectedOutcome": [
+        "SA-FIRSTMATCH_PROPERTY-ROOMCONTRACT-VALID"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-MODEL-INVARIANTS",
+      "level": "concrete",
+      "runtime_binding_ids": [
+        "RB-FIRSTMATCH_PROPERTY-ASSEMBLE-FUNCTIONAL-RDL"
+      ],
+      "stimulus_ids": [],
+      "validates_use_case_ids": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ]
+    },
+    {
+      "expectedOutcome": [
+        "SA-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZED"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-PROJECT-MATERIALIZATION",
+      "level": "concrete",
+      "runtime_binding_ids": [
+        "RB-FIRSTMATCH_PROPERTY-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+      ],
+      "stimulus_ids": [],
+      "validates_use_case_ids": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-FIRSTMATCH_PROPERTY-004",
+        "REQ-FIRSTMATCH_PROPERTY-005"
+      ]
+    },
+    {
+      "expectedOutcome": [
+        "SA-FIRSTMATCH_PROPERTY-SETUP-VALID"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-SETUP",
+      "level": "concrete",
+      "runtime_binding_ids": [
+        "RB-FIRSTMATCH_PROPERTY-SETUP-INTERACTIVE-SESSION"
+      ],
+      "stimulus_ids": [],
+      "validates_use_case_ids": [
+        "UC-FIRSTMATCH_PROPERTY-01"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-FIRSTMATCH_PROPERTY-003",
+        "REQ-FIRSTMATCH_PROPERTY-005"
+      ]
+    },
+    {
+      "expectedOutcome": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-CHAT-GROUNDING",
+      "level": "concrete",
+      "runtime_binding_ids": [
+        "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "stimulus_ids": [
+        "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION"
+      ],
+      "validates_use_case_ids": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-FIRSTMATCH_PROPERTY-002",
+        "REQ-FIRSTMATCH_PROPERTY-004",
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ]
+    },
+    {
+      "expectedOutcome": [
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-HANDOFF",
+      "level": "concrete",
+      "runtime_binding_ids": [
+        "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "stimulus_ids": [
+        "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+      ],
+      "validates_use_case_ids": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O0"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-FIRSTMATCH_PROPERTY-003",
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ]
+    },
+    {
+      "expectedOutcome": [
+        "SA-FIRSTMATCH_PROPERTY-ANSWER-GROUNDED",
+        "SA-FIRSTMATCH_PROPERTY-HANDOFF-VALID"
+      ],
+      "id": "VC-FIRSTMATCH_PROPERTY-INTERACT-O1",
+      "level": "concrete",
+      "runtime_binding_ids": [
+        "RB-FIRSTMATCH_PROPERTY-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-FIRSTMATCH_PROPERTY-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "stimulus_ids": [
+        "EV-FIRSTMATCH_PROPERTY-VISITOR-QUESTION",
+        "EV-FIRSTMATCH_PROPERTY-HANDOFF-NEEDED"
+      ],
+      "validates_use_case_ids": [
+        "UC-FIRSTMATCH_PROPERTY-INTERACT-O1"
+      ],
+      "verifies_requirement_ids": [
+        "REQ-FIRSTMATCH_PROPERTY-002",
+        "REQ-FIRSTMATCH_PROPERTY-003",
+        "REQ-FIRSTMATCH_PROPERTY-004",
+        "REQ-FIRSTMATCH_PROPERTY-006"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "cache_key": "04ea6d9de03c7b8dec82927f1ca4018936540aa2e2a979ac24ac931e2014e946",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_01_astronomy_gallery.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"extension_drift_01_astronomy_gallery\",\"domain\":\"Astronomie-Ausstellung / Wissenschaftsgalerie\",\"room_purpose\":\"Vermittlung astronomischer Inhalte und Förderung interaktiven Lernens durch thematisch gruppierte Exponate.\",\"visitor_goals\":[\"Interaktive Simulationen erleben (Orbit, Meteoriten)\",\"Astronomische Orientierung mit Sternkarten\",\"Wissenschaftliche Experimente mit Spektroskopen\",\"Beobachtung astronomischer Objekte mit Teleskopen\",\"Verständnis des Sonnensystems durch Modelle\",\"Erklärung und Kontext zu Meteoriten erhalten\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"name\":\"Zone Sammlung 1: Orbit & Meteoriten\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"purpose\":\"Fokus auf planetare Bewegungen und Meteoriten – interaktive Simulationen und Anschauungsobjekte.\",\"visitor_goals_supported\":[\"Orbit-Simulation erleben\",\"Meteoriten verstehen\"],\"zone_id\":\"zone_collection_1\"},{\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"name\":\"Zone Sammlung 2: Sterne & Spektroskopie\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"purpose\":\"Erkundung von Sternkarten und Spektroskopen – Orientierung und wissenschaftliche Analyse.\",\"visitor_goals_supported\":[\"Sternkarten lesen\",\"Spektroskopie verstehen\"],\"zone_id\":\"zone_collection_2\"},{\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"name\":\"Zone Sammlung 3: Planeten & Teleskope\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"purpose\":\"Veranschaulichung des Sonnensystems und astronomische Beobachtung mit Teleskopen.\",\"visitor_goals_supported\":[\"Das Sonnensystem entdecken\",\"Teleskopische Beobachtung\"],\"zone_id\":\"zone_collection_3\"}],\"interaction_topics\":[{\"description\":\"Funktionsweise und Bedeutung von Orbit-Simulatoren für das Verständnis planetarer Bewegungen.\",\"related_object_ids\":[\"object_001\",\"object_007\",\"object_013\"],\"title\":\"Orbit-Simulation erleben\",\"topic_id\":\"topic_orbit_sim\"},{\"description\":\"Interpretation von Sternkarten zur Orientierung am Nachthimmel.\",\"related_object_ids\":[\"object_002\",\"object_008\",\"object_014\"],\"title\":\"Sternkarten lesen\",\"topic_id\":\"topic_star_map\"},{\"description\":\"Praktische Anwendung von Spektroskopen zur Analyse von Lichtquellen.\",\"related_object_ids\":[\"object_005\",\"object_011\"],\"title\":\"Spektroskopie verstehen\",\"topic_id\":\"topic_spectroscopy\"},{\"description\":\"Beobachtung und Erklärung astronomischer Objekte mit Teleskopen.\",\"related_object_ids\":[\"object_006\",\"object_012\"],\"title\":\"Teleskopische Beobachtung\",\"topic_id\":\"topic_telescope\"},{\"description\":\"Erkundung von Planetenmodellen zur Veranschaulichung des Sonnensystems.\",\"related_object_ids\":[\"object_003\",\"object_009\",\"object_015\"],\"title\":\"Das Sonnensystem entdecken\",\"topic_id\":\"topic_planet_models\"},{\"description\":\"Meteoriten als außerirdische Materie – Bedeutung und Eigenschaften.\",\"related_object_ids\":[\"object_004\",\"object_010\"],\"title\":\"Meteoriten verstehen\",\"topic_id\":\"topic_meteorites\"}],\"agent_role_candidates\":[{\"display_name\":\"Astronomie-Galerie-Guide\",\"expertise\":[\"Astronomie\",\"Didaktik\",\"Objekterklärung\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"mission\":\"Führt Besucher durch die Galerie, erklärt die Exponate, gibt Hintergrundwissen und unterstützt bei der Interaktion mit den Ausstellungsobjekten.\",\"responsible_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"role_id\":\"gallery_guide\"},{\"display_name\":\"Interaktiver Lernassistent\",\"expertise\":[\"Interaktive Erklärungen\",\"Technische Demonstrationen\"],\"grounded_object_ids\":[\"object_001\",\"object_005\",\"object_006\",\"object_007\",\"object_011\",\"object_012\",\"object_013\"],\"mission\":\"Hilft Besuchern, interaktive Stationen wie Orbit-Simulatoren, Teleskope und Spektroskope zu bedienen und vermittelt deren Funktionsweise.\",\"responsible_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"role_id\":\"interactive_assistant\"},{\"display_name\":\"Navigation Agent\",\"expertise\":[\"Orientierung\",\"Wegfindung\"],\"grounded_object_ids\":[\"object_002\",\"object_008\",\"object_014\"],\"mission\":\"Unterstützt Besucher bei der Orientierung im Raum und leitet sie gezielt zu den gewünschten Exponaten.\",\"responsible_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"role_id\":\"navigation_agent\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"orbit_simulator\":3,\"meteorite_display\":2},\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"star_map\":3,\"spectroscope\":2},\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"planet_model\":3,\"telescope\":2},\"centroid_xz\":{\"x\":0.28,\"z\":0.28}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"orbit_simulator\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic astronomy gallery object: orbit simulator. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_002\",\"object_type\":\"star_map\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic astronomy gallery object: star map. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_003\",\"object_type\":\"planet_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic astronomy gallery object: planet model. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_004\",\"object_type\":\"meteorite_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic astronomy gallery object: meteorite display. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clear...\"},{\"object_id\":\"object_005\",\"object_type\":\"spectroscope\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic astronomy gallery object: spectroscope. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_006\",\"object_type\":\"telescope\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic astronomy gallery object: telescope. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_007\",\"object_type\":\"orbit_simulator\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic astronomy gallery object: orbit simulator. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_008\",\"object_type\":\"star_map\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic astronomy gallery object: star map. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_009\",\"object_type\":\"planet_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic astronomy gallery object: planet model. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_010\",\"object_type\":\"meteorite_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic astronomy gallery object: meteorite display. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clea...\"},{\"object_id\":\"object_011\",\"object_type\":\"spectroscope\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic astronomy gallery object: spectroscope. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_012\",\"object_type\":\"telescope\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic astronomy gallery object: telescope. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_013\",\"object_type\":\"orbit_simulator\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic astronomy gallery object: orbit simulator. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_014\",\"object_type\":\"star_map\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic astronomy gallery object: star map. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_015\",\"object_type\":\"planet_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic astronomy gallery object: planet model. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly v...\"}],\"allowed_zone_ids\":[\"zone_collection_1\",\"zone_collection_2\",\"zone_collection_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_collection_1",
+                          "zone_collection_2",
+                          "zone_collection_3"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "5.full",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1792104422,
+    "created_at": 1792104417,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0629ba3f0a69a9ed016ad157e19a1c87d1ba0654c176f49ec8",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"agents\": [\n    {\n      \"display_name\": \"Galerie-Guide\",\n      \"expertise\": [\n        \"Astronomie\",\n        \"Didaktik\",\n        \"Objekterklärung\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_002\",\n        \"object_003\",\n        \"object_004\",\n        \"object_005\",\n        \"object_006\",\n        \"object_007\",\n        \"object_008\",\n        \"object_009\",\n        \"object_010\",\n        \"object_011\",\n        \"object_012\",\n        \"object_013\",\n        \"object_014\",\n        \"object_015\"\n      ],\n      \"handoff_targets\": [\n        \"interactive_assistant\",\n        \"navigation_agent\"\n      ],\n      \"id\": \"gallery_guide\",\n      \"knowledge_tags\": [\n        \"astronomie\",\n        \"ausstellung\",\n        \"objekterklaerung\",\n        \"hintergrundwissen\"\n      ],\n      \"persona\": \"Freundliche, sachkundige Begleitung durch die gesamte Astronomie-Galerie. Vermittelt Wissen zu allen Exponaten und gibt einen Überblick über die Ausstellung.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_1\",\n        \"zone_collection_2\",\n        \"zone_collection_3\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"ballad\",\n      \"voice_gender\": \"weiblich\",\n      \"voice_style\": \"inspirierend\"\n    },\n    {\n      \"display_name\": \"Interaktiver Lernassistent\",\n      \"expertise\": [\n        \"Interaktive Erklärungen\",\n        \"Technische Demonstrationen\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_005\",\n        \"object_006\",\n        \"object_007\",\n        \"object_011\",\n        \"object_012\",\n        \"object_013\"\n      ],\n      \"handoff_targets\": [\n        \"gallery_guide\"\n      ],\n      \"id\": \"interactive_assistant\",\n      \"knowledge_tags\": [\n        \"interaktive_station\",\n        \"technik\",\n        \"bedienung\",\n        \"demonstration\"\n      ],\n      \"persona\": \"Geduldiger, technikaffiner Assistent, der Besucher Schritt für Schritt bei der Nutzung von Simulatoren, Teleskopen und Spektroskopen unterstützt.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_1\",\n        \"zone_collection_2\",\n        \"zone_collection_3\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"nova\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"hilfsbereit\"\n    },\n    {\n      \"display_name\": \"Navigations-Agent\",\n      \"expertise\": [\n        \"Orientierung\",\n        \"Wegfindung\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_002\",\n        \"object_008\",\n        \"object_014\"\n      ],\n      \"handoff_targets\": [\n        \"gallery_guide\"\n      ],\n      \"id\": \"navigation_agent\",\n      \"knowledge_tags\": [\n        \"orientierung\",\n        \"wegfindung\",\n        \"sternkarten\"\n      ],\n      \"persona\": \"Pragmatischer, klarer Wegweiser, der Besucher zielgerichtet zu gewünschten Exponaten oder Themenbereichen führt und Orientierungshilfen gibt.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_1\",\n        \"zone_collection_2\",\n        \"zone_collection_3\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"onyx\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"sachlich\"\n    }\n  ],\n  \"handoffs\": [\n    {\n      \"condition\": \"Besucher benötigt technische Unterstützung bei interaktiven Stationen (z.B. Orbit-Simulator, Teleskop, Spektroskop).\",\n      \"reason\": \"Fachliche Weiterleitung an den Spezialisten für technische Demonstrationen.\",\n      \"source_agent_id\": \"gallery_guide\",\n      \"target_agent_id\": \"interactive_assistant\"\n    },\n    {\n      \"condition\": \"Besucher benötigt allgemeine Informationen oder Kontext zu Exponaten nach technischer Erklärung.\",\n      \"reason\": \"Fachliche Weiterleitung an den allgemeinen Galerie-Guide.\",\n      \"source_agent_id\": \"interactive_assistant\",\n      \"target_agent_id\": \"gallery_guide\"\n    },\n    {\n      \"condition\": \"Besucher fragt nach Orientierung oder Weg zu bestimmten Exponaten oder Themenbereichen.\",\n      \"reason\": \"Fachliche Weiterleitung an den Navigations-Agenten.\",\n      \"source_agent_id\": \"gallery_guide\",\n      \"target_agent_id\": \"navigation_agent\"\n    },\n    {\n      \"condition\": \"Besucher benötigt nach Wegbeschreibung weiterführende Informationen zu Exponaten.\",\n      \"reason\": \"Fachliche Weiterleitung an den Galerie-Guide.\",\n      \"source_agent_id\": \"navigation_agent\",\n      \"target_agent_id\": \"gallery_guide\"\n    }\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0629ba3f0a69a9ed016ad157e1fd3c87d1ab1f3eaebe1d7e6b",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_collection_1",
+                        "zone_collection_2",
+                        "zone_collection_3"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 3109,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1083,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4192
+    },
+    "user": null
+  },
+  "response_sha256": "38d921ec7ae1a9efaf43957b6cb3577f8660275398428b391853dbaa66c5e4e8",
+  "saved_at": "2026-10-15T22:47:04.136643+00:00",
+  "status": "SUCCESS"
+}

@@ -1,0 +1,226 @@
+{
+  "cache_key": "206c0480473f08fb0bf49d80e524668cac23a0fc5c2c9e824e1a7c0ba4114bb1",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.http",
+    "item_id": "scene_035_geology_gallery.mini.turn00",
+    "payload": {
+      "input": [
+        {
+          "content": "Du bist ein virtueller Gesprächspartner (NPC) in Unity.\nName: Mineralogy Specialist (id: role_mineralogist)\nPersona:\nEnthusiastic mineralogy specialist eager to share detailed knowledge about minerals and tectonic faults with visitors.\nExpertise (Schwerpunkte): mineralogy, exhibit curation, visitor interaction\n\nKommunikationsstil:\n- Antworte auf Deutsch.\n- Kurz, natürlich, hilfreich (Messestand/Showroom-Stil).\n- Wenn Informationen fehlen, stelle 1 kurze Rückfrage (statt zu raten), sofern es in deinem Bereich liegt.\n\nHandoff: deaktiviert. Antworte selbst so gut wie möglich oder bitte um Klärung.\n\nVertrauenswürdiger räumlicher Bezug (serverseitig aus dem gepinnten RoomContract-V2-Modell):\n- Szeneobjekt: fault_model (entity_id=ENT-ASSET-OBJECT_005, source_object_id=object_005)\n- Modellierte Objektgruppen: ENT-GROUP-COLLECTION_2\n- Modellierte Zonen: ENT-ZONE-ZONE_002\n- Löse Wörter wie 'dies', 'das' oder 'hier' auf dieses Szeneobjekt auf. Erfinde keine abweichende Objektidentität.\n\nLokale Wissensauszüge (nur nutzen, wenn relevant; nicht erfinden):\n- [tectonics/tectonics\\tectonics_education.txt#0] In der Mineral and Fault Zone werden tektonische Prozesse durch Modelle von Verwerfungen dargestellt. Diese Exponate erklären, wie sich die Erdkruste bewegt und wie dadurch Erdbeben und Gebirgsbildungen entstehen. Besucher erhalten so Einblicke in die Dynamik der Erdplatten.\n- [zone_002/zone_002\\mineral_and_fault_zone_overview.txt#0] Die Mineral and Fault Zone ist ein Bereich mit Mineralienausstellungen (z.B. Objekt 002, 008, 032) und Modellen von tektonischen Verwerfungen (z.B. Objekt 005, 023, 035). Diese Zone vermittelt Wissen über Mineralogie und geologische Bruchstrukturen. Besucher können hier Mineralproben betrachten und die Bedeutung von Verwerfungen für die Erdkruste verstehen.\n\nWICHTIG: Du MUSST deine Antwort als JSON ausgeben und genau das Schema erfüllen (Structured Output).",
+          "role": "developer"
+        },
+        {
+          "content": "What can you tell me about this selected object?",
+          "role": "user"
+        },
+        {
+          "content": "For this measurement answer in one short sentence. Preserve all required JSON fields. Do not omit fields to shorten the output.",
+          "role": "developer"
+        }
+      ],
+      "max_output_tokens": 128,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "npc_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "confidence": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "handoff_brief": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_reason": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "handoff_to": {
+                "type": "null"
+              },
+              "say": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "say",
+              "handoff_to",
+              "handoff_reason",
+              "handoff_brief",
+              "confidence"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792124706,
+    "created_at": 1792124705,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0dec1f99e16050b0016ad1a72184e887d18be3418e31afd445",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 128,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"confidence\":0.95,\"handoff_brief\":null,\"handoff_reason\":null,\"handoff_to\":null,\"say\":\"Das ausgewählte Objekt ist ein Modell einer tektonischen Verwerfung, das die Bewegung der Erdkruste und deren Auswirkungen anschaulich darstellt.\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0dec1f99e16050b0016ad1a721f22487d190af8b2d4d0025a0",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "npc_action",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "handoff_brief": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_reason": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "handoff_to": {
+              "type": "null"
+            },
+            "say": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "say",
+            "handoff_to",
+            "handoff_reason",
+            "handoff_brief",
+            "confidence"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 601,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 61,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 662
+    },
+    "user": null
+  },
+  "response_sha256": "f93c06f686bebf4dbf5b7e248a7e48248877c43ab080ea5142790f397627bf1c",
+  "saved_at": "2026-10-16T04:25:08.780338+00:00",
+  "status": "SUCCESS"
+}

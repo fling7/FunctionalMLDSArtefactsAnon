@@ -1,0 +1,64 @@
+flowchart TB
+  %% The SVG/PNG files are the presentation-authoritative layout.
+  %% Compact metamodel for Dynamic Functional RDL (V2)
+  DFM["DynamicFunctionalModel «Context»\nrequirementsModel [1] · verificationValidation [1] · assertion [*]"]
+  subgraph A["A · EAST-ADL Requirements / UseCases"]
+    direction LR
+    RM["RequirementsModel"] -->|"requirement [*]"| REQ["Requirement\n/text [0..1] inherited"]
+    RM -->|"useCase [*]"| UC["UseCase\n/text [0..1] inherited"]
+    SAT["Satisfy\nXOR supplier roles\nsatisfiedBy excludes Requirement/Container"] -->|"satisfiedRequirement [*]"| REQ
+    SAT -->|"satisfiedUseCase [*]"| UC
+    ACT["Actor"] --- AP["ActorParticipation"] --> UC
+    UC -->|"extensionPoint [*]"| EP["ExtensionPoint\n/name [0..1] inherited"]
+    UC -->|"include [*]"| INC["Include"]
+    UC -->|"extend [*]"| EXT["Extend"]
+    EXT -->|"extensionLocation [1..*]"| EP
+    CE["ConditionalExtend"] -.->|"specializes"| EXT
+    CE -->|"condition [1]"| COND
+    UCS["UseCaseScenarioSpecification"] -->|"useCase [1]"| UC
+  end
+  subgraph B["B · Scenario Layer"]
+    direction LR
+    SC["Scenario"] -->|"step [1..*]"| SS["ScenarioStep"]
+    SC -->|"stepRelation [*]"| SR["StepRelation"]
+    SC -->|"parallelGroup [*]"| PG["ParallelGroup"]
+    SR -->|"sourceStep [1]"| SS
+    SR -->|"targetStep [1]"| SS
+    PG -->|"memberStep [2..*]"| SS
+    SS -->|"triggeredBy [*]"| SE["ScenarioEvent"]
+    SS -->|"guard [0..1]"| COND["ScenarioCondition"]
+    SS -->|"resultingAssertion [*]"| ASSERT["Assertion «abstract»\nsubject [1] · expression [1] · severity [0..1]"]
+    STATE["StateAssertion"] -.->|"specializes"| ASSERT
+    SS -->|"capabilityUse [*]"| CU["CapabilityUse"]
+    SR -->|"probability [0..1]"| PV["ProbabilityValue"]
+  end
+  subgraph C["C · Capability / Runtime Bridge"]
+    direction LR
+    AG["Agent"] -->|"providedCapability [*]"| CAP["Capability"]
+    ENT["Entity"] -->|"providedCapability [*]"| CAP
+    CU -->|"type [1]"| CAP
+    CU -->|"provider [0..1] core / [1] executable"| ENT
+    CU -->|"target [*]"| ID["Identifiable"]
+    CAP -->|"effect [1..*]"| EFF["Effect"]
+    EFF -->|"specifiedBy [1..*]"| ASSERT
+    RB["RuntimeBinding"] -->|"capability [1]"| CAP
+    RB -->|"runtimeAction [1..*] {ordered}"| RA["RuntimeAction"]
+    CBB["CapabilityBehaviorBinding"] -->|"capability [1]"| CAP
+    CBB -->|"functionBehavior [1]"| FB["FunctionBehavior"]
+  end
+  subgraph V["V&V · kompakter Nachweis"]
+    direction LR
+    VT["RuntimeValidationTarget <: VVTarget\nplatform [1] · runtimeBinding [*]"] <-->|"vvTarget [*]"| VC["ValidationCase <: VVCase\nvvSubject [*]"]
+    VC -->|"vvProcedure [*] {ordered}"| VP["RuntimeValidationProcedure <: VVProcedure"]
+    VP -->|"vvIntendedOutcome [*]"| VIO["VVIntendedOutcome"]
+    VC -->|"vvLog [*]"| VL["RuntimeValidationLog <: VVLog"] -->|"vvActualOutcome [*]"| VAO["RuntimeActualOutcome <: VVActualOutcome"]
+    VAO -->|"result [1..*]"| AR["AssertionResult\nverdict · observedValue · evidenceRef · timestamp"]
+    SAO["StateAssertionOutcome <: AssertionOutcome"] -->|"assertion [1..*]"| ASSERT
+    VCB["ValidationCaseUseCaseBinding"] -->|"validationCase [1]"| VC
+    VCB -->|"useCase [1]"| UC
+  end
+  DFM --> RM
+  DFM --> SC
+  DFM --> CAP
+  UCS -->|"scenario [1]"| SC
+  VAO -.->|"intendedOutcome [0..1]"| VIO

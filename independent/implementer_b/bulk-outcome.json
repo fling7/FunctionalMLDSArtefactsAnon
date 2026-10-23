@@ -1,0 +1,138 @@
+{
+  "status": "not_adopted",
+  "reason": "Full-example paired request timing regression; retained inherited compiled literal parsing failure.",
+  "scope": "Bounded engineering experiment only; not WP8 latency evidence.",
+  "timing_pairs": 48,
+  "timing_pairs_all_equal_to_original": true,
+  "timing_summary": {
+    "small": {
+      "pairs": 24,
+      "all_equal": true,
+      "backend_median_seconds": 0.01471125000534812,
+      "bulk_median_seconds": 0.015680250005971175,
+      "backend_total_seconds": 1.114865000010468,
+      "bulk_total_seconds": 1.017491999999038,
+      "backend_over_bulk_total_ratio": 1.09569903253443,
+      "backend_compile_seconds": 0.21664520000922494,
+      "bulk_compile_seconds": 0.07537219999358058
+    },
+    "full": {
+      "pairs": 24,
+      "all_equal": true,
+      "backend_median_seconds": 0.4130667999997968,
+      "bulk_median_seconds": 0.7739979999969364,
+      "backend_total_seconds": 10.205499200033955,
+      "bulk_total_seconds": 17.945175100001507,
+      "backend_over_bulk_total_ratio": 0.5687043532962294,
+      "backend_compile_seconds": 3.476439100006246,
+      "bulk_compile_seconds": 3.521208200007095
+    }
+  },
+  "literal_request_cases": 18,
+  "literal_equal_verdict_cases": 15,
+  "literal_constructor_failure_cases": 3,
+  "public_api_results": {
+    "original_evaluate": {
+      "status": "returned",
+      "value": {
+        "decision": "ANSWER_LOCAL",
+        "reason": null,
+        "provider": "a::line\nbreak\ttab\rcarriage",
+        "action": "RA::line\nbreak\ttab\rcarriage"
+      }
+    },
+    "backend": {
+      "exports_evaluate_compiled": false,
+      "compile_model_default": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      },
+      "compile_model_strict": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      },
+      "evaluate_many_default": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      }
+    },
+    "bulk": {
+      "exports_evaluate_compiled": false,
+      "compile_model_default": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      },
+      "compile_model_strict": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      },
+      "evaluate_many_default": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      }
+    }
+  },
+  "external_evaluate_compiled_wrapper": "outside isolation; not read or invoked; publisher audit separate",
+  "full_827_candidate_campaign": "NOT RUN: performance gate failed; root explicitly prohibited rerun",
+  "candidate_comprehensive_concurrency_snapshot_checks": "NOT RUN; no new validation claimed",
+  "processes": [
+    {
+      "script": "bulk_benchmark.py",
+      "exit_code": 0
+    },
+    {
+      "script": "bulk_literal_smoke.py",
+      "exit_code": 1
+    },
+    {
+      "script": "bulk_literal_diagnostics.py",
+      "exit_code": 0
+    },
+    {
+      "script": "bulk_public_api_probe.py",
+      "exit_code": 0
+    }
+  ],
+  "owned_jobs_remaining": 0,
+  "protected_files_unchanged": {
+    "COMPILED_API.md": true,
+    "OPTIMIZATION_WORKLOG.md": true,
+    "WORKLOG.md": true,
+    "admission.lp": true,
+    "ambiguities.md": true,
+    "compiled_policy.py": true,
+    "docs/AMENDMENT_A001.md": true,
+    "docs/AMENDMENT_A002.md": true,
+    "docs/AMENDMENT_A003.md": true,
+    "docs/SPEC.md": true,
+    "example.instance.json": true,
+    "example.trace.json": true,
+    "fixtures.json": true,
+    "instance.schema.json": true,
+    "optimization-equivalence.json": true,
+    "optimization-manifest.json": true,
+    "optimization-models.json": true,
+    "optimization-progress.jsonl": true,
+    "optimization-summary.json": true,
+    "optimization_selftest.py": true,
+    "policy_adapter.py": true,
+    "selftest.input.json": true,
+    "selftest.py": true,
+    "test-results.txt": true,
+    "test-summary.json": true
+  },
+  "reference_sha256": {
+    "policy_adapter.py": "cfa3af7ed9446eefb8b947b889f52d2841db73e3920a18133d37c57c7071dd12",
+    "admission.lp": "149e76e157415465f925af7063c1796ce682f4228a5adff4347cb7ff08888fea",
+    "compiled_policy.py": "80267eb5db84957488d84c95bf44324563345202a8d4edc8d8c5646b72041647",
+    "optimization_selftest.py": "bab53af55772982a9c850f44667f1328f9c8799fd4420acc410fa188ad02292d"
+  },
+  "candidate_sha256": "1128f63788e760fc896f37dac6b3a822befc87308c30d401518c255373fbd29c",
+  "remaining_action": "Root review of non-adoption record; preserve immutable sources and all evidence."
+}

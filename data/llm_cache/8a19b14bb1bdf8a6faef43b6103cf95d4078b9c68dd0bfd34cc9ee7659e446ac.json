@@ -1,0 +1,426 @@
+{
+  "cache_key": "8a19b14bb1bdf8a6faef43b6103cf95d4078b9c68dd0bfd34cc9ee7659e446ac",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.guided_initial",
+    "item_id": "guided_llm_v2_11_geology_gallery.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"guided_llm_v2_11_geology_gallery\",\"domain\":\"Geology Museum Exhibition\",\"room_purpose\":\"Educational geology gallery designed to showcase rock, mineral, and fossil specimens with interactive learning experiences.\",\"visitor_goals\":[\"Learn about different types of rocks and their formation\",\"Explore mineral and gemstone characteristics\",\"Understand fossil evidence and paleontology\",\"Interact with educational exhibits and simulations\",\"Engage with augmented reality and magnification tools\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":0.0,\"z\":-4.0},\"name\":\"Igneous, Sedimentary and Metamorphic Rock Zone\",\"object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"purpose\":\"Display and educate visitors about the three main rock types and their formation processes.\",\"visitor_goals_supported\":[\"Learn about rock types\",\"Understand geological processes\",\"Interact with sedimentary rock simulations\"],\"zone_id\":\"zone_igneous_sedimentary_metamorphic\"},{\"centroid_xz\":{\"x\":0.0,\"z\":0.0},\"name\":\"Minerals and Gemstones Zone\",\"object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"purpose\":\"Exhibit mineral specimens and gemstones, highlighting their properties and uses.\",\"visitor_goals_supported\":[\"Explore mineral properties\",\"Examine gemstones\",\"Use interactive light probes and magnetic tests\"],\"zone_id\":\"zone_minerals_gemstones\"},{\"centroid_xz\":{\"x\":0.0,\"z\":4.0},\"name\":\"Fossils and Paleontology Zone\",\"object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"purpose\":\"Showcase fossils and paleontological artifacts to teach about prehistoric life and excavation techniques.\",\"visitor_goals_supported\":[\"Study fossils\",\"Learn excavation methods\",\"Use augmented reality and microscopes\"],\"zone_id\":\"zone_fossils_paleontology\"}],\"interaction_topics\":[{\"description\":\"Understanding rock formation processes including igneous, sedimentary, and metamorphic rocks.\",\"related_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"title\":\"Rock Formation Processes\",\"topic_id\":\"topic_rock_formation\"},{\"description\":\"Exploration of mineral properties, crystal structures, and gemstone characteristics.\",\"related_object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"title\":\"Minerals and Gemstones\",\"topic_id\":\"topic_minerals_gemstones\"},{\"description\":\"Study of fossils, paleontological methods, and prehistoric life evidence.\",\"related_object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"title\":\"Fossils and Paleontology\",\"topic_id\":\"topic_fossils_paleontology\"}],\"agent_role_candidates\":[{\"display_name\":\"Geology Guide\",\"expertise\":[\"Geology\",\"Mineralogy\",\"Paleontology\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"mission\":\"Provide detailed explanations and answer visitor questions about rock types, minerals, and fossils in the gallery.\",\"responsible_zone_ids\":[\"zone_igneous_sedimentary_metamorphic\",\"zone_minerals_gemstones\",\"zone_fossils_paleontology\"],\"role_id\":\"role_geology_guide\"},{\"display_name\":\"Interactive Exhibit Facilitator\",\"expertise\":[\"Visitor Engagement\",\"Interactive Technology\",\"Education\"],\"grounded_object_ids\":[\"object_002\",\"object_006\",\"object_007\",\"object_008\",\"object_010\",\"object_013\",\"object_015\"],\"mission\":\"Assist visitors in using interactive panels and tools to explore geological processes and specimen properties.\",\"responsible_zone_ids\":[\"zone_igneous_sedimentary_metamorphic\",\"zone_minerals_gemstones\",\"zone_fossils_paleontology\"],\"role_id\":\"role_interactive_facilitator\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"Igneous Rock Sample\":1,\"Sedimentary Rock Display\":1,\"Metamorphic Rock Exhibit\":1,\"Volcanic Rock Sample\":1,\"Fossilized Wood\":1},\"centroid_xz\":{\"x\":0.0,\"z\":-4.0}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"Mineral Crystal Cluster\":1,\"Metallic Ore Sample\":1,\"Gemstone Exhibit\":1,\"Geode Display\":1,\"Clay Mineral Sample\":1},\"centroid_xz\":{\"x\":0.0,\"z\":0.0}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"Fossil Trilobite\":1,\"Dinosaur Bone Fragment\":1,\"Amber with Insect Inclusion\":1,\"Ice Age Mammoth Tusk\":1,\"Volcanic Ash Layer Core\":1},\"centroid_xz\":{\"x\":0.0,\"z\":4.0}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"Igneous Rock Sample\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-6.0,\"z\":-4.0},\"specification_excerpt\":\"A polished granite specimen illustrating intrusive igneous textures. Visitors can touch the sample to feel its coarse grain and learn about magma cooling pro...\"},{\"object_id\":\"object_002\",\"object_type\":\"Sedimentary Rock Display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-3.0,\"z\":-4.0},\"specification_excerpt\":\"A layered sandstone exhibit showing sediment deposition over time. Interactive panels allow visitors to simulate sediment layering and compaction.\"},{\"object_id\":\"object_003\",\"object_type\":\"Metamorphic Rock Exhibit\",\"group\":\"collection_1\",\"position_xz\":{\"x\":0.0,\"z\":-4.0},\"specification_excerpt\":\"A slab of schist demonstrating foliation patterns. Visitors can use magnifiers to examine mineral alignment and understand metamorphic processes.\"},{\"object_id\":\"object_004\",\"object_type\":\"Volcanic Rock Sample\",\"group\":\"collection_1\",\"position_xz\":{\"x\":3.0,\"z\":-4.0},\"specification_excerpt\":\"A piece of basalt with vesicular texture from a recent lava flow. Visitors can compare its density to other rocks and learn about volcanic activity.\"},{\"object_id\":\"object_005\",\"object_type\":\"Fossilized Wood\",\"group\":\"collection_1\",\"position_xz\":{\"x\":6.0,\"z\":-4.0},\"specification_excerpt\":\"A petrified wood sample showing cellular structure preservation. Visitors can examine cross-sections and explore fossilization processes.\"},{\"object_id\":\"object_006\",\"object_type\":\"Mineral Crystal Cluster\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-6.0,\"z\":0.0},\"specification_excerpt\":\"A vibrant quartz crystal cluster exhibiting natural facets. Visitors can use light probes to see how crystals refract light.\"},{\"object_id\":\"object_007\",\"object_type\":\"Metallic Ore Sample\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-3.0,\"z\":0.0},\"specification_excerpt\":\"A chunk of hematite ore with metallic luster. Visitors can test its magnetic properties and learn about ore extraction.\"},{\"object_id\":\"object_008\",\"object_type\":\"Gemstone Exhibit\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":0.0},\"specification_excerpt\":\"A collection of polished gemstones including sapphire and emerald. Visitors can examine clarity and color variations under magnification.\"},{\"object_id\":\"object_009\",\"object_type\":\"Geode Display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":3.0,\"z\":0.0},\"specification_excerpt\":\"A large geode cut open to reveal amethyst crystals inside. Visitors can touch the rough exterior and see the sparkling interior.\"},{\"object_id\":\"object_010\",\"object_type\":\"Clay Mineral Sample\",\"group\":\"collection_2\",\"position_xz\":{\"x\":6.0,\"z\":0.0},\"specification_excerpt\":\"A sample of kaolinite clay showing fine particle texture. Visitors can mold small shapes and learn about sedimentary mineral formation.\"},{\"object_id\":\"object_011\",\"object_type\":\"Fossil Trilobite\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-6.0,\"z\":4.0},\"specification_excerpt\":\"A detailed trilobite fossil embedded in shale. Visitors can explore its anatomy and evolutionary significance via augmented reality.\"},{\"object_id\":\"object_012\",\"object_type\":\"Dinosaur Bone Fragment\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-3.0,\"z\":4.0},\"specification_excerpt\":\"A fragment of a dinosaur femur fossil. Visitors can handle a replica and learn about paleontological excavation techniques.\"},{\"object_id\":\"object_013\",\"object_type\":\"Amber with Insect Inclusion\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":4.0},\"specification_excerpt\":\"A piece of amber containing a perfectly preserved prehistoric insect. Visitors can examine it under microscopes to see details.\"},{\"object_id\":\"object_014\",\"object_type\":\"Ice Age Mammoth Tusk\",\"group\":\"collection_3\",\"position_xz\":{\"x\":3.0,\"z\":4.0},\"specification_excerpt\":\"A section of mammoth tusk showing growth rings. Visitors can learn about Ice Age fauna and climate through interactive displays.\"},{\"object_id\":\"object_015\",\"object_type\":\"Volcanic Ash Layer Core\",\"group\":\"collection_3\",\"position_xz\":{\"x\":6.0,\"z\":4.0},\"specification_excerpt\":\"A core sample showing distinct volcanic ash layers. Visitors can simulate dating techniques to understand eruption timelines.\"}],\"allowed_zone_ids\":[\"zone_igneous_sedimentary_metamorphic\",\"zone_minerals_gemstones\",\"zone_fossils_paleontology\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_igneous_sedimentary_metamorphic",
+                          "zone_minerals_gemstones",
+                          "zone_fossils_paleontology"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0.mini",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792117733,
+    "created_at": 1792117725,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0cc02896f93d9519016ad18bddee6c87d18fd1c74876a6c696",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"agents\":[{\"display_name\":\"Rock Formation Specialist\",\"expertise\":[\"Geology\",\"Igneous Rocks\",\"Sedimentary Rocks\",\"Metamorphic Rocks\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"handoff_targets\":[\"agent_mineral_gemstone_expert\",\"agent_fossil_paleontology_expert\"],\"id\":\"agent_rock_formation_specialist\",\"knowledge_tags\":[\"rock_formation\",\"igneous_rocks\",\"sedimentary_rocks\",\"metamorphic_rocks\"],\"persona\":\"An enthusiastic geologist passionate about explaining rock types and their formation processes with clarity and engaging stories.\",\"responsible_zone_ids\":[\"zone_igneous_sedimentary_metamorphic\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"sage\",\"voice_gender\":\"maennlich\",\"voice_style\":\"informative_friendly\"},{\"display_name\":\"Mineral and Gemstone Expert\",\"expertise\":[\"Mineralogy\",\"Gemology\",\"Crystallography\"],\"grounded_object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"handoff_targets\":[\"agent_rock_formation_specialist\",\"agent_fossil_paleontology_expert\"],\"id\":\"agent_mineral_gemstone_expert\",\"knowledge_tags\":[\"minerals\",\"gemstones\",\"crystal_structures\"],\"persona\":\"A knowledgeable mineralogist who loves to share insights about mineral properties and gemstone beauty with interactive demonstrations.\",\"responsible_zone_ids\":[\"zone_minerals_gemstones\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"coral\",\"voice_gender\":\"weiblich\",\"voice_style\":\"enthusiastic_educator\"},{\"display_name\":\"Fossil and Paleontology Expert\",\"expertise\":[\"Paleontology\",\"Fossil Identification\",\"Excavation Techniques\"],\"grounded_object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"handoff_targets\":[\"agent_rock_formation_specialist\",\"agent_mineral_gemstone_expert\"],\"id\":\"agent_fossil_paleontology_expert\",\"knowledge_tags\":[\"fossils\",\"paleontology\",\"excavation_methods\"],\"persona\":\"A passionate paleontologist eager to guide visitors through prehistoric life and fossil excavation stories with vivid explanations.\",\"responsible_zone_ids\":[\"zone_fossils_paleontology\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"ballad\",\"voice_gender\":\"maennlich\",\"voice_style\":\"storytelling_warm\"},{\"display_name\":\"Interactive Exhibit Facilitator\",\"expertise\":[\"Visitor Engagement\",\"Interactive Technology\",\"Educational Support\"],\"grounded_object_ids\":[\"object_002\",\"object_006\",\"object_007\",\"object_008\",\"object_010\",\"object_013\",\"object_015\"],\"handoff_targets\":[\"agent_rock_formation_specialist\",\"agent_mineral_gemstone_expert\",\"agent_fossil_paleontology_expert\"],\"id\":\"agent_interactive_exhibit_facilitator\",\"knowledge_tags\":[\"interactive_exhibits\",\"visitor_support\",\"educational_technology\"],\"persona\":\"A friendly and patient guide who helps visitors use interactive panels, simulations, and tools to deepen their learning experience.\",\"responsible_zone_ids\":[\"zone_igneous_sedimentary_metamorphic\",\"zone_minerals_gemstones\",\"zone_fossils_paleontology\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"ash\",\"voice_gender\":\"weiblich\",\"voice_style\":\"supportive_clear\"}],\"handoffs\":[{\"condition\":\"Visitor asks detailed questions about mineral properties or gemstones while interacting with rock exhibits.\",\"reason\":\"Mineral and Gemstone Expert has deeper knowledge on mineralogy and gemology than Rock Formation Specialist.\",\"source_agent_id\":\"agent_rock_formation_specialist\",\"target_agent_id\":\"agent_mineral_gemstone_expert\"},{\"condition\":\"Visitor in Minerals and Gemstones Zone requests information about fossils or paleontology.\",\"reason\":\"Fossil and Paleontology Expert specializes in fossils and paleontological knowledge.\",\"source_agent_id\":\"agent_mineral_gemstone_expert\",\"target_agent_id\":\"agent_fossil_paleontology_expert\"},{\"condition\":\"Visitor needs help using interactive tools related to fossils or excavation simulations.\",\"reason\":\"Interactive Exhibit Facilitator supports visitors in using interactive technology across all zones.\",\"source_agent_id\":\"agent_fossil_paleontology_expert\",\"target_agent_id\":\"agent_interactive_exhibit_facilitator\"},{\"condition\":\"Visitor asks about rock formation processes while using interactive sedimentary rock simulations.\",\"reason\":\"Rock Formation Specialist provides expert knowledge on geological processes and rock formation.\",\"source_agent_id\":\"agent_interactive_exhibit_facilitator\",\"target_agent_id\":\"agent_rock_formation_specialist\"},{\"condition\":\"Visitor asks for help with interactive gemstone examination tools.\",\"reason\":\"Interactive Exhibit Facilitator assists visitors in using interactive panels and tools in Minerals and Gemstones Zone.\",\"source_agent_id\":\"agent_mineral_gemstone_expert\",\"target_agent_id\":\"agent_interactive_exhibit_facilitator\"},{\"condition\":\"Visitor expresses general questions spanning multiple zones or topics.\",\"reason\":\"Rock Formation Specialist covers broad geology topics and can direct to specialized experts as needed.\",\"source_agent_id\":\"agent_interactive_exhibit_facilitator\",\"target_agent_id\":\"agent_rock_formation_specialist\"}]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0cc02896f93d9519016ad18bde7b8487d1aba265a3fbd79eba",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_igneous_sedimentary_metamorphic",
+                        "zone_minerals_gemstones",
+                        "zone_fossils_paleontology"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2899,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1098,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3997
+    },
+    "user": null
+  },
+  "response_sha256": "5238375284c688f4748a6a07d88c70ca61b8e44be9d26788ce65cb56aab66137",
+  "saved_at": "2026-10-16T02:28:54.871657+00:00",
+  "status": "SUCCESS"
+}

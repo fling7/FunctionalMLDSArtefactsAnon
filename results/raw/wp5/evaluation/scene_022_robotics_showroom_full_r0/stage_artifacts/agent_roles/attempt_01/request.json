@@ -1,0 +1,177 @@
+{
+  "input": [
+    {
+      "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+      "role": "system"
+    },
+    {
+      "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"scene_022_robotics_showroom\",\"domain\":\"Robotik-Ausstellung / Showroom\",\"room_purpose\":\"Präsentation und Vermittlung von Wissen zu verschiedenen Aspekten der Robotik anhand von Exponaten und interaktiven Stationen.\",\"visitor_goals\":[\"Grundlagen und Funktionsweise von Robotiksystemen verstehen\",\"Unterschiedliche Robotikkomponenten vergleichen\",\"Interaktive Steuerung und Programmierung ausprobieren\",\"Technische Details zu Greifern, Sensoren, Gelenken und mobilen Robotern erfahren\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-0.7,\"z\":-0.7},\"name\":\"Greifer- und Sensorik-Zone\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\"],\"purpose\":\"Vermittlung von Grundlagen und technischen Details zu Greifern und Sensorik in der Robotik.\",\"visitor_goals_supported\":[\"Verstehen von Greifer- und Sensoriktechnologien\",\"Vergleich verschiedener Greiferarten\"],\"zone_id\":\"zone_1\"},{\"centroid_xz\":{\"x\":0.35,\"z\":-0.35},\"name\":\"Montage- und Gelenkzone\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\",\"object_017\",\"object_020\",\"object_023\"],\"purpose\":\"Demonstration von Montageprozessen und Gelenkmechanismen in Robotern.\",\"visitor_goals_supported\":[\"Verstehen von Robotermontage\",\"Erkennen von Gelenktypen\"],\"zone_id\":\"zone_2\"},{\"centroid_xz\":{\"x\":-0.35,\"z\":0.35},\"name\":\"Interaktive Steuerungszone\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"],\"purpose\":\"Ermöglicht Besuchern die Interaktion mit Steuerkonsolen und mobilen Robotermodellen.\",\"visitor_goals_supported\":[\"Selbstständiges Ausprobieren von Robotiksteuerungen\",\"Erleben mobiler Robotersysteme\"],\"zone_id\":\"zone_3\"}],\"interaction_topics\":[{\"description\":\"Funktionsweise und Unterschiede verschiedener Greifer und Sensoren im Robotik-Kontext.\",\"related_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\"],\"title\":\"Greifer- und Sensorik-Prinzipien\",\"topic_id\":\"topic_1\"},{\"description\":\"Aufbau und Steuerung von Robotiksystemen, inklusive Montage und Gelenkmodelle.\",\"related_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\",\"object_017\",\"object_020\",\"object_023\"],\"title\":\"Robotermontage und Gelenke\",\"topic_id\":\"topic_2\"},{\"description\":\"Interaktive Steuerung und Programmierung von Robotern, inklusive mobiler Robotermodelle.\",\"related_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"],\"title\":\"Robotiksteuerung und mobile Systeme\",\"topic_id\":\"topic_3\"}],\"agent_role_candidates\":[{\"display_name\":\"Showroom Guide\",\"expertise\":[\"Robotics fundamentals\",\"Exhibit explanations\",\"Visitor orientation\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\",\"object_016\",\"object_017\",\"object_018\",\"object_019\",\"object_020\",\"object_021\",\"object_022\",\"object_023\",\"object_024\"],\"mission\":\"Begrüßt Besucher, gibt einen Überblick über die Ausstellungsbereiche und erläutert die Bedeutung der verschiedenen Exponate.\",\"responsible_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"role_id\":\"showroom_guide\"},{\"display_name\":\"Technischer Experte\",\"expertise\":[\"Vertiefte technische Details\",\"Funktionsweise der Robotiksysteme\",\"Beantwortung von Fachfragen\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\"],\"mission\":\"Erklärt technische Hintergründe zu Greifern und Sensorik, demonstriert Funktionsprinzipien und beantwortet vertiefende Fragen.\",\"responsible_zone_ids\":[\"zone_1\"],\"role_id\":\"technical_expert\"},{\"display_name\":\"Interaktiver Demonstrator\",\"expertise\":[\"Praktische Vorführungen\",\"Interaktive Stationen\",\"Besucheraktivierung\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"],\"mission\":\"Führt interaktive Demonstrationen an den Steuerkonsolen und mobilen Robotermodellen durch, lädt Besucher zur aktiven Teilnahme ein.\",\"responsible_zone_ids\":[\"zone_3\"],\"role_id\":\"interactive_demonstrator\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":8,\"object_types\":{\"gripper_display\":4,\"sensor_station\":4},\"centroid_xz\":{\"x\":-0.7,\"z\":-0.7}},{\"group\":\"collection_2\",\"object_count\":8,\"object_types\":{\"assembly_display\":4,\"joint_model\":4},\"centroid_xz\":{\"x\":0.35,\"z\":-0.35}},{\"group\":\"collection_3\",\"object_count\":8,\"object_types\":{\"control_console\":4,\"mobile_robot_model\":4},\"centroid_xz\":{\"x\":-0.35,\"z\":0.35}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"gripper_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-5.6,\"z\":-5.6},\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_002\",\"object_type\":\"assembly_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-2.8,\"z\":-5.6},\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_003\",\"object_type\":\"control_console\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":-5.6},\"specification_excerpt\":\"Synthetic robotics showroom object: control console. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_004\",\"object_type\":\"sensor_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":2.8,\"z\":-5.6},\"specification_excerpt\":\"Synthetic robotics showroom object: sensor station. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_005\",\"object_type\":\"joint_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":5.6,\"z\":-5.6},\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_006\",\"object_type\":\"mobile_robot_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-5.6,\"z\":-2.8},\"specification_excerpt\":\"Synthetic robotics showroom object: mobile robot model. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clea...\"},{\"object_id\":\"object_007\",\"object_type\":\"gripper_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-2.8,\"z\":-2.8},\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_008\",\"object_type\":\"assembly_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":-2.8},\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_009\",\"object_type\":\"control_console\",\"group\":\"collection_3\",\"position_xz\":{\"x\":2.8,\"z\":-2.8},\"specification_excerpt\":\"Synthetic robotics showroom object: control console. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_010\",\"object_type\":\"sensor_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":5.6,\"z\":-2.8},\"specification_excerpt\":\"Synthetic robotics showroom object: sensor station. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_011\",\"object_type\":\"joint_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-5.6,\"z\":0.0},\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_012\",\"object_type\":\"mobile_robot_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-2.8,\"z\":0.0},\"specification_excerpt\":\"Synthetic robotics showroom object: mobile robot model. Display 12 explains a distinct example in collection 3. A freestanding educational display with a cle...\"},{\"object_id\":\"object_013\",\"object_type\":\"gripper_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":0.0,\"z\":0.0},\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_014\",\"object_type\":\"assembly_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":2.8,\"z\":0.0},\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clear...\"},{\"object_id\":\"object_015\",\"object_type\":\"control_console\",\"group\":\"collection_3\",\"position_xz\":{\"x\":5.6,\"z\":0.0},\"specification_excerpt\":\"Synthetic robotics showroom object: control console. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_016\",\"object_type\":\"sensor_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-5.6,\"z\":2.8},\"specification_excerpt\":\"Synthetic robotics showroom object: sensor station. Display 16 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_017\",\"object_type\":\"joint_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-2.8,\"z\":2.8},\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 17 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_018\",\"object_type\":\"mobile_robot_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":2.8},\"specification_excerpt\":\"Synthetic robotics showroom object: mobile robot model. Display 18 explains a distinct example in collection 3. A freestanding educational display with a cle...\"},{\"object_id\":\"object_019\",\"object_type\":\"gripper_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":2.8,\"z\":2.8},\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 19 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_020\",\"object_type\":\"assembly_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":5.6,\"z\":2.8},\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 20 explains a distinct example in collection 2. A freestanding educational display with a clear...\"},{\"object_id\":\"object_021\",\"object_type\":\"control_console\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-5.6,\"z\":5.6},\"specification_excerpt\":\"Synthetic robotics showroom object: control console. Display 21 explains a distinct example in collection 3. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_022\",\"object_type\":\"sensor_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-2.8,\"z\":5.6},\"specification_excerpt\":\"Synthetic robotics showroom object: sensor station. Display 22 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_023\",\"object_type\":\"joint_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":5.6},\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 23 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_024\",\"object_type\":\"mobile_robot_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":2.8,\"z\":5.6},\"specification_excerpt\":\"Synthetic robotics showroom object: mobile robot model. Display 24 explains a distinct example in collection 3. A freestanding educational display with a cle...\"}],\"allowed_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\",\"object_016\",\"object_017\",\"object_018\",\"object_019\",\"object_020\",\"object_021\",\"object_022\",\"object_023\",\"object_024\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+      "role": "user"
+    }
+  ],
+  "max_output_tokens": 2200,
+  "model": "gpt-4.1-2025-04-14",
+  "temperature": 0.3,
+  "text": {
+    "format": {
+      "name": "agent_roles",
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "agents": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "display_name": {
+                  "type": "string"
+                },
+                "expertise": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "grounded_object_ids": {
+                  "items": {
+                    "enum": [
+                      "object_001",
+                      "object_002",
+                      "object_003",
+                      "object_004",
+                      "object_005",
+                      "object_006",
+                      "object_007",
+                      "object_008",
+                      "object_009",
+                      "object_010",
+                      "object_011",
+                      "object_012",
+                      "object_013",
+                      "object_014",
+                      "object_015",
+                      "object_016",
+                      "object_017",
+                      "object_018",
+                      "object_019",
+                      "object_020",
+                      "object_021",
+                      "object_022",
+                      "object_023",
+                      "object_024"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "handoff_targets": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "knowledge_tags": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "persona": {
+                  "type": "string"
+                },
+                "responsible_zone_ids": {
+                  "items": {
+                    "enum": [
+                      "zone_1",
+                      "zone_2",
+                      "zone_3"
+                    ],
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "tts_model": {
+                  "type": "string"
+                },
+                "voice": {
+                  "enum": [
+                    "alloy",
+                    "ash",
+                    "ballad",
+                    "coral",
+                    "echo",
+                    "fable",
+                    "nova",
+                    "onyx",
+                    "sage",
+                    "shimmer",
+                    "verse"
+                  ],
+                  "type": "string"
+                },
+                "voice_gender": {
+                  "type": "string"
+                },
+                "voice_style": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "display_name",
+                "persona",
+                "expertise",
+                "knowledge_tags",
+                "responsible_zone_ids",
+                "grounded_object_ids",
+                "handoff_targets",
+                "voice",
+                "voice_gender",
+                "voice_style",
+                "tts_model"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "handoffs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "condition": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "source_agent_id": {
+                  "type": "string"
+                },
+                "target_agent_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source_agent_id",
+                "target_agent_id",
+                "condition",
+                "reason"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "agents",
+          "handoffs"
+        ],
+        "type": "object"
+      },
+      "strict": true,
+      "type": "json_schema"
+    }
+  }
+}

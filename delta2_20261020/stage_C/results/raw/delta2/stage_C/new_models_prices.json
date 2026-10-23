@@ -1,0 +1,60 @@
+{
+  "retrieved_on": "2026-10-20",
+  "currency": "USD",
+  "basis": "Existing standard old-model rates preserved. New model input accounting conservatively uses maximum short-context cache-write rate (1.25x uncached) for every input token because immutable gateway does not distinguish cache writes. Output standard rates. Ledger cost is a conservative accounted upper bound, not a provider invoice.",
+  "sources": [
+    "https://developers.openai.com/api/docs/models/gpt-4.1-mini",
+    "https://developers.openai.com/api/docs/models/gpt-4.1",
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/docs/models/gpt-6-astra",
+    "https://developers.openai.com/api/docs/models/gpt-6-luna",
+    "https://developers.openai.com/api/docs/guides/latest-model"
+  ],
+  "models": {
+    "gpt-4.1-mini": {
+      "input_per_million": "0.40",
+      "output_per_million": "1.60",
+      "context_window": 1047576,
+      "max_output_tokens": 32768
+    },
+    "gpt-4.1-mini-2025-04-14": {
+      "input_per_million": "0.40",
+      "output_per_million": "1.60",
+      "context_window": 1047576,
+      "max_output_tokens": 32768
+    },
+    "gpt-4.1": {
+      "input_per_million": "2.00",
+      "output_per_million": "8.00",
+      "context_window": 1047576,
+      "max_output_tokens": 32768
+    },
+    "gpt-4.1-2025-04-14": {
+      "input_per_million": "2.00",
+      "output_per_million": "8.00",
+      "context_window": 1047576,
+      "max_output_tokens": 32768
+    },
+    "gpt-6-astra": {
+      "input_per_million": "12.50",
+      "output_per_million": "50.00",
+      "context_window": 1050000,
+      "max_output_tokens": 128000
+    },
+    "gpt-6-luna": {
+      "input_per_million": "0.125",
+      "output_per_million": "0.50",
+      "context_window": 1050000,
+      "max_output_tokens": 128000
+    }
+  },
+  "selection": {
+    "flagship": "gpt-6-astra",
+    "small": "gpt-6-luna",
+    "access": "Both returned by gateway /models on 2026-10-20. No corresponding dated snapshots returned or documented.",
+    "new_model_max_output_tokens": 2048,
+    "default_temperature": true,
+    "default_reasoning": true,
+    "scope": "Input ceiling 10000 keeps all requests below long-context surcharge threshold. No tools. Equal frozen 2048 output cap across all new-model arms. Reasoning shares this cap; incomplete outputs are reported, never silently retried."
+  }
+}

@@ -1,0 +1,753 @@
+{
+  "schema": "roomcontract_trace_map",
+  "case_id": "classroom_dinosaur",
+  "roomcontract_path": "roomcontract.v05.instance.json",
+  "project_files": {
+    "project": "project.json",
+    "room_plan": "room_plan.json",
+    "agents": "agents.json",
+    "kb_root": "kb"
+  },
+  "use_case_id": "UC-CLASSROOM_DINOSAUR-01",
+  "main_scenario_id": "SC-CLASSROOM_DINOSAUR-MAIN",
+  "scenario_steps": [
+    {
+      "scenario_step_id": "STEP-CLASSROOM_DINOSAUR-S01",
+      "step_number": 1,
+      "capability_use_ids": [],
+      "resulting_state_ids": []
+    },
+    {
+      "scenario_step_id": "STEP-CLASSROOM_DINOSAUR-S02",
+      "step_number": 2,
+      "capability_use_ids": [
+        "CU-CLASSROOM_DINOSAUR-S02-ANALYZE-RDL-SCENE"
+      ],
+      "resulting_state_ids": [
+        "SA-CLASSROOM_DINOSAUR-NORMALIZED-SCENE-VALID"
+      ]
+    },
+    {
+      "scenario_step_id": "STEP-CLASSROOM_DINOSAUR-S03",
+      "step_number": 3,
+      "capability_use_ids": [
+        "CU-CLASSROOM_DINOSAUR-S03-ANALYZE-RDL-SCENE"
+      ],
+      "resulting_state_ids": [
+        "SA-CLASSROOM_DINOSAUR-SCENE-SEMANTICS-VALID"
+      ]
+    },
+    {
+      "scenario_step_id": "STEP-CLASSROOM_DINOSAUR-S04",
+      "step_number": 4,
+      "capability_use_ids": [
+        "CU-CLASSROOM_DINOSAUR-S04-DERIVE-SPATIAL-AGENT-ROLES"
+      ],
+      "resulting_state_ids": [
+        "SA-CLASSROOM_DINOSAUR-AGENT-ROLES-VALID"
+      ]
+    },
+    {
+      "scenario_step_id": "STEP-CLASSROOM_DINOSAUR-S05",
+      "step_number": 5,
+      "capability_use_ids": [
+        "CU-CLASSROOM_DINOSAUR-S05-GENERATE-ROOM-KNOWLEDGE"
+      ],
+      "resulting_state_ids": [
+        "SA-CLASSROOM_DINOSAUR-KNOWLEDGE-VALID"
+      ]
+    },
+    {
+      "scenario_step_id": "STEP-CLASSROOM_DINOSAUR-S06",
+      "step_number": 6,
+      "capability_use_ids": [
+        "CU-CLASSROOM_DINOSAUR-S06-PLACE-AGENTS-IN-SCENE"
+      ],
+      "resulting_state_ids": [
+        "SA-CLASSROOM_DINOSAUR-PLACEMENT-VALID"
+      ]
+    },
+    {
+      "scenario_step_id": "STEP-CLASSROOM_DINOSAUR-S07",
+      "step_number": 7,
+      "capability_use_ids": [
+        "CU-CLASSROOM_DINOSAUR-S07-ASSEMBLE-FUNCTIONAL-RDL"
+      ],
+      "resulting_state_ids": [
+        "SA-CLASSROOM_DINOSAUR-ROOMCONTRACT-VALID"
+      ]
+    },
+    {
+      "scenario_step_id": "STEP-CLASSROOM_DINOSAUR-S08",
+      "step_number": 8,
+      "capability_use_ids": [
+        "CU-CLASSROOM_DINOSAUR-S08-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+      ],
+      "resulting_state_ids": [
+        "SA-CLASSROOM_DINOSAUR-PROJECT-MATERIALIZED"
+      ]
+    },
+    {
+      "scenario_step_id": "STEP-CLASSROOM_DINOSAUR-S09",
+      "step_number": 9,
+      "capability_use_ids": [
+        "CU-CLASSROOM_DINOSAUR-S09-SETUP-INTERACTIVE-SESSION"
+      ],
+      "resulting_state_ids": [
+        "SA-CLASSROOM_DINOSAUR-SETUP-VALID"
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-ANALYZE-RDL-SCENE",
+      "effect_ids": [
+        "EFF-CLASSROOM_DINOSAUR-ANALYZE-RDL-SCENE-01",
+        "EFF-CLASSROOM_DINOSAUR-ANALYZE-RDL-SCENE-02"
+      ]
+    },
+    {
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-DERIVE-SPATIAL-AGENT-ROLES",
+      "effect_ids": [
+        "EFF-CLASSROOM_DINOSAUR-DERIVE-SPATIAL-AGENT-ROLES-01"
+      ]
+    },
+    {
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-GENERATE-ROOM-KNOWLEDGE",
+      "effect_ids": [
+        "EFF-CLASSROOM_DINOSAUR-GENERATE-ROOM-KNOWLEDGE-01"
+      ]
+    },
+    {
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-PLACE-AGENTS-IN-SCENE",
+      "effect_ids": [
+        "EFF-CLASSROOM_DINOSAUR-PLACE-AGENTS-IN-SCENE-01"
+      ]
+    },
+    {
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-ASSEMBLE-FUNCTIONAL-RDL",
+      "effect_ids": [
+        "EFF-CLASSROOM_DINOSAUR-ASSEMBLE-FUNCTIONAL-RDL-01"
+      ]
+    },
+    {
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "effect_ids": [
+        "EFF-CLASSROOM_DINOSAUR-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT-01"
+      ]
+    },
+    {
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-SETUP-INTERACTIVE-SESSION",
+      "effect_ids": [
+        "EFF-CLASSROOM_DINOSAUR-SETUP-INTERACTIVE-SESSION-01"
+      ]
+    },
+    {
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+      "effect_ids": [
+        "EFF-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION-01"
+      ]
+    },
+    {
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "effect_ids": [
+        "EFF-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT-01"
+      ]
+    }
+  ],
+  "runtime_actions": [
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-ANALYZE-RDL-SCENE",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-ANALYZE-RDL-SCENE",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-RUN-RDL-INGESTION",
+      "endpoint": null,
+      "tool": "tools.case_study_pipeline.rdl_ingestion.run_ingestion_for_case",
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-ANALYZE-RDL-SCENE",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-ANALYZE-RDL-SCENE",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-RUN-SCENE-SEMANTICS",
+      "endpoint": null,
+      "tool": "tools.case_study_pipeline.scene_semantics.run_scene_semantics_for_case",
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-ANALYZE-RDL-SCENE",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-ANALYZE-RDL-SCENE",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-ARROW-ANALYZE",
+      "endpoint": "POST /projects/arrow/analyze",
+      "tool": null,
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-DERIVE-SPATIAL-AGENT-ROLES",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-DERIVE-SPATIAL-AGENT-ROLES",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-RUN-AGENT-ROLES",
+      "endpoint": null,
+      "tool": "tools.case_study_pipeline.agent_roles.run_agent_roles_for_case",
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-GENERATE-ROOM-KNOWLEDGE",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-GENERATE-ROOM-KNOWLEDGE",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-RUN-KNOWLEDGE-SYNTHESIS",
+      "endpoint": null,
+      "tool": "tools.case_study_pipeline.knowledge_synthesis.run_knowledge_synthesis_for_case",
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-PLACE-AGENTS-IN-SCENE",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-PLACE-AGENTS-IN-SCENE",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-RUN-AGENT-PLACEMENT",
+      "endpoint": null,
+      "tool": "tools.case_study_pipeline.agent_placement.run_agent_placement_for_case",
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-ASSEMBLE-FUNCTIONAL-RDL",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-ASSEMBLE-FUNCTIONAL-RDL",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-RUN-ROOMCONTRACT-ASSEMBLER",
+      "endpoint": null,
+      "tool": "tools.case_study_pipeline.roomcontract_assembler.run_roomcontract_assembly_for_case",
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-ARROW-COMMIT",
+      "endpoint": "POST /projects/arrow/commit",
+      "tool": null,
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-WRITE-PROJECT-FILES",
+      "endpoint": null,
+      "tool": "tools.case_study_pipeline.project_materializer.run_project_materializer_for_case",
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-SETUP-INTERACTIVE-SESSION",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-SETUP-INTERACTIVE-SESSION",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-BACKEND-SETUP",
+      "endpoint": "POST /setup",
+      "tool": null,
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT",
+      "endpoint": "POST /chat",
+      "tool": null,
+      "topic": null
+    },
+    {
+      "runtime_binding_id": "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "capability_id": "CAP-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT",
+      "runtime_action_id": "RA-CLASSROOM_DINOSAUR-BACKEND-CHAT-HANDOFF",
+      "endpoint": "POST /chat",
+      "tool": null,
+      "topic": null
+    }
+  ],
+  "validation_cases": [
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-RDL-INGESTION",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANALYZE-RDL-SCENE"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-NORMALIZED-SCENE-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-MODEL-INVARIANTS",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ASSEMBLE-FUNCTIONAL-RDL"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ROOMCONTRACT-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-PROJECT-MATERIALIZATION",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-MATERIALIZE-INTERACTIVE-AGENTS-PROJECT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-PROJECT-MATERIALIZED"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-SETUP",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-SETUP-INTERACTIVE-SESSION"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-SETUP-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-CHAT-GROUNDING",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-HANDOFF",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-TEACHER_DESK",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK1",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK2",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK3",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK4",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK5",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK6",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK7",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK8",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK9",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK10",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK11",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK12",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK13",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK14",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK15",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK16",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK17",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK18",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK19",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-STUDENT_DESK20",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-BOOKCASE",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-READING_TABLE",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG1",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG2",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG3",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-BEANBAG4",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-DINOSAUR_SKELETON",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT1",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT2",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT3",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT4",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-PLANT5",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-PICTURE1",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    },
+    {
+      "validation_case_id": "VC-CLASSROOM_DINOSAUR-INTERACT-PICTURE2",
+      "runtime_binding_ids": [
+        "RB-CLASSROOM_DINOSAUR-ANSWER-ROOM-GROUNDED-QUESTION",
+        "RB-CLASSROOM_DINOSAUR-HANDOFF-TO-RESPONSIBLE-AGENT"
+      ],
+      "expected_outcome_ids": [
+        "SA-CLASSROOM_DINOSAUR-ANSWER-GROUNDED",
+        "SA-CLASSROOM_DINOSAUR-HANDOFF-VALID"
+      ]
+    }
+  ],
+  "agents": [
+    {
+      "agent_id": "teacher_agent",
+      "roomcontract_agent_id": "AG-CLASSROOM_DINOSAUR-TEACHER_AGENT",
+      "entity_id": "ENT-AGENT-TEACHER_AGENT",
+      "plays_actor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "knowledge_tags": [
+        "instruction_zone",
+        "chalkboard_usage",
+        "student_seating_arrangement"
+      ]
+    },
+    {
+      "agent_id": "reading_area_guide",
+      "roomcontract_agent_id": "AG-CLASSROOM_DINOSAUR-READING_AREA_GUIDE",
+      "entity_id": "ENT-AGENT-READING_AREA_GUIDE",
+      "plays_actor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "knowledge_tags": [
+        "reading_area",
+        "reading_area_usage"
+      ]
+    },
+    {
+      "agent_id": "exhibit_interpreter",
+      "roomcontract_agent_id": "AG-CLASSROOM_DINOSAUR-EXHIBIT_INTERPRETER",
+      "entity_id": "ENT-AGENT-EXHIBIT_INTERPRETER",
+      "plays_actor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "knowledge_tags": [
+        "dinosaur_display_zone",
+        "dinosaur_education"
+      ]
+    },
+    {
+      "agent_id": "decorative_zone_ambassador",
+      "roomcontract_agent_id": "AG-CLASSROOM_DINOSAUR-DECORATIVE_ZONE_AMBASSADOR",
+      "entity_id": "ENT-AGENT-DECORATIVE_ZONE_AMBASSADOR",
+      "plays_actor": [
+        "ACT-ROOM-GUIDE"
+      ],
+      "knowledge_tags": [
+        "decorative_zone"
+      ]
+    }
+  ],
+  "placement_schema": "roomcontract_agent_placements",
+  "placement_schema_version": "2.0",
+  "placement_algorithm_version": "2.0.0",
+  "placement_origin": "deterministic",
+  "placement_artifact_sha256": "912a1402c31dab88fa598c62422595c6e073993d9b2af3d3e629f039dfa48367",
+  "placement_projection_sha256": "171957335bd83fd1db6e5116e69c81b8153266627d226a0621b73616b6101a49"
+}

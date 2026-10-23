@@ -1,0 +1,444 @@
+{
+  "cache_key": "aefd477cc150db34794cfa958049e1aad82166996a398c3d7460870e159e1c5b",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.completion_v1",
+    "item_id": "scene_021_ocean_discovery.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"scene_021_ocean_discovery\",\"domain\":\"Wissenschaftliche Ausstellung (Meereskunde, Ozeanforschung)\",\"room_purpose\":\"Vermittlung von Wissen über Ozeane, deren Bewohner, ökologische Zusammenhänge und Forschungstechnologien in einer musealen Ausstellung.\",\"visitor_goals\":[\"Grundlagen des Ozeanlebens verstehen\",\"Zusammenhänge zwischen Ozean, Klima und Mensch erkennen\",\"Technische Innovationen und Forschung entdecken\",\"Interaktive und anschauliche Lernerfahrungen sammeln\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-0.7,\"z\":-0.7},\"name\":\"Zone Plankton & Tiefe\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\"],\"purpose\":\"Fokus auf Plankton, Nahrungsketten und Tiefseephänomene.\",\"visitor_goals_supported\":[\"Verstehen der Basis des Ozeanlebens\",\"Erkunden von Tiefseephänomenen\"],\"zone_id\":\"zone_1\"},{\"centroid_xz\":{\"x\":0.35,\"z\":-0.35},\"name\":\"Zone Korallen & Strömungen\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\",\"object_017\",\"object_020\",\"object_023\"],\"purpose\":\"Korallenriffe, Biodiversität und globale Meeresströmungen.\",\"visitor_goals_supported\":[\"Verstehen von Lebensräumen und Biodiversität\",\"Zusammenhänge zwischen Ozean und Klima erkennen\"],\"zone_id\":\"zone_2\"},{\"centroid_xz\":{\"x\":-0.35,\"z\":0.35},\"name\":\"Zone Technik & Forschung\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\",\"object_018\",\"object_021\",\"object_024\"],\"purpose\":\"Technische Modelle, Forschungsexpeditionen und Muschelausstellungen.\",\"visitor_goals_supported\":[\"Technik und Methoden der Ozeanforschung kennenlernen\",\"Faszination für Entdeckungen und Forschung wecken\"],\"zone_id\":\"zone_3\"}],\"interaction_topics\":[{\"description\":\"Wie Plankton das Leben im Ozean beeinflusst und warum es für das Ökosystem wichtig ist.\",\"related_object_ids\":[\"object_001\",\"object_007\",\"object_013\",\"object_019\"],\"title\":\"Plankton und Nahrungsketten\",\"topic_id\":\"topic_1\"},{\"description\":\"Die Rolle von Korallenriffen als Lebensraum und ihre Bedrohung durch Umweltveränderungen.\",\"related_object_ids\":[\"object_002\",\"object_008\",\"object_014\",\"object_020\"],\"title\":\"Korallenriffe und Biodiversität\",\"topic_id\":\"topic_2\"},{\"description\":\"Technik und Bedeutung von Forschungstauchern und Submersibles für die Ozeanforschung.\",\"related_object_ids\":[\"object_006\",\"object_012\",\"object_018\",\"object_024\"],\"title\":\"Ozeantechnik und Forschung\",\"topic_id\":\"topic_3\"},{\"description\":\"Wie Meeresströmungen das Klima beeinflussen und wie sie gemessen werden.\",\"related_object_ids\":[\"object_005\",\"object_011\",\"object_017\",\"object_023\"],\"title\":\"Meeresströmungen und Klima\",\"topic_id\":\"topic_4\"}],\"agent_role_candidates\":[{\"display_name\":\"Ozean-Entdeckungs-Guide\",\"expertise\":[\"Meeresbiologie\",\"Didaktik\",\"Besucherführung\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\",\"object_016\",\"object_017\",\"object_018\",\"object_019\",\"object_020\",\"object_021\",\"object_022\",\"object_023\",\"object_024\"],\"mission\":\"Vermittlung von Wissen über Ozeanleben, Zusammenhänge und Technik anhand der Ausstellungsobjekte. Unterstützung bei der Navigation und Beantwortung von Fragen.\",\"responsible_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"role_id\":\"guide\"},{\"display_name\":\"Interaktiver Lernassistent\",\"expertise\":[\"Interaktive Erklärungen\",\"Quiz und Wissensspiele\",\"Kinder- und Jugendbildung\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\",\"object_016\",\"object_019\",\"object_022\"],\"mission\":\"Förderung der aktiven Auseinandersetzung mit den Exponaten, Durchführung von Lernspielen und interaktiven Aufgaben an ausgewählten Stationen.\",\"responsible_zone_ids\":[\"zone_1\"],\"role_id\":\"learning_assistant\"},{\"display_name\":\"Technik- und Forschungs-Experte\",\"expertise\":[\"Ozeantechnik\",\"Forschungsexpeditionen\",\"Submersible\"],\"grounded_object_ids\":[\"object_006\",\"object_012\",\"object_018\",\"object_024\"],\"mission\":\"Erklärt technische Aspekte und Funktionsweisen der Submersible-Modelle und deren Bedeutung für die Ozeanforschung.\",\"responsible_zone_ids\":[\"zone_3\"],\"role_id\":\"tech_expert\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":8,\"object_types\":{\"plankton_display\":4,\"depth_station\":4},\"centroid_xz\":{\"x\":-0.7,\"z\":-0.7}},{\"group\":\"collection_2\",\"object_count\":8,\"object_types\":{\"coral_model\":4,\"current_diagram\":4},\"centroid_xz\":{\"x\":0.35,\"z\":-0.35}},{\"group\":\"collection_3\",\"object_count\":8,\"object_types\":{\"shell_case\":4,\"submersible_model\":4},\"centroid_xz\":{\"x\":-0.35,\"z\":0.35}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"plankton_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-5.6,\"z\":-5.6},\"specification_excerpt\":\"Synthetic ocean discovery object: plankton display. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_002\",\"object_type\":\"coral_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-2.8,\"z\":-5.6},\"specification_excerpt\":\"Synthetic ocean discovery object: coral model. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_003\",\"object_type\":\"shell_case\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":-5.6},\"specification_excerpt\":\"Synthetic ocean discovery object: shell case. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_004\",\"object_type\":\"depth_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":2.8,\"z\":-5.6},\"specification_excerpt\":\"Synthetic ocean discovery object: depth station. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_005\",\"object_type\":\"current_diagram\",\"group\":\"collection_2\",\"position_xz\":{\"x\":5.6,\"z\":-5.6},\"specification_excerpt\":\"Synthetic ocean discovery object: current diagram. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_006\",\"object_type\":\"submersible_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-5.6,\"z\":-2.8},\"specification_excerpt\":\"Synthetic ocean discovery object: submersible model. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_007\",\"object_type\":\"plankton_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-2.8,\"z\":-2.8},\"specification_excerpt\":\"Synthetic ocean discovery object: plankton display. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_008\",\"object_type\":\"coral_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":-2.8},\"specification_excerpt\":\"Synthetic ocean discovery object: coral model. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_009\",\"object_type\":\"shell_case\",\"group\":\"collection_3\",\"position_xz\":{\"x\":2.8,\"z\":-2.8},\"specification_excerpt\":\"Synthetic ocean discovery object: shell case. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_010\",\"object_type\":\"depth_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":5.6,\"z\":-2.8},\"specification_excerpt\":\"Synthetic ocean discovery object: depth station. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_011\",\"object_type\":\"current_diagram\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-5.6,\"z\":0.0},\"specification_excerpt\":\"Synthetic ocean discovery object: current diagram. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_012\",\"object_type\":\"submersible_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-2.8,\"z\":0.0},\"specification_excerpt\":\"Synthetic ocean discovery object: submersible model. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_013\",\"object_type\":\"plankton_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":0.0,\"z\":0.0},\"specification_excerpt\":\"Synthetic ocean discovery object: plankton display. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_014\",\"object_type\":\"coral_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":2.8,\"z\":0.0},\"specification_excerpt\":\"Synthetic ocean discovery object: coral model. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_015\",\"object_type\":\"shell_case\",\"group\":\"collection_3\",\"position_xz\":{\"x\":5.6,\"z\":0.0},\"specification_excerpt\":\"Synthetic ocean discovery object: shell case. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_016\",\"object_type\":\"depth_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-5.6,\"z\":2.8},\"specification_excerpt\":\"Synthetic ocean discovery object: depth station. Display 16 explains a distinct example in collection 1. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_017\",\"object_type\":\"current_diagram\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-2.8,\"z\":2.8},\"specification_excerpt\":\"Synthetic ocean discovery object: current diagram. Display 17 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_018\",\"object_type\":\"submersible_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":2.8},\"specification_excerpt\":\"Synthetic ocean discovery object: submersible model. Display 18 explains a distinct example in collection 3. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_019\",\"object_type\":\"plankton_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":2.8,\"z\":2.8},\"specification_excerpt\":\"Synthetic ocean discovery object: plankton display. Display 19 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_020\",\"object_type\":\"coral_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":5.6,\"z\":2.8},\"specification_excerpt\":\"Synthetic ocean discovery object: coral model. Display 20 explains a distinct example in collection 2. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_021\",\"object_type\":\"shell_case\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-5.6,\"z\":5.6},\"specification_excerpt\":\"Synthetic ocean discovery object: shell case. Display 21 explains a distinct example in collection 3. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_022\",\"object_type\":\"depth_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-2.8,\"z\":5.6},\"specification_excerpt\":\"Synthetic ocean discovery object: depth station. Display 22 explains a distinct example in collection 1. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_023\",\"object_type\":\"current_diagram\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":5.6},\"specification_excerpt\":\"Synthetic ocean discovery object: current diagram. Display 23 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_024\",\"object_type\":\"submersible_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":2.8,\"z\":5.6},\"specification_excerpt\":\"Synthetic ocean discovery object: submersible model. Display 24 explains a distinct example in collection 3. A freestanding educational display with a clearl...\"}],\"allowed_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\",\"object_016\",\"object_017\",\"object_018\",\"object_019\",\"object_020\",\"object_021\",\"object_022\",\"object_023\",\"object_024\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015",
+                          "object_016",
+                          "object_017",
+                          "object_018",
+                          "object_019",
+                          "object_020",
+                          "object_021",
+                          "object_022",
+                          "object_023",
+                          "object_024"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_1",
+                          "zone_2",
+                          "zone_3"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0.full",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792396929,
+    "created_at": 1792396912,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_00ae45dd78f91f4e016ad5ce70be6087d19feafbcc73d76f57",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"agents\": [\n    {\n      \"display_name\": \"Plankton & Tiefsee Guide\",\n      \"expertise\": [\"Meeresbiologie\", \"Plankton\", \"Tiefsee\", \"Nahrungsketten\"],\n      \"grounded_object_ids\": [\n        \"object_001\", \"object_004\", \"object_007\", \"object_010\",\n        \"object_013\", \"object_016\", \"object_019\", \"object_022\"\n      ],\n      \"handoff_targets\": [\"korallen_klima_expert\", \"technik_forschung_expert\", \"interaktiver_lernassistent\"],\n      \"id\": \"plankton_tiefsee_guide\",\n      \"knowledge_tags\": [\"plankton\", \"tiefsee\", \"nahrungskette\", \"ozeanleben\"],\n      \"persona\": \"Fachlich fundiert, neugierig, erklärt anschaulich die Grundlagen des Ozeanlebens und die faszinierenden Phänomene der Tiefsee.\",\n      \"responsible_zone_ids\": [\"zone_1\"],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"sage\",\n      \"voice_gender\": \"weiblich\",\n      \"voice_style\": \"freundlich, erklärend\"\n    },\n    {\n      \"display_name\": \"Korallen & Klima Experte\",\n      \"expertise\": [\"Korallenriffe\", \"Biodiversität\", \"Meeresströmungen\", \"Klimazusammenhänge\"],\n      \"grounded_object_ids\": [\n        \"object_002\", \"object_005\", \"object_008\", \"object_011\",\n        \"object_014\", \"object_017\", \"object_020\", \"object_023\"\n      ],\n      \"handoff_targets\": [\"plankton_tiefsee_guide\", \"technik_forschung_expert\", \"interaktiver_lernassistent\"],\n      \"id\": \"korallen_klima_expert\",\n      \"knowledge_tags\": [\"korallen\", \"biodiversitaet\", \"meeresstroemung\", \"ozeanklima\"],\n      \"persona\": \"Enthusiastisch, engagiert für den Schutz der Ozeane, vermittelt Zusammenhänge zwischen Lebensräumen, Klima und menschlichem Einfluss.\",\n      \"responsible_zone_ids\": [\"zone_2\"],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"coral\",\n      \"voice_gender\": \"weiblich\",\n      \"voice_style\": \"inspirierend, engagiert\"\n    },\n    {\n      \"display_name\": \"Technik & Forschung Experte\",\n      \"expertise\": [\"Ozeantechnik\", \"Forschungsexpeditionen\", \"Submersible\", \"Muschelausstellungen\"],\n      \"grounded_object_ids\": [\n        \"object_003\", \"object_006\", \"object_009\", \"object_012\",\n        \"object_015\", \"object_018\", \"object_021\", \"object_024\"\n      ],\n      \"handoff_targets\": [\"plankton_tiefsee_guide\", \"korallen_klima_expert\", \"interaktiver_lernassistent\"],\n      \"id\": \"technik_forschung_expert\",\n      \"knowledge_tags\": [\"ozeantechnik\", \"forschung\", \"submersible\", \"muscheln\"],\n      \"persona\": \"Technikbegeistert, detailverliebt, erklärt verständlich die Methoden und Innovationen der Ozeanforschung.\",\n      \"responsible_zone_ids\": [\"zone_3\"],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"onyx\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"sachlich, begeisternd\"\n    },\n    {\n      \"display_name\": \"Interaktiver Lernassistent\",\n      \"expertise\": [\"Interaktive Erklärungen\", \"Quiz\", \"Kinder- und Jugendbildung\"],\n      \"grounded_object_ids\": [\n        \"object_001\", \"object_004\", \"object_007\", \"object_010\",\n        \"object_013\", \"object_016\", \"object_019\", \"object_022\"\n      ],\n      \"handoff_targets\": [\"plankton_tiefsee_guide\", \"korallen_klima_expert\", \"technik_forschung_expert\"],\n      \"id\": \"interaktiver_lernassistent\",\n      \"knowledge_tags\": [\"interaktiv\", \"quiz\", \"lernen\", \"spiel\"],\n      \"persona\": \"Motivierend, spielerisch, spricht besonders junge Besucher an und fördert aktives Lernen an den Exponaten.\",\n      \"responsible_zone_ids\": [\"zone_1\"],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"nova\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"locker, motivierend\"\n    }\n  ],\n  \"handoffs\": [\n    {\n      \"condition\": \"Frage zu Korallen, Biodiversität oder Klima\",\n      \"reason\": \"Fachliche Vertiefung zu Lebensräumen, Klima oder Biodiversität\",\n      \"source_agent_id\": \"plankton_tiefsee_guide\",\n      \"target_agent_id\": \"korallen_klima_expert\"\n    },\n    {\n      \"condition\": \"Frage zu Ozeantechnik, Forschungsexpeditionen oder Submersibles\",\n      \"reason\": \"Fachliche Vertiefung zu technischen Aspekten und Forschung\",\n      \"source_agent_id\": \"plankton_tiefsee_guide\",\n      \"target_agent_id\": \"technik_forschung_expert\"\n    },\n    {\n      \"condition\": \"Wunsch nach interaktiven Lernspielen oder Quiz\",\n      \"reason\": \"Förderung der aktiven Auseinandersetzung durch Spiele\",\n      \"source_agent_id\": \"plankton_tiefsee_guide\",\n      \"target_agent_id\": \"interaktiver_lernassistent\"\n    },\n    {\n      \"condition\": \"Frage zu Plankton, Nahrungsketten oder Tiefsee\",\n      \"reason\": \"Fachliche Vertiefung zu Plankton und Tiefseephänomenen\",\n      \"source_agent_id\": \"korallen_klima_expert\",\n      \"target_agent_id\": \"plankton_tiefsee_guide\"\n    },\n    {\n      \"condition\": \"Frage zu Ozeantechnik oder Forschung\",\n      \"reason\": \"Fachliche Vertiefung zu technischen Innovationen\",\n      \"source_agent_id\": \"korallen_klima_expert\",\n      \"target_agent_id\": \"technik_forschung_expert\"\n    },\n    {\n      \"condition\": \"Wunsch nach interaktiven Lernspielen oder Quiz\",\n      \"reason\": \"Förderung der aktiven Auseinandersetzung durch Spiele\",\n      \"source_agent_id\": \"korallen_klima_expert\",\n      \"target_agent_id\": \"interaktiver_lernassistent\"\n    },\n    {\n      \"condition\": \"Frage zu Plankton, Nahrungsketten oder Tiefsee\",\n      \"reason\": \"Fachliche Vertiefung zu Plankton und Tiefseephänomenen\",\n      \"source_agent_id\": \"technik_forschung_expert\",\n      \"target_agent_id\": \"plankton_tiefsee_guide\"\n    },\n    {\n      \"condition\": \"Frage zu Korallen, Biodiversität oder Klima\",\n      \"reason\": \"Fachliche Vertiefung zu Lebensräumen, Klima oder Biodiversität\",\n      \"source_agent_id\": \"technik_forschung_expert\",\n      \"target_agent_id\": \"korallen_klima_expert\"\n    },\n    {\n      \"condition\": \"Wunsch nach interaktiven Lernspielen oder Quiz\",\n      \"reason\": \"Förderung der aktiven Auseinandersetzung durch Spiele\",\n      \"source_agent_id\": \"technik_forschung_expert\",\n      \"target_agent_id\": \"interaktiver_lernassistent\"\n    },\n    {\n      \"condition\": \"Fachfrage zu Plankton, Korallen, Klima oder Technik außerhalb des eigenen Bereichs\",\n      \"reason\": \"Weiterleitung an den jeweiligen Fachexperten\",\n      \"source_agent_id\": \"interaktiver_lernassistent\",\n      \"target_agent_id\": \"plankton_tiefsee_guide\"\n    },\n    {\n      \"condition\": \"Fachfrage zu Korallen, Klima oder Strömungen\",\n      \"reason\": \"Weiterleitung an den jeweiligen Fachexperten\",\n      \"source_agent_id\": \"interaktiver_lernassistent\",\n      \"target_agent_id\": \"korallen_klima_expert\"\n    },\n    {\n      \"condition\": \"Fachfrage zu Technik oder Forschung\",\n      \"reason\": \"Weiterleitung an den jeweiligen Fachexperten\",\n      \"source_agent_id\": \"interaktiver_lernassistent\",\n      \"target_agent_id\": \"technik_forschung_expert\"\n    }\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_00ae45dd78f91f4e016ad5ce717dd487d194992e2077b4fbbf",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015",
+                        "object_016",
+                        "object_017",
+                        "object_018",
+                        "object_019",
+                        "object_020",
+                        "object_021",
+                        "object_022",
+                        "object_023",
+                        "object_024"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_1",
+                        "zone_2",
+                        "zone_3"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 3868,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1885,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 5753
+    },
+    "user": null
+  },
+  "response_sha256": "5ca7cf19aa2db82ecaf3ce24e879b0edb4facdce8bd6a9bd4f66fa7f2554e42f",
+  "saved_at": "2026-10-19T08:02:09.727887+00:00",
+  "status": "SUCCESS"
+}

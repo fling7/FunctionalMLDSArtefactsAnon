@@ -1,0 +1,618 @@
+{
+  "cache_key": "42c50949c844744b803576e2041b6c948f04f64fd3737d59f7e24e040b58a16e",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_08_materials_lab.scene_semantics.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# scene_semantics_v1\n\nDu analysierst eine normalisierte RDL- oder RoomPlan-Szene fuer eine wissenschaftliche\nCase Study. Die Analyse muss raeumlich geerdet sein: Objekt-IDs duerfen nur aus der\nbereitgestellten Liste stammen.\n\nZiel der Ausgabe:\n- Erkenne die Domaene und den Zweck des Raums.\n- Leite typische Besucherziele ab.\n- Bilde kompakte semantische Zonen aus Objektgruppen und wichtigen Einzelobjekten.\n- Markiere Objekte, die fuer Interaktion, Erklaerung oder Navigation wichtig sind.\n- Schlage Agentenrollen vor, die spaeter in Interactive Agents umgesetzt werden koennen.\n\nRegeln:\n- Keine neuen Objekt-IDs erfinden.\n- Keine Runtime-Endpunkte, Requirements oder RoomContract-Elemente erzeugen; diese Stufen folgen spaeter.\n- Zonen muessen fachlich erklaerbar sein und mindestens ein vorhandenes Objekt referenzieren.\n- Agentenrollenkandidaten muessen aus Raumfunktion, Besucherzielen und Zonen abgeleitet sein.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Analyze this normalized scene and produce scene semantics.\",\"scene\":{\"schema_kind\":\"rdl_scene\",\"scene_name\":\"extension_drift_08_materials_lab\",\"environment_type\":\"indoor\",\"room_bounds\":{\"min_x\":-8.4,\"max_x\":8.4,\"min_z\":-8.4,\"max_z\":8.4},\"dimensions\":{\"width\":16.8,\"height\":4.0,\"depth\":16.8},\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"strength_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic materials lab object: strength station. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_002\",\"object_type\":\"polymer_sample\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic materials lab object: polymer sample. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_003\",\"object_type\":\"fiber_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic materials lab object: fiber display. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_004\",\"object_type\":\"crystal_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic materials lab object: crystal model. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_005\",\"object_type\":\"ceramic_case\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic materials lab object: ceramic case. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_006\",\"object_type\":\"metal_sample\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic materials lab object: metal sample. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_007\",\"object_type\":\"strength_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic materials lab object: strength station. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_008\",\"object_type\":\"polymer_sample\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic materials lab object: polymer sample. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_009\",\"object_type\":\"fiber_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic materials lab object: fiber display. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_010\",\"object_type\":\"crystal_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic materials lab object: crystal model. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_011\",\"object_type\":\"ceramic_case\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic materials lab object: ceramic case. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_012\",\"object_type\":\"metal_sample\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic materials lab object: metal sample. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_013\",\"object_type\":\"strength_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic materials lab object: strength station. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_014\",\"object_type\":\"polymer_sample\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic materials lab object: polymer sample. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_015\",\"object_type\":\"fiber_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic materials lab object: fiber display. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly visi...\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"strength_station\":3,\"crystal_model\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"example_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"strength_station\",\"specification_excerpt\":\"Synthetic materials lab object: strength station. Display 1 explains a distinct example in collection 1. A freestandi...\"},{\"object_id\":\"object_004\",\"object_type\":\"crystal_model\",\"specification_excerpt\":\"Synthetic materials lab object: crystal model. Display 4 explains a distinct example in collection 1. A freestanding...\"},{\"object_id\":\"object_007\",\"object_type\":\"strength_station\",\"specification_excerpt\":\"Synthetic materials lab object: strength station. Display 7 explains a distinct example in collection 1. A freestandi...\"}]},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"polymer_sample\":3,\"ceramic_case\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"example_objects\":[{\"object_id\":\"object_002\",\"object_type\":\"polymer_sample\",\"specification_excerpt\":\"Synthetic materials lab object: polymer sample. Display 2 explains a distinct example in collection 2. A freestanding...\"},{\"object_id\":\"object_005\",\"object_type\":\"ceramic_case\",\"specification_excerpt\":\"Synthetic materials lab object: ceramic case. Display 5 explains a distinct example in collection 2. A freestanding e...\"},{\"object_id\":\"object_008\",\"object_type\":\"polymer_sample\",\"specification_excerpt\":\"Synthetic materials lab object: polymer sample. Display 8 explains a distinct example in collection 2. A freestanding...\"}]},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"fiber_display\":3,\"metal_sample\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"example_objects\":[{\"object_id\":\"object_003\",\"object_type\":\"fiber_display\",\"specification_excerpt\":\"Synthetic materials lab object: fiber display. Display 3 explains a distinct example in collection 3. A freestanding...\"},{\"object_id\":\"object_006\",\"object_type\":\"metal_sample\",\"specification_excerpt\":\"Synthetic materials lab object: metal sample. Display 6 explains a distinct example in collection 3. A freestanding e...\"},{\"object_id\":\"object_009\",\"object_type\":\"fiber_display\",\"specification_excerpt\":\"Synthetic materials lab object: fiber display. Display 9 explains a distinct example in collection 3. A freestanding...\"}]}]}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 1800,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "scene_semantics",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agent_role_candidates": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "mission": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "role_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "role_id",
+                    "display_name",
+                    "mission",
+                    "expertise",
+                    "responsible_zone_ids",
+                    "grounded_object_ids"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "domain": {
+                "type": "string"
+              },
+              "important_objects": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "object_id": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "object_id",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "interaction_topics": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "related_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "topic_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "topic_id",
+                    "title",
+                    "description",
+                    "related_object_ids"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "room_purpose": {
+                "type": "string"
+              },
+              "semantic_zones": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "centroid_xz": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "x": {
+                          "type": "number"
+                        },
+                        "z": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "z"
+                      ],
+                      "type": "object"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "visitor_goals_supported": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "zone_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "zone_id",
+                    "name",
+                    "purpose",
+                    "object_ids",
+                    "centroid_xz",
+                    "visitor_goals_supported"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "visitor_goals": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "domain",
+              "room_purpose",
+              "visitor_goals",
+              "semantic_zones",
+              "important_objects",
+              "interaction_topics",
+              "agent_role_candidates"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "3.full",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792099966,
+    "created_at": 1792099956,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0738dbcb09266c5f016ad146749d3087d1b7be8a1176b98769",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 1800,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"agent_role_candidates\": [\n    {\n      \"display_name\": \"Materialien-Guide\",\n      \"expertise\": [\n        \"Materialwissenschaft\",\n        \"Didaktik\",\n        \"Interaktive Erklärungen\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_002\",\n        \"object_003\",\n        \"object_004\",\n        \"object_005\",\n        \"object_006\",\n        \"object_007\",\n        \"object_008\",\n        \"object_009\",\n        \"object_010\",\n        \"object_011\",\n        \"object_012\",\n        \"object_013\",\n        \"object_014\",\n        \"object_015\"\n      ],\n      \"mission\": \"Erklärt Besuchern die Eigenschaften, Anwendungen und Unterschiede synthetischer Materialien an den jeweiligen Stationen.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_1\",\n        \"zone_collection_2\",\n        \"zone_collection_3\"\n      ],\n      \"role_id\": \"materials_guide\"\n    },\n    {\n      \"display_name\": \"Experimentier-Begleiter\",\n      \"expertise\": [\n        \"Experimentelle Demonstrationen\",\n        \"Sicherheit im Labor\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_007\",\n        \"object_013\"\n      ],\n      \"mission\": \"Leitet Besucher bei praktischen Versuchen an den Strength Stations an und achtet auf Sicherheit.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_1\"\n      ],\n      \"role_id\": \"experiment_assistant\"\n    },\n    {\n      \"display_name\": \"Navigationshilfe\",\n      \"expertise\": [\n        \"Orientierung\",\n        \"Raumübersicht\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_005\",\n        \"object_009\"\n      ],\n      \"mission\": \"Hilft Besuchern, sich im Labor zu orientieren und die verschiedenen Materialgruppen zu finden.\",\n      \"responsible_zone_ids\": [\n        \"zone_collection_1\",\n        \"zone_collection_2\",\n        \"zone_collection_3\"\n      ],\n      \"role_id\": \"navigation_helper\"\n    }\n  ],\n  \"domain\": \"Materialwissenschaft / Wissenschaftskommunikation\",\n  \"important_objects\": [\n    {\n      \"object_id\": \"object_001\",\n      \"reason\": \"Einstiegspunkt für die Stärke-Experimente und exemplarisch für Collection 1.\"\n    },\n    {\n      \"object_id\": \"object_002\",\n      \"reason\": \"Polymerbeispiel und Startpunkt für Collection 2.\"\n    },\n    {\n      \"object_id\": \"object_003\",\n      \"reason\": \"Fiber Display als anschauliches Beispiel für Collection 3.\"\n    },\n    {\n      \"object_id\": \"object_007\",\n      \"reason\": \"Weitere Strength Station für praktische Experimente.\"\n    },\n    {\n      \"object_id\": \"object_009\",\n      \"reason\": \"Fiber Display im südlichen Bereich, Orientierungspunkt für Collection 3.\"\n    }\n  ],\n  \"interaction_topics\": [\n    {\n      \"description\": \"Unterschiede und Eigenschaften synthetischer Materialien erleben und vergleichen.\",\n      \"related_object_ids\": [\n        \"object_001\",\n        \"object_002\",\n        \"object_003\",\n        \"object_004\",\n        \"object_005\",\n        \"object_006\",\n        \"object_007\",\n        \"object_008\",\n        \"object_009\",\n        \"object_010\",\n        \"object_011\",\n        \"object_012\",\n        \"object_013\",\n        \"object_014\",\n        \"object_015\"\n      ],\n      \"title\": \"Materialvielfalt entdecken\",\n      \"topic_id\": \"materials_variety\"\n    },\n    {\n      \"description\": \"Praktische Experimente an den Strength Stations durchführen.\",\n      \"related_object_ids\": [\n        \"object_001\",\n        \"object_007\",\n        \"object_013\"\n      ],\n      \"title\": \"Stärke und Belastbarkeit testen\",\n      \"topic_id\": \"strength_testing\"\n    },\n    {\n      \"description\": \"Navigation zwischen den Materialgruppen und gezieltes Auffinden von Exponaten.\",\n      \"related_object_ids\": [\n        \"object_001\",\n        \"object_005\",\n        \"object_009\"\n      ],\n      \"title\": \"Raumorientierung und Exponatsuche\",\n      \"topic_id\": \"navigation\"\n    }\n  ],\n  \"room_purpose\": \"Didaktisches Labor zur Vermittlung von Wissen über synthetische Materialien und deren Eigenschaften.\",\n  \"semantic_zones\": [\n    {\n      \"centroid_xz\": {\n        \"x\": -0.84,\n        \"z\": -0.84\n      },\n      \"name\": \"Zone Collection 1: Kristallmodelle & Strength Stations\",\n      \"object_ids\": [\n        \"object_001\",\n        \"object_004\",\n        \"object_007\",\n        \"object_010\",\n        \"object_013\"\n      ],\n      \"purpose\": \"Vermittlung von Wissen über Kristallstrukturen und Festigkeit.\",\n      \"visitor_goals_supported\": [\n        \"Materialeigenschaften verstehen\",\n        \"Experimente durchführen\"\n      ],\n      \"zone_id\": \"zone_collection_1\"\n    },\n    {\n      \"centroid_xz\": {\n        \"x\": -0.28,\n        \"z\": -0.28\n      },\n      \"name\": \"Zone Collection 2: Polymere & Keramiken\",\n      \"object_ids\": [\n        \"object_002\",\n        \"object_005\",\n        \"object_008\",\n        \"object_011\",\n        \"object_014\"\n      ],\n      \"purpose\": \"Erklärung von Polymer- und Keramikmaterialien.\",\n      \"visitor_goals_supported\": [\n        \"Materialvielfalt kennenlernen\",\n        \"Vergleich von Materialklassen\"\n      ],\n      \"zone_id\": \"zone_collection_2\"\n    },\n    {\n      \"centroid_xz\": {\n        \"x\": 0.28,\n        \"z\": 0.28\n      },\n      \"name\": \"Zone Collection 3: Fasern & Metalle\",\n      \"object_ids\": [\n        \"object_003\",\n        \"object_006\",\n        \"object_009\",\n        \"object_012\",\n        \"object_015\"\n      ],\n      \"purpose\": \"Veranschaulichung von Faser- und Metallmaterialien.\",\n      \"visitor_goals_supported\": [\n        \"Vergleich von Faser- und Metallstrukturen\",\n        \"Materialeigenschaften erleben\"\n      ],\n      \"zone_id\": \"zone_collection_3\"\n    }\n  ],\n  \"visitor_goals\": [\n    \"Eigenschaften und Unterschiede synthetischer Materialien verstehen\",\n    \"Praktische Experimente durchführen\",\n    \"Materialklassen vergleichen\",\n    \"Sich im Raum orientieren und gezielt Exponate finden\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0738dbcb09266c5f016ad146754ba087d1b60bc8b9d0a7abfe",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "scene_semantics",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agent_role_candidates": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "mission": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "role_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "role_id",
+                  "display_name",
+                  "mission",
+                  "expertise",
+                  "responsible_zone_ids",
+                  "grounded_object_ids"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "domain": {
+              "type": "string"
+            },
+            "important_objects": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "object_id": {
+                    "enum": [
+                      "object_001",
+                      "object_002",
+                      "object_003",
+                      "object_004",
+                      "object_005",
+                      "object_006",
+                      "object_007",
+                      "object_008",
+                      "object_009",
+                      "object_010",
+                      "object_011",
+                      "object_012",
+                      "object_013",
+                      "object_014",
+                      "object_015"
+                    ],
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "object_id",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "interaction_topics": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "related_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "topic_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "topic_id",
+                  "title",
+                  "description",
+                  "related_object_ids"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "room_purpose": {
+              "type": "string"
+            },
+            "semantic_zones": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "centroid_xz": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "x": {
+                        "type": "number"
+                      },
+                      "z": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "z"
+                    ],
+                    "type": "object"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "purpose": {
+                    "type": "string"
+                  },
+                  "visitor_goals_supported": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "zone_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "zone_id",
+                  "name",
+                  "purpose",
+                  "object_ids",
+                  "centroid_xz",
+                  "visitor_goals_supported"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "visitor_goals": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "domain",
+            "room_purpose",
+            "visitor_goals",
+            "semantic_zones",
+            "important_objects",
+            "interaction_topics",
+            "agent_role_candidates"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2634,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1454,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4088
+    },
+    "user": null
+  },
+  "response_sha256": "49168c6c1c0eea7b800c4e60931f27caaed810fce0cdb83a8839e4dfbdaf7d29",
+  "saved_at": "2026-10-15T21:32:47.635734+00:00",
+  "status": "SUCCESS"
+}

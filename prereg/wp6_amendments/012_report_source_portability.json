@@ -1,0 +1,37 @@
+{
+  "schema": "wp6-report-source-portability-overlay-v1",
+  "status": "FROZEN_REPORT_ONLY",
+  "utc": "2026-10-15T18:49:01.255214+00:00",
+  "prior_reporting_lock": {
+    "path": "prereg/wp6_amendments/011_bootstrap_reporting_correction.sha256.json",
+    "sha256": "d744dbc5ef83bbe129ad0148e4b3338a5443208cff63d633a76afb0499a2a9ff"
+  },
+  "reporter": {
+    "path": "experiments/report_mutation_analysis.py",
+    "old_sha256": "a9610b72f727bb79d533b5a6e0612fd0d216d8eaaf5947d04c389b07deca9d91",
+    "new_sha256": "d09b01d6364907857216f685441ab4d13181e7b9fbc139439fd45b8b7b2daa21",
+    "old_snapshot": "drafts/artifact_release/wp6_report_v1/original/experiments/report_mutation_analysis.py"
+  },
+  "adapter": {
+    "path": "repro/report_wp6.py",
+    "sha256": "aab71d280a02de48306047293856ead0cae44ba15a8323762b96b1cfcd5a55cf"
+  },
+  "unchanged_helper": {
+    "path": "experiments/wp6_provenance.py",
+    "sha256": "4eeb94724217570f8243f0f5f721530c7712e39e9cf7446cef81f9553e26022b"
+  },
+  "root_review": {
+    "path": "results/raw/wp6_sealed_report_root_review_v1.json",
+    "sha256": "acbf75ebb3df7c06ddbb3e8b63fdf5a04383d4e1cbf463fb9f7b29f325efd12f",
+    "checks": 387
+  },
+  "additional_python311_validation": {
+    "passed": 23,
+    "log": "logs/wp6_report_adapter_py311_v1.log",
+    "sha256": "b56acd3d8bf0fdd2fb28a57b632723d619d2887a42ccb146b033125104bc4848"
+  },
+  "change": "Optional explicit list of retained progress tables avoids mutable output-root discovery in sealed mode; default report behavior stays unchanged. Adapter verifies exact finite pinned input/closure/output manifest before reporting.",
+  "preserved": "011source lock and old reporting outputs remain historical pins, resolved to preserved original reporter snapshot. No raw/model/evaluator/007-010 execution lock change.",
+  "validation": "Fixed130mutants/20368pairs/twosources,164sealedpins,12outputs:11byteexact and last onlygeneratorSHA. Labels, intervals, pointestimates and denominators identical.",
+  "limitations": "Trusted report code, not an OS security sandbox. This closed checkpoint does not certify final G9 or complete corpus. New adapter is ready for final manifest assembly; live report outputs not overwritten during adoption."
+}

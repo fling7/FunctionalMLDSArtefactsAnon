@@ -1,0 +1,87 @@
+classDiagram
+  direction TB
+  %% SVG/PNG define the presentation-authoritative orthogonal layout.
+  %% EAST-ADL V2.1.12 – selected infrastructure slice
+  class EAST_ADL_Elements_Referrable {
+    <<abstract>>
+    +shortName : Identifier [1]
+  }
+  class EAST_ADL_Elements_EAType {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_EAPrototype {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_EAPort {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_EAConnector {
+    <<abstract>>
+  }
+  class EAST_ADL_Values_EAValue {
+    <<abstract>>
+  }
+  class EAST_ADL_Datatypes_EADatatype {
+    <<abstract>>
+  }
+  class EAST_ADL_Datatypes_EADatatypePrototype {
+    <<EA::Datatypes>>
+  }
+  class EAST_ADL_Values_EAExpression {
+    <<EA::Values>>
+  }
+  class EAST_ADL_Values_EANumericalValue {
+    <<EA::Values>>
+    +value : Numerical [1]
+  }
+  class EAST_ADL_Elements_Identifiable {
+    <<abstract>>
+    +category : Identifier [0..1]
+    +uuid : String [0..1]
+  }
+  class EAST_ADL_Elements_EAElement {
+    <<abstract>>
+    +name : String [0..1]
+  }
+  class EAST_ADL_Datatypes_EABoolean {
+    <<EA::Datatypes>>
+  }
+  class EAST_ADL_Datatypes_EANumerical {
+    <<EA::Datatypes>>
+    +max : Numerical [0..1]
+    +min : Numerical [0..1]
+  }
+  class EAST_ADL_Elements_EAPackageableElement {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_Relationship {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_Comment {
+    <<EA::Elements>>
+    +body : String [1]
+  }
+  class EAST_ADL_Elements_Context {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_TraceableSpecification {
+    <<abstract>>
+    +text : String [0..1]
+  }
+  EAST-ADL_Elements_TraceableSpecification <|-- EAST-ADL_Datatypes_EADatatype
+  EAST-ADL_Elements_EAElement <|-- EAST-ADL_Datatypes_EADatatypePrototype
+  EAST-ADL_Values_EAValue <|-- EAST-ADL_Values_EAExpression
+  EAST-ADL_Values_EAValue <|-- EAST-ADL_Values_EANumericalValue
+  EAST-ADL_Elements_Referrable <|-- EAST-ADL_Elements_Identifiable
+  EAST-ADL_Elements_Identifiable <|-- EAST-ADL_Elements_EAElement
+  EAST-ADL_Datatypes_EADatatype <|-- EAST-ADL_Datatypes_EABoolean
+  EAST-ADL_Datatypes_EADatatype <|-- EAST-ADL_Datatypes_EANumerical
+  EAST-ADL_Elements_EAElement <|-- EAST-ADL_Elements_EAPackageableElement
+  EAST-ADL_Elements_EAElement <|-- EAST-ADL_Elements_Relationship
+  EAST-ADL_Elements_EAPackageableElement <|-- EAST-ADL_Elements_Context
+  EAST-ADL_Elements_EAPackageableElement <|-- EAST-ADL_Elements_TraceableSpecification
+  EAST-ADL_Elements_EAElement "1" *-- "*" EAST-ADL_Elements_Comment : ownedComment [*]
+  EAST-ADL_Elements_Context "1" *-- "*" EAST-ADL_Elements_Relationship : ownedRelationship [*]
+  EAST-ADL_Elements_Context "*" --> "*" EAST-ADL_Elements_TraceableSpecification : traceableSpecification [*]
+  EAST-ADL_Datatypes_EADatatypePrototype "*" --> "1" EAST-ADL_Datatypes_EADatatype : type [1]
+  EAST-ADL_Values_EAValue "*" --> "1" EAST-ADL_Datatypes_EADatatype : type [1]

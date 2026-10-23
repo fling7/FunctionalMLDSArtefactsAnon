@@ -1,0 +1,192 @@
+{
+  "cache_key": "677415c2b428dc6ebadf3b1b177c1a4e8d3d77d2bf6db4c150f286c90fcf5d50",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.routing",
+    "item_id": "extension_drift_02_botanical_center.B0.abstain.p3.neutral.full.t0.3.r0",
+    "payload": {
+      "input": [
+        {
+          "content": "Act as the routing component for a room of specialist agents. Your task is to name the answering agent for the selected scene object. A different object named by the visitor does not change that selected target. Use profiles to assess responsibility; use the explicit ownership and handoff data when provided. Resolve ownership with priority object > group > zone, stopping at the first nonempty level. Require one owner at that level and at most one directed handoff from the active agent. Output the specified JSON object without an explanation.\nYou may reject: if no valid unique recipient can be determined from the supplied information, set abstain=true and answering_agent_id=null. Otherwise set abstain=false and answering_agent_id to exactly one listed agent id.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"agents\":[{\"display_name\":\"Botanical Guide\",\"expertise\":[\"botany\",\"plant biology\",\"visitor assistance\"],\"id\":\"agent_001\",\"persona\":\"Friendly and knowledgeable botanical expert eager to explain plant structures and pollination processes to visitors.\"},{\"display_name\":\"Root and Plant Specialist\",\"expertise\":[\"plant anatomy\",\"root systems\",\"educational guidance\"],\"id\":\"agent_002\",\"persona\":\"Detail-oriented specialist passionate about explaining root systems and plant cases to deepen visitor understanding.\"},{\"display_name\":\"Seed and Soil Expert\",\"expertise\":[\"seed biology\",\"soil science\",\"interactive education\"],\"id\":\"agent_003\",\"persona\":\"Engaging educator focused on seed diversity and soil properties, helping visitors connect these topics to plant health.\"}],\"selected_object\":{\"id\":\"ENT-ASSET-OBJECT_012\",\"source_id\":\"object_012\",\"name\":\"soil_station\",\"type\":\"soil_station\",\"group_label\":\"collection_3\",\"zone_names\":[\"Seed and Soil Zone\"]},\"active_agent_id\":\"agent_003\",\"visitor_question\":\"What can you tell me about this selected object?\"}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 96,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "routing_decision",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "enum": [
+                  false,
+                  true
+                ],
+                "type": "boolean"
+              },
+              "answering_agent_id": {
+                "enum": [
+                  "agent_001",
+                  "agent_002",
+                  "agent_003",
+                  null
+                ],
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "answering_agent_id",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "WP4",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1792107303,
+    "created_at": 1792107302,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0191cd85795e3741016ad16326b49487d1bbc5a6f460952e63",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 96,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"abstain\": false, \"answering_agent_id\": \"agent_003\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0191cd85795e3741016ad16326f31487d18a0e47aaa1ed4653",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "routing_decision",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "abstain": {
+              "enum": [
+                false,
+                true
+              ],
+              "type": "boolean"
+            },
+            "answering_agent_id": {
+              "enum": [
+                "agent_001",
+                "agent_002",
+                "agent_003",
+                null
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "answering_agent_id",
+            "abstain"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 432,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 19,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 451
+    },
+    "user": null
+  },
+  "response_sha256": "af972d0c6a1cedece1c6085eda6c0a65b145a1c413a342caf9fcd406d9a71aa0",
+  "saved_at": "2026-10-15T23:35:04.501300+00:00",
+  "status": "SUCCESS"
+}

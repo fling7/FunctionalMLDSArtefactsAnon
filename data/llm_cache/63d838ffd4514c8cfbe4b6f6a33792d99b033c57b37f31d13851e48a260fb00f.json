@@ -1,0 +1,426 @@
+{
+  "cache_key": "63d838ffd4514c8cfbe4b6f6a33792d99b033c57b37f31d13851e48a260fb00f",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.guided_initial",
+    "item_id": "guided_llm_v2_05_archaeology_gallery.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"guided_llm_v2_05_archaeology_gallery\",\"domain\":\"museum archaeology gallery\",\"room_purpose\":\"Archaeology museum gallery for education and cultural heritage exhibition\",\"visitor_goals\":[\"Explore archaeological artifacts from different ancient cultures\",\"Understand historical context and cultural significance of exhibits\",\"Engage with interactive replicas and hands-on learning\",\"Learn about ancient technologies, art, and rituals\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":0.0,\"z\":-4.0},\"name\":\"Prehistoric Artifacts Zone\",\"object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"purpose\":\"Display and interpretation of Neolithic and Bronze Age artifacts illustrating early human technology and culture.\",\"visitor_goals_supported\":[\"Learn about early human tools and crafts\",\"Handle replicas to understand prehistoric technology\"],\"zone_id\":\"zone_001\"},{\"centroid_xz\":{\"x\":0.0,\"z\":0.0},\"name\":\"Roman Empire Collection Zone\",\"object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"purpose\":\"Exhibition of Roman artifacts showcasing daily life, military equipment, art, and technology.\",\"visitor_goals_supported\":[\"Explore Roman history and culture\",\"Experience replicas of Roman military gear\"],\"zone_id\":\"zone_002\"},{\"centroid_xz\":{\"x\":0.0,\"z\":4.0},\"name\":\"Ancient Egyptian Exhibit Zone\",\"object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"purpose\":\"Presentation of Egyptian burial customs, mythology, and social artifacts to educate visitors on ancient Egyptian civilization.\",\"visitor_goals_supported\":[\"Understand Egyptian rituals and mythology\",\"Read and interpret ancient texts and symbols\"],\"zone_id\":\"zone_003\"}],\"interaction_topics\":[{\"description\":\"Discuss the evolution of early human tools and craftsmanship from Neolithic pottery to Bronze Age metalwork.\",\"related_object_ids\":[\"object_001\",\"object_002\",\"object_003\"],\"title\":\"Early Human Tools and Craftsmanship\",\"topic_id\":\"topic_001\"},{\"description\":\"Explore Roman daily life, military, and art through coins, glassware, helmets, mosaics, and oil lamps.\",\"related_object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"title\":\"Life and Art in Ancient Rome\",\"topic_id\":\"topic_002\"},{\"description\":\"Understand Egyptian burial customs, mythology, and social status through canopic jars, sarcophagi, jewelry, papyrus scrolls, and statues.\",\"related_object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"title\":\"Ancient Egyptian Culture and Rituals\",\"topic_id\":\"topic_003\"}],\"agent_role_candidates\":[{\"display_name\":\"Archaeology Guide\",\"expertise\":[\"archaeology\",\"history\",\"artifact interpretation\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"mission\":\"Provide detailed explanations and answer visitor questions about artifacts and their historical context.\",\"responsible_zone_ids\":[\"zone_001\",\"zone_002\",\"zone_003\"],\"role_id\":\"agent_guide_001\"},{\"display_name\":\"Interactive Exhibit Facilitator\",\"expertise\":[\"visitor engagement\",\"interactive learning\",\"museum education\"],\"grounded_object_ids\":[\"object_003\",\"object_008\"],\"mission\":\"Assist visitors in hands-on activities such as handling replicas and trying on replicas to enhance experiential learning.\",\"responsible_zone_ids\":[\"zone_001\",\"zone_002\"],\"role_id\":\"agent_facilitator_001\"},{\"display_name\":\"Cultural Historian\",\"expertise\":[\"ancient cultures\",\"symbolism\",\"rituals\"],\"grounded_object_ids\":[\"object_004\",\"object_011\",\"object_012\",\"object_014\",\"object_015\"],\"mission\":\"Explain cultural significance, symbolism, and rituals related to artifacts, especially from Egyptian and Bronze Age collections.\",\"responsible_zone_ids\":[\"zone_001\",\"zone_003\"],\"role_id\":\"agent_historian_001\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"AncientPotteryVase\":1,\"BronzeAgeAxe\":1,\"StoneArrowheadsSet\":1,\"ClayFigurine\":1,\"AncientBeadedNecklace\":1},\"centroid_xz\":{\"x\":0.0,\"z\":-4.0}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"RomanCoin\":1,\"RomanGlassBottle\":1,\"RomanHelmet\":1,\"RomanMosaicFragment\":1,\"RomanOilLamp\":1},\"centroid_xz\":{\"x\":0.0,\"z\":0.0}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"EgyptianCanopicJar\":1,\"EgyptianSarcophagusModel\":1,\"EgyptianJewelrySet\":1,\"EgyptianPapyrusScroll\":1,\"EgyptianStatueOfAnubis\":1},\"centroid_xz\":{\"x\":0.0,\"z\":4.0}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"AncientPotteryVase\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-6.0,\"z\":-4.0},\"specification_excerpt\":\"A terracotta vase from the Neolithic period, decorated with geometric patterns; visitors can examine its craftsmanship and learn about early pottery techniques.\"},{\"object_id\":\"object_002\",\"object_type\":\"BronzeAgeAxe\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-3.0,\"z\":-4.0},\"specification_excerpt\":\"A bronze axe head used by early metalworkers; visitors can read about the transition from stone to metal tools and their impact on societies.\"},{\"object_id\":\"object_003\",\"object_type\":\"StoneArrowheadsSet\",\"group\":\"collection_1\",\"position_xz\":{\"x\":0.0,\"z\":-4.0},\"specification_excerpt\":\"A collection of flint arrowheads from prehistoric hunters; visitors can handle replicas to understand hunting technology evolution.\"},{\"object_id\":\"object_004\",\"object_type\":\"ClayFigurine\",\"group\":\"collection_1\",\"position_xz\":{\"x\":3.0,\"z\":-4.0},\"specification_excerpt\":\"A small fertility figurine from the Bronze Age; visitors can explore symbolic meanings in ancient art and ritual.\"},{\"object_id\":\"object_005\",\"object_type\":\"AncientBeadedNecklace\",\"group\":\"collection_1\",\"position_xz\":{\"x\":6.0,\"z\":-4.0},\"specification_excerpt\":\"A necklace made of bone and shell beads; visitors can learn about personal adornment and trade in prehistoric communities.\"},{\"object_id\":\"object_006\",\"object_type\":\"RomanCoin\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-6.0,\"z\":0.0},\"specification_excerpt\":\"A silver denarius coin from the Roman Empire; visitors can examine the emperor's portrait and understand ancient currency.\"},{\"object_id\":\"object_007\",\"object_type\":\"RomanGlassBottle\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-3.0,\"z\":0.0},\"specification_excerpt\":\"A delicate blown glass bottle used for perfumes; visitors can learn about Roman glassmaking techniques and daily life.\"},{\"object_id\":\"object_008\",\"object_type\":\"RomanHelmet\",\"group\":\"collection_2\",\"position_xz\":{\"x\":0.0,\"z\":0.0},\"specification_excerpt\":\"A bronze legionary helmet; visitors can try on a replica and discover Roman military equipment and tactics.\"},{\"object_id\":\"object_009\",\"object_type\":\"RomanMosaicFragment\",\"group\":\"collection_2\",\"position_xz\":{\"x\":3.0,\"z\":0.0},\"specification_excerpt\":\"A colorful floor mosaic fragment depicting mythological scenes; visitors can learn about Roman art and symbolism.\"},{\"object_id\":\"object_010\",\"object_type\":\"RomanOilLamp\",\"group\":\"collection_2\",\"position_xz\":{\"x\":6.0,\"z\":0.0},\"specification_excerpt\":\"A terracotta oil lamp with decorative motifs; visitors can see how Romans illuminated their homes.\"},{\"object_id\":\"object_011\",\"object_type\":\"EgyptianCanopicJar\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-6.0,\"z\":4.0},\"specification_excerpt\":\"A jar used to store mummified organs, featuring a falcon-headed lid; visitors can explore Egyptian burial customs.\"},{\"object_id\":\"object_012\",\"object_type\":\"EgyptianSarcophagusModel\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-3.0,\"z\":4.0},\"specification_excerpt\":\"A miniature sarcophagus model with hieroglyphs; visitors can decode symbols and learn about afterlife beliefs.\"},{\"object_id\":\"object_013\",\"object_type\":\"EgyptianJewelrySet\",\"group\":\"collection_3\",\"position_xz\":{\"x\":0.0,\"z\":4.0},\"specification_excerpt\":\"Gold and lapis lazuli jewelry worn by nobility; visitors can admire craftsmanship and social status indicators.\"},{\"object_id\":\"object_014\",\"object_type\":\"EgyptianPapyrusScroll\",\"group\":\"collection_3\",\"position_xz\":{\"x\":3.0,\"z\":4.0},\"specification_excerpt\":\"A fragment of a papyrus scroll with spells from the Book of the Dead; visitors can read translations and rituals.\"},{\"object_id\":\"object_015\",\"object_type\":\"EgyptianStatueOfAnubis\",\"group\":\"collection_3\",\"position_xz\":{\"x\":6.0,\"z\":4.0},\"specification_excerpt\":\"A small statue of Anubis, god of mummification; visitors can learn about Egyptian mythology and funerary practices.\"}],\"allowed_zone_ids\":[\"zone_001\",\"zone_002\",\"zone_003\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_001",
+                          "zone_002",
+                          "zone_003"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0.mini",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792116778,
+    "created_at": 1792116771,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0300ee9bed4e9116016ad18823e8f087d1b0d9227f0ad4de6a",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"agents\":[{\"display_name\":\"Prehistoric Artifacts Expert\",\"expertise\":[\"archaeology\",\"prehistoric technology\",\"artifact interpretation\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\"],\"handoff_targets\":[\"agent_roman_specialist\",\"agent_egyptian_cultural_expert\"],\"id\":\"agent_prehistoric_expert\",\"knowledge_tags\":[\"prehistoric_artifacts\",\"neolithic_tools\",\"bronze_age_culture\"],\"persona\":\"Enthusiastic and patient guide specializing in early human history and prehistoric artifacts, eager to share knowledge about ancient craftsmanship and technology.\",\"responsible_zone_ids\":[\"zone_001\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"sage\",\"voice_gender\":\"weiblich\",\"voice_style\":\"freundlich\"} ,{\"display_name\":\"Roman Empire Specialist\",\"expertise\":[\"roman history\",\"military equipment\",\"ancient art\"],\"grounded_object_ids\":[\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\"],\"handoff_targets\":[\"agent_prehistoric_expert\",\"agent_egyptian_cultural_expert\"],\"id\":\"agent_roman_specialist\",\"knowledge_tags\":[\"roman_artifacts\",\"roman_military\",\"daily_life_rome\"],\"persona\":\"Knowledgeable and engaging historian focused on Roman culture, military, and daily life, passionate about bringing ancient Rome to life for visitors.\",\"responsible_zone_ids\":[\"zone_002\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"onyx\",\"voice_gender\":\"maennlich\",\"voice_style\":\"informativ\"} ,{\"display_name\":\"Egyptian Cultural Expert\",\"expertise\":[\"egyptian mythology\",\"burial customs\",\"ancient symbolism\"],\"grounded_object_ids\":[\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"handoff_targets\":[\"agent_prehistoric_expert\",\"agent_roman_specialist\"],\"id\":\"agent_egyptian_cultural_expert\",\"knowledge_tags\":[\"egyptian_rituals\",\"ancient_egypt\",\"hieroglyphs\"],\"persona\":\"Calm and insightful expert on ancient Egyptian culture and rituals, skilled at explaining mythology and symbolic meanings behind artifacts.\",\"responsible_zone_ids\":[\"zone_003\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"coral\",\"voice_gender\":\"weiblich\",\"voice_style\":\"ruhig\"} ,{\"display_name\":\"Interactive Learning Facilitator\",\"expertise\":[\"visitor engagement\",\"interactive learning\",\"museum education\"],\"grounded_object_ids\":[\"object_003\",\"object_008\"],\"handoff_targets\":[\"agent_prehistoric_expert\",\"agent_roman_specialist\"],\"id\":\"agent_interactive_facilitator\",\"knowledge_tags\":[\"interactive_replicas\",\"hands_on_learning\",\"visitor_engagement\"],\"persona\":\"Friendly and energetic facilitator who assists visitors with hands-on activities and interactive exhibits to enhance experiential learning.\",\"responsible_zone_ids\":[\"zone_001\",\"zone_002\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"fable\",\"voice_gender\":\"weiblich\",\"voice_style\":\"lebhaft\"}],\"handoffs\":[{\"condition\":\"visitor moves from Prehistoric Artifacts Zone to Roman Empire Collection Zone\",\"reason\":\"Transfer expertise to Roman history and artifacts\",\"source_agent_id\":\"agent_prehistoric_expert\",\"target_agent_id\":\"agent_roman_specialist\"},{\"condition\":\"visitor moves from Roman Empire Collection Zone to Ancient Egyptian Exhibit Zone\",\"reason\":\"Transfer expertise to Egyptian culture and rituals\",\"source_agent_id\":\"agent_roman_specialist\",\"target_agent_id\":\"agent_egyptian_cultural_expert\"},{\"condition\":\"visitor moves from Ancient Egyptian Exhibit Zone to Prehistoric Artifacts Zone\",\"reason\":\"Transfer expertise to prehistoric artifacts and technology\",\"source_agent_id\":\"agent_egyptian_cultural_expert\",\"target_agent_id\":\"agent_prehistoric_expert\"},{\"condition\":\"visitor requests hands-on assistance in Prehistoric Artifacts or Roman Empire zones\",\"reason\":\"Provide interactive learning support\",\"source_agent_id\":\"agent_prehistoric_expert\",\"target_agent_id\":\"agent_interactive_facilitator\"},{\"condition\":\"visitor requests hands-on assistance in Prehistoric Artifacts or Roman Empire zones\",\"reason\":\"Provide interactive learning support\",\"source_agent_id\":\"agent_roman_specialist\",\"target_agent_id\":\"agent_interactive_facilitator\"},{\"condition\":\"visitor finishes interactive session\",\"reason\":\"Return to subject matter expert for detailed artifact information\",\"source_agent_id\":\"agent_interactive_facilitator\",\"target_agent_id\":\"agent_prehistoric_expert\"}]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0300ee9bed4e9116016ad18824450487d18ab9e5ec69637fe8",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_001",
+                        "zone_002",
+                        "zone_003"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2879,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 948,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3827
+    },
+    "user": null
+  },
+  "response_sha256": "1f28444bc7d31e3aa01770955036971a6783efa6ac78c68342eac1f9421eaf03",
+  "saved_at": "2026-10-16T02:12:59.760229+00:00",
+  "status": "SUCCESS"
+}

@@ -1,0 +1,258 @@
+{
+  "scope": "Owned public APIs only. No integration-level evaluate_compiled wrapper was read or invoked.",
+  "input": {
+    "instance": {
+      "objects": [
+        {
+          "id": "A::line\nbreak\ttab\rcarriage",
+          "type": "Agent",
+          "kind": "agent",
+          "entityRole": "interactiveAgent",
+          "sourceAgentId": "a::line\nbreak\ttab\rcarriage",
+          "sourceId": "a::line\nbreak\ttab\rcarriage",
+          "groundedAsset": [
+            "T::line\nbreak\ttab\rcarriage"
+          ],
+          "groundedObjectGroup": [],
+          "responsibleZone": [],
+          "handoffTarget": [
+            "B::line\nbreak\ttab\rcarriage"
+          ],
+          "providedCapability": [
+            "C::line\nbreak\ttab\rcarriage"
+          ]
+        },
+        {
+          "id": "B::line\nbreak\ttab\rcarriage",
+          "type": "Agent",
+          "kind": "agent",
+          "entityRole": "interactiveAgent",
+          "sourceAgentId": "b::line\nbreak\ttab\rcarriage",
+          "sourceId": "b::line\nbreak\ttab\rcarriage",
+          "groundedAsset": [],
+          "groundedObjectGroup": [],
+          "responsibleZone": [],
+          "handoffTarget": [
+            "A::line\nbreak\ttab\rcarriage"
+          ],
+          "providedCapability": [
+            "C::line\nbreak\ttab\rcarriage"
+          ]
+        },
+        {
+          "id": "T::line\nbreak\ttab\rcarriage",
+          "type": "Entity",
+          "kind": "asset",
+          "entityRole": "sceneObject",
+          "sourceId": "object::line\nbreak\ttab\rcarriage",
+          "objectGroup": [
+            "G::line\nbreak\ttab\rcarriage"
+          ]
+        },
+        {
+          "id": "G::line\nbreak\ttab\rcarriage",
+          "type": "Entity",
+          "kind": "asset",
+          "entityRole": "objectGroup",
+          "sourceObjectId": [
+            "object::line\nbreak\ttab\rcarriage"
+          ]
+        },
+        {
+          "id": "Z::line\nbreak\ttab\rcarriage",
+          "type": "Entity",
+          "kind": "zone",
+          "entityRole": "semanticZone",
+          "sourceObjectId": [
+            "object::line\nbreak\ttab\rcarriage"
+          ]
+        },
+        {
+          "id": "S::line\nbreak\ttab\rcarriage",
+          "type": "ScenarioStep",
+          "capabilityUse": [
+            "U::line\nbreak\ttab\rcarriage"
+          ]
+        },
+        {
+          "id": "U::line\nbreak\ttab\rcarriage",
+          "type": "CapabilityUse",
+          "provider": [
+            "A::line\nbreak\ttab\rcarriage"
+          ],
+          "target": [
+            "T::line\nbreak\ttab\rcarriage",
+            "G::line\nbreak\ttab\rcarriage",
+            "Z::line\nbreak\ttab\rcarriage"
+          ],
+          "typeRef": [
+            "C::line\nbreak\ttab\rcarriage"
+          ]
+        },
+        {
+          "id": "C::line\nbreak\ttab\rcarriage",
+          "type": "Capability"
+        },
+        {
+          "id": "RB::line\nbreak\ttab\rcarriage",
+          "type": "RuntimeBinding",
+          "capability": [
+            "C::line\nbreak\ttab\rcarriage"
+          ],
+          "runtimeAction": [
+            "RA::line\nbreak\ttab\rcarriage"
+          ]
+        },
+        {
+          "id": "RA::line\nbreak\ttab\rcarriage",
+          "type": "RuntimeAction",
+          "locator": [
+            "L::line\nbreak\ttab\rcarriage"
+          ],
+          "inputSchema": [
+            "IS::line\nbreak\ttab\rcarriage"
+          ],
+          "outputSchema": []
+        },
+        {
+          "id": "L::line\nbreak\ttab\rcarriage",
+          "type": "RuntimeActionLocator",
+          "kind": "endpoint",
+          "value": "POST /chat"
+        },
+        {
+          "id": "IS::line\nbreak\ttab\rcarriage",
+          "type": "SchemaReference",
+          "uri": "json",
+          "text": "{\"type\":\"object\"}"
+        }
+      ]
+    },
+    "trace": {
+      "runtime_actions": [
+        {
+          "action_kind": "chat",
+          "scenario_step_id": "S::line\nbreak\ttab\rcarriage",
+          "capability_use_id": "U::line\nbreak\ttab\rcarriage",
+          "capability_id": "C::line\nbreak\ttab\rcarriage",
+          "provider_entity_id": "A::line\nbreak\ttab\rcarriage",
+          "target_ids": [
+            "T::line\nbreak\ttab\rcarriage",
+            "G::line\nbreak\ttab\rcarriage",
+            "Z::line\nbreak\ttab\rcarriage"
+          ],
+          "runtime_binding_id": "RB::line\nbreak\ttab\rcarriage",
+          "runtime_action_id": "RA::line\nbreak\ttab\rcarriage",
+          "locator": {
+            "kind": "endpoint",
+            "value": "POST /chat"
+          },
+          "endpoint": "POST /chat"
+        }
+      ]
+    },
+    "request": {
+      "session_id": "fixture",
+      "active_agent_id": "a::line\nbreak\ttab\rcarriage",
+      "user_text": "Describe the object.",
+      "interaction_mode": "deictic",
+      "spatial_context": {
+        "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "entity_id": "T::line\nbreak\ttab\rcarriage",
+        "source_object_id": "object::line\nbreak\ttab\rcarriage",
+        "state": "resolved",
+        "hit_position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "distance_m": 1,
+        "selection_modality": "programmatic"
+      }
+    },
+    "session": {
+      "model_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    }
+  },
+  "results": {
+    "original_evaluate": {
+      "status": "returned",
+      "value": {
+        "decision": "ANSWER_LOCAL",
+        "reason": null,
+        "provider": "a::line\nbreak\ttab\rcarriage",
+        "action": "RA::line\nbreak\ttab\rcarriage"
+      }
+    },
+    "backend": {
+      "exports_evaluate_compiled": false,
+      "compile_model_default": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      },
+      "compile_model_strict": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      },
+      "evaluate_many_default": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      }
+    },
+    "bulk": {
+      "exports_evaluate_compiled": false,
+      "compile_model_default": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      },
+      "compile_model_strict": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      },
+      "evaluate_many_default": {
+        "status": "error",
+        "type": "RuntimeError",
+        "message": "<string>:1:8: error: unexpected token:\n\"\n"
+      }
+    }
+  },
+  "protected_files_unchanged": {
+    "COMPILED_API.md": true,
+    "OPTIMIZATION_WORKLOG.md": true,
+    "WORKLOG.md": true,
+    "admission.lp": true,
+    "ambiguities.md": true,
+    "compiled_policy.py": true,
+    "docs/AMENDMENT_A001.md": true,
+    "docs/AMENDMENT_A002.md": true,
+    "docs/AMENDMENT_A003.md": true,
+    "docs/SPEC.md": true,
+    "example.instance.json": true,
+    "example.trace.json": true,
+    "fixtures.json": true,
+    "instance.schema.json": true,
+    "optimization-equivalence.json": true,
+    "optimization-manifest.json": true,
+    "optimization-models.json": true,
+    "optimization-progress.jsonl": true,
+    "optimization-summary.json": true,
+    "optimization_selftest.py": true,
+    "policy_adapter.py": true,
+    "selftest.input.json": true,
+    "selftest.py": true,
+    "test-results.txt": true,
+    "test-summary.json": true
+  },
+  "source_sha256": {
+    "policy_adapter.py": "cfa3af7ed9446eefb8b947b889f52d2841db73e3920a18133d37c57c7071dd12",
+    "admission.lp": "149e76e157415465f925af7063c1796ce682f4228a5adff4347cb7ff08888fea",
+    "compiled_policy.py": "80267eb5db84957488d84c95bf44324563345202a8d4edc8d8c5646b72041647",
+    "compiled_policy_bulk.py": "1128f63788e760fc896f37dac6b3a822befc87308c30d401518c255373fbd29c",
+    "bulk_public_api_probe.py": "5a65e0086456bdb5cd34d05151ce7d6081556ce7bc926c0f804df2badb5599f3"
+  }
+}

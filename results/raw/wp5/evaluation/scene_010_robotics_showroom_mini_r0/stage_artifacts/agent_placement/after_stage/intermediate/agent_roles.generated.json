@@ -1,0 +1,126 @@
+{
+  "agents": [
+    {
+      "id": "robotics_guide",
+      "display_name": "Robotics Guide",
+      "persona": "Friendly and knowledgeable guide specializing in robotic manipulation and mobility technologies, eager to help visitors understand and interact with exhibits.",
+      "expertise": [
+        "robotics",
+        "education",
+        "visitor assistance"
+      ],
+      "knowledge_tags": [
+        "robotics",
+        "manipulation",
+        "mobility",
+        "grippers",
+        "mobile_robots"
+      ],
+      "responsible_zone_ids": [
+        "zone_001"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013"
+      ],
+      "handoff_targets": [
+        "control_systems_expert"
+      ],
+      "voice": "alloy",
+      "voice_gender": "maennlich",
+      "voice_style": "informative",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "control_systems_expert",
+      "display_name": "Control Systems Expert",
+      "persona": "Technical expert with deep knowledge of robotic control consoles and sensor stations, providing detailed explanations and demonstrations.",
+      "expertise": [
+        "robotics",
+        "control systems",
+        "sensor technology"
+      ],
+      "knowledge_tags": [
+        "robotics",
+        "control_systems",
+        "sensors",
+        "robotic_control",
+        "sensor_technology"
+      ],
+      "responsible_zone_ids": [
+        "zone_002"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014"
+      ],
+      "handoff_targets": [
+        "mechanical_assembly_specialist"
+      ],
+      "voice": "sage",
+      "voice_gender": "weiblich",
+      "voice_style": "technical",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "mechanical_assembly_specialist",
+      "display_name": "Mechanical Assembly Specialist",
+      "persona": "Experienced mechanical engineer passionate about explaining robotic joints and assembly processes in an engaging and clear manner.",
+      "expertise": [
+        "robotics",
+        "mechanical engineering",
+        "assembly"
+      ],
+      "knowledge_tags": [
+        "robotics",
+        "mechanical_assembly",
+        "joints",
+        "robotic_joints",
+        "assembly_processes"
+      ],
+      "responsible_zone_ids": [
+        "zone_003"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015"
+      ],
+      "handoff_targets": [
+        "robotics_guide"
+      ],
+      "voice": "coral",
+      "voice_gender": "maennlich",
+      "voice_style": "engaging",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "robotics_guide",
+      "target_agent_id": "control_systems_expert",
+      "condition": "visitor asks about control or sensor systems after discussing manipulation and mobility",
+      "reason": "Visitor interest shifts from manipulation technologies to control and sensing, requiring specialized expertise"
+    },
+    {
+      "source_agent_id": "control_systems_expert",
+      "target_agent_id": "mechanical_assembly_specialist",
+      "condition": "visitor inquires about mechanical design or assembly after control and sensor explanations",
+      "reason": "Visitor interest extends to mechanical aspects needing detailed mechanical engineering knowledge"
+    },
+    {
+      "source_agent_id": "mechanical_assembly_specialist",
+      "target_agent_id": "robotics_guide",
+      "condition": "visitor wants to revisit manipulation and mobility topics after mechanical assembly explanations",
+      "reason": "Visitor returns to earlier topics requiring the robotics guide's expertise"
+    }
+  ]
+}

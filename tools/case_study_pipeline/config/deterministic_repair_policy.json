@@ -1,0 +1,168 @@
+{
+  "schema": "roomcontract_deterministic_repair_policy",
+  "schema_version": "1.0",
+  "principle": "Prefer deterministic repair whenever the invalidity can be resolved without changing domain semantics.",
+  "llm_escalation_rule": "Use an LLM repair prompt only when a validator requires semantic judgement that cannot be derived from existing IDs, schemas, geometry, manifests or runtime logs.",
+  "rules": [
+    {
+      "rule_id": "DR-001",
+      "name": "Normalize identifiers",
+      "priority": 1,
+      "repair_type": "deterministic_normalization",
+      "applies_to": [
+        "rdl_ingestion",
+        "agent_roles",
+        "roomcontract_assembly"
+      ],
+      "handles": [
+        "missing IDs",
+        "duplicate IDs",
+        "invalid identifier characters",
+        "unstable casing"
+      ],
+      "evidence": [
+        "common.slugify",
+        "rdl_ingestion._unique_id",
+        "agent_roles.normalize_agent_roles_output"
+      ],
+      "llm_allowed": false
+    },
+    {
+      "rule_id": "DR-002",
+      "name": "Recompute manifest hashes",
+      "priority": 2,
+      "repair_type": "deterministic_manifest_rebuild",
+      "applies_to": [
+        "all_stages"
+      ],
+      "handles": [
+        "missing sha256",
+        "stale manifest hash",
+        "manifest reconstruction for existing valid artefacts"
+      ],
+      "evidence": [
+        "common.update_manifest",
+        "common.sha256_file"
+      ],
+      "llm_allowed": false
+    },
+    {
+      "rule_id": "DR-003",
+      "name": "Normalize TTS model aliases",
+      "priority": 3,
+      "repair_type": "deterministic_value_mapping",
+      "applies_to": [
+        "project_materialization"
+      ],
+      "handles": [
+        "tts_model=standard"
+      ],
+      "evidence": [
+        "project_materializer.materialize_project",
+        "project_materializer.validate_materialized_project"
+      ],
+      "llm_allowed": false
+    },
+    {
+      "rule_id": "DR-004",
+      "name": "Regenerate agent placements",
+      "priority": 4,
+      "repair_type": "deterministic_geometry_recompute",
+      "applies_to": [
+        "agent_placement"
+      ],
+      "handles": [
+        "missing placements",
+        "out-of-bounds placements",
+        "obstacle overlap",
+        "invalid forward vector"
+      ],
+      "evidence": [
+        "agent_placement.generate_agent_placements",
+        "agent_placement.validate_agent_placements"
+      ],
+      "llm_allowed": false
+    },
+    {
+      "rule_id": "DR-005",
+      "name": "Recover existing valid artefacts without rerun",
+      "priority": 5,
+      "repair_type": "deterministic_recovery",
+      "applies_to": [
+        "scene_semantics",
+        "agent_roles",
+        "knowledge_synthesis",
+        "agent_placement",
+        "roomcontract_assembly",
+        "project_materialization"
+      ],
+      "handles": [
+        "valid artefact exists but manifest/stage status is missing or stale"
+      ],
+      "evidence": [
+        "run_batch_case_study._recover_scene_semantics_if_possible",
+        "run_batch_case_study._recover_agent_roles_if_possible",
+        "run_batch_case_study._recover_knowledge_if_possible",
+        "run_batch_case_study._recover_agent_placement_if_possible",
+        "run_batch_case_study._recover_roomcontract_if_possible",
+        "run_batch_case_study._recover_project_materialization_if_possible"
+      ],
+      "llm_allowed": false
+    },
+    {
+      "rule_id": "DR-006",
+      "name": "Regenerate deterministic derived artefacts",
+      "priority": 6,
+      "repair_type": "deterministic_regeneration",
+      "applies_to": [
+        "evaluation_questions",
+        "roomcontract_assembly",
+        "schema_validation",
+        "traceability_metrics",
+        "placement_metrics",
+        "handoff_metrics",
+        "answer_grounding",
+        "paper_artifacts",
+        "repair_log"
+      ],
+      "handles": [
+        "missing deterministic report",
+        "stale deterministic report",
+        "derived artefact inconsistent with current inputs"
+      ],
+      "evidence": [
+        "evaluation_questions.generate_deterministic_questions",
+        "roomcontract_assembler.run_roomcontract_assembly_for_case",
+        "validators",
+        "paper_artifacts.generate_paper_artifacts",
+        "repair_log.run_repair_log"
+      ],
+      "llm_allowed": false
+    },
+    {
+      "rule_id": "LR-001",
+      "name": "Escalate semantic repairs to LLM",
+      "priority": 99,
+      "repair_type": "llm_repair",
+      "applies_to": [
+        "scene_semantics",
+        "agent_roles",
+        "knowledge_synthesis",
+        "future_roomcontract_capability_repair"
+      ],
+      "handles": [
+        "ambiguous room semantics",
+        "invalid role responsibility requiring domain judgement",
+        "missing knowledge content requiring textual synthesis",
+        "missing capability coverage requiring scenario interpretation"
+      ],
+      "evidence": [
+        "prompts/repair_invalid_object_refs_v1.md",
+        "prompts/repair_invalid_handoff_targets_v1.md",
+        "prompts/repair_missing_knowledge_entries_v1.md",
+        "prompts/repair_missing_capabilities_v1.md"
+      ],
+      "llm_allowed": true
+    }
+  ]
+}

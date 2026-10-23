@@ -1,0 +1,426 @@
+{
+  "cache_key": "95b5d713a12b3850eb6f861051c351791fb5ef1f200304f3b8f99b3822875fb2",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_04_energy_exhibition.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"extension_drift_04_energy_exhibition\",\"domain\":\"energy education and exhibition\",\"room_purpose\":\"Educational exhibition space focused on energy systems, renewable energy technologies, and energy storage solutions.\",\"visitor_goals\":[\"Understand different renewable energy technologies\",\"Learn how energy is generated and stored\",\"Explore energy efficiency methods\",\"Interact with educational displays about energy systems\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"name\":\"Energy Grid and Solar Panel Zone\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"purpose\":\"To educate visitors about energy grids and solar energy technologies through diagrams and solar panel models.\",\"visitor_goals_supported\":[\"Understand energy grid concepts\",\"Learn about solar panel technology\",\"Explore renewable energy sources\"],\"zone_id\":\"zone_001\"},{\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"name\":\"Wind Energy and Insulation Zone\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"purpose\":\"To provide insights into wind energy generation and insulation methods for energy efficiency.\",\"visitor_goals_supported\":[\"Learn about wind turbine technology\",\"Understand insulation benefits\",\"Explore sustainable energy solutions\"],\"zone_id\":\"zone_002\"},{\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"name\":\"Energy Storage and Generation Zone\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"purpose\":\"To demonstrate energy storage technologies and generation mechanisms using generator displays and battery cases.\",\"visitor_goals_supported\":[\"Understand energy storage\",\"Learn about generators\",\"Explore battery technologies\"],\"zone_id\":\"zone_003\"}],\"interaction_topics\":[{\"description\":\"Overview of energy grids and solar panel technology, including how energy is distributed and harnessed from solar sources.\",\"related_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"title\":\"Energy Grids and Solar Panels\",\"topic_id\":\"topic_001\"},{\"description\":\"Wind energy generation and insulation techniques, focusing on turbine models and insulation samples as sustainable energy solutions.\",\"related_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"title\":\"Wind Energy and Insulation\",\"topic_id\":\"topic_002\"},{\"description\":\"Energy storage methods, including generator displays and battery cases, explaining how energy is stored and utilized.\",\"related_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"title\":\"Energy Storage and Generation\",\"topic_id\":\"topic_003\"}],\"agent_role_candidates\":[{\"display_name\":\"Energy Systems Guide\",\"expertise\":[\"energy systems\",\"renewable energy\",\"energy storage\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"mission\":\"Explain and guide visitors through the energy grid and solar panel exhibits, clarifying concepts and answering questions.\",\"responsible_zone_ids\":[\"zone_001\"],\"role_id\":\"energy_guide\"},{\"display_name\":\"Renewable Energy Specialist\",\"expertise\":[\"wind energy\",\"turbine technology\",\"insulation\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"mission\":\"Provide detailed information on turbine models and insulation samples, highlighting their role in sustainable energy solutions.\",\"responsible_zone_ids\":[\"zone_002\"],\"role_id\":\"renewable_specialist\"},{\"display_name\":\"Energy Storage Expert\",\"expertise\":[\"energy storage\",\"battery technology\",\"generator systems\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"mission\":\"Educate visitors about generators and battery cases, explaining energy storage mechanisms and innovations.\",\"responsible_zone_ids\":[\"zone_003\"],\"role_id\":\"storage_expert\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"grid_diagram\":3,\"solar_panel_model\":2},\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"turbine_model\":3,\"insulation_sample\":2},\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"generator_display\":3,\"battery_case\":2},\"centroid_xz\":{\"x\":0.28,\"z\":0.28}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"grid_diagram\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic energy exhibition object: grid diagram. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_002\",\"object_type\":\"turbine_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic energy exhibition object: turbine model. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_003\",\"object_type\":\"generator_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic energy exhibition object: generator display. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clear...\"},{\"object_id\":\"object_004\",\"object_type\":\"solar_panel_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic energy exhibition object: solar panel model. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clear...\"},{\"object_id\":\"object_005\",\"object_type\":\"insulation_sample\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic energy exhibition object: insulation sample. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clear...\"},{\"object_id\":\"object_006\",\"object_type\":\"battery_case\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic energy exhibition object: battery case. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_007\",\"object_type\":\"grid_diagram\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic energy exhibition object: grid diagram. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_008\",\"object_type\":\"turbine_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic energy exhibition object: turbine model. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_009\",\"object_type\":\"generator_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic energy exhibition object: generator display. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clear...\"},{\"object_id\":\"object_010\",\"object_type\":\"solar_panel_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic energy exhibition object: solar panel model. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clea...\"},{\"object_id\":\"object_011\",\"object_type\":\"insulation_sample\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic energy exhibition object: insulation sample. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clea...\"},{\"object_id\":\"object_012\",\"object_type\":\"battery_case\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic energy exhibition object: battery case. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_013\",\"object_type\":\"grid_diagram\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic energy exhibition object: grid diagram. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_014\",\"object_type\":\"turbine_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic energy exhibition object: turbine model. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_015\",\"object_type\":\"generator_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic energy exhibition object: generator display. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clea...\"}],\"allowed_zone_ids\":[\"zone_001\",\"zone_002\",\"zone_003\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_001",
+                          "zone_002",
+                          "zone_003"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "2.mini",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792094388,
+    "created_at": 1792094382,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_09ae468bdaef3423016ad130ae17f087d1b5c01eef6b70c604",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"agents\":[{\"display_name\":\"Energy Systems Guide\",\"expertise\":[\"energy systems\",\"renewable energy\",\"energy storage\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"handoff_targets\":[\"renewable_energy_specialist\",\"energy_storage_expert\"],\"id\":\"energy_systems_guide\",\"knowledge_tags\":[\"energy_systems\",\"solar_energy\",\"energy_grid\"],\"persona\":\"A knowledgeable and friendly guide who explains energy grids and solar panel technology in an accessible way.\",\"responsible_zone_ids\":[\"zone_001\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"sage\",\"voice_gender\":\"weiblich\",\"voice_style\":\"klar und einladend\"},{\"display_name\":\"Renewable Energy Specialist\",\"expertise\":[\"wind energy\",\"turbine technology\",\"insulation\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"handoff_targets\":[\"energy_systems_guide\",\"energy_storage_expert\"],\"id\":\"renewable_energy_specialist\",\"knowledge_tags\":[\"wind_energy\",\"turbines\",\"insulation\",\"sustainable_energy\"],\"persona\":\"An expert focused on wind energy and insulation, providing detailed insights and sustainable energy solutions.\",\"responsible_zone_ids\":[\"zone_002\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"coral\",\"voice_gender\":\"maennlich\",\"voice_style\":\"fachlich und motivierend\"},{\"display_name\":\"Energy Storage Expert\",\"expertise\":[\"energy storage\",\"battery technology\",\"generator systems\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"handoff_targets\":[\"energy_systems_guide\",\"renewable_energy_specialist\"],\"id\":\"energy_storage_expert\",\"knowledge_tags\":[\"energy_storage\",\"batteries\",\"generators\"],\"persona\":\"A technical expert who explains energy storage mechanisms and innovations clearly and patiently.\",\"responsible_zone_ids\":[\"zone_003\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"onyx\",\"voice_gender\":\"weiblich\",\"voice_style\":\"präzise und beruhigend\"}],\"handoffs\":[{\"condition\":\"visitor asks about wind energy or insulation after interacting with Energy Systems Guide\",\"reason\":\"Wind energy and insulation topics are better explained by Renewable Energy Specialist\",\"source_agent_id\":\"energy_systems_guide\",\"target_agent_id\":\"renewable_energy_specialist\"},{\"condition\":\"visitor asks about energy storage or generators after interacting with Energy Systems Guide\",\"reason\":\"Energy storage topics require specialized knowledge from Energy Storage Expert\",\"source_agent_id\":\"energy_systems_guide\",\"target_agent_id\":\"energy_storage_expert\"},{\"condition\":\"visitor asks about solar panels or energy grids after interacting with Renewable Energy Specialist\",\"reason\":\"Energy Systems Guide has deeper expertise on solar panels and energy grids\",\"source_agent_id\":\"renewable_energy_specialist\",\"target_agent_id\":\"energy_systems_guide\"},{\"condition\":\"visitor asks about energy storage or generators after interacting with Renewable Energy Specialist\",\"reason\":\"Energy Storage Expert is specialized in energy storage and generator systems\",\"source_agent_id\":\"renewable_energy_specialist\",\"target_agent_id\":\"energy_storage_expert\"},{\"condition\":\"visitor asks about solar panels or energy grids after interacting with Energy Storage Expert\",\"reason\":\"Energy Systems Guide covers solar panel and grid topics comprehensively\",\"source_agent_id\":\"energy_storage_expert\",\"target_agent_id\":\"energy_systems_guide\"},{\"condition\":\"visitor asks about wind energy or insulation after interacting with Energy Storage Expert\",\"reason\":\"Renewable Energy Specialist provides detailed information on wind energy and insulation\",\"source_agent_id\":\"energy_storage_expert\",\"target_agent_id\":\"renewable_energy_specialist\"}]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_09ae468bdaef3423016ad130ae9ee487d1a06b94db7f01ec4d",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_001",
+                        "zone_002",
+                        "zone_003"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2827,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 755,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3582
+    },
+    "user": null
+  },
+  "response_sha256": "5546d1cb6fbc68d056ecdafc730cbf6c6058b9f720e6ec0a6b8c116847ab9e1c",
+  "saved_at": "2026-10-15T19:59:49.484815+00:00",
+  "status": "SUCCESS"
+}

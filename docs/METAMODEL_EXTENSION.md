@@ -1,0 +1,43 @@
+# Executable routing profile and Gate 0
+
+The extension retains 118 metaclasses, 2 datatypes, and 157 associations. It adds the gapless invariants INV-075 through INV-081 to the canonical model and changes the release description to native V2 execution with an executable routing profile. No new runtime state is presented as a metamodel class. The native model is consumed by the backend and authoring pipeline; the former statement that V2 is only a model version has been removed.
+
+## Decisions and scope
+
+The authority is SPEC v1 plus A-001, A-002 and A-003. The verifier is engineering code written with access to the production repository, not an independent evaluation oracle. It imports no backend module and reads native records itself. Group membership comes from each scene object's objectGroup; sourceGroup is descriptive. Zone membership comes from sourceObjectId. Owners are sets of agent identities. The first nonempty asset, group, or zone level decides and an ambiguous level never falls through.
+
+INV-075 checks at most one deciding provider and INV-076 checks at least one owner. Together they require exactly one provider. This split gives separate stable duplicate-owner and unowned-object errors rather than reporting the same zero-owner defect twice. INV-077 applies only when ownership is unique. It reads ScenarioStep, CapabilityUse, Capability, RuntimeBinding, RuntimeAction, schema designation and provider.providedCapability, then requires exactly one matching chat trace projection. Native declarations are authoritative; a trace-only path cannot make an operation executable. An explicit applicationActionKind overrides endpoint-based designation so a handoff action at POST /chat is not mistaken for an answering action. Matching trace IDs and target sets are checked without adding an unrequested locator-equality admission rule.
+
+INV-078 prohibits self-handoffs, duplicate target references, and non-Agent targets. INV-079 warns about a multiply owned group or zone whose members are not all protected by unique asset owners; fully shielded ambiguities are retained in the report for visibility. INV-080 reports every pair that requires more than one directed handoff or has no path. Such a pair rejects at runtime but does not make the whole publication invalid. INV-081 is a project-publication obligation: project and trace must declare sha256-lf-v1 and the matching digest of model bytes with CRLF normalized to LF. Missing or legacy scheme declarations fail this new publication profile; the report also gives the legacy raw-byte hash and whether it matches, without mislabeling a correctly hashed legacy model as corrupt. The production loader may still support legacy raw digests.
+
+## Interfaces and baseline separation
+
+`python tools/routing_verifier.py --instance MODEL --trace TRACE --project PROJECT --output routing_table.json` writes deterministic, sorted JSON under by_digest[digest]. Each report contains routing_table[start_wire_agent_id][scene_entity_id] with decision, reason, provider, and action. A rejection has null provider/action. The table includes all agent/object pairs even for a faulty model, which allows a fair mutation comparison; consumers must not advertise a table as verified when ok is false.
+
+The Python API is verify_routing(instance, trace, model_sha256=..., project=None, model_bytes=None), load_and_verify(instance_path, trace_path, project_path), and lookup_route(report, start_agent_id, entity_id). In-memory analysis without publication bytes and metadata explicitly marks INV-081 not evaluated. Duplicate native IDs fail E_PUBLICATION_INCONSISTENT. Duplicate wire agent IDs are a publication error and their table row rejects E_ACTIVE_AGENT_UNKNOWN, following A-003.
+
+The original structural validator remains the default. Its opt-in --profile executable additionally runs Gate 0, requiring one --instance, --trace and --project. The two reports remain separate. A ProjectPublication pseudo-scope is admitted for INV-081 without inventing a class. Existing descriptor checks, including identifier synchronization, are retained and are not counted as evidence that all numbered invariants are enforced.
+
+The generated Markdown/CSV traceability ledger uses a registry in the validator. It credits explicit tested legacy conditions INV-064/065, the seven new checks, and leaves 72 legacy conditions as not enforced in the evidence ledger until a full check-and-negative-fixture audit is supplied. That status means no demonstrated full enforcement, not absence of related code. Small fixtures are example-derived semantic projections, not full authoring-valid rooms. Every new invariant has one common passing fixture and a named negative fixture; warning/report fixtures need not make publication fail.
+
+## Runtime obligations
+
+A table can replace only model-bound ownership, one-edge reachability and declared-path selection. The backend must still check the request against the session's own pinned digest, resolve entity/source aliases consistently, enforce resolved selection and candidate/ambiguity rules, validate active-agent membership and optional server tracking, validate the actual request against the selected schema, and perform commit revalidation, fingerprint comparison, evidence append and rollback. Schema availability and dialect errors are also final runtime schema checks. A model table cannot establish user intent, answer quality, textual redirection, or responsibility quality.
+
+The root implementation owns the opt-in V_table integration and cross-room/mutant equivalence experiment. This document does not claim those experiments are complete merely because Gate 0 is implemented.
+
+## Generated artifacts and reproducibility
+
+- python tools/generate_dynamic_functional_rdl_v2.py regenerates the English specification, JSON model, all eight Mermaid/SVG/PNG views and the SHA-256 manifest. The diagram renderer is included among manifest source hashes.
+- python tools/generate_routing_fixtures.py regenerates the small classroom-derived positive and negative fixtures.
+- python tools/generate_invariant_traceability.py regenerates docs/INVARIANT_TRACEABILITY.md and .csv from canonical declarations and the validator registry.
+- python tools/generate_routing_figures.py creates SVG and vector PDF figures at 8.5 cm and 17.5 cm widths, plus PNG review images. Both use a minimum font size of 7.2 pt. Runtime pin/digest/fingerprint appear only inside dashed non-metamodel boxes. The Agent-to-Agent handoff arrow denotes a relation between instances of the class; INV-078 excludes an instance handing off to itself.
+- python tools/benchmark_routing_verifier.py records 10 warmups plus 200 full file-load/parse/verification runs in results/wp1/gate0_timing.json. It is a single-room timing, not a table-lookup speedup experiment.
+
+The classroom publication produces 144 table entries: 36 local answers, 81 answers after one handoff, and 27 no-handoff-path rejections. Gate 0 reports three shielded multiply owned groups, no unshielded shared-ownership warning, and no publication error. This is a property of this supplied model, not a frequency claim. The 200 measured warm runs had p50 15.1780 ms, p95 25.1753 ms, and p99 30.8705 ms; maximum 31.4946 ms. Raw timings and environment identifiers are retained. The local one-second target was met for this example only.
+
+Validation: the canonical model generator check passes with 81 invariants; structural validation of the full example and opt-in executable validation both pass. The routing test suite has 20 passing cases, including every new invariant's positive/negative fixture, native-path authority, selected path ambiguity, handoff-versus-answer designation, specificity/no-fallthrough, group-membership semantics, digest portability and CLI determinism. The system pytest temporary directory was inaccessible on this host, so validation used a workspace-owned --basetemp directory. Both publication-size figure previews were visually inspected.
+
+## Timing provenance deviation
+
+The first local timing batch was overwritten when the verifier was revised during self-review. Its raw per-run values and exact source hash were not retained; only the aggregate visible in the command output survives in results/wp1/pre_review_timing_summary_only.json. It is excluded from the reported timing evidence. The final 210-run batch is source-hashed and retained in gate0_timing.json. The benchmark now writes a distinct numbered output whenever a target already exists, so subsequent runs cannot overwrite raw evidence. This is a process deviation, not an additional experimental result.

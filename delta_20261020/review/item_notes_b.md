@@ -1,0 +1,9 @@
+## Item 2 — DONE
+
+Saved-script recomputation only; original data/tables/numbers untouched. Primary routing retains 480 cells over 20 rooms, 240 calls per arm. B0/B1 wrong-provider counts remain 5/0. The B0-minus-B1 wrong-provider rate difference is 0.0208333333333, with room-cluster 95% percentile CI [0.0, 0.058333333333333334]. The deviations occur in 2 room(s): scene_007_transport_center: 1; scene_043_transport_center: 4.
+
+All 270 reject-study calls are retained, including direct/local controls. Each manipulated fault class has exactly 8 distinct source rooms, verified separately for each model and pooled. Repeated calls/model/arm observations are not independent rooms. T2c reports counts, call-weighted rates and room-cluster intervals for every arm/model/fault, plus pooled rows. T2d contains paired contrasts B1r-minus-B1, B1r-minus-B0 and B1-minus-B0, for silent violation and valid abstention. T2e exposes all per-room rates and contrasts.
+
+Decision: resample rooms with replacement, retaining all within-room observations and shared paired arm indices; seed 20261015, 10000 resamples per estimand. Main estimand is pooled call-weighted rate, matching old T2; equal-room means/intervals are provided as sensitivity because rooms have unequal call counts. These are distinct estimands, not changes in outcomes. No smoothing, pseudocounts or independent-call CI. Constant outcomes can produce degenerate [0,0] or [1,1] percentile intervals, which do not establish population certainty. Eight rooms per manipulated class is a small effective sample.
+
+Old matched T2 counts and rates are checked in cluster_statistics_numeric_log_b.jsonl; any different interval is explicitly CHANGED. New estimands have old=null / NEW_ESTIMATE. Full retained-data SHA256 pins are in cluster_statistics_proof_b.json. Scripts make zero API calls.

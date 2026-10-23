@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NormalizedRDLSceneGraph",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_kind",
+    "scene_name",
+    "environment_type",
+    "dimensions",
+    "room_bounds",
+    "objects",
+    "object_groups_declared",
+    "zones",
+    "spawn_points",
+    "source_stats"
+  ],
+  "properties": {
+    "schema_kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scene_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "width",
+        "height",
+        "depth"
+      ],
+      "properties": {
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "depth": {
+          "type": "number"
+        }
+      }
+    },
+    "room_bounds": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "min_x",
+        "max_x",
+        "min_z",
+        "max_z"
+      ],
+      "properties": {
+        "min_x": {
+          "type": "number"
+        },
+        "max_x": {
+          "type": "number"
+        },
+        "min_z": {
+          "type": "number"
+        },
+        "max_z": {
+          "type": "number"
+        }
+      }
+    },
+    "objects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "object_id",
+          "source_id",
+          "object_type",
+          "group",
+          "position",
+          "rotation",
+          "dimensions"
+        ],
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "object_type": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "position": {
+            "$ref": "#/$defs/vector3"
+          },
+          "rotation": {
+            "$ref": "#/$defs/vector3"
+          },
+          "dimensions": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "properties": {
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              },
+              "depth": {
+                "type": "number"
+              }
+            }
+          },
+          "specification": {
+            "type": "string"
+          },
+          "children_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "object_groups_declared": {
+      "type": "object"
+    },
+    "zones": {
+      "type": "array"
+    },
+    "spawn_points": {
+      "type": "array"
+    },
+    "source_stats": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "vector3": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

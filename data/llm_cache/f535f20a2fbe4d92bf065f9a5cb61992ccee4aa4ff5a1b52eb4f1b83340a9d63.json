@@ -1,0 +1,426 @@
+{
+  "cache_key": "f535f20a2fbe4d92bf065f9a5cb61992ccee4aa4ff5a1b52eb4f1b83340a9d63",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_06_music_workshop.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"extension_drift_06_music_workshop\",\"domain\":\"music education and interactive workshop\",\"room_purpose\":\"Interactive music workshop designed for education and hands-on experience with various musical instrument collections.\",\"visitor_goals\":[\"Understand different types of musical instruments\",\"Interact with musical instruments and educational displays\",\"Learn basic music theory and rhythm\",\"Experience hands-on music creation\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-2.88,\"z\":-2.88},\"name\":\"Percussion and Sound Panel Zone\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"purpose\":\"Zone dedicated to percussion instruments and sound panels for rhythm and sound exploration.\",\"visitor_goals_supported\":[\"Learn about percussion instruments\",\"Interact with rhythm and sound devices\",\"Understand sound production concepts\"],\"zone_id\":\"zone_001\"},{\"centroid_xz\":{\"x\":-0.56,\"z\":-0.56},\"name\":\"Wind Instruments and Rhythm Consoles Zone\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"purpose\":\"Zone focused on wind instruments and rhythm consoles for breath control and rhythm practice.\",\"visitor_goals_supported\":[\"Explore wind instruments\",\"Practice rhythm patterns\",\"Experience interactive rhythm consoles\"],\"zone_id\":\"zone_002\"},{\"centroid_xz\":{\"x\":1.56,\"z\":1.56},\"name\":\"String Instruments and Score Displays Zone\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"purpose\":\"Zone for string instruments and score displays to learn string techniques and music notation.\",\"visitor_goals_supported\":[\"Learn string instrument techniques\",\"Read and understand music scores\",\"Interact with educational score displays\"],\"zone_id\":\"zone_003\"}],\"interaction_topics\":[{\"description\":\"Overview and demonstration of percussion instruments and sound panels, exploring rhythm and sound production.\",\"related_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"title\":\"Percussion and Sound Panels\",\"topic_id\":\"topic_001\"},{\"description\":\"Exploration and playing of wind instruments and rhythm consoles, focusing on breath control and rhythm patterns.\",\"related_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"title\":\"Wind Instruments and Rhythm Consoles\",\"topic_id\":\"topic_002\"},{\"description\":\"Introduction to string instruments and score displays, covering string techniques and music reading.\",\"related_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"title\":\"String Instruments and Score Displays\",\"topic_id\":\"topic_003\"}],\"agent_role_candidates\":[{\"display_name\":\"Music Workshop Guide\",\"expertise\":[\"music education\",\"instrument demonstration\",\"visitor assistance\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"mission\":\"Assist visitors in understanding and interacting with the different musical instrument collections and displays in the workshop.\",\"responsible_zone_ids\":[\"zone_001\",\"zone_002\",\"zone_003\"],\"role_id\":\"role_guide_001\"},{\"display_name\":\"Percussion Specialist\",\"expertise\":[\"percussion instruments\",\"rhythm education\",\"interactive demonstrations\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"mission\":\"Provide detailed explanations and demonstrations of percussion instruments and sound panels to visitors.\",\"responsible_zone_ids\":[\"zone_001\"],\"role_id\":\"role_specialist_001\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"sound_panel\":3,\"percussion_station\":2},\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"wind_instrument\":3,\"rhythm_console\":2},\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"string_instrument\":3,\"score_display\":2},\"centroid_xz\":{\"x\":0.28,\"z\":0.28}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"sound_panel\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic music workshop object: sound panel. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_002\",\"object_type\":\"wind_instrument\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic music workshop object: wind instrument. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_003\",\"object_type\":\"string_instrument\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic music workshop object: string instrument. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_004\",\"object_type\":\"percussion_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic music workshop object: percussion station. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_005\",\"object_type\":\"rhythm_console\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic music workshop object: rhythm console. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_006\",\"object_type\":\"score_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic music workshop object: score display. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_007\",\"object_type\":\"sound_panel\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic music workshop object: sound panel. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_008\",\"object_type\":\"wind_instrument\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic music workshop object: wind instrument. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_009\",\"object_type\":\"string_instrument\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic music workshop object: string instrument. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_010\",\"object_type\":\"percussion_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic music workshop object: percussion station. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_011\",\"object_type\":\"rhythm_console\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic music workshop object: rhythm console. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_012\",\"object_type\":\"score_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic music workshop object: score display. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_013\",\"object_type\":\"sound_panel\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic music workshop object: sound panel. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_014\",\"object_type\":\"wind_instrument\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic music workshop object: wind instrument. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_015\",\"object_type\":\"string_instrument\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic music workshop object: string instrument. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"}],\"allowed_zone_ids\":[\"zone_001\",\"zone_002\",\"zone_003\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_001",
+                          "zone_002",
+                          "zone_003"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "1.mini",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792090824,
+    "created_at": 1792090819,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_064af1278c27893d016ad122c3a4ac87d190496339166003e8",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"agents\":[{\"display_name\":\"Percussion Specialist\",\"expertise\":[\"percussion instruments\",\"rhythm education\",\"interactive demonstrations\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"handoff_targets\":[\"role_wind_specialist\",\"role_string_specialist\"],\"id\":\"role_percussion_specialist\",\"knowledge_tags\":[\"percussion_instruments\",\"rhythm_education\",\"sound_panels\"],\"persona\":\"Enthusiastic percussion expert passionate about rhythm and hands-on demonstrations to engage visitors in sound exploration.\",\"responsible_zone_ids\":[\"zone_001\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"fable\",\"voice_gender\":\"maennlich\",\"voice_style\":\"friendly\"},{\"display_name\":\"Wind Instruments Specialist\",\"expertise\":[\"wind instruments\",\"breath control\",\"rhythm consoles\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"handoff_targets\":[\"role_percussion_specialist\",\"role_string_specialist\"],\"id\":\"role_wind_specialist\",\"knowledge_tags\":[\"wind_instruments\",\"breath_control\",\"rhythm_practice\"],\"persona\":\"Patient and knowledgeable guide focused on teaching breath techniques and rhythm through wind instruments and consoles.\",\"responsible_zone_ids\":[\"zone_002\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"ash\",\"voice_gender\":\"weiblich\",\"voice_style\":\"calm\"},{\"display_name\":\"String Instruments Specialist\",\"expertise\":[\"string instruments\",\"music notation\",\"score displays\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"handoff_targets\":[\"role_percussion_specialist\",\"role_wind_specialist\"],\"id\":\"role_string_specialist\",\"knowledge_tags\":[\"string_instruments\",\"music_scores\",\"technique_education\"],\"persona\":\"Patient and encouraging expert helping visitors learn string techniques and read music scores with interactive displays.\",\"responsible_zone_ids\":[\"zone_003\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"coral\",\"voice_gender\":\"weiblich\",\"voice_style\":\"supportive\"}],\"handoffs\":[{\"condition\":\"visitor_interest_in_wind_instruments\",\"reason\":\"Visitor wants to explore wind instruments after percussion zone\",\"source_agent_id\":\"role_percussion_specialist\",\"target_agent_id\":\"role_wind_specialist\"},{\"condition\":\"visitor_interest_in_string_instruments\",\"reason\":\"Visitor wants to learn string techniques after percussion zone\",\"source_agent_id\":\"role_percussion_specialist\",\"target_agent_id\":\"role_string_specialist\"},{\"condition\":\"visitor_interest_in_percussion_instruments\",\"reason\":\"Visitor wants to explore percussion after wind instruments zone\",\"source_agent_id\":\"role_wind_specialist\",\"target_agent_id\":\"role_percussion_specialist\"},{\"condition\":\"visitor_interest_in_string_instruments\",\"reason\":\"Visitor wants to learn string techniques after wind instruments zone\",\"source_agent_id\":\"role_wind_specialist\",\"target_agent_id\":\"role_string_specialist\"},{\"condition\":\"visitor_interest_in_percussion_instruments\",\"reason\":\"Visitor wants to explore percussion after string instruments zone\",\"source_agent_id\":\"role_string_specialist\",\"target_agent_id\":\"role_percussion_specialist\"},{\"condition\":\"visitor_interest_in_wind_instruments\",\"reason\":\"Visitor wants to explore wind instruments after string instruments zone\",\"source_agent_id\":\"role_string_specialist\",\"target_agent_id\":\"role_wind_specialist\"}]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_064af1278c27893d016ad122c4180487d1b336970dbc53e314",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_001",
+                        "zone_002",
+                        "zone_003"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2784,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 702,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3486
+    },
+    "user": null
+  },
+  "response_sha256": "624b6ef0989295d57c06975d9931fc1c5776192543234afeb3892d4d9480c096",
+  "saved_at": "2026-10-15T19:00:25.527411+00:00",
+  "status": "SUCCESS"
+}

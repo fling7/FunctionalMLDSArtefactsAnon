@@ -1,0 +1,426 @@
+{
+  "cache_key": "737e341dffaec7d989048b5b03a33b63eed6c3ada292d558e2ffbcf89f1c7f38",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_10_robotics_showroom.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"extension_drift_10_robotics_showroom\",\"domain\":\"Robotik-Ausstellung / Showroom\",\"room_purpose\":\"Präsentation und Vermittlung von Wissen über verschiedene Aspekte der Robotik anhand von Exponaten und interaktiven Stationen.\",\"visitor_goals\":[\"Grundlagen der Robotik kennenlernen\",\"Technische Details einzelner Exponate verstehen\",\"Interaktive Demonstrationen erleben\",\"Unterschiedliche Robotik-Anwendungen erkunden\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"name\":\"Zone Collection 1: Greifer & Sensorik\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"purpose\":\"Fokus auf Greifertechnologien und Sensorik in der Robotik.\",\"visitor_goals_supported\":[\"Verstehen von Greifmechanismen\",\"Erkundung von Sensorsystemen\"],\"zone_id\":\"zone_1\"},{\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"name\":\"Zone Collection 2: Montage & Mobile Robotik\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"purpose\":\"Montageprozesse und mobile Robotermodelle werden vorgestellt.\",\"visitor_goals_supported\":[\"Verstehen von Montageprozessen\",\"Erleben mobiler Robotik\"],\"zone_id\":\"zone_2\"},{\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"name\":\"Zone Collection 3: Gelenke & Steuerung\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"purpose\":\"Gelenkmodelle und Kontrollkonsolen zur Demonstration von Bewegungsabläufen und Steuerung.\",\"visitor_goals_supported\":[\"Verstehen von Gelenkmechanik\",\"Interaktive Steuerung ausprobieren\"],\"zone_id\":\"zone_3\"}],\"interaction_topics\":[{\"description\":\"Wie funktionieren Greifer in der Robotik? Erklärung anhand der Gripper Displays.\",\"related_object_ids\":[\"object_001\",\"object_007\",\"object_013\"],\"title\":\"Greifertechnologien\",\"topic_id\":\"topic_gripper\"},{\"description\":\"Demonstration und Erklärung von Kontrollkonsolen zur Steuerung von Robotern.\",\"related_object_ids\":[\"object_006\",\"object_012\"],\"title\":\"Robotik-Steuerung\",\"topic_id\":\"topic_control\"},{\"description\":\"Sensorik in der Robotik, dargestellt durch die Sensor Stations.\",\"related_object_ids\":[\"object_004\",\"object_010\"],\"title\":\"Sensorik\",\"topic_id\":\"topic_sensors\"},{\"description\":\"Mobile Robotermodelle und deren Anwendung in der Praxis.\",\"related_object_ids\":[\"object_005\",\"object_011\"],\"title\":\"Mobile Robotik\",\"topic_id\":\"topic_mobile\"}],\"agent_role_candidates\":[{\"display_name\":\"Showroom Guide\",\"expertise\":[\"Robotics basics\",\"Exhibit explanations\",\"Visitor navigation\"],\"grounded_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"mission\":\"Begrüßt Besucher, gibt einen Überblick über die Ausstellung und hilft bei der Orientierung im Robotics Showroom.\",\"responsible_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"role_id\":\"showroom_guide\"},{\"display_name\":\"Technik-Experte\",\"expertise\":[\"Funktionsweise von Greifern, Sensoren, Robotermodellen\",\"Vertiefte technische Erklärungen\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"mission\":\"Erklärt die technischen Details und Funktionsweisen einzelner Exponate, insbesondere aus Collection 1.\",\"responsible_zone_ids\":[\"zone_1\"],\"role_id\":\"technical_expert\"},{\"display_name\":\"Interaktions-Coach\",\"expertise\":[\"Bedienung von Kontrollkonsolen\",\"Interaktive Demonstrationen\"],\"grounded_object_ids\":[\"object_006\",\"object_012\"],\"mission\":\"Unterstützt Besucher bei interaktiven Exponaten und Demonstrationen, insbesondere an den Kontrollkonsolen.\",\"responsible_zone_ids\":[\"zone_3\"],\"role_id\":\"interaction_coach\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"gripper_display\":3,\"sensor_station\":2},\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"assembly_display\":3,\"mobile_robot_model\":2},\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"joint_model\":3,\"control_console\":2},\"centroid_xz\":{\"x\":0.28,\"z\":0.28}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"gripper_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_002\",\"object_type\":\"assembly_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_003\",\"object_type\":\"joint_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_004\",\"object_type\":\"sensor_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: sensor station. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_005\",\"object_type\":\"mobile_robot_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: mobile robot model. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clea...\"},{\"object_id\":\"object_006\",\"object_type\":\"control_console\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: control console. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_007\",\"object_type\":\"gripper_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_008\",\"object_type\":\"assembly_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_009\",\"object_type\":\"joint_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_010\",\"object_type\":\"sensor_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: sensor station. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_011\",\"object_type\":\"mobile_robot_model\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: mobile robot model. Display 11 explains a distinct example in collection 2. A freestanding educational display with a cle...\"},{\"object_id\":\"object_012\",\"object_type\":\"control_console\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic robotics showroom object: control console. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_013\",\"object_type\":\"gripper_display\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: gripper display. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_014\",\"object_type\":\"assembly_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: assembly display. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clear...\"},{\"object_id\":\"object_015\",\"object_type\":\"joint_model\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic robotics showroom object: joint model. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly vi...\"}],\"allowed_zone_ids\":[\"zone_1\",\"zone_2\",\"zone_3\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_1",
+                          "zone_2",
+                          "zone_3"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "1.full",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792092454,
+    "created_at": 1792092447,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0b6954727674971f016ad1291f7ee487d19d3ee7f4ff5ef08c",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"agents\": [\n    {\n      \"display_name\": \"Showroom Guide\",\n      \"expertise\": [\n        \"robotik_grundlagen\",\n        \"ausstellungsueberblick\",\n        \"besucher_navigation\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_002\",\n        \"object_003\",\n        \"object_004\",\n        \"object_005\",\n        \"object_006\",\n        \"object_007\",\n        \"object_008\",\n        \"object_009\",\n        \"object_010\",\n        \"object_011\",\n        \"object_012\",\n        \"object_013\",\n        \"object_014\",\n        \"object_015\"\n      ],\n      \"handoff_targets\": [\n        \"technik_experte\",\n        \"interaktions_coach\"\n      ],\n      \"id\": \"showroom_guide\",\n      \"knowledge_tags\": [\n        \"robotik_basics\",\n        \"ausstellungsfuehrung\",\n        \"besucherfragen\"\n      ],\n      \"persona\": \"Freundlicher, kompetenter Guide, der Besucher begrüßt, einen Überblick über die Ausstellung gibt und bei der Orientierung hilft.\",\n      \"responsible_zone_ids\": [\n        \"zone_1\",\n        \"zone_2\",\n        \"zone_3\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"nova\",\n      \"voice_gender\": \"weiblich\",\n      \"voice_style\": \"freundlich\"\n    },\n    {\n      \"display_name\": \"Technik-Experte Greifer & Sensorik\",\n      \"expertise\": [\n        \"greifertechnologien\",\n        \"sensorik\",\n        \"technische_details\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_004\",\n        \"object_007\",\n        \"object_010\",\n        \"object_013\"\n      ],\n      \"handoff_targets\": [\n        \"showroom_guide\"\n      ],\n      \"id\": \"technik_experte\",\n      \"knowledge_tags\": [\n        \"greifer\",\n        \"sensorik\",\n        \"collection_1\"\n      ],\n      \"persona\": \"Technisch versierter Experte, der tiefgehende Erklärungen zu Greifern und Sensorik gibt und technische Fragen beantwortet.\",\n      \"responsible_zone_ids\": [\n        \"zone_1\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"onyx\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"erklaerend\"\n    },\n    {\n      \"display_name\": \"Montage & Mobile Robotik Spezialist\",\n      \"expertise\": [\n        \"montageprozesse\",\n        \"mobile_robotik\",\n        \"praxisanwendungen\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_002\",\n        \"object_005\",\n        \"object_008\",\n        \"object_011\",\n        \"object_014\"\n      ],\n      \"handoff_targets\": [\n        \"showroom_guide\"\n      ],\n      \"id\": \"montage_mobile_experte\",\n      \"knowledge_tags\": [\n        \"montage\",\n        \"mobile_robotik\",\n        \"collection_2\"\n      ],\n      \"persona\": \"Praxisorientierter Spezialist, der Montageprozesse und mobile Robotik-Modelle anschaulich erklärt.\",\n      \"responsible_zone_ids\": [\n        \"zone_2\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"sage\",\n      \"voice_gender\": \"maennlich\",\n      \"voice_style\": \"sachlich\"\n    },\n    {\n      \"display_name\": \"Interaktions-Coach Steuerung & Gelenke\",\n      \"expertise\": [\n        \"gelenkmechanik\",\n        \"steuerung\",\n        \"interaktive_demonstrationen\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_003\",\n        \"object_006\",\n        \"object_009\",\n        \"object_012\",\n        \"object_015\"\n      ],\n      \"handoff_targets\": [\n        \"showroom_guide\"\n      ],\n      \"id\": \"interaktions_coach\",\n      \"knowledge_tags\": [\n        \"steuerung\",\n        \"gelenke\",\n        \"interaktion\",\n        \"collection_3\"\n      ],\n      \"persona\": \"Hilfsbereiter Coach, der Besucher bei der Bedienung von Kontrollkonsolen unterstützt und Bewegungsabläufe erklärt.\",\n      \"responsible_zone_ids\": [\n        \"zone_3\"\n      ],\n      \"tts_model\": \"gpt-4o-mini-tts\",\n      \"voice\": \"echo\",\n      \"voice_gender\": \"weiblich\",\n      \"voice_style\": \"motivierend\"\n    }\n  ],\n  \"handoffs\": [\n    {\n      \"condition\": \"Besucher fragt nach technischen Details zu Greifern oder Sensorik in Zone 1.\",\n      \"reason\": \"Fachliche Vertiefung zu Greifer- und Sensorikthemen.\",\n      \"source_agent_id\": \"showroom_guide\",\n      \"target_agent_id\": \"technik_experte\"\n    },\n    {\n      \"condition\": \"Besucher fragt nach Montageprozessen oder mobilen Robotern in Zone 2.\",\n      \"reason\": \"Fachliche Vertiefung zu Montage und mobiler Robotik.\",\n      \"source_agent_id\": \"showroom_guide\",\n      \"target_agent_id\": \"montage_mobile_experte\"\n    },\n    {\n      \"condition\": \"Besucher möchte interaktive Steuerung oder Gelenkmechanik ausprobieren (Zone 3).\",\n      \"reason\": \"Unterstützung bei interaktiven Exponaten und Steuerung.\",\n      \"source_agent_id\": \"showroom_guide\",\n      \"target_agent_id\": \"interaktions_coach\"\n    },\n    {\n      \"condition\": \"Fragen außerhalb des eigenen Fachgebiets oder allgemeine Ausstellungsfragen.\",\n      \"reason\": \"Rückführung an allgemeinen Guide.\",\n      \"source_agent_id\": \"technik_experte\",\n      \"target_agent_id\": \"showroom_guide\"\n    },\n    {\n      \"condition\": \"Fragen außerhalb des eigenen Fachgebiets oder allgemeine Ausstellungsfragen.\",\n      \"reason\": \"Rückführung an allgemeinen Guide.\",\n      \"source_agent_id\": \"montage_mobile_experte\",\n      \"target_agent_id\": \"showroom_guide\"\n    },\n    {\n      \"condition\": \"Fragen außerhalb des eigenen Fachgebiets oder allgemeine Ausstellungsfragen.\",\n      \"reason\": \"Rückführung an allgemeinen Guide.\",\n      \"source_agent_id\": \"interaktions_coach\",\n      \"target_agent_id\": \"showroom_guide\"\n    }\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0b6954727674971f016ad1291fda9487d1a1123aab0db16ae8",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_1",
+                        "zone_2",
+                        "zone_3"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2912,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1412,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4324
+    },
+    "user": null
+  },
+  "response_sha256": "9b49884c07a24d2d01c17520c2ef09f0bbcc15087060873c56ff1f41e79056e3",
+  "saved_at": "2026-10-15T19:27:35.541083+00:00",
+  "status": "SUCCESS"
+}

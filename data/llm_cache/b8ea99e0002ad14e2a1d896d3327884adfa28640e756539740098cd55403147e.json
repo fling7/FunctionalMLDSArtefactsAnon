@@ -1,0 +1,618 @@
+{
+  "cache_key": "b8ea99e0002ad14e2a1d896d3327884adfa28640e756539740098cd55403147e",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_06_music_workshop.scene_semantics.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# scene_semantics_v1\n\nDu analysierst eine normalisierte RDL- oder RoomPlan-Szene fuer eine wissenschaftliche\nCase Study. Die Analyse muss raeumlich geerdet sein: Objekt-IDs duerfen nur aus der\nbereitgestellten Liste stammen.\n\nZiel der Ausgabe:\n- Erkenne die Domaene und den Zweck des Raums.\n- Leite typische Besucherziele ab.\n- Bilde kompakte semantische Zonen aus Objektgruppen und wichtigen Einzelobjekten.\n- Markiere Objekte, die fuer Interaktion, Erklaerung oder Navigation wichtig sind.\n- Schlage Agentenrollen vor, die spaeter in Interactive Agents umgesetzt werden koennen.\n\nRegeln:\n- Keine neuen Objekt-IDs erfinden.\n- Keine Runtime-Endpunkte, Requirements oder RoomContract-Elemente erzeugen; diese Stufen folgen spaeter.\n- Zonen muessen fachlich erklaerbar sein und mindestens ein vorhandenes Objekt referenzieren.\n- Agentenrollenkandidaten muessen aus Raumfunktion, Besucherzielen und Zonen abgeleitet sein.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Analyze this normalized scene and produce scene semantics.\",\"scene\":{\"schema_kind\":\"rdl_scene\",\"scene_name\":\"extension_drift_06_music_workshop\",\"environment_type\":\"indoor\",\"room_bounds\":{\"min_x\":-8.4,\"max_x\":8.4,\"min_z\":-8.4,\"max_z\":8.4},\"dimensions\":{\"width\":16.8,\"height\":4.0,\"depth\":16.8},\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"sound_panel\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic music workshop object: sound panel. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_002\",\"object_type\":\"wind_instrument\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic music workshop object: wind instrument. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_003\",\"object_type\":\"string_instrument\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic music workshop object: string instrument. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_004\",\"object_type\":\"percussion_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic music workshop object: percussion station. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_005\",\"object_type\":\"rhythm_console\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic music workshop object: rhythm console. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_006\",\"object_type\":\"score_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic music workshop object: score display. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearly visi...\"},{\"object_id\":\"object_007\",\"object_type\":\"sound_panel\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic music workshop object: sound panel. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clearly visibl...\"},{\"object_id\":\"object_008\",\"object_type\":\"wind_instrument\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic music workshop object: wind instrument. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_009\",\"object_type\":\"string_instrument\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic music workshop object: string instrument. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_010\",\"object_type\":\"percussion_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic music workshop object: percussion station. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_011\",\"object_type\":\"rhythm_console\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic music workshop object: rhythm console. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_012\",\"object_type\":\"score_display\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic music workshop object: score display. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_013\",\"object_type\":\"sound_panel\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic music workshop object: sound panel. Display 13 explains a distinct example in collection 1. A freestanding educational display with a clearly visib...\"},{\"object_id\":\"object_014\",\"object_type\":\"wind_instrument\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic music workshop object: wind instrument. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly v...\"},{\"object_id\":\"object_015\",\"object_type\":\"string_instrument\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic music workshop object: string instrument. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"sound_panel\":3,\"percussion_station\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"example_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"sound_panel\",\"specification_excerpt\":\"Synthetic music workshop object: sound panel. Display 1 explains a distinct example in collection 1. A freestanding e...\"},{\"object_id\":\"object_004\",\"object_type\":\"percussion_station\",\"specification_excerpt\":\"Synthetic music workshop object: percussion station. Display 4 explains a distinct example in collection 1. A freesta...\"},{\"object_id\":\"object_007\",\"object_type\":\"sound_panel\",\"specification_excerpt\":\"Synthetic music workshop object: sound panel. Display 7 explains a distinct example in collection 1. A freestanding e...\"}]},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"wind_instrument\":3,\"rhythm_console\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"example_objects\":[{\"object_id\":\"object_002\",\"object_type\":\"wind_instrument\",\"specification_excerpt\":\"Synthetic music workshop object: wind instrument. Display 2 explains a distinct example in collection 2. A freestandi...\"},{\"object_id\":\"object_005\",\"object_type\":\"rhythm_console\",\"specification_excerpt\":\"Synthetic music workshop object: rhythm console. Display 5 explains a distinct example in collection 2. A freestandin...\"},{\"object_id\":\"object_008\",\"object_type\":\"wind_instrument\",\"specification_excerpt\":\"Synthetic music workshop object: wind instrument. Display 8 explains a distinct example in collection 2. A freestandi...\"}]},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"string_instrument\":3,\"score_display\":2},\"is_structural\":false,\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"example_objects\":[{\"object_id\":\"object_003\",\"object_type\":\"string_instrument\",\"specification_excerpt\":\"Synthetic music workshop object: string instrument. Display 3 explains a distinct example in collection 3. A freestan...\"},{\"object_id\":\"object_006\",\"object_type\":\"score_display\",\"specification_excerpt\":\"Synthetic music workshop object: score display. Display 6 explains a distinct example in collection 3. A freestanding...\"},{\"object_id\":\"object_009\",\"object_type\":\"string_instrument\",\"specification_excerpt\":\"Synthetic music workshop object: string instrument. Display 9 explains a distinct example in collection 3. A freestan...\"}]}]}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 1800,
+      "model": "gpt-4.1-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "scene_semantics",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agent_role_candidates": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "mission": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "role_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "role_id",
+                    "display_name",
+                    "mission",
+                    "expertise",
+                    "responsible_zone_ids",
+                    "grounded_object_ids"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "domain": {
+                "type": "string"
+              },
+              "important_objects": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "object_id": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "object_id",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "interaction_topics": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "related_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "topic_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "topic_id",
+                    "title",
+                    "description",
+                    "related_object_ids"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "room_purpose": {
+                "type": "string"
+              },
+              "semantic_zones": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "centroid_xz": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "x": {
+                          "type": "number"
+                        },
+                        "z": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "z"
+                      ],
+                      "type": "object"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "visitor_goals_supported": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "zone_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "zone_id",
+                    "name",
+                    "purpose",
+                    "object_ids",
+                    "centroid_xz",
+                    "visitor_goals_supported"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "visitor_goals": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "domain",
+              "room_purpose",
+              "visitor_goals",
+              "semantic_zones",
+              "important_objects",
+              "interaction_topics",
+              "agent_role_candidates"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "2.full",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792095277,
+    "created_at": 1792095268,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0360b3f26354b6f7016ad134248bbc87d19ba51c4b3cf8a658",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 1800,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"agent_role_candidates\": [\n    {\n      \"display_name\": \"Musik-Workshop Guide\",\n      \"expertise\": [\n        \"Musikinstrumente erklären\",\n        \"Interaktive Demonstrationen\",\n        \"Besucherführung\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_001\",\n        \"object_002\",\n        \"object_003\",\n        \"object_004\",\n        \"object_005\",\n        \"object_006\",\n        \"object_007\",\n        \"object_008\",\n        \"object_009\",\n        \"object_010\",\n        \"object_011\",\n        \"object_012\",\n        \"object_013\",\n        \"object_014\",\n        \"object_015\"\n      ],\n      \"mission\": \"Erklärt die Funktionsweise und Besonderheiten der verschiedenen Instrumente und Stationen, leitet Besucher durch die Zonen und fördert das praktische Ausprobieren.\",\n      \"responsible_zone_ids\": [\n        \"zone_1\",\n        \"zone_2\",\n        \"zone_3\"\n      ],\n      \"role_id\": \"music_workshop_guide\"\n    },\n    {\n      \"display_name\": \"Instrumenten-Experte\",\n      \"expertise\": [\n        \"Fachwissen zu spezifischen Instrumentengruppen\",\n        \"Technische Details\",\n        \"Geschichte der Instrumente\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_002\",\n        \"object_003\",\n        \"object_004\",\n        \"object_008\",\n        \"object_009\",\n        \"object_010\",\n        \"object_014\",\n        \"object_015\"\n      ],\n      \"mission\": \"Gibt vertiefte Informationen zu einzelnen Instrumentengruppen (z.B. Saiten-, Blas-, Schlaginstrumente) und beantwortet Detailfragen.\",\n      \"responsible_zone_ids\": [\n        \"zone_1\",\n        \"zone_2\",\n        \"zone_3\"\n      ],\n      \"role_id\": \"instrument_expert\"\n    },\n    {\n      \"display_name\": \"Interaktiver Workshop-Coach\",\n      \"expertise\": [\n        \"Anleitung zu praktischen Übungen\",\n        \"Motivation zur Interaktion\",\n        \"Gruppenaktivitäten\"\n      ],\n      \"grounded_object_ids\": [\n        \"object_005\",\n        \"object_006\",\n        \"object_007\",\n        \"object_010\",\n        \"object_011\",\n        \"object_012\"\n      ],\n      \"mission\": \"Leitet Besucher beim Ausprobieren der interaktiven Stationen an und sorgt für einen sicheren, motivierenden Ablauf.\",\n      \"responsible_zone_ids\": [\n        \"zone_1\",\n        \"zone_2\",\n        \"zone_3\"\n      ],\n      \"role_id\": \"workshop_coach\"\n    }\n  ],\n  \"domain\": \"Musikpädagogik / Musikvermittlung\",\n  \"important_objects\": [\n    {\n      \"object_id\": \"object_002\",\n      \"reason\": \"Zentrale Station für die Erklärung von Blasinstrumenten, bietet Interaktionsmöglichkeit.\"\n    },\n    {\n      \"object_id\": \"object_003\",\n      \"reason\": \"Stellvertretend für Saiteninstrumente, wichtig für die Demonstration unterschiedlicher Klangkörper.\"\n    },\n    {\n      \"object_id\": \"object_004\",\n      \"reason\": \"Schlaginstrumente sind für das praktische Ausprobieren und Rhythmuserfahrung essenziell.\"\n    },\n    {\n      \"object_id\": \"object_006\",\n      \"reason\": \"Score Display unterstützt das Verständnis von Musiknotation und fördert die Verbindung von Theorie und Praxis.\"\n    },\n    {\n      \"object_id\": \"object_011\",\n      \"reason\": \"Rhythm Console ermöglicht interaktive Rhythmusübungen, zentral für Gruppenaktivitäten.\"\n    }\n  ],\n  \"interaction_topics\": [\n    {\n      \"description\": \"Wie unterscheiden sich die Instrumentengruppen (Saiten, Blas, Schlag)?\",\n      \"related_object_ids\": [\n        \"object_002\",\n        \"object_003\",\n        \"object_004\",\n        \"object_008\",\n        \"object_009\",\n        \"object_010\",\n        \"object_014\",\n        \"object_015\"\n      ],\n      \"title\": \"Instrumentenvielfalt erleben\",\n      \"topic_id\": \"topic_1\"\n    },\n    {\n      \"description\": \"Wie entsteht Rhythmus und wie kann man ihn selbst erzeugen?\",\n      \"related_object_ids\": [\n        \"object_005\",\n        \"object_010\",\n        \"object_011\"\n      ],\n      \"title\": \"Rhythmus und Percussion\",\n      \"topic_id\": \"topic_2\"\n    },\n    {\n      \"description\": \"Wie liest man eine Partitur und setzt sie praktisch um?\",\n      \"related_object_ids\": [\n        \"object_006\",\n        \"object_012\"\n      ],\n      \"title\": \"Musiknotation verstehen\",\n      \"topic_id\": \"topic_3\"\n    },\n    {\n      \"description\": \"Wie beeinflussen Sound Panels die Akustik und das Musikerlebnis?\",\n      \"related_object_ids\": [\n        \"object_001\",\n        \"object_007\",\n        \"object_013\"\n      ],\n      \"title\": \"Akustik und Klangräume\",\n      \"topic_id\": \"topic_4\"\n    }\n  ],\n  \"room_purpose\": \"Interaktiver Musik-Workshop zur Vermittlung von Instrumentenwissen und musikalischer Praxis\",\n  \"semantic_zones\": [\n    {\n      \"centroid_xz\": {\n        \"x\": -0.84,\n        \"z\": -0.84\n      },\n      \"name\": \"Percussion & Akustik Zone\",\n      \"object_ids\": [\n        \"object_001\",\n        \"object_004\",\n        \"object_007\",\n        \"object_010\",\n        \"object_013\"\n      ],\n      \"purpose\": \"Fokus auf Rhythmus, Schlaginstrumente und Klangwahrnehmung durch Sound Panels.\",\n      \"visitor_goals_supported\": [\n        \"Rhythmus erleben\",\n        \"Akustik erforschen\",\n        \"Instrumente ausprobieren\"\n      ],\n      \"zone_id\": \"zone_1\"\n    },\n    {\n      \"centroid_xz\": {\n        \"x\": -0.28,\n        \"z\": -0.28\n      },\n      \"name\": \"Blasinstrumente & Rhythmus Zone\",\n      \"object_ids\": [\n        \"object_002\",\n        \"object_005\",\n        \"object_008\",\n        \"object_011\",\n        \"object_014\"\n      ],\n      \"purpose\": \"Erkundung von Blasinstrumenten und interaktiven Rhythmusstationen.\",\n      \"visitor_goals_supported\": [\n        \"Blasinstrumente kennenlernen\",\n        \"Rhythmusübungen machen\",\n        \"Instrumente ausprobieren\"\n      ],\n      \"zone_id\": \"zone_2\"\n    },\n    {\n      \"centroid_xz\": {\n        \"x\": 0.28,\n        \"z\": 0.28\n      },\n      \"name\": \"Saiteninstrumente & Musiktheorie Zone\",\n      \"object_ids\": [\n        \"object_003\",\n        \"object_006\",\n        \"object_009\",\n        \"object_012\",\n        \"object_015\"\n      ],\n      \"purpose\": \"Vertiefung in Saiteninstrumente und Musiknotation, Verbindung von Theorie und Praxis.\",\n      \"visitor_goals_supported\": [\n        \"Saiteninstrumente ausprobieren\",\n        \"Musiknotation verstehen\",\n        \"Instrumente vergleichen\"\n      ],\n      \"zone_id\": \"zone_3\"\n    }\n  ],\n  \"visitor_goals\": [\n    \"Verschiedene Instrumentengruppen kennenlernen\",\n    \"Instrumente praktisch ausprobieren\",\n    \"Rhythmusgefühl entwickeln\",\n    \"Musiknotation verstehen\",\n    \"Akustik und Klangräume erleben\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0360b3f26354b6f7016ad1342521a487d185ff9eca16c3f09d",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "scene_semantics",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agent_role_candidates": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "mission": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "role_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "role_id",
+                  "display_name",
+                  "mission",
+                  "expertise",
+                  "responsible_zone_ids",
+                  "grounded_object_ids"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "domain": {
+              "type": "string"
+            },
+            "important_objects": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "object_id": {
+                    "enum": [
+                      "object_001",
+                      "object_002",
+                      "object_003",
+                      "object_004",
+                      "object_005",
+                      "object_006",
+                      "object_007",
+                      "object_008",
+                      "object_009",
+                      "object_010",
+                      "object_011",
+                      "object_012",
+                      "object_013",
+                      "object_014",
+                      "object_015"
+                    ],
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "object_id",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "interaction_topics": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "related_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "topic_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "topic_id",
+                  "title",
+                  "description",
+                  "related_object_ids"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "room_purpose": {
+              "type": "string"
+            },
+            "semantic_zones": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "centroid_xz": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "x": {
+                        "type": "number"
+                      },
+                      "z": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "z"
+                    ],
+                    "type": "object"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "purpose": {
+                    "type": "string"
+                  },
+                  "visitor_goals_supported": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "zone_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "zone_id",
+                  "name",
+                  "purpose",
+                  "object_ids",
+                  "centroid_xz",
+                  "visitor_goals_supported"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "visitor_goals": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "domain",
+            "room_purpose",
+            "visitor_goals",
+            "semantic_zones",
+            "important_objects",
+            "interaction_topics",
+            "agent_role_candidates"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2633,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1651,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4284
+    },
+    "user": null
+  },
+  "response_sha256": "ddbfea7ba9c8b39e87fc3460e6d15c79455c270c9ed9cc128400633cf5cb9ec4",
+  "saved_at": "2026-10-15T20:14:37.905692+00:00",
+  "status": "SUCCESS"
+}

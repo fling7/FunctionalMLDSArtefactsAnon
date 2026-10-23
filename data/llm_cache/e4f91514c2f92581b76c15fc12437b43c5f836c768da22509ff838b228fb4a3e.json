@@ -1,0 +1,584 @@
+{
+  "cache_key": "e4f91514c2f92581b76c15fc12437b43c5f836c768da22509ff838b228fb4a3e",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.source_authoring",
+    "item_id": "extension_llm_01_astronomy_gallery",
+    "payload": {
+      "input": "Write the complete scene now.",
+      "instructions": "Write one original synthetic educational room as JSON, with exactly 15 objects.\nDomain: astronomy_gallery. Scene name: extension_llm_01_astronomy_gallery. Layout family: two staggered arcs.\nUse the exact wire shape below; supply all fields yourself. No real person,\ninstitution or participant data. The room must be 20 by 20 metres, height 4,\ncentred at x=z=0. Each object has axis-aligned width/depth 0.6 to 1.0,\nheight 0.5 to 1.8, bottom y=0, rotation x=y=z=0, a distinct id object_001\nthrough object_015, and a useful domain-specific specification of 1-2 sentences.\nKeep all complete footprints inside [-9,9] in x/z, separate footprints by at\nleast 1 metre, and preserve traversable space. Choose varied positions yourself,\nfollowing the requested layout family. Create three groups collection_1 to\ncollection_3, each containing five objects, with distinct six-digit hex colours.\nWrite a complete scene; do not return code, a recipe, placeholders, or comments.\n\nShape:\n{\"scene\":{\"sceneName\":\"...\",\"environment\":{\"type\":\"indoor\",\"dimensions\":{\"width\":20,\"height\":4,\"depth\":20},\"lighting\":[{\"lightType\":\"ambient\",\"intensity\":0.7,\"color\":\"#FFFFFF\"}],\"background\":\"#ECECEC\"},\"objectGroups\":{\"collection_1\":{\"color\":\"...\"},\"collection_2\":{\"color\":\"...\"},\"collection_3\":{\"color\":\"...\"}},\"objects\":[{\"objectId\":\"object_001\",\"objectType\":\"...\",\"position\":{\"x\":0,\"y\":0.5,\"z\":0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"dimensions\":{\"width\":1,\"height\":1,\"depth\":1},\"group\":\"collection_1\",\"children\":[],\"specification\":\"...\"}]}}\n",
+      "max_output_tokens": 5000,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "synthetic_source_scene",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "scene": {
+                "additionalProperties": false,
+                "properties": {
+                  "environment": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "background": {
+                        "type": "string"
+                      },
+                      "dimensions": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "depth": {
+                            "type": "number"
+                          },
+                          "height": {
+                            "type": "number"
+                          },
+                          "width": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "width",
+                          "height",
+                          "depth"
+                        ],
+                        "type": "object"
+                      },
+                      "lighting": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "color": {
+                              "type": "string"
+                            },
+                            "intensity": {
+                              "type": "number"
+                            },
+                            "lightType": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "lightType",
+                            "intensity",
+                            "color"
+                          ],
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "dimensions",
+                      "lighting",
+                      "background"
+                    ],
+                    "type": "object"
+                  },
+                  "objectGroups": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "collection_1": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "color": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "color"
+                        ],
+                        "type": "object"
+                      },
+                      "collection_2": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "color": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "color"
+                        ],
+                        "type": "object"
+                      },
+                      "collection_3": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "color": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "color"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "collection_1",
+                      "collection_2",
+                      "collection_3"
+                    ],
+                    "type": "object"
+                  },
+                  "objects": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "children": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "dimensions": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "depth": {
+                              "type": "number"
+                            },
+                            "height": {
+                              "type": "number"
+                            },
+                            "width": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "width",
+                            "height",
+                            "depth"
+                          ],
+                          "type": "object"
+                        },
+                        "group": {
+                          "type": "string"
+                        },
+                        "objectId": {
+                          "type": "string"
+                        },
+                        "objectType": {
+                          "type": "string"
+                        },
+                        "position": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "z": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "x",
+                            "y",
+                            "z"
+                          ],
+                          "type": "object"
+                        },
+                        "rotation": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "z": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "x",
+                            "y",
+                            "z"
+                          ],
+                          "type": "object"
+                        },
+                        "specification": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "objectId",
+                        "objectType",
+                        "position",
+                        "rotation",
+                        "dimensions",
+                        "group",
+                        "children",
+                        "specification"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "sceneName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "sceneName",
+                  "environment",
+                  "objectGroups",
+                  "objects"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "scene"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "authoring_attempt1",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792084927,
+    "created_at": 1792084917,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0b1b895b41168abe016ad10bb528d487d183764e56046b5193",
+    "incomplete_details": null,
+    "instructions": "Write one original synthetic educational room as JSON, with exactly 15 objects.\nDomain: astronomy_gallery. Scene name: extension_llm_01_astronomy_gallery. Layout family: two staggered arcs.\nUse the exact wire shape below; supply all fields yourself. No real person,\ninstitution or participant data. The room must be 20 by 20 metres, height 4,\ncentred at x=z=0. Each object has axis-aligned width/depth 0.6 to 1.0,\nheight 0.5 to 1.8, bottom y=0, rotation x=y=z=0, a distinct id object_001\nthrough object_015, and a useful domain-specific specification of 1-2 sentences.\nKeep all complete footprints inside [-9,9] in x/z, separate footprints by at\nleast 1 metre, and preserve traversable space. Choose varied positions yourself,\nfollowing the requested layout family. Create three groups collection_1 to\ncollection_3, each containing five objects, with distinct six-digit hex colours.\nWrite a complete scene; do not return code, a recipe, placeholders, or comments.\n\nShape:\n{\"scene\":{\"sceneName\":\"...\",\"environment\":{\"type\":\"indoor\",\"dimensions\":{\"width\":20,\"height\":4,\"depth\":20},\"lighting\":[{\"lightType\":\"ambient\",\"intensity\":0.7,\"color\":\"#FFFFFF\"}],\"background\":\"#ECECEC\"},\"objectGroups\":{\"collection_1\":{\"color\":\"...\"},\"collection_2\":{\"color\":\"...\"},\"collection_3\":{\"color\":\"...\"}},\"objects\":[{\"objectId\":\"object_001\",\"objectType\":\"...\",\"position\":{\"x\":0,\"y\":0.5,\"z\":0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"dimensions\":{\"width\":1,\"height\":1,\"depth\":1},\"group\":\"collection_1\",\"children\":[],\"specification\":\"...\"}]}}\n",
+    "max_output_tokens": 5000,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"scene\":{\"environment\":{\"background\":\"#ECECEC\",\"dimensions\":{\"depth\":20,\"height\":4,\"width\":20},\"lighting\":[{\"color\":\"#FFFFFF\",\"intensity\":0.7,\"lightType\":\"ambient\"}],\"type\":\"indoor\"},\"objectGroups\":{\"collection_1\":{\"color\":\"#1E90FF\"},\"collection_2\":{\"color\":\"#32CD32\"},\"collection_3\":{\"color\":\"#FF8C00\"}},\"objects\":[{\"children\":[],\"dimensions\":{\"depth\":0.8,\"height\":1.2,\"width\":0.8},\"group\":\"collection_1\",\"objectId\":\"object_001\",\"objectType\":\"planet_model\",\"position\":{\"x\":-6.5,\"y\":0,\"z\":-2.5},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A detailed scale model of Jupiter showing its characteristic bands and Great Red Spot.\"},{\"children\":[],\"dimensions\":{\"depth\":0.7,\"height\":1.0,\"width\":0.7},\"group\":\"collection_1\",\"objectId\":\"object_002\",\"objectType\":\"planet_model\",\"position\":{\"x\":-5.0,\"y\":0,\"z\":-3.5},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A realistic model of Saturn with its iconic rings displayed clearly.\"},{\"children\":[],\"dimensions\":{\"depth\":0.6,\"height\":0.8,\"width\":0.6},\"group\":\"collection_1\",\"objectId\":\"object_003\",\"objectType\":\"planet_model\",\"position\":{\"x\":-3.5,\"y\":0,\"z\":-4.0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A model of Mars highlighting its reddish surface and polar ice caps.\"},{\"children\":[],\"dimensions\":{\"depth\":0.9,\"height\":1.5,\"width\":0.9},\"group\":\"collection_1\",\"objectId\":\"object_004\",\"objectType\":\"planet_model\",\"position\":{\"x\":-2.0,\"y\":0,\"z\":-3.0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A large Earth model showing continents, oceans, and cloud formations.\"},{\"children\":[],\"dimensions\":{\"depth\":0.7,\"height\":1.0,\"width\":0.7},\"group\":\"collection_1\",\"objectId\":\"object_005\",\"objectType\":\"planet_model\",\"position\":{\"x\":-0.5,\"y\":0,\"z\":-2.0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A model of Venus illustrating its thick cloud cover and yellowish hue.\"},{\"children\":[],\"dimensions\":{\"depth\":0.8,\"height\":1.3,\"width\":0.8},\"group\":\"collection_2\",\"objectId\":\"object_006\",\"objectType\":\"star_model\",\"position\":{\"x\":1.0,\"y\":0,\"z\":-1.0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A bright model of the Sun showing solar flares and sunspots.\"},{\"children\":[],\"dimensions\":{\"depth\":0.6,\"height\":0.7,\"width\":0.6},\"group\":\"collection_2\",\"objectId\":\"object_007\",\"objectType\":\"star_model\",\"position\":{\"x\":2.5,\"y\":0,\"z\":-2.0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A white dwarf star model illustrating its compact size and intense brightness.\"},{\"children\":[],\"dimensions\":{\"depth\":0.7,\"height\":1.1,\"width\":0.7},\"group\":\"collection_2\",\"objectId\":\"object_008\",\"objectType\":\"star_model\",\"position\":{\"x\":4.0,\"y\":0,\"z\":-2.5},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A red giant star model showing its expanded outer layers and reddish color.\"},{\"children\":[],\"dimensions\":{\"depth\":0.9,\"height\":1.4,\"width\":0.9},\"group\":\"collection_2\",\"objectId\":\"object_009\",\"objectType\":\"star_model\",\"position\":{\"x\":5.5,\"y\":0,\"z\":-1.5},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A neutron star model demonstrating its extreme density and magnetic field.\"},{\"children\":[],\"dimensions\":{\"depth\":0.6,\"height\":0.9,\"width\":0.6},\"group\":\"collection_2\",\"objectId\":\"object_010\",\"objectType\":\"star_model\",\"position\":{\"x\":7.0,\"y\":0,\"z\":-1.0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A protostar model showing early stages of star formation with surrounding dust.\"},{\"children\":[],\"dimensions\":{\"depth\":0.8,\"height\":1.2,\"width\":0.8},\"group\":\"collection_3\",\"objectId\":\"object_011\",\"objectType\":\"telescope_display\",\"position\":{\"x\":-5.5,\"y\":0,\"z\":3.0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"An interactive telescope display demonstrating how light is collected and focused.\"},{\"children\":[],\"dimensions\":{\"depth\":0.7,\"height\":1.0,\"width\":0.7},\"group\":\"collection_3\",\"objectId\":\"object_012\",\"objectType\":\"space_probe_model\",\"position\":{\"x\":-3.5,\"y\":0,\"z\":4.0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A scale model of the Voyager space probe with detailed instruments and antennas.\"},{\"children\":[],\"dimensions\":{\"depth\":0.9,\"height\":1.5,\"width\":0.9},\"group\":\"collection_3\",\"objectId\":\"object_013\",\"objectType\":\"black_hole_display\",\"position\":{\"x\":-1.5,\"y\":0,\"z\":3.5},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A visual simulation of a black hole with accretion disk and gravitational lensing effects.\"},{\"children\":[],\"dimensions\":{\"depth\":0.7,\"height\":1.1,\"width\":0.7},\"group\":\"collection_3\",\"objectId\":\"object_014\",\"objectType\":\"meteorite_sample\",\"position\":{\"x\":0.5,\"y\":0,\"z\":4.5},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"A display case containing authentic meteorite samples with information on their origins.\"},{\"children\":[],\"dimensions\":{\"depth\":0.6,\"height\":0.8,\"width\":0.6},\"group\":\"collection_3\",\"objectId\":\"object_015\",\"objectType\":\"constellation_map\",\"position\":{\"x\":2.0,\"y\":0,\"z\":3.0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0},\"specification\":\"An illuminated map showing major constellations visible in the night sky.\"}],\"sceneName\":\"extension_llm_01_astronomy_gallery\"}}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0b1b895b41168abe016ad10bb5dc9487d186911e29507f4471",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "synthetic_source_scene",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "scene": {
+              "additionalProperties": false,
+              "properties": {
+                "environment": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "background": {
+                      "type": "string"
+                    },
+                    "dimensions": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "depth": {
+                          "type": "number"
+                        },
+                        "height": {
+                          "type": "number"
+                        },
+                        "width": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "width",
+                        "height",
+                        "depth"
+                      ],
+                      "type": "object"
+                    },
+                    "lighting": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "color": {
+                            "type": "string"
+                          },
+                          "intensity": {
+                            "type": "number"
+                          },
+                          "lightType": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "lightType",
+                          "intensity",
+                          "color"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "dimensions",
+                    "lighting",
+                    "background"
+                  ],
+                  "type": "object"
+                },
+                "objectGroups": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "collection_1": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "color": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "color"
+                      ],
+                      "type": "object"
+                    },
+                    "collection_2": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "color": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "color"
+                      ],
+                      "type": "object"
+                    },
+                    "collection_3": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "color": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "color"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "collection_1",
+                    "collection_2",
+                    "collection_3"
+                  ],
+                  "type": "object"
+                },
+                "objects": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "children": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "dimensions": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "depth": {
+                            "type": "number"
+                          },
+                          "height": {
+                            "type": "number"
+                          },
+                          "width": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "width",
+                          "height",
+                          "depth"
+                        ],
+                        "type": "object"
+                      },
+                      "group": {
+                        "type": "string"
+                      },
+                      "objectId": {
+                        "type": "string"
+                      },
+                      "objectType": {
+                        "type": "string"
+                      },
+                      "position": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "x": {
+                            "type": "number"
+                          },
+                          "y": {
+                            "type": "number"
+                          },
+                          "z": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y",
+                          "z"
+                        ],
+                        "type": "object"
+                      },
+                      "rotation": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "x": {
+                            "type": "number"
+                          },
+                          "y": {
+                            "type": "number"
+                          },
+                          "z": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y",
+                          "z"
+                        ],
+                        "type": "object"
+                      },
+                      "specification": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "objectId",
+                      "objectType",
+                      "position",
+                      "rotation",
+                      "dimensions",
+                      "group",
+                      "children",
+                      "specification"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "sceneName": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "sceneName",
+                "environment",
+                "objectGroups",
+                "objects"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "scene"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 757,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1511,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2268
+    },
+    "user": null
+  },
+  "response_sha256": "204702d1f65c69039ba229ddc7b018ee97161280caa0c24dba6898d0380379b3",
+  "saved_at": "2026-10-15T17:22:07.595307+00:00",
+  "status": "SUCCESS"
+}

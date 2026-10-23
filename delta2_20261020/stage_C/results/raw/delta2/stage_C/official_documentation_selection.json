@@ -1,0 +1,33 @@
+{
+  "retrieved_on": "2026-10-20",
+  "sources": [
+    "https://developers.openai.com/api/docs/models/gpt-6-astra",
+    "https://developers.openai.com/api/docs/models/gpt-6-luna",
+    "https://developers.openai.com/api/docs/guides/latest-model",
+    "https://developers.openai.com/api/docs/pricing"
+  ],
+  "candidates_pending_access_preflight": {
+    "flagship": "gpt-6-astra",
+    "small": "gpt-6-luna"
+  },
+  "model_page_standard_rates_per_million": {
+    "gpt-6-astra": {
+      "input": 10,
+      "output": 50,
+      "cached_input": 1,
+      "cache_write": 12.5
+    },
+    "gpt-6-luna": {
+      "input": 0.1,
+      "output": 0.5,
+      "cached_input": 0.01,
+      "cache_write": 0.125
+    }
+  },
+  "context_window": 1050000,
+  "max_output_tokens": 128000,
+  "snapshot_note": "Fetched model pages list alias IDs only; prefer dated IDs if access list supplies documented matching snapshots.",
+  "parameter_note": "Official latest-model guide requires omitting temperature when reasoning effort is not none; default reasoning retained by existing gateway. Both selected models use default temperature.",
+  "output_cap_decision": "Freeze 2048 total output tokens for all new-model arms to allow default reasoning; original-model arms retain original caps. Budget may stop before all new-model calls; no adaptive cap changes after outcomes.",
+  "billing_note": "Model pages explicitly show standard rates; half-price entries on pricing page are Batch/Flex, not standard. Cache-write surcharge must be considered before live use."
+}

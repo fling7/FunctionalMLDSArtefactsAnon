@@ -1,0 +1,17 @@
+# WP6 amendment: indicative geometric lint of consistent owner swaps
+
+This separate predeclared analysis applies the existing frozen WP5 `zone_lint(case, index)` rule to every completed single `swap_owners_consistently` mutant in the registered WP6 batches. It does not change routing evaluation, ground truth, confusion cells, source selection or operator targets. It introduces no language-model calls. Preserve a fresh output directory for each snapshot; include every available registered swap and explicitly retain pending/inapplicable entries. Never choose swaps by observed lint performance.
+
+## Protocol and endpoints
+
+Use the exact original source scene and native baseline project, plus the existing materialized swap mutant and its completed all-pairs routing outcome. Verify source and mutant model digests, outcome metadata, and the same object set. Require exactly two objects exchanging unique deciding owners. If this condition does not hold, refuse the analysis and preserve the failure rather than silently reinterpret the mutation.
+
+Reuse the public WP5 helper without changes: derive each zone's axis-aligned bounding box from the positions and width/depth of its native sourceObjectId members; test whether each entire object footprint lies inside any responsible-zone box of its unique deciding owner. These are member-derived boxes, not authoritative polygons. The helper does not rotate object footprints; its existing rule is preserved. It may miss semantic errors when boxes overlap, span gaps or include unrelated objects, and may flag legitimate cross-zone expertise.
+
+For each of the two changed targets retain the complete baseline and mutant lint row, both owners, availability and whether a previously inside footprint becomes outside. Report baseline-outside, mutant-outside and newly-outside counts among targets with both before/after boxes available. Report unavailable target counts separately. A model-level flag is available only when both changed targets have paired geometry; retain that denominator explicitly. Also retain the original helper's whole-scene rows for audit. A consistent structural swap is not by itself independent proof of semantic inappropriateness: do not call these counts semantic sensitivity, specificity, false positives or false negatives. LLM judgments remain not run and missing evidence.
+
+Use recovery observations only, not originals plus their byte-identical copied observations. Reject duplicate model IDs across supplied runs. Keep every source project and source room identifier, source priority, source geometry/model hashes, outcome hash, baseline and mutant geometry, helper hashes and current routing ground truth in raw output. Source priorities above20 remain provisional until corpus selection is final; cross-model counterparts are not additional rooms. Missing geometric files, un-restored archived models or mismatched hashes halt the affected snapshot; no synthetic geometry replaces them.
+
+## Engineering checks before execution
+
+Six fixtures cover separated boxes that flag both swapped targets, overlapping boxes that do not flag, absent/partial responsible-zone data that remains unavailable, an unchanged/non-swap model, and an altered object set. All six passed. The exact source and dependency hashes and JUnit result are locked before corpus execution. This finite fixture check does not validate semantic labels. This new analysis is disclosed separately from the originally frozen routing endpoint and does not rewrite prior results.

@@ -1,0 +1,91 @@
+classDiagram
+  direction TB
+  %% SVG/PNG define the presentation-authoritative orthogonal layout.
+  %% EAST-ADL Function/System/Behavior – selected slice
+  class EAST_ADL_Elements_EAType {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_EAPrototype {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_EAElement {
+    <<abstract>>
+    +name : String [0..1]
+  }
+  class EAST_ADL_Elements_EAPort {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_EAConnector {
+    <<abstract>>
+  }
+  class EAST_ADL_Elements_Context {
+    <<abstract>>
+  }
+  class EAST_ADL_FunctionModeling_FunctionType {
+    <<abstract>>
+    +isElementary : Boolean [1]
+  }
+  class EAST_ADL_FunctionModeling_FunctionPrototype {
+    <<abstract>>
+  }
+  class EAST_ADL_FunctionModeling_FunctionPort {
+    <<abstract>>
+  }
+  class EAST_ADL_FunctionModeling_FunctionConnector {
+    <<EA::FunctionModeling>>
+  }
+  class EAST_ADL_FunctionModeling_PortGroup {
+    <<EA::FunctionModeling>>
+  }
+  class EAST_ADL_FunctionModeling_FunctionFlowPort {
+    <<EA::FunctionModeling>>
+    +direction : EADirectionKind [1]
+  }
+  class EAST_ADL_Behavior_FunctionBehavior {
+    <<EA::Behavior>>
+    +path : String [1]
+    +representation : FunctionBehaviorKind [1]
+  }
+  class EAST_ADL_FunctionModeling_AnalysisFunctionType {
+    <<EA::FunctionModeling>>
+  }
+  class EAST_ADL_FunctionModeling_AnalysisFunctionPrototype {
+    <<EA::FunctionModeling>>
+  }
+  class EAST_ADL_FunctionModeling_DesignFunctionType {
+    <<EA::FunctionModeling>>
+  }
+  class EAST_ADL_FunctionModeling_DesignFunctionPrototype {
+    <<EA::FunctionModeling>>
+  }
+  class EAST_ADL_SystemModeling_AnalysisLevel {
+    <<EA::SystemModeling>>
+  }
+  class EAST_ADL_SystemModeling_DesignLevel {
+    <<EA::SystemModeling>>
+  }
+  EAST-ADL_Elements_EAType <|-- EAST-ADL_FunctionModeling_FunctionType
+  EAST-ADL_Elements_Context <|-- EAST-ADL_FunctionModeling_FunctionType
+  EAST-ADL_Elements_EAElement <|-- EAST-ADL_FunctionModeling_FunctionPrototype
+  EAST-ADL_Elements_EAPrototype <|-- EAST-ADL_FunctionModeling_FunctionPrototype
+  EAST-ADL_Elements_EAPort <|-- EAST-ADL_FunctionModeling_FunctionPort
+  EAST-ADL_Elements_EAElement <|-- EAST-ADL_FunctionModeling_FunctionPort
+  EAST-ADL_Elements_EAConnector <|-- EAST-ADL_FunctionModeling_FunctionConnector
+  EAST-ADL_Elements_EAElement <|-- EAST-ADL_FunctionModeling_FunctionConnector
+  EAST-ADL_Elements_EAElement <|-- EAST-ADL_FunctionModeling_PortGroup
+  EAST-ADL_FunctionModeling_FunctionPort <|-- EAST-ADL_FunctionModeling_FunctionFlowPort
+  EAST-ADL_Elements_Context <|-- EAST-ADL_Behavior_FunctionBehavior
+  EAST-ADL_FunctionModeling_FunctionType <|-- EAST-ADL_FunctionModeling_AnalysisFunctionType
+  EAST-ADL_FunctionModeling_FunctionPrototype <|-- EAST-ADL_FunctionModeling_AnalysisFunctionPrototype
+  EAST-ADL_FunctionModeling_FunctionType <|-- EAST-ADL_FunctionModeling_DesignFunctionType
+  EAST-ADL_FunctionModeling_FunctionPrototype <|-- EAST-ADL_FunctionModeling_DesignFunctionPrototype
+  EAST-ADL_Elements_Context <|-- EAST-ADL_SystemModeling_AnalysisLevel
+  EAST-ADL_Elements_Context <|-- EAST-ADL_SystemModeling_DesignLevel
+  EAST-ADL_FunctionModeling_FunctionConnector "*" ..> "2" EAST-ADL_FunctionModeling_FunctionPort : port [2]
+  EAST-ADL_FunctionModeling_FunctionType "1" *-- "*" EAST-ADL_FunctionModeling_FunctionPort : port [*]
+  EAST-ADL_FunctionModeling_FunctionType "1" *-- "*" EAST-ADL_FunctionModeling_FunctionConnector : connector [*]
+  EAST-ADL_FunctionModeling_PortGroup "0..1" *-- "*" EAST-ADL_FunctionModeling_PortGroup : portGroup [*]
+  EAST-ADL_FunctionModeling_AnalysisFunctionPrototype "*" --> "1" EAST-ADL_FunctionModeling_AnalysisFunctionType : type [1]
+  EAST-ADL_FunctionModeling_AnalysisFunctionType "1" *-- "*" EAST-ADL_FunctionModeling_AnalysisFunctionPrototype : part [*]
+  EAST-ADL_FunctionModeling_DesignFunctionPrototype "*" --> "1" EAST-ADL_FunctionModeling_DesignFunctionType : type [1]
+  EAST-ADL_FunctionModeling_DesignFunctionType "1" *-- "*" EAST-ADL_FunctionModeling_DesignFunctionPrototype : part [*]

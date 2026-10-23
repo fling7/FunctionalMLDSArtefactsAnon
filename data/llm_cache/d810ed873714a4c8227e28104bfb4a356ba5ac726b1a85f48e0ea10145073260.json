@@ -1,0 +1,426 @@
+{
+  "cache_key": "d810ed873714a4c8227e28104bfb4a356ba5ac726b1a85f48e0ea10145073260",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP5.extension.drift",
+    "item_id": "extension_drift_05_archaeology_gallery.agent_roles.attempt01",
+    "payload": {
+      "input": [
+        {
+          "content": "# agent_roles_v1\n\nDu erzeugst aus einer validierten semantischen Raumanalyse konkrete Agentenrollen fuer\nInteractive Agents. Die Ausgabe muss backend-kompatibel sein und spaeter direkt zu\n`agents.json`, Wissensdateien, RoomContract-Agenten und Handoff-Regeln fuehren.\n\nZiel:\n- Verdichte die Rollenkandidaten zu 2 bis 8 klar unterscheidbaren Agenten.\n- Jede Rolle muss fachlich an Zonen oder Objekte gebunden sein.\n- Jede Rolle braucht eine Persona, Expertise, Wissenstags, `voice`, `voice_gender`, `voice_style` und `tts_model`.\n- Handoffs sollen nur zwischen existierenden Agenten vorkommen und fachlich begruendet sein.\n\nRegeln:\n- Agent-IDs und Wissenstags muessen slug-kompatibel sein: kleinbuchstaben, zahlen, `_` oder `-`.\n- Verwende nur vorhandene `zone_id` und `object_id` Werte aus der Eingabe.\n- `tts_model` soll `gpt-4o-mini-tts` sein, nicht `standard`.\n- `voice_gender` muss gesetzt sein; verwende nur einfache Werte wie `weiblich` oder `maennlich`.\n- Keine frei erfundenen Runtime-Endpunkte, Requirements oder RoomContract-IDs erzeugen.\n- Handoffs sind nur fachliche Weiterleitungen, keine Gesprächslogik im Detail.\n- Antworte ausschliesslich im verlangten JSON-Schema.\n",
+          "role": "system"
+        },
+        {
+          "content": "{\"task\":\"Generate backend-compatible Interactive Agents roles and handoff matrix.\",\"scene\":{\"scene_name\":\"extension_drift_05_archaeology_gallery\",\"domain\":\"archaeology museum gallery\",\"room_purpose\":\"archaeology gallery for educational display and visitor engagement\",\"visitor_goals\":[\"learn about archaeological excavation and dating\",\"understand ancient tools and pottery\",\"explore cultural art and settlement history\",\"engage with educational displays\",\"navigate the gallery effectively\"],\"semantic_zones\":[{\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84},\"name\":\"Collection 1 Zone - Excavation and Dating\",\"object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"purpose\":\"Showcase excavation models and dating stations to educate visitors on archaeological methods and findings.\",\"visitor_goals_supported\":[\"learn about excavation techniques\",\"understand artifact dating methods\",\"explore archaeological discoveries\"],\"zone_id\":\"zone_001\"},{\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28},\"name\":\"Collection 2 Zone - Tools and Pottery\",\"object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"purpose\":\"Display tool cases and pottery artifacts to illustrate daily life and craftsmanship in ancient cultures.\",\"visitor_goals_supported\":[\"examine ancient tools\",\"appreciate pottery craftsmanship\",\"understand artifact functions\"],\"zone_id\":\"zone_002\"},{\"centroid_xz\":{\"x\":0.28,\"z\":0.28},\"name\":\"Collection 3 Zone - Mosaic and Settlement\",\"object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"purpose\":\"Present mosaic panels and settlement maps to convey cultural narratives and spatial organization of past societies.\",\"visitor_goals_supported\":[\"interpret ancient art\",\"learn about settlement patterns\",\"connect cultural history\"],\"zone_id\":\"zone_003\"}],\"interaction_topics\":[{\"description\":\"Explanation of excavation techniques and findings represented by excavation models and dating stations in collection 1.\",\"related_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"title\":\"Excavation and Dating Methods\",\"topic_id\":\"topic_excavation\"},{\"description\":\"Discussion of tools and pottery artifacts, their uses, and cultural significance in collection 2.\",\"related_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"title\":\"Tools and Pottery Artifacts\",\"topic_id\":\"topic_tools_pottery\"},{\"description\":\"Interpretation of mosaic art and settlement patterns, highlighting cultural and historical narratives in collection 3.\",\"related_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"title\":\"Mosaic Art and Settlement History\",\"topic_id\":\"topic_mosaic_settlement\"}],\"agent_role_candidates\":[{\"display_name\":\"Archaeology Guide\",\"expertise\":[\"archaeology\",\"history\",\"museum studies\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"mission\":\"Provide detailed explanations and historical context about excavation models and dating stations in collection 1.\",\"responsible_zone_ids\":[\"zone_001\"],\"role_id\":\"role_guide_archaeology\"},{\"display_name\":\"Artifact Specialist\",\"expertise\":[\"archaeology\",\"artifact analysis\",\"cultural heritage\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"mission\":\"Explain the significance and details of tool cases and pottery displays in collection 2.\",\"responsible_zone_ids\":[\"zone_002\"],\"role_id\":\"role_specialist_artifacts\"},{\"display_name\":\"Cultural Historian\",\"expertise\":[\"archaeology\",\"cultural history\",\"map interpretation\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"mission\":\"Interpret mosaic panels and settlement maps in collection 3, providing cultural and historical insights.\",\"responsible_zone_ids\":[\"zone_003\"],\"role_id\":\"role_historian_culture\"}],\"object_groups\":[{\"group\":\"collection_1\",\"object_count\":5,\"object_types\":{\"excavation_model\":3,\"dating_station\":2},\"centroid_xz\":{\"x\":-0.84,\"z\":-0.84}},{\"group\":\"collection_2\",\"object_count\":5,\"object_types\":{\"tool_case\":3,\"pottery_display\":2},\"centroid_xz\":{\"x\":-0.28,\"z\":-0.28}},{\"group\":\"collection_3\",\"object_count\":5,\"object_types\":{\"mosaic_panel\":3,\"settlement_map\":2},\"centroid_xz\":{\"x\":0.28,\"z\":0.28}}],\"non_structural_objects\":[{\"object_id\":\"object_001\",\"object_type\":\"excavation_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic archaeology gallery object: excavation model. Display 1 explains a distinct example in collection 1. A freestanding educational display with a clea...\"},{\"object_id\":\"object_002\",\"object_type\":\"tool_case\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic archaeology gallery object: tool case. Display 2 explains a distinct example in collection 2. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_003\",\"object_type\":\"mosaic_panel\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":-4.2},\"specification_excerpt\":\"Synthetic archaeology gallery object: mosaic panel. Display 3 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_004\",\"object_type\":\"dating_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":4.2,\"z\":-4.2},\"specification_excerpt\":\"Synthetic archaeology gallery object: dating station. Display 4 explains a distinct example in collection 1. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_005\",\"object_type\":\"pottery_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic archaeology gallery object: pottery display. Display 5 explains a distinct example in collection 2. A freestanding educational display with a clear...\"},{\"object_id\":\"object_006\",\"object_type\":\"settlement_map\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic archaeology gallery object: settlement map. Display 6 explains a distinct example in collection 3. A freestanding educational display with a clearl...\"},{\"object_id\":\"object_007\",\"object_type\":\"excavation_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":1.4,\"z\":-1.4},\"specification_excerpt\":\"Synthetic archaeology gallery object: excavation model. Display 7 explains a distinct example in collection 1. A freestanding educational display with a clea...\"},{\"object_id\":\"object_008\",\"object_type\":\"tool_case\",\"group\":\"collection_2\",\"position_xz\":{\"x\":4.2,\"z\":-1.4},\"specification_excerpt\":\"Synthetic archaeology gallery object: tool case. Display 8 explains a distinct example in collection 2. A freestanding educational display with a clearly vis...\"},{\"object_id\":\"object_009\",\"object_type\":\"mosaic_panel\",\"group\":\"collection_3\",\"position_xz\":{\"x\":-4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic archaeology gallery object: mosaic panel. Display 9 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"},{\"object_id\":\"object_010\",\"object_type\":\"dating_station\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic archaeology gallery object: dating station. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clear...\"},{\"object_id\":\"object_011\",\"object_type\":\"pottery_display\",\"group\":\"collection_2\",\"position_xz\":{\"x\":1.4,\"z\":1.4},\"specification_excerpt\":\"Synthetic archaeology gallery object: pottery display. Display 11 explains a distinct example in collection 2. A freestanding educational display with a clea...\"},{\"object_id\":\"object_012\",\"object_type\":\"settlement_map\",\"group\":\"collection_3\",\"position_xz\":{\"x\":4.2,\"z\":1.4},\"specification_excerpt\":\"Synthetic archaeology gallery object: settlement map. Display 12 explains a distinct example in collection 3. A freestanding educational display with a clear...\"},{\"object_id\":\"object_013\",\"object_type\":\"excavation_model\",\"group\":\"collection_1\",\"position_xz\":{\"x\":-4.2,\"z\":4.2},\"specification_excerpt\":\"Synthetic archaeology gallery object: excavation model. Display 13 explains a distinct example in collection 1. A freestanding educational display with a cle...\"},{\"object_id\":\"object_014\",\"object_type\":\"tool_case\",\"group\":\"collection_2\",\"position_xz\":{\"x\":-1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic archaeology gallery object: tool case. Display 14 explains a distinct example in collection 2. A freestanding educational display with a clearly vi...\"},{\"object_id\":\"object_015\",\"object_type\":\"mosaic_panel\",\"group\":\"collection_3\",\"position_xz\":{\"x\":1.4,\"z\":4.2},\"specification_excerpt\":\"Synthetic archaeology gallery object: mosaic panel. Display 15 explains a distinct example in collection 3. A freestanding educational display with a clearly...\"}],\"allowed_zone_ids\":[\"zone_001\",\"zone_002\",\"zone_003\"],\"allowed_object_ids\":[\"object_001\",\"object_002\",\"object_003\",\"object_004\",\"object_005\",\"object_006\",\"object_007\",\"object_008\",\"object_009\",\"object_010\",\"object_011\",\"object_012\",\"object_013\",\"object_014\",\"object_015\"],\"structural_object_ids\":[],\"allowed_voices\":[\"alloy\",\"ash\",\"ballad\",\"coral\",\"echo\",\"fable\",\"nova\",\"onyx\",\"sage\",\"shimmer\",\"verse\"],\"required_tts_model\":\"gpt-4o-mini-tts\"}}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 2200,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "agent_roles",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "agents": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "display_name": {
+                      "type": "string"
+                    },
+                    "expertise": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "grounded_object_ids": {
+                      "items": {
+                        "enum": [
+                          "object_001",
+                          "object_002",
+                          "object_003",
+                          "object_004",
+                          "object_005",
+                          "object_006",
+                          "object_007",
+                          "object_008",
+                          "object_009",
+                          "object_010",
+                          "object_011",
+                          "object_012",
+                          "object_013",
+                          "object_014",
+                          "object_015"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "handoff_targets": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "knowledge_tags": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "persona": {
+                      "type": "string"
+                    },
+                    "responsible_zone_ids": {
+                      "items": {
+                        "enum": [
+                          "zone_001",
+                          "zone_002",
+                          "zone_003"
+                        ],
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "tts_model": {
+                      "type": "string"
+                    },
+                    "voice": {
+                      "enum": [
+                        "alloy",
+                        "ash",
+                        "ballad",
+                        "coral",
+                        "echo",
+                        "fable",
+                        "nova",
+                        "onyx",
+                        "sage",
+                        "shimmer",
+                        "verse"
+                      ],
+                      "type": "string"
+                    },
+                    "voice_gender": {
+                      "type": "string"
+                    },
+                    "voice_style": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "display_name",
+                    "persona",
+                    "expertise",
+                    "knowledge_tags",
+                    "responsible_zone_ids",
+                    "grounded_object_ids",
+                    "handoff_targets",
+                    "voice",
+                    "voice_gender",
+                    "voice_style",
+                    "tts_model"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "handoffs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "source_agent_id": {
+                      "type": "string"
+                    },
+                    "target_agent_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source_agent_id",
+                    "target_agent_id",
+                    "condition",
+                    "reason"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "agents",
+              "handoffs"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "3.mini",
+    "share": "WP5",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792099052,
+    "created_at": 1792099046,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_079dde9a9fde2ff2016ad142e6f8dc87d19681dd9e195aa36e",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 2200,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"agents\":[{\"display_name\":\"Archaeology Guide\",\"expertise\":[\"archaeology\",\"history\",\"museum studies\"],\"grounded_object_ids\":[\"object_001\",\"object_004\",\"object_007\",\"object_010\",\"object_013\"],\"handoff_targets\":[\"role_specialist_artifacts\",\"role_historian_culture\"],\"id\":\"role_guide_archaeology\",\"knowledge_tags\":[\"excavation_methods\",\"artifact_dating\",\"archaeological_discoveries\"],\"persona\":\"Friendly and knowledgeable guide specializing in excavation techniques and dating methods, eager to share detailed archaeological insights.\",\"responsible_zone_ids\":[\"zone_001\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"sage\",\"voice_gender\":\"maennlich\",\"voice_style\":\"informative\"},{\"display_name\":\"Artifact Specialist\",\"expertise\":[\"archaeology\",\"artifact analysis\",\"cultural heritage\"],\"grounded_object_ids\":[\"object_002\",\"object_005\",\"object_008\",\"object_011\",\"object_014\"],\"handoff_targets\":[\"role_guide_archaeology\",\"role_historian_culture\"],\"id\":\"role_specialist_artifacts\",\"knowledge_tags\":[\"tools_and_pottery\",\"artifact_functions\",\"cultural_significance\"],\"persona\":\"Expert in ancient tools and pottery, passionate about explaining their uses and cultural importance with clarity and enthusiasm.\",\"responsible_zone_ids\":[\"zone_002\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"coral\",\"voice_gender\":\"weiblich\",\"voice_style\":\"engaging\"},{\"display_name\":\"Cultural Historian\",\"expertise\":[\"archaeology\",\"cultural history\",\"map interpretation\"],\"grounded_object_ids\":[\"object_003\",\"object_006\",\"object_009\",\"object_012\",\"object_015\"],\"handoff_targets\":[\"role_guide_archaeology\",\"role_specialist_artifacts\"],\"id\":\"role_historian_culture\",\"knowledge_tags\":[\"mosaic_art\",\"settlement_patterns\",\"cultural_narratives\"],\"persona\":\"Insightful historian who interprets mosaic art and settlement maps to reveal rich cultural stories and historical contexts.\",\"responsible_zone_ids\":[\"zone_003\"],\"tts_model\":\"gpt-4o-mini-tts\",\"voice\":\"fable\",\"voice_gender\":\"weiblich\",\"voice_style\":\"narrative\"}],\"handoffs\":[{\"condition\":\"visitor_interest_in_tools_or_pottery\",\"reason\":\"Visitor wants detailed artifact explanations beyond excavation context\",\"source_agent_id\":\"role_guide_archaeology\",\"target_agent_id\":\"role_specialist_artifacts\"},{\"condition\":\"visitor_interest_in_mosaic_or_settlement_history\",\"reason\":\"Visitor seeks cultural and historical insights beyond excavation and artifacts\",\"source_agent_id\":\"role_guide_archaeology\",\"target_agent_id\":\"role_historian_culture\"},{\"condition\":\"visitor_interest_in_excavation_or_dating_methods\",\"reason\":\"Visitor wants archaeological methods context beyond artifacts\",\"source_agent_id\":\"role_specialist_artifacts\",\"target_agent_id\":\"role_guide_archaeology\"},{\"condition\":\"visitor_interest_in_mosaic_or_settlement_history\",\"reason\":\"Visitor seeks cultural narratives beyond artifact details\",\"source_agent_id\":\"role_specialist_artifacts\",\"target_agent_id\":\"role_historian_culture\"},{\"condition\":\"visitor_interest_in_excavation_or_dating_methods\",\"reason\":\"Visitor wants archaeological methods context beyond cultural history\",\"source_agent_id\":\"role_historian_culture\",\"target_agent_id\":\"role_guide_archaeology\"},{\"condition\":\"visitor_interest_in_tools_or_pottery\",\"reason\":\"Visitor wants artifact details beyond cultural narratives\",\"source_agent_id\":\"role_historian_culture\",\"target_agent_id\":\"role_specialist_artifacts\"}]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_079dde9a9fde2ff2016ad142e760c487d1a6be2e874ddb3cd2",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "agent_roles",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "agents": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "expertise": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "grounded_object_ids": {
+                    "items": {
+                      "enum": [
+                        "object_001",
+                        "object_002",
+                        "object_003",
+                        "object_004",
+                        "object_005",
+                        "object_006",
+                        "object_007",
+                        "object_008",
+                        "object_009",
+                        "object_010",
+                        "object_011",
+                        "object_012",
+                        "object_013",
+                        "object_014",
+                        "object_015"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "handoff_targets": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "knowledge_tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "responsible_zone_ids": {
+                    "items": {
+                      "enum": [
+                        "zone_001",
+                        "zone_002",
+                        "zone_003"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tts_model": {
+                    "type": "string"
+                  },
+                  "voice": {
+                    "enum": [
+                      "alloy",
+                      "ash",
+                      "ballad",
+                      "coral",
+                      "echo",
+                      "fable",
+                      "nova",
+                      "onyx",
+                      "sage",
+                      "shimmer",
+                      "verse"
+                    ],
+                    "type": "string"
+                  },
+                  "voice_gender": {
+                    "type": "string"
+                  },
+                  "voice_style": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "display_name",
+                  "persona",
+                  "expertise",
+                  "knowledge_tags",
+                  "responsible_zone_ids",
+                  "grounded_object_ids",
+                  "handoff_targets",
+                  "voice",
+                  "voice_gender",
+                  "voice_style",
+                  "tts_model"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "handoffs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "condition": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "source_agent_id": {
+                    "type": "string"
+                  },
+                  "target_agent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_agent_id",
+                  "target_agent_id",
+                  "condition",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "agents",
+            "handoffs"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2846,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 738,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3584
+    },
+    "user": null
+  },
+  "response_sha256": "285e7419d0c2cd3cd7690c56033786a13375880e2352e5e386f9304c92476303",
+  "saved_at": "2026-10-15T21:17:33.755085+00:00",
+  "status": "SUCCESS"
+}

@@ -1,0 +1,166 @@
+{
+  "cache_key": "7663a8e15a7def12a3efdf3a36e21463c9759ec7d63f9c97876648aa99d3060e",
+  "canonical_request": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "experiment_id": "WP4.questions",
+    "item_id": "scene_015_maritime_museum.ENT-ASSET-OBJECT_010",
+    "payload": {
+      "input": [
+        {
+          "content": "Write two different natural visitor questions about this selected synthetic room object, using its description and the supplied knowledge excerpts. Use English. Each question must explicitly include the object's supplied name or source id, must be at most one sentence, and must not name an agent or ask for a handoff. The first should ask about the object or its purpose; the second should ask about a detail or use that is supported by the supplied information. Do not invent facts. Return JSON with question_1 and question_2.",
+          "role": "developer"
+        },
+        {
+          "content": "{\"object\": {\"id\": \"ENT-ASSET-OBJECT_010\", \"source_id\": \"object_010\", \"name\": \"buoy_model\", \"type\": \"buoy_model\", \"group_label\": \"collection_1\", \"zone_names\": [\"Collection 1: Compass Cases and Buoy Models\"]}, \"description\": \"Synthetic maritime museum object: buoy model. Display 10 explains a distinct example in collection 1. A freestanding educational display with a clearly visible label; no real person or institution.\", \"knowledge_excerpts\": [{\"tag\": \"maritime_safety_equipment\", \"file\": \"maritime_safety_equipment\\\\maritime_safety_equipment_overview.txt\", \"chunk_index\": 0, \"score\": 1.125, \"text\": \"This entry summarizes the maritime museum context for maritime_safety_equipment. It is grounded in object_001 (compass_case), object_004 (buoy_model), object_007 (compass_case) and should be used to answer visitor questions about Educational exhibition space for maritime history and navigation artifacts.. Relevant room object groups include collection_1, collection_2, collection_3; semantic zones include Collection 1: Compass Cases and Buoy Models, Collection 2: Ship Models and Anchor Displays, Collection 3: Sail Diagrams and Navigation Charts.\"}]}",
+          "role": "user"
+        }
+      ],
+      "max_output_tokens": 256,
+      "model": "gpt-4.1-mini-2025-04-14",
+      "service_tier": "default",
+      "store": false,
+      "temperature": 0.3,
+      "text": {
+        "format": {
+          "name": "visitor_questions",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "question_1": {
+                "type": "string"
+              },
+              "question_2": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question_1",
+              "question_2"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "repetition_id": "0",
+    "share": "judges",
+    "version": 1
+  },
+  "response": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "openai"
+    },
+    "completed_at": 1792103475,
+    "created_at": 1792103474,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "id": "resp_0784a083f29a7f56016ad154327e2487d19c0c8fe5acbd3fa8",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 256,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "gpt-4.1-mini-2025-04-14",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"question_1\":\"What is the purpose of the buoy_model in the maritime museum's Collection 1?\",\"question_2\":\"How does the buoy_model in Collection 1 help visitors learn about maritime safety equipment?\"}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0784a083f29a7f56016ad15432c0b487d18ee6da5667154965",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "in_memory",
+    "reasoning": {
+      "context": null,
+      "effort": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 0.3,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "visitor_questions",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "question_1": {
+              "type": "string"
+            },
+            "question_2": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "question_1",
+            "question_2"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 425,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 46,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 471
+    },
+    "user": null
+  },
+  "response_sha256": "d2e9ccdceab8211c0d198708b2e24ac87bbf2d705eb921f04d11cd2db504ac33",
+  "saved_at": "2026-10-15T22:31:15.976447+00:00",
+  "status": "SUCCESS"
+}

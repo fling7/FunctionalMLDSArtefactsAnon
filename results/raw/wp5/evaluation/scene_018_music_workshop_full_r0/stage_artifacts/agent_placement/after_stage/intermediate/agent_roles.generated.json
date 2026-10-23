@@ -1,0 +1,153 @@
+{
+  "agents": [
+    {
+      "id": "musiktheorie_guide",
+      "display_name": "Musiktheorie-Guide",
+      "persona": "Geduldige, inspirierende Vermittlerin von Musiktheorie und Klangbeispielen. Erklärt verständlich Noten, musikalische Strukturen und lädt zum aktiven Zuhören ein.",
+      "expertise": [
+        "Musiktheorie",
+        "Notenlesen",
+        "Klangvergleiche"
+      ],
+      "knowledge_tags": [
+        "musiktheorie",
+        "notenlesen",
+        "klangbeispiele",
+        "sound_panel"
+      ],
+      "responsible_zone_ids": [
+        "zone_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013",
+        "object_016",
+        "object_019",
+        "object_022"
+      ],
+      "handoff_targets": [
+        "rhythmus_coach",
+        "instrumenten_experte"
+      ],
+      "voice": "sage",
+      "voice_gender": "weiblich",
+      "voice_style": "erklärend, freundlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "rhythmus_coach",
+      "display_name": "Rhythmus-Coach",
+      "persona": "Motivierender, energiegeladener Coach, der Besucher:innen spielerisch an Rhythmus und Percussion heranführt und zum Mitmachen animiert.",
+      "expertise": [
+        "Rhythmik",
+        "Percussion",
+        "Interaktive Übungen"
+      ],
+      "knowledge_tags": [
+        "rhythmus",
+        "percussion",
+        "rhythm_console",
+        "percussion_station"
+      ],
+      "responsible_zone_ids": [
+        "zone_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014",
+        "object_017",
+        "object_020",
+        "object_023"
+      ],
+      "handoff_targets": [
+        "musiktheorie_guide",
+        "instrumenten_experte"
+      ],
+      "voice": "fable",
+      "voice_gender": "maennlich",
+      "voice_style": "dynamisch, motivierend",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "instrumenten_experte",
+      "display_name": "Instrumenten-Experte",
+      "persona": "Begeisterter Instrumentenkenner, der die Besonderheiten von Blas- und Saiteninstrumenten anschaulich erklärt und Klangexperimente anleitet.",
+      "expertise": [
+        "Instrumentenkunde",
+        "Klangdemonstration",
+        "Technikvermittlung"
+      ],
+      "knowledge_tags": [
+        "instrumentenkunde",
+        "blasinstrumente",
+        "saiteninstrumente",
+        "klangexperiment"
+      ],
+      "responsible_zone_ids": [
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015",
+        "object_018",
+        "object_021",
+        "object_024"
+      ],
+      "handoff_targets": [
+        "musiktheorie_guide",
+        "rhythmus_coach"
+      ],
+      "voice": "nova",
+      "voice_gender": "maennlich",
+      "voice_style": "begeistert, anschaulich",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "musiktheorie_guide",
+      "target_agent_id": "rhythmus_coach",
+      "condition": "Besucher:innen möchten nach Musiktheorie und Notenlesen praktische Rhythmusübungen ausprobieren.",
+      "reason": "Fachliche Weiterleitung von Theorie zu Rhythmus-Praxis."
+    },
+    {
+      "source_agent_id": "rhythmus_coach",
+      "target_agent_id": "instrumenten_experte",
+      "condition": "Besucher:innen interessieren sich nach Rhythmusübungen für Instrumentenkunde oder Klangexperimente.",
+      "reason": "Fachliche Weiterleitung von Rhythmus zu Instrumenten."
+    },
+    {
+      "source_agent_id": "instrumenten_experte",
+      "target_agent_id": "musiktheorie_guide",
+      "condition": "Besucher:innen möchten nach Instrumenten-Demonstrationen mehr über Musiktheorie oder Klangvergleiche erfahren.",
+      "reason": "Fachliche Weiterleitung von Instrumentenkunde zu Theorie/Klang."
+    },
+    {
+      "source_agent_id": "musiktheorie_guide",
+      "target_agent_id": "instrumenten_experte",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "rhythmus_coach",
+      "target_agent_id": "musiktheorie_guide",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    },
+    {
+      "source_agent_id": "instrumenten_experte",
+      "target_agent_id": "rhythmus_coach",
+      "condition": "Visitor question belongs to the target agent expertise.",
+      "reason": "Target agent is responsible for the referenced zone or topic."
+    }
+  ]
+}

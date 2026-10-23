@@ -1,0 +1,296 @@
+{
+  "status": "experimental_review_only_not_adopted",
+  "scope": "Isolated own fixtures only; engineering observations, not WP8; no integration or automatic dispatch.",
+  "source": {
+    "path": "persistent_policy_v3.py",
+    "sha256": "e08986f04abfaef866ff1cf676268c8f63e25c8335288b99d6416c3bbb058873"
+  },
+  "original_and_accepted_sources": {
+    "policy_adapter.py": {
+      "path": "policy_adapter.py",
+      "sha256": "cfa3af7ed9446eefb8b947b889f52d2841db73e3920a18133d37c57c7071dd12"
+    },
+    "admission.lp": {
+      "path": "admission.lp",
+      "sha256": "149e76e157415465f925af7063c1796ce682f4228a5adff4347cb7ff08888fea"
+    },
+    "compiled_policy.py": {
+      "path": "compiled_policy.py",
+      "sha256": "80267eb5db84957488d84c95bf44324563345202a8d4edc8d8c5646b72041647"
+    }
+  },
+  "all_protected_files_unchanged": true,
+  "protected_file_count": 45,
+  "campaign": {
+    "comparisons": 827,
+    "model_snapshots": 71,
+    "handwritten_methods": 83,
+    "all_equal": true,
+    "unexpected_fallbacks": 0,
+    "comparator": "unchanged original policy_adapter.evaluate; NOT accepted compiled API",
+    "initial_snapshot_compilation_seconds": 85.55233939996106,
+    "elapsed_seconds": 815.368372900004,
+    "control_builds": 77,
+    "models_crossing_rebuild_boundary": [
+      {
+        "boundary_fact_count": 83,
+        "diagnostics": {
+          "query_count": 213,
+          "control_query_count": 21,
+          "control_rebuilds": 4,
+          "query_failures": 0,
+          "control_available": true
+        }
+      },
+      {
+        "boundary_fact_count": 11893,
+        "diagnostics": {
+          "query_count": 242,
+          "control_query_count": 50,
+          "control_rebuilds": 4,
+          "query_failures": 0,
+          "control_available": true
+        }
+      }
+    ],
+    "artifacts": [
+      {
+        "path": "persistent_selftest_v3.py",
+        "sha256": "1faf9d6be27cb53bb9df76bba473cfa26b2a261d81bf375c6787448be2ba4942"
+      },
+      {
+        "path": "persistent_handwritten.py",
+        "sha256": "08c39953eae5211b888a4f152f11d2525f75c035c30c666655fbcf66a61259fa"
+      },
+      {
+        "path": "persistent-v3-summary.json",
+        "sha256": "5621b32fe22c606e18e75917b0e75bd115cb0a449749799d4122193aaf35bd5c"
+      },
+      {
+        "path": "persistent-v3-equivalence.json",
+        "sha256": "eae135723db5d5564af846d4ecedb0734f22f05dacf86b79f788120380af3118"
+      },
+      {
+        "path": "persistent-v3-models.json",
+        "sha256": "68f037ca1674e7c9afd5d1102eb4baa3ea6701c8df585d62baf48f774d04ffd9"
+      },
+      {
+        "path": "persistent-v3-progress.jsonl",
+        "sha256": "9b47cb88289e1040bddaa045169f2ba4c16161d989f8ad6394f986956b229ca2"
+      },
+      {
+        "path": "persistent-v3-model-inputs.jsonl",
+        "sha256": "be4feffdd2778d83a149d00a62f0ba86ca3f263c950214149c8b8f3ec8bb433a"
+      },
+      {
+        "path": "persistent-v3-campaign-console.txt",
+        "sha256": "dfb81fa32390a8f88d867bf57f5b34c665c8911e95e432b7c8a3eae267d4f3c3"
+      }
+    ]
+  },
+  "safety": {
+    "comparisons": 115,
+    "status": "passed",
+    "expected_failure_count": 8,
+    "artifacts": [
+      {
+        "path": "persistent_safety_v3.py",
+        "sha256": "c49d82e341c117d904c915cac2304288c3d76e2876aac95919ae8174120de780"
+      },
+      {
+        "path": "persistent-v3-safety.json",
+        "sha256": "a389e29c07a5b1fca3cf464498a228713d4144b441df0b48bd08684ea17a69f3"
+      },
+      {
+        "path": "persistent-v3-safety-console.txt",
+        "sha256": "45fc8cbd5f634f1f74c905c17400fb1028adf4eeaa5bfc822749262a38e34326"
+      },
+      {
+        "path": "persistent-failure-inputs.json",
+        "sha256": "dcb8fca7f710ca9d73fe7bcfb0d59ff4673fa669f56273ce7aa9d3373013645a"
+      }
+    ]
+  },
+  "paired_benchmarks": {
+    "comparator": "accepted compiled_policy.py fresh-control API; original adapter is the untimed verdict oracle",
+    "v3_request_and_initial_compile_timings": {
+      "small": {
+        "pairs": 24,
+        "all_equal": true,
+        "backend_median_seconds": 0.01973254999757046,
+        "persistent_median_seconds": 0.0892972999936319,
+        "backend_total_seconds": 1.0547552999778418,
+        "persistent_total_seconds": 3.219626799982507,
+        "backend_over_persistent_total_ratio": 0.3276017270025124,
+        "backend_compile_seconds": 0.5721805000066524,
+        "persistent_compile_seconds": 0.8298068000003695
+      },
+      "full": {
+        "pairs": 24,
+        "all_equal": true,
+        "backend_median_seconds": 0.32111744999565417,
+        "persistent_median_seconds": 0.10876089999510441,
+        "backend_total_seconds": 7.492560700018657,
+        "persistent_total_seconds": 2.9544258999667363,
+        "backend_over_persistent_total_ratio": 2.5360462417090965,
+        "backend_compile_seconds": 2.911009899995406,
+        "persistent_compile_seconds": 5.426937199998065
+      }
+    },
+    "per_version_pairs": 48,
+    "all_pairs_equal": true,
+    "scheduled_rebuild_in_short_benchmarks": false,
+    "artifacts": [
+      {
+        "path": "persistent_benchmark.py",
+        "sha256": "b24cd4cf90069b97336270f638f571e21f0339e877ae411140770be5be5b63e2"
+      },
+      {
+        "path": "persistent-timing-summary.json",
+        "sha256": "cdfd16f41f87cdbdf0b4d1fdc776065f4465b30ff631a74e98ff5a2896c876b3"
+      },
+      {
+        "path": "persistent-timing-results.json",
+        "sha256": "f98e9d9ffc3028113c82480ac77cc83fb946f757700c3668236c58060d85f60c"
+      },
+      {
+        "path": "persistent_benchmark_v2.py",
+        "sha256": "2eaa6145edf4894dfdbd35b9142c87a570703057fb0349d6418681618e5b544d"
+      },
+      {
+        "path": "persistent-v2-timing-summary.json",
+        "sha256": "befa50b3184b2d3fe85d1f49433d95e705134b720e6f3baf013e64bf3cd4da5c"
+      },
+      {
+        "path": "persistent-v2-timing-results.json",
+        "sha256": "dcd04c4f26cd94fe3ed5a8bf7a4a3ca00b517bcfbf73c1817d15fc99c304dfdc"
+      },
+      {
+        "path": "persistent_benchmark_v3.py",
+        "sha256": "c19731cbdc4af7125ddf105076b9b4f3d8c28b21d91bed4de508ab83540da798"
+      },
+      {
+        "path": "persistent-v3-timing-summary.json",
+        "sha256": "65729b117a87a81eeb324af68561dc05d053d6062bcfda86844024a53eca38be"
+      },
+      {
+        "path": "persistent-v3-timing-results.json",
+        "sha256": "8ca6682bc2e92eb187678049475bddd58c2749d238e054a59779e1131e2930cb"
+      }
+    ]
+  },
+  "intermediate_sizes": {
+    "sizes_selected_before_timing": [
+      4,
+      12
+    ],
+    "pairs": 24,
+    "all_equal": true,
+    "dispatch_threshold": "none selected or implemented",
+    "summary": {
+      "4": {
+        "object_count": 48,
+        "trace_rows": 4,
+        "static_input_fact_count": 484,
+        "boundary_fact_count": 335,
+        "pairs": 12,
+        "all_equal": true,
+        "accepted_total_seconds": 1.0253126999887172,
+        "persistent_total_seconds": 1.3930235000007087,
+        "accepted_median_seconds": 0.06323014999361476,
+        "persistent_median_seconds": 0.09738500000094064,
+        "accepted_over_persistent_total_ratio": 0.7360340295681986,
+        "accepted_compile_seconds": 0.5119190999976126,
+        "persistent_compile_seconds": 1.7007872999965912,
+        "persistent_diagnostics": {
+          "query_count": 18,
+          "control_query_count": 18,
+          "control_rebuilds": 1,
+          "query_failures": 0,
+          "control_available": true
+        }
+      },
+      "12": {
+        "object_count": 144,
+        "trace_rows": 12,
+        "static_input_fact_count": 1452,
+        "boundary_fact_count": 1095,
+        "pairs": 12,
+        "all_equal": true,
+        "accepted_total_seconds": 1.5052982999914093,
+        "persistent_total_seconds": 1.8517988999956287,
+        "accepted_median_seconds": 0.07260630000382662,
+        "persistent_median_seconds": 0.1455821499985177,
+        "accepted_over_persistent_total_ratio": 0.8128843256116863,
+        "accepted_compile_seconds": 0.7444689999974798,
+        "persistent_compile_seconds": 1.950391899998067,
+        "persistent_diagnostics": {
+          "query_count": 18,
+          "control_query_count": 18,
+          "control_rebuilds": 1,
+          "query_failures": 0,
+          "control_available": true
+        }
+      }
+    },
+    "artifacts": [
+      {
+        "path": "persistent_intermediate.py",
+        "sha256": "4c0efff06b716049d397eed2434a7fa2ceefd24939b35f1470373ad58b469033"
+      },
+      {
+        "path": "persistent-intermediate-results.json",
+        "sha256": "6212479d35fd0f942ba3c20ea51997156fccc2c49093e24c1a68f4a9d9e5f9ad"
+      },
+      {
+        "path": "persistent-intermediate-models.json",
+        "sha256": "f53dbd3f78057562f5d59360e5ca1cb330cfe6f0bd918c7344840aa93cfdc0f3"
+      },
+      {
+        "path": "persistent-intermediate-progress.jsonl",
+        "sha256": "5a7a74bf6f9b681c8d1f5a3bcd68927665d5fbe343f856d87204c0fb8d08cb42"
+      },
+      {
+        "path": "persistent-intermediate-console.txt",
+        "sha256": "4934cd03c675c391fc9576445315eac768ad113838e1512441d78e7c926a6578"
+      }
+    ]
+  },
+  "preserved_prior_versions": [
+    {
+      "path": "persistent_policy.py",
+      "sha256": "84742580639a4625c4e587d1b52f345f6a19c13e54aeaba187c923033dff1316"
+    },
+    {
+      "path": "persistent_policy_v2.py",
+      "sha256": "b2409bbd720139bf0f4957045d8282c6b743c785b3272fac03981d1bbc195805"
+    }
+  ],
+  "review_documents": [
+    {
+      "path": "PERSISTENT_API.md",
+      "sha256": "949b95be9cf48766eeab92db352471f0d54b60d7dda398f937b0759e9188af09"
+    },
+    {
+      "path": "persistent-investigation.md",
+      "sha256": "1bff2c162490a7da6c5721a14b605ea9793290cbc61db6d5d4a1064c977d6e36"
+    },
+    {
+      "path": "persistent-worklog.md",
+      "sha256": "229ec78291345fc5263218df1a3f9de7c6e88389adf5bc41ff656c915860968b"
+    },
+    {
+      "path": "persistent-v3-transformed-rules.lp",
+      "sha256": "148f3f7f4eaa3278b7845928b2ab021f0bbf1c8e66ef54db8a7523a4c5ffabb5"
+    }
+  ],
+  "known_limitations": [
+    "Small and both intermediate model sizes regressed versus accepted compiler",
+    "Higher initial compilation cost",
+    "Inherited CR static literal constructor RuntimeError; not caught by default fallback",
+    "Serialized calls per object; request groundings bounded by query count",
+    "Normal colocated module imports only tested",
+    "No adoption, dispatch or production memory/latency guarantee"
+  ],
+  "owned_jobs_remaining": 0
+}

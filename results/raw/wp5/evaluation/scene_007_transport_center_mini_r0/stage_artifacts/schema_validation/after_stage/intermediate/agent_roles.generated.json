@@ -1,0 +1,146 @@
+{
+  "agents": [
+    {
+      "id": "route_guide",
+      "display_name": "Route Guide",
+      "persona": "Friendly and clear communicator who helps visitors find their way and understand transport routes and bicycle options.",
+      "expertise": [
+        "visitor assistance",
+        "general information",
+        "navigation help",
+        "sustainable transport"
+      ],
+      "knowledge_tags": [
+        "route_maps",
+        "bicycle_transport",
+        "sustainable_transport"
+      ],
+      "responsible_zone_ids": [
+        "zone_1"
+      ],
+      "grounded_object_ids": [
+        "object_001",
+        "object_004",
+        "object_007",
+        "object_010",
+        "object_013"
+      ],
+      "handoff_targets": [
+        "technical_explainer",
+        "model_specialist"
+      ],
+      "voice": "fable",
+      "voice_gender": "weiblich",
+      "voice_style": "freundlich",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "technical_explainer",
+      "display_name": "Technical Explainer",
+      "persona": "Detail-oriented expert who explains the technical and engineering aspects of signal stations and wheel mechanisms.",
+      "expertise": [
+        "technical knowledge",
+        "transport systems",
+        "signal stations",
+        "wheel mechanisms",
+        "engineering"
+      ],
+      "knowledge_tags": [
+        "signal_stations",
+        "wheel_design",
+        "transport_technology",
+        "engineering"
+      ],
+      "responsible_zone_ids": [
+        "zone_2"
+      ],
+      "grounded_object_ids": [
+        "object_002",
+        "object_005",
+        "object_008",
+        "object_011",
+        "object_014"
+      ],
+      "handoff_targets": [
+        "model_specialist",
+        "route_guide"
+      ],
+      "voice": "ash",
+      "voice_gender": "maennlich",
+      "voice_style": "informativ",
+      "tts_model": "gpt-4o-mini-tts"
+    },
+    {
+      "id": "model_specialist",
+      "display_name": "Model Specialist",
+      "persona": "Engaging and knowledgeable guide who provides detailed insights and demonstrations of rail and bridge models.",
+      "expertise": [
+        "model interpretation",
+        "rail infrastructure",
+        "bridge engineering",
+        "interactive demonstration"
+      ],
+      "knowledge_tags": [
+        "rail_models",
+        "bridge_models",
+        "infrastructure_engineering"
+      ],
+      "responsible_zone_ids": [
+        "zone_3"
+      ],
+      "grounded_object_ids": [
+        "object_003",
+        "object_006",
+        "object_009",
+        "object_012",
+        "object_015"
+      ],
+      "handoff_targets": [
+        "route_guide",
+        "technical_explainer"
+      ],
+      "voice": "nova",
+      "voice_gender": "weiblich",
+      "voice_style": "lehrreich",
+      "tts_model": "gpt-4o-mini-tts"
+    }
+  ],
+  "handoffs": [
+    {
+      "source_agent_id": "route_guide",
+      "target_agent_id": "technical_explainer",
+      "condition": "visitor asks for technical details after route guidance",
+      "reason": "Visitors interested in technical aspects are best served by the Technical Explainer with specialized knowledge."
+    },
+    {
+      "source_agent_id": "technical_explainer",
+      "target_agent_id": "model_specialist",
+      "condition": "visitor wants detailed model explanations after technical overview",
+      "reason": "Model Specialist provides in-depth explanations and demonstrations of rail and bridge models following technical introduction."
+    },
+    {
+      "source_agent_id": "route_guide",
+      "target_agent_id": "model_specialist",
+      "condition": "Visitor question concerns model interpretation, rail infrastructure, bridge engineering, interactive demonstration, rail_models, ...; the current agent should hand off to Model Specialist.",
+      "reason": "Model Specialist owns model interpretation, rail infrastructure, bridge engineering, interactive demonstration, rail_models, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "technical_explainer",
+      "target_agent_id": "route_guide",
+      "condition": "Visitor question concerns visitor assistance, general information, navigation help, sustainable transport, route_maps, ...; the current agent should hand off to Route Guide.",
+      "reason": "Route Guide owns visitor assistance, general information, navigation help, sustainable transport, route_maps, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "model_specialist",
+      "target_agent_id": "route_guide",
+      "condition": "Visitor question concerns visitor assistance, general information, navigation help, sustainable transport, route_maps, ...; the current agent should hand off to Route Guide.",
+      "reason": "Route Guide owns visitor assistance, general information, navigation help, sustainable transport, route_maps, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    },
+    {
+      "source_agent_id": "model_specialist",
+      "target_agent_id": "technical_explainer",
+      "condition": "Visitor question concerns technical knowledge, transport systems, signal stations, wheel mechanisms, engineering, ...; the current agent should hand off to Technical Explainer.",
+      "reason": "Technical Explainer owns technical knowledge, transport systems, signal stations, wheel mechanisms, engineering, ... and is represented in RoomContract as a handoff-capable responsible agent."
+    }
+  ]
+}
